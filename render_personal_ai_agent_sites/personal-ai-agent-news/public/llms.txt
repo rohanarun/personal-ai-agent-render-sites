@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [How to use a personal AI agent as a daily execution brief](how-to-use-a-personal-ai-agent-as-a-daily-execution-brief-20260708-084853/): Use case
 - [Super vs meeting transcription tools for AI follow-up](super-vs-meeting-transcription-tools-for-ai-follow-up-20260708-084325/): Competitor comparison
 - [Super for customer success operators running AI follow-up](super-for-customer-success-operators-running-ai-follow-up-20260708-083823/): Niche research landing page
 - [Personal AI agents need execution memory after meetings](personal-ai-agents-need-execution-memory-after-meetings-20260708-082823/): Research and news analysis
