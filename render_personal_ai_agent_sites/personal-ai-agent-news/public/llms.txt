@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [AI Agent Attention Budgets vs Notification Limits](ai-agent-attention-budgets-vs-notification-limits-20260708-183455/): Competitor comparison
 - [Personal AI Agent Attention Budget Software](personal-ai-agent-attention-budget-software-20260708-182925/): Niche research landing page
 - [Personal AI Agents Need Attention Budgets](personal-ai-agents-need-attention-budgets-20260708-181927/): Research and news analysis
 - [How to Write Urgency Rules for a Personal AI Agent](how-to-write-urgency-rules-for-a-personal-ai-agent-20260708-181425/): Use case
