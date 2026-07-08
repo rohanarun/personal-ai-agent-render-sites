@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [How to build an AI follow-up queue from founder texts](how-to-build-an-ai-follow-up-queue-from-founder-texts-20260708-093924/): Use case
 - [Super vs CRM reminder workflows for founder follow-up](super-vs-crm-reminder-workflows-for-founder-follow-up-20260708-093424/): Competitor comparison
 - [Super for founder-led sales teams using AI follow-up](super-for-founder-led-sales-teams-using-ai-follow-up-20260708-092924/): Niche research landing page
 - [Personal AI agents are becoming founder operating systems](personal-ai-agents-are-becoming-founder-operating-systems-20260708-092424/): Research and news analysis
