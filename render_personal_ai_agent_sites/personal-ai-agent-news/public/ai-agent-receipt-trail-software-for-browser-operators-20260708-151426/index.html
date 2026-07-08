@@ -1,0 +1,783 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Agent Receipt Trail Software for Browser Operators</title>
+  <meta name="description" content="A niche landing page for browser operators who need AI agent receipt trail software: proof objects, screenshots, source links, approval states, and durable agent memory.">
+  <link rel="canonical" href="https://kalshhunter.com/ai-agent-receipt-trail-software-for-browser-operators-20260708-151426/">
+  <meta property="og:title" content="AI Agent Receipt Trail Software for Browser Operators">
+  <meta property="og:description" content="How browser automation teams can make personal AI agents auditable, replayable, and easier to approve.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kalshhunter.com/ai-agent-receipt-trail-software-for-browser-operators-20260708-151426/">
+  <meta property="og:image" content="https://picsum.photos/seed/browser-operator-receipts/1600/900">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&display=swap');
+
+    :root {
+      color-scheme: dark;
+      --bg: #080807;
+      --ink: #f8f4e8;
+      --muted: rgba(248,244,232,.7);
+      --line: rgba(248,244,232,.16);
+      --green: #c8ff5d;
+      --blue: #94d8ff;
+      --pink: #ffadc8;
+      --panel: rgba(255,255,255,.07);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Outfit, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 14%, rgba(200,255,93,.18), transparent 31rem),
+        radial-gradient(circle at 88% 8%, rgba(148,216,255,.16), transparent 34rem),
+        radial-gradient(circle at 68% 82%, rgba(255,173,200,.14), transparent 34rem),
+        linear-gradient(135deg, #080807, #12130f 50%, #090a0a);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .16;
+      background-image: radial-gradient(rgba(255,255,255,.22) 1px, transparent 1px);
+      background-size: 5px 5px;
+      z-index: 0;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    main {
+      position: relative;
+      z-index: 1;
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .nav {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 30;
+      width: min(1080px, calc(100vw - 28px));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 13px 14px 13px 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(8,8,7,.68);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 24px 70px rgba(0,0,0,.42);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 800;
+    }
+
+    .mark {
+      width: 31px;
+      height: 31px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--green), var(--blue), var(--pink));
+      box-shadow: 0 0 34px rgba(200,255,93,.32);
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 22px;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .navcta {
+      color: #091007;
+      background: var(--green);
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-weight: 800;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: minmax(0, 1.03fr) minmax(320px, .97fr);
+      gap: 28px;
+      align-items: center;
+      width: min(1220px, calc(100vw - 36px));
+      margin: 0 auto;
+      padding: 150px 0 100px;
+    }
+
+    .hero-copy { position: relative; z-index: 2; }
+
+    h1 {
+      max-width: min(1120px, 94vw);
+      margin: 0;
+      font-size: clamp(3rem, 5vw, 5.4rem);
+      line-height: .94;
+      letter-spacing: 0;
+      font-weight: 800;
+    }
+
+    .inline-img {
+      display: inline-block;
+      width: clamp(76px, 9vw, 142px);
+      height: clamp(34px, 4vw, 56px);
+      margin: 0 .1em;
+      border-radius: 999px;
+      vertical-align: middle;
+      background: url("https://picsum.photos/seed/browser-receipt-inline/420/180") center/cover;
+      filter: grayscale(.12) contrast(1.18) saturate(.85);
+      box-shadow: 0 16px 45px rgba(0,0,0,.34);
+    }
+
+    .lede {
+      max-width: 720px;
+      margin: 28px 0 0;
+      color: var(--muted);
+      font-size: clamp(1.14rem, 1.7vw, 1.42rem);
+      line-height: 1.48;
+    }
+
+    .actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 49px;
+      padding: 14px 20px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      font-weight: 800;
+      transition: transform .45s ease, border-color .45s ease;
+    }
+
+    .button:hover { transform: translateY(-3px); border-color: rgba(248,244,232,.42); }
+    .primary { color: #091007; background: var(--green); border-color: transparent; }
+    .secondary { color: #fff; background: rgba(255,255,255,.08); }
+
+    .hero-art {
+      position: relative;
+      min-height: 620px;
+    }
+
+    .glass-shot {
+      position: absolute;
+      inset: 52px 0 auto auto;
+      width: min(580px, 100%);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: 0 42px 110px rgba(0,0,0,.48);
+      transform: rotate(2deg);
+    }
+
+    .glass-shot img {
+      width: 100%;
+      height: 620px;
+      object-fit: cover;
+      filter: grayscale(.24) contrast(1.2) brightness(.82);
+      transition: transform .7s ease;
+    }
+
+    .glass-shot:hover img { transform: scale(1.05); }
+
+    .floating-panel {
+      position: absolute;
+      left: -28px;
+      bottom: 38px;
+      width: min(360px, 72vw);
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(8,8,7,.72);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 28px 80px rgba(0,0,0,.38);
+    }
+
+    .floating-panel strong {
+      display: block;
+      font-size: 1.35rem;
+      line-height: 1.05;
+      margin-bottom: 12px;
+    }
+
+    .floating-panel p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    section { padding: 150px 20px; }
+
+    .wrap {
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+    }
+
+    .section-title {
+      max-width: 960px;
+      margin: 0 0 28px;
+      font-size: clamp(2.45rem, 5vw, 5rem);
+      line-height: .98;
+      letter-spacing: 0;
+    }
+
+    .section-copy {
+      max-width: 820px;
+      color: var(--muted);
+      font-size: 1.15rem;
+      line-height: 1.72;
+    }
+
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      grid-auto-flow: dense;
+      gap: 14px;
+      margin-top: 54px;
+    }
+
+    .card {
+      min-height: 270px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: linear-gradient(145deg, rgba(255,255,255,.09), rgba(255,255,255,.035));
+      overflow: hidden;
+      box-shadow: 0 26px 80px rgba(0,0,0,.26);
+    }
+
+    .wide { grid-column: span 8; }
+    .tall { grid-column: span 4; }
+    .third { grid-column: span 4; }
+
+    .card-body { padding: 28px; }
+
+    .card h3 {
+      margin: 0 0 14px;
+      font-size: clamp(1.5rem, 2vw, 2.1rem);
+      line-height: 1.02;
+    }
+
+    .card p, .card li {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+
+    .card ul { padding-left: 18px; margin: 18px 0 0; }
+
+    .image-card {
+      position: relative;
+      min-height: 360px;
+    }
+
+    .image-card img {
+      width: 100%;
+      height: 100%;
+      min-height: 360px;
+      object-fit: cover;
+      filter: grayscale(.34) contrast(1.2) brightness(.82);
+      transition: transform .7s ease, filter .7s ease;
+    }
+
+    .image-card:hover img {
+      transform: scale(1.05);
+      filter: grayscale(.08) contrast(1.26) brightness(.92);
+    }
+
+    .image-card .card-body {
+      position: absolute;
+      inset: auto 0 0;
+      background: linear-gradient(transparent, rgba(0,0,0,.84));
+    }
+
+    .ticker {
+      border-block: 1px solid var(--line);
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 18px 0;
+      color: rgba(248,244,232,.58);
+      font-size: clamp(1.1rem, 2vw, 1.7rem);
+      font-weight: 800;
+    }
+
+    .ticker span {
+      display: inline-block;
+      padding-right: 32px;
+      animation: ticker 26s linear infinite;
+    }
+
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .stack-zone {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+      gap: 54px;
+      align-items: start;
+    }
+
+    .sticky {
+      position: sticky;
+      top: 124px;
+    }
+
+    .steps {
+      display: grid;
+      gap: 18px;
+    }
+
+    .step {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255,255,255,.07);
+      padding: 26px;
+      min-height: 210px;
+    }
+
+    .step strong {
+      display: block;
+      color: var(--green);
+      font-size: .95rem;
+      margin-bottom: 12px;
+    }
+
+    .step h3 {
+      margin: 0 0 12px;
+      font-size: 1.8rem;
+      line-height: 1;
+    }
+
+    .step p {
+      color: var(--muted);
+      line-height: 1.62;
+      margin: 0;
+    }
+
+    .accordion {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(70px, 1fr));
+      min-height: 420px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      overflow: hidden;
+      margin-top: 48px;
+    }
+
+    .slice {
+      position: relative;
+      overflow: hidden;
+      background: #111;
+    }
+
+    .slice img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(.45) brightness(.72) contrast(1.18);
+      transition: transform .7s ease, filter .7s ease;
+    }
+
+    .slice:hover img {
+      transform: scale(1.05);
+      filter: grayscale(.06) brightness(.9) contrast(1.2);
+    }
+
+    .slice strong {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      width: min(270px, 78%);
+      font-size: 1.22rem;
+      line-height: 1;
+      text-shadow: 0 12px 30px rgba(0,0,0,.85);
+    }
+
+    .proof {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 46px;
+    }
+
+    .proof-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255,255,255,.055);
+      padding: 24px;
+    }
+
+    .proof-card h3 { margin: 0 0 12px; font-size: 1.35rem; }
+    .proof-card p { margin: 0; color: var(--muted); line-height: 1.62; }
+
+    .faq {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 48px;
+    }
+
+    details {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255,255,255,.055);
+      padding: 22px;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 800;
+      font-size: 1.12rem;
+    }
+
+    details p { color: var(--muted); line-height: 1.62; margin-bottom: 0; }
+
+    .sources {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 42px;
+    }
+
+    .source {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 20px;
+      background: rgba(255,255,255,.045);
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .final {
+      text-align: center;
+      padding-bottom: 80px;
+    }
+
+    .final h2 {
+      max-width: 970px;
+      margin: 0 auto 28px;
+      font-size: clamp(2.6rem, 5.1vw, 5.35rem);
+      line-height: .96;
+    }
+
+    .final .section-copy { margin: 0 auto 30px; }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 34px 20px;
+      color: var(--muted);
+    }
+
+    footer .wrap {
+      display: flex;
+      justify-content: space-between;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    footer a { color: var(--ink); }
+
+    @media (max-width: 900px) {
+      .navlinks { display: none; }
+      .hero { grid-template-columns: 1fr; padding-top: 130px; }
+      .hero-art { min-height: 470px; }
+      .glass-shot { inset: 0 0 auto; }
+      .glass-shot img { height: 470px; }
+      .floating-panel { left: 14px; bottom: 6px; }
+      section { padding: 110px 18px; }
+      .bento, .stack-zone, .proof, .faq, .sources { grid-template-columns: 1fr; }
+      .wide, .tall, .third { grid-column: span 1; }
+      .sticky { position: relative; top: auto; }
+      .accordion { grid-template-columns: 1fr; }
+      .slice { min-height: 180px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="https://kalshhunter.com/">
+        <span class="mark" aria-hidden="true"></span>
+        <span>Kalsh Hunter</span>
+      </a>
+      <div class="navlinks">
+        <a href="#fit">Fit</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#sources">Sources</a>
+      </div>
+      <a class="navcta" href="https://getsupers.com/">Supers</a>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-copy">
+        <h1>AI agent receipt trail software for browser <span class="inline-img" aria-hidden="true"></span> operators.</h1>
+        <p class="lede">Browser operators need more than automation. They need proof that an AI agent clicked the right page, read the right source, handled the right exception, and left a clean approval trail.</p>
+        <div class="actions">
+          <a class="button primary" href="https://app.getsupers.com/use-cases/computer-use-cache/">See computer-use cache</a>
+          <a class="button secondary" href="#fit">Explore the fit</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="glass-shot">
+          <img src="https://picsum.photos/seed/browser-operator-evidence-screen/1200/1300" alt="">
+        </div>
+        <div class="floating-panel">
+          <strong>Every browser action becomes reviewable evidence.</strong>
+          <p>Capture intent, page context, source links, screenshots, open questions, and final status.</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="ticker" aria-hidden="true">
+      <span>agent receipts / browser proof / approval trails / page-state memory / exception notes / agent receipts / browser proof / approval trails / page-state memory / exception notes / </span>
+    </div>
+
+    <section id="fit">
+      <div class="wrap">
+        <h2 class="section-title">Built for teams turning browser work into auditable agent operations.</h2>
+        <p class="section-copy">The niche is narrow but urgent: browser-based agents that perform research, account updates, quoting, CRM changes, website QA, lead enrichment, and marketplace operations. These teams need a receipt trail that normal users can read and technical operators can debug.</p>
+
+        <div class="bento">
+          <article class="card wide image-card">
+            <img src="https://picsum.photos/seed/browser-agent-ops-room/1300/760" alt="Browser operations room with layered monitors">
+            <div class="card-body">
+              <h3>For browser operators, proof is part of the product.</h3>
+              <p>When agents act inside real accounts, every completed task needs a compact evidence package.</p>
+            </div>
+          </article>
+
+          <article class="card tall">
+            <div class="card-body">
+              <h3>Who needs it first?</h3>
+              <p>Teams delegating repeat browser workflows to personal AI agents, especially where wrong clicks, stale context, or silent failures are expensive.</p>
+              <ul>
+                <li>Founder-led sales operators</li>
+                <li>Customer proof and research teams</li>
+                <li>Marketplace and website QA workflows</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="card third">
+            <div class="card-body">
+              <h3>Receipt summary</h3>
+              <p>Readable narrative of request, action, evidence, exception, and result.</p>
+            </div>
+          </article>
+
+          <article class="card third">
+            <div class="card-body">
+              <h3>Source bundle</h3>
+              <p>Page titles, URLs, screenshots, and observed fields tied to each important claim.</p>
+            </div>
+          </article>
+
+          <article class="card third">
+            <div class="card-body">
+              <h3>Approval memory</h3>
+              <p>Approved receipts become reusable context for routing and future agent work.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="workflow">
+      <div class="wrap stack-zone">
+        <div class="sticky">
+          <h2 class="section-title">The receipt trail workflow.</h2>
+          <p class="section-copy">A browser receipt system should sit beside the agent, not behind it. Users ask through lightweight channels, the agent executes in the browser, and the receipt returns as a reviewable work object. That is where <a href="https://getsupers.com/">Supers</a> can connect personal AI execution with durable follow-up.</p>
+        </div>
+
+        <div class="steps">
+          <article class="step">
+            <strong>Capture</strong>
+            <h3>Freeze the instruction and context.</h3>
+            <p>Store the original request, relevant account, deadline, constraints, and channel. This protects the agent from rewriting the job after tool use begins.</p>
+          </article>
+          <article class="step">
+            <strong>Observe</strong>
+            <h3>Attach browser evidence while acting.</h3>
+            <p>Save source URLs, page titles, screenshots, visible fields, and tool responses. The receipt should explain what the agent saw, not merely what it concluded.</p>
+          </article>
+          <article class="step">
+            <strong>Separate</strong>
+            <h3>Call out uncertainty.</h3>
+            <p>A strong receipt separates completed steps from unresolved decisions, blocked pages, missing permissions, and human approvals.</p>
+          </article>
+          <article class="step">
+            <strong>Remember</strong>
+            <h3>Promote approved receipts into memory.</h3>
+            <p>Once approved, the receipt becomes a high-quality memory object for future personal agent workflows, including <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text-message assistant</a> handoffs.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2 class="section-title">What the product surface should include.</h2>
+        <p class="section-copy">The best receipt products avoid forcing everyone into raw logs. They offer a clear top layer and a deeper inspection layer for operators.</p>
+
+        <div class="accordion">
+          <div class="slice">
+            <img src="https://picsum.photos/seed/receipt-status-panel/900/900" alt="Status panel">
+            <strong>Status, owner, and approval state.</strong>
+          </div>
+          <div class="slice">
+            <img src="https://picsum.photos/seed/browser-source-stack/900/900" alt="Source stack">
+            <strong>Linked evidence for every claim.</strong>
+          </div>
+          <div class="slice">
+            <img src="https://picsum.photos/seed/exception-review-queue/900/900" alt="Exception queue">
+            <strong>Exception queue for human review.</strong>
+          </div>
+          <div class="slice">
+            <img src="https://picsum.photos/seed/agent-memory-archive/900/900" alt="Memory archive">
+            <strong>Memory archive for repeated workflows.</strong>
+          </div>
+        </div>
+
+        <div class="proof">
+          <article class="proof-card">
+            <h3>Use-case fit</h3>
+            <p>Research summaries, CRM updates, quote comparison, listing QA, order checks, and follow-up queues.</p>
+          </article>
+          <article class="proof-card">
+            <h3>Buyer promise</h3>
+            <p>Delegate more browser work without losing the ability to review, prove, and repair the result.</p>
+          </article>
+          <article class="proof-card">
+            <h3>Supers link</h3>
+            <p>Pairs naturally with <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI website-building agents</a> and computer-use workflows that need durable proof.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2 class="section-title">FAQ for browser teams.</h2>
+        <p class="section-copy">The goal is not to bury users in telemetry. It is to make agent execution safe enough to delegate.</p>
+
+        <div class="faq">
+          <details open>
+            <summary>Is a receipt trail the same as a browser recording?</summary>
+            <p>No. A recording is raw playback. A receipt trail is a structured work artifact that summarizes the task, evidence, decision points, and final status.</p>
+          </details>
+          <details>
+            <summary>What should be visible to non-technical users?</summary>
+            <p>Show the request, result, critical evidence, unresolved decisions, and approval state. Keep low-level logs available for operators without making them the default view.</p>
+          </details>
+          <details>
+            <summary>How does this help personal AI agents?</summary>
+            <p>It makes repeated delegation safer. A personal agent can learn from approved receipts, avoid failed paths, and preserve a trail the user can trust.</p>
+          </details>
+          <details>
+            <summary>Where should teams start?</summary>
+            <p>Start with receipt summaries, source links, screenshots, exception notes, and approval states. Add replay and deeper telemetry after you know which workflows actually need it.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="sources">
+      <div class="wrap">
+        <h2 class="section-title">Research signals.</h2>
+        <p class="section-copy">This page is a niche market landing page based on visible trends in browser-use agents, computer-use research, and operator demand for auditable AI execution.</p>
+        <div class="sources">
+          <a class="source" href="https://openai.com/index/computer-using-agent/" rel="nofollow">OpenAI computer-using agent work highlights the move from text answers to software operation.</a>
+          <a class="source" href="https://www.anthropic.com/news/3-5-models-and-computer-use" rel="nofollow">Anthropic computer use made browser action a mainstream agent capability.</a>
+          <a class="source" href="https://app.getsupers.com/use-cases/computer-use-cache/">Supers computer-use cache points toward reusable execution evidence and memory.</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="final">
+      <div class="wrap">
+        <h2>Turn browser agent work into evidence people can approve.</h2>
+        <p class="section-copy">Receipt trails are the bridge between automated browser execution and trusted personal AI operations.</p>
+        <a class="button primary" href="https://getsupers.com/">Build with Supers</a>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        <span>Kalsh Hunter browser agent research</span>
+        <span><a href="https://getsupers.com/">Supers</a> / <a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a> / <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">Website agents</a></span>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.from(".step", {
+        y: 90,
+        opacity: 0,
+        scale: .92,
+        stagger: .14,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".steps",
+          start: "top 74%",
+          end: "bottom 40%",
+          scrub: true
+        }
+      });
+      gsap.utils.toArray(".glass-shot, .image-card, .slice").forEach((item) => {
+        gsap.fromTo(item,
+          { scale: .86, opacity: .58 },
+          {
+            scale: 1,
+            opacity: 1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: item,
+              start: "top 86%",
+              end: "center 46%",
+              scrub: true
+            }
+          }
+        );
+      });
+      gsap.from(".card", {
+        y: 42,
+        opacity: 0,
+        stagger: .08,
+        duration: .9,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".bento",
+          start: "top 76%"
+        }
+      });
+    }
+  </script>
+</body>
+</html>
