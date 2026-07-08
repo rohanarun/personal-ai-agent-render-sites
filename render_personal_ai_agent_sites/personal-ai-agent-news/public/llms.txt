@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Revenue dashboards vs AI review queues](revenue-dashboards-vs-ai-review-queues-20260708-130654/): Competitor comparison
 - [AI revenue review queue software](ai-revenue-review-queue-software-20260708-130154/): Niche research landing page
 - [Revenue AI dashboards are turning into agent review queues](revenue-ai-dashboards-are-turning-into-agent-review-queues-20260708-125624/): Research and news analysis
 - [How to build an AI customer proof follow-up queue](how-to-build-an-ai-customer-proof-follow-up-queue-20260708-125124/): Use case
