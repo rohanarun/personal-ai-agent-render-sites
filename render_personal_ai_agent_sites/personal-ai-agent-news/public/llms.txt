@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [How to run a weekly personal AI agent check-in](how-to-run-a-weekly-personal-ai-agent-check-in-20260708-073753/): Use case
 - [Super vs AI note apps for personal agent workflows](super-vs-ai-note-apps-for-personal-agent-workflows-20260708-073224/): Competitor comparison
 - [Super for people who want a personal AI agent](super-for-people-who-want-a-personal-ai-agent-20260708-072523/): Niche research landing page
 - [Personal AI agent use cases are moving from chat to action](personal-ai-agent-use-cases-moving-from-chat-to-action-20260708-071953/): Research and news analysis

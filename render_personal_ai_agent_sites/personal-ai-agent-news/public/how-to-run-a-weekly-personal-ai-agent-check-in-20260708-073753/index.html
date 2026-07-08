@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to run a weekly personal AI agent check-in</title>
+  <meta name="description" content="A practical weekly check-in workflow for using a personal AI agent to handle household, admin, message, browser, and follow-up tasks.">
+  <link rel="canonical" href="https://kalshhunter.com/how-to-run-a-weekly-personal-ai-agent-check-in-20260708-073753/">
+  <meta property="og:title" content="How to run a weekly personal AI agent check-in">
+  <meta property="og:description" content="A repeatable checklist for turning a personal AI agent into a weekly operator for messages, browser checks, errands, and finished follow-ups.">
+  <meta property="og:url" content="https://kalshhunter.com/how-to-run-a-weekly-personal-ai-agent-check-in-20260708-073753/">
+  <meta property="og:type" content="article">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&display=swap');
+
+    :root {
+      color-scheme: dark;
+      --bg: #080908;
+      --ink: #fbf6ec;
+      --muted: rgba(251, 246, 236, .72);
+      --dim: rgba(251, 246, 236, .52);
+      --line: rgba(251, 246, 236, .16);
+      --panel: rgba(251, 246, 236, .07);
+      --green: #9dff9a;
+      --blue: #78b7ff;
+      --rose: #ff9a88;
+      --gold: #f7d36b;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Cabinet Grotesk", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 12% 16%, rgba(120, 183, 255, .28), transparent 29rem),
+        radial-gradient(circle at 90% 8%, rgba(157, 255, 154, .18), transparent 25rem),
+        radial-gradient(circle at 42% 86%, rgba(255, 154, 136, .16), transparent 31rem),
+        var(--bg);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .12;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23grain)' opacity='.5'/%3E%3C/svg%3E");
+      mix-blend-mode: soft-light;
+      z-index: 5;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    main { width: 100%; max-width: 100%; overflow-x: hidden; }
+    .shell { width: min(1200px, calc(100% - 42px)); margin: 0 auto; }
+
+    .nav {
+      position: fixed;
+      inset: 18px 0 auto;
+      z-index: 20;
+      width: min(980px, calc(100% - 28px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 10px 10px 10px 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(8, 9, 8, .7);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 28px 80px rgba(0, 0, 0, .32);
+    }
+
+    .brand { font-weight: 900; letter-spacing: 0; }
+    .nav-links { display: flex; gap: 20px; color: var(--muted); font-size: 14px; }
+    .nav-cta {
+      padding: 11px 16px;
+      border-radius: 999px;
+      background: var(--ink);
+      color: var(--bg);
+      font-weight: 900;
+      font-size: 14px;
+    }
+
+    .hero {
+      min-height: 100svh;
+      padding: 150px 0 98px;
+      display: grid;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(300px, .72fr);
+      align-items: end;
+      gap: 42px;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      max-width: 1080px;
+      margin: 0;
+      font-size: clamp(3rem, 5vw, 5.4rem);
+      line-height: .96;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+
+    .inline-img {
+      display: inline-block;
+      width: clamp(72px, 9vw, 126px);
+      height: clamp(36px, 4vw, 54px);
+      border-radius: 999px;
+      margin: 0 .12em;
+      vertical-align: middle;
+      background: url("https://picsum.photos/seed/weekly-agent-check-in/360/180") center / cover;
+      filter: grayscale(.22) contrast(1.18) saturate(.9);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .2);
+    }
+
+    .lede {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: clamp(1.12rem, 1.65vw, 1.36rem);
+      line-height: 1.58;
+      margin: 26px 0 0;
+    }
+
+    .actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 20px;
+      border-radius: 999px;
+      font-weight: 900;
+      transition: transform .3s ease, border-color .3s ease, background .3s ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .primary { background: var(--ink); color: var(--bg); }
+    .secondary { border: 1px solid rgba(251, 246, 236, .28); background: rgba(251, 246, 236, .07); color: var(--ink); }
+
+    .hero-card {
+      min-height: 560px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, transparent, rgba(8, 9, 8, .88)),
+        url("https://picsum.photos/seed/personal-admin-operator/900/1300") center / cover;
+      filter: grayscale(.35) contrast(1.2);
+      box-shadow: 0 40px 120px rgba(0, 0, 0, .38);
+      position: relative;
+    }
+    .hero-card::after {
+      content: "message > check > decide > follow up";
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      padding: 16px;
+      border-radius: 8px;
+      background: rgba(8, 9, 8, .7);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    section { padding: 150px 0; position: relative; }
+    .section-head { display: grid; gap: 18px; margin-bottom: 42px; }
+    h2 {
+      max-width: 1000px;
+      margin: 0;
+      font-size: clamp(2.25rem, 4.6vw, 5rem);
+      line-height: .98;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .section-head p { max-width: 720px; margin: 0; color: var(--muted); font-size: 19px; line-height: 1.62; }
+
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-flow: dense;
+      gap: 14px;
+    }
+    .tile {
+      min-height: 250px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: linear-gradient(145deg, rgba(251, 246, 236, .09), rgba(251, 246, 236, .035));
+      overflow: hidden;
+      position: relative;
+      transition: transform .7s cubic-bezier(.19, 1, .22, 1), border-color .7s ease;
+    }
+    .tile:hover { transform: translateY(-6px); border-color: rgba(157, 255, 154, .42); }
+    .tile-inner { position: relative; z-index: 2; padding: 26px; height: 100%; display: grid; align-content: end; gap: 14px; }
+    .span-6 { grid-column: span 6; }
+    .span-4 { grid-column: span 4; }
+    .span-7 { grid-column: span 7; }
+    .span-5 { grid-column: span 5; }
+    .tile h3 { margin: 0; font-size: clamp(1.45rem, 2vw, 2.05rem); line-height: 1.08; letter-spacing: 0; }
+    .tile p { margin: 0; color: var(--muted); line-height: 1.62; }
+    .image-tile::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent, rgba(8, 9, 8, .9)), var(--image) center / cover;
+      filter: grayscale(.28) contrast(1.2);
+      transform: scale(1.01);
+      transition: transform .9s cubic-bezier(.19, 1, .22, 1);
+    }
+    .image-tile:hover::before { transform: scale(1.07); }
+
+    .marquee { overflow: hidden; border-block: 1px solid var(--line); background: rgba(251, 246, 236, .045); padding: 26px 0; }
+    .track { display: flex; gap: 34px; width: max-content; animation: drift 28s linear infinite; }
+    .track span { white-space: nowrap; color: var(--dim); font-size: clamp(1.6rem, 3vw, 3.1rem); font-weight: 900; }
+    @keyframes drift { to { transform: translateX(-50%); } }
+
+    .workflow {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+      gap: 50px;
+      align-items: start;
+    }
+    .sticky { position: sticky; top: 112px; }
+    .steps { display: grid; gap: 20px; }
+    .step {
+      min-height: 250px;
+      padding: 28px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: rgba(251, 246, 236, .06);
+      box-shadow: 0 28px 90px rgba(0, 0, 0, .2);
+    }
+    .step h3 { margin: 0 0 12px; font-size: clamp(1.7rem, 2.2vw, 2.4rem); letter-spacing: 0; }
+    .step p { margin: 0; color: var(--muted); line-height: 1.72; font-size: 18px; }
+    .step a, .copy a, .sources a { color: var(--green); text-decoration: underline; text-underline-offset: 4px; }
+
+    .article {
+      display: grid;
+      grid-template-columns: minmax(0, 760px) minmax(240px, 1fr);
+      gap: 54px;
+      align-items: start;
+    }
+    .copy { display: grid; gap: 24px; color: var(--muted); font-size: 18px; line-height: 1.78; }
+    .copy h2 { color: var(--ink); margin-top: 18px; }
+    .copy p { margin: 0; }
+    .sources {
+      position: sticky;
+      top: 112px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      background: rgba(8, 9, 8, .58);
+    }
+    .sources h3 { margin: 0 0 16px; font-size: 24px; }
+    .sources ul { padding: 0; list-style: none; display: grid; gap: 12px; margin: 0; color: var(--muted); }
+    .sources li { border-top: 1px solid var(--line); padding-top: 12px; }
+
+    .quotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .quote {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      min-height: 250px;
+      background: rgba(251, 246, 236, .06);
+    }
+    .quote p { margin: 0; color: var(--muted); line-height: 1.65; }
+    .quote strong { display: block; color: var(--ink); margin-top: 20px; }
+
+    details {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 22px;
+      background: rgba(251, 246, 236, .05);
+    }
+    details + details { margin-top: 14px; }
+    summary { cursor: pointer; font-weight: 900; font-size: 20px; }
+    details p { color: var(--muted); line-height: 1.65; margin: 16px 0 0; }
+
+    .cta {
+      padding: 95px 0;
+      background: var(--ink);
+      color: var(--bg);
+    }
+    .cta h2 { color: var(--bg); }
+    .cta p { max-width: 720px; color: rgba(8, 9, 8, .72); font-size: 20px; line-height: 1.55; margin: 20px 0 0; }
+    .cta .primary { background: var(--bg); color: var(--ink); }
+    .cta .secondary { color: var(--bg); border-color: rgba(8, 9, 8, .24); background: rgba(8, 9, 8, .05); }
+    footer { padding: 34px 0 52px; color: var(--dim); }
+    footer .shell { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+    footer nav { display: flex; gap: 18px; flex-wrap: wrap; }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hero-grid, .workflow, .article, .quotes { grid-template-columns: 1fr; }
+      .hero-card { min-height: 360px; }
+      section { padding: 110px 0; }
+      .bento { grid-template-columns: 1fr; }
+      .span-4, .span-5, .span-6, .span-7 { grid-column: span 1; }
+      .sticky, .sources { position: static; }
+      h1 { font-size: clamp(2.8rem, 13vw, 4.7rem); }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="Primary">
+    <a class="brand" href="https://kalshhunter.com/">Kalsh Hunter</a>
+    <div class="nav-links">
+      <a href="#checklist">Checklist</a>
+      <a href="#workflow">Workflow</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a class="nav-cta" href="https://getsupers.com/">Try Super</a>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <h1>How to run a weekly <span class="inline-img" aria-hidden="true"></span> personal AI agent check-in</h1>
+          <p class="lede">A weekly check-in turns a personal AI agent from a novelty into an operating rhythm: collect loose tasks, decide what needs a browser, send the follow-ups, and return with visible proof.</p>
+          <div class="actions">
+            <a class="button primary" href="https://getsupers.com/">Start with Super</a>
+            <a class="button secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Use text-message AI</a>
+          </div>
+        </div>
+        <div class="hero-card" aria-hidden="true"></div>
+      </div>
+    </header>
+
+    <section id="checklist">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Make the agent responsible for a repeatable loop, not a vague wish.</h2>
+          <p>The weekly check-in works because it has an input, a review step, an execution path, and a visible closeout.</p>
+        </div>
+        <div class="bento">
+          <article class="tile span-6 image-tile" style="--image:url('https://picsum.photos/seed/message-intake/1200/900')">
+            <div class="tile-inner">
+              <h3>Collect open loops from messages</h3>
+              <p>Forward unanswered requests, errands, reminders, links, and small admin tasks into the assistant. The best place to start is where the task already lives.</p>
+            </div>
+          </article>
+          <article class="tile span-6">
+            <div class="tile-inner">
+              <h3>Sort by action type</h3>
+              <p>Label each item as reply, research, browser check, booking, purchase, artifact, or waiting-on-someone. This prevents a messy pile from turning into a messy prompt.</p>
+            </div>
+          </article>
+          <article class="tile span-4">
+            <div class="tile-inner">
+              <h3>Give permission boundaries</h3>
+              <p>Tell the agent what it can do directly, what needs approval, and what should only be drafted.</p>
+            </div>
+          </article>
+          <article class="tile span-4 image-tile" style="--image:url('https://picsum.photos/seed/browser-admin-check/900/900')">
+            <div class="tile-inner">
+              <h3>Route live checks to browser work</h3>
+              <p>Prices, availability, policies, inbox context, and web forms need a live surface rather than stale memory.</p>
+            </div>
+          </article>
+          <article class="tile span-4">
+            <div class="tile-inner">
+              <h3>Close with receipts</h3>
+              <p>Ask for links, screenshots, status notes, sent-message drafts, or a short digest of what changed.</p>
+            </div>
+          </article>
+          <article class="tile span-7">
+            <div class="tile-inner">
+              <h3>Keep one recurring agenda</h3>
+              <p>Use the same agenda every week: overdue replies, household tasks, appointments, subscriptions, browser checks, and work follow-ups. Consistency makes the assistant easier to evaluate.</p>
+            </div>
+          </article>
+          <article class="tile span-5 image-tile" style="--image:url('https://picsum.photos/seed/finished-admin-loop/900/1000')">
+            <div class="tile-inner">
+              <h3>Only count finished loops</h3>
+              <p>A good personal AI agent is measured by tasks closed, not answers generated.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="track">
+        <span>intake</span><span>triage</span><span>browser check</span><span>draft</span><span>send</span><span>receipt</span>
+        <span>intake</span><span>triage</span><span>browser check</span><span>draft</span><span>send</span><span>receipt</span>
+      </div>
+    </div>
+
+    <section id="workflow">
+      <div class="shell workflow">
+        <div class="sticky section-head">
+          <h2>The weekly check-in script</h2>
+          <p>Use this as a practical operating pattern. It is intentionally boring in the places where reliability matters.</p>
+        </div>
+        <div class="steps">
+          <article class="step">
+            <h3>Ask for a task sweep</h3>
+            <p>Start with: "Review my open loops from this week. Split them into reply, research, browser check, booking, and done-later. Ask before spending money or sending anything sensitive." Super can pair this with a <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text message AI assistant</a> workflow when the input starts in SMS or iMessage.</p>
+          </article>
+          <article class="step">
+            <h3>Move web-dependent items into browser context</h3>
+            <p>Any task that depends on current information should leave the chat box. Use a <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a> style workflow for recurring checks, forms, pages, and changing web context.</p>
+          </article>
+          <article class="step">
+            <h3>Batch small replies and follow-ups</h3>
+            <p>Ask for drafts first, then approve or edit. This preserves judgment while still removing the blank-page cost of each response.</p>
+          </article>
+          <article class="step">
+            <h3>Turn larger work into an artifact</h3>
+            <p>When the task is publishable or shareable, ask for a finished artifact. The <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent website-building</a> use case is a concrete example of moving from instruction to a page someone can open.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="shell article">
+        <article class="copy">
+          <h2>Why weekly beats always-on for many people</h2>
+          <p>An always-on personal AI agent sounds powerful, but most people do not have a clear queue for it. A weekly check-in creates a predictable moment when the user can hand over context, approve boundaries, and judge output quality.</p>
+          <p>The check-in can be short. Ten minutes is enough to capture stale replies, upcoming appointments, items that need a browser check, and small errands that have been bouncing around in memory. The agent then has a concrete list and a clear standard: return with what was done, what needs approval, and what is blocked.</p>
+          <p><a href="https://getsupers.com/">Super</a> is useful for this pattern because the workflow is not trapped in a note. The assistant can operate across message-driven requests, browser-backed context, and generated outputs, which is the practical difference between an answer engine and a personal operator.</p>
+          <h2>A simple weekly prompt</h2>
+          <p>"Run my weekly check-in. Gather open loops from this week, group them by action type, draft replies where useful, identify anything that needs a browser check, and return a done/blocked/needs-approval summary. Do not spend money or send sensitive messages without approval."</p>
+          <p>Keep the same prompt for three weeks. Then adjust the categories based on what actually got done. The goal is not to create a perfect system on day one; it is to create a reliable handoff that gets more useful with repeated use.</p>
+        </article>
+        <aside class="sources">
+          <h3>Useful Super paths</h3>
+          <ul>
+            <li><a href="https://getsupers.com/">Super home</a> for the main personal assistant starting point.</li>
+            <li><a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Text message AI assistant</a> for SMS and iMessage intake.</li>
+            <li><a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a> for browser-backed checks.</li>
+            <li><a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent website-building</a> for finished artifacts.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section>
+      <div class="shell">
+        <div class="section-head">
+          <h2>What a good closeout looks like</h2>
+          <p>The check-in should end with evidence, not vibes. These are the receipts worth asking for.</p>
+        </div>
+        <div class="quotes">
+          <article class="quote">
+            <p>"Here are the three replies I drafted, the one I need approval to send, and the two people who have not responded yet."</p>
+            <strong>Message work</strong>
+          </article>
+          <article class="quote">
+            <p>"Here is what changed on the site, the source link I checked, and why I recommend waiting before buying."</p>
+            <strong>Browser work</strong>
+          </article>
+          <article class="quote">
+            <p>"Here is the page I generated, the live preview, and the two edits I would make before sharing it."</p>
+            <strong>Artifact work</strong>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Common weekly check-in questions</h2>
+          <p>Start small and preserve control. A personal AI agent should earn autonomy through repeated, inspectable wins.</p>
+        </div>
+        <details>
+          <summary>How much access should I give the agent?</summary>
+          <p>Begin with low-risk tasks: drafts, research, reminders, summaries, and browser checks. Add permissions only after the agent repeatedly returns accurate closeouts.</p>
+        </details>
+        <details>
+          <summary>Should the agent send messages automatically?</summary>
+          <p>For most users, drafts-first is the better default. Let it prepare the message and explain the context, then approve sending once the workflow is trusted.</p>
+        </details>
+        <details>
+          <summary>What should I measure?</summary>
+          <p>Measure closed loops: replies sent, checks completed, appointments confirmed, pages created, and blocked items clarified. Do not measure raw answer volume.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="shell">
+        <h2>Give your personal AI agent a weekly job.</h2>
+        <p>Start with one recurring check-in and let Super prove itself through finished loops, not generic answers.</p>
+        <div class="actions">
+          <a class="button primary" href="https://getsupers.com/">Try Super</a>
+          <a class="button secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Start with message intake</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">
+      <span>Kalsh Hunter personal agent notes</span>
+      <nav>
+        <a href="https://getsupers.com/">Super</a>
+        <a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a>
+        <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">Website agents</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script>
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.fromTo(".hero-card", { scale: .88, opacity: .65, y: 40 }, { scale: 1, opacity: 1, y: 0, duration: 1.1, ease: "power3.out" });
+      gsap.utils.toArray(".tile").forEach(function(tile) {
+        gsap.fromTo(tile, { y: 44, opacity: .2, scale: .94 }, {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          ease: "none",
+          scrollTrigger: { trigger: tile, start: "top 88%", end: "top 42%", scrub: true }
+        });
+      });
+      gsap.utils.toArray(".step").forEach(function(step) {
+        gsap.fromTo(step, { opacity: .24, y: 60 }, {
+          opacity: 1,
+          y: 0,
+          ease: "none",
+          scrollTrigger: { trigger: step, start: "top 85%", end: "top 45%", scrub: true }
+        });
+      });
+      gsap.fromTo(".copy p", { opacity: .28 }, {
+        opacity: 1,
+        stagger: .18,
+        scrollTrigger: { trigger: ".copy", start: "top 76%", end: "bottom 62%", scrub: true }
+      });
+    }
+  </script>
+</body>
+</html>
