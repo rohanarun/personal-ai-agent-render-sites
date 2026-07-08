@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Agentic customer proof room software](agentic-customer-proof-room-software-20260708-124124/): Niche research landing page
 - [AI note summaries are becoming agent action queues](ai-note-summaries-are-becoming-agent-action-queues-20260708-123624/): Research and news analysis
 - [How to build an AI renewal risk signal queue](how-to-build-an-ai-renewal-risk-signal-queue-20260708-123124/): Use case
 - [Super vs customer evidence platforms for AI proof inboxes](super-vs-customer-evidence-platforms-for-ai-proof-inboxes-20260708-122125/): Competitor comparison
