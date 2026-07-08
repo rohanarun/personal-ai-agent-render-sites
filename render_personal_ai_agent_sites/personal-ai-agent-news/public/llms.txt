@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [How to build an operator queue for a personal AI assistant](how-to-build-an-operator-queue-for-a-personal-ai-assistant-20260708-133254/): Use case
 - [AI task managers vs operator queues for personal agents](ai-task-managers-vs-operator-queues-for-personal-agents-20260708-132724/): Competitor comparison
 - [AI operator queue software for personal agents](ai-operator-queue-software-for-personal-agents-20260708-132224/): Niche research landing page
 - [AI operator queues are the new personal agent workspace](ai-operator-queues-are-the-new-personal-agent-workspace-20260708-131724/): Research and news analysis
