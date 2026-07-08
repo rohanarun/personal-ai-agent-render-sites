@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Personal AI agent receipt layer software](personal-ai-agent-receipt-layer-software-20260708-134254/): Niche research landing page
 - [Personal AI agents need a work receipt layer](personal-ai-agents-need-a-work-receipt-layer-20260708-133754/): Research and news analysis
 - [How to build an operator queue for a personal AI assistant](how-to-build-an-operator-queue-for-a-personal-ai-assistant-20260708-133254/): Use case
 - [AI task managers vs operator queues for personal agents](ai-task-managers-vs-operator-queues-for-personal-agents-20260708-132724/): Competitor comparison
