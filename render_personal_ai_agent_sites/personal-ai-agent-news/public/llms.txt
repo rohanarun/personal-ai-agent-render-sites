@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Super vs generic AI task managers for founder follow-up](super-vs-generic-ai-task-managers-for-founder-follow-up-20260708-104954/): Competitor comparison
 - [AI follow-up software for investor-backed founders](ai-follow-up-software-for-investor-backed-founders-20260708-103955/): Niche research landing page
 - [Personal AI agent approval queues are entering founder workflows](personal-ai-agent-approval-queues-are-entering-founder-workflows-20260708-103424/): Research and news analysis
 - [How to use AI approval queues for investor intro follow-up](how-to-use-ai-approval-queues-for-investor-intro-follow-up-20260708-102424/): Use case
