@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [How to Batch AI Agent Questions without Missing Urgent Escalations](how-to-batch-ai-agent-questions-without-missing-urgent-escalations-20260708-175255/): Use case
 - [AI Agent Interruption Management vs Notification Filters](ai-agent-interruption-management-vs-notification-filters-20260708-174755/): Competitor comparison
 - [Personal AI Agent Interruption Management Software](personal-ai-agent-interruption-management-software-20260708-173756/): Niche research landing page
 - [Personal AI Agents Face Escalation Fatigue](personal-ai-agents-face-escalation-fatigue-20260708-172755/): Research and news analysis
