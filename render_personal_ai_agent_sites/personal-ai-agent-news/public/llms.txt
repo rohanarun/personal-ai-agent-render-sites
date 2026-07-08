@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Super vs AI note takers for proof operations](super-vs-ai-note-takers-for-proof-operations-20260708-115554/): Competitor comparison
 - [AI proof ops platform for founder-led sales](ai-proof-ops-platform-for-founder-led-sales-20260708-115054/): Niche research landing page
 - [Personal AI agents are becoming proof ops workers](personal-ai-agents-are-becoming-proof-ops-workers-20260708-114554/): Research and news analysis
 - [How to turn founder DMs into AI proof tickets](how-to-turn-founder-dms-into-ai-proof-tickets-20260708-114054/): Use case
