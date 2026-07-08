@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Super for founder-led sales teams using AI follow-up](super-for-founder-led-sales-teams-using-ai-follow-up-20260708-092924/): Niche research landing page
 - [Personal AI agents are becoming founder operating systems](personal-ai-agents-are-becoming-founder-operating-systems-20260708-092424/): Research and news analysis
 - [How to use a personal AI agent for founder sales follow-up](how-to-use-a-personal-ai-agent-for-founder-sales-follow-up-20260708-091425/): Use case
 - [Super vs traditional founder assistant services](super-vs-traditional-founder-assistant-services-20260708-090925/): Competitor comparison
