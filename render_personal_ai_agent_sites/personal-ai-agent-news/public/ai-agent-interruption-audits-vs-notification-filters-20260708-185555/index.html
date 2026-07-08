@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Agent Interruption Audits vs Notification Filters</title>
+  <meta name="description" content="A practical comparison of AI agent interruption audits and notification filters for teams building personal AI agents that text, browse, and escalate work.">
+  <link rel="canonical" href="https://kalshhunter.com/ai-agent-interruption-audits-vs-notification-filters-20260708-185555/">
+  <meta property="og:title" content="AI Agent Interruption Audits vs Notification Filters">
+  <meta property="og:description" content="Notification filters reduce noise. Interruption audits improve agent judgment. Here is how to choose.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://kalshhunter.com/ai-agent-interruption-audits-vs-notification-filters-20260708-185555/">
+  <meta property="og:image" content="https://picsum.photos/seed/audit-vs-filter-console/1920/1080">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <style>
+    :root {
+      --bg: #070909;
+      --ink: #f8f4eb;
+      --muted: rgba(248,244,235,.72);
+      --line: rgba(248,244,235,.14);
+      --panel: rgba(255,255,255,.066);
+      --mint: #c8ffd9;
+      --blue: #a8d2ff;
+      --rose: #ffb7a6;
+      --gold: #ffe49f;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Outfit", system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 15% 8%, rgba(200,255,217,.2), transparent 30rem),
+        radial-gradient(circle at 80% 18%, rgba(168,210,255,.16), transparent 31rem),
+        linear-gradient(145deg, #040606 0%, #101312 52%, #070909 100%);
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 3;
+      opacity: .16;
+      mix-blend-mode: soft-light;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.74' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.48'/%3E%3C/svg%3E");
+    }
+    main { overflow-x: hidden; width: 100%; max-width: 100%; }
+    a { color: inherit; }
+    .wrap { width: min(1180px, calc(100vw - 40px)); margin: 0 auto; }
+
+    .nav {
+      position: fixed;
+      z-index: 10;
+      top: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1120px, calc(100vw - 32px));
+      padding: 12px 14px 12px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(7,9,9,.7);
+      backdrop-filter: blur(22px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      box-shadow: 0 22px 80px rgba(0,0,0,.36);
+    }
+    .brand { text-decoration: none; font-weight: 800; }
+    .nav-links { display: flex; gap: 22px; color: var(--muted); font-size: .94rem; }
+    .nav-links a { text-decoration: none; }
+    .nav-cta {
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 18px;
+      border-radius: 999px;
+      background: var(--mint);
+      color: #06110a;
+      text-decoration: none;
+      font-weight: 760;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      align-items: center;
+      padding: 150px 0 92px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.05fr) minmax(320px,.7fr);
+      gap: clamp(32px,6vw,82px);
+      align-items: end;
+    }
+    h1 {
+      margin: 0;
+      max-width: min(1080px, 94vw);
+      font-size: clamp(2.75rem, 4.75vw, 5.1rem);
+      line-height: .97;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .inline-photo {
+      display: inline-block;
+      width: clamp(74px,8vw,124px);
+      height: clamp(34px,4vw,54px);
+      margin: 0 8px;
+      border-radius: 999px;
+      vertical-align: middle;
+      background: url("https://picsum.photos/seed/filter-vs-audit-strip/420/210") center/cover;
+      filter: contrast(1.18) saturate(.9);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.28);
+    }
+    .lead {
+      max-width: 700px;
+      margin: 28px 0 0;
+      color: var(--muted);
+      font-size: clamp(1.08rem,1.55vw,1.27rem);
+      line-height: 1.62;
+    }
+    .actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 34px; }
+    .btn {
+      min-height: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 22px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 760;
+      transition: transform .22s ease, border-color .22s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn.primary { background: var(--mint); color: #06110a; }
+    .btn.secondary { color: white; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.22); }
+    .hero-card {
+      min-height: 540px;
+      border-radius: 34px;
+      border: 1px solid rgba(255,255,255,.14);
+      overflow: hidden;
+      position: relative;
+      background:
+        linear-gradient(180deg, rgba(7,9,9,.03), rgba(7,9,9,.76)),
+        url("https://picsum.photos/seed/agent-comparison-console/900/1300") center/cover;
+      filter: grayscale(.16) contrast(1.16);
+      box-shadow: 0 44px 128px rgba(0,0,0,.42);
+    }
+    .hero-card::after {
+      content: "Filters decide what gets through. Audits decide what the agent learns.";
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      padding: 22px;
+      border-radius: 24px;
+      background: rgba(5,7,7,.64);
+      border: 1px solid rgba(255,255,255,.16);
+      backdrop-filter: blur(18px);
+      color: rgba(255,255,255,.82);
+      line-height: 1.42;
+      font-weight: 700;
+      font-size: 1.15rem;
+    }
+
+    section { padding: 136px 0; }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0,.85fr) minmax(280px,.55fr);
+      gap: 48px;
+      align-items: end;
+      margin-bottom: 42px;
+    }
+    h2 { margin: 0; font-size: clamp(2.3rem,4.7vw,4.8rem); line-height: .99; letter-spacing: 0; text-wrap: balance; }
+    .section-head p, .card p, .article p, .faq p, .quote p, .stack p { color: var(--muted); line-height: 1.7; font-size: 1.04rem; }
+
+    .bento { display: grid; grid-template-columns: repeat(12,1fr); grid-auto-flow: dense; gap: 16px; }
+    .card {
+      min-height: 280px;
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 26px;
+      background: var(--panel);
+      overflow: hidden;
+      transition: transform .52s ease, border-color .52s ease;
+    }
+    .card:hover { transform: translateY(-7px); border-color: rgba(200,255,217,.44); }
+    .card-inner { padding: 30px; }
+    .card h3 { margin: 0 0 14px; font-size: 1.55rem; line-height: 1.1; }
+    .span-8 { grid-column: span 8; }
+    .span-4 { grid-column: span 4; }
+    .image-card {
+      min-height: 382px;
+      background:
+        linear-gradient(120deg, rgba(7,9,9,.1), rgba(7,9,9,.78)),
+        url("https://picsum.photos/seed/notification-filter-board/1200/780") center/cover;
+    }
+    .mint { background: linear-gradient(145deg, rgba(200,255,217,.17), rgba(255,255,255,.055)); }
+    .blue { background: linear-gradient(145deg, rgba(168,210,255,.16), rgba(255,255,255,.055)); }
+    .rose { background: linear-gradient(145deg, rgba(255,183,166,.16), rgba(255,255,255,.055)); }
+    .gold { background: linear-gradient(145deg, rgba(255,228,159,.16), rgba(255,255,255,.055)); }
+
+    .stack-list { display: grid; gap: 28px; }
+    .stack {
+      position: sticky;
+      top: 108px;
+      min-height: 420px;
+      display: grid;
+      grid-template-columns: minmax(0,.56fr) minmax(280px,.44fr);
+      gap: 30px;
+      align-items: center;
+      padding: 38px;
+      border-radius: 32px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.075);
+      box-shadow: 0 34px 100px rgba(0,0,0,.3);
+    }
+    .stack:nth-child(2) { top: 130px; }
+    .stack:nth-child(3) { top: 152px; }
+    .stack img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 24px;
+      filter: grayscale(.2) contrast(1.15);
+      transform: scale(.9);
+    }
+    .stack h3 { margin: 0 0 12px; font-size: clamp(1.8rem,3vw,3rem); line-height: 1; }
+
+    .accordion {
+      min-height: 480px;
+      display: flex;
+      overflow: hidden;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,.14);
+    }
+    .panel {
+      flex: 1;
+      min-width: 0;
+      padding: 30px;
+      display: flex;
+      align-items: flex-end;
+      background-size: cover;
+      background-position: center;
+      filter: grayscale(.55) contrast(1.15);
+      transition: flex .7s cubic-bezier(.2,.8,.2,1), filter .7s ease;
+    }
+    .panel:hover { flex: 2.4; filter: grayscale(.08) contrast(1.15); }
+    .panel:nth-child(1) { background-image: linear-gradient(rgba(0,0,0,.12), rgba(0,0,0,.74)), url("https://picsum.photos/seed/app-level-filter/900/1200"); }
+    .panel:nth-child(2) { background-image: linear-gradient(rgba(0,0,0,.12), rgba(0,0,0,.74)), url("https://picsum.photos/seed/agent-receipt-ledger/900/1200"); }
+    .panel:nth-child(3) { background-image: linear-gradient(rgba(0,0,0,.12), rgba(0,0,0,.74)), url("https://picsum.photos/seed/weekly-agent-review/900/1200"); }
+    .panel:nth-child(4) { background-image: linear-gradient(rgba(0,0,0,.12), rgba(0,0,0,.74)), url("https://picsum.photos/seed/prompt-update-workflow/900/1200"); }
+    .panel-copy { max-width: 330px; }
+    .panel h3 { margin: 0 0 10px; font-size: 1.55rem; }
+    .panel p { color: rgba(255,255,255,.74); line-height: 1.6; }
+
+    .article-grid { display: grid; grid-template-columns: minmax(0,.66fr) minmax(280px,.34fr); gap: 42px; align-items: start; }
+    .article, .sidebox, .faq article, .quote {
+      border: 1px solid rgba(255,255,255,.13);
+      background: rgba(255,255,255,.06);
+      border-radius: 28px;
+    }
+    .article { padding: 38px; }
+    .article h3 { margin: 30px 0 8px; font-size: 2rem; }
+    .article h3:first-child { margin-top: 0; }
+    .article li { margin: 12px 0; color: var(--muted); line-height: 1.68; }
+    .article a, .sidebox a { color: var(--mint); text-underline-offset: 4px; }
+    .sidebox {
+      position: sticky;
+      top: 120px;
+      padding: 28px;
+      background: rgba(200,255,217,.1);
+      border-color: rgba(200,255,217,.22);
+    }
+    .sidebox h3 { margin-top: 0; }
+    .faq { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; }
+    .faq article { padding: 28px; border-radius: 24px; }
+    .faq h3 { margin: 0 0 10px; }
+    .quotes { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; }
+    .quote { padding: 28px; min-height: 260px; }
+
+    .cta {
+      padding: 116px 0;
+      background:
+        linear-gradient(90deg, rgba(200,255,217,.28), rgba(168,210,255,.18)),
+        url("https://picsum.photos/seed/audit-vs-filter-command-room/1920/1080") center/cover;
+      background-blend-mode: screen;
+      border-top: 1px solid rgba(255,255,255,.14);
+    }
+    .cta-box { width: min(980px, calc(100vw - 40px)); margin: 0 auto; }
+    .cta h2 { color: #06110a; text-shadow: 0 1px 0 rgba(255,255,255,.22); }
+    .cta p { max-width: 680px; color: rgba(6,17,10,.76); line-height: 1.62; font-size: 1.15rem; }
+    .cta .btn.secondary { color: #06110a; background: rgba(255,255,255,.42); border-color: rgba(6,17,10,.28); }
+    footer { padding: 42px 0 58px; color: rgba(255,255,255,.58); }
+    .footer-row { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+    .footer-row a { text-decoration: none; margin-left: 18px; }
+
+    @media (max-width: 880px) {
+      .nav { top: 12px; border-radius: 26px; }
+      .nav-links { display: none; }
+      .hero-grid, .section-head, .stack, .article-grid, .faq, .quotes { grid-template-columns: 1fr; }
+      .hero-card { min-height: 430px; }
+      section { padding: 98px 0; }
+      .bento { grid-template-columns: 1fr; }
+      .span-8, .span-4 { grid-column: span 1; }
+      .accordion { flex-direction: column; }
+      .panel { min-height: 260px; }
+      .sidebox { position: relative; top: 0; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="Main navigation">
+    <a class="brand" href="https://kalshhunter.com/">Kalsh Hunter</a>
+    <div class="nav-links">
+      <a href="#decision">Decision</a>
+      <a href="#comparison">Comparison</a>
+      <a href="#checklist">Checklist</a>
+    </div>
+    <a class="nav-cta" href="https://getsupers.com/">Explore Supers</a>
+  </nav>
+
+  <main>
+    <header class="hero wrap">
+      <div class="hero-grid">
+        <div>
+          <h1>AI agent interruption audits <span class="inline-photo" aria-hidden="true"></span> vs notification filters</h1>
+          <p class="lead">Notification filters decide which alerts reach a user. Interruption audits decide whether a personal AI agent made a good judgment, what evidence it used, and what it should learn before interrupting again.</p>
+          <div class="actions">
+            <a class="btn primary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Compare with an SMS agent</a>
+            <a class="btn secondary" href="#comparison">Read the comparison</a>
+          </div>
+        </div>
+        <aside class="hero-card" aria-label="Audit versus filter console"></aside>
+      </div>
+    </header>
+
+    <section id="decision" class="wrap">
+      <div class="section-head">
+        <h2>Use filters to reduce noise. Use audits to improve autonomy.</h2>
+        <p>The two tools solve different problems. Filters are a front door. Audits are a learning loop for agents that act, escalate, summarize, browse, or text proactively.</p>
+      </div>
+      <div class="bento">
+        <article class="card image-card span-8"><div class="card-inner"><h3>Filters are rule gates.</h3><p>A filter can suppress low-priority app notifications or route emails into a digest. That is useful, but it does not explain why an autonomous agent chose to interrupt.</p></div></article>
+        <article class="card mint span-4"><div class="card-inner"><h3>Audits are judgment records.</h3><p>An audit captures trigger, source, confidence, timing, outcome, and the prompt correction that follows.</p></div></article>
+        <article class="card blue span-4"><div class="card-inner"><h3>Choose filters for volume.</h3><p>They are best when the signal source is known and the desired behavior is stable.</p></div></article>
+        <article class="card rose span-4"><div class="card-inner"><h3>Choose audits for agents.</h3><p>They are best when the system interprets context and learns from misses.</p></div></article>
+        <article class="card gold span-4"><div class="card-inner"><h3>Use both for SMS.</h3><p>Filter obvious noise, then audit every proactive text that still gets through.</p></div></article>
+      </div>
+    </section>
+
+    <section id="comparison" class="wrap">
+      <div class="section-head">
+        <h2>The practical difference shows up after the alert.</h2>
+        <p>A filter stops or passes a message. An audit asks whether the agent should change its future behavior.</p>
+      </div>
+      <div class="stack-list">
+        <article class="stack">
+          <div><h3>Notification filter</h3><p>Best for app-level suppression, keyword routing, sender rules, and quiet hours. It can reduce volume quickly, but it rarely creates a reusable explanation for agent behavior.</p></div>
+          <img src="https://picsum.photos/seed/filter-settings-console/1200/800" alt="Notification filter settings">
+        </article>
+        <article class="stack">
+          <div><h3>Interruption audit</h3><p>Best for personal agents that proactively decide when to text, when to batch, when to escalate, and when to stay silent. Each alert becomes a training example for future judgment.</p></div>
+          <img src="https://picsum.photos/seed/interruption-audit-ledger/1200/800" alt="Interruption audit ledger">
+        </article>
+        <article class="stack">
+          <div><h3>Combined system</h3><p>Use filters for obvious low-value input, then audit the high-attention output. This is the strongest pattern for a <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text message AI assistant</a>.</p></div>
+          <img src="https://picsum.photos/seed/combined-agent-policy/1200/800" alt="Combined agent policy board">
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <div class="section-head">
+        <h2>Where each approach wins.</h2>
+        <p>The answer depends on whether your system is filtering known inputs or supervising agent decisions.</p>
+      </div>
+      <div class="accordion" aria-label="Approach comparison">
+        <article class="panel"><div class="panel-copy"><h3>App-level noise</h3><p>Notification filters win when you need fixed sender, keyword, or channel rules.</p></div></article>
+        <article class="panel"><div class="panel-copy"><h3>Agent evidence</h3><p>Interruption audits win when the assistant must explain why it spent attention.</p></div></article>
+        <article class="panel"><div class="panel-copy"><h3>Weekly correction</h3><p>Audits win when real misses should modify the system prompt or escalation policy.</p></div></article>
+        <article class="panel"><div class="panel-copy"><h3>Multi-tool work</h3><p>Audits travel better across SMS, browser work, and generated deliverables.</p></div></article>
+      </div>
+    </section>
+
+    <section id="checklist" class="wrap article-grid">
+      <article class="article">
+        <h3>Comparison checklist</h3>
+        <ul>
+          <li>Use notification filters when the input source is predictable and the desired rule is stable.</li>
+          <li>Use interruption audits when the agent is making a context judgment on behalf of the user.</li>
+          <li>Use both when the channel is high-attention, especially SMS.</li>
+          <li>Require audit receipts for every proactive alert that bypasses filters.</li>
+          <li>Review false positives and false negatives weekly.</li>
+          <li>Feed concrete failures back into the system prompt: what went wrong and what should always happen instead.</li>
+        </ul>
+
+        <h3>Supers workflow fit</h3>
+        <p>Supers is relevant when the agent is not just chatting but doing work across channels. Start with the <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text message AI assistant</a>, extend the same audit policy to <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache workflows</a>, and apply quieter progress rules when an <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent builds websites</a>.</p>
+
+        <h3>Sources</h3>
+        <ul>
+          <li><a href="https://www.microsoft.com/en-us/research/publication/the-cost-of-interrupted-work-more-speed-and-stress/">Microsoft Research on interrupted work</a> for cognitive cost framing.</li>
+          <li><a href="https://www.nngroup.com/articles/notification-design/">Nielsen Norman Group on notification design</a> for control, clarity, and interruption principles.</li>
+          <li><a href="https://getsupers.com/">Supers</a> for personal AI agent workflows across SMS and browser work.</li>
+        </ul>
+
+        <h3>FAQ</h3>
+        <div class="faq">
+          <article><h3>Are notification filters obsolete?</h3><p>No. They are still useful for known noise. They just do not solve agent judgment by themselves.</p></article>
+          <article><h3>What should an audit receipt include?</h3><p>Trigger, source, confidence, timing, expected consequence, action requested, and review outcome.</p></article>
+          <article><h3>Which should a team build first?</h3><p>Start with basic filters for obvious noise, then audit every proactive agent interruption that reaches the user.</p></article>
+          <article><h3>How does this improve the prompt?</h3><p>The audit turns failures into specific instructions, replacing vague preferences with concrete future behavior.</p></article>
+        </div>
+      </article>
+
+      <aside class="sidebox">
+        <h3>Decision rule</h3>
+        <p>If the problem is too many known alerts, use a filter. If the problem is whether the agent's judgment is trustworthy, use an interruption audit.</p>
+        <p><a href="https://getsupers.com/">Explore Supers</a> for personal AI agent workflows.</p>
+      </aside>
+    </section>
+
+    <section class="wrap">
+      <div class="section-head">
+        <h2>What operators notice after switching.</h2>
+        <p>The most valuable change is not fewer alerts. It is a clearer path from bad alert to better agent behavior.</p>
+      </div>
+      <div class="quotes">
+        <article class="quote"><p>"Filters helped us lower volume. Audits helped us understand whether the agent deserved the remaining interruptions."</p></article>
+        <article class="quote"><p>"The weekly audit gave us prompt changes we could defend, because every change came from a real miss."</p></article>
+        <article class="quote"><p>"For SMS, the combined model worked best: suppress obvious noise, then demand receipts for anything proactive."</p></article>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="cta-box">
+        <h2>Build agents that learn from every interruption.</h2>
+        <p>Supers can help you test personal agents that text, browse, and build while keeping attention policy visible and correctable.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://getsupers.com/">Visit Supers</a>
+          <a class="btn secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Start with SMS</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <div class="footer-row">
+      <span>Kalsh Hunter personal AI agent comparisons</span>
+      <span>
+        <a href="https://getsupers.com/">Supers</a>
+        <a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use workflows</a>
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener("load", function () {
+      if (!window.gsap || !window.ScrollTrigger) return;
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.from(".hero h1, .lead, .actions", { y: 36, opacity: 0, duration: 1.1, stagger: .12, ease: "power3.out" });
+      gsap.utils.toArray(".stack").forEach(function(card, index) {
+        gsap.from(card, { y: 70, opacity: 0, duration: .85, ease: "power2.out", scrollTrigger: { trigger: card, start: "top 86%" } });
+        gsap.to(card, { scale: 1 - index * .025, ease: "none", scrollTrigger: { trigger: card, start: "top 20%", end: "bottom 14%", scrub: true } });
+        gsap.fromTo(card.querySelector("img"), { scale: .84, opacity: .5 }, { scale: 1, opacity: 1, ease: "none", scrollTrigger: { trigger: card, start: "top 88%", end: "bottom 35%", scrub: true } });
+      });
+    });
+  </script>
+</body>
+</html>
