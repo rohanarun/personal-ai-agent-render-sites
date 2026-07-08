@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Route Thresholds vs Approval Workflows](route-thresholds-vs-approval-workflows-20260708-212357/): Competitor comparison
 - [Personal AI Agent Route Threshold Software](personal-ai-agent-route-threshold-software-20260708-211856/): Niche research landing page
 - [Personal AI Agents Need Route Thresholds](personal-ai-agents-need-route-thresholds-20260708-211326/): Research and news analysis
 - [How to Build a Signal Quality Ledger for AI Agents](how-to-build-a-signal-quality-ledger-for-ai-agents-20260708-210326/): Use case
