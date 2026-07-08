@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Text-Native Approval Queues Are Becoming the Agent Control Plane](text-native-approval-queues-are-becoming-the-agent-control-plane-20260708-155555/): Research and news analysis
 - [How to Route AI Agent Exceptions to Text Approvals](how-to-route-ai-agent-exceptions-to-text-approvals-20260708-155055/): Use case
 - [AI Agent Trust Ledgers vs Audit Logs](ai-agent-trust-ledgers-vs-audit-logs-20260708-154555/): Competitor comparison
 - [AI Agent Trust Ledger Software for Operators](ai-agent-trust-ledger-software-for-operators-20260708-154025/): Niche research landing page
