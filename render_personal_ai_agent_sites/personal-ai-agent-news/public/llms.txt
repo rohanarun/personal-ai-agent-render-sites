@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Personal AI agent approval queues are entering founder workflows](personal-ai-agent-approval-queues-are-entering-founder-workflows-20260708-103424/): Research and news analysis
 - [How to use AI approval queues for investor intro follow-up](how-to-use-ai-approval-queues-for-investor-intro-follow-up-20260708-102424/): Use case
 - [Super vs AI email assistants for founder approval queues](super-vs-ai-email-assistants-for-founder-approval-queues-20260708-101924/): Competitor comparison
 - [AI approval queue software for founder follow-up](ai-approval-queue-software-for-founder-follow-up-20260708-101424/): Niche research landing page
