@@ -2,6 +2,29 @@
   {
     "assigned_domain": "kalshhunter.com",
     "assigned_slot": "personal-ai-agent-news",
+    "assigned_url": "https://kalshhunter.com/how-to-use-ai-receipts-after-browser-tasks-20260708-143925/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/text-message-ai-assistant/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "use_case",
+    "content_kind_label": "Use case",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://kalshhunter.com/how-to-use-ai-receipts-after-browser-tasks-20260708-143925/",
+    "receipt_created_at": "2026-07-08T14:39:25.300+00:00",
+    "receipt_status": "success",
+    "slug": "how-to-use-ai-receipts-after-browser-tasks-20260708-143925",
+    "source_path": "sms_published_sites/how-to-use-ai-receipts-after-browser-tasks-20260708-143925",
+    "target_slot": "personal-ai-agent-news",
+    "title": "How to Use AI Receipts After Browser Tasks"
+  },
+  {
+    "assigned_domain": "kalshhunter.com",
+    "assigned_slot": "personal-ai-agent-news",
     "assigned_url": "https://kalshhunter.com/ai-receipt-software-vs-ordinary-ai-memory-20260708-143425/",
     "backlinks": [
       "https://getsupers.com/",
