@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Personal AI agents need message-native intake</title>
+  <meta name="description" content="A market analysis of why personal AI agents need SMS and iMessage intake before they can become reliable operators for everyday work.">
+  <link rel="canonical" href="https://kalshhunter.com/personal-ai-agents-need-message-native-intake-20260708-074323/">
+  <meta property="og:title" content="Personal AI agents need message-native intake">
+  <meta property="og:description" content="Why the next personal AI agent category is less about another dashboard and more about turning messages into action.">
+  <meta property="og:url" content="https://kalshhunter.com/personal-ai-agents-need-message-native-intake-20260708-074323/">
+  <meta property="og:type" content="article">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap');
+
+    :root {
+      color-scheme: dark;
+      --bg: #07080b;
+      --ink: #f8f3ea;
+      --muted: rgba(248, 243, 234, .72);
+      --quiet: rgba(248, 243, 234, .5);
+      --line: rgba(248, 243, 234, .16);
+      --panel: rgba(248, 243, 234, .07);
+      --aqua: #78f4d8;
+      --blue: #86a8ff;
+      --sun: #ffd76d;
+      --red: #ff8477;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Outfit, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 15% 12%, rgba(134, 168, 255, .32), transparent 28rem),
+        radial-gradient(circle at 86% 18%, rgba(120, 244, 216, .18), transparent 26rem),
+        radial-gradient(circle at 45% 82%, rgba(255, 132, 119, .15), transparent 34rem),
+        var(--bg);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .13;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23grain)' opacity='.48'/%3E%3C/svg%3E");
+      mix-blend-mode: soft-light;
+      z-index: 5;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    main { width: 100%; max-width: 100%; overflow-x: hidden; }
+    .shell { width: min(1200px, calc(100% - 42px)); margin: 0 auto; }
+
+    .nav {
+      position: fixed;
+      z-index: 20;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(980px, calc(100% - 28px));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      padding: 10px 10px 10px 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(7, 8, 11, .68);
+      backdrop-filter: blur(22px);
+      box-shadow: 0 28px 80px rgba(0, 0, 0, .33);
+    }
+
+    .brand { font-weight: 900; letter-spacing: 0; }
+    .nav-links { display: flex; gap: 20px; color: var(--muted); font-size: 14px; }
+    .nav-cta {
+      padding: 11px 16px;
+      border-radius: 999px;
+      background: var(--ink);
+      color: var(--bg);
+      font-weight: 900;
+      font-size: 14px;
+    }
+
+    .hero {
+      min-height: 100svh;
+      padding: 150px 0 96px;
+      display: grid;
+      align-items: center;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, .95fr) minmax(320px, .78fr);
+      gap: 56px;
+      align-items: center;
+    }
+
+    h1 {
+      max-width: 1040px;
+      margin: 0;
+      font-size: clamp(3rem, 5vw, 5.35rem);
+      line-height: .95;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+
+    .inline-img {
+      display: inline-block;
+      width: clamp(74px, 9vw, 128px);
+      height: clamp(36px, 4vw, 54px);
+      border-radius: 999px;
+      margin: 0 .12em;
+      vertical-align: middle;
+      background: url("https://picsum.photos/seed/message-native-agent/360/180") center / cover;
+      filter: grayscale(.18) contrast(1.2);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .2);
+    }
+
+    .lede {
+      max-width: 720px;
+      margin: 26px 0 0;
+      color: var(--muted);
+      font-size: clamp(1.1rem, 1.7vw, 1.36rem);
+      line-height: 1.58;
+    }
+
+    .actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 30px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 20px;
+      border-radius: 999px;
+      font-weight: 900;
+      transition: transform .3s ease, border-color .3s ease, background .3s ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .primary { background: var(--ink); color: var(--bg); }
+    .secondary { border: 1px solid rgba(248, 243, 234, .28); color: var(--ink); background: rgba(248, 243, 234, .07); }
+
+    .hero-media {
+      min-height: 560px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, transparent, rgba(7, 8, 11, .92)),
+        url("https://picsum.photos/seed/sms-agent-market/900/1300") center / cover;
+      filter: grayscale(.28) contrast(1.24);
+      box-shadow: 0 44px 130px rgba(0, 0, 0, .4);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-media::after {
+      content: "The best intake layer is the one people already answer.";
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      padding: 16px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: rgba(7, 8, 11, .7);
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    section { padding: 150px 0; position: relative; }
+    .section-head { display: grid; gap: 18px; margin-bottom: 44px; }
+    h2 {
+      max-width: 980px;
+      margin: 0;
+      font-size: clamp(2.25rem, 4.6vw, 5rem);
+      line-height: .98;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .section-head p { max-width: 720px; margin: 0; color: var(--muted); font-size: 19px; line-height: 1.62; }
+
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-flow: dense;
+      gap: 14px;
+    }
+    .card {
+      min-height: 260px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: linear-gradient(145deg, rgba(248, 243, 234, .09), rgba(248, 243, 234, .03));
+      overflow: hidden;
+      position: relative;
+      transition: transform .7s cubic-bezier(.19, 1, .22, 1), border-color .7s ease;
+    }
+    .card:hover { transform: translateY(-6px); border-color: rgba(120, 244, 216, .42); }
+    .card-inner { position: relative; z-index: 2; height: 100%; padding: 26px; display: grid; gap: 14px; align-content: end; }
+    .span-7 { grid-column: span 7; }
+    .span-5 { grid-column: span 5; }
+    .span-4 { grid-column: span 4; }
+    .span-6 { grid-column: span 6; }
+    .card h3 { margin: 0; font-size: clamp(1.45rem, 2vw, 2.05rem); line-height: 1.08; letter-spacing: 0; }
+    .card p { margin: 0; color: var(--muted); line-height: 1.62; }
+    .image-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent, rgba(7, 8, 11, .9)), var(--image) center / cover;
+      filter: grayscale(.35) contrast(1.2);
+      transform: scale(1.01);
+      transition: transform .9s cubic-bezier(.19, 1, .22, 1);
+    }
+    .image-card:hover::before { transform: scale(1.07); }
+
+    .accordion {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      min-height: 520px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .slice {
+      min-width: 0;
+      position: relative;
+      display: grid;
+      align-content: end;
+      padding: 24px;
+      overflow: hidden;
+      border-right: 1px solid var(--line);
+      background: rgba(248, 243, 234, .04);
+    }
+    .slice:last-child { border-right: 0; }
+    .slice::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent, rgba(7, 8, 11, .9)), var(--image) center / cover;
+      opacity: .22;
+      filter: grayscale(.5) contrast(1.2);
+      transform: scale(1.01);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .slice:hover::before { opacity: .52; transform: scale(1.08); }
+    .slice > * { position: relative; z-index: 1; }
+    .slice h3 { margin: 0 0 12px; font-size: 24px; }
+    .slice p { margin: 0; color: var(--muted); line-height: 1.62; }
+
+    .stack-wrap { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 48px; align-items: start; }
+    .sticky { position: sticky; top: 112px; }
+    .stack { display: grid; gap: 18px; }
+    .stack-card {
+      min-height: 240px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(248, 243, 234, .06);
+      box-shadow: 0 30px 90px rgba(0, 0, 0, .2);
+    }
+    .stack-card h3 { margin: 0 0 12px; font-size: clamp(1.7rem, 2.2vw, 2.45rem); letter-spacing: 0; }
+    .stack-card p { margin: 0; color: var(--muted); line-height: 1.7; font-size: 18px; }
+    .stack-card a, .copy a, .rail a { color: var(--aqua); text-decoration: underline; text-underline-offset: 4px; }
+
+    .article {
+      display: grid;
+      grid-template-columns: minmax(0, 760px) minmax(240px, 1fr);
+      gap: 54px;
+      align-items: start;
+    }
+    .copy { display: grid; gap: 24px; color: var(--muted); font-size: 18px; line-height: 1.78; }
+    .copy h2 { color: var(--ink); margin-top: 18px; }
+    .copy p { margin: 0; }
+    .rail {
+      position: sticky;
+      top: 112px;
+      padding: 24px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: rgba(7, 8, 11, .58);
+    }
+    .rail h3 { margin: 0 0 16px; font-size: 24px; }
+    .rail ul { list-style: none; display: grid; gap: 12px; margin: 0; padding: 0; color: var(--muted); }
+    .rail li { padding-top: 12px; border-top: 1px solid var(--line); }
+
+    .quotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .quote {
+      min-height: 250px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(248, 243, 234, .06);
+    }
+    .quote p { margin: 0; color: var(--muted); line-height: 1.65; }
+    .quote strong { display: block; color: var(--ink); margin-top: 20px; }
+
+    details {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 22px;
+      background: rgba(248, 243, 234, .05);
+    }
+    details + details { margin-top: 14px; }
+    summary { cursor: pointer; font-size: 20px; font-weight: 900; }
+    details p { margin: 16px 0 0; color: var(--muted); line-height: 1.65; }
+
+    .cta {
+      padding: 94px 0;
+      background: var(--ink);
+      color: var(--bg);
+    }
+    .cta h2 { color: var(--bg); }
+    .cta p { max-width: 720px; margin: 20px 0 0; color: rgba(7, 8, 11, .72); font-size: 20px; line-height: 1.55; }
+    .cta .primary { background: var(--bg); color: var(--ink); }
+    .cta .secondary { color: var(--bg); border-color: rgba(7, 8, 11, .24); background: rgba(7, 8, 11, .05); }
+    footer { padding: 34px 0 52px; color: var(--quiet); }
+    footer .shell { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+    footer nav { display: flex; gap: 18px; flex-wrap: wrap; }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hero-grid, .stack-wrap, .article, .quotes { grid-template-columns: 1fr; }
+      .hero-media { min-height: 360px; }
+      section { padding: 110px 0; }
+      .bento, .accordion { grid-template-columns: 1fr; }
+      .span-4, .span-5, .span-6, .span-7 { grid-column: span 1; }
+      .slice { min-height: 230px; border-right: 0; border-bottom: 1px solid var(--line); }
+      .sticky, .rail { position: static; }
+      h1 { font-size: clamp(2.8rem, 13vw, 4.7rem); }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="Primary">
+    <a class="brand" href="https://kalshhunter.com/">Kalsh Hunter</a>
+    <div class="nav-links">
+      <a href="#market">Market</a>
+      <a href="#workflow">Workflow</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a class="nav-cta" href="https://getsupers.com/">Try Super</a>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <h1>Personal AI agents need <span class="inline-img" aria-hidden="true"></span> message-native intake</h1>
+          <p class="lede">The personal AI agent market will not be won by another empty dashboard. The winning intake layer is the one people already use when they need help: messages.</p>
+          <div class="actions">
+            <a class="button primary" href="https://getsupers.com/">Start with Super</a>
+            <a class="button secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">See message AI</a>
+          </div>
+        </div>
+        <div class="hero-media" aria-hidden="true"></div>
+      </div>
+    </header>
+
+    <section id="market">
+      <div class="shell">
+        <div class="section-head">
+          <h2>The category is shifting from chat destination to work intake.</h2>
+          <p>When users have to remember to open a special app, formulate a prompt, paste context, and monitor the result, the assistant has already lost part of the job.</p>
+        </div>
+        <div class="bento">
+          <article class="card span-7 image-card" style="--image:url('https://picsum.photos/seed/phone-message-agent/1200/900')">
+            <div class="card-inner">
+              <h3>Messages are where informal work already starts.</h3>
+              <p>Errands, reminders, links, follow-ups, approvals, and vague "can you check this?" requests rarely begin in a productivity suite. They begin in a thread.</p>
+            </div>
+          </article>
+          <article class="card span-5">
+            <div class="card-inner">
+              <h3>A dashboard is a tax on memory.</h3>
+              <p>If the user must remember to open the agent, the product depends on perfect behavior from the person it claims to help.</p>
+            </div>
+          </article>
+          <article class="card span-4">
+            <div class="card-inner">
+              <h3>Context arrives messy</h3>
+              <p>The intake layer has to accept fragments, screenshots, links, short voice-like wording, and half-formed asks.</p>
+            </div>
+          </article>
+          <article class="card span-4 image-card" style="--image:url('https://picsum.photos/seed/browser-check-agent/900/900')">
+            <div class="card-inner">
+              <h3>Some tasks need the web</h3>
+              <p>Message intake should be able to route into browser checks when the answer depends on live information.</p>
+            </div>
+          </article>
+          <article class="card span-4">
+            <div class="card-inner">
+              <h3>Trust comes from closeout</h3>
+              <p>A useful agent returns with status, proof, next steps, and what still needs approval.</p>
+            </div>
+          </article>
+          <article class="card span-6">
+            <div class="card-inner">
+              <h3>The right metric is completed loops.</h3>
+              <p>Message-native agents should be judged by replies drafted, checks completed, pages generated, and appointments clarified, not by raw chat volume.</p>
+            </div>
+          </article>
+          <article class="card span-6 image-card" style="--image:url('https://picsum.photos/seed/agent-output-receipts/1200/800')">
+            <div class="card-inner">
+              <h3>Receipts beat summaries.</h3>
+              <p>The output should be visible enough that the user can trust the next run with a little more autonomy.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="shell">
+        <div class="section-head">
+          <h2>Four things message-native intake changes</h2>
+          <p>A personal AI agent becomes more useful when the intake channel matches the way people naturally delegate.</p>
+        </div>
+        <div class="accordion">
+          <article class="slice" style="--image:url('https://picsum.photos/seed/delegation-thread/900/1200')">
+            <h3>Delegation</h3>
+            <p>Users can hand off work in the same lightweight style they use with a person.</p>
+          </article>
+          <article class="slice" style="--image:url('https://picsum.photos/seed/approval-loop/900/1200')">
+            <h3>Approval</h3>
+            <p>The agent can ask for permission in context before sending, spending, booking, or changing something important.</p>
+          </article>
+          <article class="slice" style="--image:url('https://picsum.photos/seed/live-browser-context/900/1200')">
+            <h3>Routing</h3>
+            <p>Message intake can route to web checks, drafts, scheduling, publishing, or research instead of staying trapped in chat.</p>
+          </article>
+          <article class="slice" style="--image:url('https://picsum.photos/seed/agent-proof/900/1200')">
+            <h3>Proof</h3>
+            <p>The closeout can return directly to the thread with links, drafts, screenshots, or a done/blocked summary.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="workflow">
+      <div class="shell stack-wrap">
+        <div class="sticky section-head">
+          <h2>The product shape that follows</h2>
+          <p>Message-native intake is not the whole product. It is the front door for an execution system.</p>
+        </div>
+        <div class="stack">
+          <article class="stack-card">
+            <h3>Intake in the thread</h3>
+            <p>Super's <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text message AI assistant</a> direction matches the behavior pattern: the user sends the request where they already communicate.</p>
+          </article>
+          <article class="stack-card">
+            <h3>Execution in the right surface</h3>
+            <p>Some requests need a browser, not another answer. A <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a> can preserve repeatable web context for checks, forms, and changing pages.</p>
+          </article>
+          <article class="stack-card">
+            <h3>Artifacts when the outcome should be inspectable</h3>
+            <p>For creative or publishing tasks, a message can become a generated asset. <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent website-building</a> is a clear example of a request ending in a page instead of a paragraph.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="shell article">
+        <article class="copy">
+          <h2>Why this matters for the personal AI agent market</h2>
+          <p>Most consumer AI workflows still ask users to behave like power users. They assume the person will open the right app, paste the right context, describe the task cleanly, and come back to check the result. That is backwards for everyday delegation.</p>
+          <p>People delegate in fragments. They send a link with "is this worth it?" They forward a message and ask "can you reply?" They remember an errand while walking and send a sentence that would never survive a formal project-management template. Message-native intake gives the agent permission to accept work in that shape.</p>
+          <p><a href="https://getsupers.com/">Super</a> benefits from this because the product promise is not "chat with a smarter box." The promise is closer to a personal operator: receive the task, decide the route, use the right execution surface, and return with a useful closeout.</p>
+          <h2>The checklist for evaluating message-native agents</h2>
+          <p>Ask whether the product can accept messy requests, preserve approval boundaries, route to browser work, return proof, and remember what happened last time. If the answer is no, it may be a good chat app, but it is not yet a dependable personal agent.</p>
+          <p>The next adoption wave will come from products that reduce task handoff friction. For personal AI, that means fewer dashboards, better intake, and more closed loops.</p>
+        </article>
+        <aside class="rail">
+          <h3>Useful reference paths</h3>
+          <ul>
+            <li><a href="https://getsupers.com/">Super</a> for the main personal AI assistant entry point.</li>
+            <li><a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Text message AI assistant</a> for message-native intake.</li>
+            <li><a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a> for web-backed execution.</li>
+            <li><a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent website-building</a> for finished artifacts.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section>
+      <div class="shell">
+        <div class="section-head">
+          <h2>Signals that a message-native agent is working</h2>
+          <p>The user should feel less like they are operating software and more like they are maintaining a productive thread.</p>
+        </div>
+        <div class="quotes">
+          <article class="quote">
+            <p>"I forwarded a messy request and got back a clean draft, a risk note, and the one approval question that mattered."</p>
+            <strong>Reply workflow</strong>
+          </article>
+          <article class="quote">
+            <p>"The agent checked the live page, found the relevant change, and returned the source link instead of guessing."</p>
+            <strong>Browser workflow</strong>
+          </article>
+          <article class="quote">
+            <p>"A one-line text became a usable draft page with a link I could review."</p>
+            <strong>Artifact workflow</strong>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="shell">
+        <div class="section-head">
+          <h2>FAQ for message-native personal agents</h2>
+          <p>The channel matters because the first mile of delegation determines whether the work ever reaches the agent.</p>
+        </div>
+        <details>
+          <summary>Does message-native mean the agent only works in SMS?</summary>
+          <p>No. It means messages can be the intake layer. The agent still needs other surfaces for browser work, artifacts, and deeper workflows.</p>
+        </details>
+        <details>
+          <summary>Why not just use a chat app?</summary>
+          <p>Chat apps are useful, but they often require users to go to them. Message-native intake lets the request start in a channel people already use when they think of the task.</p>
+        </details>
+        <details>
+          <summary>What should the agent return after a task?</summary>
+          <p>It should return a closeout: what was done, what source or context was used, what is blocked, and what needs user approval.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="shell">
+        <h2>The front door for personal AI should be a conversation people already use.</h2>
+        <p>Start with Super when the goal is not another place to type, but a cleaner path from message to finished work.</p>
+        <div class="actions">
+          <a class="button primary" href="https://getsupers.com/">Try Super</a>
+          <a class="button secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Explore message-native AI</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">
+      <span>Kalsh Hunter market notes</span>
+      <nav>
+        <a href="https://getsupers.com/">Super</a>
+        <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Text message AI</a>
+        <a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script>
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.fromTo(".hero-media", { scale: .86, opacity: .64, y: 42 }, { scale: 1, opacity: 1, y: 0, duration: 1.1, ease: "power3.out" });
+      gsap.utils.toArray(".card").forEach(function(card) {
+        gsap.fromTo(card, { y: 46, opacity: .24, scale: .94 }, {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          ease: "none",
+          scrollTrigger: { trigger: card, start: "top 88%", end: "top 44%", scrub: true }
+        });
+      });
+      gsap.utils.toArray(".stack-card").forEach(function(card, index) {
+        gsap.fromTo(card, { y: 90 + index * 18, opacity: .22 }, {
+          y: 0,
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: { trigger: card, start: "top 88%", end: "top 42%", scrub: true }
+        });
+      });
+      gsap.fromTo(".copy p", { opacity: .3 }, {
+        opacity: 1,
+        stagger: .16,
+        scrollTrigger: { trigger: ".copy", start: "top 78%", end: "bottom 58%", scrub: true }
+      });
+    }
+  </script>
+</body>
+</html>
