@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI note summaries are becoming agent action queues</title>
+  <meta name="description" content="A field report on why personal AI agents are shifting revenue teams from passive meeting summaries to executable action queues.">
+  <link rel="canonical" href="https://kalshhunter.com/ai-note-summaries-are-becoming-agent-action-queues-20260708-123624/">
+  <meta property="og:title" content="AI note summaries are becoming agent action queues">
+  <meta property="og:description" content="Meeting summaries are no longer enough. The next personal AI agent wedge is an action queue that remembers, routes, drafts, and follows through.">
+  <meta property="og:url" content="https://kalshhunter.com/ai-note-summaries-are-becoming-agent-action-queues-20260708-123624/">
+  <meta property="og:type" content="article">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <style>
+    :root{color-scheme:dark;--bg:#070809;--ink:#fbf7ec;--muted:#aeb7c2;--line:rgba(255,255,255,.14);--panel:#11161c;--accent:#f6ff7a;--rose:#ff9fbd;--cyan:#91ddff;font-family:"Outfit","Cabinet Grotesk","Geist",system-ui,sans-serif}
+    *{box-sizing:border-box} body{margin:0;background:radial-gradient(circle at 18% 4%,rgba(145,221,255,.18),transparent 34%),radial-gradient(circle at 80% 12%,rgba(255,159,189,.14),transparent 30%),linear-gradient(180deg,#070809,#10141b 52%,#070809);color:var(--ink);overflow-x:hidden} main{overflow-x:hidden;width:100%;max-width:100%} a{color:inherit}
+    .nav{position:fixed;z-index:30;top:18px;left:50%;transform:translateX(-50%);width:min(1100px,92vw);display:flex;align-items:center;justify-content:space-between;padding:10px 12px 10px 22px;border:1px solid var(--line);border-radius:999px;background:rgba(7,8,9,.72);backdrop-filter:blur(22px);box-shadow:0 20px 80px rgba(0,0,0,.34)}
+    .brand{font-weight:900;text-decoration:none}.navlinks{display:flex;gap:24px;font-size:14px;color:var(--muted)}.navlinks a{text-decoration:none}.navcta,.btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border-radius:999px;font-weight:900}.navcta{background:var(--ink);color:#080909;padding:12px 18px}.btn{padding:15px 22px;border:1px solid var(--line)}.primary{background:var(--accent);color:#111207}.secondary{background:rgba(255,255,255,.08);color:var(--ink)}
+    section{padding:clamp(96px,12vw,188px) 0}.wrap{width:min(1180px,92vw);margin:0 auto}.hero{min-height:96vh;display:grid;place-items:center;text-align:center;padding-top:126px;position:relative}.hero:before{content:"";position:absolute;inset:18vh 0 auto 0;height:54vh;background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.72)),url(https://picsum.photos/seed/agent-action-queue-newsroom/1800/900) center/cover;filter:contrast(1.18) grayscale(.18);opacity:.44;z-index:-1}.kicker{color:var(--cyan);font-weight:900;margin:0 0 20px}.hero h1{max-width:min(1160px,92vw);margin:0 auto;font-size:clamp(3rem,5.8vw,6rem);line-height:.94;letter-spacing:0}.hero h1 span.img{display:inline-block;width:clamp(90px,12vw,154px);height:clamp(40px,5.6vw,68px);border-radius:999px;background:url(https://picsum.photos/seed/follow-through-card/640/320) center/cover;vertical-align:middle;margin:0 12px;filter:contrast(1.2) saturate(.9)}.lede{font-size:clamp(1.08rem,2vw,1.35rem);line-height:1.65;color:#e3e7eb;max-width:790px;margin:28px auto 0}.actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+    .marquee{overflow:hidden;border-block:1px solid var(--line);background:rgba(255,255,255,.035);padding:22px 0}.track{display:flex;gap:42px;white-space:nowrap;animation:slide 30s linear infinite;font-size:clamp(1.05rem,2.2vw,1.7rem);font-weight:900}.track span{color:var(--muted)}@keyframes slide{to{transform:translateX(-50%)}}
+    .section-title{font-size:clamp(2.45rem,5vw,5.5rem);line-height:.97;letter-spacing:0;margin:0 0 26px;max-width:1100px}.section-copy{color:var(--muted);font-size:1.1rem;line-height:1.8;max-width:800px}.bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-flow:dense;gap:18px;margin-top:48px}.card{border:1px solid var(--line);border-radius:8px;background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.045));padding:30px;min-height:238px;overflow:hidden;transition:transform .7s ease,background .7s ease}.card:hover{transform:translateY(-8px);background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.06))}.span-8{grid-column:span 8}.span-4{grid-column:span 4}.card h3{font-size:1.5rem;margin:0 0 12px}.card p,.card li{color:#cbd3db;line-height:1.68}.card ul{padding-left:20px}.image-card{padding:0;background:url(https://picsum.photos/seed/queue-command-center/1200/800) center/cover;filter:contrast(1.16) grayscale(.12)}.image-card div{min-height:100%;display:flex;align-items:flex-end;padding:30px;background:linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.76))}
+    .split{display:grid;grid-template-columns:.82fr 1.18fr;gap:min(7vw,84px);align-items:start}.pin{position:sticky;top:118px}.stack{display:grid;gap:22px}.stack-card{border:1px solid var(--line);border-radius:8px;background:var(--panel);padding:32px;box-shadow:0 30px 74px rgba(0,0,0,.28)}.stack-card strong{color:var(--accent)}.accordion{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:42px}.slice{min-height:360px;border:1px solid var(--line);border-radius:8px;overflow:hidden;position:relative;background-size:cover;background-position:center;transition:grid-column .6s ease,transform .7s ease}.slice:hover{transform:scale(1.025)}.slice:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.1),rgba(0,0,0,.78))}.slice div{position:absolute;z-index:2;inset:auto 20px 20px 20px}.slice p{color:#d9dee5;line-height:1.55}.one{background-image:url(https://picsum.photos/seed/message-signal/800/1000)}.two{background-image:url(https://picsum.photos/seed/meeting-memory/800/1000)}.three{background-image:url(https://picsum.photos/seed/browser-agent-work/800/1000)}.four{background-image:url(https://picsum.photos/seed/proof-page-output/800/1000)}
+    table{width:100%;border-collapse:collapse;margin-top:30px;background:rgba(255,255,255,.045);border:1px solid var(--line)}th,td{text-align:left;padding:18px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--accent)}td{color:#d9dee5}.faq{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.faq article{border-top:1px solid var(--line);padding-top:22px}.sources a{color:var(--cyan)}footer{border-top:1px solid var(--line);padding:80px 0 46px;color:var(--muted)}
+    @media(max-width:860px){.navlinks{display:none}.hero:before{height:52vh}.bento,.split,.faq,.accordion{grid-template-columns:1fr}.span-8,.span-4{grid-column:span 1}.pin{position:static}.hero h1{font-size:clamp(2.75rem,12vw,4.8rem)}table{font-size:14px}}
+  </style>
+</head>
+<body>
+<main>
+  <nav class="nav">
+    <a class="brand" href="https://kalshhunter.com/">Kalsh Hunter</a>
+    <div class="navlinks"><a href="#shift">Shift</a><a href="#queue">Queue</a><a href="#faq">FAQ</a></div>
+    <a class="navcta" href="https://getsupers.com/">Super</a>
+  </nav>
+
+  <section class="hero">
+    <div class="wrap">
+      <p class="kicker">Research blog</p>
+      <h1>AI note summaries are becoming <span class="img"></span> agent action queues.</h1>
+      <p class="lede">The first wave of meeting AI made conversations searchable. The next wave is more operational: it turns weak signals into follow-up queues, drafts the response, checks the source context, and helps the operator move before the thread goes cold.</p>
+      <div class="actions">
+        <a class="btn primary" href="https://getsupers.com/">Explore Super</a>
+        <a class="btn secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">See message intake</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee"><div class="track"><strong>Meeting note</strong><span>source memory</span><strong>owner assigned</strong><span>browser check</span><strong>reply drafted</strong><span>proof page</span><strong>next action</strong><span>renewal queue</span><strong>Meeting note</strong><span>source memory</span><strong>owner assigned</strong><span>browser check</span></div></div>
+
+  <section id="shift">
+    <div class="wrap">
+      <h2 class="section-title">Summary is table stakes. The workflow value is in follow-through.</h2>
+      <p class="section-copy">Meeting summaries feel productive because they compress conversation. But most revenue work fails after the summary: the proof is not sent, the champion recap is not tailored, the support issue is not checked, and the buyer's exact wording is lost in a folder of transcripts. Personal AI agents are becoming more valuable when they preserve context and turn it into an executable queue.</p>
+      <div class="bento">
+        <article class="card span-8"><h3>The summary does not own the outcome</h3><p>A transcript can say that a buyer asked for integration proof. An action queue can assign the owner, check whether a prior answer exists, draft the response, and generate a compact proof page using an <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent website builder</a>.</p></article>
+        <article class="card image-card span-4"><div><h3>Action needs evidence, not vibes.</h3></div></article>
+        <article class="card span-4"><h3>Signals start outside meetings</h3><p>A <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text message AI assistant</a> catches side-channel asks that never make it into the transcript.</p></article>
+        <article class="card span-4"><h3>Browser checks become memory</h3><p><a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a> keeps repeated account research from becoming manual tab work every week.</p></article>
+        <article class="card span-4"><h3>Execution beats storage</h3><p><a href="https://getsupers.com/">Super</a> points the agent toward doing the next task, not just filing the last conversation.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="queue">
+    <div class="wrap split">
+      <div class="pin">
+        <h2 class="section-title">What changes when notes become queues.</h2>
+        <p class="section-copy">The strongest teams are not replacing humans with a magic recap. They are designing a review surface where the human sees the next few moves with evidence attached.</p>
+      </div>
+      <div class="stack">
+        <article class="stack-card"><h3><strong>1.</strong> The source stays attached</h3><p>Every action item should link back to the customer quote, transcript segment, support ticket, message, or browser artifact that caused it. This keeps the agent honest and makes review fast.</p></article>
+        <article class="stack-card"><h3><strong>2.</strong> The owner is explicit</h3><p>A vague "follow up" is not an action. The queue should say whether the founder, AE, support lead, solutions engineer, or finance owner owns the next move.</p></article>
+        <article class="stack-card"><h3><strong>3.</strong> The draft is ready to edit</h3><p>The agent should prepare the shortest useful next step: recap email, proof page, support escalation, procurement answer, or internal note. The user edits and sends.</p></article>
+        <article class="stack-card"><h3><strong>4.</strong> The item expires</h3><p>If an action item never expires, it becomes guilt, not operations. Queues need review dates, resolution states, and a way to downgrade old concerns.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2 class="section-title">Four queue inputs worth instrumenting first.</h2>
+      <div class="accordion">
+        <article class="slice one"><div><h3>Messages</h3><p>Side-channel asks, screenshots, founder DMs, renewal hints, and urgent requests.</p></div></article>
+        <article class="slice two"><div><h3>Meetings</h3><p>Questions, objections, promised follow-ups, pricing concerns, and stakeholder changes.</p></div></article>
+        <article class="slice three"><div><h3>Browser work</h3><p>CRM checks, support queues, docs, product usage, public company signals, and open tabs.</p></div></article>
+        <article class="slice four"><div><h3>Proof assets</h3><p>Generated pages, recaps, competitive answers, evidence packets, and implementation notes.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2 class="section-title">Operator checklist</h2>
+      <p class="section-copy">Before replacing a note workflow, check whether the new agent queue can handle these operations without creating more review work than it removes.</p>
+      <table>
+        <thead><tr><th>Capability</th><th>Question to ask</th><th>Minimum bar</th></tr></thead>
+        <tbody>
+          <tr><td>Source memory</td><td>Can the human see why the item exists?</td><td>Link or quote attached to every queue item.</td></tr>
+          <tr><td>Action routing</td><td>Can the queue pick an owner and next step?</td><td>Owner, task verb, and due date are visible.</td></tr>
+          <tr><td>Execution support</td><td>Can the agent draft or package the follow-up?</td><td>Editable response, research summary, or proof page.</td></tr>
+          <tr><td>Noise control</td><td>Can stale items expire?</td><td>Review date plus resolved, downgraded, and snoozed states.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="sources">
+    <div class="wrap">
+      <h2 class="section-title">Sources and field notes</h2>
+      <p class="section-copy">This analysis synthesizes common revenue-ops patterns: meeting-note follow-up, account health review, support escalation, CRM task routing, and founder-led sales workflows. Relevant Super execution patterns include <a href="https://getsupers.com/">Super</a>, <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">message-based AI assistance</a>, <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a>, and <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">agent-generated web pages</a>.</p>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <h2 class="section-title">FAQ</h2>
+      <div class="faq">
+        <article><h3>Are AI note takers going away?</h3><p>No. Notes become one input into a broader action layer. The transcript still matters, but the queue is where work happens.</p></article>
+        <article><h3>What makes this different from CRM tasks?</h3><p>The agent can keep evidence attached, draft the next response, check browser context, and update the task as the situation changes.</p></article>
+        <article><h3>Who should review the queue?</h3><p>For small teams, a founder or revenue lead should review it daily. Larger teams can route by account owner and risk type.</p></article>
+        <article><h3>What is the first useful automation?</h3><p>Turn meeting follow-ups and message asks into a single daily queue with source links, owners, and suggested next actions.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <h2 class="section-title">The next AI note product is an execution queue.</h2>
+      <div class="actions">
+        <a class="btn primary" href="https://getsupers.com/">Build with Super</a>
+        <a class="btn secondary" href="https://app.getsupers.com/use-cases/computer-use-cache/">Explore execution memory</a>
+      </div>
+      <p>Kalsh Hunter · <a href="https://kalshhunter.com/">Home</a> · <a href="https://getsupers.com/">Super</a></p>
+    </div>
+  </footer>
+</main>
+<script>
+  window.addEventListener('load', function(){
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+      ScrollTrigger.create({trigger:'#queue',start:'top top',end:'bottom bottom',pin:'.pin',pinSpacing:false});
+      gsap.utils.toArray('.stack-card').forEach(function(el,i){gsap.fromTo(el,{y:88,opacity:.28},{y:i*-10,opacity:1,scrollTrigger:{trigger:el,start:'top 88%',end:'top 28%',scrub:true}})});
+      gsap.utils.toArray('.card,.slice').forEach(function(el){gsap.fromTo(el,{scale:.86,opacity:.42},{scale:1,opacity:1,scrollTrigger:{trigger:el,start:'top 90%',end:'bottom 34%',scrub:true}})});
+    }
+  });
+</script>
+</body>
+</html>
