@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Browser Agent Receipts vs Session Replay Tools](browser-agent-receipts-vs-session-replay-tools-20260708-145925/): Competitor comparison
 - [Browser Agent Receipt Stream Software](browser-agent-receipt-stream-software-20260708-145425/): Niche research landing page
 - [Browser Agents Are Turning Into Receipt Streams](browser-agents-are-turning-into-receipt-streams-20260708-144925/): Research and news analysis
 - [How to Use AI Receipts After Browser Tasks](how-to-use-ai-receipts-after-browser-tasks-20260708-143925/): Use case
