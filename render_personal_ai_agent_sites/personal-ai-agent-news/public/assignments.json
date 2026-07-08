@@ -2,6 +2,29 @@
   {
     "assigned_domain": "kalshhunter.com",
     "assigned_slot": "personal-ai-agent-news",
+    "assigned_url": "https://kalshhunter.com/ai-agent-interruption-management-vs-notification-filters-20260708-174755/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/text-message-ai-assistant/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "competitor_comparison",
+    "content_kind_label": "Competitor comparison",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://kalshhunter.com/ai-agent-interruption-management-vs-notification-filters-20260708-174755/",
+    "receipt_created_at": "2026-07-08T17:47:55.646+00:00",
+    "receipt_status": "success",
+    "slug": "ai-agent-interruption-management-vs-notification-filters-20260708-174755",
+    "source_path": "sms_published_sites/ai-agent-interruption-management-vs-notification-filters-20260708-174755",
+    "target_slot": "personal-ai-agent-news",
+    "title": "AI Agent Interruption Management vs Notification Filters"
+  },
+  {
+    "assigned_domain": "kalshhunter.com",
+    "assigned_slot": "personal-ai-agent-news",
     "assigned_url": "https://kalshhunter.com/personal-ai-agent-interruption-management-software-20260708-173756/",
     "backlinks": [
       "https://getsupers.com/",
