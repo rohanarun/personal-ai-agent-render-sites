@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Super for founders using personal AI agents as an ops layer</title>
+  <meta name="description" content="A founder-focused landing page explaining how personal AI agents can become an operating layer for follow-up, browser work, daily briefs, and approvals.">
+  <link rel="canonical" href="https://kalshhunter.com/super-for-founders-using-personal-ai-agents-as-an-ops-layer-20260708-090424/">
+  <meta property="og:title" content="Super for founders using personal AI agents as an ops layer">
+  <meta property="og:description" content="Founders need personal AI agents that turn scattered messages, research, and commitments into a working ops layer with approval control.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://kalshhunter.com/super-for-founders-using-personal-ai-agents-as-an-ops-layer-20260708-090424/">
+  <style>
+    @import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap');
+    :root {
+      color-scheme: dark;
+      --ink: #fff8ec;
+      --muted: #beb4a4;
+      --dark: #070604;
+      --line: rgba(255,248,236,.18);
+      --panel: rgba(255,248,236,.075);
+      --lime: #dfff62;
+      --sky: #86d9ff;
+      --pink: #ff8ea3;
+      --amber: #ffc36b;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Satoshi", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(134,217,255,.18), transparent 34rem),
+        radial-gradient(circle at 86% 18%, rgba(223,255,98,.14), transparent 34rem),
+        radial-gradient(circle at 50% 92%, rgba(255,142,163,.12), transparent 34rem),
+        linear-gradient(180deg, #070604 0%, #15120b 52%, #070604 100%);
+      overflow-x: hidden;
+    }
+    a { color: inherit; }
+    main { overflow-x: hidden; width: 100%; max-width: 100%; }
+    .grain {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .11;
+      mix-blend-mode: screen;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.84' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.42'/%3E%3C/svg%3E");
+    }
+    .nav {
+      position: fixed;
+      z-index: 40;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1150px, calc(100vw - 32px));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 12px 14px 12px 20px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(7,6,4,.72);
+      backdrop-filter: blur(22px);
+      box-shadow: 0 24px 80px rgba(0,0,0,.38);
+    }
+    .brand { text-decoration: none; font-weight: 900; }
+    .navlinks { display: flex; gap: 18px; align-items: center; color: var(--muted); font-size: 14px; }
+    .navlinks a { text-decoration: none; }
+    .navcta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: var(--ink);
+      color: #111;
+      text-decoration: none;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+    .wrap { width: min(1220px, calc(100vw - 36px)); margin: 0 auto; }
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: minmax(0, 1.04fr) minmax(320px, .96fr);
+      align-items: center;
+      gap: clamp(34px, 6vw, 92px);
+      padding: 152px 0 104px;
+    }
+    h1 {
+      max-width: min(1080px, 94vw);
+      margin: 0;
+      font-size: clamp(3rem, 5vw, 5.8rem);
+      line-height: .92;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .inline-img {
+      display: inline-block;
+      width: clamp(76px, 9vw, 136px);
+      height: clamp(34px, 4.6vw, 58px);
+      margin: 0 .1em;
+      border-radius: 999px;
+      vertical-align: middle;
+      background: url('https://picsum.photos/seed/founder-agent-ops-layer-strip/500/210') center / cover;
+      filter: grayscale(.12) contrast(1.25) saturate(.78);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.22);
+    }
+    .lead {
+      max-width: 720px;
+      margin: 28px 0 0;
+      color: var(--muted);
+      font-size: clamp(1.08rem, 1.65vw, 1.45rem);
+      line-height: 1.55;
+    }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 14px 21px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 900;
+    }
+    .primary { background: var(--lime); color: #111407; border-color: transparent; }
+    .secondary { background: rgba(255,255,255,.08); color: var(--ink); }
+    .hero-art {
+      position: relative;
+      min-height: 660px;
+      border-radius: 42px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.16);
+      background: #17130c;
+      box-shadow: 0 38px 120px rgba(0,0,0,.45);
+      isolation: isolate;
+    }
+    .hero-art:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url('https://picsum.photos/seed/founder-command-layer-dashboard/1200/1500') center / cover;
+      filter: grayscale(.26) contrast(1.22) saturate(.78);
+      transform: scale(1.06);
+      z-index: -2;
+    }
+    .hero-art:after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(7,6,4,.02), rgba(7,6,4,.86));
+      z-index: -1;
+    }
+    .floating-card {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: rgba(7,6,4,.72);
+      backdrop-filter: blur(18px);
+    }
+    .floating-card strong { display: block; font-size: 22px; margin-bottom: 8px; }
+    .floating-card p { margin: 0; color: var(--muted); line-height: 1.5; }
+    section { padding: clamp(112px, 15vw, 192px) 0; }
+    .section-title {
+      max-width: 1020px;
+      margin: 0 0 44px;
+      font-size: clamp(2.45rem, 5vw, 5.9rem);
+      line-height: .94;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .intro-copy {
+      max-width: 840px;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 1.55vw, 1.32rem);
+      line-height: 1.65;
+      margin: -16px 0 46px;
+    }
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      grid-auto-flow: dense;
+      gap: 14px;
+    }
+    .card {
+      position: relative;
+      min-height: 286px;
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background: var(--panel);
+      overflow: hidden;
+      transition: transform .7s ease, border-color .7s ease, background .7s ease;
+    }
+    .card:hover { transform: translateY(-8px); border-color: rgba(223,255,98,.52); background: rgba(255,248,236,.105); }
+    .span-5 { grid-column: span 5; }
+    .span-4 { grid-column: span 4; }
+    .span-3 { grid-column: span 3; }
+    .card h2, .card h3 { margin: 0 0 16px; font-size: clamp(1.45rem, 2.2vw, 2.5rem); line-height: 1.02; }
+    .card p, .card li { color: var(--muted); font-size: 17px; line-height: 1.58; }
+    .card ul { margin: 16px 0 0; padding-left: 18px; }
+    .visual-card {
+      background:
+        linear-gradient(180deg, rgba(7,6,4,.04), rgba(7,6,4,.8)),
+        url('https://picsum.photos/seed/founder-ops-agent-bento/900/700') center / cover;
+      filter: contrast(1.06);
+    }
+    .visual-card h2, .visual-card p { text-shadow: 0 3px 24px rgba(0,0,0,.58); }
+    .glow {
+      position: absolute;
+      right: -100px;
+      bottom: -130px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(134,217,255,.23), transparent 68%);
+      filter: blur(12px);
+      pointer-events: none;
+    }
+    .accordion {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      min-height: 540px;
+    }
+    .slice {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      overflow: hidden;
+      min-width: 0;
+      background: rgba(255,248,236,.075);
+      transition: transform .55s ease, background .55s ease;
+    }
+    .slice:hover { transform: translateY(-6px); background: rgba(255,248,236,.12); }
+    .slice img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: .38;
+      filter: grayscale(.24) contrast(1.2) saturate(.78);
+      transform: scale(1.02);
+      transition: transform .75s ease, opacity .75s ease;
+    }
+    .slice:hover img { transform: scale(1.08); opacity: .58; }
+    .slice div {
+      position: absolute;
+      inset: auto 22px 22px;
+      z-index: 2;
+    }
+    .slice h3 { margin: 0 0 10px; font-size: 30px; line-height: 1; }
+    .slice p { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.45; }
+    .split {
+      display: grid;
+      grid-template-columns: minmax(280px, .82fr) minmax(0, 1.18fr);
+      gap: clamp(36px, 7vw, 100px);
+      align-items: start;
+    }
+    .pin-title { position: sticky; top: 128px; }
+    .stack { display: grid; gap: 22px; }
+    .stack-card {
+      min-height: 300px;
+      padding: 34px;
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      background: rgba(7,6,4,.58);
+      box-shadow: 0 28px 90px rgba(0,0,0,.26);
+      transform: translateY(28px) scale(.96);
+      opacity: .7;
+    }
+    .stack-card h3 { margin: 0 0 14px; font-size: clamp(1.7rem, 2.7vw, 3.2rem); line-height: .98; }
+    .stack-card p, .stack-card li { color: var(--muted); font-size: 18px; line-height: 1.6; }
+    .marquee {
+      display: flex;
+      overflow: hidden;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 18px 0;
+      color: rgba(255,248,236,.72);
+      font-size: clamp(1.5rem, 3vw, 3rem);
+      font-weight: 900;
+      white-space: nowrap;
+    }
+    .marquee-track {
+      display: inline-flex;
+      gap: 34px;
+      padding-right: 34px;
+      animation: slide 34s linear infinite;
+    }
+    @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .faq {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .faq article {
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background: rgba(255,248,236,.07);
+    }
+    .faq h3 { margin: 0 0 12px; font-size: 24px; }
+    .faq p { margin: 0; color: var(--muted); line-height: 1.55; }
+    .cta {
+      text-align: center;
+      padding: clamp(90px, 12vw, 150px) 24px;
+      border: 1px solid var(--line);
+      border-radius: 44px;
+      background:
+        linear-gradient(180deg, rgba(7,6,4,.2), rgba(7,6,4,.8)),
+        url('https://picsum.photos/seed/founder-ai-ops-layer-cta/1600/850') center / cover;
+      box-shadow: 0 34px 120px rgba(0,0,0,.35);
+    }
+    .cta h2 {
+      max-width: 1000px;
+      margin: 0 auto 22px;
+      font-size: clamp(2.6rem, 5.3vw, 6.4rem);
+      line-height: .92;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .cta p {
+      max-width: 760px;
+      margin: 0 auto 32px;
+      color: var(--muted);
+      font-size: 20px;
+      line-height: 1.55;
+    }
+    footer { padding: 42px 0 72px; color: var(--muted); }
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--line);
+      padding-top: 24px;
+    }
+    .footer-grid a { text-decoration: none; }
+    @media (max-width: 900px) {
+      .navlinks { display: none; }
+      .hero, .split, .faq { grid-template-columns: 1fr; }
+      .hero-art { min-height: 560px; }
+      .bento { grid-template-columns: 1fr; }
+      .span-5, .span-4, .span-3 { grid-column: span 1; }
+      .accordion { grid-template-columns: 1fr; min-height: auto; }
+      .slice { min-height: 360px; }
+      .pin-title { position: relative; top: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+  <nav class="nav" aria-label="Primary navigation">
+    <a class="brand" href="https://kalshhunter.com/">Kalsh Hunter</a>
+    <div class="navlinks">
+      <a href="#ops">Ops layer</a>
+      <a href="#system">System</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a class="navcta" href="https://getsupers.com/">Visit Super</a>
+  </nav>
+  <main>
+    <header class="wrap hero">
+      <div>
+        <h1>Super for founders turning personal AI agents into an <span class="inline-img" aria-hidden="true"></span> ops layer.</h1>
+        <p class="lead">Founders do not need another inbox, another dashboard, or another chatbot tab. They need a personal AI agent that turns scattered commitments into a working operating layer: daily briefs, message drafts, browser tasks, customer follow-up, and approvals.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://getsupers.com/">Build with Super</a>
+          <a class="btn secondary" href="https://app.getsupers.com/use-cases/computer-use-cache/">See execution memory</a>
+        </div>
+      </div>
+      <aside class="hero-art" aria-label="Founder AI ops layer">
+        <div class="floating-card">
+          <strong>Founder ops queue</strong>
+          <p>Prioritize partner replies, draft customer updates, gather browser context, and hold risky actions for approval before anything leaves the building.</p>
+        </div>
+      </aside>
+    </header>
+
+    <section id="ops" class="wrap">
+      <h2 class="section-title">The founder use case is not automation. It is controlled operating leverage.</h2>
+      <p class="intro-copy">A founder has too many high-context threads to outsource blindly: investor follow-ups, customer messages, hiring loops, product decisions, vendor coordination, and competitive research. The agent should reduce the drag around those threads while preserving judgment where it matters.</p>
+      <div class="bento">
+        <article class="card span-5 visual-card">
+          <h2>Daily brief before the day fractures.</h2>
+          <p>Super can sit upstream of the morning scramble by summarizing open loops, ranking messages, and making the first decisions visible.</p>
+        </article>
+        <article class="card span-4">
+          <h3>Message-native capture</h3>
+          <p>Important commitments happen in casual threads. A founder agent should pull follow-up from SMS, iMessage, email, and meeting notes.</p>
+          <div class="glow"></div>
+        </article>
+        <article class="card span-3">
+          <h3>Approval control</h3>
+          <p>Draft fast. Send carefully. Keep external commitments under human control.</p>
+        </article>
+        <article class="card span-4">
+          <h3>Browser work without tab sprawl.</h3>
+          <p>Use agent execution for repeated lookups, comparison work, CRM updates, and research gathering through flows like <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a>.</p>
+        </article>
+        <article class="card span-4">
+          <h3>Customer replies with context.</h3>
+          <p>The agent should draft from the original promise, recent activity, and the founder's preferred tone, not from a generic support template.</p>
+        </article>
+        <article class="card span-4">
+          <h3>Assets when the work calls for them.</h3>
+          <p>For launch and growth tasks, route repeatable build work into workflows like <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent website building</a>.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap" id="system">
+      <h2 class="section-title">A founder-grade personal AI agent has four operating modes.</h2>
+      <div class="accordion" aria-label="Founder operating modes">
+        <article class="slice">
+          <img src="https://picsum.photos/seed/founder-agent-intake-mode/900/1100" alt="">
+          <div><h3>Intake</h3><p>Capture messages, meeting promises, notes, and browser context without manual re-entry.</p></div>
+        </article>
+        <article class="slice">
+          <img src="https://picsum.photos/seed/founder-agent-draft-mode/900/1100" alt="">
+          <div><h3>Draft</h3><p>Prepare replies, summaries, updates, outreach, and internal notes with source context attached.</p></div>
+        </article>
+        <article class="slice">
+          <img src="https://picsum.photos/seed/founder-agent-execute-mode/900/1100" alt="">
+          <div><h3>Execute</h3><p>Handle low-risk browser and research work while preserving logs of what changed.</p></div>
+        </article>
+        <article class="slice">
+          <img src="https://picsum.photos/seed/founder-agent-approval-mode/900/1100" alt="">
+          <div><h3>Approve</h3><p>Present high-impact sends and decisions in a compact approval queue.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>founder follow-up</span><span>daily briefs</span><span>customer messages</span><span>browser execution</span><span>approval queues</span><span>agent ops layer</span>
+        <span>founder follow-up</span><span>daily briefs</span><span>customer messages</span><span>browser execution</span><span>approval queues</span><span>agent ops layer</span>
+      </div>
+    </div>
+
+    <section class="wrap">
+      <div class="split">
+        <div class="pin-title">
+          <h2 class="section-title">How to roll it out without creating another system to manage.</h2>
+          <p class="intro-copy">Start with one narrow loop. The goal is to earn trust in a repeatable workflow before expanding the agent into more surfaces.</p>
+        </div>
+        <div class="stack">
+          <article class="stack-card">
+            <h3>Pick one high-value thread.</h3>
+            <p>Customer follow-up, investor updates, hiring coordination, and founder sales are ideal because small delays are expensive and context matters.</p>
+          </article>
+          <article class="stack-card">
+            <h3>Define what the agent may do alone.</h3>
+            <p>Research, summarize, draft, classify, and prepare are good early permissions. Sending, purchasing, changing account state, and promising dates should require approval.</p>
+          </article>
+          <article class="stack-card">
+            <h3>Connect message workflows first.</h3>
+            <p>Super's <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text message AI assistant</a> workflows are a practical starting point because founders already coordinate through messages.</p>
+          </article>
+          <article class="stack-card">
+            <h3>Review the agent's misses weekly.</h3>
+            <p>Improve the brief by marking noisy items, missed commitments, weak drafts, and actions that should have been held for approval.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="wrap">
+      <h2 class="section-title">Questions founders usually ask before trusting the agent.</h2>
+      <div class="faq">
+        <article>
+          <h3>Should the agent replace an assistant?</h3>
+          <p>No. Treat it as an ops layer for recall, drafting, research, and execution prep. Human judgment remains the final approval layer.</p>
+        </article>
+        <article>
+          <h3>What should it handle first?</h3>
+          <p>Start with follow-up that already has clear context: customer updates, scheduling loops, investor replies, and recurring research checks.</p>
+        </article>
+        <article>
+          <h3>Why backlink to Super use cases?</h3>
+          <p>Relevant links help readers move from the concept to concrete workflows, and they give search engines a clearer path through related Super pages.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <div class="cta">
+        <h2>Give the founder inbox an execution layer.</h2>
+        <p>Super is built for the version of personal AI where messages, memory, browser work, and approvals sit in one practical loop.</p>
+        <div class="actions" style="justify-content:center">
+          <a class="btn primary" href="https://getsupers.com/">Start with Super</a>
+          <a class="btn secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Explore message workflows</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="wrap">
+    <div class="footer-grid">
+      <span>Kalsh Hunter tracks practical personal AI agent workflows for operators and founders.</span>
+      <span><a href="https://kalshhunter.com/">Home</a> · <a href="https://getsupers.com/">Super</a> · <a href="https://app.getsupers.com/use-cases/computer-use-cache/">Execution memory</a></span>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+  <script>
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.fromTo(".hero-art", { scale: .86, opacity: .76 }, {
+        scale: 1,
+        opacity: 1,
+        ease: "none",
+        scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom 35%", scrub: true }
+      });
+      gsap.utils.toArray(".stack-card").forEach((card, index) => {
+        gsap.fromTo(card, { y: 80 + index * 16, scale: .94, opacity: .25 }, {
+          y: 0,
+          scale: 1,
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: { trigger: card, start: "top 88%", end: "top 42%", scrub: true }
+        });
+      });
+    }
+  </script>
+</body>
+</html>
