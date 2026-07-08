@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [AI proof loops are becoming the next personal agent workflow](ai-proof-loops-are-becoming-the-next-personal-agent-workflow-20260708-105954/): Research and news analysis
 - [How to use AI follow-up queues for customer proof requests](how-to-use-ai-follow-up-queues-for-customer-proof-requests-20260708-105454/): Use case
 - [Super vs generic AI task managers for founder follow-up](super-vs-generic-ai-task-managers-for-founder-follow-up-20260708-104954/): Competitor comparison
 - [AI follow-up software for investor-backed founders](ai-follow-up-software-for-investor-backed-founders-20260708-103955/): Niche research landing page
