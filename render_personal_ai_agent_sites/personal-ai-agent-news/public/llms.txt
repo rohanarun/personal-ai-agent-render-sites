@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Personal AI Agent Evidence Weighting Software](personal-ai-agent-evidence-weighting-software-20260708-202326/): Niche research landing page
 - [Personal AI Agents Need Evidence Weighting](personal-ai-agents-need-evidence-weighting-20260708-201327/): Research and news analysis
 - [How to Add Rule Receipts to a Text Message AI Agent](how-to-add-rule-receipts-to-a-text-message-ai-agent-20260708-200757/): Use case
 - [AI Agent Rule Receipts vs Audit Logs](ai-agent-rule-receipts-vs-audit-logs-20260708-195756/): Competitor comparison
