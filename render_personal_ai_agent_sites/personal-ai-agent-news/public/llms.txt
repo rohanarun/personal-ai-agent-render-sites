@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Super vs traditional founder assistant services](super-vs-traditional-founder-assistant-services-20260708-090925/): Competitor comparison
 - [Super for founders using personal AI agents as an ops layer](super-for-founders-using-personal-ai-agents-as-an-ops-layer-20260708-090424/): Niche research landing page
 - [Personal AI agent market shift from chatbots to command centers](personal-ai-agent-market-shift-from-chatbots-to-command-centers-20260708-085425/): Research and news analysis
 - [How to use a personal AI agent as a daily execution brief](how-to-use-a-personal-ai-agent-as-a-daily-execution-brief-20260708-084853/): Use case
