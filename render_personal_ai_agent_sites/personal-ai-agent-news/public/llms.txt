@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Text Approval Queues vs Human-in-the-Loop Dashboards](text-approval-queues-vs-human-in-the-loop-dashboards-20260708-160625/): Competitor comparison
 - [Text Approval Queue Software for Personal AI Agents](text-approval-queue-software-for-personal-ai-agents-20260708-160125/): Niche research landing page
 - [Text-Native Approval Queues Are Becoming the Agent Control Plane](text-native-approval-queues-are-becoming-the-agent-control-plane-20260708-155555/): Research and news analysis
 - [How to Route AI Agent Exceptions to Text Approvals](how-to-route-ai-agent-exceptions-to-text-approvals-20260708-155055/): Use case

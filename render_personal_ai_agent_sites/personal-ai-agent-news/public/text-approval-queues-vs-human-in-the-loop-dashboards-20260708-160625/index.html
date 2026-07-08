@@ -1,0 +1,770 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Text Approval Queues vs Human-in-the-Loop Dashboards | Kalsh Hunter</title>
+  <meta name="description" content="A comparison guide for personal AI agent operators choosing between text approval queues and traditional human-in-the-loop dashboards.">
+  <link rel="canonical" href="https://kalshhunter.com/text-approval-queues-vs-human-in-the-loop-dashboards-20260708-160625/">
+  <meta property="og:title" content="Text Approval Queues vs Human-in-the-Loop Dashboards">
+  <meta property="og:description" content="When to use SMS approval queues, when to use review dashboards, and why personal AI agents need a lighter decision lane.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://kalshhunter.com/text-approval-queues-vs-human-in-the-loop-dashboards-20260708-160625/">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700;850&family=Geist+Mono:wght@400;600&display=swap');
+
+    :root {
+      --ink: #f5fbff;
+      --muted: rgba(245, 251, 255, 0.7);
+      --line: rgba(245, 251, 255, 0.18);
+      --panel: rgba(10, 17, 21, 0.78);
+      --dark: #05090c;
+      --aqua: #83f4ff;
+      --lime: #ccff66;
+      --rose: #ff8aa8;
+    }
+
+    * { box-sizing: border-box; }
+    html { background: var(--dark); scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Geist", system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 80% 12%, rgba(131, 244, 255, 0.2), transparent 31rem),
+        radial-gradient(circle at 20% 26%, rgba(204, 255, 102, 0.14), transparent 34rem),
+        radial-gradient(circle at 48% 88%, rgba(255, 138, 168, 0.11), transparent 32rem),
+        linear-gradient(180deg, #05090c 0%, #10171a 45%, #05090c 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 10;
+      opacity: 0.16;
+      mix-blend-mode: soft-light;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 170 170' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='170' height='170' filter='url(%23grain)' opacity='.42'/%3E%3C/svg%3E");
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    main {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    .nav {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      width: min(1140px, calc(100vw - 32px));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px 12px 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(5, 9, 12, 0.72);
+      backdrop-filter: blur(22px);
+      box-shadow: 0 22px 86px rgba(0, 0, 0, 0.36);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 850;
+      letter-spacing: 0;
+    }
+
+    .brand::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--aqua);
+      box-shadow: 0 0 24px rgba(131, 244, 255, 0.7);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a {
+      padding: 10px 13px;
+      border-radius: 999px;
+      transition: background 220ms ease, color 220ms ease;
+    }
+
+    .nav-links a:hover {
+      background: rgba(245, 251, 255, 0.1);
+      color: var(--ink);
+    }
+
+    .hero {
+      min-height: 100svh;
+      padding: 148px 24px 96px;
+      display: grid;
+      place-items: center;
+    }
+
+    .hero-grid {
+      width: min(1180px, 94vw);
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: clamp(30px, 6vw, 82px);
+      align-items: end;
+    }
+
+    h1 {
+      max-width: min(1140px, 94vw);
+      margin: 0;
+      font-size: clamp(3rem, 5vw, 5.25rem);
+      line-height: 0.94;
+      letter-spacing: 0;
+      font-weight: 850;
+    }
+
+    .inline-img {
+      display: inline-block;
+      width: clamp(76px, 10vw, 138px);
+      height: clamp(36px, 4.7vw, 56px);
+      border-radius: 999px;
+      vertical-align: middle;
+      margin: 0 8px;
+      background: url("https://picsum.photos/seed/text-vs-dashboard-pill/440/180") center/cover;
+      border: 1px solid rgba(245, 251, 255, 0.34);
+      filter: grayscale(0.15) contrast(1.22);
+    }
+
+    .lede {
+      max-width: 700px;
+      margin: 28px 0 0;
+      font-size: clamp(1.15rem, 2vw, 1.48rem);
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 52px;
+      align-items: center;
+      justify-content: center;
+      padding: 0 22px;
+      border-radius: 999px;
+      font-weight: 850;
+      transition: transform 220ms ease;
+    }
+
+    .button:hover { transform: translateY(-2px); }
+
+    .button.primary {
+      color: #05090c;
+      background: var(--aqua);
+      box-shadow: 0 18px 58px rgba(131, 244, 255, 0.22);
+    }
+
+    .button.secondary {
+      color: var(--ink);
+      border: 1px solid var(--line);
+      background: rgba(245, 251, 255, 0.08);
+    }
+
+    .hero-media {
+      min-height: 530px;
+      border-radius: 34px;
+      border: 1px solid rgba(245, 251, 255, 0.2);
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(5, 9, 12, 0.08), rgba(5, 9, 12, 0.86)),
+        url("https://picsum.photos/seed/hitl-dashboard-vs-text/900/1200") center/cover;
+      box-shadow: 0 32px 120px rgba(0, 0, 0, 0.44);
+      transform: translateY(32px);
+      position: relative;
+    }
+
+    .hero-card {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      padding: 20px;
+      border-radius: 24px;
+      border: 1px solid rgba(245, 251, 255, 0.18);
+      background: rgba(5, 9, 12, 0.74);
+      backdrop-filter: blur(16px);
+    }
+
+    .mono {
+      font-family: "Geist Mono", monospace;
+      font-size: 12px;
+      color: rgba(245, 251, 255, 0.56);
+      text-transform: uppercase;
+    }
+
+    .hero-card strong {
+      display: block;
+      margin-top: 10px;
+      font-size: 24px;
+      line-height: 1.08;
+    }
+
+    section {
+      padding: 150px 24px;
+      position: relative;
+    }
+
+    .inner {
+      width: min(1180px, 94vw);
+      margin: 0 auto;
+    }
+
+    .section-title {
+      max-width: 900px;
+      margin: 0;
+      font-size: clamp(2.4rem, 4.2vw, 4.9rem);
+      line-height: 0.96;
+      letter-spacing: 0;
+      font-weight: 850;
+    }
+
+    .section-copy {
+      max-width: 760px;
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 1.2rem;
+      line-height: 1.72;
+    }
+
+    .marquee {
+      overflow: hidden;
+      border-block: 1px solid var(--line);
+      padding: 24px 0;
+      color: rgba(245, 251, 255, 0.4);
+      font-size: clamp(2rem, 5vw, 5rem);
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .marquee-track {
+      display: inline-flex;
+      gap: 44px;
+      animation: drift 24s linear infinite;
+    }
+
+    @keyframes drift {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-flow: dense;
+      gap: 16px;
+      margin-top: 52px;
+    }
+
+    .tile {
+      min-height: 280px;
+      padding: clamp(22px, 3vw, 38px);
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      overflow: hidden;
+      transition: transform 260ms ease, border-color 260ms ease;
+    }
+
+    .tile:hover {
+      transform: translateY(-6px);
+      border-color: rgba(131, 244, 255, 0.5);
+    }
+
+    .span-7 { grid-column: span 7; }
+    .span-5 { grid-column: span 5; }
+    .span-4 { grid-column: span 4; }
+
+    .image-tile {
+      min-height: 390px;
+      background:
+        linear-gradient(180deg, rgba(5, 9, 12, 0.08), rgba(5, 9, 12, 0.86)),
+        url("https://picsum.photos/seed/text-approval-operator/1100/720") center/cover;
+    }
+
+    .tile h2, .tile h3 {
+      margin: 0 0 16px;
+      font-size: clamp(1.6rem, 2.5vw, 2.75rem);
+      line-height: 0.98;
+      letter-spacing: 0;
+    }
+
+    .tile p, .tile li {
+      color: var(--muted);
+      line-height: 1.62;
+      font-size: 1.05rem;
+    }
+
+    .list {
+      list-style: none;
+      padding: 0;
+      margin: 24px 0 0;
+      display: grid;
+      gap: 13px;
+    }
+
+    .list li {
+      position: relative;
+      padding-left: 27px;
+    }
+
+    .list li::before {
+      content: "";
+      position: absolute;
+      top: 9px;
+      left: 0;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--aqua);
+    }
+
+    .stack-layout {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: clamp(30px, 6vw, 86px);
+      align-items: start;
+    }
+
+    .sticky {
+      position: sticky;
+      top: 124px;
+    }
+
+    .stack {
+      display: grid;
+      gap: 26px;
+    }
+
+    .card {
+      min-height: 350px;
+      padding: clamp(26px, 4vw, 48px);
+      border-radius: 34px;
+      border: 1px solid var(--line);
+      background: rgba(245, 251, 255, 0.07);
+      box-shadow: 0 28px 90px rgba(0, 0, 0, 0.18);
+    }
+
+    .card h3 {
+      margin: 0 0 16px;
+      font-size: clamp(1.8rem, 3vw, 3.25rem);
+      line-height: 0.97;
+      letter-spacing: 0;
+    }
+
+    .card p {
+      color: var(--muted);
+      line-height: 1.68;
+      font-size: 1.1rem;
+    }
+
+    .scrub {
+      font-size: clamp(2rem, 4.2vw, 4.8rem);
+      line-height: 1.03;
+      letter-spacing: 0;
+      color: rgba(245, 251, 255, 0.16);
+      max-width: 1060px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .scrub span {
+      display: inline-block;
+      color: rgba(245, 251, 255, 0.16);
+    }
+
+    .accordion {
+      margin-top: 52px;
+      min-height: 430px;
+      display: flex;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 32px;
+    }
+
+    .panel {
+      flex: 1;
+      min-width: 0;
+      padding: 28px;
+      border-right: 1px solid var(--line);
+      background: rgba(245, 251, 255, 0.06);
+      transition: flex 520ms ease, background 520ms ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .panel:last-child { border-right: 0; }
+    .panel:hover {
+      flex: 2.25;
+      background: rgba(131, 244, 255, 0.13);
+    }
+
+    .panel h3 {
+      margin: 0 0 14px;
+      font-size: clamp(1.45rem, 2.45vw, 2.6rem);
+      line-height: 0.98;
+    }
+
+    .panel p {
+      color: var(--muted);
+      line-height: 1.58;
+      max-width: 440px;
+    }
+
+    .faq {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 50px;
+    }
+
+    details {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(245, 251, 255, 0.06);
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 850;
+      font-size: 1.15rem;
+    }
+
+    details p {
+      color: var(--muted);
+      line-height: 1.62;
+    }
+
+    .sources {
+      margin-top: 38px;
+      display: grid;
+      gap: 14px;
+      color: var(--muted);
+    }
+
+    .sources a {
+      color: var(--ink);
+      border-bottom: 1px solid rgba(131, 244, 255, 0.58);
+    }
+
+    .cta {
+      padding-bottom: 88px;
+    }
+
+    .cta-box {
+      width: min(1180px, 94vw);
+      margin: 0 auto;
+      padding: clamp(38px, 7vw, 88px);
+      border-radius: 40px;
+      color: #05090c;
+      background:
+        linear-gradient(135deg, rgba(131, 244, 255, 0.96), rgba(204, 255, 102, 0.82)),
+        url("https://picsum.photos/seed/text-vs-dashboard-cta/1500/780") center/cover;
+      background-blend-mode: screen;
+    }
+
+    .cta-box h2 {
+      max-width: 970px;
+      margin: 0;
+      font-size: clamp(2.7rem, 5.4vw, 5.9rem);
+      line-height: 0.92;
+      letter-spacing: 0;
+    }
+
+    .cta-box p {
+      max-width: 700px;
+      font-size: 1.24rem;
+      line-height: 1.58;
+    }
+
+    .cta-box .button.primary {
+      background: #05090c;
+      color: var(--ink);
+      box-shadow: none;
+    }
+
+    .cta-box .button.secondary {
+      color: #05090c;
+      border-color: rgba(5, 9, 12, 0.28);
+      background: rgba(245, 251, 255, 0.34);
+    }
+
+    footer {
+      width: min(1180px, 94vw);
+      margin: 0 auto;
+      padding: 0 24px 44px;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      color: rgba(245, 251, 255, 0.56);
+      font-size: 14px;
+    }
+
+    footer a {
+      color: var(--ink);
+      margin-left: 16px;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links a:not(.keep) { display: none; }
+      .hero-grid, .stack-layout, .faq { grid-template-columns: 1fr; }
+      .hero-media { min-height: 380px; transform: none; }
+      .span-7, .span-5, .span-4 { grid-column: span 12; }
+      .accordion { flex-direction: column; }
+      .panel { min-height: 210px; border-right: 0; border-bottom: 1px solid var(--line); }
+      .panel:last-child { border-bottom: 0; }
+      footer { flex-direction: column; }
+      footer a { margin: 0 14px 0 0; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="https://kalshhunter.com/">Kalsh Hunter</a>
+      <div class="nav-links">
+        <a href="#compare">Compare</a>
+        <a href="#criteria">Criteria</a>
+        <a href="#faq">FAQ</a>
+        <a class="keep" href="https://getsupers.com/">Supers</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-grid">
+        <div>
+          <h1>Text approval queues vs human-in-the-loop <span class="inline-img" aria-hidden="true"></span> dashboards</h1>
+          <p class="lede">Both patterns put a human near an AI agent decision. The difference is tempo: dashboards are built for batches and review teams, while text approval queues are built for personal agents that need one quick answer before continuing.</p>
+          <div class="actions">
+            <a class="button primary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Try text-native control</a>
+            <a class="button secondary" href="#compare">Compare the approaches</a>
+          </div>
+        </div>
+        <div class="hero-media">
+          <div class="hero-card">
+            <div class="mono">Comparison verdict</div>
+            <strong>Dashboards review work. Text queues unblock work.</strong>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>text queue</span><span>dashboard review</span><span>agent exception</span><span>human approval</span><span>receipt trail</span><span>text queue</span><span>dashboard review</span><span>agent exception</span><span>human approval</span><span>receipt trail</span>
+      </div>
+    </div>
+
+    <section id="compare">
+      <div class="inner">
+        <h2 class="section-title">Use the interface that matches the agent’s interruption pattern.</h2>
+        <p class="section-copy">The wrong review surface makes agents feel slower than manual work. Personal AI agents need approval flows that are close to the user, specific to the action, and fast enough to let the workflow resume.</p>
+
+        <div class="bento">
+          <article class="tile span-7 image-tile">
+            <h2>Text approval queues are best for live exceptions.</h2>
+            <p>When an agent is mid-task and about to send, buy, publish, edit, or submit, the approval should reach the operator immediately with enough context to make a call from the phone.</p>
+          </article>
+          <article class="tile span-5">
+            <h3>Dashboards are best for batch review.</h3>
+            <p>Human-in-the-loop dashboards still make sense for QA queues, compliance teams, content moderation, data labeling, and workflows where specialists inspect many similar items in one sitting.</p>
+            <ul class="list">
+              <li>High review volume</li>
+              <li>Dedicated review staff</li>
+              <li>Batch decisions</li>
+              <li>Deep policy lookup</li>
+            </ul>
+          </article>
+          <article class="tile span-4">
+            <h3>Latency</h3>
+            <p>Text wins when the decision blocks a live task. Dashboards win when timing matters less than inspection depth.</p>
+          </article>
+          <article class="tile span-4">
+            <h3>Context</h3>
+            <p>Text needs a compressed evidence packet. Dashboards can expose longer histories, side-by-side comparisons, and policy documents.</p>
+          </article>
+          <article class="tile span-4">
+            <h3>Adoption</h3>
+            <p>Text fits people who will never open another review tool. Dashboards fit teams that already have a review habit.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <p class="scrub" id="scrubText">If the agent is waiting on one person for one decision, send a text. If a team is inspecting a backlog, open a dashboard.</p>
+    </section>
+
+    <section id="criteria">
+      <div class="inner stack-layout">
+        <div class="sticky">
+          <h2 class="section-title">Decision criteria for personal AI agent operators.</h2>
+          <p class="section-copy">The choice is less about technology and more about where the human is when the agent needs judgment.</p>
+        </div>
+        <div class="stack">
+          <article class="card">
+            <h3>Choose text approval queues when the agent must resume quickly.</h3>
+            <p>Browser agents, inbox assistants, and founder follow-up agents often sit inside live workflows. A text reply can approve, reject, ask for proof, or escalate without making the user manage another tab.</p>
+          </article>
+          <article class="card">
+            <h3>Choose dashboards when consistency requires a workspace.</h3>
+            <p>If reviewers need policy search, peer review, bulk actions, or analytics, dashboards remain stronger. They are slower for individuals, but more structured for review operations.</p>
+          </article>
+          <article class="card">
+            <h3>Combine both when receipts become valuable.</h3>
+            <p>A text queue can collect the decision in the moment, while a dashboard stores receipts for later analysis. This pairing is useful when approval data trains future agent policy.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="inner">
+        <h2 class="section-title">Common workflow fits.</h2>
+        <p class="section-copy">The categories overlap, but the first interface should match the dominant operator behavior.</p>
+        <div class="accordion">
+          <article class="panel">
+            <div class="mono">Text queue</div>
+            <h3>Customer follow-up</h3>
+            <p>Use text when an agent drafts a reply that mentions price, refunds, scope, or commitments. This aligns with the <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text-message AI assistant</a> workflow.</p>
+          </article>
+          <article class="panel">
+            <div class="mono">Text queue</div>
+            <h3>Browser checkout</h3>
+            <p>Use text when a browser agent reaches a payment, subscription, account change, or identity step. Pair it with the <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a> for evidence.</p>
+          </article>
+          <article class="panel">
+            <div class="mono">Dashboard</div>
+            <h3>Bulk QA</h3>
+            <p>Use a dashboard when many outputs need consistent review, assignment, and audit. The workflow is less personal and more operational.</p>
+          </article>
+          <article class="panel">
+            <div class="mono">Hybrid</div>
+            <h3>Website publishing</h3>
+            <p>Use text for publish approval and dashboard receipts for history when agents create or update public pages, as in <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent website building</a>.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="inner">
+        <h2 class="section-title">FAQ</h2>
+        <div class="faq">
+          <details open>
+            <summary>Are text approval queues less serious than dashboards?</summary>
+            <p>No. They are lighter, not weaker. The rigor comes from structured reply options, evidence packets, timeout behavior, and receipts.</p>
+          </details>
+          <details>
+            <summary>Can a personal agent use both?</summary>
+            <p>Yes. A strong pattern is text for live approval and a dashboard or receipt log for later review, analytics, and policy tuning.</p>
+          </details>
+          <details>
+            <summary>Where does Supers fit?</summary>
+            <p><a href="https://getsupers.com/">Supers</a> is strongest where the control plane should live in messaging, especially for personal agents that need fast human judgment.</p>
+          </details>
+          <details>
+            <summary>What is the first test?</summary>
+            <p>Pick one high-consequence workflow and ask whether the human would rather approve from a phone in ten seconds or open a dedicated dashboard.</p>
+          </details>
+        </div>
+
+        <div class="sources">
+          <strong>Sources and references</strong>
+          <span><a href="https://getsupers.com/">Supers</a> for messaging-native personal agent workflows.</span>
+          <span><a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Text-message AI assistant</a> for SMS approval and control loops.</span>
+          <span><a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a> for browser evidence and receipts.</span>
+          <span><a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent website builder</a> for publish approval patterns.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="cta-box">
+        <h2>Choose the approval surface that keeps the agent moving.</h2>
+        <p>For personal AI agents, the best human-in-the-loop system is often not a dashboard at all. It is a short text with proof, options, and a clean resume path.</p>
+        <div class="actions">
+          <a class="button primary" href="https://getsupers.com/">Try Supers</a>
+          <a class="button secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Open the SMS use case</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>Kalsh Hunter compares personal AI agent software patterns, approval queues, and automation control surfaces.</span>
+      <span>
+        <a href="https://kalshhunter.com/">Home</a>
+        <a href="https://getsupers.com/">Supers</a>
+      </span>
+    </footer>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.utils.toArray(".card").forEach((card) => {
+        gsap.fromTo(card,
+          { y: 60, opacity: 0.62 },
+          {
+            y: 0,
+            opacity: 1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 88%",
+              end: "top 45%",
+              scrub: true
+            }
+          }
+        );
+      });
+
+      const scrub = document.getElementById("scrubText");
+      const words = scrub.textContent.trim().split(" ");
+      scrub.innerHTML = words.map((word) => `<span>${word}&nbsp;</span>`).join("");
+      gsap.to("#scrubText span", {
+        color: "rgba(245, 251, 255, 1)",
+        stagger: 0.08,
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#scrubText",
+          start: "top 82%",
+          end: "bottom 28%",
+          scrub: true
+        }
+      });
+    }
+  </script>
+</body>
+</html>
