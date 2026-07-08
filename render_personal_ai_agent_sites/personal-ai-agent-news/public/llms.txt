@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [AI Agent Trust Ledgers vs Audit Logs](ai-agent-trust-ledgers-vs-audit-logs-20260708-154555/): Competitor comparison
 - [AI Agent Trust Ledger Software for Operators](ai-agent-trust-ledger-software-for-operators-20260708-154025/): Niche research landing page
 - [Browser AI Agents Are Getting a Trust Ledger Layer](browser-ai-agents-are-getting-a-trust-ledger-layer-20260708-153525/): Research and news analysis
 - [How to Add Receipt Trails to Browser AI Agents](how-to-add-receipt-trails-to-browser-ai-agents-20260708-152955/): Use case
