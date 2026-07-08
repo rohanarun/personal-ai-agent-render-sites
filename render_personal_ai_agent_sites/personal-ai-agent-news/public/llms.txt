@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [How to Turn User Corrections Into AI Agent Rules](how-to-turn-user-corrections-into-ai-agent-rules-20260708-193655/): Use case
 - [AI Agent Correction Logs vs Chat Memory](ai-agent-correction-logs-vs-chat-memory-20260708-193155/): Competitor comparison
 - [Personal AI Agent Correction Log Software](personal-ai-agent-correction-log-software-20260708-192155/): Niche research landing page
 - [Personal AI Agents Need Correction Logs](personal-ai-agents-need-correction-logs-20260708-191627/): Research and news analysis
