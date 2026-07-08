@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Super vs AI note apps for personal agent workflows</title>
+  <meta name="description" content="A practical comparison of Super and AI note apps for people who want a personal AI agent that can move from messages to browser work and finished outcomes.">
+  <link rel="canonical" href="https://kalshhunter.com/super-vs-ai-note-apps-for-personal-agent-workflows-20260708-073224/">
+  <meta property="og:title" content="Super vs AI note apps for personal agent workflows">
+  <meta property="og:description" content="Where AI note apps help, where they stop, and why personal AI agent workflows need execution paths across SMS, browser tasks, and generated artifacts.">
+  <meta property="og:url" content="https://kalshhunter.com/super-vs-ai-note-apps-for-personal-agent-workflows-20260708-073224/">
+  <meta property="og:type" content="article">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap');
+
+    :root {
+      color-scheme: dark;
+      --ink: #f7f1e7;
+      --muted: rgba(247, 241, 231, .72);
+      --quiet: rgba(247, 241, 231, .52);
+      --line: rgba(247, 241, 231, .16);
+      --panel: rgba(18, 20, 23, .78);
+      --panel-strong: rgba(247, 241, 231, .08);
+      --black: #090a0d;
+      --cobalt: #67a6ff;
+      --citron: #d8ff72;
+      --coral: #ff8a70;
+      --mint: #84f5c1;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Geist, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 14% 8%, rgba(103, 166, 255, .34), transparent 30rem),
+        radial-gradient(circle at 86% 18%, rgba(216, 255, 114, .16), transparent 28rem),
+        radial-gradient(circle at 48% 72%, rgba(255, 138, 112, .16), transparent 34rem),
+        #090a0d;
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .13;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay;
+      z-index: 3;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    main { width: 100%; max-width: 100%; overflow-x: hidden; }
+    .shell { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+
+    .nav {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      width: min(960px, calc(100% - 28px));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 10px 10px 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(9, 10, 13, .68);
+      backdrop-filter: blur(22px);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, .34);
+    }
+
+    .brand { font-weight: 800; letter-spacing: 0; }
+    .nav-links { display: flex; gap: 20px; color: var(--muted); font-size: 14px; }
+    .nav-cta {
+      padding: 11px 16px;
+      border-radius: 999px;
+      background: var(--ink);
+      color: #08090b;
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      position: relative;
+      padding: 150px 0 96px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(9, 10, 13, .28), rgba(9, 10, 13, .92)),
+        radial-gradient(circle at 50% 42%, transparent 0, rgba(9, 10, 13, .64) 62%),
+        url("https://picsum.photos/seed/personal-agent-workflow/1920/1080") center / cover;
+      filter: grayscale(.45) contrast(1.22) saturate(.72);
+      opacity: .64;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      display: grid;
+      justify-items: center;
+      gap: 28px;
+    }
+
+    h1 {
+      max-width: 1120px;
+      margin: 0;
+      font-size: clamp(3rem, 5vw, 5.6rem);
+      line-height: .94;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+
+    .inline-img {
+      display: inline-block;
+      width: clamp(78px, 10vw, 132px);
+      height: clamp(38px, 4vw, 54px);
+      margin: 0 .12em;
+      border-radius: 999px;
+      vertical-align: middle;
+      background: url("https://picsum.photos/seed/agent-actions/360/160") center / cover;
+      filter: grayscale(.2) contrast(1.25);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .18);
+    }
+
+    .lede {
+      max-width: 740px;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(1.08rem, 1.7vw, 1.34rem);
+      line-height: 1.55;
+    }
+
+    .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 999px;
+      font-weight: 800;
+      border: 1px solid transparent;
+      transition: transform .3s ease, border-color .3s ease, background .3s ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .primary { background: var(--ink); color: #08090b; }
+    .secondary { color: var(--ink); border-color: rgba(247, 241, 231, .34); background: rgba(247, 241, 231, .08); }
+
+    section { padding: 150px 0; position: relative; }
+    .section-head { display: grid; gap: 18px; margin-bottom: 44px; }
+    h2 {
+      max-width: 980px;
+      margin: 0;
+      font-size: clamp(2.25rem, 4.8vw, 5rem);
+      line-height: .98;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .section-head p { max-width: 680px; color: var(--muted); font-size: 19px; line-height: 1.6; margin: 0; }
+
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-flow: dense;
+      gap: 14px;
+    }
+    .card {
+      min-height: 260px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: linear-gradient(145deg, rgba(247, 241, 231, .09), rgba(247, 241, 231, .03));
+      overflow: hidden;
+      position: relative;
+      transition: transform .7s cubic-bezier(.19, 1, .22, 1), border-color .7s ease;
+    }
+    .card:hover { transform: translateY(-6px); border-color: rgba(216, 255, 114, .42); }
+    .card-inner { position: relative; z-index: 2; padding: 26px; height: 100%; display: grid; align-content: end; gap: 14px; }
+    .wide { grid-column: span 7; }
+    .side { grid-column: span 5; }
+    .third { grid-column: span 4; }
+    .half { grid-column: span 6; }
+    .card h3 { margin: 0; font-size: clamp(1.45rem, 2vw, 2rem); line-height: 1.08; letter-spacing: 0; }
+    .card p { margin: 0; color: var(--muted); line-height: 1.62; }
+    .media-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent, rgba(9, 10, 13, .88)), var(--image) center / cover;
+      filter: grayscale(.35) contrast(1.18);
+      transform: scale(1.01);
+      transition: transform .9s cubic-bezier(.19, 1, .22, 1);
+    }
+    .media-card:hover::before { transform: scale(1.07); }
+
+    .score {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      align-items: center;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+    }
+    .score strong { color: var(--citron); font-size: 26px; }
+
+    .accordion { display: grid; grid-template-columns: repeat(4, 1fr); min-height: 520px; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .slice {
+      position: relative;
+      overflow: hidden;
+      min-width: 0;
+      border-right: 1px solid var(--line);
+      transition: flex .8s cubic-bezier(.19, 1, .22, 1), background .6s ease;
+      background: rgba(247, 241, 231, .04);
+      display: grid;
+      align-content: end;
+      padding: 24px;
+    }
+    .slice:last-child { border-right: 0; }
+    .slice::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent, rgba(9, 10, 13, .88)), var(--image) center / cover;
+      opacity: .22;
+      filter: grayscale(.55) contrast(1.25);
+      transform: scale(1.02);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .slice:hover::before { opacity: .52; transform: scale(1.08); }
+    .slice > * { position: relative; z-index: 1; }
+    .slice h3 { margin: 0 0 12px; font-size: 24px; }
+    .slice p { margin: 0; color: var(--muted); line-height: 1.6; }
+
+    .motion-grid { display: grid; grid-template-columns: .88fr 1.12fr; gap: 36px; align-items: start; }
+    .sticky-title { position: sticky; top: 110px; }
+    .stack { display: grid; gap: 18px; }
+    .stack-card {
+      min-height: 240px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(247, 241, 231, .07);
+      box-shadow: 0 28px 90px rgba(0, 0, 0, .24);
+    }
+    .stack-card h3 { margin: 0 0 12px; font-size: 28px; letter-spacing: 0; }
+    .stack-card p { margin: 0; color: var(--muted); line-height: 1.68; }
+
+    .marquee { overflow: hidden; border-block: 1px solid var(--line); padding: 26px 0; background: rgba(247, 241, 231, .04); }
+    .marquee-track { display: flex; gap: 36px; width: max-content; animation: drift 26s linear infinite; }
+    .marquee span { color: var(--quiet); font-size: clamp(1.5rem, 3vw, 3.1rem); font-weight: 800; white-space: nowrap; }
+    @keyframes drift { to { transform: translateX(-50%); } }
+
+    .article {
+      display: grid;
+      grid-template-columns: minmax(0, 740px) minmax(240px, 1fr);
+      gap: 54px;
+      align-items: start;
+    }
+    .copy { display: grid; gap: 24px; color: var(--muted); font-size: 18px; line-height: 1.78; }
+    .copy h2 { color: var(--ink); margin-top: 24px; font-size: clamp(2rem, 3.4vw, 3.8rem); }
+    .copy p { margin: 0; }
+    .copy a { color: var(--citron); text-decoration: underline; text-underline-offset: 4px; }
+    .rail {
+      position: sticky;
+      top: 110px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      background: rgba(9, 10, 13, .56);
+    }
+    .rail h3 { margin: 0 0 16px; font-size: 22px; }
+    .rail ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; color: var(--muted); }
+    .rail li { padding-left: 18px; position: relative; }
+    .rail li::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--mint); position: absolute; left: 0; top: .7em; }
+
+    .faq { display: grid; gap: 14px; }
+    details {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(247, 241, 231, .05);
+      padding: 22px;
+    }
+    summary { cursor: pointer; font-weight: 800; font-size: 19px; }
+    details p { color: var(--muted); line-height: 1.65; margin: 16px 0 0; }
+
+    .footer-cta {
+      padding: 90px 0;
+      background: var(--ink);
+      color: #090a0d;
+    }
+    .footer-cta .shell { display: grid; gap: 28px; justify-items: start; }
+    .footer-cta h2 { color: #090a0d; max-width: 960px; }
+    .footer-cta p { max-width: 720px; margin: 0; color: rgba(9, 10, 13, .72); font-size: 20px; line-height: 1.55; }
+    .footer-cta .primary { background: #090a0d; color: var(--ink); }
+    .footer-cta .secondary { color: #090a0d; border-color: rgba(9, 10, 13, .22); background: rgba(9, 10, 13, .04); }
+    footer { padding: 32px 0 50px; color: var(--quiet); }
+    footer .shell { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 18px; }
+    footer nav { display: flex; flex-wrap: wrap; gap: 18px; }
+
+    @media (max-width: 860px) {
+      .nav-links { display: none; }
+      section { padding: 110px 0; }
+      .bento, .motion-grid, .article { grid-template-columns: 1fr; }
+      .wide, .side, .third, .half { grid-column: span 1; }
+      .accordion { grid-template-columns: 1fr; min-height: auto; }
+      .slice { min-height: 230px; border-right: 0; border-bottom: 1px solid var(--line); }
+      .sticky-title, .rail { position: static; }
+      h1 { font-size: clamp(2.8rem, 13vw, 4.8rem); }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="Primary">
+    <a class="brand" href="https://kalshhunter.com/">Kalsh Hunter</a>
+    <div class="nav-links">
+      <a href="#comparison">Compare</a>
+      <a href="#workflow">Workflow</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a class="nav-cta" href="https://getsupers.com/">Try Super</a>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="shell hero-content">
+        <h1>Super vs AI note apps for <span class="inline-img" aria-hidden="true"></span> personal agent workflows</h1>
+        <p class="lede">AI note apps are useful memory surfaces. Super is built around a different promise: move a request from chat into the places where work actually happens, including text messages, browser sessions, and generated deliverables.</p>
+        <div class="actions">
+          <a class="button primary" href="https://getsupers.com/">Start with Super</a>
+          <a class="button secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">See SMS workflows</a>
+        </div>
+      </div>
+    </header>
+
+    <section id="comparison">
+      <div class="shell">
+        <div class="section-head">
+          <h2>The difference is not better notes. It is getting out of notes.</h2>
+          <p>Most AI note apps improve capture, search, summaries, and meeting recall. A personal AI agent has to preserve context, then cross the boundary into action.</p>
+        </div>
+        <div class="bento">
+          <article class="card media-card wide" style="--image:url('https://picsum.photos/seed/action-led-agent/1200/900')">
+            <div class="card-inner">
+              <h3>Super is strongest when the next step is external.</h3>
+              <p>Use it when the task must leave the note surface: send a message, check a web page, build a page, or coordinate a follow-up across tools.</p>
+              <div class="score"><span>Execution readiness</span><strong>High</strong></div>
+            </div>
+          </article>
+          <article class="card side">
+            <div class="card-inner">
+              <h3>AI note apps are strongest when the output is internal.</h3>
+              <p>Meeting recaps, personal knowledge bases, and searchable archives are valuable, but they often hand the final step back to the user.</p>
+              <div class="score"><span>Action handoff</span><strong>Manual</strong></div>
+            </div>
+          </article>
+          <article class="card third">
+            <div class="card-inner">
+              <h3>Message-native work</h3>
+              <p>Super can fit requests that start in SMS or iMessage. That matters when the user is not sitting in a productivity app.</p>
+            </div>
+          </article>
+          <article class="card third media-card" style="--image:url('https://picsum.photos/seed/browser-agent-cache/900/900')">
+            <div class="card-inner">
+              <h3>Browser-backed context</h3>
+              <p>When work depends on live web context, a note is a starting point. A browser-capable agent is the next layer.</p>
+            </div>
+          </article>
+          <article class="card third">
+            <div class="card-inner">
+              <h3>Finished artifacts</h3>
+              <p>The best personal-agent workflows end in something concrete: a sent note, a booked item, a generated page, or a completed check.</p>
+            </div>
+          </article>
+          <article class="card half">
+            <div class="card-inner">
+              <h3>Choose notes when your main pain is recall.</h3>
+              <p>If the problem is forgetting what happened, notes are a clean answer. If the problem is that nothing happens after the summary, Super fits the workflow better.</p>
+            </div>
+          </article>
+          <article class="card half media-card" style="--image:url('https://picsum.photos/seed/personal-ai-operator/1200/800')">
+            <div class="card-inner">
+              <h3>Choose Super when your main pain is follow-through.</h3>
+              <p>Follow-through is where a personal AI agent earns trust: it keeps the request moving after the first answer.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="shell">
+        <div class="section-head">
+          <h2>Where each category naturally wins</h2>
+          <p>The right tool depends on the endpoint. These four slices separate capture, memory, coordination, and execution.</p>
+        </div>
+        <div class="accordion">
+          <article class="slice" style="--image:url('https://picsum.photos/seed/meeting-memory/900/1200')">
+            <h3>Capture</h3>
+            <p>AI note apps win when the job is recording, summarizing, and making meetings searchable.</p>
+          </article>
+          <article class="slice" style="--image:url('https://picsum.photos/seed/context-archive/900/1200')">
+            <h3>Memory</h3>
+            <p>Knowledge apps help when context should remain organized for a team or a future project.</p>
+          </article>
+          <article class="slice" style="--image:url('https://picsum.photos/seed/message-coordination/900/1200')">
+            <h3>Coordination</h3>
+            <p>Super becomes useful when the assistant needs to communicate in the channel where the task began.</p>
+          </article>
+          <article class="slice" style="--image:url('https://picsum.photos/seed/finished-agent-output/900/1200')">
+            <h3>Execution</h3>
+            <p>Super is the better fit when the desired output is a completed action, not another stored summary.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>capture</span><span>recall</span><span>coordinate</span><span>execute</span><span>verify</span><span>publish</span>
+        <span>capture</span><span>recall</span><span>coordinate</span><span>execute</span><span>verify</span><span>publish</span>
+      </div>
+    </div>
+
+    <section id="workflow">
+      <div class="shell motion-grid">
+        <div class="sticky-title section-head">
+          <h2>A practical personal-agent workflow has more than one surface.</h2>
+          <p>Notes keep memory. Agents need pathways. The strongest setup uses the right surface for each step instead of asking one app to become every app.</p>
+        </div>
+        <div class="stack">
+          <article class="stack-card">
+            <h3>Start in the channel that actually gets used</h3>
+            <p>A personal request often begins as a text, a voice note, or a quick instruction. Super's <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text message AI assistant</a> flow keeps the assistant close to the user's real behavior instead of forcing everything into a note workspace.</p>
+          </article>
+          <article class="stack-card">
+            <h3>Bring in live web context when memory is not enough</h3>
+            <p>Archived context is useful, but many tasks depend on what is true right now. The <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a> layer is built for work that needs browser context and repeatable web checks.</p>
+          </article>
+          <article class="stack-card">
+            <h3>End with a visible output</h3>
+            <p>Finished work should be inspectable. For publishing and production tasks, <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent website building</a> shows the direction: not just a suggestion, but an artifact a user can open and judge.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="shell article">
+        <article class="copy">
+          <h2>The honest comparison</h2>
+          <p>AI note apps reduce the cost of remembering. They are excellent for meetings, transcripts, reading highlights, research storage, and personal knowledge retrieval. They become less satisfying when the user has to copy the summary into messages, open a browser, fill in a form, create a deliverable, and remember to check whether anything changed.</p>
+          <p><a href="https://getsupers.com/">Super</a> is aimed at the other side of that boundary. It treats chat as the intake layer, but not the destination. The value is in turning a request into a sequence: understand the intent, pick the right execution surface, preserve context, and return with a result the user can use.</p>
+          <p>That does not make AI note apps obsolete. In many teams, the best stack is both: notes for durable memory and Super for action-heavy personal workflows. The mistake is expecting a note app to behave like an operator or expecting an operator to become the only archive.</p>
+          <h2>Checklist for choosing</h2>
+          <p>Choose an AI note app if your recurring pain sounds like: "I need to remember what was said," "I need searchable context," or "I need better meeting recall." Choose Super if the recurring pain sounds like: "I need someone to follow up," "I need this checked online," "I need a page or workflow built," or "I need the assistant available from messages."</p>
+          <p>The simplest rule is this: if the job ends at a summary, notes are enough. If the job starts at a summary and still needs action, use a personal AI agent workflow.</p>
+        </article>
+        <aside class="rail">
+          <h3>Decision guide</h3>
+          <ul>
+            <li>Need memory and search: AI note app</li>
+            <li>Need SMS or iMessage intake: Super</li>
+            <li>Need browser-backed checks: Super</li>
+            <li>Need durable meeting archive: AI note app</li>
+            <li>Need generated deliverables: Super</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Questions buyers should ask before choosing</h2>
+          <p>The category names are starting to blur, so the useful questions are operational.</p>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Can an AI note app replace a personal AI agent?</summary>
+            <p>Usually not. It can replace some memory and summary workflows, but a personal AI agent is more useful when the request requires communication, browser context, or a finished artifact.</p>
+          </details>
+          <details>
+            <summary>Can Super work alongside an AI note app?</summary>
+            <p>Yes. A note app can hold durable knowledge while Super handles action-oriented tasks. The combination is often stronger than forcing one tool to own every stage.</p>
+          </details>
+          <details>
+            <summary>What is the clearest reason to try Super first?</summary>
+            <p>Try Super first when your workflow starts in messages or when the assistant needs to do something after answering. Start at <a href="https://getsupers.com/">getsupers.com</a> and route into the use case that matches your task.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="footer-cta">
+      <div class="shell">
+        <h2>Use notes for memory. Use Super when the work needs to move.</h2>
+        <p>Start with one recurring workflow: a follow-up, a browser check, or a small deliverable. The right personal AI agent proves itself by finishing a loop you used to babysit.</p>
+        <div class="actions">
+          <a class="button primary" href="https://getsupers.com/">Try Super</a>
+          <a class="button secondary" href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">See website-building agents</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">
+      <span>Kalsh Hunter research notes</span>
+      <nav>
+        <a href="https://getsupers.com/">Super</a>
+        <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Text message AI</a>
+        <a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script>
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.fromTo(".card", { y: 48, opacity: 0, scale: .94 }, {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        duration: .9,
+        stagger: .08,
+        ease: "power3.out",
+        scrollTrigger: { trigger: ".bento", start: "top 72%" }
+      });
+      gsap.utils.toArray(".media-card").forEach(function(card) {
+        gsap.fromTo(card, { scale: .88, opacity: .52 }, {
+          scale: 1,
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: { trigger: card, start: "top 90%", end: "bottom 20%", scrub: true }
+        });
+      });
+      gsap.utils.toArray(".stack-card").forEach(function(card, index) {
+        gsap.fromTo(card, { y: 90 + index * 18, opacity: .24 }, {
+          y: 0,
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: { trigger: card, start: "top 88%", end: "top 42%", scrub: true }
+        });
+      });
+    }
+  </script>
+</body>
+</html>
