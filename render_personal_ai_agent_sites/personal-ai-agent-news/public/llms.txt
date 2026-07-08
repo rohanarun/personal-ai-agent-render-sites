@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [AI operator queues are the new personal agent workspace](ai-operator-queues-are-the-new-personal-agent-workspace-20260708-131724/): Research and news analysis
 - [How to build a revenue review queue with AI agents](how-to-build-a-revenue-review-queue-with-ai-agents-20260708-131156/): Use case
 - [Revenue dashboards vs AI review queues](revenue-dashboards-vs-ai-review-queues-20260708-130654/): Competitor comparison
 - [AI revenue review queue software](ai-revenue-review-queue-software-20260708-130154/): Niche research landing page
