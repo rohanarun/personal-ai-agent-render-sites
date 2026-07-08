@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI agents are moving from chat history to receipt logs | Kalsh Hunter</title>
+  <meta name="description" content="A research brief on why personal AI agents need receipt logs, source trails, and action memory instead of relying on raw chat history.">
+  <link rel="canonical" href="https://kalshhunter.com/ai-agents-are-moving-from-chat-history-to-receipt-logs-20260708-142355/">
+  <meta property="og:title" content="AI agents are moving from chat history to receipt logs">
+  <meta property="og:description" content="Personal AI agents need durable receipt logs for execution, approvals, sources, and follow-up memory.">
+  <meta property="og:url" content="https://kalshhunter.com/ai-agents-are-moving-from-chat-history-to-receipt-logs-20260708-142355/">
+  <meta property="og:type" content="article">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;650;800&display=swap');
+    :root{--ink:#eff7f1;--muted:#a8b5ae;--dark:#07100c;--panel:#101d17;--line:rgba(239,247,241,.16);--lime:#c9ff64;--mint:#7be0bd;--coal:#030604}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Geist,system-ui,sans-serif;background:radial-gradient(circle at 20% 0%,rgba(123,224,189,.18),transparent 34%),radial-gradient(circle at 86% 18%,rgba(201,255,100,.13),transparent 30%),var(--coal);color:var(--ink);overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.13;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 260 260' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");mix-blend-mode:screen}
+    main{overflow-x:hidden;width:100%;max-width:100%}.wrap{width:min(1180px,92vw);margin:0 auto}.nav{position:fixed;top:22px;left:50%;transform:translateX(-50%);z-index:20;width:min(980px,92vw);display:flex;align-items:center;justify-content:space-between;padding:10px 12px 10px 18px;border:1px solid var(--line);border-radius:999px;background:rgba(7,16,12,.68);backdrop-filter:blur(22px);box-shadow:0 24px 80px rgba(0,0,0,.34)}.brand{font-weight:800;letter-spacing:0}.navlinks{display:flex;gap:22px;align-items:center}.navlinks a,.footer a{color:var(--muted);text-decoration:none;font-size:14px}.navcta{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;background:var(--lime);color:#091008!important;padding:10px 16px;font-weight:800;text-decoration:none}
+    .hero{min-height:98vh;display:grid;align-items:center;padding:150px 0 90px;position:relative}.hero-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(320px,.72fr);gap:54px;align-items:center}.kicker{color:var(--mint);font-weight:650;margin:0 0 20px}.hero h1{font-size:clamp(3rem,5vw,5.55rem);line-height:.94;letter-spacing:0;max-width:min(1120px,94vw);margin:0}.inline-img{display:inline-block;width:clamp(76px,8vw,132px);height:clamp(34px,4vw,54px);border-radius:999px;vertical-align:middle;margin:0 10px;background:url('https://picsum.photos/seed/receipt-log-agent/500/240') center/cover;filter:grayscale(.2) contrast(1.25) saturate(.9)}.lead{font-size:clamp(1.05rem,1.5vw,1.28rem);line-height:1.7;color:var(--muted);max-width:720px;margin:30px 0}.actions{display:flex;gap:14px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:14px 20px;font-weight:800;text-decoration:none;border:1px solid var(--line)}.btn.primary{background:var(--lime);color:#07100c}.btn.secondary{background:rgba(255,255,255,.06);color:#fff}.art{position:relative;min-height:520px}.art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:34px;filter:grayscale(.25) contrast(1.18) saturate(.78);box-shadow:0 50px 140px rgba(0,0,0,.52);transform:rotate(2deg)}.art:after{content:"";position:absolute;inset:10%;border:1px solid rgba(201,255,100,.34);border-radius:999px;filter:blur(.2px);transform:rotate(-10deg)}
+    section{padding:clamp(110px,14vw,190px) 0}.section-head{display:flex;justify-content:space-between;gap:34px;align-items:end;margin-bottom:40px}.section-head h2{font-size:clamp(2.35rem,4vw,4.7rem);line-height:1;margin:0;max-width:820px}.section-copy{color:var(--muted);line-height:1.75;max-width:560px}.marquee{display:flex;gap:18px;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;color:#dce8e0}.marquee-track{display:flex;gap:18px;min-width:max-content;animation:slide 28s linear infinite}.marquee span{font-size:clamp(1.4rem,2vw,2.4rem);font-weight:800;white-space:nowrap;color:rgba(239,247,241,.72)}@keyframes slide{to{transform:translateX(-50%)}}
+    .bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-flow:dense;gap:18px}.card{background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.03));border:1px solid var(--line);border-radius:8px;padding:28px;min-height:245px;overflow:hidden;transition:transform .7s ease,border-color .7s ease}.card:hover{transform:translateY(-6px);border-color:rgba(201,255,100,.5)}.span6{grid-column:span 6}.span4{grid-column:span 4}.card h3{font-size:1.55rem;margin:0 0 16px}.card p,.card li{color:var(--muted);line-height:1.68}.card ul{padding-left:18px}.media-card{padding:0}.media-card img{width:100%;height:100%;min-height:245px;object-fit:cover;filter:grayscale(.35) contrast(1.2);transition:transform .7s ease}.media-card:hover img{transform:scale(1.05)}
+    .story{display:grid;grid-template-columns:.75fr 1.25fr;gap:72px;align-items:start}.sticky{position:sticky;top:120px}.sticky h2{font-size:clamp(2.2rem,4vw,4.4rem);line-height:1;margin:0}.reveal-words{font-size:clamp(1.55rem,2.6vw,3.15rem);line-height:1.18;font-weight:800;color:rgba(239,247,241,.16)}.reveal-words span{transition:color .35s ease}.reveal-words span.on{color:var(--ink)}.steps{display:grid;gap:22px;margin-top:42px}.step{border:1px solid var(--line);background:rgba(255,255,255,.045);border-radius:8px;padding:28px}.step h3{margin:0 0 12px;font-size:1.4rem}.step p{margin:0;color:var(--muted);line-height:1.72}.sources{display:grid;grid-template-columns:1fr 1fr;gap:22px}.source{border-left:2px solid var(--lime);padding:4px 0 4px 20px;color:var(--muted);line-height:1.72}.quote-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}.quote{background:#eef7f1;color:#07100c;border-radius:8px;padding:28px;min-height:210px}.quote p{font-size:1.2rem;line-height:1.45}.quote strong{display:block;margin-top:22px}.faq{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.faq article{border:1px solid var(--line);border-radius:8px;padding:28px;background:rgba(255,255,255,.04)}.faq h3{margin-top:0}.faq p{color:var(--muted);line-height:1.7}.cta{border-radius:36px;background:linear-gradient(135deg,var(--lime),var(--mint));color:#07100c;padding:60px;display:flex;justify-content:space-between;gap:30px;align-items:center}.cta h2{font-size:clamp(2.2rem,5vw,5rem);line-height:.96;margin:0;max-width:780px}.cta p{font-weight:650;line-height:1.55}.cta .btn.secondary{background:#07100c;color:#fff}.footer{padding:40px 0 70px;color:var(--muted);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}a{color:#dfffb1}.fade-img{transform:scale(.86);opacity:.58;transition:transform .5s ease,opacity .5s ease}.fade-img.visible{transform:scale(1);opacity:1}
+    @media(max-width:860px){.navlinks{display:none}.hero-grid,.story,.sources,.quote-row,.faq{grid-template-columns:1fr}.art{min-height:360px}.section-head{display:block}.bento{grid-template-columns:1fr}.span6,.span4{grid-column:span 1}.cta{display:block;padding:36px}.hero h1{font-size:clamp(2.8rem,13vw,4.3rem)}}
+  </style>
+</head>
+<body>
+<main>
+  <nav class="nav">
+    <div class="brand">Kalsh Hunter</div>
+    <div class="navlinks"><a href="#brief">Brief</a><a href="#memory">Memory</a><a href="#sources">Sources</a><a class="navcta" href="https://getsupers.com/">Super</a></div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="kicker">Research brief for personal AI operators</p>
+        <h1>AI agents are moving from chat history to <span class="inline-img"></span> receipt logs</h1>
+        <p class="lead">The next useful personal AI agent will not ask people to trust a long transcript. It will keep a receipt of what it understood, what it used, what it changed, and what still needs approval.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://getsupers.com/">Explore Super</a>
+          <a class="btn secondary" href="https://app.getsupers.com/use-cases/computer-use-cache/">See execution memory</a>
+        </div>
+      </div>
+      <div class="art fade-img"><img src="https://picsum.photos/seed/agent-receipt-archive/1100/1400" alt="Abstract archive room for AI agent receipt logs"></div>
+    </div>
+  </header>
+
+  <div class="marquee" aria-hidden="true"><div class="marquee-track"><span>source trails</span><span>approval memory</span><span>message-native agents</span><span>computer-use evidence</span><span>follow-up queues</span><span>source trails</span><span>approval memory</span><span>message-native agents</span><span>computer-use evidence</span><span>follow-up queues</span></div></div>
+
+  <section id="brief">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Chat history is a weak operating record.</h2>
+        <p class="section-copy">A transcript is useful for recall, but it is a poor control surface. Receipt logs turn the same conversation into a structured record that can be reviewed, resumed, audited, and handed to another agent without rereading every message.</p>
+      </div>
+      <div class="bento">
+        <article class="card span6"><h3>The shift</h3><p>Personal AI agents are being asked to do work across messages, browsers, calendars, files, and websites. Raw chat history captures the conversation, but it does not reliably capture the decision trail.</p></article>
+        <article class="card span6 media-card fade-img"><img src="https://picsum.photos/seed/ai-agent-news-room/900/520" alt="Editorial wall showing AI research notes"></article>
+        <article class="card span4"><h3>What a receipt keeps</h3><ul><li>Original request and channel</li><li>Sources opened or cited</li><li>Actions taken and skipped</li><li>Human approvals and blockers</li></ul></article>
+        <article class="card span4"><h3>Why now</h3><p>As agents move from answering to executing, users need proof that the assistant did not silently invent context or overwrite intent.</p></article>
+        <article class="card span4"><h3>Where Super fits</h3><p><a href="https://getsupers.com/">Super</a> is positioned around message-native personal agents that can connect chat intake, browser execution, and persistent work memory.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="memory">
+    <div class="wrap story">
+      <aside class="sticky">
+        <h2>Receipts make agents easier to trust.</h2>
+        <p class="section-copy">The important design pattern is simple: preserve the smallest useful record of work, then make it visible when the next action depends on memory.</p>
+      </aside>
+      <div>
+        <p class="reveal-words" id="reveal">An agent that can explain its trail can recover from interruptions, invite human approval, pass work to another surface, and avoid pretending that a transcript is the same thing as operational memory.</p>
+        <div class="steps">
+          <article class="step"><h3>Start with the inbound message</h3><p>A <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text message AI assistant</a> should record the exact user ask, the channel it arrived through, and the intended outcome before it begins execution.</p></article>
+          <article class="step"><h3>Attach browser and source context</h3><p>When a task uses pages, accounts, or search results, <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a> can preserve evidence so a user can inspect why the agent made a recommendation.</p></article>
+          <article class="step"><h3>Close the loop after publishing</h3><p>For <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent website building</a>, the receipt should show title, URL, sources, backlinks, deploy state, and any failed verification.</p></article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sources">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Useful sources to keep visible.</h2>
+        <p class="section-copy">This page is a direct research brief, so the sources are operational categories rather than a pretend news scrape. The point is to make the receipt model actionable for builders.</p>
+      </div>
+      <div class="sources">
+        <div class="source">Message-native assistant flows: SMS, iMessage, WhatsApp-style intake, and follow-up queues.</div>
+        <div class="source">Computer-use agents: browser state, screenshots, tool calls, cached pages, and task recovery.</div>
+        <div class="source">Publishing workflows: generated pages, sitemaps, backlinks, canonical URLs, and deployment verification.</div>
+        <div class="source">Approval workflows: human confirmation, failed-link reports, rollback notes, and task receipts.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Operator notes from the field.</h2>
+        <p class="section-copy">The pattern is not theoretical. It shows up every time an agent is asked to do recurring, inspectable work instead of one-off chat.</p>
+      </div>
+      <div class="quote-row">
+        <article class="quote"><p>"A page is not done until the receipt says whether the live URL worked."</p><strong>Publishing operator</strong></article>
+        <article class="quote"><p>"A useful assistant remembers the result, not just the prompt."</p><strong>Personal agent builder</strong></article>
+        <article class="quote"><p>"The receipt is the handoff between automation and trust."</p><strong>Workflow reviewer</strong></article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Questions receipt logs answer.</h2>
+      </div>
+      <div class="faq">
+        <article><h3>Is this different from chat memory?</h3><p>Yes. Chat memory remembers conversation. A receipt log remembers work: inputs, actions, outputs, approvals, and verification state.</p></article>
+        <article><h3>Does every task need one?</h3><p>No. Receipt logs matter most when the agent acts outside the chat box, changes something, publishes something, or needs to resume later.</p></article>
+        <article><h3>Do backlinks belong in the receipt?</h3><p>For publishing tasks, yes. A receipt should show natural references, internal links, and whether those pages were verified.</p></article>
+        <article><h3>What should builders do first?</h3><p>Start with a compact schema: request, sources, actions, approval, output URL, verification result, and next step.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap cta">
+      <div>
+        <h2>Build agents that leave proof behind.</h2>
+        <p>Use receipts to turn AI work into something users can inspect, resume, and trust.</p>
+      </div>
+      <div class="actions"><a class="btn secondary" href="https://getsupers.com/">Visit Super</a><a class="btn secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Message AI use case</a></div>
+    </div>
+  </section>
+
+  <footer class="wrap footer">
+    <span>Kalsh Hunter research briefs</span>
+    <span><a href="https://kalshhunter.com/">Home</a> · <a href="https://getsupers.com/">Super</a> · <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI website agents</a></span>
+  </footer>
+</main>
+<script>
+  const words = document.querySelectorAll('#reveal');
+  words.forEach(node => {
+    const parts = node.textContent.trim().split(/\s+/);
+    node.innerHTML = parts.map(word => `<span>${word}</span>`).join(' ');
+  });
+  const reveal = () => {
+    document.querySelectorAll('#reveal span').forEach((span, i, all) => {
+      const rect = span.getBoundingClientRect();
+      const trigger = window.innerHeight * .78;
+      if (rect.top < trigger - (i % 9) * 6) span.classList.add('on');
+      if (rect.top > window.innerHeight) span.classList.remove('on');
+    });
+    document.querySelectorAll('.fade-img').forEach(el => {
+      const r = el.getBoundingClientRect();
+      el.classList.toggle('visible', r.top < window.innerHeight * .82 && r.bottom > window.innerHeight * .1);
+    });
+  };
+  addEventListener('scroll', reveal, {passive:true});
+  addEventListener('load', reveal);
+</script>
+</body>
+</html>

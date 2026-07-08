@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [AI agents are moving from chat history to receipt logs](ai-agents-are-moving-from-chat-history-to-receipt-logs-20260708-142355/): Research and news analysis
 - [How to turn chat history into AI receipt logs](how-to-turn-chat-history-into-ai-receipt-logs-20260708-141355/): Use case
 - [AI receipt logs vs chat history for personal agents](ai-receipt-logs-vs-chat-history-for-personal-agents-20260708-140825/): Competitor comparison
 - [AI receipt log software for personal agents](ai-receipt-log-software-for-personal-agents-20260708-140255/): Niche research landing page
