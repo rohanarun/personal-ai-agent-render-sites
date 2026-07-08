@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [AI receipt logs are becoming the trust layer for personal agents](ai-receipt-logs-are-becoming-the-trust-layer-for-personal-agents-20260708-135755/): Research and news analysis
 - [How to turn AI receipts into an approval queue](how-to-turn-ai-receipts-into-an-approval-queue-20260708-135255/): Use case
 - [Receipt layer software vs AI task managers](receipt-layer-software-vs-ai-task-managers-20260708-134755/): Competitor comparison
 - [Personal AI agent receipt layer software](personal-ai-agent-receipt-layer-software-20260708-134254/): Niche research landing page
