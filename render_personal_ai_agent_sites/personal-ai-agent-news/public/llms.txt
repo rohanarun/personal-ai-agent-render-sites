@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Handoff Logs vs AI Agent Audit Logs](handoff-logs-vs-ai-agent-audit-logs-20260708-234332/): Competitor comparison
 - [Personal AI Agent Handoff Log Software](personal-ai-agent-handoff-log-software-20260708-233334/): Niche research landing page
 - [Personal AI Agents Need Handoff Logs](personal-ai-agents-need-handoff-logs-20260708-232826/): Research and news analysis
 - [How to Write Boundary Briefs for Personal AI Agents](how-to-write-boundary-briefs-for-personal-ai-agents-20260708-232326/): Use case

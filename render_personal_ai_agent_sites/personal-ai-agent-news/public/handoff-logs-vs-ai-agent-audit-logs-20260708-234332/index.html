@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Handoff Logs vs AI Agent Audit Logs</title>
+  <meta name="description" content="A practical comparison of handoff logs and audit logs for personal AI agents that work across text, browser, calendar, and public artifact workflows." />
+  <link rel="canonical" href="https://kalshhunter.com/handoff-logs-vs-ai-agent-audit-logs-20260708-234332/" />
+  <meta property="og:title" content="Handoff Logs vs AI Agent Audit Logs" />
+  <meta property="og:description" content="Audit logs prove what happened. Handoff logs help users resume what still needs judgment." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://kalshhunter.com/handoff-logs-vs-ai-agent-audit-logs-20260708-234332/" />
+  <style>
+    :root {
+      --bg: #0a0f13;
+      --ink: #f8f1e7;
+      --muted: rgba(248,241,231,.72);
+      --soft: rgba(248,241,231,.48);
+      --line: rgba(248,241,231,.16);
+      --panel: rgba(18,25,31,.78);
+      --mint: #bdf5cd;
+      --gold: #efc66d;
+      --blue: #9dcaff;
+      --rose: #ff9786;
+      --font: "Cabinet Grotesk", "Outfit", "Geist", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: var(--font);
+      background:
+        radial-gradient(circle at 18% 10%, rgba(189,245,205,.18), transparent 34rem),
+        radial-gradient(circle at 88% 18%, rgba(157,202,255,.14), transparent 32rem),
+        linear-gradient(180deg, #0a0f13 0%, #11181e 48%, #0a0f13 100%);
+      overflow-x: hidden;
+    }
+    body:before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      opacity: .15;
+      pointer-events: none;
+      mix-blend-mode: soft-light;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+    }
+    main { width: 100%; max-width: 100%; overflow-x: hidden; }
+    a { color: inherit; }
+    .nav {
+      position: fixed;
+      z-index: 30;
+      top: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1080px, calc(100vw - 32px));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px 12px 20px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(10,15,19,.7);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 18px 80px rgba(0,0,0,.31);
+    }
+    .brand { text-decoration: none; font-weight: 900; letter-spacing: 0; }
+    .nav-links { display: flex; align-items: center; gap: 8px; }
+    .nav-links a { color: var(--muted); text-decoration: none; padding: 9px 12px; border-radius: 999px; font-size: .9rem; }
+    .nav-links a:hover { color: var(--ink); background: rgba(248,241,231,.08); }
+    .nav-links .nav-cta { color: #06110b; background: var(--mint); font-weight: 900; }
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      align-items: center;
+      position: relative;
+      padding: 150px 20px 104px;
+      isolation: isolate;
+    }
+    .hero:after {
+      content: "";
+      position: absolute;
+      right: -4vw;
+      bottom: 5vh;
+      width: min(620px, 56vw);
+      height: min(720px, 68vh);
+      z-index: -1;
+      border-radius: 8px;
+      background:
+        linear-gradient(180deg, rgba(10,15,19,.02), rgba(10,15,19,.56)),
+        url("https://picsum.photos/seed/handoff-audit-comparison/1200/1500") center/cover;
+      filter: grayscale(.27) contrast(1.2) saturate(.74);
+      box-shadow: 0 50px 150px rgba(0,0,0,.48), inset 0 0 0 1px rgba(248,241,231,.14);
+      opacity: .78;
+    }
+    .hero-inner { width: min(1180px, 94vw); margin: 0 auto; }
+    .hero-copy { width: min(760px, 92vw); }
+    h1 {
+      max-width: min(1080px, 94vw);
+      margin: 0;
+      font-size: clamp(2.65rem, 4.65vw, 5.15rem);
+      line-height: .96;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .inline-img {
+      display: inline-block;
+      width: clamp(74px, 8vw, 128px);
+      height: clamp(32px, 3.8vw, 52px);
+      margin: 0 .16em;
+      border-radius: 999px;
+      vertical-align: middle;
+      background: url("https://picsum.photos/seed/audit-handoff-strip/600/320") center/cover;
+      box-shadow: inset 0 0 0 1px rgba(248,241,231,.2), 0 16px 62px rgba(0,0,0,.35);
+      filter: grayscale(.18) contrast(1.22);
+    }
+    .hero p { margin: 28px 0 0; color: var(--muted); font-size: clamp(1.05rem, 1.55vw, 1.32rem); line-height: 1.62; max-width: 690px; }
+    .actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 34px; }
+    .button {
+      min-height: 48px;
+      padding: 0 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      text-decoration: none;
+      border: 1px solid var(--line);
+      font-weight: 900;
+    }
+    .button.primary { color: #06110b; background: var(--mint); border-color: transparent; }
+    .button.secondary { color: var(--ink); background: rgba(248,241,231,.08); }
+    section { padding: 148px 20px; }
+    .wrap { width: min(1160px, 94vw); margin: 0 auto; }
+    .section-head { display: grid; grid-template-columns: 1.08fr .92fr; gap: 44px; align-items: end; margin-bottom: 42px; }
+    h2 { margin: 0; font-size: clamp(2.15rem, 4vw, 4.75rem); line-height: .99; letter-spacing: 0; text-wrap: balance; }
+    .lead { margin: 0; color: var(--muted); line-height: 1.72; font-size: 1.08rem; }
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-flow: dense;
+      gap: 16px;
+    }
+    .card {
+      min-height: 260px;
+      position: relative;
+      overflow: hidden;
+      padding: 28px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      box-shadow: 0 24px 90px rgba(0,0,0,.24);
+    }
+    .card h3 { margin: 0 0 14px; font-size: clamp(1.32rem, 2vw, 2rem); line-height: 1.08; letter-spacing: 0; }
+    .card p, .card li { color: var(--muted); line-height: 1.64; font-size: 1rem; }
+    .card ul { margin: 18px 0 0; padding-left: 20px; }
+    .span-7 { grid-column: span 7; }
+    .span-6 { grid-column: span 6; }
+    .span-5 { grid-column: span 5; }
+    .span-4 { grid-column: span 4; }
+    .media { padding: 0; }
+    .media img { width: 100%; height: 100%; min-height: 330px; object-fit: cover; filter: grayscale(.27) contrast(1.16); transition: transform .7s ease, opacity .7s ease; }
+    .media:hover img, .accordion:hover img { transform: scale(1.05); }
+    .compare-table { width: 100%; border-collapse: collapse; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: rgba(248,241,231,.05); }
+    .compare-table th, .compare-table td { padding: 18px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    .compare-table th { color: var(--mint); }
+    .compare-table td { color: var(--muted); line-height: 1.58; }
+    .marquee {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 20px 0;
+      color: var(--soft);
+      font-weight: 900;
+      font-size: clamp(1.45rem, 3.1vw, 3.2rem);
+    }
+    .marquee-track { display: inline-block; animation: slide 36s linear infinite; }
+    @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .stack-wrap { display: grid; grid-template-columns: .82fr 1.18fr; gap: 56px; align-items: start; }
+    .sticky { position: sticky; top: 122px; }
+    .stack { display: grid; gap: 18px; }
+    .accordion {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      overflow: hidden;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: rgba(248,241,231,.06);
+      min-height: 205px;
+    }
+    .accordion img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(.24) contrast(1.18); transition: transform .7s ease, opacity .7s ease; }
+    .accordion div { padding: 24px; }
+    .accordion h3 { margin: 0 0 10px; font-size: 1.36rem; }
+    .accordion p { margin: 0; color: var(--muted); line-height: 1.64; }
+    .sources { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .source-card, details { border: 1px solid var(--line); border-radius: 8px; background: rgba(248,241,231,.06); padding: 22px; }
+    .source-card h3 { margin-top: 0; }
+    .source-card p, details p { color: var(--muted); line-height: 1.66; }
+    .source-card a { color: var(--mint); font-weight: 900; }
+    .faq { display: grid; gap: 14px; }
+    summary { cursor: pointer; font-weight: 900; font-size: 1.08rem; }
+    .cta { padding: 128px 20px; border-top: 1px solid var(--line); background: radial-gradient(circle at 18% 22%, rgba(189,245,205,.15), transparent 30rem), linear-gradient(135deg, rgba(157,202,255,.12), rgba(239,198,109,.08)); }
+    .cta-box { width: min(1120px, 94vw); margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 34px; align-items: center; }
+    footer { padding: 38px 20px 70px; color: var(--soft); }
+    footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    footer a { color: var(--muted); text-decoration: none; margin-left: 16px; }
+    @media (max-width: 860px) {
+      .nav { border-radius: 22px; }
+      .nav-links { display: none; }
+      .hero:after { width: 84vw; height: 40vh; right: -18vw; opacity: .35; }
+      .section-head, .stack-wrap, .cta-box { grid-template-columns: 1fr; }
+      .bento { grid-template-columns: 1fr; }
+      .span-4, .span-5, .span-6, .span-7 { grid-column: span 1; }
+      .sources { grid-template-columns: 1fr; }
+      .accordion { grid-template-columns: 1fr; }
+      section { padding: 108px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="Primary navigation">
+    <a class="brand" href="/">Kalsh Hunter</a>
+    <div class="nav-links">
+      <a href="#compare">Compare</a>
+      <a href="#use">Use Cases</a>
+      <a href="#sources">Sources</a>
+      <a class="nav-cta" href="https://getsupers.com/">Explore Super</a>
+    </div>
+  </nav>
+  <main>
+    <header class="hero">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <h1>Handoff logs <span class="inline-img" aria-hidden="true"></span> vs AI agent audit logs</h1>
+          <p>Audit logs help teams prove what happened after the fact. Handoff logs help personal AI agents pause, transfer, and resume work while the task is still alive.</p>
+          <div class="actions">
+            <a class="button primary" href="https://getsupers.com/">Build with Super</a>
+            <a class="button secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">See text approvals</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="compare">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>One is forensic. The other is operational.</h2>
+          <p class="lead">Personal AI agents need both surfaces. Audit logs create accountability for completed actions. Handoff logs create continuity for work that is paused, escalated, delegated, or resumed by a human later.</p>
+        </div>
+        <div class="bento">
+          <article class="card span-7">
+            <h3>Where audit logs win</h3>
+            <p>Audit logs are strongest when the goal is proof: who approved a step, which tool was called, which source was used, and what final action occurred. They support compliance, debugging, dispute resolution, and retrospective review.</p>
+            <ul>
+              <li>Chronological event history.</li>
+              <li>Tool call and approval records.</li>
+              <li>Forensic evidence after something changes.</li>
+            </ul>
+          </article>
+          <article class="card media span-5">
+            <img class="scale-media" src="https://picsum.photos/seed/ai-agent-audit-log-ledger/900/1200" alt="AI agent audit log ledger interface" />
+          </article>
+          <article class="card span-4">
+            <h3>Audit logs answer the past</h3>
+            <p>They explain what happened, but they rarely tell a busy user what to do next.</p>
+          </article>
+          <article class="card span-4">
+            <h3>Handoff logs answer the present</h3>
+            <p>They summarize state, blocker, risk, evidence, and the next safe action.</p>
+          </article>
+          <article class="card span-4">
+            <h3>The best products use both</h3>
+            <p>Audit logs sit behind the workflow. Handoff logs sit at the point where a user or agent must resume.</p>
+          </article>
+          <article class="card media span-6">
+            <img class="scale-media" src="https://picsum.photos/seed/handoff-log-review-screen/1200/820" alt="Handoff log review screen for personal AI agents" />
+          </article>
+          <article class="card span-6">
+            <h3>Why Super-style workflows need handoffs</h3>
+            <p><a href="https://getsupers.com/">Super</a> is useful for agents that operate through personal channels. When a user approves a browser action from text, a compact handoff matters more than a giant audit trail. Super's <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a> pattern also makes handoffs more durable because browser context can be preserved with the task.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">audit proves · handoff resumes · audit records · handoff guides · audit proves · handoff resumes · audit records · handoff guides · </div>
+    </div>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Comparison table for buyers.</h2>
+          <p class="lead">Use this table when evaluating whether a personal AI agent platform has only observability, or whether it has a real user-facing continuation layer.</p>
+        </div>
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Decision area</th>
+              <th>Audit log</th>
+              <th>Handoff log</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Primary job</td>
+              <td>Record completed events, approvals, tool calls, source references, and final outcomes.</td>
+              <td>Explain current state, unresolved risk, missing input, and the next safe action.</td>
+            </tr>
+            <tr>
+              <td>Main reader</td>
+              <td>Operator, engineer, compliance reviewer, or support investigator.</td>
+              <td>End user, future agent run, reviewer, or another model continuing the task.</td>
+            </tr>
+            <tr>
+              <td>Best moment</td>
+              <td>After an action, dispute, incident, or review request.</td>
+              <td>During a pause, escalation, approval, or cross-channel resume moment.</td>
+            </tr>
+            <tr>
+              <td>Failure mode</td>
+              <td>Too much detail for a user who only needs to make one decision.</td>
+              <td>Too vague if it does not link back to evidence and receipts.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="use">
+      <div class="wrap stack-wrap">
+        <div class="sticky">
+          <h2>Use handoff logs at the edge of action.</h2>
+          <p class="lead">The handoff should appear where the user can make progress: approve a text, resume a browser task, review a public artifact, or ask the agent to gather more evidence.</p>
+        </div>
+        <div class="stack">
+          <article class="accordion">
+            <img class="scale-media" src="https://picsum.photos/seed/text-agent-handoff/700/900" alt="Text agent handoff review card" />
+            <div>
+              <h3>Text approvals</h3>
+              <p>Super's <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text message AI assistant</a> workflow benefits from handoff logs because the user can approve or revise from a compact summary.</p>
+            </div>
+          </article>
+          <article class="accordion">
+            <img class="scale-media" src="https://picsum.photos/seed/browser-task-handoff/700/900" alt="Browser task handoff card" />
+            <div>
+              <h3>Browser continuation</h3>
+              <p>When a form, tab, or account state matters, the handoff should point to cached evidence rather than asking the user to reconstruct the session.</p>
+            </div>
+          </article>
+          <article class="accordion">
+            <img class="scale-media" src="https://picsum.photos/seed/public-artifact-handoff/700/900" alt="Public artifact handoff card" />
+            <div>
+              <h3>Public artifact review</h3>
+              <p>Super's <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent website building</a> workflow needs a handoff before publishing so the user knows what changed and what remains risky.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Buyer checklist.</h2>
+          <p class="lead">Ask these questions before treating an audit trail as a handoff surface.</p>
+        </div>
+        <div class="bento">
+          <article class="card span-4">
+            <h3>Is there a next action?</h3>
+            <p>A handoff log should end with a clear approval, revision, defer, or continue request.</p>
+          </article>
+          <article class="card span-4">
+            <h3>Is there linked evidence?</h3>
+            <p>The handoff should reference the sources, cached browser context, or tool state needed to continue.</p>
+          </article>
+          <article class="card span-4">
+            <h3>Can a future run use it?</h3>
+            <p>The log should be readable by another agent or model without depending on hidden chat state.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="sources">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Sources and reference points.</h2>
+          <p class="lead">These references help frame the governance and oversight background for audit and handoff surfaces.</p>
+        </div>
+        <div class="sources">
+          <article class="source-card">
+            <h3>NIST AI Risk Management Framework</h3>
+            <p>Useful for governance, measurement, documentation, and managing AI risk across systems.</p>
+            <a href="https://www.nist.gov/itl/ai-risk-management-framework" rel="nofollow">Open NIST AI RMF</a>
+          </article>
+          <article class="source-card">
+            <h3>OWASP LLM Application Risks</h3>
+            <p>Relevant for excessive agency, tool misuse, prompt injection, and human oversight patterns.</p>
+            <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" rel="nofollow">Open OWASP LLM Top 10</a>
+          </article>
+          <article class="source-card">
+            <h3>Super</h3>
+            <p>Reference workflows for text approvals, browser context, public artifact generation, and visible agent action history.</p>
+            <a href="https://getsupers.com/">Open Super</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <h2>FAQ</h2>
+          <p class="lead">Common questions about comparing handoff logs and audit logs.</p>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Do handoff logs replace audit logs?</summary>
+            <p>No. Handoff logs should link back to audit evidence. They are a user-facing continuation layer, not the source of truth for every event.</p>
+          </details>
+          <details>
+            <summary>Who reads the handoff log?</summary>
+            <p>The user, a reviewer, another agent, or a future run. It should be understandable without replaying the entire workflow.</p>
+          </details>
+          <details>
+            <summary>When should an audit log be enough?</summary>
+            <p>When work is complete and the only need is retrospective proof, an audit log can be enough. When work needs continuation, a handoff log is better.</p>
+          </details>
+          <details>
+            <summary>What should the handoff include?</summary>
+            <p>State, blocker, risk, evidence, approval status, and next safe action. The shorter version should fit in a text approval flow.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="cta-box">
+        <div>
+          <h2>Do not make users read an audit trail to continue a task.</h2>
+          <p class="lead">Personal AI agents need audit logs behind the scenes and handoff logs at the moment of human review.</p>
+        </div>
+        <a class="button primary" href="https://getsupers.com/">Explore Super</a>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap">
+      <span>Kalsh Hunter personal AI agent market notes</span>
+      <span>
+        <a href="https://getsupers.com/">Super</a>
+        <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Text assistants</a>
+        <a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a>
+      </span>
+    </div>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.utils.toArray(".scale-media").forEach(function (img) {
+        gsap.fromTo(img, { scale: 0.84, opacity: 0.6 }, {
+          scale: 1,
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: { trigger: img, start: "top 88%", end: "bottom 18%", scrub: true }
+        });
+      });
+      gsap.utils.toArray(".card, .accordion").forEach(function (card, index) {
+        gsap.from(card, {
+          y: 44,
+          opacity: 0,
+          duration: .85,
+          delay: index * .025,
+          ease: "power3.out",
+          scrollTrigger: { trigger: card, start: "top 86%" }
+        });
+      });
+    }
+  </script>
+</body>
+</html>
