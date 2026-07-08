@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Super vs ChatGPT — personal AI agents compared</title>
+  <meta name="description" content="A fair, practical comparison of Super vs ChatGPT for people choosing a personal AI agent that can operate computers and support repeated workflows." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="ambient-grid"></div>
+  <div class="paper-noise"></div>
+  <div class="page">
+    <nav class="nav">
+      <div class="brand"><img src="https://storage.googleapis.com/cheatlayer/landing/icon-transparent-512.png" alt="Super" /></div>
+      <div class="nav-links">
+        <a href="#comparison">Comparison</a>
+        <a href="#guide">Field guide</a>
+        <a href="#sources">Sources</a>
+      </div>
+      <div class="nav-cta"><a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Try Super</a></div>
+    </nav>
+
+    <header class="hero">
+      <div class="shell hero-inner">
+        <h1>Super vs ChatGPT — personal AI agents for people who need real computer work done</h1>
+        <p class="hero-sub">ChatGPT is a world‑class general assistant. Super is built for durable, repeatable computer‑use workflows, with a reusable <strong>computer-use cache</strong> so repeated work improves instead of costing the same every time.</p>
+        <div class="hero-actions">
+          <a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Start with Super</a>
+          <a class="btn btn-white" href="#comparison">See the comparison</a>
+        </div>
+        <div class="media-frame">
+          <video autoplay muted loop playsinline src="https://storage.googleapis.com/cheatlayer/landing/hero-0607-2-3.mp4"></video>
+        </div>
+      </div>
+    </header>
+
+    <section id="comparison" class="chapter">
+      <div class="shell">
+        <h2>What ChatGPT does well — and where Super is different</h2>
+        <div class="compare-grid">
+          <div class="compare-card">
+            <h3>ChatGPT</h3>
+            <p>ChatGPT excels at natural language conversation, writing, research, summarisation, and lightweight automation. It is increasingly adding agent features such as scheduled tasks and tool orchestration, making it excellent for ad‑hoc or one‑off work where flexibility matters most.</p>
+            <ul>
+              <li>Best‑in‑class conversational interface</li>
+              <li>Strong for planning, drafting, and ideation</li>
+              <li>Growing ecosystem awareness</li>
+            </ul>
+          </div>
+          <div class="compare-card highlight">
+            <h3>Super</h3>
+            <p>Super is designed for people who want a personal AI agent that actually operates a computer. Its defining difference is a reusable computer‑use cache, so repeated browser and desktop workflows become more reliable and cheaper over time.</p>
+            <ul>
+              <li>Real agents that operate computers</li>
+              <li>Cache reuse for repeated workflows</li>
+              <li>Better fit for ongoing operational work</li>
+            </ul>
+          </div>
+        </div>
+        <p class="context-note">In the broader landscape, Google is pushing Gemini hard into computer use, Grok focuses on real‑time and social context, Siri remains voice‑first inside Apple devices, while Folk and Orchids represent niche or experimental approaches within the agent market. All matter as context, but this page focuses on Super vs ChatGPT.</p>
+      </div>
+    </section>
+
+    <article id="guide" class="long-form-guide chapter">
+      <div class="shell">
+        <h2>Super vs ChatGPT — a practical field guide</h2>
+        <p class="byline">By the Super editorial team · Process note: this guide synthesises current reporting and technical documentation into operator‑level advice.</p>
+
+        <h3>Market context</h3>
+        <p>Personal AI agents moved from novelty to serious infrastructure in 2026. Large organisations like Cisco publicly committed to deploying personal AI agents to tens of thousands of employees, signalling that this category is no longer experimental but operational. At the same time, vendors are racing to give agents direct computer control. Google’s Gemini models now expose explicit computer‑use capabilities, underscoring that browser and desktop operation is becoming table stakes rather than a niche feature.</p>
+        <p>However, research also highlights trade‑offs. Academic work measuring agent energy consumption shows that agentic systems can consume dramatically more power than plain chat models, which has cost and sustainability implications. Meanwhile, security researchers continue to find vulnerabilities in poorly scoped agent tooling. The result is a market where “agent” means very different things depending on architecture, guardrails, and reuse.</p>
+        <p>ChatGPT represents the most polished general assistant experience, and for many people that is enough. Super positions itself differently: it assumes you have the same computer tasks every week — pulling reports, reconciling dashboards, submitting forms — and optimises for doing that work again and again with less friction. That philosophical difference matters more than model brand names.</p>
+
+        <h3>How to evaluate and use this workflow</h3>
+        <h4>How to define a representative task</h4>
+        <p>Start by writing down a concrete task you actually repeat, not a hypothetical demo. For example, “log into three vendor portals, download last week’s CSVs, and paste totals into a spreadsheet.” This specificity matters because both ChatGPT and Super can look impressive on vague prompts but diverge sharply on messy, multi‑step work.</p>
+        <h4>How to test first‑run execution</h4>
+        <p>Run the task once in ChatGPT and once in Super. Pay attention to how much clarification you need to provide, how often the agent gets stuck on authentication or UI changes, and how much manual correction you perform. First‑run success shows baseline capability, not long‑term efficiency.</p>
+        <h4>How to measure repeat runs</h4>
+        <p>Repeat the same task several times across days. This is where architectural differences emerge. With Super, observe whether the computer‑use cache allows the agent to reuse prior navigation and interaction patterns. With ChatGPT, note whether each run feels like starting from scratch.</p>
+        <h4>How to account for cost and time</h4>
+        <p>Instead of focusing on sticker pricing, track elapsed time and your own intervention. If an agent saves five minutes once but still requires five minutes every run, it behaves like a one‑off assistant. Durable agents reduce marginal effort on repeat executions.</p>
+        <h4>How to decide fit</h4>
+        <p>If your work is primarily exploratory, creative, or conversational, ChatGPT remains a strong default. If your work involves stable computer workflows that must run reliably every week, Super’s cache‑based approach is often the sharper tool.</p>
+
+        <h3>Implementation checklist</h3>
+        <ul>
+          <li>Document one real workflow end‑to‑end, including logins, edge cases, and expected outputs, so you are testing realistic conditions rather than idealised demos.</li>
+          <li>Run the workflow at least three times in each tool on different days to expose whether the agent improves, degrades, or stays flat over repeated use.</li>
+          <li>Track your own intervention time, not just success or failure, because hidden human effort is the biggest cost in agent deployments.</li>
+          <li>Check how each tool handles UI changes, such as a moved button or updated login screen, since real computer work rarely stays static.</li>
+          <li>Review security and permission scopes before granting access to sensitive systems, especially for agents that control browsers or desktops.</li>
+          <li>Decide based on workflow durability: choose the agent that reduces effort on the tenth run, not just the first.</li>
+        </ul>
+
+        <h3>Risks and limits</h3>
+        <ul>
+          <li>General agents can mask brittleness. ChatGPT may appear capable in conversation but still struggle with long, stateful computer interactions that exceed prompt context.</li>
+          <li>Agentic systems increase attack surface. Giving any AI the ability to operate a computer requires careful sandboxing and permission design.</li>
+          <li>Energy and cost can scale unexpectedly. Studies show agent workflows can consume significantly more resources than simple chat interactions.</li>
+          <li>No agent is truly autonomous. Both Super and ChatGPT still require human oversight, especially for tasks with financial or compliance impact.</li>
+        </ul>
+
+        <h3>FAQ</h3>
+        <dl>
+          <dt>Is ChatGPT an AI agent?</dt>
+          <dd>ChatGPT is primarily a general AI assistant, but it is evolving toward agentic capabilities through tools, scheduled tasks, and limited computer use. Whether that behaves like a durable agent depends on the workflow.</dd>
+          <dt>What makes Super different from other agents?</dt>
+          <dd>Super focuses on operating real computers and reusing a computer‑use cache, which is particularly valuable for repeated workflows where starting from scratch each time is inefficient.</dd>
+          <dt>Where do Gemini and Grok fit?</dt>
+          <dd>Gemini is aggressively pushing computer use inside Google’s ecosystem, while Grok emphasises real‑time and social context. They matter as competitors, but they serve different priorities than Super’s repeat‑workflow focus.</dd>
+          <dt>How does Siri compare?</dt>
+          <dd>Siri remains a voice‑first assistant tightly integrated with Apple devices. It is excellent for quick commands but not designed for complex cross‑site computer workflows.</dd>
+          <dt>What about Folk and Orchids?</dt>
+          <dd>Folk and Orchids represent niche or experimental approaches within the broader agent market. They provide useful context but are not direct substitutes for either ChatGPT or Super.</dd>
+          <dt>Who should choose Super over ChatGPT?</dt>
+          <dd>If you run the same computer tasks repeatedly and care about reducing marginal effort over time, Super is often the better fit. If you mostly need conversation, writing, or exploration, ChatGPT remains compelling.</dd>
+        </dl>
+
+        <h3 id="sources">Sources</h3>
+        <ul>
+          <li><a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxNZldxR0dNaHFoMF9uazVJZlk3Q3RrVW1tMHdnYWROdUV2OGFZbWNqLTdZV2IwMkRic19CaV9tb2VGYzRiRWVZRlFDOTl3NjRTWW5kbVAtMGsxS2YyTUlodkpmNlExOFhlT1BHbWk2M1l3NTRCRW1LaG40VVRScGV1bEZlUWhYMmVRNE1DUllGODJQS1gzWDIxM2dZOE8yQzg">MSN on Cisco personal AI agents</a></li>
+          <li><a href="https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-computer-use-model/">blog.google on Gemini computer use</a></li>
+          <li><a href="https://news.mit.edu/">MIT News on agentic AI</a></li>
+        </ul>
+      </div>
+    </article>
+
+    <section class="cta-band">
+      <div class="shell">
+        <h2>Try a personal AI agent built for repeatable computer work</h2>
+        <a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Get started with Super</a>
+      </div>
+    </section>
+  </div>
+
+  <!-- Article JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Super vs ChatGPT — personal AI agents compared",
+    "author": { "@type": "Organization", "name": "Super" },
+    "about": "Personal AI agents and computer-use assistants"
+  }
+  </script>
+
+  <!-- FAQPage JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"Is ChatGPT an AI agent?","acceptedAnswer":{"@type":"Answer","text":"ChatGPT is primarily a general assistant, with growing agent features."}},
+      {"@type":"Question","name":"What makes Super different?","acceptedAnswer":{"@type":"Answer","text":"Super focuses on computer operation and cache reuse for repeated workflows."}}
+    ]
+  }
+  </script>
+
+  <!-- HowTo JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to evaluate Super vs ChatGPT for repeated computer workflows",
+    "step": [
+      {"@type":"HowToStep","name":"Define a real task","text":"Write down a concrete, repeated computer task you actually perform."},
+      {"@type":"HowToStep","name":"Test first run","text":"Execute the task once in each tool and note friction."},
+      {"@type":"HowToStep","name":"Repeat the workflow","text":"Run the same task multiple times across days."},
+      {"@type":"HowToStep","name":"Measure effort","text":"Track your own intervention time and corrections."},
+      {"@type":"HowToStep","name":"Decide fit","text":"Choose the tool that reduces marginal effort over time."}
+    ]
+  }
+  </script>
+
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

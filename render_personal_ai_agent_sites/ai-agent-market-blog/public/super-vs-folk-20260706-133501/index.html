@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Super vs Folk — personal AI agents compared</title>
+<link rel="stylesheet" href="./styles.css" />
+<script src="https://unpkg.com/gsap@3/dist/gsap.min.js" defer></script>
+<script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+</head>
+<body>
+<div class="ambient-grid"></div>
+<div class="paper-noise"></div>
+<div class="page">
+  <nav class="nav shell">
+    <div class="brand"><img src="https://storage.googleapis.com/cheatlayer/landing/icon-transparent-512.png" alt="Super" /></div>
+    <div class="nav-links">
+      <a href="#comparison">Comparison</a>
+      <a href="#buyer-guide">Buyer guide</a>
+      <a href="#field-guide">Field guide</a>
+    </div>
+    <a class="btn btn-black nav-cta" href="https://app.getsupers.com/general?login=1&open_login=1">Try Super</a>
+  </nav>
+
+  <header class="hero">
+    <div class="shell hero-inner">
+      <h1>Super vs Folk — two paths to personal AI agents, one built for real computer work</h1>
+      <p class="hero-sub">Folk sits within the broader automation landscape. Super focuses on agents that actually operate computers and reuse a computer-use cache so repeated workflows improve instead of resetting every run.</p>
+      <div class="hero-actions">
+        <a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Start with Super</a>
+        <a class="btn btn-white" href="#buyer-guide">Read the buyer guide</a>
+      </div>
+      <div class="media-frame">
+        <video src="https://storage.googleapis.com/cheatlayer/landing/hero-0607-2-3.mp4" autoplay muted loop playsinline></video>
+      </div>
+    </div>
+  </header>
+
+  <section id="comparison" class="chapter">
+    <div class="shell">
+      <h2>At a glance: what Folk is for — and where Super goes further</h2>
+      <div class="compare-grid">
+        <div class="compare-card">
+          <h3>Folk</h3>
+          <p>Folk represents a category of niche automation and assistant tools. Products in this space often focus on structured tasks, lightweight orchestration, or specific domains. They can be effective when workflows are short-lived, low risk, or primarily text and data driven.</p>
+        </div>
+        <div class="compare-card highlight">
+          <h3>Super</h3>
+          <p>Super is designed for durable computer-use workflows. Its defining advantage is the ability to reuse a computer-use cache, so agents learn from previous runs and reduce cost and friction when the same work repeats across days or weeks.</p>
+        </div>
+      </div>
+      <p class="context-note">Across the wider landscape, ChatGPT, Gemini, Grok, Siri, and Orchids all approach agents differently — from conversational assistants to experimental automation. Super is intentionally narrower: fewer promises, more execution on real interfaces.</p>
+    </div>
+  </section>
+
+  <section id="buyer-guide" class="chapter">
+    <div class="shell">
+      <h2>Buyer guide</h2>
+      <div class="bento">
+        <div class="bento-item"><strong>Choose Folk if</strong> your automation needs are occasional, bounded, and do not require persistent interaction with real software interfaces.</div>
+        <div class="bento-item"><strong>Choose Super if</strong> you run the same browser or desktop workflows repeatedly and care about reliability, auditability, and marginal cost over time.</div>
+        <div class="bento-item"><strong>Decision matrix</strong><br/>Repeated work: Super wins. One-off tasks: Folk may suffice. Security control: Super emphasizes scoped execution.</div>
+      </div>
+    </div>
+  </section>
+
+  <article id="field-guide" class="long-form-guide shell">
+    <p class="byline">Field guide for operators and builders • Compiled by the Super editorial team using public reporting and engineering research</p>
+
+    <h2>Market context</h2>
+    <p>Personal AI agents moved from novelty to operational reality in 2026. Large organizations are now deploying agents at scale, as seen when Cisco rolled out personal AI agents to tens of thousands of employees, signaling that agents are no longer experimental toys but productivity infrastructure. At the same time, platform providers accelerated computer-use capabilities. Google’s Gemini 3.5 Flash added explicit computer control, underscoring that agents must interact with real interfaces, not just APIs, to deliver value.</p>
+    <p>This shift brings tension. Researchers and security teams warn that once agents can operate browsers and desktops, mistakes and attacks scale faster. Coverage of early exploits against computer-use agents shows how brittle systems can be when they improvise tool use without guardrails. MIT researchers describe today’s agentic AI as powerful but fragile, with system design often mattering more than model intelligence.</p>
+    <p>Within this context, Folk sits among many tools exploring automation and assistants. Super’s bet is narrower but clearer: focus on computer-use agents that remember past executions. By reusing a computer-use cache, Super treats repeated workflows as assets, not fresh costs. This philosophy directly addresses the reliability and economics concerns raised across the market.</p>
+
+    <h2>How to evaluate and use this workflow</h2>
+    <h3>How to map your real workflow</h3>
+    <p>Start by documenting an actual task you perform weekly, such as reconciling reports across two web dashboards. Capture every click, login, and copy-paste. This level of detail matters because computer-use agents succeed or fail on interface realism, not abstract descriptions.</p>
+    <h3>How to test Folk-style automation</h3>
+    <p>Run the workflow once using a lightweight assistant or automation tool similar to Folk. Measure setup time, brittleness when the UI changes, and whether you would trust the result without manual review. This establishes a baseline for one-off efficiency.</p>
+    <h3>How to test Super on the same task</h3>
+    <p>Execute the identical workflow in Super. Pay attention to how the agent observes the screen, navigates real pages, and completes the task end to end. Repeat the run later and note whether the cached execution reduces friction or errors.</p>
+    <h3>How to evaluate repetition economics</h3>
+    <p>Compare the second and third runs. With Super, the computer-use cache should make repeated executions smoother and cheaper in practice. This is where the strategic difference appears for ongoing operations.</p>
+    <h3>How to decide deployment scope</h3>
+    <p>Decide which workflows deserve persistent agents. Not everything should be automated. Choose tasks where repetition, time savings, and risk justify a more durable agent.</p>
+
+    <h2>Implementation checklist</h2>
+    <ul>
+      <li>Define one concrete, repeated workflow with clear success criteria, so you can objectively judge whether an agent actually saves time and reduces errors.</li>
+      <li>Ensure credentials and permissions are scoped tightly, especially for computer-use agents that interact with production systems and sensitive data.</li>
+      <li>Run at least three repetitions of the same task to observe whether learning or caching effects meaningfully improve outcomes.</li>
+      <li>Document failure modes, including UI changes or unexpected prompts, to understand operational risk before scaling usage.</li>
+      <li>Compare human review time required after each run, since hidden review costs often erase headline automation gains.</li>
+      <li>Plan an exit strategy so that if an agent underperforms, you can revert to manual or alternative tooling without disruption.</li>
+    </ul>
+
+    <h2>Risks and limits</h2>
+    <p>Computer-use agents expand the attack surface. As reported by security researchers, once agents can control browsers, attackers look for ways to exploit them. Strong sandboxing and scoped permissions are essential, regardless of vendor.</p>
+    <p>UI fragility remains a challenge. Even with caching, significant interface redesigns can break workflows. Agents are more resilient than scripts, but not immune to change.</p>
+    <p>Over-automation can hide errors. When agents run reliably, teams may stop paying attention. Periodic audits are necessary to ensure outputs remain correct and compliant.</p>
+    <p>Not all tasks benefit from caching. One-off creative or analytical work may see little advantage from a computer-use cache, making lighter tools more appropriate.</p>
+
+    <h2>FAQ</h2>
+    <p><strong>Is Folk bad?</strong><br/>No. Folk-style tools can be useful for narrow or occasional automation. The question is whether your work repeats often enough to justify a more durable approach.</p>
+    <p><strong>Why does computer use matter?</strong><br/>APIs cover only a fraction of real work. Computer-use agents interact with the same interfaces humans use, unlocking workflows that were previously manual.</p>
+    <p><strong>What is a computer-use cache?</strong><br/>It is a record of prior executions that allows an agent to reuse learned behaviors, reducing repeated setup and cost for the same task.</p>
+    <p><strong>How does this compare to ChatGPT or Gemini?</strong><br/>ChatGPT and Gemini are broad assistants evolving toward agents. Super is more focused, optimizing specifically for repeated computer-use workflows.</p>
+    <p><strong>Where do Siri and Grok fit?</strong><br/>Siri remains voice-first and device-centric. Grok emphasizes real-time and social context. Neither is optimized for durable desktop workflows.</p>
+    <p><strong>What about Orchids?</strong><br/>Orchids represents experimental approaches in the agent market. These projects are valuable for exploration but often lack production durability.</p>
+
+    <h2>Sources</h2>
+    <ul>
+      <li><a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxNZldxR0dNaHFoMF9uazVJZlk3Q3RrVW1tMHdnYWROdUV2OGFZbWNqLTdZV2IwMkRic19CaV9tb2VGYzRiRWVZRlFDOTl3NjRTWW5kbVAtMGsxS2YyTUlodkpmNlExOFhlT1BHbWk2M1l3NTRCRW1LaG40VVRScGV1bEZlUWhYMmVRNE1DUllGODJQS1gzWDIxM2dZOE8yQzg?oc=5">MSN — Cisco personal AI agents</a></li>
+      <li><a href="https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-computer-use-model/">blog.google — Gemini computer use</a></li>
+      <li><a href="https://news.mit.edu/2025/qa-what-agentic-ai-today-and-what-do-we-want-it-be">MIT News — Agentic AI Q&A</a></li>
+      <li><a href="https://www.anthropic.com/engineering/building-effective-agents">Anthropic — Building effective agents</a></li>
+    </ul>
+  </article>
+
+  <section class="cta-band">
+    <div class="shell">
+      <h2>Ready to try durable computer-use agents?</h2>
+      <a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Get started with Super</a>
+    </div>
+  </section>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to evaluate Super vs Folk for repeated computer-use workflows",
+  "description": "A step-by-step evaluation plan for choosing between Super and Folk based on real, repeated computer-use tasks.",
+  "totalTime": "PT60M",
+  "estimatedCost": {"@type": "MonetaryAmount","currency": "USD","value": "0"},
+  "step": [
+    {"@type": "HowToStep","name": "Map the real workflow","text": "Document a concrete, repeated task including every click and login so you can test agents against real interfaces."},
+    {"@type": "HowToStep","name": "Run a baseline automation","text": "Execute the task once using a lightweight assistant similar to Folk to establish setup time and brittleness."},
+    {"@type": "HowToStep","name": "Run the task in Super","text": "Use Super to complete the same workflow end to end, observing real computer interaction."},
+    {"@type": "HowToStep","name": "Repeat and compare","text": "Re-run the workflow multiple times to see whether Super’s computer-use cache improves reliability and cost."},
+    {"@type": "HowToStep","name": "Decide deployment scope","text": "Choose which workflows merit durable agents based on repetition, risk, and review overhead."}
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question","name": "Is Folk bad?","acceptedAnswer": {"@type": "Answer","text": "No. Folk-style tools can be effective for narrow or occasional automation. The decision depends on repetition and durability needs."}},
+    {"@type": "Question","name": "Why does computer use matter?","acceptedAnswer": {"@type": "Answer","text": "Because many real workflows require interacting with the same interfaces humans use, beyond APIs."}},
+    {"@type": "Question","name": "What is a computer-use cache?","acceptedAnswer": {"@type": "Answer","text": "A mechanism that allows agents to reuse prior executions so repeated tasks improve over time."}},
+    {"@type": "Question","name": "How does Super compare to ChatGPT or Gemini?","acceptedAnswer": {"@type": "Answer","text": "ChatGPT and Gemini are broad assistants evolving toward agents. Super is optimized for repeated computer-use workflows."}},
+    {"@type": "Question","name": "Where do Siri and Grok fit?","acceptedAnswer": {"@type": "Answer","text": "Siri is voice-first and device-centric, while Grok emphasizes real-time context rather than durable automation."}},
+    {"@type": "Question","name": "What about Orchids?","acceptedAnswer": {"@type": "Answer","text": "Orchids represents experimental automation approaches that may lack production durability."}}
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem","position": 1,"name": "Home","item": "https://getsupers.com"},
+    {"@type": "ListItem","position": 2,"name": "Use cases","item": "https://getsupers.com/use-cases"},
+    {"@type": "ListItem","position": 3,"name": "Super vs Folk","item": "https://getsupers.com/super-vs-folk"}
+  ]
+}
+</script>
+
+<script src="./app.js"></script>
+</body>
+</html>

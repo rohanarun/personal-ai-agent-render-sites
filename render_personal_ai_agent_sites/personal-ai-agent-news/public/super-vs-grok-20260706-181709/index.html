@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Super vs Grok — personal AI agents compared</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js" defer></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+</head>
+<body>
+  <div class="ambient-grid"></div>
+  <div class="paper-noise"></div>
+  <div class="page">
+    <nav class="nav">
+      <div class="brand"><img src="https://storage.googleapis.com/cheatlayer/landing/icon-transparent-512.png" alt="Super" /></div>
+      <div class="nav-links">
+        <a href="#comparison">Comparison</a>
+        <a href="#buyer-guide">Buyer guide</a>
+        <a href="#field-guide">Field guide</a>
+        <a href="#sources">Sources</a>
+      </div>
+      <div class="nav-cta"><a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Try Super</a></div>
+    </nav>
+
+    <header class="hero shell">
+      <div class="hero-inner">
+        <h1>Super vs Grok: two visions of personal AI agents — one built for repeated computer work</h1>
+        <p class="hero-sub">Grok is expanding across voice, mobile, and enterprise contexts. Super focuses on durable computer‑use workflows, reusing a <strong>computer-use cache</strong> so repeated tasks improve instead of resetting.</p>
+        <div class="hero-actions">
+          <a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Start with Super</a>
+          <a class="btn btn-white" href="#buyer-guide">Read the buyer guide</a>
+        </div>
+        <div class="media-frame">
+          <video src="https://storage.googleapis.com/cheatlayer/landing/hero-0607-2-3.mp4" autoplay muted loop playsinline></video>
+        </div>
+      </div>
+    </header>
+
+    <section id="comparison" class="chapter shell">
+      <h2>Comparison snapshot</h2>
+      <div class="compare-grid">
+        <div class="compare-card">
+          <h3>Grok</h3>
+          <p>Grok, from xAI, is positioned as an opinionated, real‑time assistant. Recent news shows Grok expanding into voice agents, mobile contexts like CarPlay, and enterprise tooling. It is often evaluated alongside ChatGPT, Gemini, and Siri as a conversational and multimodal assistant.</p>
+        </div>
+        <div class="compare-card highlight">
+          <h3>Super</h3>
+          <p>Super is designed as a personal AI agent that actually operates a computer. Its defining difference is a reusable computer‑use cache, making it better and cheaper over time for repeated browser and desktop workflows.</p>
+        </div>
+        <div class="compare-card">
+          <h3>Market context</h3>
+          <p>Alongside Grok and Super, the landscape includes ChatGPT and Gemini pushing toward agents, Siri remaining voice‑first, and smaller tools like Folk and Orchids exploring niche automation. The key divide is conversation versus execution.</p>
+        </div>
+      </div>
+    </section>
+
+    <article id="field-guide" class="long-form-guide shell">
+      <p class="byline">Field guide for operators comparing Super with Grok • Updated July 2026</p>
+
+      <h2>Market context</h2>
+      <p>Personal AI agents are moving beyond chat. News coverage in 2026 shows large vendors pushing agents that can browse, click, and act across real interfaces. Google has made computer use a first‑class capability inside Gemini models, while enterprises like Cisco are rolling out agents to tens of thousands of employees. At the same time, researchers and journalists are flagging costs and risks: agentic systems consume far more electricity than simple chatbots, and security incidents demonstrate how brittle poorly scoped agents can be.</p>
+      <p>Grok sits firmly in this transition. xAI has launched a Voice Agent Builder and expanded Grok into environments like iPhone CarPlay, signaling a strategy focused on reach, personality, and real‑time context. Grok is often discussed alongside ChatGPT, Gemini, and Siri as a general assistant that is becoming more agentic. Super takes a narrower stance. Instead of being everywhere, it optimizes for people who need an AI agent to do the same computer task again and again: logging into dashboards, pulling reports, reconciling data, or updating web tools. That difference matters when reliability and cost compound over time.</p>
+
+      <h2 id="how-to-evaluate">How to evaluate and use this workflow</h2>
+      <h3>How to run a fair Super vs Grok evaluation</h3>
+      <ol>
+        <li><strong>Define a repeated computer task.</strong> Choose a workflow you personally run every week, such as downloading analytics from a web portal, copying figures into a spreadsheet, and sending a summary. The task should involve real logins, navigation, and multi‑step UI interaction so you can see how each agent behaves under realistic conditions.</li>
+        <li><strong>Test first‑run behavior.</strong> Run the task once in Grok and once in Super. Observe how each system interprets instructions, asks for clarification, and handles unexpected UI states like pop‑ups or loading delays. Take notes on how much manual correction you need to provide.</li>
+        <li><strong>Repeat the workflow.</strong> Run the same task again on a different day. This is where architectural differences appear. With Super, the computer‑use cache should allow the agent to reuse prior interactions. With Grok or other general assistants, the workflow typically restarts from scratch.</li>
+        <li><strong>Measure operational friction.</strong> Count how many prompts, retries, or manual interventions are required. Even without exact pricing, time and attention are real costs. Repeated friction compounds quickly in ongoing operational work.</li>
+        <li><strong>Decide based on durability.</strong> If your primary need is conversational help, exploration, or voice interaction, Grok may fit. If you want an agent that improves at the same computer task over time, Super is usually the sharper choice.</li>
+      </ol>
+
+      <h2>Buyer guide</h2>
+      <p>This Buyer guide is intentionally practical. Grok is best understood as a broad assistant with growing agent features, similar in spirit to ChatGPT and Gemini. Super is best understood as an operator: less about personality, more about getting the same computer work done reliably. If you care about reuse, predictability, and lowering repeated execution cost, Super aligns more closely with that goal.</p>
+
+      <h2>Decision matrix</h2>
+      <p>Ask yourself three questions. Do you need voice and personality everywhere? Do you mostly run one‑off queries? Or do you run the same workflow weekly? The more your answer leans toward repetition and computer control, the more Super stands out. Folk and Orchids can be useful niche tools, and Siri remains embedded on Apple devices, but neither is optimized for durable computer‑use agents.</p>
+
+      <h2>Implementation checklist</h2>
+      <ul>
+        <li><strong>Document the workflow.</strong> Write down every click, field, and page your task requires. This clarity helps you instruct any agent and exposes hidden assumptions that often cause failures in real computer use.</li>
+        <li><strong>Scope permissions tightly.</strong> Only grant access to the sites and accounts required. This reduces security risk and makes failures easier to diagnose when an agent behaves unexpectedly.</li>
+        <li><strong>Run controlled repeats.</strong> Schedule the same task multiple times rather than changing variables every run. Consistency is essential for evaluating whether cache reuse or learning is actually happening.</li>
+        <li><strong>Log interventions.</strong> Keep a simple log of when you had to step in. Over time, this becomes a clear signal of which system is converging toward reliability.</li>
+        <li><strong>Watch resource use.</strong> Agentic systems are heavier than chatbots. Be mindful of time, energy, and attention costs, especially as workflows scale.</li>
+        <li><strong>Revisit the decision quarterly.</strong> This market moves quickly. Re‑evaluate as Grok, Gemini, ChatGPT, and Super evolve, using the same benchmark task for continuity.</li>
+      </ul>
+
+      <h2>Risks and limits</h2>
+      <p><strong>Energy and cost overhead.</strong> Reporting shows AI agents can consume orders of magnitude more electricity than chatbots. Even if pricing is opaque, infrastructure and environmental costs are real and should factor into long‑term planning.</p>
+      <p><strong>Security exposure.</strong> Agents that operate browsers and desktops increase attack surface. News about automated attacks and vulnerabilities in agent frameworks underscores the need for careful sandboxing and scope control.</p>
+      <p><strong>Brittleness.</strong> MIT researchers note that today’s agentic AI is powerful but fragile. Small UI changes can break workflows, especially for agents without mechanisms like cache reuse.</p>
+      <p><strong>Overgeneralization.</strong> Broad assistants like Grok, ChatGPT, and Gemini aim to do everything. That flexibility can come at the expense of depth and durability for a single repeated task.</p>
+
+      <h2>FAQ</h2>
+      <h3>Is Grok an AI agent or a chatbot?</h3>
+      <p>Grok started as a conversational assistant but is evolving toward agentic features, including voice agents and enterprise tools. In practice, most people still use it primarily for conversation and exploration rather than durable computer automation.</p>
+      <h3>How does Super differ from ChatGPT or Gemini?</h3>
+      <p>ChatGPT and Gemini are world‑class general assistants that are adding agent capabilities. Super is narrower by design, focusing on operating a computer and reusing prior work via a computer‑use cache for repeated workflows.</p>
+      <h3>Where does Siri fit in this comparison?</h3>
+      <p>Siri remains a voice‑first assistant deeply embedded in Apple’s ecosystem. It is convenient for device control but not designed as a general computer‑use agent for complex, repeatable workflows.</p>
+      <h3>What about Folk and Orchids?</h3>
+      <p>Folk and Orchids represent smaller, more experimental tools in the automation and agent market. They can be useful in niches but lack the focus on durable computer‑use workflows that defines Super.</p>
+      <h3>Is Super cheaper than Grok?</h3>
+      <p>Exact pricing varies and is not the point of this guide. The practical argument is that Super’s cache reuse can lower the effective cost of repeated work by reducing retries and manual intervention over time.</p>
+      <h3>Who should choose Super over Grok?</h3>
+      <p>If you want a personal AI agent to reliably run the same computer task every week — and improve at it — Super is usually the better fit. If you want a broad, opinionated assistant with voice and real‑time context, Grok may appeal more.</p>
+
+      <h2 id="sources">Sources</h2>
+      <ul>
+        <li><a href="https://news.google.com/rss/articles/CBMidkFVX3lxTE9aY2luM240MGR5cE1fNzlNbzB0UzJ6SUk1RHQ3SUliRmJQSE0wRDczWEV3c21nNzFzZDJWdXRLQTBZRm9LX2doNVJCUWR5SWVzcGxJX2dfMmhNT1QtbDZmZlc2Ny11SWlKWVBwc3g4TXM2RmYweHc?oc=5">finance.biggo.com</a></li>
+        <li><a href="https://news.google.com/rss/articles/CBMi8gFBVV95cUxPS3ZTMklnZmhoNlFmclA4UFVXcm5kMXctMnhTOFdJWGJweWUyRlBBenFUZVI2YVVKR3hwMFZLLUt6X1JJYzlCZXctN1ZBMWVEaXd2Sm5hc05IOWtNT3M3M3NubFRSQVhPdXItU1FmNjZUVTE4bmhFdU5IekoxdlJ3SUpIbEtQME1SdFVpbXRCTVlmMUU5UVQ1NU1BZS1Tb0otN0xpLWxCZkppTUFoYkxpV1h3dUNzbDRnd2FTR2ZlOThTcFpDODIwbTRwMm9SenMtRG8zclJ2LWJtSU9IZDZ6eGowNmd0WU9uRWQ1emlfUlFzQdIB9wFBVV95cUxPZ1FBS3BBRzlVOE56bmhEWDZpNTlSeHRiZFh5aUt4WDk1NkVCQ3FTRkpicERlMGJEREQ5UjBYSU1PNGdFSEp0ZV9xSnlNVVU0ZTVlcVg3OHF3dnVJN2hBVEFDYUs0LW1kajZnMHFiS1JqUDllaDV0VUd0dUh2MU05UmZVbV93VjlKdDlndm5IRS1ZcGotckxDYlFLZzRXUFlueTdrOUdQTlFVX09xSUJKX3FqTmtFQjVZZ2xING1GczE3OU80VklkR3c3bVR0SFZuU1ctY2tlLXcyOWpDMTNWTk9ZV0JjSUNwQ2FFVHpfSlJUMGhTNTM0">Moneycontrol.com</a></li>
+        <li><a href="https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-computer-use-model/">blog.google</a></li>
+        <li><a href="https://news.mit.edu/2025/qa-what-agentic-ai-today-and-what-do-we-want-it-be">MIT News</a></li>
+      </ul>
+    </article>
+
+    <section class="cta-band shell">
+      <h2>Try Super for real computer work</h2>
+      <p>Personal AI agents are no longer just chat. If your work depends on the same computer task running correctly every time, Super is built for that reality.</p>
+      <a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Get started</a>
+    </section>
+  </div>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to evaluate Super vs Grok for repeated computer-use workflows",
+    "description": "A step-by-step process for comparing Super and Grok on real, repeated computer tasks.",
+    "totalTime": "PT45M",
+    "step": [
+      {"@type": "HowToStep", "name": "Choose a repeated task", "text": "Select a real computer workflow you run weekly, involving logins and multi-step UI actions, so the comparison reflects operational reality."},
+      {"@type": "HowToStep", "name": "Run the first execution", "text": "Execute the workflow once in Grok and once in Super, noting clarification prompts, failures, and required manual corrections."},
+      {"@type": "HowToStep", "name": "Repeat the workflow", "text": "Run the same task again later to see whether prior interactions are reused or if the agent restarts from scratch."},
+      {"@type": "HowToStep", "name": "Measure friction", "text": "Count retries, prompts, and time spent supervising each run, since these are the real costs in ongoing use."},
+      {"@type": "HowToStep", "name": "Decide on durability", "text": "Choose the system that converges toward reliability over repeats, not just the one that performs well once."}
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question", "name": "Is Grok an AI agent or a chatbot?", "acceptedAnswer": {"@type": "Answer", "text": "Grok is evolving from a chatbot into an agentic assistant, but most usage remains conversational."}},
+      {"@type": "Question", "name": "How does Super differ from Grok?", "acceptedAnswer": {"@type": "Answer", "text": "Super focuses on durable computer-use workflows with cache reuse, while Grok emphasizes broad assistance and voice."}}
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://getsupers.com"},
+      {"@type": "ListItem", "position": 2, "name": "Use cases", "item": "https://getsupers.com/use-cases"},
+      {"@type": "ListItem", "position": 3, "name": "Super vs Grok", "item": "https://getsupers.com/super-vs-grok"}
+    ]
+  }
+  </script>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>

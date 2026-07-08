@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Personal AI Agent Market Brief</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+<div class="ambient-grid"></div>
+<div class="paper-noise"></div>
+<div class="page">
+  <nav class="nav shell">
+    <div class="brand"><img src="https://storage.googleapis.com/cheatlayer/landing/icon-transparent-512.png" alt="Super logo"></div>
+    <div class="nav-links">
+      <a href="#market">Market</a>
+      <a href="#guide">Field guide</a>
+      <a href="#sources">Sources</a>
+    </div>
+    <div class="nav-cta"><a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Try Super</a></div>
+  </nav>
+
+  <header class="hero shell">
+    <div class="hero-inner">
+      <h1>Personal AI Agent Market Brief for Buyers and Builders</h1>
+      <p class="hero-sub">A 2026 editorial briefing on personal AI agents, computer-use assistants, and why cache-aware execution now defines real-world value.</p>
+      <div class="hero-actions">
+        <a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Launch Super</a>
+        <a class="btn btn-white" href="#guide">Read the guide</a>
+      </div>
+      <div class="media-frame">
+        <video src="https://storage.googleapis.com/cheatlayer/landing/hero-0607-2-3.mp4" autoplay muted loop playsinline></video>
+      </div>
+    </div>
+  </header>
+
+  <article id="guide" class="long-form-guide shell">
+    <p class="byline">By the Super editorial team · Research synthesized July 2026 from live market reporting and primary model documentation.</p>
+
+    <h2 id="market">Market context</h2>
+    <p>
+      Personal AI agents have crossed a visible threshold in 2026. What was once framed as “AI assistants” is now splitting into two camps: conversational copilots and execution-capable agents that can actually operate software. Recent reporting shows Google pushing Gemini deeper into computer control, Apple selectively rolling out a more capable Siri to newer devices, and Grok expanding its surface area into CarPlay. At the same time, enterprises like Cisco are distributing internal AI agents to tens of thousands of workers, signaling that agentic systems are no longer experimental toys but operational infrastructure.
+    </p>
+    <p>
+      This acceleration comes with tension. Security researchers have demonstrated that computer-use agents can be manipulated through hostile inputs, while platform vendors debate how much autonomy to expose. Zuckerberg’s public comments that agent development has not yet accelerated as fast as expected underscore a core truth: reliability, cost, and repeatability matter more than demos. Buyers evaluating ChatGPT, Gemini, Grok, Siri, or niche tools like Folk and Orchids are increasingly asking the same question: can this agent do the same computer task tomorrow, faster and cheaper, without re-learning everything from scratch?
+    </p>
+    <p>
+      That question puts architectural details in focus. Systems that treat every run as a fresh improvisation incur the same cost and risk each time. Super positions itself differently by reusing a <strong>computer-use cache</strong>, allowing repeated workflows—logging into tools, navigating dashboards, exporting reports—to compound in efficiency. In a market full of general-purpose assistants, this design choice matters for builders shipping durable products and buyers funding real work.
+    </p>
+
+    <h2>How to evaluate and use this workflow</h2>
+    <h3>How to assess a personal AI agent for repeated computer work</h3>
+
+    <ol class="howto-steps">
+      <li>
+        <h4>Map one real, messy workflow</h4>
+        <p>
+          Start with a task you already perform weekly: for example, pulling metrics from a CRM, reconciling them with a spreadsheet, and emailing a summary. Avoid clean demos. The goal is to expose login flows, UI quirks, and multi-step navigation that reveal whether an agent can truly operate a computer rather than just generate text about it.
+        </p>
+      </li>
+      <li>
+        <h4>Run the workflow twice</h4>
+        <p>
+          Execute the same task on consecutive days. With many assistants—ChatGPT, Gemini, Grok, or Siri—the second run costs roughly the same as the first because the agent re-discovers the interface. Systems that reuse prior computer context begin to diverge here, reducing redundant actions and latency.
+        </p>
+      </li>
+      <li>
+        <h4>Inspect failure handling</h4>
+        <p>
+          Intentionally break something: change a password, add a modal dialog, or introduce a CAPTCHA. Observe whether the agent stalls, loops, or asks for clarification. Builders should log these moments; buyers should treat them as indicators of operational risk.
+        </p>
+      </li>
+      <li>
+        <h4>Estimate marginal cost</h4>
+        <p>
+          You do not need exact pricing to compare systems. Instead, count steps: clicks, page loads, tool calls. Agents that reuse a computer-use cache typically shrink this count over time, which correlates directly with lower marginal cost for repeated runs.
+        </p>
+      </li>
+      <li>
+        <h4>Decide where durability matters</h4>
+        <p>
+          Finally, decide whether this workflow is exploratory or operational. For ad‑hoc research, ChatGPT or Gemini may be sufficient. For recurring operational work, prioritize agents—like Super—that are designed to remember and reuse how the computer task was done before.
+        </p>
+      </li>
+    </ol>
+
+    <h2>Implementation checklist</h2>
+    <ul class="checklist">
+      <li>
+        <strong>Define scope explicitly.</strong> Document which applications, accounts, and permissions the agent may use. Clear scope reduces security exposure and makes cache reuse predictable instead of brittle.
+      </li>
+      <li>
+        <strong>Instrument repeat runs.</strong> Track time, steps, and errors across multiple executions. Without this data, teams cannot tell whether an agent is improving or merely repeating itself.
+      </li>
+      <li>
+        <strong>Separate exploration from production.</strong> Use general assistants like ChatGPT or Gemini for brainstorming, but lock production workflows into a system optimized for repetition.
+      </li>
+      <li>
+        <strong>Review UI dependencies.</strong> Note which parts of the workflow depend on unstable interfaces. Cache-aware agents still need guardrails when upstream UIs change suddenly.
+      </li>
+      <li>
+        <strong>Plan human checkpoints.</strong> Even strong agents should pause before irreversible actions. Design approval steps into the workflow rather than relying on after-the-fact audits.
+      </li>
+      <li>
+        <strong>Budget for maintenance.</strong> Personal AI agents are software systems. Allocate time to update prompts, permissions, and expectations as tools like Siri, Grok, or Gemini evolve.
+      </li>
+    </ul>
+
+    <h2>Risks and limits</h2>
+    <p>
+      <strong>Security exposure:</strong> As shown by recent research into AI-driven attacks, agents that control browsers expand the attack surface. Poorly scoped permissions or unreviewed actions can amplify small mistakes into serious incidents.
+    </p>
+    <p>
+      <strong>UI fragility:</strong> Computer-use agents depend on visual and structural cues. When vendors update interfaces, cached workflows may need adjustment, even in systems designed for reuse.
+    </p>
+    <p>
+      <strong>Over-automation:</strong> Not every task benefits from autonomy. Teams that automate without clear ROI risk spending more time supervising agents than doing the work themselves.
+    </p>
+    <p>
+      <strong>Vendor positioning noise:</strong> Marketing claims around “agents” vary widely. Tools like Folk or Orchids may be valuable in niche contexts but should be evaluated carefully against real workflows, not labels.
+    </p>
+
+    <h2>FAQ</h2>
+    <h3>What makes a personal AI agent different from a normal assistant?</h3>
+    <p>
+      A personal AI agent can take actions—clicking, typing, navigating—rather than just responding in text. This distinction matters when work moves beyond conversation into execution.
+    </p>
+    <h3>Is ChatGPT a personal AI agent?</h3>
+    <p>
+      ChatGPT is a powerful general assistant evolving toward agents. It excels at reasoning and planning, but repeated computer-use workflows may not get cheaper or faster over time without explicit caching.
+    </p>
+    <h3>How does Gemini compare?</h3>
+    <p>
+      Gemini has pushed aggressively into computer use, signaling Google’s commitment to agents. Buyers should still evaluate how repeatable and cost-efficient those workflows are in practice.
+    </p>
+    <h3>Where do Siri and Grok fit?</h3>
+    <p>
+      Siri remains voice-first and device-embedded, while Grok emphasizes real-time and social context. Neither is primarily optimized for durable, cross-app computer workflows today.
+    </p>
+    <h3>What about Folk and Orchids?</h3>
+    <p>
+      Folk and Orchids represent niche or experimental approaches within the broader agent market. They provide useful context but should be assessed as part of a wider landscape, not as default solutions.
+    </p>
+    <h3>Why does Super emphasize cache reuse?</h3>
+    <p>
+      Because in operational work, the second, tenth, and hundredth run matter more than the first. A reusable computer-use cache lets workflows compound in value instead of resetting each time.
+    </p>
+
+    <h2 id="sources">Sources</h2>
+    <ul class="sources">
+      <li><a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxPdmotdWlXYzdiUUVaeXZQaDJkcVB5bzlfcWROWldtd2JjZXdoeEVVR0U4X3ZyZjR2cElfVXh1dXlhZG84YXlseWRDRmtlY2E2RWZ4Vno5RGp6LTRBbU04bXVDYWprOEJXaVJ1bG9jeFdMSFpmX216N1l6LXQwRW9SYk1uQk4">Memeburn on Gemini computer use</a></li>
+      <li><a href="https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-computer-use-model/">Google DeepMind: Computer Use</a></li>
+      <li><a href="https://www.anthropic.com/engineering/building-effective-agents">Anthropic: Building Effective Agents</a></li>
+    </ul>
+  </article>
+
+  <footer class="cta-band shell">
+    <h2>Build or buy agents that actually do the work</h2>
+    <a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Get started with Super</a>
+  </footer>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to assess a personal AI agent for repeated computer work",
+  "description": "A step-by-step process for buyers and builders to evaluate personal AI agents that operate computers and support repeatable workflows.",
+  "step": [
+    {"@type": "HowToStep","name": "Map a real workflow","text": "Choose a recurring, messy computer task that reflects real operational work, including logins and multi-step navigation."},
+    {"@type": "HowToStep","name": "Run it twice","text": "Execute the same workflow on consecutive runs to observe whether the agent improves or repeats the same effort."},
+    {"@type": "HowToStep","name": "Test failure handling","text": "Introduce a controlled change such as a modal or password update and observe how the agent responds."},
+    {"@type": "HowToStep","name": "Estimate marginal cost","text": "Compare the number of actions and time required across runs to infer relative cost efficiency."},
+    {"@type": "HowToStep","name": "Decide on durability","text": "Determine whether the workflow justifies an agent optimized for reuse, such as one with a computer-use cache."}
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question","name": "What makes a personal AI agent different from a normal assistant?","acceptedAnswer": {"@type": "Answer","text": "Personal AI agents can take direct actions on computers, not just generate text, enabling real task execution."}},
+    {"@type": "Question","name": "Is ChatGPT a personal AI agent?","acceptedAnswer": {"@type": "Answer","text": "ChatGPT is evolving toward agents but is primarily a general conversational assistant."}},
+    {"@type": "Question","name": "How does Gemini compare?","acceptedAnswer": {"@type": "Answer","text": "Gemini has advanced computer-use capabilities but should be evaluated for repeatability and cost over time."}},
+    {"@type": "Question","name": "Where do Siri and Grok fit?","acceptedAnswer": {"@type": "Answer","text": "Siri and Grok emphasize device integration and real-time context rather than durable computer workflows."}},
+    {"@type": "Question","name": "What about Folk and Orchids?","acceptedAnswer": {"@type": "Answer","text": "They provide niche or experimental perspectives within the agent market."}},
+    {"@type": "Question","name": "Why does Super emphasize cache reuse?","acceptedAnswer": {"@type": "Answer","text": "Cache reuse allows repeated workflows to become faster and cheaper over time."}}
+  ]
+}
+</script>
+
+<script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+<script src="./app.js"></script>
+</body>
+</html>

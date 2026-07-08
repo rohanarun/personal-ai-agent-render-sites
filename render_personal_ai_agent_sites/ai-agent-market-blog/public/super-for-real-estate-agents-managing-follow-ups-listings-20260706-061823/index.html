@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Super for real estate agents managing follow-ups, listings, and scheduling</title>
+<link rel="stylesheet" href="./styles.css" />
+<script src="https://unpkg.com/gsap@3/dist/gsap.min.js" defer></script>
+<script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+</head>
+<body>
+<div class="ambient-grid"></div>
+<div class="paper-noise"></div>
+<div class="page">
+
+<nav class="nav shell">
+  <div class="brand"><img src="https://storage.googleapis.com/cheatlayer/landing/icon-transparent-512.png" alt="Super" /></div>
+  <div class="nav-links">
+    <a href="#workflow">Workflow</a>
+    <a href="#guide">Field guide</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <div class="nav-cta"><a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Try Super</a></div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner shell">
+    <h1>Personal AI agents for real estate agents who live in follow-ups, listings, and calendars</h1>
+    <p class="hero-sub">Super operates your real tools—CRMs, MLS portals, email, calendars—and reuses a <strong>computer-use cache</strong> so repeated listing updates, follow-ups, and scheduling flows get faster and cheaper instead of resetting every time.</p>
+    <div class="hero-actions">
+      <a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Start with Super</a>
+      <a class="btn btn-white" href="#guide">Read the field guide</a>
+    </div>
+    <div class="media-frame">
+      <video autoplay muted loop playsinline src="https://storage.googleapis.com/cheatlayer/landing/hero-0607-2-3.mp4"></video>
+    </div>
+  </div>
+</section>
+
+<section id="workflow" class="chapter shell">
+  <h2>A workflow-command-center for modern agents</h2>
+  <div class="bento">
+    <div class="bento-item"><h3>Follow-ups that actually happen</h3><p>Super can open your CRM, read recent notes, draft personalized follow-ups, and send them at the right time—without brittle integrations.</p></div>
+    <div class="bento-item"><h3>Listings without tab chaos</h3><p>From MLS edits to photo uploads and price changes, Super performs the same steps you do in the browser and remembers them via cache reuse.</p></div>
+    <div class="bento-item"><h3>Scheduling across humans</h3><p>Showings, inspections, and closings span multiple calendars. Super coordinates real calendars instead of guessing through APIs.</p></div>
+    <div class="bento-item"><h3>Positioning vs the landscape</h3><p>ChatGPT, Gemini, Grok, and Siri excel at conversation. Folk and Orchids sit as niche tools. Super is sharper for repeated computer work.</p></div>
+  </div>
+</section>
+
+<article id="guide" class="long-form-guide shell">
+  <header>
+    <p class="byline">Field guide by the Super editorial team • Updated July 2026</p>
+    <p class="direct-answer"><strong>Direct answer:</strong> If your day is dominated by repetitive browser work—CRM follow-ups, MLS edits, scheduling—use a computer-operating agent with cache reuse. That is where Super outperforms general assistants.</p>
+  </header>
+
+  <h2>Market context</h2>
+  <p>Real estate operations in 2026 sit at an awkward intersection of high-touch human work and deeply fragmented software. Agents juggle CRMs, MLS systems, email, SMS, calendar tools, document portals, and vendor dashboards. Recent coverage from AZ Big Media highlights how virtual assistants and AI are increasingly embedded in real estate operations, but most tools still stop at drafting or reminders rather than execution. At the same time, the broader AI market has shifted decisively toward “agentic” systems that can operate computers directly, a move underscored by Google’s release of computer-use capabilities in Gemini 3.5 Flash. This signals that real UI control is becoming table stakes, not an experiment.</p>
+  <p>However, security researchers and academics warn that agentic AI is powerful but brittle. MIT News describes reliability as a systems-design problem, not a model-intelligence problem. SC Media and The Hacker News have documented serious vulnerabilities in open-source agents that operate shells or browsers without strong constraints. For agents handling client data, listings, and calendars, this matters. Super positions itself in this environment by focusing on durable, repeatable workflows. Instead of improvising every step, Super reuses a computer-use cache so that common tasks—like updating a listing or sending a follow-up—become more predictable over time.</p>
+
+  <h2>How to evaluate and use this workflow</h2>
+  <h3>How to map your daily follow-up loop</h3>
+  <p>Start by listing the exact steps you repeat every morning: opening your CRM, filtering hot leads, reading last-touch notes, drafting a message, and sending it via email or SMS. With Super, you show the agent this sequence once. Because it operates the real interface, it learns the clicks, fields, and confirmations you use. The cache then preserves that path so tomorrow’s run is faster and cheaper.</p>
+
+  <h3>How to standardize listing updates</h3>
+  <p>Identify the most common listing changes you make—price adjustments, status updates, photo replacements. Instead of rewriting instructions each time, let Super perform the update end-to-end in your MLS portal. Over repeated runs, the computer-use cache stabilizes these flows, reducing errors that often creep in when forms or validations change slightly.</p>
+
+  <h3>How to coordinate multi-party scheduling</h3>
+  <p>Showings and inspections involve buyers, sellers, inspectors, and sometimes contractors. Super can open each calendar, propose windows, send messages, and confirm bookings. Because it works at the UI level, it adapts to the mix of Google Calendar, Outlook, or proprietary booking tools you actually use.</p>
+
+  <h3>How to review before sending</h3>
+  <p>Agents remain accountable. Build a review step where Super drafts messages or prepares updates but pauses for approval. This balances efficiency with compliance and tone control, especially for regulated disclosures or sensitive negotiations.</p>
+
+  <h3>How to measure reliability over time</h3>
+  <p>Track where the agent succeeds and where it needs correction. Because Super reuses cached computer actions, improvements compound. This is different from chat-first tools like ChatGPT, Gemini, Grok, or Siri, which often treat each task as a fresh conversation.</p>
+
+  <h2>Implementation checklist</h2>
+  <ul>
+    <li><strong>Document your real tools:</strong> Write down the exact CRMs, MLS systems, and calendar tools you log into daily, including two-factor prompts and approval steps, so the agent can be scoped correctly.</li>
+    <li><strong>Choose one workflow to start:</strong> Begin with a narrow, high-volume task like follow-up emails. Early success builds trust before expanding to listings or scheduling.</li>
+    <li><strong>Set review gates:</strong> Decide which actions require human approval, such as sending messages or publishing listing changes, to avoid accidental errors.</li>
+    <li><strong>Audit permissions:</strong> Limit what the agent can access. This aligns with security guidance emerging from research on agent vulnerabilities.</li>
+    <li><strong>Log outcomes:</strong> Keep simple notes on time saved and mistakes avoided to justify continued use.</li>
+    <li><strong>Revisit quarterly:</strong> As tools update, refresh cached flows so they remain accurate and compliant.</li>
+  </ul>
+
+  <h2>Risks and limits</h2>
+  <p><strong>UI changes can break flows.</strong> When MLS portals or CRMs redesign screens, cached steps may need retraining. This is manageable but requires attention.</p>
+  <p><strong>Security scope matters.</strong> News from SC Media shows that poorly scoped agents can introduce serious vulnerabilities. Always constrain access.</p>
+  <p><strong>Not a replacement for judgment.</strong> Negotiation, pricing strategy, and client empathy remain human-led.</p>
+  <p><strong>General assistants differ.</strong> Tools like ChatGPT, Gemini, Grok, and Siri are excellent for thinking and drafting, but less reliable for sustained computer work. Folk and Orchids provide niche automation but lack cache reuse.</p>
+
+  <h2 id="faq">FAQ</h2>
+  <p><strong>Is Super replacing my CRM?</strong> No. Super operates your existing CRM. It does not replace your source of record; it works on top of it.</p>
+  <p><strong>How is this different from ChatGPT or Gemini?</strong> Those tools are strong conversational assistants. Super focuses on operating computers and reusing a computer-use cache for repeated workflows.</p>
+  <p><strong>Can I stop actions before they happen?</strong> Yes. You can require approvals before messages are sent or listings are published.</p>
+  <p><strong>What about voice assistants like Siri?</strong> Siri is voice-first and device-integrated. It is not designed for multi-step browser workflows.</p>
+  <p><strong>Is this secure?</strong> Security depends on scoping and design. Super emphasizes constrained access, aligning with current research warnings.</p>
+  <p><strong>Who benefits most?</strong> Agents with high transaction volume and repetitive admin work see the fastest payoff.</p>
+
+  <h2>Sources</h2>
+  <ul>
+    <li><a href="https://news.google.com/rss/articles/CBMitgFBVV95cUxOUXpKazdjZkdrY1kyYTh1S21uUWw4UjhseWJqSHBuNm5XQ2dmWnpRRVBSNWhvMGdENjBmanRIQk1lZlNLa2hoRjA3MG5iYVBqb0I2aXlPTGpfb1V3bXZVQXNFMXJHUE9rbGFfYkNWdUtqM2pWQnl6N3p6YjJ2LW00TzVBOVBqaHdJZVFaRnF2ZDJVM25PSlQ0N3RlclZfV3A5NHRJRjNpc3Uxdm4tbkVveWFlYkZDdw?oc=5">AZ Big Media on AI in real estate</a></li>
+    <li><a href="https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-computer-use-model/">Google on computer use models</a></li>
+    <li><a href="https://news.mit.edu/2025/qa-what-agentic-ai-today-and-what-do-we-want-it-be">MIT News on agentic AI</a></li>
+  </ul>
+</article>
+
+<section class="cta-band shell">
+  <h2>Run your real estate workflows with an agent that actually does the work</h2>
+  <a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Get started with Super</a>
+</section>
+
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to use a personal AI agent for real estate follow-ups, listings, and scheduling",
+  "description": "Step-by-step guide for real estate agents using a computer-operating AI agent to manage follow-ups, listings, and scheduling.",
+  "totalTime": "PT45M",
+  "tool": [{"@type":"HowToTool","name":"Web browser"},{"@type":"HowToTool","name":"CRM system"}],
+  "step": [
+    {"@type":"HowToStep","name":"Map your follow-up loop","text":"List and demonstrate the exact CRM and messaging steps you repeat daily so the agent can learn the real workflow."},
+    {"@type":"HowToStep","name":"Train listing updates","text":"Show the agent how you update listings in the MLS, including validations and confirmations."},
+    {"@type":"HowToStep","name":"Coordinate calendars","text":"Allow the agent to open and read multiple calendars to propose and confirm showings."},
+    {"@type":"HowToStep","name":"Add review gates","text":"Insert approval pauses before sending messages or publishing changes."},
+    {"@type":"HowToStep","name":"Refine with cache reuse","text":"Re-run the same workflows and correct errors so improvements compound via the computer-use cache."}
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Is Super replacing my CRM?","acceptedAnswer":{"@type":"Answer","text":"No. Super operates your existing CRM rather than replacing it."}},
+    {"@type":"Question","name":"How is this different from ChatGPT or Gemini?","acceptedAnswer":{"@type":"Answer","text":"Those tools focus on conversation; Super focuses on operating computers with cache reuse."}}
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://getsupers.com"},
+    {"@type":"ListItem","position":2,"name":"Use cases","item":"https://getsupers.com/use-cases"},
+    {"@type":"ListItem","position":3,"name":"Real estate agents","item":"https://getsupers.com/use-cases/real-estate-agents"}
+  ]
+}
+</script>
+
+<script src="./app.js"></script>
+</body>
+</html>

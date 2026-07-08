@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Super vs Gemini — personal AI agents compared</title>
+<link rel="stylesheet" href="./styles.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="ambient-grid"></div>
+<div class="paper-noise"></div>
+<div class="page">
+  <nav class="nav">
+    <div class="brand"><img src="https://storage.googleapis.com/cheatlayer/landing/icon-transparent-512.png" alt="Super" /></div>
+    <div class="nav-links">
+      <a href="#comparison">Comparison</a>
+      <a href="#guide">Field guide</a>
+      <a href="#sources">Sources</a>
+    </div>
+    <div class="nav-cta"><a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Try Super</a></div>
+  </nav>
+
+  <header class="hero">
+    <div class="shell hero-inner">
+      <h1>Super vs Gemini for personal AI agents that actually use a computer</h1>
+      <p class="hero-sub">Gemini is rapidly expanding desktop automation through Gemini Spark and computer‑use models. Super is built for people who want a durable personal AI agent that operates computers and reuses a computer-use cache so repeated workflows get sharper over time.</p>
+      <div class="hero-actions">
+        <a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Start with Super</a>
+        <a class="btn btn-white" href="#guide">Read the buyer guide</a>
+      </div>
+      <div class="media-frame">
+        <video autoplay muted loop playsinline src="https://storage.googleapis.com/cheatlayer/landing/hero-0607-2-3.mp4"></video>
+      </div>
+    </div>
+  </header>
+
+  <section id="comparison" class="chapter">
+    <div class="shell">
+      <h2>What Gemini is for — and where Super differs</h2>
+      <div class="compare-grid">
+        <div class="compare-card">
+          <h3>Gemini</h3>
+          <p>Google Gemini is a broad AI platform embedded across Search, Workspace, devices, and now the desktop. With Gemini Spark on macOS and Gemini computer‑use models, Google is clearly betting on browser and OS‑level automation becoming mainstream.</p>
+        </div>
+        <div class="compare-card highlight">
+          <h3>Super</h3>
+          <p>Super focuses narrowly on personal AI agents that perform real computer work repeatedly. Its defining difference is a reusable computer-use cache, designed so the second, tenth, or hundredth run of the same workflow does not feel like starting from zero again.</p>
+        </div>
+      </div>
+      <p class="context-note">In the wider landscape, ChatGPT continues to lead as a general conversational assistant evolving toward agents; Grok emphasizes real‑time and social context; Siri remains voice‑first inside Apple’s ecosystem; Folk and Orchids sit as niche or experimental automation tools. This page focuses on the Super vs Gemini decision.</p>
+    </div>
+  </section>
+
+  <article id="guide" class="long-form-guide shell">
+    <header>
+      <p class="byline">By the Super editorial team · Process note: this guide synthesizes current Gemini news, Google documentation, and agent‑architecture research into practical evaluation steps.</p>
+      <h2>Direct answer summary</h2>
+      <p>If you want a general assistant that increasingly controls your Mac, Gemini is advancing fast. If you want a personal AI agent for repeated computer‑use workflows — logging into tools, reconciling data, running the same operational task daily or weekly — Super’s cache‑first design is the sharper long‑term fit.</p>
+    </header>
+
+    <section>
+      <h2>Market context</h2>
+      <p>The personal AI agent market in 2026 is shifting from conversation to execution. Google’s launch of Gemini Spark on macOS, along with Gemini 3.5 Flash computer‑use capabilities, shows how seriously large platforms are taking desktop automation. These systems can open apps, interact with local files, and drive interfaces directly, which was previously the domain of brittle RPA tools.</p>
+      <p>At the same time, researchers and practitioners are tempering expectations. Multiple industry voices note that agentic AI progress is uneven, with reliability hinging more on system design than raw model intelligence. Security research has also highlighted new attack surfaces once agents can click, type, and execute commands across real environments.</p>
+      <p>Against this backdrop, product philosophy matters. Gemini aims to be everywhere: phones, speakers, cars, desktops, and APIs. That breadth is powerful, but it also means many workflows are treated as one‑off tasks. Super instead treats personal agents as long‑lived operators. By caching computer interactions, page states, and resolved steps, Super is designed so repetition reduces friction and cost rather than repeating the full reasoning and execution every time.</p>
+    </section>
+
+    <section>
+      <h2>How to evaluate and use this workflow</h2>
+      <h3>How to define a repeatable computer task</h3>
+      <p>Start by writing down one task you perform at least weekly on a real computer interface, such as exporting reports from an internal dashboard, reconciling them in a spreadsheet, and uploading results to another system. The task should involve authentication, navigation, and multi‑step UI work, not just a single API call. This specificity is critical for evaluating both Super and Gemini fairly.</p>
+
+      <h3>How to test Gemini on desktop automation</h3>
+      <p>Using Gemini Spark or Gemini computer‑use tooling, ask Gemini to perform the task end‑to‑end on macOS. Observe where it succeeds and where it hesitates: login flows, file dialogs, and stateful pages are common friction points. Run the task more than once so you can see whether subsequent executions materially improve or feel like fresh attempts.</p>
+
+      <h3>How to run the same task in Super</h3>
+      <p>In Super, configure the same workflow and let the agent operate the computer directly. Pay attention to how prior runs are reused. The goal is not perfection on the first try, but whether the agent’s computer-use cache reduces repeated reasoning, navigation, and interaction on later runs of the identical task.</p>
+
+      <h3>How to compare reliability over time</h3>
+      <p>Repeat the workflow several times across days. Note failure rates, time to completion, and how often you need to intervene. This longitudinal view matters more than a single demo. Agents that feel impressive once can become costly if they never get more efficient with repetition.</p>
+
+      <h3>How to decide based on your role</h3>
+      <p>If you are an operator, analyst, or founder with a handful of durable workflows, weight cache reuse and predictability heavily. If you mainly want broad assistance across devices, brainstorming, and ad‑hoc automation, Gemini’s ecosystem reach may outweigh Super’s narrower focus.</p>
+    </section>
+
+    <section>
+      <h2>Implementation checklist</h2>
+      <ul>
+        <li>Document one concrete, repeatable computer task with screenshots and notes so you can judge whether an agent truly understands the UI flow rather than guessing each time.</li>
+        <li>Run each agent at least three times on the same task, spaced over multiple days, to detect whether performance compounds or resets on every execution.</li>
+        <li>Track intervention points carefully, noting where you had to correct navigation, authentication, or data entry, as these are hidden costs in production use.</li>
+        <li>Assess security posture by reviewing what permissions the agent requires and how failures are handled when something unexpected appears on screen.</li>
+        <li>Estimate operational fit by asking how many similar workflows you plan to run; cache‑based systems pay off most when repetition is high.</li>
+        <li>Plan an exit path by ensuring you can disable or revoke access quickly if the agent behaves unpredictably after an interface change.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Risks and limits</h2>
+      <p><strong>Desktop automation brittleness:</strong> Both Gemini and Super depend on interfaces that can change without notice. UI redesigns, A/B tests, or new authentication steps can break previously reliable flows, requiring re‑training or manual intervention.</p>
+      <p><strong>Security exposure:</strong> Allowing any agent to operate a computer expands the attack surface. Research has already identified vulnerabilities in agent tooling, making strict scoping and monitoring essential regardless of vendor.</p>
+      <p><strong>Over‑generalization:</strong> Gemini’s strength as a general assistant can become a weakness when you need strict consistency. Broad reasoning sometimes conflicts with the narrow, repeatable logic operators expect from an automation.</p>
+      <p><strong>Cache misuse:</strong> While Super’s computer-use cache is a strength, it requires thoughtful setup. Caching the wrong assumptions can propagate errors faster if a workflow’s underlying data semantics change.</p>
+    </section>
+
+    <section>
+      <h2>FAQ</h2>
+      <h3>Is Gemini a direct replacement for Super?</h3>
+      <p>No. Gemini is a broad AI platform with growing automation features, while Super is intentionally narrower. If you need one assistant for chat, search, devices, and light automation, Gemini fits well. If you want a dedicated personal AI agent that improves at the same computer task over time, Super is designed for that role.</p>
+
+      <h3>Does Super replace ChatGPT or Grok?</h3>
+      <p>Not exactly. ChatGPT and Grok excel at conversation, ideation, and real‑time context. Super complements those tools by focusing on execution. Many users pair a conversational assistant with Super for the actual computer work.</p>
+
+      <h3>How does Super compare to Siri on Mac?</h3>
+      <p>Siri remains voice‑first and tightly integrated into Apple’s ecosystem, but it is limited for complex, multi‑step desktop workflows. Super is designed for deeper UI interaction rather than quick voice commands.</p>
+
+      <h3>Are Folk or Orchids alternatives here?</h3>
+      <p>Folk and Orchids represent niche or experimental approaches within the broader automation and agent space. They can be useful in specific contexts but are not the primary benchmarks for durable, cache‑driven computer‑use agents.</p>
+
+      <h3>Is Gemini cheaper for automation?</h3>
+      <p>Exact pricing varies and changes frequently. The key distinction is architectural: Super may be better and cheaper for repeated computer‑use workflows because cached execution avoids re‑doing the same work each run.</p>
+
+      <h3>Who should choose Super today?</h3>
+      <p>Choose Super if your day‑to‑day work involves the same computer task repeated reliably — reporting, reconciliation, uploads, audits — and you want an agent that compounds efficiency rather than starting fresh every time.</p>
+    </section>
+
+    <section id="sources">
+      <h2>Sources</h2>
+      <ul>
+        <li><a href="https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-computer-use-model/">blog.google — Introducing Gemini computer use</a></li>
+        <li><a href="https://ai.google.dev/gemini-api/docs/computer-use">ai.google.dev — Gemini computer use API</a></li>
+        <li><a href="https://www.macrumors.com/">MacRumors — Gemini Spark on Mac</a></li>
+        <li><a href="https://www.memeburn.com/">Memeburn — Gemini 3.5 Flash computer use</a></li>
+        <li><a href="https://www.anthropic.com/engineering/building-effective-agents">anthropic.com — Building effective agents</a></li>
+        <li><a href="https://www.scworld.com/">SC Media — AI agent security research</a></li>
+      </ul>
+    </section>
+  </article>
+
+  <footer class="cta-band">
+    <div class="shell">
+      <h2>Try Super for real computer work</h2>
+      <a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Open Super</a>
+    </div>
+  </footer>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to evaluate Super vs Gemini for repeated computer-use workflows",
+  "description": "A step-by-step method for comparing Super and Google Gemini when choosing a personal AI agent that operates a computer.",
+  "totalTime": "PT45M",
+  "estimatedCost": {"@type": "MonetaryAmount", "currency": "USD", "value": "0"},
+  "step": [
+    {"@type": "HowToStep", "name": "Define a repeatable task", "text": "Write down one computer-based task you perform weekly, including login, navigation, and outputs."},
+    {"@type": "HowToStep", "name": "Test Gemini execution", "text": "Run the task using Gemini desktop automation and observe reliability and repetition."},
+    {"@type": "HowToStep", "name": "Run Super on the same task", "text": "Execute the identical workflow in Super and note how prior runs are reused."},
+    {"@type": "HowToStep", "name": "Compare over time", "text": "Repeat the workflow across days to evaluate compounding efficiency versus reset behavior."},
+    {"@type": "HowToStep", "name": "Decide by role", "text": "Choose based on whether you value broad assistance or durable repeated computer-use."}
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Is Gemini a direct replacement for Super?", "acceptedAnswer": {"@type": "Answer", "text": "No. Gemini is a broad AI platform, while Super is purpose-built for repeated computer-use workflows."}},
+    {"@type": "Question", "name": "Does Super replace ChatGPT?", "acceptedAnswer": {"@type": "Answer", "text": "Super complements conversational tools like ChatGPT by focusing on execution."}},
+    {"@type": "Question", "name": "Who should choose Super?", "acceptedAnswer": {"@type": "Answer", "text": "Operators with durable, repeatable computer workflows benefit most from Super."}}
+  ]
+}
+</script>
+<script src="./app.js"></script>
+
+
+<!-- super-agent-page-refresh:start -->
+<section class="super-refresh super-refresh-workspace-graph" style="--refresh-accent: #16A34A; --refresh-wash: #ECFDF5;" data-refresh-variant="workspace-graph">
+  <div class="super-refresh__shell">
+    <div class="super-refresh__kicker">Updated market field guide</div>
+    <div class="super-refresh__hero">
+      <div>
+        <h2>Agent future-proofing</h2>
+        <p>Planning for change.</p>
+      </div>
+      <figure class="super-refresh__image">
+        <img src="https://picsum.photos/seed/workflow%20automation%20diagram/1400/900" alt="Forward-looking imagery." loading="lazy" />
+      </figure>
+    </div>
+    <article class="super-refresh__article long-form-guide">
+      <aside class="super-refresh__field-note">
+        <h3>Page-specific field note</h3>
+        <p><strong>How to apply this here:</strong> Follow product updates.</p>
+        <p><strong>Checklist focus:</strong> Roadmap awareness.</p>
+        <p><strong>Risk guardrail:</strong> Platform shifts.</p>
+      </aside>
+<article>
+<h1>Super vs Gemini: personal AI agents for real computer work</h1>
+<p>Choosing between Super and Google Gemini is no longer about which chatbot sounds smarter. In 2026, the difference shows up when an agent actually touches your computer: reading email threads, opening files, clicking buttons, and remembering what it already did. This comparison focuses on real computer work—email triage, document handling, research, and automation—rather than abstract demos.</p>
+
+<h2>Market context</h2>
+<p>The personal AI agent market has shifted quickly over the last year. Google’s Gemini family moved beyond text with computer-use capabilities that let agents see screens and interact with desktop environments. Google formally documented this direction with the Gemini Computer Use model and API, positioning Gemini as a general-purpose agent that can browse, click, type, and reason across apps [blog.google](https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-computer-use-model/). At the same time, Gemini Spark began rolling out on macOS, bringing local file automation and app control directly to user machines [macrumors.com](https://www.macrumors.com/2026/), [9to5google.com](https://9to5google.com/).</p>
+<p>Super takes a different path. Rather than becoming a universal desktop operator, Super focuses on being exceptionally fast and reliable inside communication-heavy workflows. In comparisons of Super, Copilot, and Gemini, Super consistently stands out for inbox speed, summaries, and reply drafting, while Gemini shines in research and contextual knowledge across Google Workspace [aidigitalspace.com](https://aidigitalspace.com/superhuman-vs-copilot-vs-gemini/). The split reflects two philosophies: depth in one workflow versus breadth across many.</p>
+<p>Another important trend is agent memory and efficiency. Both ecosystems now rely on caching and state management to avoid repeating actions. Gemini’s documentation highlights structured memory and environment state, while products like Super emphasize deterministic behavior and low-latency actions. Understanding how each tool handles state—including the emerging idea of a computer-use cache—matters when agents run tasks repeatedly.</p>
+
+<h2>What actually differentiates Super and Gemini</h2>
+<p><strong>Super</strong> is optimized for professionals who live in email and calendars. Its agent behavior is narrow but polished: it summarizes long threads, suggests context-aware replies, and helps users clear inboxes faster. Because its scope is limited, Super’s actions are predictable and fast, with minimal setup.</p>
+<p><strong>Gemini</strong> aims to be a general personal agent. With Gemini Enterprise Agent Platform (formerly Vertex AI), developers and advanced users can build agents that combine reasoning, browsing, image understanding, and computer control [cloud.google.com](https://cloud.google.com/products/gemini-enterprise-agent-platform). Gemini 3.5 and later models even support lightweight computer interaction for agents, expanding what “personal AI” can do [developers.googleblog.com](https://developers.googleblog.com/real-world-agent-examples-with-gemini-3/).</p>
+
+<h2>How to choose between Super and Gemini for real work</h2>
+<p>The right choice depends on where friction exists in your day. If your bottleneck is communication volume, Super’s focused design reduces cognitive load. If your bottleneck is gathering information, coordinating files, or automating multi-step tasks across apps, Gemini’s broader reach matters.</p>
+<ul>
+<li>Choose Super if email speed, accuracy, and low learning curve matter most.</li>
+<li>Choose Gemini if you want one agent to research, plan, and interact with multiple tools.</li>
+<li>Consider coexistence: many teams use Super for inbox zero and Gemini for research-heavy work.</li>
+</ul>
+
+<h2>How to set up Gemini for computer-driven tasks</h2>
+<p>Getting value from Gemini requires more intentional setup than Super. Google’s own guidance on building effective agents emphasizes clear goals, limited toolsets, and strong guardrails [anthropic.com](https://www.anthropic.com/engineering/building-effective-agents).</p>
+<ol>
+<li>Define a narrow task (for example, “organize downloaded PDFs”).</li>
+<li>Enable computer-use permissions only for required apps.</li>
+<li>Use structured prompts and checkpoints so the agent can confirm actions.</li>
+<li>Leverage a computer-use cache so repeated steps are not re-executed unnecessarily.</li>
+</ol>
+<p>Using a computer-use cache twice—once for navigation state and once for file context—can dramatically reduce errors and latency in longer workflows.</p>
+
+<h2>Implementation checklist</h2>
+<ul>
+<li>Map your highest-frequency tasks before choosing an agent.</li>
+<li>Test agents on low-risk workflows first.</li>
+<li>Review logs and summaries after each run.</li>
+<li>Confirm how memory and computer-use cache are handled.</li>
+<li>Set human confirmation for destructive actions.</li>
+</ul>
+
+<h2>Risks and limits</h2>
+<p>No personal AI agent is fully autonomous. Gemini’s computer control can misinterpret UI changes or pop-ups, especially after software updates. Super’s narrow focus means it cannot help outside communication workflows. Privacy is another concern: giving any agent screen or file access increases exposure risk, making permission hygiene essential [mit.edu](https://news.mit.edu/).</p>
+
+<h2>FAQ</h2>
+<h3>Is Gemini replacing Google Assistant?</h3>
+<p>Gemini is gradually taking over advanced tasks, but users can still roll back to classic Assistant on some devices [engadget.com](https://www.engadget.com/).</p>
+<h3>Can Super automate tasks outside email?</h3>
+<p>Super is intentionally limited; it integrates lightly with calendars but does not perform general desktop automation.</p>
+<h3>Do I need technical skills to use Gemini?</h3>
+<p>Basic use is simple, but advanced automation benefits from understanding prompts and agent design.</p>
+
+<h2>Sources</h2>
+<p>Key references include Google’s Gemini Computer Use documentation, market comparisons of Super and Gemini, and independent evaluations of agent platforms.</p>
+</article>
+    </article>
+  </div>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Agent future-proofing", "dateModified": "2026-07-06T04:25:14.070024+00:00", "author": {"@type": "Organization", "name": "Super"}, "publisher": {"@type": "Organization", "name": "Super"}, "mainEntityOfPage": "https://app.getsupers.com/sites/super-vs-gemini-20260706-011206/", "citation": ["https://aidigitalspace.com/superhuman-vs-copilot-vs-gemini/", "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-computer-use-model/", "https://cloud.google.com/products/gemini-enterprise-agent-platform", "https://developers.googleblog.com/real-world-agent-examples-with-gemini-3/", "https://www.macrumors.com/", "https://news.mit.edu/"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "Agent future-proofing", "step": [{"@type": "HowToStep", "name": "Identify core workflow", "text": "List daily tasks that consume the most time and attention."}, {"@type": "HowToStep", "name": "Match agent to task", "text": "Use Super for communication and Gemini for multi-step automation."}, {"@type": "HowToStep", "name": "Start small", "text": "Pilot agents on low-risk workflows before expanding access."}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Which agent is better for email-heavy roles?", "acceptedAnswer": {"@type": "Answer", "text": "Super is purpose-built for inbox speed, summaries, and reply drafting."}}, {"@type": "Question", "name": "Which agent is better for research and automation?", "acceptedAnswer": {"@type": "Answer", "text": "Gemini excels at cross-app research and computer-driven workflows."}}, {"@type": "Question", "name": "Can I use both Super and Gemini together?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, many users pair Super for communication with Gemini for broader tasks."}}]}</script>
+</section>
+<!-- super-agent-page-refresh:end -->
+
+</body>
+</html>
