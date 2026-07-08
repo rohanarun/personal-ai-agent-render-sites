@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Personal AI Agents Face Escalation Fatigue](personal-ai-agents-face-escalation-fatigue-20260708-172755/): Research and news analysis
 - [How to Route AI Agent Escalations into a Daily Review Queue](how-to-route-ai-agent-escalations-into-a-daily-review-queue-20260708-171757/): Use case
 - [AI Agent Escalation Review vs Approval Queues](ai-agent-escalation-review-vs-approval-queues-20260708-170755/): Competitor comparison
 - [AI Agent Escalation Review Software for Personal Ops](ai-agent-escalation-review-software-for-personal-ops-20260708-170255/): Niche research landing page
