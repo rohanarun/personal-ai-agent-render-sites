@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Super vs CRM task lists for customer proof requests</title>
+  <meta name="description" content="A practical comparison of Super-style personal AI agents and CRM task lists for customer proof requests, founder follow-up, and proof-loop execution.">
+  <link rel="canonical" href="https://kalshhunter.com/super-vs-crm-task-lists-for-customer-proof-requests-20260708-111054/">
+  <meta property="og:title" content="Super vs CRM task lists for customer proof requests">
+  <meta property="og:description" content="Compare message-native AI execution against CRM task queues for customer proof requests and founder follow-up.">
+  <meta property="og:url" content="https://kalshhunter.com/super-vs-crm-task-lists-for-customer-proof-requests-20260708-111054/">
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: "Cabinet Grotesk", "Avenir Next", system-ui, sans-serif; color: #f7f1e8; background: #080705; overflow-x: hidden; }
+    a { color: inherit; }
+    main { overflow-x: hidden; width: 100%; max-width: 100%; }
+    .grain { position: fixed; inset: 0; pointer-events: none; opacity: .18; background-image: radial-gradient(circle at 30% 10%, rgba(255,255,255,.12), transparent 18%), linear-gradient(135deg, rgba(255,255,255,.03) 25%, transparent 25%); background-size: 100% 100%, 7px 7px; z-index: 5; mix-blend-mode: screen; }
+    .nav { position: fixed; top: 22px; left: 50%; transform: translateX(-50%); z-index: 20; width: min(1120px, calc(100% - 32px)); display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border: 1px solid rgba(247,241,232,.18); border-radius: 999px; background: rgba(8,7,5,.58); backdrop-filter: blur(22px); }
+    .brand { font-weight: 900; letter-spacing: 0; text-decoration: none; }
+    .navlinks { display: flex; gap: 22px; font-size: 14px; color: rgba(247,241,232,.72); }
+    .navcta { padding: 10px 16px; border-radius: 999px; background: #f7f1e8; color: #080705; text-decoration: none; font-weight: 900; }
+    .wrap { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+    .hero { min-height: 100vh; display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 54px; padding: 148px 0 96px; position: relative; }
+    .hero:before { content: ""; position: absolute; inset: -20% -10% auto -10%; height: 82%; background: radial-gradient(circle at 18% 20%, rgba(244,99,65,.36), transparent 31%), radial-gradient(circle at 82% 10%, rgba(82,146,255,.22), transparent 35%); filter: blur(14px); z-index: -1; }
+    h1 { margin: 0; max-width: 980px; font-size: clamp(3rem, 5.4vw, 5.7rem); line-height: .92; letter-spacing: 0; }
+    .inline-img { display: inline-block; width: clamp(76px, 10vw, 138px); height: clamp(34px, 4vw, 54px); border-radius: 999px; vertical-align: middle; margin: 0 .14em; background: url('https://picsum.photos/seed/proof-request-agent/320/140') center/cover; filter: grayscale(.2) contrast(1.25); box-shadow: inset 0 0 0 1px rgba(255,255,255,.25); }
+    .lede { max-width: 640px; margin: 28px 0 0; font-size: clamp(1.12rem, 1.7vw, 1.5rem); line-height: 1.5; color: rgba(247,241,232,.75); }
+    .actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 34px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 20px; border-radius: 999px; font-weight: 900; text-decoration: none; border: 1px solid rgba(247,241,232,.22); }
+    .primary { background: #f7f1e8; color: #080705; }
+    .secondary { background: rgba(247,241,232,.06); color: #f7f1e8; }
+    .hero-art { min-height: 640px; border-radius: 32px; overflow: hidden; position: relative; background: linear-gradient(180deg, rgba(8,7,5,.08), rgba(8,7,5,.88)), url('https://picsum.photos/seed/customer-proof-board/1200/1600') center/cover; filter: contrast(1.12) saturate(.92); box-shadow: 0 34px 90px rgba(0,0,0,.5); }
+    .hero-art:after { content: "CRM lists remember tasks. Agent loops remember proof."; position: absolute; left: 28px; right: 28px; bottom: 28px; padding: 24px; border-radius: 24px; background: rgba(8,7,5,.62); border: 1px solid rgba(247,241,232,.18); font-size: 28px; line-height: 1.05; font-weight: 900; }
+    section { padding: 132px 0; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 36px; margin-bottom: 38px; }
+    h2 { margin: 0; font-size: clamp(2.3rem, 4.4vw, 5rem); line-height: .95; max-width: 880px; }
+    .note { max-width: 430px; color: rgba(247,241,232,.68); font-size: 18px; line-height: 1.55; }
+    .bento { display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-flow: dense; gap: 16px; }
+    .card { min-height: 300px; padding: 28px; border-radius: 28px; background: rgba(247,241,232,.07); border: 1px solid rgba(247,241,232,.15); overflow: hidden; transition: transform .7s ease, border-color .7s ease; }
+    .card:hover { transform: translateY(-8px); border-color: rgba(247,241,232,.38); }
+    .span-7 { grid-column: span 7; } .span-5 { grid-column: span 5; } .span-4 { grid-column: span 4; }
+    .card h3 { margin: 0 0 16px; font-size: 30px; line-height: 1; }
+    .card p, .card li { color: rgba(247,241,232,.72); font-size: 17px; line-height: 1.55; }
+    .visual-card { background: linear-gradient(180deg, rgba(8,7,5,.18), rgba(8,7,5,.86)), url('https://picsum.photos/seed/crm-agent-comparison/900/620') center/cover; min-height: 420px; }
+    .comparison { width: 100%; border-collapse: collapse; margin-top: 20px; color: rgba(247,241,232,.82); }
+    .comparison th, .comparison td { text-align: left; border-bottom: 1px solid rgba(247,241,232,.13); padding: 14px 8px; vertical-align: top; }
+    .comparison th { color: #f7f1e8; }
+    .marquee { white-space: nowrap; overflow: hidden; border-block: 1px solid rgba(247,241,232,.14); padding: 24px 0; color: rgba(247,241,232,.52); font-size: clamp(2.1rem, 5vw, 5.4rem); font-weight: 900; }
+    .marquee span { display: inline-block; padding-right: 42px; animation: drift 26s linear infinite; }
+    @keyframes drift { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .pin-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; align-items: start; }
+    .pin-title { position: sticky; top: 130px; }
+    .stack { display: grid; gap: 18px; }
+    .stack-card { min-height: 240px; padding: 30px; border-radius: 30px; background: #f7f1e8; color: #080705; box-shadow: 0 28px 80px rgba(0,0,0,.28); }
+    .stack-card p { color: rgba(8,7,5,.66); font-size: 18px; line-height: 1.55; }
+    .accordion { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; min-height: 450px; }
+    .slice { border-radius: 28px; overflow: hidden; padding: 26px; display: flex; flex-direction: column; justify-content: end; background: linear-gradient(180deg, rgba(8,7,5,.1), rgba(8,7,5,.86)), var(--img) center/cover; transition: grid-column .7s ease, transform .7s ease; }
+    .slice:hover { grid-column: span 2; transform: scale(1.015); }
+    .slice h3 { margin: 0 0 12px; font-size: 28px; }
+    .slice p { color: rgba(247,241,232,.74); line-height: 1.5; }
+    .faq { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .faq article { padding: 28px; border-radius: 24px; background: rgba(247,241,232,.06); border: 1px solid rgba(247,241,232,.14); }
+    .faq h3 { margin: 0 0 10px; font-size: 24px; }
+    .faq p { color: rgba(247,241,232,.7); line-height: 1.55; }
+    .cta { padding: 96px; border-radius: 42px; background: radial-gradient(circle at 20% 10%, rgba(244,99,65,.5), transparent 32%), #f7f1e8; color: #080705; }
+    .cta h2 { color: #080705; }
+    .cta p { max-width: 660px; font-size: 20px; color: rgba(8,7,5,.68); line-height: 1.5; }
+    footer { padding: 60px 0 80px; color: rgba(247,241,232,.58); }
+    .footer-grid { display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid rgba(247,241,232,.14); padding-top: 24px; }
+    @media (max-width: 900px) {
+      .navlinks { display: none; }
+      .hero, .pin-grid { grid-template-columns: 1fr; }
+      .hero-art { min-height: 460px; }
+      .section-head, .footer-grid { display: block; }
+      .bento, .faq, .accordion { grid-template-columns: 1fr; }
+      .span-7, .span-5, .span-4, .slice:hover { grid-column: span 1; }
+      .cta { padding: 42px 26px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+  <nav class="nav">
+    <a class="brand" href="https://kalshhunter.com/">Kalsh Hunter</a>
+    <div class="navlinks"><a href="#comparison">Comparison</a><a href="#workflow">Workflow</a><a href="#faq">FAQ</a></div>
+    <a class="navcta" href="https://getsupers.com/">Super</a>
+  </nav>
+  <main>
+    <header class="hero wrap">
+      <div>
+        <h1>Super vs CRM task lists for <span class="inline-img"></span> customer proof requests</h1>
+        <p class="lede">CRM tasks are useful for assigning ownership. They are weaker at preserving the messy proof trail: screenshots, message context, browser checks, follow-up assets, and the next customer-ready response. A personal AI agent workflow is built for that full loop.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://getsupers.com/">Explore Super</a>
+          <a class="btn secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Message-native AI workflow</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-label="Editorial comparison image"></div>
+    </header>
+
+    <section id="comparison" class="wrap">
+      <div class="section-head">
+        <h2>Task lists track obligation. Agent proof loops track evidence.</h2>
+        <p class="note">The difference matters most when founders and customer success teams need to answer a prospect with believable product proof instead of another internal note.</p>
+      </div>
+      <div class="bento">
+        <article class="card span-7 visual-card">
+          <h3>Where CRM task lists win</h3>
+          <p>They centralize ownership, due dates, account records, and manager visibility. They are still the right place for pipeline governance.</p>
+        </article>
+        <article class="card span-5">
+          <h3>Where Super-style agents win</h3>
+          <p>They preserve execution memory across messages, browser research, generated assets, and the final approved response. Super can connect proof capture with <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a> instead of making every rep restart the search.</p>
+        </article>
+        <article class="card span-4">
+          <h3>Message context</h3>
+          <p>Proof requests often start in text, iMessage, Slack, or founder DMs. The <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text message AI assistant</a> pattern keeps that origin visible.</p>
+        </article>
+        <article class="card span-4">
+          <h3>Asset generation</h3>
+          <p>Some requests need a quick explainer page, not just a note. Pair the queue with <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent website building</a>.</p>
+        </article>
+        <article class="card span-4">
+          <h3>Human approval</h3>
+          <p>Customer-facing claims need review. The best agent workflow drafts, cites, and waits for a human before sending.</p>
+        </article>
+      </div>
+      <table class="comparison">
+        <thead><tr><th>Workflow need</th><th>CRM task list</th><th>Super-style agent loop</th></tr></thead>
+        <tbody>
+          <tr><td>Assign a follow-up owner</td><td>Strong</td><td>Strong when synced back to the account owner</td></tr>
+          <tr><td>Remember source message context</td><td>Often manual copy-paste</td><td>Native to the request trail</td></tr>
+          <tr><td>Reuse browser evidence</td><td>Weak unless notes are perfect</td><td>Stronger with execution memory and cached context</td></tr>
+          <tr><td>Create proof assets</td><td>Usually outside the CRM</td><td>Can draft pages, snippets, and reply packs</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <div class="marquee"><span>proof request queues · founder follow-up · customer evidence · execution memory · message-native AI · </span><span>proof request queues · founder follow-up · customer evidence · execution memory · message-native AI · </span></div>
+
+    <section id="workflow" class="wrap pin-grid">
+      <div class="pin-title">
+        <h2>A better comparison is not CRM or agent. It is system of record plus system of execution.</h2>
+        <p class="note">Keep the account record. Add an execution layer that can collect, reason, draft, and route proof.</p>
+      </div>
+      <div class="stack">
+        <article class="stack-card"><h3>Capture the ask exactly</h3><p>Store the original request, customer segment, urgency, promised deadline, and the channel it arrived from. This is where proof loops avoid vague task titles.</p></article>
+        <article class="stack-card"><h3>Gather the proof trail</h3><p>Collect help docs, changelog entries, screenshots, existing customer examples, and source links. The agent should keep citations visible for review.</p></article>
+        <article class="stack-card"><h3>Draft the response package</h3><p>Produce the email, text reply, demo notes, internal handoff, and optional lightweight page. The work product should be ready for human approval.</p></article>
+        <article class="stack-card"><h3>Sync the outcome</h3><p>Send the final state back to the CRM so leadership sees the account status while the agent preserves the evidence trail.</p></article>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <div class="section-head">
+        <h2>Checklist before replacing a CRM task with an agent loop.</h2>
+        <p class="note">Use this when the team is deciding whether a proof request belongs in ordinary task management or a richer AI execution queue.</p>
+      </div>
+      <div class="accordion">
+        <article class="slice" style="--img:url('https://picsum.photos/seed/proof-source/700/900')"><h3>Source</h3><p>Can the system keep the source message, attachments, and customer wording intact?</p></article>
+        <article class="slice" style="--img:url('https://picsum.photos/seed/proof-evidence/700/900')"><h3>Evidence</h3><p>Can it collect evidence and show the reviewer where each claim came from?</p></article>
+        <article class="slice" style="--img:url('https://picsum.photos/seed/proof-response/700/900')"><h3>Response</h3><p>Can it draft the reply in the channel where the customer expects the answer?</p></article>
+        <article class="slice" style="--img:url('https://picsum.photos/seed/proof-sync/700/900')"><h3>Sync</h3><p>Can it update the CRM without making the CRM carry every detail?</p></article>
+      </div>
+    </section>
+
+    <section id="faq" class="wrap">
+      <div class="section-head">
+        <h2>Questions teams ask before adding AI to proof requests.</h2>
+      </div>
+      <div class="faq">
+        <article><h3>Should this replace Salesforce, HubSpot, or Attio?</h3><p>No. The CRM remains the account system of record. The agent loop handles the evidence work between the initial request and the approved response.</p></article>
+        <article><h3>Why link this to Super?</h3><p><a href="https://getsupers.com/">Super</a> is relevant because the workflow spans personal AI agents, message-native capture, browser execution, and generated customer-facing assets.</p></article>
+        <article><h3>What is the risk?</h3><p>The risk is letting an AI send unsupported claims. Keep human approval, visible sources, and account-owner review in the loop.</p></article>
+        <article><h3>What is the practical starting point?</h3><p>Start with one queue for requests that need proof, examples, screenshots, or research. Ordinary reminders can remain ordinary CRM tasks.</p></article>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <div class="cta">
+        <h2>Use the CRM for memory of the account. Use the agent for memory of the work.</h2>
+        <p>That division is what makes customer proof requests faster without hiding the details managers need.</p>
+        <div class="actions">
+          <a class="btn secondary" href="https://getsupers.com/">Visit Super</a>
+          <a class="btn secondary" href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">See generated proof assets</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="wrap">
+    <div class="footer-grid">
+      <span>Kalsh Hunter tracks the personal AI agent market.</span>
+      <span><a href="https://kalshhunter.com/">Home</a> · <a href="https://getsupers.com/">Super</a> · <a href="https://app.getsupers.com/use-cases/computer-use-cache/">Execution memory</a></span>
+    </div>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.utils.toArray('.card,.hero-art,.slice').forEach(function(el) {
+        gsap.fromTo(el, {scale: .84, opacity: .38, y: 42}, {scale: 1, opacity: 1, y: 0, scrollTrigger: {trigger: el, start: 'top 88%', end: 'bottom 36%', scrub: true}});
+      });
+      gsap.utils.toArray('.stack-card').forEach(function(el, i) {
+        gsap.fromTo(el, {opacity: .32, y: 86}, {opacity: 1, y: i * -10, scrollTrigger: {trigger: el, start: 'top 84%', end: 'top 30%', scrub: true}});
+      });
+    }
+  </script>
+</body>
+</html>
