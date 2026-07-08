@@ -1,0 +1,622 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Browser AI Agents Are Getting a Trust Ledger Layer</title>
+  <meta name="description" content="A market analysis of why browser AI agents are adding trust ledgers: receipts, source evidence, approval states, and reusable memory for personal AI execution.">
+  <link rel="canonical" href="https://kalshhunter.com/browser-ai-agents-are-getting-a-trust-ledger-layer-20260708-153525/">
+  <meta property="og:title" content="Browser AI Agents Are Getting a Trust Ledger Layer">
+  <meta property="og:description" content="Why the next browser-agent market wedge is a durable ledger of intent, evidence, action, exception, and approval.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://kalshhunter.com/browser-ai-agents-are-getting-a-trust-ledger-layer-20260708-153525/">
+  <meta property="og:image" content="https://picsum.photos/seed/browser-ai-trust-ledger/1600/900">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800&display=swap');
+
+    :root {
+      color-scheme: dark;
+      --bg: #080909;
+      --ink: #f8f4ea;
+      --muted: rgba(248,244,234,.72);
+      --line: rgba(248,244,234,.16);
+      --green: #c8ff62;
+      --cyan: #94e0ff;
+      --rose: #ffb0c8;
+      --amber: #ffd66f;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Cabinet Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 14%, rgba(200,255,98,.18), transparent 32rem),
+        radial-gradient(circle at 88% 18%, rgba(148,224,255,.16), transparent 34rem),
+        radial-gradient(circle at 70% 84%, rgba(255,176,200,.14), transparent 36rem),
+        linear-gradient(135deg, #080909, #11140f 48%, #090a0b);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .16;
+      background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: radial-gradient(circle at center, black, transparent 76%);
+      z-index: 0;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    main {
+      position: relative;
+      z-index: 1;
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .nav {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 30;
+      width: min(1080px, calc(100vw - 28px));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 13px 14px 13px 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(8,9,9,.7);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 24px 70px rgba(0,0,0,.42);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 800;
+    }
+
+    .mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: conic-gradient(from 140deg, var(--green), var(--cyan), var(--rose), var(--amber), var(--green));
+      box-shadow: 0 0 34px rgba(200,255,98,.34);
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 22px;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .navcta {
+      color: #071008;
+      background: var(--green);
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-weight: 800;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: minmax(0, 1.04fr) minmax(320px, .96fr);
+      gap: 38px;
+      align-items: center;
+      width: min(1220px, calc(100vw - 36px));
+      margin: 0 auto;
+      padding: 150px 0 100px;
+    }
+
+    h1 {
+      max-width: min(1120px, 94vw);
+      margin: 0;
+      font-size: clamp(3rem, 5vw, 5.35rem);
+      line-height: .94;
+      letter-spacing: 0;
+      font-weight: 800;
+    }
+
+    .inline-img {
+      display: inline-block;
+      width: clamp(74px, 9vw, 146px);
+      height: clamp(34px, 4vw, 56px);
+      border-radius: 999px;
+      margin: 0 .1em;
+      vertical-align: middle;
+      background: url("https://picsum.photos/seed/browser-ledger-inline/420/180") center/cover;
+      filter: grayscale(.12) contrast(1.18) saturate(.86);
+      box-shadow: 0 16px 45px rgba(0,0,0,.34);
+    }
+
+    .lede {
+      max-width: 740px;
+      margin: 28px 0 0;
+      color: var(--muted);
+      font-size: clamp(1.14rem, 1.7vw, 1.42rem);
+      line-height: 1.5;
+    }
+
+    .actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 49px;
+      padding: 14px 20px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      font-weight: 800;
+      transition: transform .45s ease, border-color .45s ease;
+    }
+
+    .button:hover { transform: translateY(-3px); border-color: rgba(248,244,234,.42); }
+    .primary { color: #071008; background: var(--green); border-color: transparent; }
+    .secondary { color: #fff; background: rgba(255,255,255,.08); }
+
+    .hero-art {
+      position: relative;
+      min-height: 610px;
+    }
+
+    .media-card {
+      position: absolute;
+      inset: 42px 0 auto auto;
+      width: min(570px, 100%);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      transform: rotate(1.5deg);
+      background: rgba(255,255,255,.06);
+      box-shadow: 0 42px 110px rgba(0,0,0,.48);
+    }
+
+    .media-card img {
+      width: 100%;
+      height: 610px;
+      object-fit: cover;
+      filter: grayscale(.24) contrast(1.2) brightness(.82);
+      transition: transform .7s ease;
+    }
+
+    .media-card:hover img { transform: scale(1.05); }
+
+    .floating {
+      position: absolute;
+      left: -30px;
+      bottom: 42px;
+      width: min(360px, 72vw);
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(8,9,9,.74);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 28px 80px rgba(0,0,0,.38);
+    }
+
+    .floating strong {
+      display: block;
+      font-size: 1.35rem;
+      line-height: 1.05;
+      margin-bottom: 12px;
+    }
+
+    .floating p { margin: 0; color: var(--muted); line-height: 1.55; }
+
+    .ticker {
+      border-block: 1px solid var(--line);
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 18px 0;
+      color: rgba(248,244,234,.58);
+      font-size: clamp(1.1rem, 2vw, 1.7rem);
+      font-weight: 800;
+    }
+
+    .ticker span {
+      display: inline-block;
+      padding-right: 32px;
+      animation: ticker 28s linear infinite;
+    }
+
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    section { padding: 150px 20px; }
+    .wrap { width: min(1180px, calc(100vw - 32px)); margin: 0 auto; }
+
+    .section-title {
+      max-width: 980px;
+      margin: 0 0 28px;
+      font-size: clamp(2.45rem, 5vw, 5rem);
+      line-height: .98;
+      letter-spacing: 0;
+    }
+
+    .section-copy {
+      max-width: 830px;
+      color: var(--muted);
+      font-size: 1.15rem;
+      line-height: 1.72;
+    }
+
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      grid-auto-flow: dense;
+      gap: 14px;
+      margin-top: 54px;
+    }
+
+    .card {
+      min-height: 270px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: linear-gradient(145deg, rgba(255,255,255,.09), rgba(255,255,255,.035));
+      overflow: hidden;
+      box-shadow: 0 26px 80px rgba(0,0,0,.26);
+    }
+
+    .wide { grid-column: span 8; }
+    .side { grid-column: span 4; }
+    .third { grid-column: span 4; }
+    .card-body { padding: 28px; }
+
+    .card h3 {
+      margin: 0 0 14px;
+      font-size: clamp(1.5rem, 2vw, 2.1rem);
+      line-height: 1.02;
+    }
+
+    .card p, .card li {
+      color: var(--muted);
+      line-height: 1.62;
+      font-size: 1rem;
+    }
+
+    .card ul { padding-left: 18px; margin: 18px 0 0; }
+    .image-card { position: relative; min-height: 360px; }
+    .image-card img {
+      width: 100%;
+      height: 100%;
+      min-height: 360px;
+      object-fit: cover;
+      filter: grayscale(.32) contrast(1.2) brightness(.82);
+      transition: transform .7s ease, filter .7s ease;
+    }
+
+    .image-card:hover img {
+      transform: scale(1.05);
+      filter: grayscale(.08) contrast(1.26) brightness(.92);
+    }
+
+    .image-card .card-body {
+      position: absolute;
+      inset: auto 0 0;
+      background: linear-gradient(transparent, rgba(0,0,0,.84));
+    }
+
+    .ledger {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+      gap: 54px;
+      align-items: start;
+    }
+
+    .sticky { position: sticky; top: 124px; }
+    .entries { display: grid; gap: 18px; }
+
+    .entry {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255,255,255,.07);
+      padding: 26px;
+      min-height: 210px;
+    }
+
+    .entry strong { color: var(--green); display: block; margin-bottom: 12px; }
+    .entry h3 { margin: 0 0 12px; font-size: 1.8rem; line-height: 1; }
+    .entry p { margin: 0; color: var(--muted); line-height: 1.62; }
+
+    .faq, .sources {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 48px;
+    }
+
+    .sources { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    details, .source {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255,255,255,.055);
+      padding: 22px;
+    }
+
+    summary { cursor: pointer; font-weight: 800; font-size: 1.12rem; }
+    details p, .source { color: var(--muted); line-height: 1.62; }
+
+    .final { text-align: center; padding-bottom: 80px; }
+    .final h2 {
+      max-width: 980px;
+      margin: 0 auto 28px;
+      font-size: clamp(2.6rem, 5.1vw, 5.35rem);
+      line-height: .96;
+    }
+    .final .section-copy { margin: 0 auto 30px; }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 34px 20px;
+      color: var(--muted);
+    }
+
+    footer .wrap {
+      display: flex;
+      justify-content: space-between;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    footer a { color: var(--ink); }
+
+    @media (max-width: 900px) {
+      .navlinks { display: none; }
+      .hero, .ledger, .faq, .sources { grid-template-columns: 1fr; }
+      .hero { min-height: auto; padding-top: 130px; }
+      .hero-art { min-height: 470px; }
+      .media-card { inset: 0 0 auto; }
+      .media-card img { height: 470px; }
+      .floating { left: 14px; bottom: 6px; }
+      section { padding: 110px 18px; }
+      .bento { grid-template-columns: 1fr; }
+      .wide, .side, .third { grid-column: span 1; }
+      .sticky { position: relative; top: auto; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="https://kalshhunter.com/">
+        <span class="mark" aria-hidden="true"></span>
+        <span>Kalsh Hunter</span>
+      </a>
+      <div class="navlinks">
+        <a href="#market">Market</a>
+        <a href="#ledger">Ledger</a>
+        <a href="#sources">Sources</a>
+      </div>
+      <a class="navcta" href="https://getsupers.com/">Supers</a>
+    </nav>
+
+    <header class="hero">
+      <div>
+        <h1>Browser AI agents are getting <span class="inline-img" aria-hidden="true"></span> a trust ledger layer.</h1>
+        <p class="lede">The market is moving beyond "the agent clicked around." Browser agents now need a ledger of intent, evidence, action, exception, and approval so users can delegate without losing control.</p>
+        <div class="actions">
+          <a class="button primary" href="https://app.getsupers.com/use-cases/computer-use-cache/">Study computer-use cache</a>
+          <a class="button secondary" href="#market">Read the analysis</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="media-card">
+          <img src="https://picsum.photos/seed/browser-agent-trust-ledger-screen/1200/1300" alt="">
+        </div>
+        <div class="floating">
+          <strong>The receipt is becoming the product surface.</strong>
+          <p>Agents need to prove the work, not merely report that it finished.</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="ticker" aria-hidden="true">
+      <span>intent ledger / browser evidence / approval state / exception trail / reusable memory / intent ledger / browser evidence / approval state / exception trail / reusable memory / </span>
+    </div>
+
+    <section id="market">
+      <div class="wrap">
+        <h2 class="section-title">The browser-agent wedge is becoming accountability.</h2>
+        <p class="section-copy">Browser AI agents are getting more capable, but capability alone does not create delegation. Users need to see why the agent acted, what evidence it relied on, and where a human decision is still required.</p>
+
+        <div class="bento">
+          <article class="card wide image-card">
+            <img src="https://picsum.photos/seed/browser-agent-ledger-board/1300/760" alt="Browser agent trust ledger dashboard">
+            <div class="card-body">
+              <h3>The market is rewarding visible execution.</h3>
+              <p>Trust ledgers give browser-agent products a reviewable surface for every delegated task.</p>
+            </div>
+          </article>
+          <article class="card side">
+            <div class="card-body">
+              <h3>Why now?</h3>
+              <p>Computer-use agents can operate software, but buyers still need evidence before those agents can touch repeat workflows.</p>
+              <ul>
+                <li>More agents are acting in real accounts.</li>
+                <li>More tasks need approval rather than chat.</li>
+                <li>More teams want memory grounded in proof.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="card third">
+            <div class="card-body">
+              <h3>Intent</h3>
+              <p>The ledger starts with the user's original request and constraints.</p>
+            </div>
+          </article>
+          <article class="card third">
+            <div class="card-body">
+              <h3>Evidence</h3>
+              <p>It links sources, screenshots, page titles, and observed fields to the outcome.</p>
+            </div>
+          </article>
+          <article class="card third">
+            <div class="card-body">
+              <h3>Approval</h3>
+              <p>It clearly marks what is done, blocked, risky, or ready for human review.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="ledger">
+      <div class="wrap ledger">
+        <div class="sticky">
+          <h2 class="section-title reveal-text">A trust ledger makes browser execution easier to delegate and easier to improve.</h2>
+          <p class="section-copy">For a personal AI agent platform like <a href="https://getsupers.com/">Supers</a>, the ledger can connect SMS prompts, browser actions, approval queues, and durable memory.</p>
+        </div>
+        <div class="entries">
+          <article class="entry">
+            <strong>Request entry</strong>
+            <h3>Capture the job before execution.</h3>
+            <p>The ledger should preserve the original message, account context, due date, and permission boundary before the agent starts browsing.</p>
+          </article>
+          <article class="entry">
+            <strong>Evidence entry</strong>
+            <h3>Attach source proof to the result.</h3>
+            <p>Browser agents need source URLs, page titles, screenshots, and selected observations so the result is inspectable without replaying every second.</p>
+          </article>
+          <article class="entry">
+            <strong>Exception entry</strong>
+            <h3>Make failure useful.</h3>
+            <p>Blocked forms, stale credentials, ambiguous fields, and missing information should become structured exception notes rather than silent failures.</p>
+          </article>
+          <article class="entry">
+            <strong>Memory entry</strong>
+            <h3>Promote only verified outcomes.</h3>
+            <p>Approved receipts can feed future tasks through a <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a>, while rejected receipts stay useful as failure data.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2 class="section-title">FAQ</h2>
+        <p class="section-copy">The trust ledger is not extra ceremony. It is the interface that makes browser-agent work safe to approve.</p>
+        <div class="faq">
+          <details open>
+            <summary>Is this just logging?</summary>
+            <p>No. Logs are usually for engineers. A trust ledger is a user-facing work record that links intent, evidence, action, exception, and approval.</p>
+          </details>
+          <details>
+            <summary>How is it different from memory?</summary>
+            <p>Memory is what the agent reuses later. The trust ledger is the proof layer that decides which memories are reliable enough to preserve.</p>
+          </details>
+          <details>
+            <summary>Where does messaging fit?</summary>
+            <p>A <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text-message AI assistant</a> can trigger browser work, then return the receipt summary back to the user for fast review.</p>
+          </details>
+          <details>
+            <summary>What should teams build first?</summary>
+            <p>Start with a receipt schema, source bundle, screenshot capture, exception note, approval status, and a durable link back to the work object.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="sources">
+      <div class="wrap">
+        <h2 class="section-title">Source notes</h2>
+        <p class="section-copy">This is market analysis based on public computer-use agent direction and the practical need for auditable browser automation.</p>
+        <div class="sources">
+          <a class="source" href="https://openai.com/index/computer-using-agent/" rel="nofollow">OpenAI computer-using agent work shows browser execution moving into mainstream agent systems.</a>
+          <a class="source" href="https://www.anthropic.com/news/3-5-models-and-computer-use" rel="nofollow">Anthropic computer use helped normalize agents operating software interfaces directly.</a>
+          <a class="source" href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">Supers website-agent workflows show why browser work needs durable proof and review.</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="final">
+      <div class="wrap">
+        <h2>The next browser-agent moat is proof users can read.</h2>
+        <p class="section-copy">Trust ledgers turn browser execution into a reviewable personal AI workflow.</p>
+        <a class="button primary" href="https://getsupers.com/">Build with Supers</a>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        <span>Kalsh Hunter market analysis</span>
+        <span><a href="https://getsupers.com/">Supers</a> / <a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a> / <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Text assistant</a></span>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.utils.toArray(".media-card, .image-card").forEach((item) => {
+        gsap.fromTo(item,
+          { scale: .86, opacity: .58 },
+          {
+            scale: 1,
+            opacity: 1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: item,
+              start: "top 86%",
+              end: "center 46%",
+              scrub: true
+            }
+          }
+        );
+      });
+      gsap.from(".entry", {
+        y: 92,
+        opacity: 0,
+        scale: .94,
+        stagger: .14,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".entries",
+          start: "top 74%",
+          end: "bottom 38%",
+          scrub: true
+        }
+      });
+      document.querySelectorAll(".reveal-text").forEach((block) => {
+        const words = block.textContent.trim().split(/\s+/);
+        block.innerHTML = words.map((word) => `<span style="opacity:.16;display:inline-block;margin-right:.24em">${word}</span>`).join(" ");
+        gsap.to(block.querySelectorAll("span"), {
+          opacity: 1,
+          stagger: .035,
+          ease: "none",
+          scrollTrigger: {
+            trigger: block,
+            start: "top 76%",
+            end: "bottom 38%",
+            scrub: true
+          }
+        });
+      });
+    }
+  </script>
+</body>
+</html>
