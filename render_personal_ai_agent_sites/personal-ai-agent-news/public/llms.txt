@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Personal AI Agent Interruption Audit Software](personal-ai-agent-interruption-audit-software-20260708-185055/): Niche research landing page
 - [Personal AI Agents Need Interruption Audits](personal-ai-agents-need-interruption-audits-20260708-184555/): Research and news analysis
 - [How to Set an Attention Budget for a Text Message AI Agent](how-to-set-an-attention-budget-for-a-text-message-ai-agent-20260708-183957/): Use case
 - [AI Agent Attention Budgets vs Notification Limits](ai-agent-attention-budgets-vs-notification-limits-20260708-183455/): Competitor comparison
