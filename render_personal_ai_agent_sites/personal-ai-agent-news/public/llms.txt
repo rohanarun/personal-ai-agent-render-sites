@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [AI proof inbox software for customer evidence teams](ai-proof-inbox-software-for-customer-evidence-teams-20260708-121124/): Niche research landing page
 - [Proof ops inboxes are the new personal AI agent wedge](proof-ops-inboxes-are-the-new-personal-ai-agent-wedge-20260708-120624/): Research and news analysis
 - [How to build a proof ops inbox for founder-led sales](how-to-build-a-proof-ops-inbox-for-founder-led-sales-20260708-120054/): Use case
 - [Super vs AI note takers for proof operations](super-vs-ai-note-takers-for-proof-operations-20260708-115554/): Competitor comparison
