@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [How to Use Recovery Prompts in Text AI Agents](how-to-use-recovery-prompts-in-text-ai-agents-20260708-225258/): Use case
 - [Recovery Prompts vs Retry Logic for Personal AI Agents](recovery-prompts-vs-retry-logic-20260708-224056/): Competitor comparison
 - [Personal AI Agent Recovery Prompt Software](personal-ai-agent-recovery-prompt-software-20260708-223056/): Niche research landing page
 - [Personal AI Agents Need Recovery Prompts](personal-ai-agents-need-recovery-prompts-20260708-222556/): Research and news analysis
