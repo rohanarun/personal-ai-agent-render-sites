@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to use an SMS AI assistant for customer follow-up</title>
+  <meta name="description" content="A practical how-to guide for using an SMS AI assistant to triage customer messages, draft follow-ups, check web context, and close the loop without losing the conversation.">
+  <link rel="canonical" href="https://riodphone.com/how-to-use-an-sms-ai-assistant-for-customer-follow-up-20260708-071423/">
+  <meta property="og:title" content="How to use an SMS AI assistant for customer follow-up">
+  <meta property="og:description" content="Learn a simple workflow for turning customer texts into completed follow-up using a personal AI agent.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://riodphone.com/how-to-use-an-sms-ai-assistant-for-customer-follow-up-20260708-071423/">
+  <style>
+    :root {
+      --ink: #111418;
+      --muted: #5a6574;
+      --paper: #faf7f0;
+      --panel: #ffffff;
+      --line: rgba(17, 20, 24, 0.12);
+      --blue: #215a8f;
+      --green: #20745f;
+      --clay: #b86b45;
+      --night: #151923;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 4%, rgba(184, 107, 69, 0.22), transparent 30rem),
+        radial-gradient(circle at 92% 12%, rgba(33, 90, 143, 0.16), transparent 30rem),
+        linear-gradient(180deg, #fbf7ef 0%, #eef5f4 44%, #fbf7ef 100%);
+    }
+
+    a { color: inherit; }
+
+    .page {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    .nav {
+      position: sticky;
+      top: 16px;
+      z-index: 30;
+      width: min(1140px, calc(100% - 32px));
+      margin: 16px auto 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 14px 12px 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(250, 247, 240, 0.82);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 24px 70px rgba(17, 20, 24, 0.12);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-weight: 850;
+      letter-spacing: 0;
+    }
+
+    .mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: conic-gradient(from 120deg, var(--blue), var(--green), var(--clay), var(--blue));
+      box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.56);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav a { text-decoration: none; }
+
+    .nav-cta {
+      color: #fff;
+      background: var(--night);
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-weight: 800;
+    }
+
+    .hero {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 124px 0 112px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      margin: 0 0 22px;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      font-size: clamp(3.1rem, 7vw, 6.5rem);
+      line-height: 0.92;
+      letter-spacing: 0;
+    }
+
+    .inline-image {
+      display: inline-block;
+      width: clamp(88px, 12vw, 150px);
+      height: clamp(38px, 5.2vw, 58px);
+      margin: 0 10px;
+      border-radius: 999px;
+      vertical-align: middle;
+      background-image: url("https://picsum.photos/seed/sms-customer-follow-up/520/200");
+      background-size: cover;
+      background-position: center;
+      filter: contrast(1.14) saturate(0.92);
+      box-shadow: 0 18px 48px rgba(17, 20, 24, 0.16);
+    }
+
+    .lead {
+      max-width: 780px;
+      margin: 30px auto 0;
+      color: #394250;
+      font-size: clamp(1.08rem, 1.9vw, 1.3rem);
+      line-height: 1.64;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 20px;
+      border-radius: 999px;
+      border: 1px solid var(--night);
+      font-weight: 850;
+      text-decoration: none;
+    }
+
+    .primary { background: var(--night); color: #fff; }
+    .secondary { background: rgba(255, 255, 255, 0.68); color: var(--night); }
+
+    .hero-media {
+      width: min(1040px, calc(100% - 40px));
+      margin: -46px auto 0;
+      border-radius: 34px;
+      min-height: 420px;
+      background:
+        linear-gradient(180deg, rgba(17, 20, 24, 0.05), rgba(17, 20, 24, 0.78)),
+        url("https://picsum.photos/seed/message-operations-desk/1600/900");
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 38px 110px rgba(17, 20, 24, 0.24);
+      display: flex;
+      align-items: flex-end;
+      padding: 24px;
+    }
+
+    .media-caption {
+      width: min(620px, 100%);
+      padding: 24px;
+      border-radius: 24px;
+      color: #fff;
+      background: rgba(17, 20, 24, 0.7);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .media-caption p {
+      margin: 8px 0 0;
+      color: rgba(255, 255, 255, 0.75);
+      line-height: 1.58;
+    }
+
+    .section {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 128px 0;
+    }
+
+    h2 {
+      margin: 0 0 24px;
+      max-width: 900px;
+      font-size: clamp(2.35rem, 5vw, 4.9rem);
+      line-height: 0.98;
+      letter-spacing: 0;
+    }
+
+    .section-intro {
+      max-width: 760px;
+      margin: 0 0 42px;
+      color: var(--muted);
+      font-size: 1.15rem;
+      line-height: 1.72;
+    }
+
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-auto-flow: dense;
+      gap: 16px;
+    }
+
+    .tile {
+      min-height: 260px;
+      border-radius: 28px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.74);
+      box-shadow: 0 22px 72px rgba(37, 45, 55, 0.09);
+      overflow: hidden;
+    }
+
+    .tile h3 {
+      margin: 0 0 12px;
+      font-size: 1.55rem;
+      letter-spacing: 0;
+    }
+
+    .tile p, .tile li {
+      color: #465160;
+      line-height: 1.64;
+    }
+
+    .tile ul { margin-bottom: 0; padding-left: 20px; }
+    .span-2 { grid-column: span 2; }
+    .row-2 { grid-row: span 2; }
+    .dark { background: var(--night); color: #fff; }
+    .dark p, .dark li { color: rgba(255, 255, 255, 0.74); }
+
+    .photo {
+      color: #fff;
+      background:
+        linear-gradient(180deg, rgba(32, 116, 95, 0.18), rgba(17, 20, 24, 0.76)),
+        url("https://picsum.photos/seed/customer-message-stack/900/1100");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .workflow {
+      display: grid;
+      grid-template-columns: 0.82fr 1.18fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .sticky {
+      position: sticky;
+      top: 118px;
+      padding: 32px;
+      border-radius: 30px;
+      background: var(--night);
+      color: #fff;
+    }
+
+    .sticky p { color: rgba(255, 255, 255, 0.72); line-height: 1.68; }
+
+    .steps {
+      display: grid;
+      gap: 18px;
+    }
+
+    .step {
+      padding: 30px;
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid var(--line);
+      box-shadow: 0 26px 80px rgba(17, 20, 24, 0.08);
+    }
+
+    .step h3 { margin: 0 0 10px; font-size: 1.6rem; }
+    .step p { margin-bottom: 0; color: var(--muted); line-height: 1.7; }
+
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .check {
+      padding: 24px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.76);
+      border: 1px solid var(--line);
+    }
+
+    .check strong { display: block; margin-bottom: 8px; }
+    .check p { margin: 0; color: var(--muted); line-height: 1.62; }
+
+    .faq {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    details {
+      padding: 24px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.76);
+      border: 1px solid var(--line);
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 850;
+    }
+
+    details p {
+      margin-bottom: 0;
+      color: var(--muted);
+      line-height: 1.64;
+    }
+
+    .final {
+      padding: 118px 0 64px;
+      color: #fff;
+      background:
+        radial-gradient(circle at 80% 10%, rgba(184, 107, 69, 0.24), transparent 28rem),
+        var(--night);
+    }
+
+    .final-inner {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .final h2 {
+      max-width: 980px;
+      margin: 0;
+      font-size: clamp(2.8rem, 6vw, 6.1rem);
+      line-height: 0.95;
+    }
+
+    .final p {
+      max-width: 720px;
+      color: rgba(255, 255, 255, 0.74);
+      line-height: 1.7;
+      font-size: 1.14rem;
+    }
+
+    .footer-links {
+      margin-top: 70px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      color: rgba(255, 255, 255, 0.74);
+    }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .workflow { grid-template-columns: 1fr; }
+      .hero { padding-top: 90px; }
+      .bento, .checklist, .faq { grid-template-columns: 1fr; }
+      .span-2, .row-2 { grid-column: span 1; grid-row: span 1; }
+      .section { padding: 92px 0; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="https://riodphone.com/"><span class="mark" aria-hidden="true"></span><span>SMS AI Assistants</span></a>
+      <div class="nav-links">
+        <a href="#workflow">Workflow</a>
+        <a href="#checklist">Checklist</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <a class="nav-cta" href="https://getsupers.com/">Try Super</a>
+    </nav>
+
+    <header class="hero">
+      <p class="eyebrow">Use case guide for customer operations</p>
+      <h1>How to use an SMS AI assistant <span class="inline-image" aria-hidden="true"></span> for customer follow-up</h1>
+      <p class="lead">Customer follow-up breaks when the message thread drifts away from the actual work. A good SMS AI assistant keeps the request, context, next action, and final update in one place so the customer does not have to repeat themselves.</p>
+      <div class="actions">
+        <a class="button primary" href="https://getsupers.com/">Use Super for follow-up</a>
+        <a class="button secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">View SMS assistant workflow</a>
+      </div>
+    </header>
+
+    <aside class="hero-media" aria-label="Customer follow-up workflow">
+      <div class="media-caption">
+        <strong>What the assistant should do</strong>
+        <p>Read the message, find the missing detail, check the right source, draft the response, and come back with a clear customer-ready update.</p>
+      </div>
+    </aside>
+
+    <section class="section">
+      <h2>The practical case for SMS-first follow-up</h2>
+      <p class="section-intro">Most teams already lose time between a customer text, an internal note, a browser lookup, and a final response. The assistant is useful when it reduces that handoff tax without hiding the decision from the human.</p>
+      <div class="bento">
+        <article class="tile span-2 dark">
+          <h3>Use messages as the intake layer</h3>
+          <p>Do not ask customers to move into a portal for simple updates. Let the customer send the natural message, then let the assistant translate that into a structured follow-up task.</p>
+        </article>
+        <article class="tile row-2 photo">
+          <h3>Keep the thread human-readable</h3>
+          <p>The output should be concise enough to approve, forward, or edit inside the same conversation.</p>
+        </article>
+        <article class="tile">
+          <h3>Preserve context</h3>
+          <p>The assistant should keep the customer name, request, promised deadline, relevant link, and current blocker together.</p>
+        </article>
+        <article class="tile">
+          <h3>Use tools when needed</h3>
+          <p>For order status, web research, booking details, and form checks, connect the message to a computer-use workflow instead of stopping at advice.</p>
+        </article>
+        <article class="tile span-2">
+          <h3>Make the final reply easy to approve</h3>
+          <ul>
+            <li>One-line summary of what changed.</li>
+            <li>Draft customer response in the right tone.</li>
+            <li>Links or evidence used to verify the answer.</li>
+            <li>Open choice only when the assistant needs human judgment.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="workflow">
+      <div class="workflow">
+        <div class="sticky">
+          <h2>Five-step workflow</h2>
+          <p>This is the simplest operating pattern for a business that wants SMS follow-up without turning every customer text into a manual mini-project.</p>
+        </div>
+        <div class="steps">
+          <article class="step">
+            <h3>Capture the request exactly</h3>
+            <p>Have the assistant summarize the customer’s message in one sentence, then identify whether the request is about status, scheduling, pricing, support, or a new task.</p>
+          </article>
+          <article class="step">
+            <h3>Ask for one missing detail</h3>
+            <p>If the message is incomplete, the assistant should ask for the smallest missing detail. This keeps the customer from receiving a long, robotic intake form.</p>
+          </article>
+          <article class="step">
+            <h3>Check the source of truth</h3>
+            <p>Use a system, browser, document, order page, or web search before replying when the answer depends on facts. This is where <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a> becomes valuable.</p>
+          </article>
+          <article class="step">
+            <h3>Draft a customer-safe reply</h3>
+            <p>The assistant should write a response that is specific, polite, and grounded in verified context. The human should be able to approve it quickly.</p>
+          </article>
+          <article class="step">
+            <h3>Close the loop</h3>
+            <p>After the reply, log the status, next reminder, and any unresolved promise. The point is not just sending a message; it is preventing the follow-up from disappearing.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="checklist">
+      <h2>Implementation checklist</h2>
+      <p class="section-intro">Before rolling this out, decide what the assistant can answer, what it can draft, and what still needs approval. Clear boundaries make the system faster and safer.</p>
+      <div class="checklist">
+        <article class="check">
+          <strong>Define common intents</strong>
+          <p>Start with five common follow-up categories instead of trying to automate every possible message.</p>
+        </article>
+        <article class="check">
+          <strong>Write approval rules</strong>
+          <p>Let the assistant draft anything, but require approval for refunds, medical/legal claims, discounts, and commitments outside policy.</p>
+        </article>
+        <article class="check">
+          <strong>Connect sources</strong>
+          <p>Identify the order page, calendar, CRM, spreadsheet, or website that the assistant should check before answering.</p>
+        </article>
+        <article class="check">
+          <strong>Track response quality</strong>
+          <p>Review edits humans make to drafts. Those edits reveal the exact tone and policy instructions the assistant needs next.</p>
+        </article>
+        <article class="check">
+          <strong>Measure completed loops</strong>
+          <p>Do not only count replies sent. Count requests resolved, reminders created, and customers who did not need to repeat themselves.</p>
+        </article>
+        <article class="check">
+          <strong>Use Super as the action layer</strong>
+          <p>Start with <a href="https://getsupers.com/">Super</a> and the <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text message AI assistant</a> use case when the workflow begins in SMS.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Useful source paths</h2>
+      <p class="section-intro">These pages anchor the workflow recommendations and give readers the next specific place to continue.</p>
+      <div class="checklist">
+        <article class="check">
+          <strong>Super homepage</strong>
+          <p><a href="https://getsupers.com/">getsupers.com</a> is the primary product destination for the assistant.</p>
+        </article>
+        <article class="check">
+          <strong>Text message AI assistant</strong>
+          <p><a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">app.getsupers.com/use-cases/text-message-ai-assistant</a> maps directly to SMS follow-up.</p>
+        </article>
+        <article class="check">
+          <strong>Computer-use cache</strong>
+          <p><a href="https://app.getsupers.com/use-cases/computer-use-cache/">app.getsupers.com/use-cases/computer-use-cache</a> supports browser-backed follow-up and factual checks.</p>
+        </article>
+        <article class="check">
+          <strong>Agent website building</strong>
+          <p><a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">app.getsupers.com/use-cases/ai-agent-build-websites</a> shows another completed-work agent pattern.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <h2>FAQ</h2>
+      <div class="faq">
+        <details open>
+          <summary>Should every customer message be automated?</summary>
+          <p>No. Automate triage, source checks, drafts, reminders, and low-risk status updates first. Keep sensitive commitments under human approval.</p>
+        </details>
+        <details>
+          <summary>What makes this different from a chatbot?</summary>
+          <p>The assistant is judged by completed follow-up, not just by a helpful answer. It should connect message context to tools and return with a usable update.</p>
+        </details>
+        <details>
+          <summary>Can this work for small teams?</summary>
+          <p>Yes. Small teams often benefit fastest because fewer people are available to chase every loose customer thread manually.</p>
+        </details>
+        <details>
+          <summary>Where should I start?</summary>
+          <p>Pick one recurring follow-up category, write the approval boundary, then test the workflow with <a href="https://getsupers.com/">Super</a>.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="final">
+      <div class="final-inner">
+        <h2>The best SMS assistant does not just reply. It remembers the promise.</h2>
+        <p>Use Super to turn customer texts into resolved follow-up, verified answers, and clean next steps that stay visible in the thread.</p>
+        <div class="actions">
+          <a class="button primary" href="https://getsupers.com/">Start with Super</a>
+          <a class="button secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Open the SMS guide</a>
+        </div>
+        <div class="footer-links">
+          <a href="https://riodphone.com/">SMS AI Assistants</a>
+          <a href="https://getsupers.com/">Super</a>
+          <a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a>
+          <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">Agent website building</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>
+    const visible = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.animate(
+          [
+            { opacity: 0, transform: "translateY(26px) scale(0.985)" },
+            { opacity: 1, transform: "translateY(0) scale(1)" }
+          ],
+          { duration: 720, easing: "cubic-bezier(.2,.8,.2,1)", fill: "forwards" }
+        );
+        visible.unobserve(entry.target);
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".tile, .step, .check, details").forEach((node) => visible.observe(node));
+  </script>
+</body>
+</html>
