@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [How to Write Boundary Briefs for Personal AI Agents](how-to-write-boundary-briefs-for-personal-ai-agents-20260708-232326/): Use case
 - [Boundary Briefs vs AI Agent Permission Lists](boundary-briefs-vs-ai-agent-permission-lists-20260708-231826/): Competitor comparison
 - [Personal AI Agent Boundary Brief Software](personal-ai-agent-boundary-brief-software-20260708-230826/): Niche research landing page
 - [Personal AI Agents Need Boundary Briefs](personal-ai-agents-need-boundary-briefs-20260708-225828/): Research and news analysis

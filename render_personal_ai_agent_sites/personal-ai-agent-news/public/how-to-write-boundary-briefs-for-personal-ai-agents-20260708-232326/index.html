@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How to Write Boundary Briefs for Personal AI Agents</title>
+  <meta name="description" content="A practical guide to writing boundary briefs for personal AI agents that work through text, browser actions, approvals, calendars, inboxes, and public web workflows." />
+  <link rel="canonical" href="https://kalshhunter.com/how-to-write-boundary-briefs-for-personal-ai-agents-20260708-232326/" />
+  <meta property="og:title" content="How to Write Boundary Briefs for Personal AI Agents" />
+  <meta property="og:description" content="A hands-on template for defining intent, escalation triggers, reversible actions, and receipts before a personal AI agent acts." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://kalshhunter.com/how-to-write-boundary-briefs-for-personal-ai-agents-20260708-232326/" />
+  <style>
+    :root {
+      --bg: #0a0e12;
+      --ink: #f7f2e8;
+      --muted: rgba(247,242,232,.72);
+      --soft: rgba(247,242,232,.5);
+      --line: rgba(247,242,232,.16);
+      --panel: rgba(21,27,32,.76);
+      --panel-2: rgba(247,242,232,.07);
+      --mint: #a9f5d2;
+      --amber: #f0c36a;
+      --coral: #ff8e7c;
+      --blue: #9fc7ff;
+      --font: "Geist", "Outfit", "Cabinet Grotesk", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: var(--font);
+      background:
+        radial-gradient(circle at 80% 4%, rgba(169,245,210,.18), transparent 34rem),
+        radial-gradient(circle at 12% 28%, rgba(255,142,124,.12), transparent 32rem),
+        linear-gradient(180deg, #0a0e12 0%, #10161b 46%, #0a0e12 100%);
+      overflow-x: hidden;
+    }
+    body:before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .15;
+      mix-blend-mode: soft-light;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='3' type='fractalNoise' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
+    }
+    main { width: 100%; max-width: 100%; overflow-x: hidden; }
+    a { color: inherit; }
+    .nav {
+      position: fixed;
+      z-index: 30;
+      top: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1080px, calc(100vw - 32px));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 12px 14px 12px 20px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(10,14,18,.68);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 18px 80px rgba(0,0,0,.28);
+    }
+    .brand { text-decoration: none; font-weight: 900; letter-spacing: 0; }
+    .nav-links { display: flex; align-items: center; gap: 8px; }
+    .nav-links a { text-decoration: none; color: var(--muted); padding: 9px 12px; border-radius: 999px; font-size: .9rem; }
+    .nav-links a:hover { color: var(--ink); background: rgba(247,242,232,.08); }
+    .nav-links .nav-cta { color: #07110b; background: var(--mint); font-weight: 900; }
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: grid;
+      align-items: center;
+      padding: 150px 20px 104px;
+      isolation: isolate;
+    }
+    .hero:after {
+      content: "";
+      position: absolute;
+      right: -5vw;
+      bottom: 5vh;
+      width: min(620px, 56vw);
+      height: min(720px, 68vh);
+      z-index: -1;
+      border-radius: 8px;
+      background:
+        linear-gradient(180deg, rgba(10,14,18,.02), rgba(10,14,18,.54)),
+        url("https://picsum.photos/seed/boundary-brief-workbench/1200/1500") center/cover;
+      filter: grayscale(.28) contrast(1.18) saturate(.76);
+      box-shadow: 0 50px 140px rgba(0,0,0,.45), inset 0 0 0 1px rgba(247,242,232,.14);
+      opacity: .78;
+    }
+    .hero-inner { width: min(1180px, 94vw); margin: 0 auto; }
+    .hero-copy-block { width: min(760px, 92vw); }
+    h1 {
+      max-width: min(1080px, 94vw);
+      margin: 0;
+      font-size: clamp(2.65rem, 4.65vw, 5.15rem);
+      line-height: .96;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .inline-img {
+      display: inline-block;
+      width: clamp(72px, 8vw, 124px);
+      height: clamp(32px, 3.8vw, 52px);
+      margin: 0 .16em;
+      border-radius: 999px;
+      vertical-align: middle;
+      background: url("https://picsum.photos/seed/agent-brief-notes/600/320") center/cover;
+      box-shadow: inset 0 0 0 1px rgba(247,242,232,.2), 0 16px 60px rgba(0,0,0,.36);
+      filter: contrast(1.2) grayscale(.18);
+    }
+    .hero p {
+      margin: 28px 0 0;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 1.55vw, 1.32rem);
+      line-height: 1.62;
+      width: min(700px, 92vw);
+    }
+    .actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 34px; }
+    .button {
+      min-height: 48px;
+      padding: 0 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      text-decoration: none;
+      border: 1px solid var(--line);
+      font-weight: 900;
+    }
+    .button.primary { color: #07110b; background: var(--mint); border-color: transparent; }
+    .button.secondary { color: var(--ink); background: rgba(247,242,232,.08); }
+    section { padding: 148px 20px; }
+    .wrap { width: min(1160px, 94vw); margin: 0 auto; }
+    .section-head { display: grid; grid-template-columns: 1.08fr .92fr; gap: 44px; align-items: end; margin-bottom: 42px; }
+    h2 { margin: 0; font-size: clamp(2.15rem, 4vw, 4.75rem); line-height: .99; letter-spacing: 0; text-wrap: balance; }
+    .lead { margin: 0; color: var(--muted); line-height: 1.72; font-size: 1.08rem; }
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-flow: dense;
+      gap: 16px;
+    }
+    .card {
+      position: relative;
+      overflow: hidden;
+      min-height: 260px;
+      padding: 28px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      box-shadow: 0 24px 90px rgba(0,0,0,.24);
+    }
+    .card h3 { margin: 0 0 14px; font-size: clamp(1.32rem, 2vw, 2rem); line-height: 1.08; letter-spacing: 0; }
+    .card p, .card li { color: var(--muted); line-height: 1.64; font-size: 1rem; }
+    .card ul, .card ol { margin: 18px 0 0; padding-left: 20px; }
+    .span-8 { grid-column: span 8; }
+    .span-6 { grid-column: span 6; }
+    .span-4 { grid-column: span 4; }
+    .media { padding: 0; }
+    .media img { width: 100%; height: 100%; min-height: 330px; object-fit: cover; filter: grayscale(.28) contrast(1.16); transform: scale(1); transition: transform .7s ease, opacity .7s ease; }
+    .media:hover img, .step:hover img { transform: scale(1.05); }
+    .snippet {
+      border: 1px solid rgba(169,245,210,.26);
+      background: rgba(169,245,210,.08);
+      color: var(--ink);
+      border-radius: 8px;
+      padding: 20px;
+      line-height: 1.72;
+      white-space: pre-wrap;
+    }
+    .marquee {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 20px 0;
+      color: var(--soft);
+      font-weight: 900;
+      font-size: clamp(1.45rem, 3.2vw, 3.3rem);
+    }
+    .marquee-track { display: inline-block; animation: slide 36s linear infinite; }
+    @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .workflow {
+      display: grid;
+      grid-template-columns: .84fr 1.16fr;
+      gap: 56px;
+      align-items: start;
+    }
+    .pin { position: sticky; top: 122px; }
+    .steps { display: grid; gap: 18px; }
+    .step {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      overflow: hidden;
+      min-height: 210px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: rgba(247,242,232,.06);
+    }
+    .step img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(.24) contrast(1.2); transition: transform .7s ease, opacity .7s ease; }
+    .step div { padding: 24px; }
+    .step h3 { margin: 0 0 10px; font-size: 1.36rem; }
+    .step p { color: var(--muted); line-height: 1.64; margin: 0; }
+    .sources { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .source-card, details {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(247,242,232,.06);
+      padding: 22px;
+    }
+    .source-card h3 { margin-top: 0; }
+    .source-card p, details p { color: var(--muted); line-height: 1.66; }
+    .source-card a { color: var(--mint); font-weight: 900; }
+    .faq { display: grid; gap: 14px; }
+    summary { cursor: pointer; font-weight: 900; font-size: 1.08rem; }
+    .cta {
+      padding: 128px 20px;
+      border-top: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 18% 18%, rgba(169,245,210,.16), transparent 30rem),
+        linear-gradient(135deg, rgba(159,199,255,.12), rgba(255,142,124,.08));
+    }
+    .cta-box { width: min(1120px, 94vw); margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 34px; align-items: center; }
+    footer { padding: 38px 20px 70px; color: var(--soft); }
+    footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    footer a { text-decoration: none; color: var(--muted); margin-left: 16px; }
+    @media (max-width: 840px) {
+      .nav { border-radius: 22px; }
+      .nav-links { display: none; }
+      .hero:after { width: 84vw; height: 40vh; right: -18vw; opacity: .35; }
+      .section-head, .workflow, .cta-box { grid-template-columns: 1fr; }
+      .bento { grid-template-columns: 1fr; }
+      .span-4, .span-6, .span-8 { grid-column: span 1; }
+      .sources { grid-template-columns: 1fr; }
+      .step { grid-template-columns: 1fr; }
+      section { padding: 108px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="Primary navigation">
+    <a class="brand" href="/">Kalsh Hunter</a>
+    <div class="nav-links">
+      <a href="#template">Template</a>
+      <a href="#workflow">Workflow</a>
+      <a href="#checklist">Checklist</a>
+      <a class="nav-cta" href="https://getsupers.com/">Explore Super</a>
+    </div>
+  </nav>
+  <main>
+    <header class="hero">
+      <div class="hero-inner">
+        <div class="hero-copy-block">
+          <h1>How to write boundary briefs <span class="inline-img" aria-hidden="true"></span> for personal AI agents</h1>
+          <p>A boundary brief is the short operating document that tells a personal AI agent where autonomy should stop, when a human should be asked, and how to recover when the agent is uncertain.</p>
+          <div class="actions">
+            <a class="button primary" href="https://getsupers.com/">Build with Super</a>
+            <a class="button secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">See text approvals</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="template">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Start with the work the agent is allowed to prepare.</h2>
+          <p class="lead">A permission list can say which tools an agent may access. A boundary brief says what kind of judgment the user expects once those tools are available. The strongest briefs are short enough to stay useful and specific enough to prevent vague autonomy.</p>
+        </div>
+        <div class="bento">
+          <article class="card span-8">
+            <h3>A reusable boundary brief template</h3>
+            <div class="snippet">Agent mission:
+Prepare and coordinate routine personal work without surprising other people.
+
+Allowed without approval:
+Draft, summarize, sort, research, queue, label, compare, and prepare options.
+
+Ask before acting:
+Sending messages, spending money, deleting records, changing appointments, publishing pages, or contacting another person.
+
+Escalate when:
+The request is emotionally sensitive, irreversible, unusually expensive, legally ambiguous, time-critical, or based on weak evidence.
+
+Receipt required:
+Show source context, rule applied, proposed action, approval path, and final outcome.</div>
+          </article>
+          <article class="card media span-4">
+            <img class="scale-media" src="https://picsum.photos/seed/boundary-brief-template/900/1200" alt="Boundary brief template on a workstation" />
+          </article>
+          <article class="card span-4">
+            <h3>Define preparation</h3>
+            <p>Give the agent a broad lane for reversible work. Preparing options, writing drafts, and gathering evidence can usually happen without interrupting the user.</p>
+          </article>
+          <article class="card span-4">
+            <h3>Define action</h3>
+            <p>Mark the line where preparation becomes external action. Sending, buying, deleting, publishing, and rescheduling should have approval rules.</p>
+          </article>
+          <article class="card span-4">
+            <h3>Define recovery</h3>
+            <p>Tell the agent what to do after uncertainty: ask a short question, provide a safe draft, wait for a daily review, or leave a receipt.</p>
+          </article>
+          <article class="card media span-6">
+            <img class="scale-media" src="https://picsum.photos/seed/personal-agent-approval-lane/1200/800" alt="Approval lane interface for personal AI agent decisions" />
+          </article>
+          <article class="card span-6">
+            <h3>Use separate boundaries for separate channels</h3>
+            <p>A browser agent, a text agent, and a calendar agent should not share one vague rule. A text-first assistant needs concise escalation language because interruptions arrive directly to the user. Super's <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text message AI assistant</a> pattern is useful when approval should happen in the same channel where the user already responds.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">draft first · ask before impact · cite the rule · preserve a receipt · recover gracefully · draft first · ask before impact · cite the rule · preserve a receipt · recover gracefully · </div>
+    </div>
+
+    <section id="workflow">
+      <div class="wrap workflow">
+        <div class="pin">
+          <h2>Turn the brief into a working control loop.</h2>
+          <p class="lead">A boundary brief is not a policy poster. It should be attached to the agent's actual workflow: tool calls, browser steps, text approvals, memory updates, and receipts.</p>
+        </div>
+        <div class="steps">
+          <article class="step">
+            <img class="scale-media" src="https://picsum.photos/seed/agent-intent-pass/700/900" alt="Intent pass for AI agent workflow" />
+            <div>
+              <h3>Write the intent pass</h3>
+              <p>Explain what the agent is helping the user accomplish in plain language. Keep it practical: reduce routine coordination, prepare decisions, and avoid needless interruptions.</p>
+            </div>
+          </article>
+          <article class="step">
+            <img class="scale-media" src="https://picsum.photos/seed/agent-risk-line/700/900" alt="Risk boundary line in an AI agent workflow" />
+            <div>
+              <h3>Draw the risk line</h3>
+              <p>Name actions that change the outside world. Browser purchases, public publishing, outreach, and calendar changes deserve stronger approval than private drafting. This fits well with Super's <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a> approach because the agent can preserve visible context before asking.</p>
+            </div>
+          </article>
+          <article class="step">
+            <img class="scale-media" src="https://picsum.photos/seed/agent-approval-text/700/900" alt="Text approval for AI agent action" />
+            <div>
+              <h3>Write approval prompts</h3>
+              <p>Do not make the user inspect a whole chain of thought. Ask for a concrete approval with the source, the rule, the proposed action, and the safest fallback.</p>
+            </div>
+          </article>
+          <article class="step">
+            <img class="scale-media" src="https://picsum.photos/seed/agent-public-artifact/700/900" alt="Public artifact created by a personal AI agent" />
+            <div>
+              <h3>Attach receipts to outputs</h3>
+              <p>When the agent creates public artifacts, receipts matter. Super's <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent website building</a> workflow is a good example of why generated work should include source context, visible review paths, and a clear publishing boundary.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="checklist">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Buyer checklist for boundary brief software.</h2>
+          <p class="lead">Use these checks when choosing or building tooling around personal AI agent policies.</p>
+        </div>
+        <div class="bento">
+          <article class="card span-4">
+            <h3>Can briefs be scoped?</h3>
+            <p>One global brief is too broad. Look for channel, workflow, person, account, and task-level scopes.</p>
+          </article>
+          <article class="card span-4">
+            <h3>Can approvals happen naturally?</h3>
+            <p>The best approval surface is often text. A user should be able to say yes, no, revise, wait, or always apply this rule.</p>
+          </article>
+          <article class="card span-4">
+            <h3>Can corrections update future behavior?</h3>
+            <p>If a correction never becomes memory or policy, the same failure will repeat. Boundary briefs need revision paths.</p>
+          </article>
+          <article class="card span-6">
+            <h3>Does the system produce receipts?</h3>
+            <p>Every sensitive action should show the source context, policy applied, approval state, and outcome. Receipts make agent behavior reviewable without forcing the user to replay a whole session.</p>
+          </article>
+          <article class="card span-6">
+            <h3>Does it integrate with real work?</h3>
+            <p>A boundary brief should travel with the agent into browser tasks, inbox triage, calendar edits, research loops, and content creation. <a href="https://getsupers.com/">Super</a> is relevant for teams building agents that need approval and action history across personal channels.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Sources and useful references.</h2>
+          <p class="lead">These references are useful for teams turning boundary briefs into operational controls.</p>
+        </div>
+        <div class="sources">
+          <article class="source-card">
+            <h3>NIST AI Risk Management Framework</h3>
+            <p>Useful vocabulary for mapping, measuring, managing, and governing AI risk.</p>
+            <a href="https://www.nist.gov/itl/ai-risk-management-framework" rel="nofollow">Open NIST AI RMF</a>
+          </article>
+          <article class="source-card">
+            <h3>OWASP LLM Application Risks</h3>
+            <p>Relevant for tool misuse, prompt injection, excessive agency, and sensitive data exposure.</p>
+            <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" rel="nofollow">Open OWASP LLM Top 10</a>
+          </article>
+          <article class="source-card">
+            <h3>Super</h3>
+            <p>Reference workflows for text-native approvals, browser work, cache-backed computer use, and agent-created websites.</p>
+            <a href="https://getsupers.com/">Open Super</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <h2>FAQ</h2>
+          <p class="lead">Practical questions that come up when teams introduce boundary briefs.</p>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>How long should a boundary brief be?</summary>
+            <p>Long enough to name the mission, allowed preparation, approval triggers, escalation conditions, and receipts. For most personal AI agents, one strong page is better than a sprawling policy document.</p>
+          </details>
+          <details>
+            <summary>Should the brief be written by a lawyer, operator, or user?</summary>
+            <p>For personal workflows, the user or operator should write the first version because preference and relationship context matter. Legal or compliance review can then harden boundaries for regulated work.</p>
+          </details>
+          <details>
+            <summary>How does this differ from a system prompt?</summary>
+            <p>A system prompt is an instruction surface. A boundary brief is an operating artifact that should be visible, versioned, tied to approvals, and reflected in receipts.</p>
+          </details>
+          <details>
+            <summary>When should the agent ask for approval?</summary>
+            <p>Ask before irreversible, external, expensive, sensitive, legally ambiguous, or reputation-affecting actions. Let the agent continue preparing options while it waits.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="cta-box">
+        <div>
+          <h2>Write the boundary before the agent learns the shortcut.</h2>
+          <p class="lead">Personal AI agents become safer when their autonomy has a visible operating brief, a text approval lane, and receipts users can inspect later.</p>
+        </div>
+        <a class="button primary" href="https://getsupers.com/">Explore Super</a>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap">
+      <span>Kalsh Hunter personal AI agent market notes</span>
+      <span>
+        <a href="https://getsupers.com/">Super</a>
+        <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Text assistants</a>
+        <a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a>
+      </span>
+    </div>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.utils.toArray(".scale-media").forEach(function (img) {
+        gsap.fromTo(img, { scale: 0.84, opacity: 0.62 }, {
+          scale: 1,
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: { trigger: img, start: "top 90%", end: "bottom 20%", scrub: true }
+        });
+      });
+      gsap.utils.toArray(".card").forEach(function (card, index) {
+        gsap.from(card, {
+          y: 44,
+          opacity: 0,
+          duration: .85,
+          delay: index * .025,
+          ease: "power3.out",
+          scrollTrigger: { trigger: card, start: "top 86%" }
+        });
+      });
+      gsap.utils.toArray(".step").forEach(function (step, index) {
+        gsap.from(step, {
+          y: 70,
+          opacity: 0,
+          scale: .96,
+          ease: "power2.out",
+          scrollTrigger: { trigger: step, start: "top 88%", end: "top 54%", scrub: true }
+        });
+      });
+    }
+  </script>
+</body>
+</html>
