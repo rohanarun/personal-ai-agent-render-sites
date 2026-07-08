@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [AI Agent Policy Layer Software for Personal Operators](ai-agent-policy-layer-software-for-personal-operators-20260708-163655/): Niche research landing page
 - [Personal AI Agents Are Moving from Exceptions to Policy Layers](personal-ai-agents-are-moving-from-exceptions-to-policy-layers-20260708-162655/): Research and news analysis
 - [How to Turn AI Agent Exceptions into Approval Policies](how-to-turn-ai-agent-exceptions-into-approval-policies-20260708-161656/): Use case
 - [Text Approval Queues vs Human-in-the-Loop Dashboards](text-approval-queues-vs-human-in-the-loop-dashboards-20260708-160625/): Competitor comparison
