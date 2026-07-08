@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Revenue AI dashboards are turning into agent review queues](revenue-ai-dashboards-are-turning-into-agent-review-queues-20260708-125624/): Research and news analysis
 - [How to build an AI customer proof follow-up queue](how-to-build-an-ai-customer-proof-follow-up-queue-20260708-125124/): Use case
 - [Static proof libraries vs agentic proof rooms](static-proof-libraries-vs-agentic-proof-rooms-20260708-124624/): Competitor comparison
 - [Agentic customer proof room software](agentic-customer-proof-room-software-20260708-124124/): Niche research landing page
