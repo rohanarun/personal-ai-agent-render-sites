@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [AI Agent Rule Receipts vs Audit Logs](ai-agent-rule-receipts-vs-audit-logs-20260708-195756/): Competitor comparison
 - [Personal AI Agent Rule Receipt Software](personal-ai-agent-rule-receipt-software-20260708-194727/): Niche research landing page
 - [Personal AI Agents Need Rule Receipts](personal-ai-agents-need-rule-receipts-20260708-194155/): Research and news analysis
 - [How to Turn User Corrections Into AI Agent Rules](how-to-turn-user-corrections-into-ai-agent-rules-20260708-193655/): Use case
