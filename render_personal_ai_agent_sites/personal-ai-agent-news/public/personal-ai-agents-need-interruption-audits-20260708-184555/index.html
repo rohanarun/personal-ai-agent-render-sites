@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Personal AI Agents Need Interruption Audits</title>
+  <meta name="description" content="A research-style briefing on why personal AI agents need interruption audits before they earn permission to text, escalate, or act on a user's behalf.">
+  <link rel="canonical" href="https://kalshhunter.com/personal-ai-agents-need-interruption-audits-20260708-184555/">
+  <meta property="og:title" content="Personal AI Agents Need Interruption Audits">
+  <meta property="og:description" content="Personal AI agents need measurable interruption audits, not just better notification settings.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://kalshhunter.com/personal-ai-agents-need-interruption-audits-20260708-184555/">
+  <meta property="og:image" content="https://picsum.photos/seed/interruption-audit-console/1920/1080">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <style>
+    :root {
+      --bg: #070806;
+      --ink: #f7f5ec;
+      --muted: rgba(247,245,236,0.72);
+      --dim: rgba(247,245,236,0.52);
+      --line: rgba(247,245,236,0.14);
+      --panel: rgba(255,255,255,0.065);
+      --green: #d9ff9a;
+      --cyan: #adf6ff;
+      --coral: #ffb19d;
+      --violet: #d5c2ff;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Geist", system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 72% 4%, rgba(217,255,154,0.2), transparent 31rem),
+        radial-gradient(circle at 8% 24%, rgba(173,246,255,0.16), transparent 28rem),
+        linear-gradient(140deg, #050605 0%, #10120e 48%, #070806 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 4;
+      pointer-events: none;
+      opacity: 0.16;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23g)' opacity='.5'/%3E%3C/svg%3E");
+      mix-blend-mode: soft-light;
+    }
+
+    main { overflow-x: hidden; width: 100%; max-width: 100%; }
+    a { color: inherit; }
+    .wrap { width: min(1180px, calc(100vw - 40px)); margin: 0 auto; }
+
+    .nav {
+      position: fixed;
+      z-index: 10;
+      top: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1130px, calc(100vw - 32px));
+      padding: 12px 14px 12px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(7,8,6,0.7);
+      backdrop-filter: blur(22px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      box-shadow: 0 22px 80px rgba(0,0,0,0.34);
+    }
+    .brand { font-weight: 800; text-decoration: none; }
+    .nav-links { display: flex; gap: 22px; color: var(--muted); font-size: 0.94rem; }
+    .nav-links a { text-decoration: none; }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 18px;
+      border-radius: 999px;
+      background: var(--green);
+      color: #0a1007;
+      text-decoration: none;
+      font-weight: 750;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      align-items: center;
+      padding: 150px 0 96px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(330px, 0.68fr);
+      gap: clamp(32px, 6vw, 86px);
+      align-items: center;
+    }
+    h1 {
+      max-width: min(1060px, 94vw);
+      margin: 0;
+      font-size: clamp(2.75rem, 4.7vw, 5.05rem);
+      line-height: 0.97;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .inline-photo {
+      display: inline-block;
+      width: clamp(72px, 7.8vw, 120px);
+      height: clamp(34px, 3.9vw, 52px);
+      margin: 0 8px;
+      border-radius: 999px;
+      vertical-align: middle;
+      background: url("https://picsum.photos/seed/agent-audit-table/420/210") center/cover;
+      filter: contrast(1.18) saturate(0.86);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.28);
+    }
+    .lead {
+      margin: 28px 0 0;
+      max-width: 690px;
+      color: var(--muted);
+      font-size: clamp(1.08rem, 1.55vw, 1.26rem);
+      line-height: 1.58;
+    }
+    .actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 49px;
+      padding: 0 22px;
+      border-radius: 999px;
+      font-weight: 760;
+      text-decoration: none;
+      transition: transform 220ms ease, background 220ms ease, border-color 220ms ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn.primary { background: var(--green); color: #0a1007; }
+    .btn.secondary { background: rgba(255,255,255,0.075); color: white; border: 1px solid rgba(255,255,255,0.2); }
+
+    .hero-media {
+      min-height: 570px;
+      border-radius: 34px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.14);
+      background:
+        linear-gradient(180deg, rgba(7,8,6,0.02), rgba(7,8,6,0.78)),
+        url("https://picsum.photos/seed/personal-agent-audit-room/900/1300") center/cover;
+      filter: grayscale(0.16) contrast(1.17);
+      position: relative;
+      box-shadow: 0 46px 130px rgba(0,0,0,0.42);
+    }
+    .hero-media::after {
+      content: "audit every interruption before trust becomes habit";
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      padding: 22px;
+      border-radius: 24px;
+      background: rgba(5,6,5,0.64);
+      border: 1px solid rgba(255,255,255,0.16);
+      backdrop-filter: blur(20px);
+      color: rgba(255,255,255,0.82);
+      line-height: 1.4;
+      font-weight: 650;
+      font-size: 1.18rem;
+    }
+
+    section { padding: 138px 0; }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.85fr) minmax(280px, 0.55fr);
+      gap: 48px;
+      align-items: end;
+      margin-bottom: 42px;
+    }
+    h2 {
+      margin: 0;
+      font-size: clamp(2.3rem, 4.7vw, 4.85rem);
+      line-height: 0.99;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .section-head p, .article p, .faq p, .quote p { color: var(--muted); line-height: 1.72; font-size: 1.04rem; }
+
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-flow: dense;
+      gap: 16px;
+    }
+    .card {
+      min-height: 270px;
+      border-radius: 26px;
+      border: 1px solid rgba(255,255,255,0.13);
+      background: var(--panel);
+      overflow: hidden;
+      position: relative;
+      transition: transform 520ms ease, border-color 520ms ease;
+    }
+    .card:hover { transform: translateY(-7px); border-color: rgba(217,255,154,0.42); }
+    .card-inner { padding: 30px; position: relative; z-index: 2; }
+    .card h3 { margin: 0 0 14px; font-size: 1.55rem; line-height: 1.08; }
+    .card p, .card li { color: var(--muted); line-height: 1.64; }
+    .span-7 { grid-column: span 7; }
+    .span-5 { grid-column: span 5; }
+    .span-4 { grid-column: span 4; }
+    .image-card {
+      min-height: 382px;
+      background:
+        linear-gradient(120deg, rgba(7,8,6,0.1), rgba(7,8,6,0.78)),
+        url("https://picsum.photos/seed/notification-lab-board/1200/780") center/cover;
+    }
+    .green { background: linear-gradient(145deg, rgba(217,255,154,0.16), rgba(255,255,255,0.055)); }
+    .cyan { background: linear-gradient(145deg, rgba(173,246,255,0.15), rgba(255,255,255,0.055)); }
+    .coral { background: linear-gradient(145deg, rgba(255,177,157,0.16), rgba(255,255,255,0.055)); }
+    .violet { background: linear-gradient(145deg, rgba(213,194,255,0.15), rgba(255,255,255,0.055)); }
+
+    .stack-wrap { position: relative; }
+    .stack-card {
+      min-height: 430px;
+      display: grid;
+      grid-template-columns: minmax(0, 0.56fr) minmax(280px, 0.44fr);
+      gap: 28px;
+      align-items: center;
+      padding: 38px;
+      border-radius: 32px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.075);
+      margin-bottom: 32px;
+      position: sticky;
+      top: 105px;
+      box-shadow: 0 36px 100px rgba(0,0,0,0.28);
+    }
+    .stack-card:nth-child(2) { top: 126px; }
+    .stack-card:nth-child(3) { top: 147px; }
+    .stack-card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 24px;
+      filter: grayscale(0.2) contrast(1.14);
+      transform: scale(0.98);
+      transition: transform 700ms ease;
+    }
+    .stack-card:hover img { transform: scale(1.04); }
+    .stack-card h3 { margin: 0 0 12px; font-size: clamp(1.7rem, 3vw, 3rem); line-height: 1; }
+
+    .scrub-text {
+      max-width: 980px;
+      margin: 0 auto;
+      font-size: clamp(2.1rem, 4.2vw, 4.3rem);
+      line-height: 1.08;
+      text-align: center;
+      color: rgba(247,245,236,0.18);
+    }
+    .scrub-text span { color: rgba(247,245,236,0.18); }
+
+    .article-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.66fr) minmax(280px, 0.34fr);
+      gap: 42px;
+      align-items: start;
+    }
+    .article {
+      padding: 38px;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,0.13);
+      background: rgba(255,255,255,0.06);
+    }
+    .article h3 { margin: 30px 0 8px; font-size: 2rem; }
+    .article h3:first-child { margin-top: 0; }
+    .article li { margin: 12px 0; color: var(--muted); line-height: 1.68; }
+    .sources {
+      position: sticky;
+      top: 120px;
+      padding: 28px;
+      border-radius: 26px;
+      border: 1px solid rgba(217,255,154,0.22);
+      background: rgba(217,255,154,0.1);
+    }
+    .sources h3 { margin-top: 0; }
+    .sources a, .article a { color: var(--green); text-underline-offset: 4px; }
+
+    .quotes {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .quote {
+      min-height: 300px;
+      padding: 28px;
+      border-radius: 26px;
+      background: rgba(255,255,255,0.065);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+    .portrait-row { display: flex; margin-bottom: 24px; }
+    .portrait {
+      width: 54px;
+      height: 54px;
+      border-radius: 999px;
+      border: 2px solid #0b0d09;
+      background-size: cover;
+      background-position: center;
+      margin-right: -12px;
+      filter: grayscale(0.2) contrast(1.1);
+    }
+
+    .marquee {
+      display: flex;
+      overflow: hidden;
+      border-block: 1px solid rgba(255,255,255,0.12);
+      padding: 24px 0;
+      white-space: nowrap;
+      color: rgba(255,255,255,0.58);
+      font-weight: 800;
+      font-size: clamp(1.25rem, 2.5vw, 2.1rem);
+    }
+    .marquee-track { display: flex; gap: 44px; padding-right: 44px; animation: slide 26s linear infinite; }
+    @keyframes slide { to { transform: translateX(-50%); } }
+
+    .faq {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .faq article {
+      padding: 28px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.06);
+    }
+    .faq h3 { margin: 0 0 10px; }
+
+    .cta {
+      padding: 116px 0;
+      border-top: 1px solid rgba(255,255,255,0.14);
+      background:
+        linear-gradient(90deg, rgba(217,255,154,0.26), rgba(173,246,255,0.2)),
+        url("https://picsum.photos/seed/agent-audit-command-room/1920/1080") center/cover;
+      background-blend-mode: screen;
+    }
+    .cta-box { width: min(980px, calc(100vw - 40px)); margin: 0 auto; }
+    .cta h2 { color: #081006; text-shadow: 0 1px 0 rgba(255,255,255,0.22); }
+    .cta p { max-width: 660px; color: rgba(8,16,6,0.76); line-height: 1.62; font-size: 1.15rem; }
+    .cta .btn.secondary { color: #081006; border-color: rgba(8,16,6,0.28); background: rgba(255,255,255,0.42); }
+
+    footer { padding: 42px 0 58px; color: rgba(255,255,255,0.58); }
+    .footer-row { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .footer-row a { text-decoration: none; margin-left: 18px; }
+
+    @media (max-width: 880px) {
+      .nav { top: 12px; border-radius: 26px; }
+      .nav-links { display: none; }
+      .hero-grid, .section-head, .stack-card, .article-grid, .quotes, .faq { grid-template-columns: 1fr; }
+      .hero-media { min-height: 430px; }
+      section { padding: 98px 0; }
+      .bento { grid-template-columns: 1fr; }
+      .span-7, .span-5, .span-4 { grid-column: span 1; }
+      .sources { position: relative; top: 0; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="Main navigation">
+    <a class="brand" href="https://kalshhunter.com/">Kalsh Hunter</a>
+    <div class="nav-links">
+      <a href="#signals">Signals</a>
+      <a href="#audit">Audit</a>
+      <a href="#sources">Sources</a>
+    </div>
+    <a class="nav-cta" href="https://getsupers.com/">Explore Supers</a>
+  </nav>
+
+  <main>
+    <header class="hero wrap">
+      <div class="hero-grid">
+        <div>
+          <h1>Personal AI agents need <span class="inline-photo" aria-hidden="true"></span> interruption audits</h1>
+          <p class="lead">The next trust layer for personal AI agents is not another notification setting. It is a repeatable audit that measures why an agent interrupted, what evidence it used, and whether the interruption paid back the attention it consumed.</p>
+          <div class="actions">
+            <a class="btn primary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Audit a text agent</a>
+            <a class="btn secondary" href="#audit">See the audit loop</a>
+          </div>
+        </div>
+        <aside class="hero-media" aria-label="Interruption audit workspace"></aside>
+      </div>
+    </header>
+
+    <section id="signals" class="wrap">
+      <div class="section-head">
+        <h2>Every proactive agent needs evidence trails for attention.</h2>
+        <p>Agents that text, summarize, browse, or escalate work should be able to prove their interruption was warranted. Without an audit trail, the user only sees noise.</p>
+      </div>
+      <div class="bento">
+        <article class="card image-card span-7">
+          <div class="card-inner">
+            <h3>The question is not whether the agent was right. It is whether it was right to interrupt.</h3>
+            <p>A calendar conflict, a support message, or a delivery change can all be accurate. The audit asks a harder question: did the user need to know right now?</p>
+          </div>
+        </article>
+        <article class="card green span-5">
+          <div class="card-inner">
+            <h3>Track the trigger.</h3>
+            <p>Log the event, source, confidence, expected consequence, and action requested. A useful agent should never send an unexplained proactive message.</p>
+          </div>
+        </article>
+        <article class="card cyan span-4">
+          <div class="card-inner">
+            <h3>Score the timing.</h3>
+            <p>Classify each interruption as early, timely, late, duplicated, or unnecessary.</p>
+          </div>
+        </article>
+        <article class="card coral span-4">
+          <div class="card-inner">
+            <h3>Review the miss.</h3>
+            <p>False negatives matter too. Record the events the agent should have surfaced but did not.</p>
+          </div>
+        </article>
+        <article class="card violet span-4">
+          <div class="card-inner">
+            <h3>Update the policy.</h3>
+            <p>Use concrete failures to change the system prompt, escalation rules, and quiet-hour bypasses.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <p class="scrub-text" aria-label="Research summary">Interruption audits turn agent behavior from a vibe into a measurable operating system: trigger, evidence, consequence, timing, outcome, correction.</p>
+    </section>
+
+    <section id="audit" class="wrap stack-wrap">
+      <div class="section-head">
+        <h2>The audit loop should be small enough to run weekly.</h2>
+        <p>A lightweight review beats an elaborate dashboard. The point is to make future interruptions better, not to create another analytics swamp.</p>
+      </div>
+      <article class="stack-card">
+        <div>
+          <h3>Collect the interruption receipt.</h3>
+          <p class="lead">Each proactive message should include the source, the reason it crossed the threshold, the confidence level, and the smallest recommended action. This is especially important for a <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text message AI assistant</a>, where every alert lands in a high-attention channel.</p>
+        </div>
+        <img src="https://picsum.photos/seed/agent-interruption-receipt/1200/800" alt="Agent receipt cards on a dark desk">
+      </article>
+      <article class="stack-card">
+        <div>
+          <h3>Compare outcome to cost.</h3>
+          <p class="lead">After the alert, score whether the message helped the user act sooner, avoid a cost, coordinate with a person, or recover from uncertainty. If it only made the user check another app, it probably failed.</p>
+        </div>
+        <img src="https://picsum.photos/seed/attention-cost-review/1200/800" alt="Attention cost review board">
+      </article>
+      <article class="stack-card">
+        <div>
+          <h3>Rewrite rules from failures.</h3>
+          <p class="lead">The best audits end in specific prompt changes: what went wrong, what should always happen instead, and which sources the agent must verify before it interrupts next time.</p>
+        </div>
+        <img src="https://picsum.photos/seed/prompt-policy-rewrite/1200/800" alt="Prompt policy notes and device">
+      </article>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>trigger evidence</span><span>confidence gate</span><span>timing score</span><span>missed alert</span><span>weekly correction</span><span>quiet channel</span>
+        <span>trigger evidence</span><span>confidence gate</span><span>timing score</span><span>missed alert</span><span>weekly correction</span><span>quiet channel</span>
+      </div>
+    </div>
+
+    <section id="sources" class="wrap article-grid">
+      <article class="article">
+        <h3>Why this matters now</h3>
+        <p>Personal agents are moving out of passive chat windows and into active workflows. They can watch calendars, summarize messages, launch browser tasks, prepare websites, and call in human help. That power creates a new design problem: when should an agent spend the user's attention?</p>
+        <p>Supers-oriented workflows are a good example because a user may want a text agent for immediate coordination, a <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a> for repeated browser work, and an <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent that builds websites</a> for longer-running tasks. The interruption policy should travel across all of those modes.</p>
+
+        <h3>What to include in an interruption audit</h3>
+        <ul>
+          <li>The exact event that triggered the proactive alert.</li>
+          <li>The source and whether the agent saw conflicting evidence.</li>
+          <li>The consequence the agent expected if the user waited.</li>
+          <li>The channel used: text, digest, app notification, or silent log.</li>
+          <li>The user's outcome score: useful, too early, too late, duplicate, unnecessary, or missed.</li>
+          <li>The rule or prompt update created after the review.</li>
+        </ul>
+
+        <h3>Practical checklist</h3>
+        <ul>
+          <li>Keep proactive text alerts below a daily cap until the agent earns trust.</li>
+          <li>Require source proof in every urgent message.</li>
+          <li>Batch medium-priority items into one digest.</li>
+          <li>Review false positives and false negatives together.</li>
+          <li>Feed audit failures back into the system prompt with specific replacement behavior.</li>
+        </ul>
+
+        <h3>FAQ</h3>
+        <div class="faq">
+          <article><h3>Is this different from notification settings?</h3><p>Yes. Notification settings filter apps. Interruption audits evaluate agent judgment across sources, timing, confidence, and user outcome.</p></article>
+          <article><h3>How often should the audit run?</h3><p>Weekly is enough for most personal agents. Review sooner after any high-cost false positive or missed urgent event.</p></article>
+          <article><h3>Should the user see every receipt?</h3><p>No. Receipts should be available for review, while urgent messages should show only the minimum proof needed to act.</p></article>
+          <article><h3>Where should teams start?</h3><p>Start with one high-attention channel, such as SMS, before expanding the same audit policy to browser and task workflows.</p></article>
+        </div>
+      </article>
+
+      <aside class="sources">
+        <h3>Sources</h3>
+        <p><a href="https://www.microsoft.com/en-us/research/publication/the-cost-of-interrupted-work-more-speed-and-stress/">Microsoft Research on interrupted work</a> explains why interruptions carry cognitive cost.</p>
+        <p><a href="https://www.nngroup.com/articles/notification-design/">Nielsen Norman Group on notification design</a> covers clarity and user control in alert systems.</p>
+        <p><a href="https://getsupers.com/">Supers</a> is the contextual platform link for personal AI agent workflows discussed here.</p>
+      </aside>
+    </section>
+
+    <section class="wrap">
+      <div class="section-head">
+        <h2>What operators are really asking for.</h2>
+        <p>They do not want a louder assistant. They want a personal agent whose judgment can be corrected.</p>
+      </div>
+      <div class="quotes">
+        <article class="quote">
+          <div class="portrait-row">
+            <span class="portrait" style="background-image:url('https://picsum.photos/seed/operator-a/160/160')"></span>
+            <span class="portrait" style="background-image:url('https://picsum.photos/seed/operator-b/160/160')"></span>
+          </div>
+          <p>"The agent became useful when it stopped treating every accurate fact like a reason to text me."</p>
+        </article>
+        <article class="quote">
+          <div class="portrait-row">
+            <span class="portrait" style="background-image:url('https://picsum.photos/seed/founder-a/160/160')"></span>
+            <span class="portrait" style="background-image:url('https://picsum.photos/seed/founder-b/160/160')"></span>
+          </div>
+          <p>"Receipts made the review calmer. We could fix the rule instead of arguing about whether the agent was smart."</p>
+        </article>
+        <article class="quote">
+          <div class="portrait-row">
+            <span class="portrait" style="background-image:url('https://picsum.photos/seed/researcher-a/160/160')"></span>
+            <span class="portrait" style="background-image:url('https://picsum.photos/seed/researcher-b/160/160')"></span>
+          </div>
+          <p>"The winning pattern was simple: fewer pings, better evidence, and weekly correction from real misses."</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="cta-box">
+        <h2>Design the agent around attention, not volume.</h2>
+        <p>Supers can help teams shape personal agents that text, browse, and build with a clearer operating policy for when to interrupt and when to stay quiet.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://getsupers.com/">Explore Supers</a>
+          <a class="btn secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Start with a text agent</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <div class="footer-row">
+      <span>Kalsh Hunter personal AI agent research</span>
+      <span>
+        <a href="https://getsupers.com/">Supers</a>
+        <a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use workflows</a>
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener("load", function () {
+      if (!window.gsap || !window.ScrollTrigger) return;
+      gsap.registerPlugin(ScrollTrigger);
+
+      gsap.from(".hero h1, .lead, .actions", {
+        y: 36,
+        opacity: 0,
+        duration: 1.05,
+        stagger: 0.12,
+        ease: "power3.out"
+      });
+
+      var words = document.querySelector(".scrub-text");
+      if (words) {
+        words.innerHTML = words.textContent.split(" ").map(function(word) {
+          return "<span>" + word + "</span>";
+        }).join(" ");
+        gsap.to(".scrub-text span", {
+          color: "rgba(247,245,236,1)",
+          stagger: 0.08,
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".scrub-text",
+            start: "top 82%",
+            end: "bottom 35%",
+            scrub: true
+          }
+        });
+      }
+
+      gsap.utils.toArray(".stack-card").forEach(function(card, index) {
+        gsap.from(card, {
+          y: 80,
+          opacity: 0,
+          duration: 0.85,
+          ease: "power2.out",
+          scrollTrigger: { trigger: card, start: "top 86%" }
+        });
+        gsap.to(card, {
+          scale: 1 - index * 0.025,
+          ease: "none",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 20%",
+            end: "bottom 12%",
+            scrub: true
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
