@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [How to Add Rule Receipts to a Text Message AI Agent](how-to-add-rule-receipts-to-a-text-message-ai-agent-20260708-200757/): Use case
 - [AI Agent Rule Receipts vs Audit Logs](ai-agent-rule-receipts-vs-audit-logs-20260708-195756/): Competitor comparison
 - [Personal AI Agent Rule Receipt Software](personal-ai-agent-rule-receipt-software-20260708-194727/): Niche research landing page
 - [Personal AI Agents Need Rule Receipts](personal-ai-agents-need-rule-receipts-20260708-194155/): Research and news analysis
