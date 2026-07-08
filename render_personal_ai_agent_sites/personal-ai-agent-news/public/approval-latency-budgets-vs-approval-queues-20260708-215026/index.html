@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Approval Latency Budgets vs Approval Queues for Personal AI Agents</title>
+  <meta name="description" content="A practical comparison of approval latency budgets and approval queues for personal AI agents, including buyer criteria, use cases, sources, and implementation checklist.">
+  <link rel="canonical" href="https://kalshhunter.com/approval-latency-budgets-vs-approval-queues-20260708-215026/">
+  <meta property="og:title" content="Approval Latency Budgets vs Approval Queues for Personal AI Agents">
+  <meta property="og:description" content="Approval queues store decisions. Approval latency budgets decide what an AI agent should do when the decision is late.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://kalshhunter.com/approval-latency-budgets-vs-approval-queues-20260708-215026/">
+  <meta property="og:image" content="https://picsum.photos/seed/approval-queue-vs-budget/1600/900">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #f5f1e8;
+      --muted: rgba(245, 241, 232, 0.72);
+      --line: rgba(245, 241, 232, 0.15);
+      --bg: #0a0a0a;
+      --panel: rgba(22, 21, 18, 0.74);
+      --mint: #a6e8c3;
+      --amber: #e7bd72;
+      --violet: #a9a1ff;
+      --coral: #ef8765;
+      --font: "Cabinet Grotesk", "Avenir Next", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      font-family: var(--font);
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 12%, rgba(166,232,195,0.18), transparent 32%),
+        radial-gradient(circle at 85% 18%, rgba(169,161,255,0.15), transparent 34%),
+        radial-gradient(circle at 72% 78%, rgba(239,135,101,0.13), transparent 36%),
+        linear-gradient(135deg, #080908, #15120f 54%, #070707);
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 5;
+      opacity: 0.17;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+      mix-blend-mode: soft-light;
+    }
+    a { color: inherit; }
+    main { overflow-x: hidden; width: 100%; max-width: 100%; }
+    .nav {
+      position: fixed;
+      top: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 30;
+      width: min(1080px, calc(100vw - 32px));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      padding: 12px 14px 12px 20px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(10,10,9,0.67);
+      backdrop-filter: blur(24px);
+      box-shadow: 0 24px 90px rgba(0,0,0,0.34);
+    }
+    .brand { text-decoration: none; font-size: 0.88rem; font-weight: 820; letter-spacing: 0; }
+    .nav-links { display: flex; gap: 8px; align-items: center; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.84rem;
+      padding: 10px 12px;
+      border-radius: 999px;
+      transition: color 220ms ease, background 220ms ease;
+    }
+    .nav-links a:hover { color: var(--ink); background: rgba(255,255,255,0.08); }
+    .nav-cta {
+      text-decoration: none;
+      color: #061009;
+      background: var(--mint);
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-weight: 820;
+      white-space: nowrap;
+    }
+    section { padding: 8rem 0; }
+    .wrap { width: min(1140px, calc(100vw - 36px)); margin: 0 auto; }
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 9rem 0 5rem;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.75fr);
+      align-items: center;
+      gap: clamp(2rem, 5vw, 5rem);
+    }
+    h1 {
+      margin: 0;
+      max-width: min(1140px, 94vw);
+      font-size: clamp(2.7rem, 4.6vw, 5.2rem);
+      line-height: 0.95;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .inline-img {
+      display: inline-block;
+      width: clamp(76px, 10vw, 132px);
+      height: clamp(32px, 4.2vw, 54px);
+      margin: 0 0.12em;
+      border-radius: 999px;
+      vertical-align: middle;
+      background-image: url("https://picsum.photos/seed/queue-budget-inline/340/160");
+      background-size: cover;
+      background-position: center;
+      filter: grayscale(1) contrast(1.28) brightness(0.88);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.25);
+    }
+    .dek {
+      max-width: 720px;
+      margin: 28px 0 0;
+      color: var(--muted);
+      font-size: clamp(1.08rem, 1.5vw, 1.28rem);
+      line-height: 1.66;
+    }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 20px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 820;
+      transition: transform 240ms ease, opacity 240ms ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button.primary { color: #061009; background: var(--mint); }
+    .button.secondary { color: var(--ink); border: 1px solid var(--line); background: rgba(255,255,255,0.07); }
+    .hero-art {
+      min-height: 560px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      overflow: hidden;
+      position: relative;
+      background: var(--panel);
+      box-shadow: 0 38px 110px rgba(0,0,0,0.36);
+    }
+    .hero-art img {
+      width: 100%;
+      height: 100%;
+      min-height: 560px;
+      object-fit: cover;
+      filter: grayscale(1) contrast(1.22) brightness(0.68);
+      transform: scale(1.04);
+    }
+    .hero-art .caption {
+      position: absolute;
+      inset: auto 18px 18px;
+      padding: 18px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(8,8,7,0.74);
+      backdrop-filter: blur(18px);
+    }
+    .caption strong { display: block; font-size: 1.08rem; }
+    .caption p { margin: 8px 0 0; color: var(--muted); line-height: 1.5; }
+    .marquee {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 18px 0;
+      white-space: nowrap;
+      overflow: hidden;
+      color: rgba(245,241,232,0.62);
+    }
+    .marquee-track { display: inline-flex; gap: 34px; animation: drift 28s linear infinite; }
+    @keyframes drift { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.86fr) minmax(0, 1fr);
+      gap: 3rem;
+      align-items: end;
+      margin-bottom: 44px;
+    }
+    h2 { margin: 0; font-size: clamp(2.2rem, 4vw, 4.35rem); line-height: 0.98; letter-spacing: 0; text-wrap: balance; }
+    .section-head p, .tile p, .panel p, .criterion p { color: var(--muted); line-height: 1.72; font-size: 1.05rem; margin: 0; }
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-flow: dense;
+      gap: 16px;
+    }
+    .tile {
+      min-height: 270px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.054);
+      padding: 28px;
+      overflow: hidden;
+      transition: transform 300ms ease, background 300ms ease;
+    }
+    .tile:hover { transform: translateY(-5px); background: rgba(255,255,255,0.08); }
+    .tile h3 { margin: 0 0 16px; font-size: clamp(1.45rem, 2.35vw, 2.45rem); line-height: 1.04; letter-spacing: 0; }
+    .span-8 { grid-column: span 8; }
+    .span-4 { grid-column: span 4; }
+    .media { padding: 0; }
+    .media img { width: 100%; height: 100%; min-height: 320px; object-fit: cover; filter: grayscale(1) contrast(1.25) brightness(0.72); transition: transform 700ms ease; }
+    .media:hover img { transform: scale(1.05); }
+    .compare {
+      display: grid;
+      grid-template-columns: minmax(230px, 0.4fr) minmax(0, 0.6fr);
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: start;
+    }
+    .pin h2 { position: sticky; top: 130px; }
+    .criteria { display: grid; gap: 22px; }
+    .criterion {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: clamp(24px, 4vw, 42px);
+      background: rgba(255,255,255,0.054);
+      min-height: 230px;
+    }
+    .criterion h3 { margin: 0 0 14px; font-size: clamp(1.45rem, 2.3vw, 2.35rem); line-height: 1.05; }
+    .accordion { display: grid; grid-template-columns: repeat(4, 1fr); min-height: 450px; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .fold { position: relative; overflow: hidden; padding: 26px; display: flex; flex-direction: column; justify-content: flex-end; background: rgba(255,255,255,0.05); }
+    .fold + .fold { border-left: 1px solid var(--line); }
+    .fold img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.22; filter: grayscale(1) contrast(1.18); transition: opacity 520ms ease, transform 700ms ease; }
+    .fold:hover img { opacity: 0.46; transform: scale(1.05); }
+    .fold h3, .fold p { position: relative; z-index: 1; }
+    .fold h3 { margin: 0 0 12px; font-size: 1.35rem; }
+    .fold p { margin: 0; color: var(--muted); line-height: 1.56; }
+    .columns { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 28px;
+      background: rgba(255,255,255,0.052);
+    }
+    .panel h3 { margin: 0 0 14px; font-size: 1.35rem; }
+    .panel ul, .panel ol { margin: 0; padding-left: 20px; color: var(--muted); line-height: 1.75; }
+    .panel p + p { margin-top: 16px; }
+    .sources a { color: var(--mint); text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    .final {
+      padding: 8rem 0 5rem;
+      background: linear-gradient(180deg, transparent, rgba(166,232,195,0.1));
+    }
+    .final-box {
+      border: 1px solid rgba(166,232,195,0.32);
+      border-radius: 8px;
+      padding: clamp(34px, 6vw, 74px);
+      background: rgba(8,8,7,0.78);
+    }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; color: var(--muted); }
+    .footer-links a { text-underline-offset: 4px; }
+    @media (max-width: 880px) {
+      .nav { top: 12px; border-radius: 24px; }
+      .nav-links { display: none; }
+      section { padding: 5.5rem 0; }
+      .hero-grid, .section-head, .compare, .columns { grid-template-columns: 1fr; }
+      .hero-art, .hero-art img { min-height: 390px; }
+      .bento { grid-template-columns: 1fr; }
+      .span-8, .span-4 { grid-column: span 1; }
+      .accordion { grid-template-columns: 1fr; }
+      .fold + .fold { border-left: 0; border-top: 1px solid var(--line); }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="Primary navigation">
+    <a class="brand" href="https://kalshhunter.com/">Kalshunter Research</a>
+    <div class="nav-links">
+      <a href="#difference">Difference</a>
+      <a href="#criteria">Criteria</a>
+      <a href="#sources">Sources</a>
+    </div>
+    <a class="nav-cta" href="https://getsupers.com/">Explore Supers</a>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <h1>Approval latency budgets <span class="inline-img" aria-hidden="true"></span> vs approval queues.</h1>
+          <p class="dek">Approval queues tell a personal AI agent where decisions wait. Approval latency budgets tell the agent what to do when waiting becomes the wrong answer.</p>
+          <div class="cta-row">
+            <a class="button primary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Compare text workflows</a>
+            <a class="button secondary" href="#criteria">Read criteria</a>
+          </div>
+        </div>
+        <aside class="hero-art media-reveal">
+          <img src="https://picsum.photos/seed/approval-queue-vs-budget/900/1200" alt="Abstract split console comparing queues and budgets">
+          <div class="caption">
+            <strong>Queue is storage. Budget is behavior.</strong>
+            <p>The strongest control plane uses both, but they solve different failure modes.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>pending approvals</span><span>risk windows</span><span>fallback paths</span><span>human escalation</span><span>audit trail</span><span>safe continuation</span>
+        <span>pending approvals</span><span>risk windows</span><span>fallback paths</span><span>human escalation</span><span>audit trail</span><span>safe continuation</span>
+      </div>
+    </div>
+
+    <section id="difference">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>The queue manages pending work. The budget manages time-sensitive risk.</h2>
+          <p>Personal AI agents need approval queues when a human must review a decision. They need approval latency budgets when the usefulness or safety of that decision changes as time passes.</p>
+        </div>
+        <div class="bento">
+          <article class="tile span-8">
+            <h3>Approval queues are useful when the answer can wait without changing the task.</h3>
+            <p>A queue is perfect for a durable decision: review a draft, inspect a proposed purchase, approve a contact update, or check a prepared summary. The queue keeps state visible and prevents the agent from acting prematurely.</p>
+          </article>
+          <article class="tile media span-4 media-reveal">
+            <img src="https://picsum.photos/seed/pending-agent-queue/700/600" alt="Pending approval queue interface">
+          </article>
+          <article class="tile span-4">
+            <h3>Budgets fit expiring context.</h3>
+            <p>If the opportunity fades, the agent needs a timeout, not just a waiting room.</p>
+          </article>
+          <article class="tile span-4">
+            <h3>Queues fit review visibility.</h3>
+            <p>They make pending decisions inspectable, assignable, and recoverable.</p>
+          </article>
+          <article class="tile span-4">
+            <h3>Together they create control.</h3>
+            <p>The queue stores the ask. The budget defines fallback behavior when the ask gets old.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="criteria">
+      <div class="wrap compare">
+        <div class="pin">
+          <h2>Choose by failure mode, not feature name.</h2>
+        </div>
+        <div class="criteria">
+          <article class="criterion">
+            <h3>Use an approval queue when the problem is visibility.</h3>
+            <p>The user or operator needs a single place to review pending decisions, inspect context, and clear tasks. This is common for public posts, account changes, purchases, and sensitive replies.</p>
+          </article>
+          <article class="criterion">
+            <h3>Use a latency budget when the problem is stale work.</h3>
+            <p>The agent needs to know whether to save a draft, retry later, downgrade scope, continue with reversible work, or stop. This matters in text-native agents where a user may not respond immediately.</p>
+          </article>
+          <article class="criterion">
+            <h3>Use both for browser and publishing agents.</h3>
+            <p>A browser agent can keep gathering safe context while a protected action waits. A publishing agent can draft and preview while public release remains queued for approval. Supers' <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a> and <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent website workflows</a> point toward this split.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <h2>How the two models behave across channels.</h2>
+          <p>The right choice depends on where the agent works and how quickly the context decays.</p>
+        </div>
+        <div class="accordion">
+          <article class="fold">
+            <img src="https://picsum.photos/seed/text-agent-queue-budget/600/900" alt="Text agent approval lane">
+            <h3>Text agents</h3>
+            <p>Latency budgets are critical because silence is common. See the <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text message AI assistant</a> use case.</p>
+          </article>
+          <article class="fold">
+            <img src="https://picsum.photos/seed/browser-queue-budget/600/900" alt="Browser agent approval lane">
+            <h3>Browser agents</h3>
+            <p>Queues gate protected actions; budgets let safe context work continue.</p>
+          </article>
+          <article class="fold">
+            <img src="https://picsum.photos/seed/founder-queue-budget/600/900" alt="Founder workflow approval lane">
+            <h3>Founder ops</h3>
+            <p>Queues help review decisions; budgets prevent stale intros, follow-ups, and support replies.</p>
+          </article>
+          <article class="fold">
+            <img src="https://picsum.photos/seed/handoff-queue-budget/600/900" alt="Human handoff approval lane">
+            <h3>Human handoff</h3>
+            <p>When the budget expires, the queue should hand over context rather than merely mark an item late.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap columns">
+        <article class="panel">
+          <h3>Buyer checklist</h3>
+          <ol>
+            <li>Can the queue show pending approvals by action risk and channel?</li>
+            <li>Can each approval request carry a response window?</li>
+            <li>Can expired approvals trigger draft, retry, downgrade, handoff, or stop behavior?</li>
+            <li>Can the user see what happens if they do not respond?</li>
+            <li>Can the system report abandonment, median delay, and correction rates?</li>
+            <li>Can teams update policies without hard-coded workflow patches?</li>
+          </ol>
+        </article>
+        <article class="panel">
+          <h3>FAQ</h3>
+          <p><strong>Is a latency budget a replacement for an approval queue?</strong><br>No. It is a policy layer that improves a queue by defining what happens as waiting becomes costly.</p>
+          <p><strong>Which model should small teams build first?</strong><br>Start with a visible queue, then add latency budgets for workflows where silence breaks the task.</p>
+          <p><strong>Where does Supers fit?</strong><br><a href="https://getsupers.com/">Supers</a> is relevant for personal AI agents that operate through messaging, browser work, publishing, and human escalation.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="sources">
+      <div class="wrap columns">
+        <article class="panel sources">
+          <h3>Sources</h3>
+          <ul>
+            <li><a href="https://www.nist.gov/itl/ai-risk-management-framework" rel="nofollow">NIST AI Risk Management Framework</a> for risk governance framing.</li>
+            <li><a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" rel="nofollow">OWASP Top 10 for LLM Applications</a> for agentic application risk considerations.</li>
+            <li><a href="https://getsupers.com/">Supers</a> for personal AI agent workflow context.</li>
+          </ul>
+        </article>
+        <article class="panel">
+          <h3>Comparison takeaway</h3>
+          <p>Approval queues answer where a human decision waits. Approval latency budgets answer how long the wait remains useful and what the agent should do next. Mature personal AI agent systems need both.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="final">
+      <div class="wrap final-box">
+        <h2>Do not make the queue carry the whole safety model.</h2>
+        <p class="dek">Use queues for visibility and latency budgets for behavior. That is how personal AI agents stay helpful without crossing user boundaries.</p>
+        <div class="cta-row">
+          <a class="button primary" href="https://getsupers.com/">Explore Supers</a>
+          <a class="button secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Open text agent workflow</a>
+        </div>
+        <div class="footer-links">
+          <a href="https://kalshhunter.com/">Kalshunter</a>
+          <a href="https://getsupers.com/">Supers</a>
+          <a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a>
+          <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">Agent website workflows</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.utils.toArray(".media-reveal").forEach(function (el) {
+        gsap.fromTo(el, { scale: 0.86, opacity: 0.68 }, {
+          scale: 1,
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 84%",
+            end: "bottom 24%",
+            scrub: true
+          }
+        });
+      });
+      gsap.utils.toArray(".criterion").forEach(function (card, index) {
+        gsap.from(card, {
+          y: 72,
+          opacity: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          delay: index * 0.04,
+          scrollTrigger: {
+            trigger: card,
+            start: "top 84%"
+          }
+        });
+      });
+    }
+  </script>
+</body>
+</html>
