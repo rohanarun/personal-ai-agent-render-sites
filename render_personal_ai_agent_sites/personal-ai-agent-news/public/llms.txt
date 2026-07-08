@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Super for customer success operators running AI follow-up](super-for-customer-success-operators-running-ai-follow-up-20260708-083823/): Niche research landing page
 - [Personal AI agents need execution memory after meetings](personal-ai-agents-need-execution-memory-after-meetings-20260708-082823/): Research and news analysis
 - [How to turn meeting notes into an AI follow-up queue](how-to-turn-meeting-notes-into-an-ai-follow-up-queue-20260708-082323/): Use case
 - [Super vs AI email assistants for client follow-up](super-vs-ai-email-assistants-for-client-follow-up-20260708-081823/): Competitor comparison
