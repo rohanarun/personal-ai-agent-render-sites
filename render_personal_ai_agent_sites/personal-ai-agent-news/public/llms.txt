@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [How to Build a Signal Quality Ledger for AI Agents](how-to-build-a-signal-quality-ledger-for-ai-agents-20260708-210326/): Use case
 - [Signal Quality Scores vs Priority Scoring](signal-quality-scores-vs-priority-scoring-20260708-205326/): Competitor comparison
 - [Personal AI Agent Signal Quality Score Software](personal-ai-agent-signal-quality-score-software-20260708-204826/): Niche research landing page
 - [Personal AI Agents Need Signal Quality Scores](personal-ai-agents-need-signal-quality-scores-20260708-204326/): Research and news analysis
