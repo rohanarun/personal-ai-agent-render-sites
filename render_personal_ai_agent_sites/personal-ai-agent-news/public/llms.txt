@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Personal AI Agents Need Exception Memory](personal-ai-agents-need-exception-memory-20260708-220556/): Research and news analysis
 - [How to Set Approval Latency Budgets for Personal AI Agents](how-to-set-approval-latency-budgets-for-personal-ai-agents-20260708-215526/): Use case
 - [Approval Latency Budgets vs Approval Queues for Personal AI Agents](approval-latency-budgets-vs-approval-queues-20260708-215026/): Competitor comparison
 - [Personal AI Agent Approval Latency Budget Software](personal-ai-agent-approval-latency-budget-software-20260708-214027/): Niche research landing page
