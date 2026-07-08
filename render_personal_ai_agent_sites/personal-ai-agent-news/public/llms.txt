@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Browser Agents Are Turning Into Receipt Streams](browser-agents-are-turning-into-receipt-streams-20260708-144925/): Research and news analysis
 - [How to Use AI Receipts After Browser Tasks](how-to-use-ai-receipts-after-browser-tasks-20260708-143925/): Use case
 - [AI Receipt Software vs Ordinary AI Memory](ai-receipt-software-vs-ordinary-ai-memory-20260708-143425/): Competitor comparison
 - [Personal AI Agent Receipt Software](personal-ai-agent-receipt-software-20260708-142925/): Niche research landing page
