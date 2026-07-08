@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [How to Add Receipt Trails to Browser AI Agents](how-to-add-receipt-trails-to-browser-ai-agents-20260708-152955/): Use case
 - [AI Agent Receipt Trails vs Browser Session Replay](ai-agent-receipt-trails-vs-browser-session-replay-20260708-152426/): Competitor comparison
 - [AI Agent Receipt Trail Software for Browser Operators](ai-agent-receipt-trail-software-for-browser-operators-20260708-151426/): Niche research landing page
 - [Agent Receipt Trails Are Becoming the New Agent Market Moat](agent-receipt-trails-are-becoming-the-new-agent-market-moat-20260708-150926/): Research and news analysis
