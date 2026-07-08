@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [AI Agent Escalation Review Software for Personal Ops](ai-agent-escalation-review-software-for-personal-ops-20260708-170255/): Niche research landing page
 - [Personal AI Agents Need Policy Drift Reviews](personal-ai-agents-need-policy-drift-reviews-20260708-165255/): Research and news analysis
 - [How to Turn Prompt Guardrails into AI Agent Policies](how-to-turn-prompt-guardrails-into-ai-agent-policies-20260708-164725/): Use case
 - [AI Agent Policy Layers vs Prompt Guardrails](ai-agent-policy-layers-vs-prompt-guardrails-20260708-164225/): Competitor comparison
