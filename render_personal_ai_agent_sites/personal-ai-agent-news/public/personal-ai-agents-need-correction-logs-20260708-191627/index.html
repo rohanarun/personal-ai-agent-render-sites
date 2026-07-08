@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Personal AI Agents Need Correction Logs</title>
+  <meta name="description" content="A research-style analysis of why personal AI agents need correction logs to turn bad alerts, missed events, and tool mistakes into better future behavior.">
+  <link rel="canonical" href="https://kalshhunter.com/personal-ai-agents-need-correction-logs-20260708-191627/">
+  <meta property="og:title" content="Personal AI Agents Need Correction Logs">
+  <meta property="og:description" content="Correction logs are the operating memory that turns agent mistakes into better behavior.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://kalshhunter.com/personal-ai-agents-need-correction-logs-20260708-191627/">
+  <meta property="og:image" content="https://picsum.photos/seed/agent-correction-log/1920/1080">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <style>
+    :root {
+      --bg: #060808;
+      --ink: #f8f4eb;
+      --muted: rgba(248,244,235,.72);
+      --line: rgba(248,244,235,.14);
+      --panel: rgba(255,255,255,.066);
+      --mint: #c9ffd8;
+      --blue: #a9d5ff;
+      --peach: #ffc1a8;
+      --lilac: #ddc8ff;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Outfit", system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(201,255,216,.24), transparent 34rem),
+        radial-gradient(circle at 12% 30%, rgba(169,213,255,.16), transparent 30rem),
+        radial-gradient(circle at 86% 44%, rgba(255,193,168,.15), transparent 30rem),
+        linear-gradient(145deg, #040606 0%, #101312 54%, #060808 100%);
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+      opacity: .16;
+      mix-blend-mode: soft-light;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.74' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.48'/%3E%3C/svg%3E");
+    }
+    main { overflow-x: hidden; width: 100%; max-width: 100%; }
+    a { color: inherit; }
+    .wrap { width: min(1180px, calc(100vw - 40px)); margin: 0 auto; }
+    .nav {
+      position: fixed;
+      z-index: 10;
+      top: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1120px, calc(100vw - 32px));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      padding: 12px 14px 12px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(6,8,8,.7);
+      backdrop-filter: blur(22px);
+      box-shadow: 0 22px 80px rgba(0,0,0,.36);
+    }
+    .brand { text-decoration: none; font-weight: 800; }
+    .nav-links { display: flex; gap: 22px; color: var(--muted); font-size: .94rem; }
+    .nav-links a { text-decoration: none; }
+    .nav-cta { min-height: 42px; display: inline-flex; align-items: center; padding: 0 18px; border-radius: 999px; background: var(--mint); color: #06110a; text-decoration: none; font-weight: 760; }
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 150px 0 92px;
+      position: relative;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 112px 0 0;
+      z-index: -1;
+      opacity: .63;
+      filter: grayscale(.18) contrast(1.16);
+      background:
+        radial-gradient(circle at center, rgba(6,8,8,.02), rgba(6,8,8,.86)),
+        url("https://picsum.photos/seed/agent-correction-log-desk/1920/1080") center/cover;
+      mask-image: linear-gradient(to bottom, black 48%, transparent 100%);
+    }
+    h1 {
+      max-width: min(1120px, 94vw);
+      margin: 0 auto;
+      font-size: clamp(2.8rem, 4.85vw, 5.25rem);
+      line-height: .97;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .inline-photo {
+      display: inline-block;
+      width: clamp(74px,8vw,124px);
+      height: clamp(34px,4vw,54px);
+      margin: 0 8px;
+      border-radius: 999px;
+      vertical-align: middle;
+      background: url("https://picsum.photos/seed/correction-log-strip/420/210") center/cover;
+      filter: contrast(1.18) saturate(.9);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.28);
+    }
+    .lead { max-width: 760px; margin: 28px auto 0; color: var(--muted); font-size: clamp(1.08rem,1.55vw,1.27rem); line-height: 1.62; }
+    .actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-top: 34px; }
+    .btn { min-height: 50px; display: inline-flex; align-items: center; justify-content: center; padding: 0 22px; border-radius: 999px; text-decoration: none; font-weight: 760; transition: transform .22s ease, border-color .22s ease; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn.primary { background: var(--mint); color: #06110a; }
+    .btn.secondary { color: white; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.22); }
+    section { padding: 136px 0; }
+    .section-head { display: grid; grid-template-columns: minmax(0,.85fr) minmax(280px,.55fr); gap: 48px; align-items: end; margin-bottom: 42px; }
+    h2 { margin: 0; font-size: clamp(2.3rem,4.7vw,4.8rem); line-height: .99; letter-spacing: 0; text-wrap: balance; }
+    .section-head p, .card p, .article p, .faq p, .quote p { color: var(--muted); line-height: 1.7; font-size: 1.04rem; }
+    .bento { display: grid; grid-template-columns: repeat(12,1fr); grid-auto-flow: dense; gap: 16px; }
+    .card { min-height: 280px; border: 1px solid rgba(255,255,255,.13); border-radius: 26px; background: var(--panel); overflow: hidden; transition: transform .52s ease, border-color .52s ease; }
+    .card:hover { transform: translateY(-7px); border-color: rgba(201,255,216,.44); }
+    .card-inner { padding: 30px; }
+    .card h3 { margin: 0 0 14px; font-size: 1.55rem; line-height: 1.1; }
+    .span-8 { grid-column: span 8; }
+    .span-4 { grid-column: span 4; }
+    .image-card { min-height: 382px; background: linear-gradient(120deg, rgba(6,8,8,.1), rgba(6,8,8,.78)), url("https://picsum.photos/seed/agent-correction-board/1200/780") center/cover; }
+    .mint { background: linear-gradient(145deg, rgba(201,255,216,.17), rgba(255,255,255,.055)); }
+    .blue { background: linear-gradient(145deg, rgba(169,213,255,.16), rgba(255,255,255,.055)); }
+    .peach { background: linear-gradient(145deg, rgba(255,193,168,.16), rgba(255,255,255,.055)); }
+    .lilac { background: linear-gradient(145deg, rgba(221,200,255,.16), rgba(255,255,255,.055)); }
+    .scrub-text { max-width: 980px; margin: 0 auto; text-align: center; font-size: clamp(2.1rem,4.2vw,4.25rem); line-height: 1.08; color: rgba(248,244,235,.18); }
+    .scrub-text span { color: rgba(248,244,235,.18); }
+    .media-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; }
+    .media-card { min-height: 420px; border-radius: 28px; border: 1px solid rgba(255,255,255,.14); overflow: hidden; background-size: cover; background-position: center; filter: grayscale(.22) contrast(1.16); position: relative; }
+    .media-card:nth-child(1) { background-image: linear-gradient(rgba(0,0,0,.1), rgba(0,0,0,.76)), url("https://picsum.photos/seed/agent-mistake-receipt/900/1200"); }
+    .media-card:nth-child(2) { background-image: linear-gradient(rgba(0,0,0,.1), rgba(0,0,0,.76)), url("https://picsum.photos/seed/prompt-correction-desk/900/1200"); }
+    .media-card:nth-child(3) { background-image: linear-gradient(rgba(0,0,0,.1), rgba(0,0,0,.76)), url("https://picsum.photos/seed/agent-retake-test/900/1200"); }
+    .media-card div { position: absolute; left: 26px; right: 26px; bottom: 26px; }
+    .media-card h3 { margin: 0 0 10px; font-size: 1.55rem; }
+    .media-card p { color: rgba(255,255,255,.74); line-height: 1.6; }
+    .article-grid { display: grid; grid-template-columns: minmax(0,.66fr) minmax(280px,.34fr); gap: 42px; align-items: start; }
+    .article, .sidebox, .faq article, .quote { border: 1px solid rgba(255,255,255,.13); background: rgba(255,255,255,.06); border-radius: 28px; }
+    .article { padding: 38px; }
+    .article h3 { margin: 30px 0 8px; font-size: 2rem; }
+    .article h3:first-child { margin-top: 0; }
+    .article li { margin: 12px 0; color: var(--muted); line-height: 1.68; }
+    .article a, .sidebox a { color: var(--mint); text-underline-offset: 4px; }
+    .sidebox { position: sticky; top: 120px; padding: 28px; background: rgba(201,255,216,.1); border-color: rgba(201,255,216,.22); }
+    .sidebox h3 { margin-top: 0; }
+    .faq { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; }
+    .faq article { padding: 28px; border-radius: 24px; }
+    .faq h3 { margin: 0 0 10px; }
+    .quotes { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; }
+    .quote { padding: 28px; min-height: 250px; }
+    .marquee { display: flex; overflow: hidden; border-block: 1px solid rgba(255,255,255,.12); padding: 24px 0; color: rgba(255,255,255,.58); font-weight: 800; font-size: clamp(1.22rem,2.5vw,2.08rem); white-space: nowrap; }
+    .marquee-track { display: flex; gap: 44px; padding-right: 44px; animation: slide 26s linear infinite; }
+    @keyframes slide { to { transform: translateX(-50%); } }
+    .cta { padding: 116px 0; background: linear-gradient(90deg, rgba(201,255,216,.28), rgba(169,213,255,.18)), url("https://picsum.photos/seed/correction-log-command-room/1920/1080") center/cover; background-blend-mode: screen; border-top: 1px solid rgba(255,255,255,.14); }
+    .cta-box { width: min(980px, calc(100vw - 40px)); margin: 0 auto; }
+    .cta h2 { color: #06110a; text-shadow: 0 1px 0 rgba(255,255,255,.22); }
+    .cta p { max-width: 680px; color: rgba(6,17,10,.76); line-height: 1.62; font-size: 1.15rem; }
+    .cta .actions { justify-content: flex-start; }
+    .cta .btn.secondary { color: #06110a; background: rgba(255,255,255,.42); border-color: rgba(6,17,10,.28); }
+    footer { padding: 42px 0 58px; color: rgba(255,255,255,.58); }
+    .footer-row { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+    .footer-row a { text-decoration: none; margin-left: 18px; }
+    @media (max-width: 880px) {
+      .nav { top: 12px; border-radius: 26px; }
+      .nav-links { display: none; }
+      .section-head, .article-grid, .faq, .quotes, .media-grid { grid-template-columns: 1fr; }
+      section { padding: 98px 0; }
+      .bento { grid-template-columns: 1fr; }
+      .span-8, .span-4 { grid-column: span 1; }
+      .sidebox { position: relative; top: 0; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="Main navigation">
+    <a class="brand" href="https://kalshhunter.com/">Kalsh Hunter</a>
+    <div class="nav-links">
+      <a href="#why">Why</a>
+      <a href="#workflow">Workflow</a>
+      <a href="#checklist">Checklist</a>
+    </div>
+    <a class="nav-cta" href="https://getsupers.com/">Explore Supers</a>
+  </nav>
+  <main>
+    <header class="hero wrap">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div>
+        <h1>Personal AI agents need <span class="inline-photo" aria-hidden="true"></span> correction logs</h1>
+        <p class="lead">A correction log is the difference between an agent that apologizes and an agent that improves. It records the mistake, the expected behavior, and the prompt or policy change that should happen next.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Start with text agents</a>
+          <a class="btn secondary" href="#why">Read the analysis</a>
+        </div>
+      </div>
+    </header>
+
+    <section id="why" class="wrap">
+      <div class="section-head">
+        <h2>Memory is not enough if the agent cannot learn from corrections.</h2>
+        <p>Personal agents need a record of user corrections that is specific enough to change future behavior across SMS, browser work, summaries, and generated deliverables.</p>
+      </div>
+      <div class="bento">
+        <article class="card image-card span-8"><div class="card-inner"><h3>Correction logs capture the gap between what happened and what should happen next.</h3><p>A bad alert, a missed event, or a tool mistake becomes useful only when it is written back as a concrete rule.</p></div></article>
+        <article class="card mint span-4"><div class="card-inner"><h3>They reduce repeated mistakes.</h3><p>The log prevents the agent from treating the same correction like a new surprise every week.</p></div></article>
+        <article class="card blue span-4"><div class="card-inner"><h3>They improve prompts.</h3><p>Each entry should say what went wrong and what should always happen instead.</p></div></article>
+        <article class="card peach span-4"><div class="card-inner"><h3>They preserve context.</h3><p>Corrections stay attached to the workflow, source, channel, and consequence.</p></div></article>
+        <article class="card lilac span-4"><div class="card-inner"><h3>They guide autonomy.</h3><p>Permissions should expand only after repeated corrections stop recurring.</p></div></article>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <p class="scrub-text">A correction log should convert every user correction into a specific future rule: trigger, source, expected action, forbidden repeat, and verification step.</p>
+    </section>
+
+    <section id="workflow" class="wrap">
+      <div class="section-head">
+        <h2>The workflow is simple: capture, rewrite, retest.</h2>
+        <p>Do not let corrections live as chat history. Promote them into operational rules the personal agent can apply next time.</p>
+      </div>
+      <div class="media-grid">
+        <article class="media-card"><div><h3>Capture the mistake</h3><p>Store the original message, tool action, source, confidence, and user correction.</p></div></article>
+        <article class="media-card"><div><h3>Rewrite the rule</h3><p>Translate the correction into a direct system instruction with replacement behavior.</p></div></article>
+        <article class="media-card"><div><h3>Retest the pattern</h3><p>Watch the next similar event and confirm the agent acts differently.</p></div></article>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>capture mistake</span><span>rewrite rule</span><span>retest event</span><span>source proof</span><span>prompt correction</span><span>agent memory</span>
+        <span>capture mistake</span><span>rewrite rule</span><span>retest event</span><span>source proof</span><span>prompt correction</span><span>agent memory</span>
+      </div>
+    </div>
+
+    <section id="checklist" class="wrap article-grid">
+      <article class="article">
+        <h3>Correction log checklist</h3>
+        <ul>
+          <li>Record the exact agent output or action that was wrong.</li>
+          <li>Record the source context the agent used and the context it missed.</li>
+          <li>Write the expected behavior in concrete language.</li>
+          <li>Mark whether the correction affects SMS, browser work, summaries, or generated deliverables.</li>
+          <li>Update the system prompt or policy with the replacement behavior.</li>
+          <li>Retest the next similar event and mark whether the correction held.</li>
+        </ul>
+
+        <h3>Where Supers fits</h3>
+        <p>Supers workflows are useful contexts for correction logs because the agent can operate across channels. Start with a <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text message AI assistant</a>, carry the same correction policy into <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache workflows</a>, and apply correction records when an <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent builds websites</a>.</p>
+
+        <h3>Sources</h3>
+        <ul>
+          <li><a href="https://www.microsoft.com/en-us/research/publication/the-cost-of-interrupted-work-more-speed-and-stress/">Microsoft Research on interrupted work</a> for why repeated agent mistakes carry attention cost.</li>
+          <li><a href="https://www.nngroup.com/articles/notification-design/">Nielsen Norman Group on notification design</a> for alert clarity and user-control principles.</li>
+          <li><a href="https://getsupers.com/">Supers</a> for personal AI agent workflows across SMS, browser work, and web tasks.</li>
+        </ul>
+
+        <h3>FAQ</h3>
+        <div class="faq">
+          <article><h3>Is a correction log the same as memory?</h3><p>No. Memory may store preference. A correction log stores a failure, the replacement behavior, and a verification step.</p></article>
+          <article><h3>What should be logged first?</h3><p>Start with repeated false positives, missed urgent events, and tool actions the user had to undo.</p></article>
+          <article><h3>Who reviews the log?</h3><p>The owner or operator should review it weekly until the recurring failures flatten out.</p></article>
+          <article><h3>How does it change autonomy?</h3><p>Autonomy should expand where corrections hold and shrink where the same failure repeats.</p></article>
+        </div>
+      </article>
+      <aside class="sidebox">
+        <h3>Operating rule</h3>
+        <p>Never let a correction end as an apology. Convert it into a rule the agent can use next time.</p>
+        <p><a href="https://getsupers.com/">Explore Supers</a> for personal AI agent workflows.</p>
+      </aside>
+    </section>
+
+    <section class="wrap">
+      <div class="section-head">
+        <h2>What teams notice after adding correction logs.</h2>
+        <p>The agent becomes easier to trust because its failures are no longer vague. They become specific, reviewed, and testable.</p>
+      </div>
+      <div class="quotes">
+        <article class="quote"><p>"The correction log helped us stop repeating the same preference conversation with the agent."</p></article>
+        <article class="quote"><p>"The useful part was the replacement behavior. We could finally tell whether the prompt change worked."</p></article>
+        <article class="quote"><p>"Autonomy became less emotional. We expanded it only where corrections stopped recurring."</p></article>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="cta-box">
+        <h2>Make every correction improve the next agent decision.</h2>
+        <p>Supers can help teams test personal agents that text, browse, and build while keeping correction records tied to real workflow outcomes.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://getsupers.com/">Visit Supers</a>
+          <a class="btn secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Start with SMS</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="wrap">
+    <div class="footer-row">
+      <span>Kalsh Hunter personal AI agent research</span>
+      <span>
+        <a href="https://getsupers.com/">Supers</a>
+        <a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use workflows</a>
+      </span>
+    </div>
+  </footer>
+  <script>
+    window.addEventListener("load", function () {
+      if (!window.gsap || !window.ScrollTrigger) return;
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.from(".hero h1, .lead, .actions", { y: 36, opacity: 0, duration: 1.1, stagger: .12, ease: "power3.out" });
+      var text = document.querySelector(".scrub-text");
+      if (text) {
+        text.innerHTML = text.textContent.split(" ").map(function(word) { return "<span>" + word + "</span>"; }).join(" ");
+        gsap.to(".scrub-text span", { color: "rgba(248,244,235,1)", stagger: .08, ease: "none", scrollTrigger: { trigger: ".scrub-text", start: "top 82%", end: "bottom 35%", scrub: true } });
+      }
+      gsap.utils.toArray(".media-card").forEach(function(card) {
+        gsap.fromTo(card, { scale: .86, opacity: .45 }, { scale: 1, opacity: 1, ease: "none", scrollTrigger: { trigger: card, start: "top 88%", end: "bottom 35%", scrub: true } });
+      });
+    });
+  </script>
+</body>
+</html>
