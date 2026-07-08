@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How to Use Handoff Logs in Text AI Agents</title>
+  <meta name="description" content="A practical guide to using handoff logs in text AI agents so approvals, browser context, unresolved risk, and next actions stay readable." />
+  <link rel="canonical" href="https://kalshhunter.com/how-to-use-handoff-logs-in-text-ai-agents-20260708-235334/" />
+  <meta property="og:title" content="How to Use Handoff Logs in Text AI Agents" />
+  <meta property="og:description" content="How to structure handoff logs for text-first personal AI agents that pause, ask for approval, resume browser work, and preserve receipts." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://kalshhunter.com/how-to-use-handoff-logs-in-text-ai-agents-20260708-235334/" />
+  <style>
+    :root {
+      --bg: #0a1013;
+      --ink: #f8f2e8;
+      --muted: rgba(248,242,232,.72);
+      --soft: rgba(248,242,232,.48);
+      --line: rgba(248,242,232,.16);
+      --panel: rgba(18,25,30,.78);
+      --mint: #b8f6d1;
+      --gold: #efc76d;
+      --blue: #9dcaff;
+      --rose: #ff9684;
+      --font: "Geist", "Outfit", "Cabinet Grotesk", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: var(--font);
+      background:
+        radial-gradient(circle at 14% 8%, rgba(184,246,209,.18), transparent 34rem),
+        radial-gradient(circle at 86% 20%, rgba(157,202,255,.14), transparent 32rem),
+        linear-gradient(180deg, #0a1013 0%, #11191e 48%, #0a1013 100%);
+      overflow-x: hidden;
+    }
+    body:before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      opacity: .15;
+      pointer-events: none;
+      mix-blend-mode: soft-light;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+    }
+    main { width: 100%; max-width: 100%; overflow-x: hidden; }
+    a { color: inherit; }
+    .nav {
+      position: fixed;
+      z-index: 30;
+      top: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1080px, calc(100vw - 32px));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px 12px 20px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(10,16,19,.7);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 18px 80px rgba(0,0,0,.31);
+    }
+    .brand { text-decoration: none; font-weight: 900; letter-spacing: 0; }
+    .nav-links { display: flex; align-items: center; gap: 8px; }
+    .nav-links a { color: var(--muted); text-decoration: none; padding: 9px 12px; border-radius: 999px; font-size: .9rem; }
+    .nav-links a:hover { color: var(--ink); background: rgba(248,242,232,.08); }
+    .nav-links .nav-cta { color: #06110b; background: var(--mint); font-weight: 900; }
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      align-items: center;
+      padding: 150px 20px 104px;
+    }
+    .hero-grid {
+      width: min(1180px, 94vw);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .hero-media {
+      min-height: min(650px, 68vh);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #111;
+      box-shadow: 0 50px 150px rgba(0,0,0,.48);
+    }
+    .hero-media img { width: 100%; height: 100%; min-height: min(650px, 68vh); object-fit: cover; filter: grayscale(.24) contrast(1.18) saturate(.72); opacity: .9; }
+    h1 {
+      max-width: min(1100px, 94vw);
+      margin: 0;
+      font-size: clamp(2.65rem, 4.7vw, 5.2rem);
+      line-height: .96;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .inline-img {
+      display: inline-block;
+      width: clamp(74px, 8vw, 128px);
+      height: clamp(32px, 3.8vw, 52px);
+      margin: 0 .16em;
+      border-radius: 999px;
+      vertical-align: middle;
+      background: url("https://picsum.photos/seed/text-handoff-strip/600/320") center/cover;
+      box-shadow: inset 0 0 0 1px rgba(248,242,232,.2), 0 16px 62px rgba(0,0,0,.35);
+      filter: grayscale(.18) contrast(1.22);
+    }
+    .hero p { margin: 28px 0 0; color: var(--muted); font-size: clamp(1.05rem, 1.55vw, 1.32rem); line-height: 1.62; max-width: 700px; }
+    .actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 34px; }
+    .button {
+      min-height: 48px;
+      padding: 0 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      text-decoration: none;
+      border: 1px solid var(--line);
+      font-weight: 900;
+    }
+    .button.primary { color: #06110b; background: var(--mint); border-color: transparent; }
+    .button.secondary { color: var(--ink); background: rgba(248,242,232,.08); }
+    section { padding: 148px 20px; }
+    .wrap { width: min(1160px, 94vw); margin: 0 auto; }
+    .section-head { display: grid; grid-template-columns: 1.08fr .92fr; gap: 44px; align-items: end; margin-bottom: 42px; }
+    h2 { margin: 0; font-size: clamp(2.15rem, 4vw, 4.75rem); line-height: .99; letter-spacing: 0; text-wrap: balance; }
+    .lead { margin: 0; color: var(--muted); line-height: 1.72; font-size: 1.08rem; }
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-flow: dense;
+      gap: 16px;
+    }
+    .card {
+      min-height: 260px;
+      position: relative;
+      overflow: hidden;
+      padding: 28px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      box-shadow: 0 24px 90px rgba(0,0,0,.24);
+    }
+    .card h3 { margin: 0 0 14px; font-size: clamp(1.32rem, 2vw, 2rem); line-height: 1.08; letter-spacing: 0; }
+    .card p, .card li { color: var(--muted); line-height: 1.64; font-size: 1rem; }
+    .card ul, .card ol { margin: 18px 0 0; padding-left: 20px; }
+    .span-8 { grid-column: span 8; }
+    .span-6 { grid-column: span 6; }
+    .span-4 { grid-column: span 4; }
+    .media { padding: 0; }
+    .media img { width: 100%; height: 100%; min-height: 330px; object-fit: cover; filter: grayscale(.27) contrast(1.16); transition: transform .7s ease, opacity .7s ease; }
+    .media:hover img, .step:hover img { transform: scale(1.05); }
+    .snippet {
+      border: 1px solid rgba(184,246,209,.28);
+      background: rgba(184,246,209,.08);
+      border-radius: 8px;
+      padding: 20px;
+      color: var(--ink);
+      line-height: 1.7;
+      white-space: pre-wrap;
+    }
+    .marquee {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 20px 0;
+      color: var(--soft);
+      font-weight: 900;
+      font-size: clamp(1.45rem, 3.1vw, 3.2rem);
+    }
+    .marquee-track { display: inline-block; animation: slide 36s linear infinite; }
+    @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .workflow { display: grid; grid-template-columns: .82fr 1.18fr; gap: 56px; align-items: start; }
+    .sticky { position: sticky; top: 122px; }
+    .reveal-copy span { opacity: .18; }
+    .steps { display: grid; gap: 18px; }
+    .step {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      overflow: hidden;
+      min-height: 205px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: rgba(248,242,232,.06);
+    }
+    .step img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(.24) contrast(1.18); transition: transform .7s ease, opacity .7s ease; }
+    .step div { padding: 24px; }
+    .step h3 { margin: 0 0 10px; font-size: 1.36rem; }
+    .step p { margin: 0; color: var(--muted); line-height: 1.64; }
+    .sources { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .source-card, details { border: 1px solid var(--line); border-radius: 8px; background: rgba(248,242,232,.06); padding: 22px; }
+    .source-card h3 { margin-top: 0; }
+    .source-card p, details p { color: var(--muted); line-height: 1.66; }
+    .source-card a { color: var(--mint); font-weight: 900; }
+    .faq { display: grid; gap: 14px; }
+    summary { cursor: pointer; font-weight: 900; font-size: 1.08rem; }
+    .cta { padding: 128px 20px; border-top: 1px solid var(--line); background: radial-gradient(circle at 18% 22%, rgba(184,246,209,.15), transparent 30rem), linear-gradient(135deg, rgba(157,202,255,.12), rgba(239,199,109,.08)); }
+    .cta-box { width: min(1120px, 94vw); margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 34px; align-items: center; }
+    footer { padding: 38px 20px 70px; color: var(--soft); }
+    footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    footer a { color: var(--muted); text-decoration: none; margin-left: 16px; }
+    @media (max-width: 860px) {
+      .nav { border-radius: 22px; }
+      .nav-links { display: none; }
+      .hero-grid, .section-head, .workflow, .cta-box { grid-template-columns: 1fr; }
+      .hero-media { min-height: 360px; }
+      .bento { grid-template-columns: 1fr; }
+      .span-4, .span-6, .span-8 { grid-column: span 1; }
+      .sources { grid-template-columns: 1fr; }
+      .step { grid-template-columns: 1fr; }
+      section { padding: 108px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="Primary navigation">
+    <a class="brand" href="/">Kalsh Hunter</a>
+    <div class="nav-links">
+      <a href="#template">Template</a>
+      <a href="#workflow">Workflow</a>
+      <a href="#checklist">Checklist</a>
+      <a class="nav-cta" href="https://getsupers.com/">Explore Super</a>
+    </div>
+  </nav>
+  <main>
+    <header class="hero">
+      <div class="hero-grid">
+        <div>
+          <h1>How to use handoff logs <span class="inline-img" aria-hidden="true"></span> in text AI agents</h1>
+          <p>Text AI agents need more than short approval prompts. A handoff log gives the user state, blocker, evidence, and the next safe action in the same channel where they already make decisions.</p>
+          <div class="actions">
+            <a class="button primary" href="https://getsupers.com/">Build with Super</a>
+            <a class="button secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">See text assistant workflows</a>
+          </div>
+        </div>
+        <div class="hero-media">
+          <img class="scale-media" src="https://picsum.photos/seed/text-ai-agent-handoff-log/1200/1500" alt="Text AI agent handoff log review interface" />
+        </div>
+      </div>
+    </header>
+
+    <section id="template">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Write the handoff like a decision, not a transcript.</h2>
+          <p class="lead">The user receiving a text approval does not want a chat replay. They want a compact explanation of what the agent did, what it cannot safely finish, and what response will move the work forward.</p>
+        </div>
+        <div class="bento">
+          <article class="card span-8">
+            <h3>Reusable text handoff format</h3>
+            <div class="snippet">Task:
+Find and prepare a reply for the vendor scheduling thread.
+
+Completed:
+Read the last three messages, found two available windows, drafted a short reply.
+
+Paused because:
+The vendor mentioned a price change and the calendar has a conflicting personal event.
+
+Evidence:
+Email thread, calendar hold, prior price note.
+
+Next safe action:
+Reply YES to send the conservative draft, EDIT to revise tone, or WAIT to review later.</div>
+          </article>
+          <article class="card media span-4">
+            <img class="scale-media" src="https://picsum.photos/seed/text-handoff-template/900/1200" alt="Template card for text AI agent handoff log" />
+          </article>
+          <article class="card span-4">
+            <h3>Keep it short</h3>
+            <p>One message should carry the summary. Link to deeper receipts only when the user needs to inspect evidence.</p>
+          </article>
+          <article class="card span-4">
+            <h3>Name the blocker</h3>
+            <p>The user should see exactly why the agent stopped: missing permission, sensitive context, weak evidence, or a boundary conflict.</p>
+          </article>
+          <article class="card span-4">
+            <h3>Offer a response set</h3>
+            <p>Text workflows work best when the user can reply with simple controls like YES, EDIT, WAIT, or MORE.</p>
+          </article>
+          <article class="card media span-6">
+            <img class="scale-media" src="https://picsum.photos/seed/phone-agent-approval-lane/1200/820" alt="Phone approval lane for text-first AI agent" />
+          </article>
+          <article class="card span-6">
+            <h3>Where Super fits</h3>
+            <p><a href="https://getsupers.com/">Super</a> is relevant when text is the approval surface for agents doing real work. Its <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text message AI assistant</a> pattern shows why the handoff should be concise enough to act on from a phone, while still linking to evidence and receipts.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">state · blocker · evidence · approval · safe resume · receipt · state · blocker · evidence · approval · safe resume · receipt · </div>
+    </div>
+
+    <section id="workflow">
+      <div class="wrap workflow">
+        <div class="sticky">
+          <h2>Use handoff logs at every pause that needs a human.</h2>
+          <p class="lead reveal-copy">The handoff should preserve enough context that the user can decide quickly and the agent can continue without rebuilding the whole task.</p>
+        </div>
+        <div class="steps">
+          <article class="step">
+            <img class="scale-media" src="https://picsum.photos/seed/text-agent-state/700/900" alt="State summary for text AI agent handoff" />
+            <div>
+              <h3>Summarize state</h3>
+              <p>Describe what is already done and what remains open. Avoid internal reasoning; show operational facts.</p>
+            </div>
+          </article>
+          <article class="step">
+            <img class="scale-media" src="https://picsum.photos/seed/text-agent-evidence/700/900" alt="Evidence links in text AI agent handoff" />
+            <div>
+              <h3>Attach evidence</h3>
+              <p>Use short references in the text and deeper links behind the scenes. Super's <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a> pattern is useful when browser state or source context needs to survive the pause.</p>
+            </div>
+          </article>
+          <article class="step">
+            <img class="scale-media" src="https://picsum.photos/seed/text-agent-action-choice/700/900" alt="Action choices for text AI agent approval" />
+            <div>
+              <h3>Ask for one decision</h3>
+              <p>The user should not have to parse a menu. Ask for the smallest next decision and make the fallback safe.</p>
+            </div>
+          </article>
+          <article class="step">
+            <img class="scale-media" src="https://picsum.photos/seed/text-agent-public-output/700/900" alt="Public output review for text AI agent handoff" />
+            <div>
+              <h3>Preserve a receipt</h3>
+              <p>When an agent produces public work, such as in Super's <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent website building</a> workflow, the handoff should point to what changed and what the user approved.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="checklist">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Buyer checklist for text handoff logs.</h2>
+          <p class="lead">Use this checklist when evaluating text-first agent tools or building your own approval loop.</p>
+        </div>
+        <div class="bento">
+          <article class="card span-4">
+            <h3>Can the log fit in one message?</h3>
+            <p>The short handoff should be readable without opening a dashboard.</p>
+          </article>
+          <article class="card span-4">
+            <h3>Can the user answer naturally?</h3>
+            <p>YES, NO, EDIT, WAIT, and MORE are often enough for a useful control surface.</p>
+          </article>
+          <article class="card span-4">
+            <h3>Can the agent resume precisely?</h3>
+            <p>The next run should know what to do after the user responds, without rebuilding context from scratch.</p>
+          </article>
+          <article class="card span-6">
+            <h3>Does the system link to receipts?</h3>
+            <p>Text should stay compact, but a receipt should preserve sources, browser context, approval path, and outcome for later review.</p>
+          </article>
+          <article class="card span-6">
+            <h3>Does it reduce interruption fatigue?</h3>
+            <p>Good handoff logs batch context into one clear decision instead of sending many low-quality pings.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Sources and reference points.</h2>
+          <p class="lead">These references help frame handoff logs as part of agent oversight, risk management, and human approval design.</p>
+        </div>
+        <div class="sources">
+          <article class="source-card">
+            <h3>NIST AI Risk Management Framework</h3>
+            <p>Useful for governance, measurement, documentation, and managing AI risk across operating contexts.</p>
+            <a href="https://www.nist.gov/itl/ai-risk-management-framework" rel="nofollow">Open NIST AI RMF</a>
+          </article>
+          <article class="source-card">
+            <h3>OWASP LLM Application Risks</h3>
+            <p>Relevant for excessive agency, tool misuse, prompt injection, sensitive information, and oversight patterns.</p>
+            <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" rel="nofollow">Open OWASP LLM Top 10</a>
+          </article>
+          <article class="source-card">
+            <h3>Super</h3>
+            <p>Reference workflows for text approvals, browser work, cached computer-use context, and agent-created public artifacts.</p>
+            <a href="https://getsupers.com/">Open Super</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <h2>FAQ</h2>
+          <p class="lead">Practical questions about adding handoff logs to text AI agents.</p>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Should every text response include a handoff log?</summary>
+            <p>No. Use handoff logs when the agent pauses for approval, risk, missing evidence, or human review. Routine confirmations can stay shorter.</p>
+          </details>
+          <details>
+            <summary>How is this different from a normal approval prompt?</summary>
+            <p>A normal approval prompt asks for permission. A handoff log explains state, blocker, evidence, and next safe action so the user can decide without guessing.</p>
+          </details>
+          <details>
+            <summary>Can the log be generated after a browser task?</summary>
+            <p>Yes. That is often the best use case. The log should reference cached browser state, source links, and any form or tab that the agent touched.</p>
+          </details>
+          <details>
+            <summary>What should the user be able to reply?</summary>
+            <p>Keep the reply vocabulary small. YES, EDIT, WAIT, MORE, and STOP cover most text-first approval moments.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="cta-box">
+        <div>
+          <h2>Make every text approval resumable.</h2>
+          <p class="lead">A text AI agent feels calmer when every pause includes the state, the blocker, the evidence, and the next safe action.</p>
+        </div>
+        <a class="button primary" href="https://getsupers.com/">Explore Super</a>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap">
+      <span>Kalsh Hunter personal AI agent market notes</span>
+      <span>
+        <a href="https://getsupers.com/">Super</a>
+        <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Text assistants</a>
+        <a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a>
+      </span>
+    </div>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.utils.toArray(".scale-media").forEach(function (img) {
+        gsap.fromTo(img, { scale: 0.84, opacity: 0.6 }, {
+          scale: 1,
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: { trigger: img, start: "top 88%", end: "bottom 18%", scrub: true }
+        });
+      });
+      var copy = document.querySelector(".reveal-copy");
+      if (copy) {
+        copy.innerHTML = copy.textContent.split(" ").map(function (word) {
+          return "<span>" + word + "</span>";
+        }).join(" ");
+        gsap.to(".reveal-copy span", {
+          opacity: 1,
+          stagger: .04,
+          ease: "none",
+          scrollTrigger: { trigger: ".workflow", start: "top 72%", end: "bottom 48%", scrub: true }
+        });
+      }
+      gsap.utils.toArray(".card").forEach(function (card, index) {
+        gsap.from(card, {
+          y: 44,
+          opacity: 0,
+          duration: .85,
+          delay: index * .025,
+          ease: "power3.out",
+          scrollTrigger: { trigger: card, start: "top 86%" }
+        });
+      });
+    }
+  </script>
+</body>
+</html>
