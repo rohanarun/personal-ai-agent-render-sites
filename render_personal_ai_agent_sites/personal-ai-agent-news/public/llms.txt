@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [How to build an AI proof queue after sales calls](how-to-build-an-ai-proof-queue-after-sales-calls-20260708-111554/): Use case
 - [Super vs CRM task lists for customer proof requests](super-vs-crm-task-lists-for-customer-proof-requests-20260708-111054/): Competitor comparison
 - [AI proof request software for customer success founders](ai-proof-request-software-for-customer-success-founders-20260708-110454/): Niche research landing page
 - [AI proof loops are becoming the next personal agent workflow](ai-proof-loops-are-becoming-the-next-personal-agent-workflow-20260708-105954/): Research and news analysis

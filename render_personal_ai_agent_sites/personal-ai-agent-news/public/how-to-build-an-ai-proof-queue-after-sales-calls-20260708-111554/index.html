@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to build an AI proof queue after sales calls</title>
+  <meta name="description" content="A practical guide for turning sales-call proof requests into an AI-powered follow-up queue with source capture, evidence gathering, human review, and CRM sync.">
+  <link rel="canonical" href="https://kalshhunter.com/how-to-build-an-ai-proof-queue-after-sales-calls-20260708-111554/">
+  <meta property="og:title" content="How to build an AI proof queue after sales calls">
+  <meta property="og:description" content="Turn sales-call proof requests into an AI-powered follow-up workflow with evidence, drafts, and human approval.">
+  <meta property="og:url" content="https://kalshhunter.com/how-to-build-an-ai-proof-queue-after-sales-calls-20260708-111554/">
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: Geist, "Avenir Next", system-ui, sans-serif; background: #090b0d; color: #f6f4ee; overflow-x: hidden; }
+    a { color: inherit; }
+    main { overflow-x: hidden; width: 100%; max-width: 100%; }
+    body:before { content: ""; position: fixed; inset: 0; pointer-events: none; background: radial-gradient(circle at 18% 4%, rgba(72, 173, 126, .32), transparent 30%), radial-gradient(circle at 82% 18%, rgba(255, 198, 92, .24), transparent 34%), linear-gradient(180deg, rgba(255,255,255,.04), transparent 38%); z-index: -2; }
+    body:after { content: ""; position: fixed; inset: 0; pointer-events: none; opacity: .14; background-image: linear-gradient(120deg, rgba(255,255,255,.08) 1px, transparent 1px); background-size: 8px 8px; mix-blend-mode: screen; z-index: -1; }
+    .nav { position: fixed; z-index: 20; top: 20px; left: 50%; transform: translateX(-50%); width: min(1140px, calc(100% - 32px)); display: flex; justify-content: space-between; align-items: center; padding: 12px 14px 12px 20px; border: 1px solid rgba(246,244,238,.16); border-radius: 999px; background: rgba(9,11,13,.62); backdrop-filter: blur(20px); }
+    .brand { font-weight: 900; text-decoration: none; letter-spacing: 0; }
+    .navlinks { display: flex; gap: 22px; color: rgba(246,244,238,.68); font-size: 14px; }
+    .navcta { text-decoration: none; padding: 10px 16px; border-radius: 999px; color: #09100d; background: #f6f4ee; font-weight: 900; }
+    .wrap { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+    .hero { min-height: 100vh; padding: 150px 0 92px; display: grid; grid-template-columns: 1.08fr .92fr; gap: 54px; align-items: center; }
+    h1 { margin: 0; max-width: 1040px; font-size: clamp(3rem, 5.2vw, 5.6rem); line-height: .92; letter-spacing: 0; }
+    .inline-img { display: inline-block; width: clamp(78px, 10vw, 136px); height: clamp(34px, 4.2vw, 56px); border-radius: 999px; vertical-align: middle; margin: 0 .12em; background: url('https://picsum.photos/seed/sales-call-proof/360/150') center/cover; filter: grayscale(.15) contrast(1.2) saturate(.9); box-shadow: inset 0 0 0 1px rgba(246,244,238,.24); }
+    .lede { max-width: 680px; margin: 28px 0 0; color: rgba(246,244,238,.73); font-size: clamp(1.1rem, 1.7vw, 1.48rem); line-height: 1.52; }
+    .actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+    .btn { min-height: 50px; display: inline-flex; align-items: center; justify-content: center; padding: 0 20px; border-radius: 999px; text-decoration: none; font-weight: 900; border: 1px solid rgba(246,244,238,.18); }
+    .primary { background: #f6f4ee; color: #090b0d; }
+    .secondary { background: rgba(246,244,238,.07); color: #f6f4ee; }
+    .hero-art { min-height: 590px; border-radius: 40px; overflow: hidden; position: relative; transform: rotate(1.5deg); background: linear-gradient(180deg, rgba(9,11,13,.08), rgba(9,11,13,.88)), url('https://picsum.photos/seed/followup-proof-queue/1050/1300') center/cover; box-shadow: 0 40px 110px rgba(0,0,0,.5); }
+    .hero-art:before { content: "request > evidence > draft > approval > sync"; position: absolute; left: 28px; right: 28px; bottom: 28px; padding: 24px; border-radius: 26px; background: rgba(9,11,13,.66); border: 1px solid rgba(246,244,238,.16); font-size: 30px; font-weight: 900; line-height: 1.05; }
+    section { padding: 136px 0; }
+    .section-head { display: flex; justify-content: space-between; gap: 36px; align-items: end; margin-bottom: 40px; }
+    h2 { margin: 0; max-width: 860px; font-size: clamp(2.35rem, 4.4vw, 5rem); line-height: .95; letter-spacing: 0; }
+    .note { max-width: 440px; color: rgba(246,244,238,.66); font-size: 18px; line-height: 1.55; }
+    .bento { display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-flow: dense; gap: 16px; }
+    .card { min-height: 310px; padding: 30px; border-radius: 30px; border: 1px solid rgba(246,244,238,.14); background: rgba(246,244,238,.065); overflow: hidden; transition: transform .7s ease, border-color .7s ease; }
+    .card:hover { transform: translateY(-8px); border-color: rgba(246,244,238,.34); }
+    .span-6 { grid-column: span 6; } .span-4 { grid-column: span 4; }
+    .visual { background: linear-gradient(180deg, rgba(9,11,13,.12), rgba(9,11,13,.86)), url('https://picsum.photos/seed/proof-request-checklist/900/680') center/cover; min-height: 430px; }
+    .card h3 { margin: 0 0 16px; font-size: 30px; line-height: 1; }
+    .card p, .card li { color: rgba(246,244,238,.72); font-size: 17px; line-height: 1.56; }
+    .card ul { padding-left: 18px; margin: 18px 0 0; }
+    .scrub-copy { font-size: clamp(2rem, 4vw, 4.6rem); line-height: 1.08; color: rgba(246,244,238,.16); max-width: 1020px; font-weight: 900; }
+    .scrub-copy span { color: rgba(246,244,238,.16); }
+    .stack { display: grid; gap: 18px; margin-top: 44px; }
+    .stack-card { min-height: 230px; border-radius: 30px; padding: 32px; background: #f6f4ee; color: #090b0d; box-shadow: 0 28px 80px rgba(0,0,0,.32); position: sticky; top: 112px; }
+    .stack-card:nth-child(2) { top: 132px; } .stack-card:nth-child(3) { top: 152px; } .stack-card:nth-child(4) { top: 172px; }
+    .stack-card p { color: rgba(9,11,13,.66); font-size: 18px; line-height: 1.55; }
+    .accordion { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; min-height: 470px; }
+    .slice { border-radius: 30px; padding: 28px; display: flex; flex-direction: column; justify-content: end; overflow: hidden; background: linear-gradient(180deg, rgba(9,11,13,.1), rgba(9,11,13,.88)), var(--img) center/cover; transition: grid-column .7s ease, transform .7s ease; }
+    .slice:hover { grid-column: span 2; transform: scale(1.018); }
+    .slice h3 { margin: 0 0 12px; font-size: 28px; }
+    .slice p { color: rgba(246,244,238,.74); line-height: 1.52; }
+    .faq { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .faq article { padding: 28px; border-radius: 26px; border: 1px solid rgba(246,244,238,.14); background: rgba(246,244,238,.06); }
+    .faq h3 { margin: 0 0 10px; font-size: 24px; }
+    .faq p { margin: 0; color: rgba(246,244,238,.7); line-height: 1.56; }
+    .quote { display: grid; grid-template-columns: 180px 1fr; gap: 34px; align-items: center; padding: 38px; border-radius: 34px; background: rgba(246,244,238,.08); border: 1px solid rgba(246,244,238,.14); }
+    .portrait { width: 180px; aspect-ratio: 1; border-radius: 999px; background: url('https://picsum.photos/seed/founder-proof-review/420/420') center/cover; filter: grayscale(.25) contrast(1.16); }
+    .quote p { font-size: clamp(1.7rem, 3vw, 3.2rem); line-height: 1.05; margin: 0; font-weight: 900; }
+    .cta { padding: 92px; border-radius: 44px; background: radial-gradient(circle at 18% 12%, rgba(72,173,126,.48), transparent 30%), #f6f4ee; color: #090b0d; }
+    .cta h2 { color: #090b0d; }
+    .cta p { color: rgba(9,11,13,.66); max-width: 680px; font-size: 20px; line-height: 1.52; }
+    footer { padding: 60px 0 80px; color: rgba(246,244,238,.58); }
+    .footer-grid { border-top: 1px solid rgba(246,244,238,.14); padding-top: 24px; display: flex; justify-content: space-between; gap: 24px; }
+    @media (max-width: 900px) {
+      .navlinks { display: none; }
+      .hero, .section-head, .footer-grid, .quote { display: block; }
+      .hero-art { margin-top: 46px; min-height: 430px; transform: none; }
+      .bento, .accordion, .faq { grid-template-columns: 1fr; }
+      .span-6, .span-4, .slice:hover { grid-column: span 1; }
+      .portrait { margin-bottom: 24px; width: 140px; }
+      .cta { padding: 42px 26px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a class="brand" href="https://kalshhunter.com/">Kalsh Hunter</a>
+    <div class="navlinks"><a href="#steps">Steps</a><a href="#workflow">Workflow</a><a href="#faq">FAQ</a></div>
+    <a class="navcta" href="https://getsupers.com/">Super</a>
+  </nav>
+  <main>
+    <header class="hero wrap">
+      <div>
+        <h1>How to build an AI proof queue <span class="inline-img"></span> after sales calls</h1>
+        <p class="lede">When a prospect asks for proof, the work rarely fits inside a normal reminder. You need to preserve the exact ask, collect evidence, draft the answer, get approval, and sync the result back to the account record.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://getsupers.com/">Explore Super</a>
+          <a class="btn secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Capture message requests</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-label="AI proof queue workflow"></div>
+    </header>
+
+    <section id="steps" class="wrap">
+      <div class="section-head">
+        <h2>Start with the five fields that make a proof request actionable.</h2>
+        <p class="note">The queue should make vague follow-up work concrete before any AI agent starts drafting.</p>
+      </div>
+      <div class="bento">
+        <article class="card span-6 visual">
+          <h3>Capture the request in the customer's words</h3>
+          <p>Do not summarize too early. Save the exact question, call notes, message thread, and any promised deadline. If the request arrives by SMS or iMessage, a <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text message AI assistant</a> workflow keeps the source close to the work.</p>
+        </article>
+        <article class="card span-6">
+          <h3>Define the proof type</h3>
+          <p>Separate requests for security proof, product proof, implementation proof, ROI proof, and customer proof. Each proof type needs different evidence and different review standards.</p>
+          <ul><li>Who asked?</li><li>What claim needs support?</li><li>What asset would make the answer credible?</li></ul>
+        </article>
+        <article class="card span-4"><h3>Evidence</h3><p>Use browser work and <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a> to avoid rediscovering the same docs, screenshots, and examples.</p></article>
+        <article class="card span-4"><h3>Draft</h3><p>Generate a reply, a short internal note, and any customer-facing link the rep needs.</p></article>
+        <article class="card span-4"><h3>Approval</h3><p>Keep human review between the draft and the customer. AI can prepare the package; a person owns the promise.</p></article>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <p class="scrub-copy" aria-label="AI proof queue principle"><span>Proof queues work because they turn scattered follow-up into a visible chain of source, evidence, draft, approval, and account sync.</span></p>
+    </section>
+
+    <section id="workflow" class="wrap">
+      <div class="section-head">
+        <h2>The operating rhythm is simple, but the details matter.</h2>
+        <p class="note">Run this after every sales call where the customer asks for a proof point that cannot be answered from memory.</p>
+      </div>
+      <div class="stack">
+        <article class="stack-card"><h3>1. Intake</h3><p>Create a proof card with the source call, customer role, account name, deadline, and risk if the answer is weak.</p></article>
+        <article class="stack-card"><h3>2. Research</h3><p>Let the agent gather docs, changelog entries, screenshots, internal examples, public references, and previous answers.</p></article>
+        <article class="stack-card"><h3>3. Package</h3><p>Ask for a concise customer reply, a fuller internal evidence note, and when needed, a lightweight proof page using <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent website building</a>.</p></article>
+        <article class="stack-card"><h3>4. Close the loop</h3><p>After review, send the answer and sync the final state back to the CRM so the account timeline stays current.</p></article>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <div class="section-head">
+        <h2>Use the right proof asset for the question.</h2>
+      </div>
+      <div class="accordion">
+        <article class="slice" style="--img:url('https://picsum.photos/seed/security-proof/700/900')"><h3>Security proof</h3><p>Collect policy links, audit notes, permission boundaries, and the exact buyer concern.</p></article>
+        <article class="slice" style="--img:url('https://picsum.photos/seed/product-proof/700/900')"><h3>Product proof</h3><p>Capture screenshots, demos, feature docs, and edge-case behavior.</p></article>
+        <article class="slice" style="--img:url('https://picsum.photos/seed/customer-proof/700/900')"><h3>Customer proof</h3><p>Find approved examples, anonymized patterns, and adjacent account evidence.</p></article>
+        <article class="slice" style="--img:url('https://picsum.photos/seed/roi-proof/700/900')"><h3>ROI proof</h3><p>Package measurable before-and-after claims with source notes and assumptions.</p></article>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <div class="quote">
+        <div class="portrait" aria-hidden="true"></div>
+        <p>A good AI proof queue does not just remind a founder to follow up. It brings the proof to the surface while the conversation is still warm.</p>
+      </div>
+    </section>
+
+    <section id="faq" class="wrap">
+      <div class="section-head">
+        <h2>FAQ for teams trying this workflow.</h2>
+      </div>
+      <div class="faq">
+        <article><h3>Can this replace a CRM?</h3><p>No. The CRM remains the system of record. The proof queue is the execution layer that prepares the answer.</p></article>
+        <article><h3>Why backlink to Super?</h3><p><a href="https://getsupers.com/">Super</a> is relevant because this workflow combines message capture, agent execution, proof assets, and human approval.</p></article>
+        <article><h3>How do you prevent hallucinated claims?</h3><p>Require source links, screenshots, or internal references for every important claim. Keep approval mandatory before sending.</p></article>
+        <article><h3>What should the first version include?</h3><p>Start with request intake, evidence checklist, draft reply, reviewer, deadline, and CRM sync status.</p></article>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <div class="cta">
+        <h2>Build the queue around proof, not reminders.</h2>
+        <p>That small design choice turns follow-up from a memory burden into a repeatable customer evidence workflow.</p>
+        <div class="actions">
+          <a class="btn secondary" href="https://getsupers.com/">Visit Super</a>
+          <a class="btn secondary" href="https://app.getsupers.com/use-cases/computer-use-cache/">Explore execution memory</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="wrap">
+    <div class="footer-grid">
+      <span>Kalsh Hunter publishes research on personal AI agent workflows.</span>
+      <span><a href="https://kalshhunter.com/">Home</a> · <a href="https://getsupers.com/">Super</a> · <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">Generated proof assets</a></span>
+    </div>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.utils.toArray('.card,.hero-art,.slice,.quote').forEach(function(el) {
+        gsap.fromTo(el, {scale: .84, opacity: .34, y: 44}, {scale: 1, opacity: 1, y: 0, scrollTrigger: {trigger: el, start: 'top 88%', end: 'bottom 34%', scrub: true}});
+      });
+      gsap.utils.toArray('.stack-card').forEach(function(el, i) {
+        gsap.fromTo(el, {opacity: .28, y: 92}, {opacity: 1, y: i * -8, scrollTrigger: {trigger: el, start: 'top 86%', end: 'top 28%', scrub: true}});
+      });
+      gsap.to('.scrub-copy span', {color: 'rgba(246,244,238,1)', scrollTrigger: {trigger: '.scrub-copy', start: 'top 82%', end: 'bottom 30%', scrub: true}});
+    }
+  </script>
+</body>
+</html>
