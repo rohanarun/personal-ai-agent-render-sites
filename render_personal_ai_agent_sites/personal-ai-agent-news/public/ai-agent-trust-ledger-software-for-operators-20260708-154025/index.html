@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Agent Trust Ledger Software for Operators</title>
+  <meta name="description" content="A niche research landing page for AI agent trust ledger software: receipt trails, browser evidence, approval states, exception notes, and reusable operator memory.">
+  <link rel="canonical" href="https://kalshhunter.com/ai-agent-trust-ledger-software-for-operators-20260708-154025/">
+  <meta property="og:title" content="AI Agent Trust Ledger Software for Operators">
+  <meta property="og:description" content="A practical landing page for operators who need proof, approval, and memory around browser and personal AI agent execution.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kalshhunter.com/ai-agent-trust-ledger-software-for-operators-20260708-154025/">
+  <meta property="og:image" content="https://picsum.photos/seed/ai-agent-trust-ledger-operators/1600/900">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&display=swap');
+
+    :root {
+      color-scheme: dark;
+      --bg: #080908;
+      --ink: #f8f4ea;
+      --muted: rgba(248,244,234,.72);
+      --line: rgba(248,244,234,.16);
+      --green: #c7ff60;
+      --cyan: #95ddff;
+      --rose: #ffb0c9;
+      --amber: #ffd76d;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Outfit, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 14% 10%, rgba(199,255,96,.18), transparent 32rem),
+        radial-gradient(circle at 84% 18%, rgba(149,221,255,.16), transparent 34rem),
+        radial-gradient(circle at 58% 92%, rgba(255,176,201,.14), transparent 34rem),
+        linear-gradient(135deg, #080908, #11130f 52%, #090a0a);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .16;
+      background-image: linear-gradient(rgba(255,255,255,.046) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: radial-gradient(circle at center, black, transparent 76%);
+      z-index: 0;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    main {
+      position: relative;
+      z-index: 1;
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .nav {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 30;
+      width: min(1080px, calc(100vw - 28px));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 13px 14px 13px 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(8,9,8,.7);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 24px 70px rgba(0,0,0,.42);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 800;
+    }
+
+    .mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--green), var(--cyan), var(--rose));
+      box-shadow: 0 0 34px rgba(199,255,96,.34);
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 22px;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .navcta {
+      color: #071008;
+      background: var(--green);
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-weight: 800;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+      gap: 46px;
+      align-items: center;
+      width: min(1220px, calc(100vw - 36px));
+      margin: 0 auto;
+      padding: 150px 0 100px;
+    }
+
+    h1 {
+      max-width: min(1160px, 94vw);
+      margin: 0;
+      font-size: clamp(3rem, 5vw, 5.35rem);
+      line-height: .94;
+      letter-spacing: 0;
+      font-weight: 800;
+    }
+
+    .inline-img {
+      display: inline-block;
+      width: clamp(74px, 9vw, 146px);
+      height: clamp(34px, 4vw, 56px);
+      border-radius: 999px;
+      margin: 0 .1em;
+      vertical-align: middle;
+      background: url("https://picsum.photos/seed/operator-ledger-inline/420/180") center/cover;
+      filter: grayscale(.12) contrast(1.18) saturate(.86);
+      box-shadow: 0 16px 45px rgba(0,0,0,.34);
+    }
+
+    .lede {
+      max-width: 740px;
+      margin: 28px 0 0;
+      color: var(--muted);
+      font-size: clamp(1.14rem, 1.7vw, 1.42rem);
+      line-height: 1.5;
+    }
+
+    .actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 49px;
+      padding: 14px 20px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      font-weight: 800;
+      transition: transform .45s ease, border-color .45s ease;
+    }
+
+    .button:hover { transform: translateY(-3px); border-color: rgba(248,244,234,.42); }
+    .primary { color: #071008; background: var(--green); border-color: transparent; }
+    .secondary { color: #fff; background: rgba(255,255,255,.08); }
+
+    .hero-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: rgba(255,255,255,.06);
+      box-shadow: 0 36px 100px rgba(0,0,0,.42);
+    }
+
+    .hero-card img {
+      width: 100%;
+      height: 590px;
+      object-fit: cover;
+      filter: grayscale(.24) contrast(1.2) brightness(.82);
+      transition: transform .7s ease;
+    }
+
+    .hero-card:hover img { transform: scale(1.05); }
+
+    .ticker {
+      border-block: 1px solid var(--line);
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 18px 0;
+      color: rgba(248,244,234,.58);
+      font-size: clamp(1.1rem, 2vw, 1.7rem);
+      font-weight: 800;
+    }
+
+    .ticker span {
+      display: inline-block;
+      padding-right: 32px;
+      animation: ticker 28s linear infinite;
+    }
+
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    section { padding: 150px 20px; }
+    .wrap { width: min(1180px, calc(100vw - 32px)); margin: 0 auto; }
+
+    .section-title {
+      max-width: 980px;
+      margin: 0 0 28px;
+      font-size: clamp(2.45rem, 5vw, 5rem);
+      line-height: .98;
+      letter-spacing: 0;
+    }
+
+    .section-copy {
+      max-width: 830px;
+      color: var(--muted);
+      font-size: 1.15rem;
+      line-height: 1.72;
+    }
+
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      grid-auto-flow: dense;
+      gap: 14px;
+      margin-top: 54px;
+    }
+
+    .card {
+      min-height: 270px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: linear-gradient(145deg, rgba(255,255,255,.09), rgba(255,255,255,.035));
+      overflow: hidden;
+      box-shadow: 0 26px 80px rgba(0,0,0,.26);
+    }
+
+    .wide { grid-column: span 7; }
+    .side { grid-column: span 5; }
+    .third { grid-column: span 4; }
+    .card-body { padding: 28px; }
+
+    .card h3 {
+      margin: 0 0 14px;
+      font-size: clamp(1.5rem, 2vw, 2.1rem);
+      line-height: 1.02;
+    }
+
+    .card p, .card li {
+      color: var(--muted);
+      line-height: 1.62;
+      font-size: 1rem;
+    }
+
+    .card ul { padding-left: 18px; margin: 18px 0 0; }
+    .image-card { position: relative; min-height: 360px; }
+    .image-card img {
+      width: 100%;
+      height: 100%;
+      min-height: 360px;
+      object-fit: cover;
+      filter: grayscale(.32) contrast(1.2) brightness(.82);
+      transition: transform .7s ease, filter .7s ease;
+    }
+
+    .image-card:hover img {
+      transform: scale(1.05);
+      filter: grayscale(.08) contrast(1.26) brightness(.92);
+    }
+
+    .image-card .card-body {
+      position: absolute;
+      inset: auto 0 0;
+      background: linear-gradient(transparent, rgba(0,0,0,.84));
+    }
+
+    .workflow {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+      gap: 54px;
+      align-items: start;
+    }
+
+    .sticky { position: sticky; top: 124px; }
+    .steps { display: grid; gap: 18px; }
+
+    .step {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255,255,255,.07);
+      padding: 26px;
+      min-height: 210px;
+    }
+
+    .step strong { display: block; color: var(--green); margin-bottom: 12px; }
+    .step h3 { margin: 0 0 12px; font-size: 1.8rem; line-height: 1; }
+    .step p { margin: 0; color: var(--muted); line-height: 1.62; }
+
+    .faq, .sources {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 48px;
+    }
+
+    .sources { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    details, .source {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255,255,255,.055);
+      padding: 22px;
+    }
+
+    summary { cursor: pointer; font-weight: 800; font-size: 1.12rem; }
+    details p, .source { color: var(--muted); line-height: 1.62; }
+
+    .final { text-align: center; padding-bottom: 80px; }
+    .final h2 {
+      max-width: 980px;
+      margin: 0 auto 28px;
+      font-size: clamp(2.6rem, 5.1vw, 5.35rem);
+      line-height: .96;
+    }
+    .final .section-copy { margin: 0 auto 30px; }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 34px 20px;
+      color: var(--muted);
+    }
+    footer .wrap {
+      display: flex;
+      justify-content: space-between;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+    footer a { color: var(--ink); }
+
+    @media (max-width: 900px) {
+      .navlinks { display: none; }
+      .hero, .workflow, .faq, .sources { grid-template-columns: 1fr; }
+      .hero { min-height: auto; padding-top: 130px; }
+      .hero-card img { height: 450px; }
+      section { padding: 110px 18px; }
+      .bento { grid-template-columns: 1fr; }
+      .wide, .side, .third { grid-column: span 1; }
+      .sticky { position: relative; top: auto; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="https://kalshhunter.com/">
+        <span class="mark" aria-hidden="true"></span>
+        <span>Kalsh Hunter</span>
+      </a>
+      <div class="navlinks">
+        <a href="#fit">Fit</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#sources">Sources</a>
+      </div>
+      <a class="navcta" href="https://getsupers.com/">Supers</a>
+    </nav>
+
+    <header class="hero">
+      <div>
+        <h1>AI agent trust ledger software <span class="inline-img" aria-hidden="true"></span> for operators.</h1>
+        <p class="lede">Operator teams need more than a chat transcript. They need a durable ledger that ties each agent task to intent, browser evidence, exceptions, approvals, and reusable memory.</p>
+        <div class="actions">
+          <a class="button primary" href="https://app.getsupers.com/use-cases/computer-use-cache/">Explore computer-use cache</a>
+          <a class="button secondary" href="#fit">See the fit</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <img src="https://picsum.photos/seed/operator-trust-ledger-console/1100/1200" alt="AI agent trust ledger console for operators">
+      </div>
+    </header>
+
+    <div class="ticker" aria-hidden="true">
+      <span>receipt trails / browser evidence / approval memory / operator review / exception notes / receipt trails / browser evidence / approval memory / operator review / exception notes / </span>
+    </div>
+
+    <section id="fit">
+      <div class="wrap">
+        <h2 class="section-title">A trust ledger is the operator layer between AI execution and human approval.</h2>
+        <p class="section-copy">Browser agents, SMS agents, and follow-up agents all create the same operational question: what happened, why did it happen, and can a human approve it quickly? Trust ledger software answers that question without forcing every operator to read raw logs.</p>
+
+        <div class="bento">
+          <article class="card wide image-card">
+            <img src="https://picsum.photos/seed/trust-ledger-operator-room/1300/760" alt="Operator trust ledger dashboard">
+            <div class="card-body">
+              <h3>Made for agent work that needs proof.</h3>
+              <p>Every completed run becomes a reviewable work object instead of a vague success message.</p>
+            </div>
+          </article>
+
+          <article class="card side">
+            <div class="card-body">
+              <h3>Best-fit teams</h3>
+              <p>This is for operators who delegate real work and need a tight review loop before automation scales.</p>
+              <ul>
+                <li>Founder-led sales and customer proof teams</li>
+                <li>Browser automation and QA operators</li>
+                <li>Personal AI assistant workflows that span messages and web tasks</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="card third">
+            <div class="card-body">
+              <h3>Intent ledger</h3>
+              <p>Preserve the original request, channel, constraints, and permission boundary.</p>
+            </div>
+          </article>
+          <article class="card third">
+            <div class="card-body">
+              <h3>Evidence ledger</h3>
+              <p>Attach source links, screenshots, observed page state, and final result.</p>
+            </div>
+          </article>
+          <article class="card third">
+            <div class="card-body">
+              <h3>Memory ledger</h3>
+              <p>Promote approved receipts into durable context for future tasks.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="workflow">
+      <div class="wrap workflow">
+        <div class="sticky">
+          <h2 class="section-title reveal-text">The product promise is simple: every agent action leaves a useful receipt.</h2>
+          <p class="section-copy">For a personal AI platform like <a href="https://getsupers.com/">Supers</a>, the trust ledger can connect lightweight requests from <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text-message AI assistants</a> with browser execution, approval states, and future memory.</p>
+        </div>
+        <div class="steps">
+          <article class="step">
+            <strong>Capture</strong>
+            <h3>Store the exact request.</h3>
+            <p>Start the ledger before execution begins. The original message is the anchor that lets users judge whether the agent did the right work.</p>
+          </article>
+          <article class="step">
+            <strong>Prove</strong>
+            <h3>Bind claims to sources.</h3>
+            <p>Every important conclusion should point to page evidence, source URLs, screenshots, or tool responses that a reviewer can inspect.</p>
+          </article>
+          <article class="step">
+            <strong>Separate</strong>
+            <h3>Make uncertainty visible.</h3>
+            <p>Operators need completed actions, blocked steps, risky changes, and human decisions separated in the interface.</p>
+          </article>
+          <article class="step">
+            <strong>Reuse</strong>
+            <h3>Turn approvals into memory.</h3>
+            <p>Approved receipts can flow into a <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a> so future agents reuse verified context instead of guessing.</p>
+          </article>
+          <article class="step">
+            <strong>Expand</strong>
+            <h3>Apply the same ledger to build workflows.</h3>
+            <p>For workflows like <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agents that build websites</a>, the ledger can show what changed, what was checked, and what still needs review.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2 class="section-title">FAQ</h2>
+        <p class="section-copy">The trust ledger should feel like an operating system for agent review, not an analytics dashboard.</p>
+        <div class="faq">
+          <details open>
+            <summary>Is a trust ledger different from an audit log?</summary>
+            <p>Yes. Audit logs are usually raw event history. A trust ledger is a structured, user-facing work record with intent, evidence, result, exception, and approval state.</p>
+          </details>
+          <details>
+            <summary>Who reviews the ledger?</summary>
+            <p>The first reviewer is usually an operator, founder, support lead, or assistant user. Technical teams can still drill into raw logs when needed.</p>
+          </details>
+          <details>
+            <summary>Does every task need screenshots?</summary>
+            <p>No. Screenshots are most useful when browser state matters. Simple message or research tasks may only need source links and a concise evidence note.</p>
+          </details>
+          <details>
+            <summary>What should teams build first?</summary>
+            <p>Start with a stable receipt schema, approval states, source links, exception notes, and a memory gate that only saves approved outcomes.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="sources">
+      <div class="wrap">
+        <h2 class="section-title">Source notes</h2>
+        <p class="section-copy">This landing page reflects public movement toward computer-use agents and the practical operator need for trustworthy execution artifacts.</p>
+        <div class="sources">
+          <a class="source" href="https://openai.com/index/computer-using-agent/" rel="nofollow">OpenAI computer-using agent work shows browser execution becoming a mainstream agent capability.</a>
+          <a class="source" href="https://www.anthropic.com/news/3-5-models-and-computer-use" rel="nofollow">Anthropic computer use helped normalize agents operating software interfaces directly.</a>
+          <a class="source" href="https://app.getsupers.com/use-cases/computer-use-cache/">Supers computer-use cache frames reusable execution context for personal AI agents.</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="final">
+      <div class="wrap">
+        <h2>Give every agent task a receipt operators can trust.</h2>
+        <p class="section-copy">Trust ledger software turns personal AI execution into reviewable, reusable work.</p>
+        <a class="button primary" href="https://getsupers.com/">Build with Supers</a>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        <span>Kalsh Hunter niche research</span>
+        <span><a href="https://getsupers.com/">Supers</a> / <a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a> / <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">Website agents</a></span>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+      document.querySelectorAll(".reveal-text").forEach((block) => {
+        const words = block.textContent.trim().split(/\s+/);
+        block.innerHTML = words.map((word) => `<span style="opacity:.16;display:inline-block;margin-right:.24em">${word}</span>`).join(" ");
+        gsap.to(block.querySelectorAll("span"), {
+          opacity: 1,
+          stagger: .035,
+          ease: "none",
+          scrollTrigger: {
+            trigger: block,
+            start: "top 76%",
+            end: "bottom 38%",
+            scrub: true
+          }
+        });
+      });
+      gsap.from(".step", {
+        y: 92,
+        opacity: 0,
+        scale: .94,
+        stagger: .14,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".steps",
+          start: "top 74%",
+          end: "bottom 38%",
+          scrub: true
+        }
+      });
+      gsap.from(".card", {
+        y: 42,
+        opacity: 0,
+        stagger: .08,
+        duration: .9,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".bento",
+          start: "top 76%"
+        }
+      });
+    }
+  </script>
+</body>
+</html>
