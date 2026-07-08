@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to turn chat history into AI receipt logs | Kalsh Hunter</title>
+  <meta name="description" content="A practical guide for converting personal AI assistant chat history into AI receipt logs with source trails, approval states, and reusable execution memory.">
+  <link rel="canonical" href="https://kalshhunter.com/how-to-turn-chat-history-into-ai-receipt-logs-20260708-141355/">
+  <meta property="og:title" content="How to turn chat history into AI receipt logs">
+  <meta property="og:description" content="Turn personal AI assistant transcripts into reviewable work records.">
+  <meta property="og:url" content="https://kalshhunter.com/how-to-turn-chat-history-into-ai-receipt-logs-20260708-141355/">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800&display=swap');
+    :root{--ink:#101214;--paper:#f7f1e8;--muted:#686157;--line:rgba(16,18,20,.14);--lime:#d8ff55;--navy:#152238;--brick:#78352e}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"Cabinet Grotesk",system-ui,sans-serif;background:var(--paper);color:var(--ink);overflow-x:hidden}a{color:inherit}.page{overflow-x:hidden;width:100%;max-width:100%;background:radial-gradient(circle at 14% 10%,rgba(216,255,85,.24),transparent 30%),radial-gradient(circle at 86% 20%,rgba(120,53,46,.16),transparent 34%)}.wrap{width:min(1180px,92vw);margin:0 auto}.nav{position:fixed;z-index:20;top:20px;left:50%;transform:translateX(-50%);width:min(1040px,92vw);display:flex;align-items:center;justify-content:space-between;padding:12px 14px 12px 22px;border:1px solid rgba(16,18,20,.12);border-radius:999px;background:rgba(247,241,232,.82);backdrop-filter:blur(24px);box-shadow:0 24px 80px rgba(16,18,20,.12)}.brand,.nav a{text-decoration:none}.brand{font-weight:800}.navlinks{display:flex;gap:22px;color:var(--muted);font-size:14px}.navcta{background:var(--ink);color:#fff;padding:10px 17px;border-radius:999px;font-weight:800}.hero{min-height:94vh;display:flex;align-items:center;padding:132px 0 84px}.hero-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:62px;align-items:center}.eyebrow{margin:0 0 18px;color:var(--brick);font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}.hero h1{font-size:clamp(3rem,5.25vw,5.65rem);line-height:.95;letter-spacing:0;margin:0 0 28px;max-width:min(1160px,94vw)}.inline-img{display:inline-block;width:clamp(88px,10vw,148px);height:clamp(36px,4vw,56px);border-radius:999px;background:url("https://picsum.photos/seed/chat-to-receipt-log/420/160") center/cover;vertical-align:middle;filter:grayscale(.12) contrast(1.18) saturate(.76);margin:0 .12em}.lede{font-size:clamp(1.15rem,1.7vw,1.48rem);line-height:1.42;color:#39342f;max-width:760px}.actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}.btn{display:inline-flex;min-height:50px;align-items:center;justify-content:center;padding:14px 20px;border-radius:999px;text-decoration:none;font-weight:800;border:1px solid var(--ink);transition:transform .45s ease,box-shadow .45s ease}.btn:hover{transform:translateY(-3px);box-shadow:0 18px 44px rgba(16,18,20,.17)}.primary{background:var(--ink);color:#fff}.secondary{background:var(--lime);color:#111}.visual{min-height:520px;border-radius:38px;overflow:hidden;position:relative;background:url("https://picsum.photos/seed/chat-receipt-workflow/900/1100") center/cover;filter:contrast(1.12) saturate(.78);box-shadow:0 34px 100px rgba(16,18,20,.22)}.visual:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,18,20,0),rgba(16,18,20,.78))}.visual p{position:absolute;z-index:1;left:28px;right:28px;bottom:28px;color:#fff;font-size:22px;line-height:1.25}.section{padding:150px 0}.section-title{font-size:clamp(2.35rem,4.5vw,5rem);line-height:.99;margin:0 0 24px;max-width:980px}.section-copy{font-size:clamp(1.08rem,1.55vw,1.28rem);line-height:1.56;color:var(--muted);max-width:780px}.marquee{overflow:hidden;display:flex;gap:18px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 0;margin-top:54px}.marquee-track{display:flex;gap:18px;white-space:nowrap;animation:move 28s linear infinite}.marquee span{font-size:clamp(1.65rem,3vw,3.2rem);font-weight:800;color:rgba(16,18,20,.3)}@keyframes move{from{transform:translateX(0)}to{transform:translateX(-50%)}}.bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-flow:dense;gap:16px;margin-top:58px}.card{min-height:260px;border:1px solid var(--line);border-radius:30px;padding:30px;background:rgba(255,255,255,.54);overflow:hidden;transition:transform .7s ease,background .7s ease}.card:hover{transform:translateY(-6px);background:rgba(255,255,255,.78)}.card h3{font-size:clamp(1.45rem,2.2vw,2.35rem);line-height:1;margin:0 0 16px}.card p,.card li{font-size:18px;line-height:1.52;color:#504a42}.span-7{grid-column:span 7}.span-5{grid-column:span 5}.span-4{grid-column:span 4}.photo{background:url("https://picsum.photos/seed/ai-receipt-board/900/700") center/cover;filter:grayscale(.1) contrast(1.18);min-height:340px}.dark{background:var(--navy);color:#fff}.dark p,.dark li{color:rgba(255,255,255,.78)}.accordion{display:flex;gap:12px;margin-top:58px;min-height:400px}.panel{position:relative;flex:1;border-radius:32px;overflow:hidden;background:center/cover;filter:contrast(1.16) saturate(.75);transition:flex .7s cubic-bezier(.2,.9,.2,1)}.panel:hover{flex:2.15}.panel:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,18,20,.05),rgba(16,18,20,.84))}.panel div{position:absolute;left:24px;right:24px;bottom:24px;color:#fff;z-index:1}.panel h3{font-size:28px;margin:0 0 8px}.panel p{margin:0;font-size:17px;line-height:1.45;color:rgba(255,255,255,.78)}.stack-zone{display:grid;grid-template-columns:.82fr 1.18fr;gap:74px;align-items:start}.sticky{position:sticky;top:128px}.reveal{font-size:clamp(1.55rem,3vw,3.3rem);line-height:1.08;font-weight:800}.reveal span{opacity:.18;transition:opacity .25s ease}.stack{display:grid;gap:18px}.stack-card{min-height:220px;border:1px solid var(--line);border-radius:30px;padding:30px;background:rgba(255,255,255,.56);transform:translateY(26px);opacity:.72}.stack-card h3{font-size:32px;margin:0 0 12px}.stack-card p{font-size:19px;line-height:1.5;color:#504a42}.sources{padding:58px;border-radius:38px;background:#101214;color:#fff;margin-top:76px}.sources .section-copy{color:rgba(255,255,255,.76)}.sources a{color:var(--lime)}footer{background:#101214;color:#fff;padding:130px 0 72px}footer p{color:rgba(255,255,255,.58)}footer .primary{background:#fff;color:#111;border-color:#fff}footer .secondary{background:transparent;color:#fff;border-color:rgba(255,255,255,.32)}@media(max-width:880px){.navlinks{display:none}.hero-grid,.stack-zone{grid-template-columns:1fr}.visual{min-height:360px}.section{padding:96px 0}.bento{grid-template-columns:1fr}.span-7,.span-5,.span-4{grid-column:span 1}.accordion{flex-direction:column}.panel,.panel:hover{flex:1;min-height:260px}.sticky{position:relative;top:auto}.actions{flex-direction:column}.btn{width:100%}}
+  </style>
+</head>
+<body>
+<main class="page">
+  <nav class="nav">
+    <a class="brand" href="https://kalshhunter.com/">Kalsh Hunter</a>
+    <div class="navlinks"><a href="#capture">Capture</a><a href="#workflow">Workflow</a><a href="#checklist">Checklist</a></div>
+    <a class="navcta" href="https://getsupers.com/">Super</a>
+  </nav>
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Use-case guide</p>
+        <h1>Turn chat history <span class="inline-img"></span> into AI receipt logs.</h1>
+        <p class="lede">A personal AI assistant transcript is useful, but it is not a work system. Convert important chat moments into receipt logs so each action has source evidence, approval state, owner, and outcome.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://getsupers.com/">Explore Super</a>
+          <a class="btn secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Start from messages</a>
+        </div>
+      </div>
+      <aside class="visual"><p>The goal is not a longer transcript. The goal is a cleaner work record.</p></aside>
+    </div>
+  </section>
+
+  <section id="capture" class="section">
+    <div class="wrap">
+      <h2 class="section-title">Capture decisions, not every sentence.</h2>
+      <p class="section-copy">The receipt log should extract the moments where the assistant moved work forward: a request arrived, evidence was found, a draft was prepared, an approval was needed, or an outcome was logged.</p>
+      <div class="marquee" aria-hidden="true"><div class="marquee-track"><span>request</span><span>evidence</span><span>draft</span><span>approval</span><span>outcome</span><span>request</span><span>evidence</span><span>draft</span><span>approval</span><span>outcome</span></div></div>
+      <div class="bento">
+        <article class="card span-7">
+          <h3>Start with the original ask.</h3>
+          <p>When work begins through SMS, iMessage, or a customer message, store the source and the exact request. A <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text message AI assistant</a> can create the initial receipt from that inbound context.</p>
+        </article>
+        <article class="card photo span-5" aria-label="AI receipt board"></article>
+        <article class="card dark span-4">
+          <h3>Add browser evidence.</h3>
+          <p>If the assistant checks accounts or pages, attach the context through <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a>.</p>
+        </article>
+        <article class="card span-4">
+          <h3>Separate drafts.</h3>
+          <p>Keep generated replies, briefs, or pages distinct from the evidence that caused them.</p>
+        </article>
+        <article class="card span-4">
+          <h3>Publish carefully.</h3>
+          <p>For <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent website building</a>, the receipt log should show sources and approval before publishing.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="workflow" class="section">
+    <div class="wrap">
+      <h2 class="section-title">A clean conversion workflow.</h2>
+      <p class="section-copy">Use four passes: identify work moments, attach evidence, assign state, and log the outcome. That turns an unstructured chat into an auditable queue.</p>
+      <div class="accordion">
+        <article class="panel" style="background-image:url('https://picsum.photos/seed/chat-work-moment/800/900')"><div><h3>Find work moments</h3><p>Detect requests, commitments, drafts, blockers, approvals, and completed work.</p></div></article>
+        <article class="panel" style="background-image:url('https://picsum.photos/seed/chat-source-evidence/800/900')"><div><h3>Attach evidence</h3><p>Save links, messages, browser state, files, screenshots, and assumptions.</p></div></article>
+        <article class="panel" style="background-image:url('https://picsum.photos/seed/chat-approval-state/800/900')"><div><h3>Assign state</h3><p>Mark each card as drafted, blocked, approved, sent, published, or archived.</p></div></article>
+        <article class="panel" style="background-image:url('https://picsum.photos/seed/chat-outcome-log/800/900')"><div><h3>Log outcome</h3><p>Record what changed and what the assistant should remember next time.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="checklist" class="section">
+    <div class="wrap stack-zone">
+      <div class="sticky">
+        <h2 class="section-title">Receipt log checklist.</h2>
+        <p class="reveal" id="revealText"><span>Extract</span> <span>only</span> <span>the</span> <span>work</span> <span>that</span> <span>needs</span> <span>proof.</span></p>
+      </div>
+      <div class="stack">
+        <article class="stack-card"><h3>Source</h3><p>What exact chat message, customer note, or user request created this work item?</p></article>
+        <article class="stack-card"><h3>Evidence</h3><p>What did the assistant inspect before drafting or acting?</p></article>
+        <article class="stack-card"><h3>State</h3><p>What decision does a human need to make now?</p></article>
+        <article class="stack-card"><h3>Outcome</h3><p>What happened after approval? <a href="https://getsupers.com/">Super</a> is useful when receipt logs connect chat, browser work, and generated outputs.</p></article>
+      </div>
+    </div>
+    <div class="wrap sources">
+      <h2 class="section-title">Sources and assumptions</h2>
+      <p class="section-copy">This guide is based on personal AI assistant workflows, AI chat transcripts, message-native intake, browser-use agents, human approval queues, and agent-generated publishing. Relevant Super workflows include <a href="https://getsupers.com/">Super</a>, <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text message AI assistance</a>, <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a>, and <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent website building</a>.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <h2 class="section-title">Turn useful chats into reusable work records.</h2>
+      <div class="actions">
+        <a class="btn primary" href="https://getsupers.com/">Build with Super</a>
+        <a class="btn secondary" href="https://app.getsupers.com/use-cases/computer-use-cache/">Explore execution memory</a>
+      </div>
+      <p>Kalsh Hunter · <a href="https://kalshhunter.com/">Home</a> · <a href="https://getsupers.com/">Super</a></p>
+    </div>
+  </footer>
+</main>
+<script>
+  const cards = document.querySelectorAll('.stack-card');
+  const words = document.querySelectorAll('#revealText span');
+  const visuals = document.querySelectorAll('.visual,.photo,.panel');
+  function animate(){
+    const h = window.innerHeight;
+    cards.forEach((card, i) => {
+      const r = card.getBoundingClientRect();
+      const p = Math.max(0, Math.min(1, 1 - r.top / h));
+      card.style.transform = `translateY(${(1-p)*28 - i*4}px) scale(${.95 + p*.05})`;
+      card.style.opacity = .55 + p*.45;
+    });
+    words.forEach((word, i) => {
+      const trigger = window.scrollY / (document.body.scrollHeight - h);
+      word.style.opacity = trigger > i / words.length * .84 ? 1 : .18;
+    });
+    visuals.forEach(el => {
+      const r = el.getBoundingClientRect();
+      const center = 1 - Math.abs((r.top + r.height/2 - h/2) / h);
+      const p = Math.max(.2, Math.min(1, center));
+      el.style.transform = `scale(${.86 + p*.14})`;
+      el.style.opacity = .34 + p*.66;
+    });
+  }
+  window.addEventListener('scroll', animate, {passive:true});
+  window.addEventListener('resize', animate);
+  animate();
+</script>
+</body>
+</html>
