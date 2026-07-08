@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Super for creators and coaches turning conversations into content and operations</title>
+<link rel="stylesheet" href="./styles.css" />
+<script src="https://unpkg.com/gsap@3/dist/gsap.min.js" defer></script>
+<script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+<script src="./app.js" defer></script>
+</head>
+<body>
+<div class="ambient-grid"></div>
+<div class="paper-noise"></div>
+<div class="page">
+<nav class="nav">
+  <div class="brand"><img src="https://storage.googleapis.com/cheatlayer/landing/icon-transparent-512.png" alt="Super" /></div>
+  <div class="nav-links">
+    <a href="#guide">Field guide</a>
+    <a href="#workflow">Workflow</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <div class="nav-cta"><a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Try Super</a></div>
+</nav>
+
+<section class="hero">
+  <div class="shell hero-inner">
+    <h1>Turn every coaching call, DM, and voice note into content and operations — automatically.</h1>
+    <p class="hero-sub">Super is a personal AI agent for creators and coaches who live in conversations. It can operate real software, reuse a <strong>computer-use cache</strong>, and turn repeated conversation workflows into faster, cheaper systems over time.</p>
+    <div class="hero-actions">
+      <a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Start with Super</a>
+      <a class="btn btn-white" href="#guide">Read the field guide</a>
+    </div>
+    <div class="media-frame">
+      <video src="https://storage.googleapis.com/cheatlayer/landing/hero-0607-2-3.mp4" autoplay muted loop playsinline></video>
+    </div>
+  </div>
+</section>
+
+<section class="chapter" id="workflow">
+  <div class="shell">
+    <h2>Why creators and coaches are moving beyond chat-only AI</h2>
+    <div class="bento">
+      <div class="bento-item">
+        <h3>Conversations are the raw material</h3>
+        <p>Your IP lives in calls, coaching sessions, DMs, and informal voice notes. Turning those into repeatable content and operational updates requires more than summarisation — it requires reliable computer use across tools you already run.</p>
+      </div>
+      <div class="bento-item">
+        <h3>The market is shifting to computer use</h3>
+        <p>Google’s Gemini has made computer use a first‑class capability, underscoring that agents must operate browsers and apps, not just respond in chat. Super focuses on this shift with durability and cache reuse.</p>
+      </div>
+      <div class="bento-item">
+        <h3>Super vs the landscape</h3>
+        <p>ChatGPT, Gemini, Grok, and Siri excel at conversation. Folk and Orchids explore niche automation. Super is purpose‑built for creators who want personal agents that do real work repeatedly — with memory and a computer‑use cache.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<article class="long-form-guide shell" id="guide">
+  <p class="byline">Field guide by the Super editorial team · Updated July 2026 · Research‑driven, practitioner‑tested</p>
+
+  <h2>Market context</h2>
+  <p>Creators and coaches sit at the intersection of conversation and execution. A single week might include sales calls, group coaching sessions, inbound DMs, podcast interviews, and ad‑hoc voice notes. Historically, turning those conversations into usable outputs — blog posts, email sequences, CRM updates, curriculum changes, or client follow‑ups — required hours of manual cleanup or brittle integrations.</p>
+  <p>The AI agent market in 2026 is rapidly converging on computer use as table stakes. Google’s release of computer‑use capabilities in Gemini, alongside coverage of security risks and brittle automation, shows that simply letting an AI “click around” is not enough. Reliability, scope control, and reuse matter. MIT researchers describe today’s agentic AI as powerful but fragile, where system design matters more than raw model intelligence.</p>
+  <p>For creators and coaches, this means the winning tools are not generic chatbots. They are personal AI agents that can operate your actual tools — Notion, Google Docs, course platforms, CRMs — and get better at the same workflows over time. Super positions itself here, emphasizing reuse via a computer‑use cache so repeated workflows improve instead of starting from scratch.</p>
+
+  <h2>How to turn conversations into content and operations with Super</h2>
+
+  <h3>How to capture and normalize your conversations</h3>
+  <p>Start by deciding which conversations matter operationally. For a coach, this may include weekly client calls and discovery calls. For a creator, it may be podcast recordings and high‑signal DMs. Super can be instructed to ingest transcripts or recordings, normalize speaker labels, and store them in a consistent workspace. This step is crucial because downstream automation depends on clean, repeatable inputs rather than raw audio or fragmented notes.</p>
+
+  <h3>How to define reusable computer workflows</h3>
+  <p>Next, map what you repeatedly do after each conversation. Examples include drafting a newsletter, updating a CRM stage, creating lesson notes, or generating social clips. With Super, you define these as computer‑use workflows: opening the right app, navigating the UI, and performing the same sequence of actions. The agent learns the exact UI paths you use instead of guessing through APIs.</p>
+
+  <h3>How to apply a computer-use cache for speed and cost control</h3>
+  <p>Repeated workflows benefit from Super’s computer‑use cache. When the agent has already executed the same steps — such as publishing to your CMS or updating a client record — it can reuse prior execution context. This reduces repeated reasoning and makes ongoing operations cheaper and more predictable, especially important for creators running weekly or daily content cycles.</p>
+
+  <h3>How to review outputs safely before publishing</h3>
+  <p>Even with automation, creators should remain editors. Super supports review checkpoints where drafts, updates, or scheduled posts are presented for approval. This human‑in‑the‑loop step mitigates the risks highlighted in recent security research around autonomous agents, without reverting to fully manual work.</p>
+
+  <h3>How to expand from content to operations</h3>
+  <p>Once content workflows are stable, extend the same approach to operations. Examples include updating onboarding documents after coaching patterns emerge, tagging CRM contacts based on conversation themes, or generating internal SOP updates. Because Super operates real software, these expansions do not require rebuilding integrations from scratch.</p>
+
+  <h2>Implementation checklist</h2>
+  <ul>
+    <li>Document your highest‑leverage conversation types, noting where they currently create manual follow‑up work. Be explicit about frequency and downstream tools so the agent design reflects real creator operations.</li>
+    <li>Choose one content workflow to automate first, such as turning weekly calls into a newsletter draft. Starting narrow reduces risk and makes it easier to validate accuracy and tone.</li>
+    <li>Set clear boundaries for computer use, limiting which apps and actions the agent can perform. This reflects best practices emerging from security research on agent misuse.</li>
+    <li>Schedule regular reviews of automated outputs, especially in the first month. Patterns of correction often reveal where instructions or prompts need tightening.</li>
+    <li>Track which workflows benefit most from cache reuse, such as publishing or CRM updates. These are prime candidates for scaling because repeated execution compounds savings.</li>
+    <li>Maintain an internal log of changes to workflows and prompts so updates to your business model or content strategy do not silently break automation.</li>
+  </ul>
+
+  <h2>Risks and limits</h2>
+  <p>Computer‑use agents increase the attack surface of your workflow. As highlighted by recent reports on shell injection and agent abuse, poorly scoped agents can be exploited. Super’s design encourages intentional scope, but responsibility ultimately lies with the operator.</p>
+  <p>Automation can amplify small errors. A misinterpreted conversation theme can propagate into multiple content assets if not caught early. This is why staged rollout and human review remain essential.</p>
+  <p>Not all tools behave consistently. UI changes in third‑party software can temporarily break computer‑use workflows. Expect periodic maintenance rather than set‑and‑forget automation.</p>
+  <p>Finally, creative judgment cannot be fully automated. While Super accelerates execution, creators and coaches still define voice, ethics, and strategic direction.</p>
+
+  <h2 id="faq">FAQ</h2>
+  <p><strong>Is Super better than ChatGPT for creators?</strong><br/>ChatGPT is excellent for ideation and writing assistance. Super is designed for creators who want an agent that operates real tools repeatedly, with memory and a computer‑use cache, rather than one‑off chat outputs.</p>
+  <p><strong>How does Super compare to Gemini or Grok?</strong><br/>Gemini and Grok are advancing rapidly in computer use and real‑time context. Super differentiates by focusing narrowly on durable personal workflows and reuse over time, which matters for weekly creator operations.</p>
+  <p><strong>What about voice assistants like Siri?</strong><br/>Siri is optimized for device‑level voice tasks. Super is optimized for multi‑step operational work across web apps, which is a different problem space.</p>
+  <p><strong>Are Folk or Orchids competitors?</strong><br/>Folk and Orchids appear in the broader automation and agent landscape. They provide useful context, but Super is positioned specifically around personal agents and computer‑use cache reuse.</p>
+  <p><strong>Do I need to code?</strong><br/>No. Super is designed for operators. You describe workflows in plain language and demonstrate them once; the agent handles execution.</p>
+  <p><strong>Is this safe for client data?</strong><br/>Safety depends on scope and review. Super encourages constrained access and human checkpoints, aligning with current best practices for agentic systems.</p>
+
+  <h2>Sources</h2>
+  <ul>
+    <li><a href="https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-computer-use-model/">Introducing computer use in Gemini</a></li>
+    <li><a href="https://news.mit.edu/2025/qa-what-agentic-ai-today-and-what-do-we-want-it-be">MIT News on agentic AI</a></li>
+    <li><a href="https://www.anthropic.com/engineering/building-effective-agents">Anthropic: Building Effective AI Agents</a></li>
+  </ul>
+</article>
+
+<section class="cta-band">
+  <div class="shell">
+    <h2>Build a personal AI agent that actually does the work.</h2>
+    <a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Get started with Super</a>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to turn creator conversations into content and operations",
+  "description": "A step-by-step workflow for creators and coaches to convert conversations into repeatable content and operational updates using a personal AI agent.",
+  "step": [
+    { "@type": "HowToStep", "name": "Capture conversations", "text": "Collect and normalize transcripts from coaching calls, podcasts, and DMs so they can be processed consistently." },
+    { "@type": "HowToStep", "name": "Define computer workflows", "text": "Map the exact software actions you repeat after each conversation, such as drafting content or updating a CRM." },
+    { "@type": "HowToStep", "name": "Apply cache reuse", "text": "Reuse prior computer-use executions to make repeated workflows faster and more cost-effective over time." },
+    { "@type": "HowToStep", "name": "Review outputs", "text": "Insert human review checkpoints before publishing or committing operational changes." },
+    { "@type": "HowToStep", "name": "Expand operations", "text": "Extend stable content workflows into onboarding, documentation, and internal operations." }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Is Super better than ChatGPT for creators?", "acceptedAnswer": { "@type": "Answer", "text": "ChatGPT excels at conversational assistance. Super focuses on durable computer-use workflows with cache reuse for ongoing creator operations." } },
+    { "@type": "Question", "name": "How does Super compare to Gemini or Grok?", "acceptedAnswer": { "@type": "Answer", "text": "Gemini and Grok push computer use forward. Super emphasizes personal workflow reuse and operational consistency." } }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://getsupers.com" },
+    { "@type": "ListItem", "position": 2, "name": "Use cases", "item": "https://getsupers.com/use-cases" },
+    { "@type": "ListItem", "position": 3, "name": "Creators and coaches", "item": "https://getsupers.com/super-for-creators-and-coaches-turning-conversations-into" }
+  ]
+}
+</script>
+
+</div>
+</body>
+</html>

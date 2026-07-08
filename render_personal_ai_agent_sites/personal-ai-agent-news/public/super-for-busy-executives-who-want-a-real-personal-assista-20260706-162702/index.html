@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Super for busy executives who want a real personal assistant</title>
+<link rel="stylesheet" href="./styles.css" />
+<script src="https://unpkg.com/gsap@3/dist/gsap.min.js" defer></script>
+<script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+<script src="./app.js" defer></script>
+</head>
+<body>
+<div class="ambient-grid"></div>
+<div class="paper-noise"></div>
+<div class="page">
+  <nav class="nav">
+    <div class="brand"><img src="https://storage.googleapis.com/cheatlayer/landing/icon-transparent-512.png" alt="Super" /></div>
+    <div class="nav-links">
+      <a href="#guide">Executive guide</a>
+      <a href="#compare">Compare</a>
+      <a href="#sources">Sources</a>
+    </div>
+    <a class="btn btn-black nav-cta" href="https://app.getsupers.com/general?login=1&open_login=1">Try Super</a>
+  </nav>
+
+  <section class="hero">
+    <div class="shell hero-inner">
+      <h1>Super is the personal assistant busy executives actually need</h1>
+      <p class="hero-sub">Email triage, calendar cleanup, CRM updates, research follow‑ups, and approvals across real software. Super operates a computer on your behalf and reuses a computer-use cache so repeated executive work gets faster and cheaper over time.</p>
+      <div class="hero-actions">
+        <a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Start with Super</a>
+        <a class="btn btn-white" href="#guide">Read the executive field guide</a>
+      </div>
+      <div class="media-frame">
+        <video autoplay muted loop playsinline src="https://storage.googleapis.com/cheatlayer/landing/hero-0607-2-3.mp4"></video>
+      </div>
+    </div>
+  </section>
+
+  <section id="compare" class="chapter">
+    <div class="shell">
+      <h2>The assistant landscape executives are navigating</h2>
+      <div class="compare-grid">
+        <div class="compare-card"><h3>Siri</h3><p>Voice‑first and device‑embedded. Useful for reminders and dictation, but limited for cross‑app executive workflows.</p></div>
+        <div class="compare-card"><h3>ChatGPT</h3><p>Best‑in‑class conversational AI for drafting and analysis. Agent modes exist, but repeated computer workflows do not compound efficiency.</p></div>
+        <div class="compare-card"><h3>Gemini</h3><p>Google is pushing browser‑native computer use aggressively. Powerful, but cost and reuse characteristics vary by workflow.</p></div>
+        <div class="compare-card"><h3>Grok</h3><p>Opinionated, real‑time assistant with social context. Less focused on structured executive operations.</p></div>
+        <div class="compare-card"><h3>Folk</h3><p>Niche tooling within the broader agent market, typically scoped to specific automation patterns.</p></div>
+        <div class="compare-card"><h3>Orchids</h3><p>Experimental approaches to automation and agents; still emerging as executive tools.</p></div>
+        <div class="compare-card highlight"><h3>Super</h3><p>Purpose‑built personal AI agents that operate computers directly and reuse a computer-use cache, making recurring executive work materially more efficient.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <article id="guide" class="long-form-guide shell">
+    <h2>Executive field guide: using a real personal assistant AI</h2>
+    <p class="byline">By the Super editorial team · Research‑driven synthesis of 2026 agentic AI coverage</p>
+
+    <h3>Market context</h3>
+    <p>Executives are surrounded by AI assistants, but most still behave like upgraded chat boxes. Over the last year, the market has shifted toward agentic systems that can actually operate software interfaces. Google’s release of computer use inside Gemini 3.5 Flash signaled that browser and desktop control is becoming table stakes. At the same time, reporting from MIT and security publications has highlighted how brittle and risky poorly scoped agents can be. For executives, the tension is clear: delegation saves time, but mistakes compound quickly when agents touch real systems.</p>
+    <p>Another under‑discussed factor is efficiency. Research coverage has shown that full AI agents can consume dramatically more compute and electricity than chatbots. That matters for leaders running the same workflows every week: board prep, pipeline reviews, investor updates, and inbox zero rituals. If every run costs the same, the assistant never truly learns your business. Super’s bet is that executives benefit most when an agent remembers how your tools work and reuses that knowledge safely via a computer-use cache.</p>
+
+    <h3>How to evaluate and use this workflow</h3>
+    <h4>How to map your executive tasks</h4>
+    <p>Start by listing the tasks you personally touch that already follow a predictable pattern: reviewing flagged emails, approving expenses, updating CRM notes after calls, or pulling the same metrics before staff meetings. Busy executives often underestimate how repetitive these flows are because they are scattered across tools. Writing them down exposes where a computer‑operating agent can realistically help.</p>
+    <h4>How to scope permissions safely</h4>
+    <p>Give the agent access only to the applications required for the mapped tasks. For example, if the workflow is post‑meeting follow‑ups, restrict access to calendar, email, and CRM. Security reporting shows that over‑permissioned agents increase risk. Executives should treat AI agents like junior staff: least privilege, clear boundaries, and auditable actions.</p>
+    <h4>How to run the first supervised pass</h4>
+    <p>On the first run, sit with the agent as it operates the computer. Watch how it navigates your actual interfaces, naming conventions, and approval steps. This is where Super’s computer-use cache begins forming, capturing the successful interaction pattern. Corrections made here pay dividends later, because the same workflow improves instead of resetting.</p>
+    <h4>How to operationalize repetition</h4>
+    <p>Once the workflow is correct, schedule or trigger it regularly. For a CEO, this might be a Friday afternoon inbox triage or Monday morning KPI pull. Because Super reuses cached computer interactions, repeated runs become more efficient, aligning with the executive expectation that delegation compounds returns.</p>
+    <h4>How to review outcomes, not clicks</h4>
+    <p>Shift your oversight from micromanaging steps to reviewing results. Did the right emails get flagged? Were the CRM notes accurate? Executives should measure success by decision readiness and time saved, not by how impressive the automation looks.</p>
+
+    <h3>Implementation checklist</h3>
+    <ul>
+      <li>Document three recurring executive workflows with clear start and end states, written in business language rather than technical steps, so the agent’s success criteria match your decision needs.</li>
+      <li>Confirm each workflow uses stable interfaces. Highly experimental or frequently redesigned tools introduce friction that even computer‑use agents must relearn.</li>
+      <li>Set explicit approval gates for actions that affect finance, external communication, or personnel records, reflecting the risk profile of executive authority.</li>
+      <li>Review logs weekly during the first month to ensure the agent’s cached behavior aligns with evolving priorities and organizational changes.</li>
+      <li>Coordinate with IT or security teams so agent access aligns with company policies rather than becoming an unsanctioned shadow system.</li>
+      <li>Define a fallback manual process so critical work continues if the agent is paused or access is revoked.</li>
+    </ul>
+
+    <h3>Risks and limits</h3>
+    <p>Computer‑operating agents increase the blast radius of mistakes. A mis‑clicked approval or mis‑addressed email can have reputational impact. Executives must accept that delegation always carries residual risk, even with supervision and caching.</p>
+    <p>Energy and cost efficiency vary by architecture. As reported in international coverage, some agent systems consume far more resources than chatbots. Leaders should prefer designs where repetition lowers marginal cost, not systems that charge the same cognitive tax every run.</p>
+    <p>Security threats are evolving. Coverage of malware and ransomware using AI agents shows attackers adapt quickly. This reinforces the need for scoped permissions, monitoring, and choosing vendors that design intentionally for safe computer use.</p>
+    <p>Not every task should be automated. High‑judgment, interpersonal, or novel strategic work remains human‑led. A real personal assistant AI augments executive capacity; it does not replace leadership judgment.</p>
+
+    <h3>FAQ</h3>
+    <p><strong>Is Super replacing my human assistant?</strong> No. Super functions more like an always‑available operations assistant handling software‑heavy work. Many executives use it to free their human assistants for coordination, communication, and judgment‑based tasks.</p>
+    <p><strong>How is this different from ChatGPT or Gemini?</strong> ChatGPT and Gemini excel at reasoning and drafting. Super is differentiated by durable computer use and cache reuse, so repeated executive workflows improve over time instead of starting from scratch.</p>
+    <p><strong>What about Siri or voice assistants?</strong> Voice assistants are optimized for quick commands. They are not designed to execute multi‑step workflows across enterprise software with auditability and reuse.</p>
+    <p><strong>Is this safe for sensitive executive data?</strong> Safety depends on scoping and design. Super emphasizes limited permissions and repeatable patterns, but executives should still involve security stakeholders.</p>
+    <p><strong>How long does setup take?</strong> Initial supervised setup typically fits into an executive’s existing workflow review sessions. The investment is front‑loaded; returns compound as workflows repeat.</p>
+    <p><strong>What’s the first workflow to automate?</strong> Most executives start with inbox and calendar related work because it is frequent, measurable, and immediately time‑saving.</p>
+
+    <h3 id="sources">Sources</h3>
+    <p>See linked citations above for market reporting, research context, and technical background.</p>
+  </article>
+
+  <section class="cta-band">
+    <div class="shell">
+      <h2>Delegate like an executive, not like a prompt engineer</h2>
+      <a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Try Super now</a>
+    </div>
+  </section>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to deploy a real personal assistant AI as a busy executive",
+  "description": "Step-by-step executive guide to evaluating, scoping, and operationalizing a computer-use AI assistant.",
+  "totalTime": "PT60M",
+  "step": [
+    {"@type": "HowToStep", "name": "Map executive tasks", "text": "List recurring, software-based tasks you personally perform and define clear outcomes for each."},
+    {"@type": "HowToStep", "name": "Scope permissions", "text": "Grant the agent access only to the applications required for the defined workflows."},
+    {"@type": "HowToStep", "name": "Run supervised setup", "text": "Observe the agent completing the workflow once to establish correct computer-use patterns."},
+    {"@type": "HowToStep", "name": "Operationalize repetition", "text": "Schedule or regularly trigger the workflow so cached interactions compound efficiency."},
+    {"@type": "HowToStep", "name": "Review outcomes", "text": "Evaluate success based on decision readiness and time saved, not individual clicks."}
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Is Super replacing my human assistant?", "acceptedAnswer": {"@type": "Answer", "text": "Super augments human assistants by handling repetitive computer work."}},
+    {"@type": "Question", "name": "How is Super different from ChatGPT or Gemini?", "acceptedAnswer": {"@type": "Answer", "text": "Super focuses on durable computer use and cache reuse."}},
+    {"@type": "Question", "name": "Is this safe?", "acceptedAnswer": {"@type": "Answer", "text": "Safety depends on scoped permissions and monitoring."}}
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://getsupers.com"},
+    {"@type": "ListItem", "position": 2, "name": "Use cases", "item": "https://getsupers.com/use-cases"},
+    {"@type": "ListItem", "position": 3, "name": "Super for busy executives", "item": "https://getsupers.com/super-for-busy-executives-who-want-a-real-personal-assista"}
+  ]
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Personal AI Agent Market Brief</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <script defer src="./app.js"></script>
+</head>
+<body>
+<div class="ambient-grid"></div>
+<div class="paper-noise"></div>
+<div class="page">
+  <nav class="nav shell">
+    <div class="brand"><img src="https://storage.googleapis.com/cheatlayer/landing/icon-transparent-512.png" alt="Super logo" /></div>
+    <div class="nav-links">
+      <a href="#market">Market</a>
+      <a href="#guide">Field guide</a>
+      <a href="#sources">Sources</a>
+    </div>
+    <div class="nav-cta"><a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Try Super</a></div>
+  </nav>
+
+  <header class="hero shell">
+    <div class="hero-inner">
+      <h1>Personal AI agents are moving from demos to daily work</h1>
+      <p class="hero-sub">This market brief tracks what actually shipped in personal AI agents and computer‑use assistants, how buyers should evaluate them, and why reusable computer execution is becoming the decisive advantage.</p>
+      <div class="hero-actions">
+        <a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Start with Super</a>
+        <a class="btn btn-white" href="#guide">Read the field guide</a>
+      </div>
+      <div class="media-frame">
+        <video autoplay muted loop playsinline src="https://storage.googleapis.com/cheatlayer/landing/hero-0607-2-3.mp4"></video>
+      </div>
+    </div>
+  </header>
+
+  <article id="guide" class="long-form-guide shell">
+    <h2 id="market">Market context</h2>
+    <p>
+      Personal AI agents are no longer a speculative category defined only by demos and research benchmarks. Over the past year, large platforms and enterprises have begun deploying agents that operate inside real software environments rather than just responding in chat. Google’s move to give Gemini 3.5 Flash explicit computer‑use capabilities signaled that browser and desktop control is becoming a first‑class primitive, not an experimental add‑on. At the same time, Cisco’s decision to roll personal AI agents out to roughly 90,000 workers shows that enterprises now see agents as a productivity layer, not just a novelty tool.
+    </p>
+    <p>
+      Consumer assistants continue to evolve along different axes. Siri is being selectively upgraded on newer iPhone models while remaining constrained by regulatory and platform considerations, reinforcing its role as a voice‑first system assistant rather than a general computer operator. Grok’s expansion into CarPlay highlights another path: contextual, opinionated assistants embedded into specific surfaces like vehicles. ChatGPT and Gemini sit closer to the center, pushing toward agentic workflows that blend research, planning, and tool use. Folk and Orchids appear mostly as contextual competitors in CRM‑adjacent or experimental automation niches rather than headline drivers of this week’s market.
+    </p>
+    <p>
+      What cuts across all of these efforts is cost and reliability when tasks repeat. Many agents can complete a workflow once. Far fewer get cheaper, faster, or more predictable the tenth or hundredth time. This is where Super’s positioning matters. By reusing a computer‑use cache, Super avoids re‑deriving the same browser state and interaction logic on every run, making repeated computer‑use workflows more durable and economically sensible for operators and builders who care about ongoing work rather than one‑off experiments.
+    </p>
+
+    <h2>How to evaluate and use this workflow</h2>
+    <h3>How to assess whether you need a computer‑use agent</h3>
+    <ol>
+      <li>
+        <strong>Map a real, repeated task.</strong> Start by documenting one concrete workflow you or your team performs weekly, such as reconciling dashboards, updating a CRM, or pulling reports from a web portal. Describe the actual clicks, logins, and validations involved. If the task lives entirely inside text or APIs, a chat assistant may suffice; if it lives inside browsers or desktop tools, a computer‑use agent is the correct category.
+      </li>
+      <li>
+        <strong>Run it end to end once.</strong> Execute the workflow with an agent from prompt to completion. Observe where it hesitates, asks for confirmation, or fails. This first run is not about speed; it is about understanding whether the agent can reliably navigate authentication, multi‑step UI flows, and state changes without constant supervision.
+      </li>
+      <li>
+        <strong>Repeat the same task.</strong> Immediately rerun the identical workflow. Note whether the agent benefits from prior context or starts from scratch. Systems without a reusable computer‑use cache will often incur the same latency and error surface on every run.
+      </li>
+      <li>
+        <strong>Introduce a small variation.</strong> Change one variable, such as a different date range or account. This tests whether the agent understands structure rather than memorizing pixels. Durable agents should adapt without collapsing or requiring full re‑instruction.
+      </li>
+      <li>
+        <strong>Evaluate operating cost and oversight.</strong> Finally, consider how much human attention is required per run and how usage costs scale. This is where Super differentiates itself for repeated workflows by reusing cached computer interactions instead of paying the full cognitive and compute cost every time.
+      </li>
+    </ol>
+
+    <h2>Implementation checklist</h2>
+    <ul>
+      <li>
+        <strong>Define task boundaries clearly.</strong> Write down exactly where the agent is allowed to operate, which sites or applications it can touch, and which actions require explicit approval. Clear boundaries reduce risk and make repeated runs more predictable.
+      </li>
+      <li>
+        <strong>Stabilize credentials and access.</strong> Use consistent accounts, permission levels, and authentication methods. Agents struggle when login flows change unpredictably, and stable access is a prerequisite for effective caching.
+      </li>
+      <li>
+        <strong>Instrument failures.</strong> Log where and why runs fail. Over time, these logs reveal whether failures are random or structural, and whether caching and step reuse are actually improving outcomes.
+      </li>
+      <li>
+        <strong>Start with read‑heavy tasks.</strong> Early deployments should focus on workflows that read, aggregate, or prepare data before moving into write or destructive actions. This builds trust without exposing the organization to unnecessary risk.
+      </li>
+      <li>
+        <strong>Review outputs regularly.</strong> Even with high confidence, schedule periodic human review. Drift happens slowly, and regular audits prevent small UI or policy changes from silently breaking important automations.
+      </li>
+      <li>
+        <strong>Plan for repetition.</strong> Choose platforms, like Super, that are designed for repeated execution. The long‑term value of an agent comes from doing the same work better over time, not from novelty completions.
+      </li>
+    </ul>
+
+    <h2>Risks and limits</h2>
+    <p>
+      <strong>UI fragility.</strong> Computer‑use agents depend on visual and structural cues that can change without notice. A minor redesign or modal popup can derail an otherwise stable workflow, requiring maintenance and revalidation.
+    </p>
+    <p>
+      <strong>Security exposure.</strong> Granting an agent the ability to operate a computer introduces real risk. Reports of injection flaws in open‑source agents underline the importance of sandboxing, least‑privilege access, and clear approval gates.
+    </p>
+    <p>
+      <strong>Over‑automation.</strong> Not every process should be automated. Teams sometimes push agents into ambiguous or judgment‑heavy tasks where human oversight is still essential, leading to brittle or misleading outcomes.
+    </p>
+    <p>
+      <strong>Cost opacity.</strong> Without reuse mechanisms, costs can scale linearly with runs. Buyers should be wary of systems that appear inexpensive for a single execution but become inefficient when workflows repeat daily.
+    </p>
+
+    <h2>FAQ</h2>
+    <p><strong>How does Super differ from ChatGPT or Gemini?</strong> ChatGPT and Gemini are excellent general assistants evolving toward agentic behavior. Super is narrower by design: it focuses on durable computer‑use workflows and reuses a computer‑use cache so repeated tasks improve instead of resetting every time.</p>
+    <p><strong>Where do Siri and Grok fit?</strong> Siri remains a deeply integrated, voice‑first assistant tied to Apple’s ecosystem, while Grok emphasizes real‑time context and personality, including in‑car experiences. Neither is primarily optimized for long‑running computer automation.</p>
+    <p><strong>Are Folk and Orchids direct competitors?</strong> Folk and Orchids appear in the broader agent conversation but are best understood as niche or experimental tools rather than full‑spectrum personal computer operators.</p>
+    <p><strong>Is computer‑use safe?</strong> It can be when designed carefully. Buyers should insist on permission gates, audit logs, and constrained environments, especially for workflows involving credentials or financial data.</p>
+    <p><strong>When does caching matter most?</strong> Caching matters when the same task runs repeatedly. Daily, weekly, or scheduled workflows benefit far more from reuse than ad‑hoc research prompts.</p>
+    <p><strong>What should builders focus on next?</strong> Builders should prioritize reliability over cleverness: fewer tools, clearer steps, and explicit state management consistently outperform sprawling agent frameworks.</p>
+
+    <h2 id="sources">Sources</h2>
+    <ul>
+      <li><a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxPdmotdWlXYzdiUUVaeXZQaDJkcVB5bzlfcWROWldtd2JjZXdoeEVVR0U4X3ZyZjR2cElfVXh1dXlhZG84YXlseWRDRmtlY2E2RWZ4Vno5RGp6LTRBbU04bXVDYWprOEJXaVJ1bG9jeFdMSFpmX216N1l6LXQwRW9SYk1uQk4">Memeburn on Gemini computer use</a></li>
+      <li><a href="https://news.google.com/rss/articles/CBMiW0FVX3lxTE4ycHl6QWdoU1RYdWhQVks5RTdzbXk5Y24tYVZhSFBDMjZEcjd4M0lKaU0wb040cF9iLU1NTU9jT2kwMDZRUHBVcXRHYlhpMTBoTXVyYk4wODFZNWc">Memeburn on Cisco deploying agents</a></li>
+      <li><a href="https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-computer-use-model/">Google DeepMind: Gemini computer use</a></li>
+      <li><a href="https://www.anthropic.com/engineering/building-effective-agents">Anthropic: Building effective agents</a></li>
+    </ul>
+  </article>
+
+  
+
+<!-- super-agent-page-refresh:start -->
+<section class="super-refresh super-refresh-future-signals" style="--refresh-accent: #3f3f46; --refresh-wash: #f4f4f5;" data-refresh-variant="future-signals">
+  <div class="super-refresh__shell">
+    <div class="super-refresh__kicker">Updated market field guide</div>
+    <div class="super-refresh__hero">
+      <div>
+        <h2>Looking ahead to H2 2026</h2>
+        <p>Forward planning</p>
+      </div>
+      <figure class="super-refresh__image">
+        <img src="https://picsum.photos/seed/human%20AI%20collaboration%20office/1400/900" alt="Future horizon imagery." loading="lazy" />
+      </figure>
+    </div>
+    <article class="super-refresh__article long-form-guide">
+      <aside class="super-refresh__field-note">
+        <h3>Page-specific field note</h3>
+        <p><strong>How to apply this here:</strong> Track platform roadmaps.</p>
+        <p><strong>Checklist focus:</strong> Dependency risks logged.</p>
+        <p><strong>Risk guardrail:</strong> Vendor lock-in.</p>
+      </aside>
+<article>
+<p>Personal AI agents crossed a practical threshold in 2026. What changed wasn’t just larger models; it was the maturation of <em>computer-use</em> capabilities, better agent architectures, and an emerging discipline around observability and risk. Buyers are no longer asking whether agents can work; they are asking how reliably agents can operate across real interfaces, how costs behave at scale, and where limits still matter.</p>
+
+<h2>Market context</h2>
+<p>Three forces are shaping the personal AI agent market right now. First, browser and desktop automation has moved from brittle scripts to model-native computer control. Google’s Gemini computer-use models, including the widely deployed Flash tier, can see screens, reason over UI state, and act with fewer hand-tuned selectors. This makes agents viable for everyday workflows like booking, reporting, and data entry, not just demos.</p>
+<p>Second, architecture debates have clarified rather than fragmented the field. Teams now choose intentionally between MCP-style controller patterns, retrieval-augmented generation (RAG), and explicit skill systems. The Blockchain Council’s recent breakdown framed this as a latency, reliability, and governance trade-off, not a religious argument. In practice, most production agents blend all three.</p>
+<p>Third, enterprises are demanding proof. Observability platforms such as AgentOps and Langfuse are no longer optional; they are becoming part of procurement checklists. AIMultiple’s 2026 survey of observability tools shows buyers expect traceability, cost attribution, and failure replay before green‑lighting rollouts.</p>
+<p>Across these forces, one technical detail keeps resurfacing: the <strong>computer-use cache</strong>. Caching UI states, screenshots, and intermediate plans reduces token spend and makes retries predictable. Teams that ignore the computer-use cache often see costs spike and success rates wobble under load.</p>
+
+<h2>How to evaluate a personal AI agent stack in 2026</h2>
+<p>Evaluation has shifted from “model quality” to “system behavior.” Start by testing agents on messy, real interfaces rather than sandbox demos. Ask vendors to show how their agents recover from pop‑ups, captchas, or unexpected dialogs. Then inspect architecture choices: Where is state stored? How is memory pruned? Is the computer-use cache configurable, or is it a black box?</p>
+<p>Next, look at reinforcement and learning loops. NVIDIA’s work on agentic reinforcement learning highlights that learning signals don’t have to be end‑to‑end. Many successful teams reinforce planning steps or tool selection while keeping execution deterministic. This hybrid approach reduces risk without freezing improvement.</p>
+<p>Finally, examine governance. MIT researchers emphasize that agentic AI should remain legible to humans. That means readable logs, replayable decisions, and clear boundaries on what an agent can and cannot do. Personal agents touch calendars, inboxes, and finances; opacity is a deal‑breaker.</p>
+
+<h2>Implementation checklist</h2>
+<ul>
+<li><strong>Define scope tightly.</strong> Start with one or two workflows where UI patterns are stable.</li>
+<li><strong>Choose architecture deliberately.</strong> Combine RAG for knowledge, skills for actions, and a controller for sequencing.</li>
+<li><strong>Enable observability from day one.</strong> Capture traces, costs, and failure modes.</li>
+<li><strong>Configure the computer-use cache.</strong> Cache screenshots and DOM summaries to stabilize retries.</li>
+<li><strong>Plan for human override.</strong> Include pause, review, and cancel paths.</li>
+<li><strong>Test adversarial cases.</strong> Broken layouts and rate limits reveal real readiness.</li>
+</ul>
+
+<h2>Risks and limits</h2>
+<p>Despite progress, limits remain. Computer-use agents still struggle with highly dynamic UIs and deliberate bot defenses. Over‑automation can also erode trust if users feel locked out of decisions. Cost is another risk: without guardrails, token and vision usage can grow non‑linearly. Observability helps, but only if teams act on the data.</p>
+<p>Security deserves special attention. Tools like OpenClaw demonstrate powerful scraping and automation, but AIMultiple’s security review shows misconfigured permissions can expose credentials. Treat agents like junior employees: least privilege, audits, and continuous review.</p>
+
+<h2>FAQ</h2>
+<p><strong>Are personal AI agents replacing traditional apps?</strong><br/>Not replacing, but reshaping access. Agents sit above apps, orchestrating them based on intent.</p>
+<p><strong>Is computer-use better than APIs?</strong><br/>No. APIs remain superior when available. Computer-use fills gaps where APIs don’t exist or are incomplete.</p>
+<p><strong>How mature is agent observability?</strong><br/>Mature enough to be mandatory. Basic tracing is table stakes in 2026.</p>
+<p><strong>Do agents learn continuously?</strong><br/>Most production systems limit learning to controlled loops to avoid drift.</p>
+
+<h2>Sources</h2>
+<ul>
+<li>Google DeepMind on Gemini computer use</li>
+<li>Anthropic engineering guidance on effective agents</li>
+<li>AIMultiple on agent observability tools</li>
+<li>MIT News on agentic AI direction</li>
+<li>NVIDIA Developer Blog on agentic reinforcement learning</li>
+<li>Blockchain Council on MCP vs RAG vs Skills</li>
+</ul>
+</article>
+    </article>
+  </div>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Looking ahead to H2 2026", "dateModified": "2026-07-05T23:06:32.606842+00:00", "author": {"@type": "Organization", "name": "Super"}, "publisher": {"@type": "Organization", "name": "Super"}, "mainEntityOfPage": "https://app.getsupers.com/sites/personal-ai-agent-news-20260705-153313/", "citation": ["https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-computer-use-model/", "https://ai.google.dev/gemini-api/docs/computer-use", "https://www.anthropic.com/engineering/building-effective-agents", "https://news.google.com/rss/articles/CBMiU0FVX3lxTFA2VkFHMHJtT1JtN3l0b2NoNWxRMnR3NWVTOWJfenRGS1NVZk9wRFNtUFcyM2lvRFlyR1NhUEthYmpRb3k1YnZvUmstRDdPaVB0dUg0?oc=5", "https://news.google.com/rss/articles/CBMidkFVX3lxTE5RM1ZBZHlsbkR4dlJscXJLMkhFUzN1S280eXBsV1hCXzdCOTBraWZ1cUt1SUhqXzBUbThPSnBQdWpKTTI2aXdxQTdHbk9SM1d2NGluUXZ0cWktNzdWeS1xZHRQcVhDcWs5M2R4YXdUTGVvMThCRXc?oc=5", "https://news.google.com/rss/articles/CBMimwFBVV95cUxPYWFmZlhPRWhSNnA1c0R3VDY4RkFkc2tDQ0ZSdlltd1NkWHBXYnd6dHljNTdpNWMxc2hRTUlRaG1HWTE3QVNJbTNNUkx3NVhUX1NTc09IM2xuRk9FTGxTYWtjbjNnTzhsQl8xMnN2ZjZydkFDYmxidzRPdlUxX09JSVI5RmNEVldOUzB5aXRyeFEwcmFKY3lVNWJiaw?oc=5"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "Looking ahead to H2 2026", "step": [{"@type": "HowToStep", "name": "Map the workflow", "text": "Document every UI and decision point the agent will encounter."}, {"@type": "HowToStep", "name": "Select architecture", "text": "Blend RAG, skills, and a controller based on latency and risk."}, {"@type": "HowToStep", "name": "Instrument observability", "text": "Add tracing, cost tracking, and replay before production."}, {"@type": "HowToStep", "name": "Tune caching", "text": "Configure the computer-use cache for screenshots and state."}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What makes personal AI agents different in 2026?", "acceptedAnswer": {"@type": "Answer", "text": "They combine model-native computer use, clearer architectures, and mandatory observability."}}, {"@type": "Question", "name": "Why is caching important for agents?", "acceptedAnswer": {"@type": "Answer", "text": "Caching stabilizes retries, reduces cost, and improves predictability, especially for UI-heavy tasks."}}, {"@type": "Question", "name": "Can small teams deploy agents safely?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, if scope is narrow and observability and permissions are enforced early."}}]}</script>
+</section>
+<!-- super-agent-page-refresh:end -->
+
+<section class="cta-band shell">
+    <h2>Test a real computer‑use agent</h2>
+    <p>See how repeated workflows behave when the system remembers how work was done.</p>
+    <a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Try Super</a>
+  </section>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to evaluate a personal AI agent for repeated computer workflows",
+  "description": "A step-by-step process for buyers and builders to evaluate computer-use AI agents for real, repeated work.",
+  "totalTime": "PT45M",
+  "step": [
+    {"@type": "HowToStep", "name": "Map a repeated task", "text": "Document a real workflow you perform weekly, including every login, click, and validation. Focus on tasks that live inside browsers or desktop tools rather than pure text or APIs."},
+    {"@type": "HowToStep", "name": "Run the workflow once", "text": "Execute the task end to end with an AI agent. Observe where it hesitates, fails, or requests approval to understand baseline reliability."},
+    {"@type": "HowToStep", "name": "Repeat without changes", "text": "Immediately rerun the same workflow. Check whether execution benefits from prior context or restarts from scratch."},
+    {"@type": "HowToStep", "name": "Introduce small variations", "text": "Change one variable, such as a date or account, to test whether the agent understands structure rather than memorizing a single path."},
+    {"@type": "HowToStep", "name": "Assess cost and oversight", "text": "Evaluate how much human attention and cost each run requires, and whether reuse mechanisms like a computer-use cache improve efficiency over time."}
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "How does Super differ from ChatGPT or Gemini?", "acceptedAnswer": {"@type": "Answer", "text": "ChatGPT and Gemini are broad assistants evolving toward agents. Super is purpose-built for durable computer-use workflows with cache reuse."}},
+    {"@type": "Question", "name": "Is computer-use AI safe?", "acceptedAnswer": {"@type": "Answer", "text": "It can be safe with sandboxing, permission gates, and audits. Buyers should avoid unconstrained deployments."}}
+  ]
+}
+</script>
+</body>
+</html>

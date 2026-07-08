@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Super for recruiters sourcing candidates and coordinating interviews</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <script defer src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+  <script defer src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+</head>
+<body>
+<div class="ambient-grid"></div>
+<div class="paper-noise"></div>
+<div class="page">
+  <nav class="nav">
+    <div class="brand"><img src="https://storage.googleapis.com/cheatlayer/landing/icon-transparent-512.png" alt="Super" /></div>
+    <div class="nav-links">
+      <a href="#workflow">Workflow</a>
+      <a href="#guide">Field guide</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Try Super</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="shell hero-inner">
+      <h1>Recruiting moves faster when your AI can actually run the tools you use every day</h1>
+      <p class="hero-sub">Super gives recruiters a personal AI agent that operates real recruiting software, sourcing sites, calendars, and inboxes — and reuses a computer-use cache so repeated candidate workflows get cheaper and more reliable over time.</p>
+      <div class="hero-actions">
+        <a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Start with Super</a>
+        <a class="btn btn-white" href="#guide">Read the recruiter field guide</a>
+      </div>
+      <div class="media-frame">
+        <video autoplay muted loop playsinline src="https://storage.googleapis.com/cheatlayer/landing/hero-0607-2-3.mp4"></video>
+      </div>
+    </div>
+  </section>
+
+  <section id="workflow" class="chapter">
+    <div class="shell">
+      <h2>Your sourcing and interview coordination workflow, end to end</h2>
+      <div class="bento">
+        <div class="bento-item">
+          <h3>Sourcing across fragmented platforms</h3>
+          <p>Recruiters live inside ATS dashboards, LinkedIn, job boards, spreadsheets, and email threads. Unlike chat‑only assistants, Super’s agent can open each system, search, filter, and capture candidate context directly from the interface you already use.</p>
+        </div>
+        <div class="bento-item">
+          <h3>Reusable computer-use cache</h3>
+          <p>When you run the same sourcing or scheduling task again — for example, finding senior backend engineers in a specific region — Super reuses a computer-use cache instead of starting from scratch.</p>
+        </div>
+        <div class="bento-item">
+          <h3>Interview coordination without copy-paste</h3>
+          <p>Super can check calendars, propose interview slots, send emails, and update your ATS by actually performing those actions, not by suggesting what you should do next.</p>
+        </div>
+        <div class="bento-item">
+          <h3>Positioned against the market</h3>
+          <p>Tools like ChatGPT, Gemini, Grok, Siri, Folk, and Orchids each play roles in the AI landscape, but Super is purpose-built for durable, repeated computer work in operational roles like recruiting.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <article id="guide" class="long-form-guide shell">
+    <header>
+      <p class="byline">Field guide for recruiters · Compiled by the Super editorial team using current agentic AI research and market reporting</p>
+      <h2>How to use a personal AI agent for recruiting operations</h2>
+    </header>
+
+    <section>
+      <h3>Market context</h3>
+      <p>The recruiting technology market in 2026 is crowded with point solutions and increasingly ambitious AI claims. Major vendors are adding “agent” language to products that still rely on static integrations or brittle API connections. Google’s release of computer‑use models in Gemini 3.5 Flash signals that direct interface control is becoming table stakes, not a novelty. At the same time, security researchers and academics have warned that agentic systems are powerful but fragile when poorly scoped, especially when they chain actions across many tools.</p>
+      <p>Recruiters feel this tension more acutely than most roles. A single hire can require hundreds of repeated interactions: sourcing variations of the same role, scheduling similar interview loops, and updating overlapping systems of record. General assistants like ChatGPT or Gemini can draft messages or suggest plans, but they typically require a human to execute each step. Voice assistants like Siri remain surface‑level. Experimental tools like Folk or Orchids hint at automation but often lack durability. Super positions itself in this gap by focusing on personal AI agents that operate real software and reuse past work safely through a computer-use cache.</p>
+    </section>
+
+    <section>
+      <h3>How to evaluate and use this workflow</h3>
+      <ol>
+        <li><strong>Map a repeatable recruiting task.</strong> Start with a workflow you perform weekly, such as sourcing frontend engineers for similar roles. Document each interface you touch, from ATS filters to LinkedIn searches and calendar checks. This clarity helps you see where computer-use agents provide leverage.</li>
+        <li><strong>Grant scoped computer access.</strong> Configure Super so the agent can open only the recruiting tools required for that task. This reduces risk while allowing the agent to actually click, type, and navigate the same screens you would normally use.</li>
+        <li><strong>Run the workflow once end to end.</strong> Let Super execute the task while you observe. The first run establishes the baseline and populates the computer-use cache with authentic interface state and decision paths.</li>
+        <li><strong>Reuse and refine.</strong> On subsequent runs, adjust parameters like role title or location. Super reuses cached steps, reducing repetition and cost while improving consistency across searches and outreach.</li>
+        <li><strong>Expand to interview coordination.</strong> Once sourcing is stable, extend the agent’s scope to calendars and email. Super can propose interview times, send confirmations, and update records without manual copy‑paste.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h3>Implementation checklist</h3>
+      <ul>
+        <li>Confirm which ATS, sourcing sites, and calendars are truly required for the workflow, and exclude optional tools to keep agent scope narrow and auditable.</li>
+        <li>Create a naming convention for recurring workflows so recruiters on the same team can reuse and understand cached processes without ambiguity.</li>
+        <li>Define clear success criteria, such as number of qualified candidates surfaced or time saved in scheduling, to evaluate whether automation is helping.</li>
+        <li>Review access permissions quarterly, especially as recruiters change roles or tools, to prevent stale credentials from lingering in agent environments.</li>
+        <li>Document handoff points where human judgment is still required, such as final candidate selection, to avoid over‑automation.</li>
+        <li>Train recruiters to intervene and correct the agent when edge cases appear, reinforcing good patterns in future cached runs.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Risks and limits</h3>
+      <p>Computer‑use agents expand the attack surface of recruiting operations. Poorly designed open‑source agents have already demonstrated vulnerabilities, and recruiters handle sensitive personal data. Scoping, sandboxing, and intentional design are non‑negotiable.</p>
+      <p>Agents can also amplify bad process design. If your sourcing criteria are vague or biased, automation will scale those flaws. A reusable cache improves efficiency, but it also reinforces whatever assumptions you embed.</p>
+      <p>Reliability varies across interfaces. Changes to ATS layouts or calendar UIs can temporarily break workflows, requiring human review and retraining of the agent.</p>
+      <p>Finally, not every recruiting decision should be automated. Relationship building, nuanced candidate conversations, and final hiring judgments remain human responsibilities.</p>
+    </section>
+
+    <section id="faq">
+      <h3>FAQ</h3>
+      <dl>
+        <dt>How is Super different from ChatGPT for recruiters?</dt>
+        <dd>ChatGPT excels at drafting messages and answering questions, but recruiters still have to execute tasks manually. Super’s agent operates the actual recruiting software and reuses a computer-use cache, making it better suited for repeated operational workflows.</dd>
+        <dt>Does Gemini’s computer use make Super unnecessary?</dt>
+        <dd>Gemini’s computer‑use capability shows where the market is heading, but Super is focused specifically on durable, role‑based workflows and cache reuse rather than general assistance.</dd>
+        <dt>Where do tools like Grok or Siri fit?</dt>
+        <dd>Grok emphasizes real‑time context and commentary, while Siri remains voice‑first. Neither is optimized for multi‑step recruiting operations across enterprise software.</dd>
+        <dt>What about niche tools like Folk or Orchids?</dt>
+        <dd>They provide interesting experiments in automation, but often lack the depth and durability required for high‑volume recruiting teams.</dd>
+        <dt>Is Super safe for candidate data?</dt>
+        <dd>Security depends on scoping and configuration. Super is designed around intentional access and reuse, aligning with best practices highlighted by security researchers.</dd>
+        <dt>Who should not use this approach?</dt>
+        <dd>If your recruiting volume is low or highly bespoke, the overhead of automation may outweigh benefits. Super shines when workflows repeat frequently.</dd>
+      </dl>
+    </section>
+
+    <section>
+      <h3>Sources</h3>
+      <ul>
+        <li><a href="https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-computer-use-model/">Introducing computer use in Gemini</a></li>
+        <li><a href="https://news.mit.edu/2025/qa-what-agentic-ai-today-and-what-do-we-want-it-be">MIT on agentic AI</a></li>
+        <li><a href="https://www.searchenginejournal.com/google-gemini-can-now-control-your-computer-hackers-are-already-targeting-ai-agents/">Search Engine Journal on AI agent risks</a></li>
+      </ul>
+    </section>
+  </article>
+
+  <section class="cta-band">
+    <div class="shell">
+      <h2>Let Super handle the repeatable work so you can focus on people</h2>
+      <a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Get started with Super</a>
+    </div>
+  </section>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to use a personal AI agent for recruiting workflows",
+  "description": "A step-by-step guide for recruiters on using a computer-use AI agent to source candidates and coordinate interviews.",
+  "totalTime": "PT45M",
+  "step": [
+    { "@type": "HowToStep", "name": "Map a repeatable task", "text": "Identify a sourcing or scheduling task you repeat weekly and list each tool involved." },
+    { "@type": "HowToStep", "name": "Grant scoped access", "text": "Allow the agent controlled access to only the recruiting tools required." },
+    { "@type": "HowToStep", "name": "Run once end to end", "text": "Observe the agent completing the workflow to establish a baseline." },
+    { "@type": "HowToStep", "name": "Reuse the cache", "text": "Adjust parameters and rerun the workflow using the computer-use cache." },
+    { "@type": "HowToStep", "name": "Expand carefully", "text": "Extend automation to interview coordination while keeping human oversight." }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": []
+}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://getsupers.com"},
+    {"@type": "ListItem", "position": 2, "name": "Use cases", "item": "https://getsupers.com/use-cases"},
+    {"@type": "ListItem", "position": 3, "name": "Recruiters sourcing candidates and coordinating interviews", "item": "https://getsupers.com/super-for-recruiters-sourcing-candidates-and-coordinating"}
+  ]
+}
+</script>
+
+<script src="./app.js"></script>
+</body>
+</html>

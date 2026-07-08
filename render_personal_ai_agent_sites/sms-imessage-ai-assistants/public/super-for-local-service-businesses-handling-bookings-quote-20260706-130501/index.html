@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Super for local service businesses handling bookings, quotes, and customer replies</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="ambient-grid"></div>
+  <div class="paper-noise"></div>
+  <div class="page">
+    <nav class="nav shell">
+      <div class="brand"><img src="https://storage.googleapis.com/cheatlayer/landing/icon-transparent-512.png" alt="Super" /></div>
+      <div class="nav-links">
+        <a href="#workflow">Workflow</a>
+        <a href="#guide">Field guide</a>
+        <a href="#sources">Sources</a>
+      </div>
+      <a class="btn btn-black nav-cta" href="https://app.getsupers.com/general?login=1&open_login=1">Try Super</a>
+    </nav>
+
+    <header class="hero shell">
+      <div class="hero-inner">
+        <h1>Run bookings, quotes, and customer replies on autopilot — with a personal AI agent that actually uses your apps</h1>
+        <p class="hero-sub">Super is built for local service businesses that live inside calendars, inboxes, CRMs, and booking portals. Unlike chat-only assistants, Super operates real software and reuses a <strong>computer-use cache</strong> so repeated work gets faster and cheaper over time.</p>
+        <div class="hero-actions">
+          <a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Start with Super</a>
+          <a class="btn btn-white" href="#guide">Read the operator guide</a>
+        </div>
+        <div class="media-frame">
+          <video src="https://storage.googleapis.com/cheatlayer/landing/hero-0607-2-3.mp4" autoplay muted loop playsinline></video>
+        </div>
+      </div>
+    </header>
+
+    <section id="workflow" class="chapter shell">
+      <h2>A workflow command center for local operators</h2>
+      <div class="bento">
+        <div class="bento-item">
+          <h3>Bookings without back-and-forth</h3>
+          <p>Super opens your scheduling tools, checks availability, proposes slots, and confirms appointments exactly the way your staff would — not via brittle integrations.</p>
+        </div>
+        <div class="bento-item">
+          <h3>Quotes grounded in real systems</h3>
+          <p>The agent pulls prior jobs, pricing sheets, and location notes from your actual tools before drafting a quote and sending it for approval.</p>
+        </div>
+        <div class="bento-item">
+          <h3>Customer replies that follow SOPs</h3>
+          <p>Super drafts replies, logs them in your CRM, and updates job status — reducing missed messages during peak hours.</p>
+        </div>
+      </div>
+    </section>
+
+    <article id="guide" class="long-form-guide shell">
+      <h2>Field guide for local service businesses</h2>
+      <p class="byline">By the Super editorial team · Process note: synthesized from current agentic AI research, security reporting, and hands-on workflow design.</p>
+
+      <h3>Market context</h3>
+      <p>Local service businesses sit at the sharp edge of the agentic AI shift. In 2026, major platforms like Google’s Gemini are rolling out computer-use capabilities that let models click, type, and navigate real interfaces, signaling that “computer use” is becoming table stakes for AI agents. At the same time, researchers and security journalists are warning that letting agents operate browsers and desktops expands risk if systems are poorly scoped or improvised. For operators juggling bookings, quotes, and customer replies, this creates a tension: the promise of real automation versus the fear of fragile or unsafe tools.</p>
+      <p>General assistants such as ChatGPT, Gemini, Grok, and voice-first tools like Siri excel at conversation and one-off help, but they often stumble when workflows repeat daily across the same apps. Niche tools like Folk or Orchids appear in the broader automation landscape, yet many still rely on fixed integrations. Super’s approach reflects lessons from agent architecture research: keep workflows grounded in actual tools, constrain scope, and reuse past successful actions. That reuse — the computer-use cache — matters for local teams because the same booking confirmation, quote template, or follow-up reply happens hundreds of times a month.</p>
+
+      <h3>How to evaluate and use this workflow</h3>
+      <h4>How to map your booking flow end to end</h4>
+      <p>Start by documenting how a booking actually happens today, from the first inbound message to calendar confirmation. Include every screen your staff touches: inbox, calendar, routing rules, and confirmation emails. This clarity lets Super mirror the real process instead of an idealized one, which is essential for reliability in a live business environment.</p>
+
+      <h4>How to train the agent on quoting rules</h4>
+      <p>Collect three to five recent quotes and the source data behind them, such as pricing sheets or past jobs. Walk Super through opening those files and applying the rules step by step. Because Super uses real computer actions, these steps become reusable patterns rather than fragile prompts.</p>
+
+      <h4>How to standardize customer replies</h4>
+      <p>Identify your most common customer questions — rescheduling, price clarification, arrival windows. Provide approved language and escalation rules. Super can then draft replies, log them in your system, and flag exceptions for human review.</p>
+
+      <h4>How to reuse work with the computer-use cache</h4>
+      <p>Once a workflow succeeds, run it again. Super’s cache remembers how the task was completed across your apps, reducing repeated effort. For high-volume operations, this consistency compounds into real time savings.</p>
+
+      <h4>How to supervise and refine safely</h4>
+      <p>Set clear permissions and review checkpoints. Early runs should require approval before sending messages or confirming bookings. Over time, narrow the agent’s scope to the tasks it performs best.</p>
+
+      <h3>Implementation checklist</h3>
+      <ul>
+        <li>Document current booking and quoting steps in detail so the agent reflects reality rather than assumptions.</li>
+        <li>Centralize login access using role-based credentials to avoid over-permissioning automated actions.</li>
+        <li>Create approved response templates for common customer scenarios to maintain brand voice.</li>
+        <li>Schedule weekly reviews of agent actions to catch edge cases early.</li>
+        <li>Limit initial scope to one or two workflows before expanding automation.</li>
+        <li>Educate staff on when to trust automation and when to intervene manually.</li>
+      </ul>
+
+      <h3>Risks and limits</h3>
+      <p>Computer-use agents can amplify mistakes if workflows are poorly defined. A mis-click repeated at scale becomes a real operational issue. Security researchers have shown that agent-driven automation increases attack surface, making scoping and sandboxing essential. Finally, no agent replaces judgment in edge cases like disputes or emergencies, so human oversight remains critical.</p>
+
+      <h3>FAQ</h3>
+      <h4>How is Super different from ChatGPT or Gemini?</h4>
+      <p>ChatGPT and Gemini are powerful general assistants. Super is focused on durable, repeated computer-use workflows and reuses a computer-use cache so daily operational tasks improve over time instead of resetting each run.</p>
+
+      <h4>Can this replace my booking software?</h4>
+      <p>No. Super operates your existing tools rather than replacing them. This avoids risky migrations and keeps your team working in familiar systems.</p>
+
+      <h4>What about Siri or other voice assistants?</h4>
+      <p>Siri shines for quick, voice-driven actions. It is not designed to manage multi-step desktop workflows like quoting or CRM updates.</p>
+
+      <h4>Is this safe given recent security concerns?</h4>
+      <p>Safety depends on design. Super emphasizes scoped access and repeatable patterns rather than improvisational automation.</p>
+
+      <h4>Where do Folk and Orchids fit?</h4>
+      <p>They represent niche approaches within the broader automation market. Super’s differentiator is real computer operation with cache reuse.</p>
+
+      <h4>Will Grok or other assistants catch up?</h4>
+      <p>The market is moving fast, but repeated operational work favors systems designed for consistency over novelty.</p>
+
+      <h3 id="sources">Sources</h3>
+      <p>See linked research and reporting below for deeper context.</p>
+    </article>
+
+    <section class="cta-band shell">
+      <h2>Put your bookings and replies on rails</h2>
+      <a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Try Super for your business</a>
+    </section>
+  </div>
+
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script src="./app.js"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to automate bookings, quotes, and customer replies with a computer-use AI agent",
+    "description": "Step-by-step workflow for local service businesses using Super.",
+    "step": [
+      {"@type": "HowToStep", "name": "Map booking flow", "text": "Document each screen and decision involved in confirming an appointment."},
+      {"@type": "HowToStep", "name": "Train quoting rules", "text": "Show the agent how pricing data is retrieved and applied."},
+      {"@type": "HowToStep", "name": "Standardize replies", "text": "Provide approved responses and escalation rules."},
+      {"@type": "HowToStep", "name": "Reuse workflows", "text": "Leverage the computer-use cache to repeat successful actions."},
+      {"@type": "HowToStep", "name": "Supervise safely", "text": "Add approval gates and review logs regularly."}
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is Super different from ChatGPT or Gemini?","acceptedAnswer":{"@type":"Answer","text":"Super focuses on repeated computer-use workflows with cache reuse."}}]}
+  </script>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://getsupers.com"},{"@type":"ListItem","position":2,"name":"Use cases","item":"https://getsupers.com/use-cases"},{"@type":"ListItem","position":3,"name":"Local service bookings","item":"https://getsupers.com/super-for-local-service-businesses-handling-bookings-quote"}]}
+  </script>
+</body>
+</html>
