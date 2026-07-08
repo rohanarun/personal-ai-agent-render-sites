@@ -1,0 +1,754 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to Route AI Agent Exceptions to Text Approvals | Kalsh Hunter</title>
+  <meta name="description" content="A field guide for routing browser AI agent exceptions into SMS approval queues before the agent spends money, changes records, or touches customer-facing systems.">
+  <link rel="canonical" href="https://kalshhunter.com/how-to-route-ai-agent-exceptions-to-text-approvals-20260708-155055/">
+  <meta property="og:title" content="How to Route AI Agent Exceptions to Text Approvals">
+  <meta property="og:description" content="Turn risky AI agent edge cases into fast human approvals over text, with receipts, escalation rules, and completion checks.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://kalshhunter.com/how-to-route-ai-agent-exceptions-to-text-approvals-20260708-155055/">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800&family=Geist+Mono:wght@400;600&display=swap');
+
+    :root {
+      --ink: #f6f7ef;
+      --muted: rgba(246, 247, 239, 0.72);
+      --soft: rgba(246, 247, 239, 0.12);
+      --line: rgba(246, 247, 239, 0.18);
+      --lime: #d9ff61;
+      --coral: #ff8066;
+      --cyan: #8de8ff;
+      --dark: #070908;
+      --panel: rgba(16, 20, 18, 0.78);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--dark);
+    }
+
+    body {
+      margin: 0;
+      font-family: "Cabinet Grotesk", system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 78% 12%, rgba(141, 232, 255, 0.18), transparent 30rem),
+        radial-gradient(circle at 22% 30%, rgba(217, 255, 97, 0.15), transparent 34rem),
+        linear-gradient(180deg, #060706 0%, #10120e 44%, #080a08 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.2;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.42'/%3E%3C/svg%3E");
+      mix-blend-mode: soft-light;
+      z-index: 10;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    main {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    .nav {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      width: min(1120px, calc(100vw - 32px));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 14px 12px 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(7, 9, 8, 0.68);
+      backdrop-filter: blur(22px);
+      box-shadow: 0 20px 80px rgba(0, 0, 0, 0.32);
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand::before {
+      content: "";
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--lime);
+      box-shadow: 0 0 26px rgba(217, 255, 97, 0.7);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      padding: 10px 13px;
+      border-radius: 999px;
+      transition: background 220ms ease, color 220ms ease;
+    }
+
+    .nav-links a:hover {
+      background: rgba(246, 247, 239, 0.1);
+      color: var(--ink);
+    }
+
+    .hero {
+      min-height: 100svh;
+      padding: 148px 24px 96px;
+      display: grid;
+      place-items: center;
+      position: relative;
+    }
+
+    .hero-inner {
+      width: min(1180px, 94vw);
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: clamp(28px, 5vw, 72px);
+      align-items: end;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      max-width: min(1120px, 94vw);
+      margin: 0;
+      font-size: clamp(3rem, 5.1vw, 5.4rem);
+      line-height: 0.93;
+      letter-spacing: 0;
+      font-weight: 800;
+    }
+
+    .inline-img {
+      display: inline-block;
+      width: clamp(76px, 10vw, 142px);
+      height: clamp(38px, 5vw, 58px);
+      border-radius: 999px;
+      vertical-align: middle;
+      margin: 0 8px;
+      background: url("https://picsum.photos/seed/text-approval-console/420/180") center/cover;
+      filter: grayscale(0.25) contrast(1.18) saturate(0.9);
+      border: 1px solid rgba(246, 247, 239, 0.32);
+    }
+
+    .lede {
+      max-width: 680px;
+      margin: 26px 0 0;
+      font-size: clamp(1.15rem, 2vw, 1.5rem);
+      line-height: 1.45;
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      transition: transform 220ms ease, border-color 220ms ease, background 220ms ease;
+    }
+
+    .button:hover { transform: translateY(-2px); }
+
+    .button.primary {
+      color: #090b07;
+      background: var(--lime);
+      box-shadow: 0 18px 52px rgba(217, 255, 97, 0.24);
+    }
+
+    .button.secondary {
+      color: var(--ink);
+      background: rgba(246, 247, 239, 0.08);
+      border: 1px solid var(--line);
+    }
+
+    .hero-media {
+      min-height: 520px;
+      border-radius: 34px;
+      overflow: hidden;
+      border: 1px solid rgba(246, 247, 239, 0.2);
+      background:
+        linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.72)),
+        url("https://picsum.photos/seed/agent-exception-room/900/1200") center/cover;
+      box-shadow: 0 30px 120px rgba(0, 0, 0, 0.42);
+      transform: translateY(34px);
+    }
+
+    .hero-card {
+      margin: 30px;
+      padding: 18px;
+      border-radius: 24px;
+      background: rgba(7, 9, 8, 0.72);
+      border: 1px solid rgba(246, 247, 239, 0.18);
+      backdrop-filter: blur(14px);
+      max-width: 310px;
+    }
+
+    .mono {
+      font-family: "Geist Mono", monospace;
+      font-size: 12px;
+      color: rgba(246, 247, 239, 0.58);
+      text-transform: uppercase;
+    }
+
+    .hero-card strong {
+      display: block;
+      margin-top: 12px;
+      font-size: 25px;
+      line-height: 1.05;
+    }
+
+    section {
+      padding: 150px 24px;
+      position: relative;
+    }
+
+    .section-inner {
+      width: min(1180px, 94vw);
+      margin: 0 auto;
+    }
+
+    .section-title {
+      max-width: 860px;
+      margin: 0 0 34px;
+      font-size: clamp(2.4rem, 4vw, 4.8rem);
+      line-height: 0.96;
+      letter-spacing: 0;
+    }
+
+    .section-copy {
+      max-width: 760px;
+      font-size: 1.2rem;
+      line-height: 1.72;
+      color: var(--muted);
+    }
+
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-flow: dense;
+      gap: 16px;
+      margin-top: 52px;
+    }
+
+    .tile {
+      min-height: 260px;
+      padding: clamp(22px, 3vw, 36px);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: var(--panel);
+      overflow: hidden;
+      position: relative;
+      transition: transform 260ms ease, border-color 260ms ease;
+    }
+
+    .tile:hover {
+      transform: translateY(-6px);
+      border-color: rgba(217, 255, 97, 0.45);
+    }
+
+    .tile h2, .tile h3 {
+      margin: 0;
+      font-size: clamp(1.5rem, 2.4vw, 2.4rem);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .tile p, .tile li {
+      color: var(--muted);
+      line-height: 1.58;
+      font-size: 1.04rem;
+    }
+
+    .span-7 { grid-column: span 7; }
+    .span-5 { grid-column: span 5; }
+    .span-4 { grid-column: span 4; }
+
+    .media-tile {
+      background:
+        linear-gradient(180deg, rgba(7, 9, 8, 0.1), rgba(7, 9, 8, 0.86)),
+        url("https://picsum.photos/seed/human-approval-sms/1000/700") center/cover;
+      min-height: 380px;
+    }
+
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin: 26px 0 0;
+      display: grid;
+      gap: 14px;
+    }
+
+    .checklist li {
+      padding-left: 28px;
+      position: relative;
+    }
+
+    .checklist li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--lime);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: clamp(28px, 5vw, 72px);
+      align-items: start;
+    }
+
+    .sticky-title {
+      position: sticky;
+      top: 120px;
+    }
+
+    .stack {
+      display: grid;
+      gap: 26px;
+    }
+
+    .step-card {
+      min-height: 360px;
+      padding: clamp(24px, 4vw, 44px);
+      border-radius: 32px;
+      border: 1px solid var(--line);
+      background: rgba(246, 247, 239, 0.08);
+      overflow: hidden;
+    }
+
+    .step-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 22px;
+      margin-bottom: 24px;
+      filter: grayscale(0.35) contrast(1.22);
+      transform: scale(0.92);
+      opacity: 0.84;
+    }
+
+    .step-card h3 {
+      font-size: clamp(1.7rem, 3vw, 3rem);
+      line-height: 0.98;
+      margin: 0 0 16px;
+    }
+
+    .scrub {
+      font-size: clamp(2rem, 4.2vw, 5rem);
+      line-height: 1.03;
+      letter-spacing: 0;
+      max-width: 1060px;
+      margin: 0 auto;
+      text-align: center;
+      color: rgba(246, 247, 239, 0.16);
+    }
+
+    .scrub span {
+      display: inline-block;
+      color: rgba(246, 247, 239, 0.16);
+    }
+
+    .accordion {
+      display: flex;
+      min-height: 470px;
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      overflow: hidden;
+      margin-top: 52px;
+    }
+
+    .panel {
+      flex: 1;
+      min-width: 0;
+      padding: 28px;
+      background: rgba(246, 247, 239, 0.07);
+      border-right: 1px solid var(--line);
+      transition: flex 520ms ease, background 520ms ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+    }
+
+    .panel:last-child { border-right: 0; }
+    .panel:hover {
+      flex: 2.25;
+      background: rgba(217, 255, 97, 0.13);
+    }
+
+    .panel h3 {
+      margin: 0 0 14px;
+      font-size: clamp(1.45rem, 2.4vw, 2.5rem);
+      line-height: 1;
+    }
+
+    .panel p {
+      color: var(--muted);
+      line-height: 1.56;
+      max-width: 420px;
+    }
+
+    .faq {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 50px;
+    }
+
+    details {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 22px;
+      background: rgba(246, 247, 239, 0.06);
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 800;
+      font-size: 1.14rem;
+    }
+
+    details p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .sources {
+      display: grid;
+      gap: 14px;
+      margin-top: 38px;
+      color: var(--muted);
+    }
+
+    .sources a {
+      border-bottom: 1px solid rgba(217, 255, 97, 0.55);
+      color: var(--ink);
+    }
+
+    .cta {
+      padding-bottom: 88px;
+    }
+
+    .cta-box {
+      width: min(1180px, 94vw);
+      margin: 0 auto;
+      border-radius: 38px;
+      padding: clamp(36px, 7vw, 86px);
+      background:
+        linear-gradient(135deg, rgba(217, 255, 97, 0.95), rgba(141, 232, 255, 0.86)),
+        url("https://picsum.photos/seed/approval-queue-command/1400/700") center/cover;
+      background-blend-mode: screen;
+      color: #080a07;
+    }
+
+    .cta-box h2 {
+      margin: 0;
+      font-size: clamp(2.7rem, 5.4vw, 6rem);
+      line-height: 0.92;
+      max-width: 940px;
+    }
+
+    .cta-box p {
+      max-width: 680px;
+      font-size: 1.25rem;
+      line-height: 1.58;
+    }
+
+    .cta-box .button.primary {
+      background: #080a07;
+      color: var(--ink);
+      box-shadow: none;
+    }
+
+    footer {
+      width: min(1180px, 94vw);
+      margin: 0 auto;
+      padding: 0 24px 44px;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      color: rgba(246, 247, 239, 0.58);
+      font-size: 14px;
+    }
+
+    footer a {
+      color: var(--ink);
+      margin-left: 16px;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links a:not(.keep) { display: none; }
+      .hero-inner, .steps, .faq { grid-template-columns: 1fr; }
+      .hero-media { min-height: 360px; transform: none; }
+      .span-7, .span-5, .span-4 { grid-column: span 12; }
+      .accordion { flex-direction: column; }
+      .panel { min-height: 210px; border-right: 0; border-bottom: 1px solid var(--line); }
+      .panel:last-child { border-bottom: 0; }
+      footer { flex-direction: column; }
+      footer a { margin: 0 14px 0 0; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="https://kalshhunter.com/">Kalsh Hunter</a>
+      <div class="nav-links">
+        <a href="#workflow">Workflow</a>
+        <a href="#rules">Rules</a>
+        <a href="#faq">FAQ</a>
+        <a class="keep" href="https://getsupers.com/">Get Supers</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-inner">
+        <div>
+          <h1>How to route AI agent exceptions <span class="inline-img" aria-hidden="true"></span> into text approvals</h1>
+          <p class="lede">Autonomous agents should not freeze every time a checkout screen, account warning, refund edge case, or customer-facing update appears. They should pause only at the decision edge, send the right context to the right human, and resume with a receipt.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Build the SMS queue</a>
+            <a class="button secondary" href="#workflow">Read the playbook</a>
+          </div>
+        </div>
+        <div class="hero-media">
+          <div class="hero-card">
+            <div class="mono">Exception packet</div>
+            <strong>Approve, reject, or ask the agent for one more proof point.</strong>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="workflow">
+      <div class="section-inner">
+        <h2 class="section-title">The approval queue is the bridge between full autonomy and constant babysitting.</h2>
+        <p class="section-copy">The most useful personal AI agents do the boring work alone, but they still know when to ask. A text approval queue gives operators a low-friction control surface for moments where the agent is about to create durable consequences: spend money, change a source of truth, message a customer, or bind an external account.</p>
+
+        <div class="bento">
+          <article class="tile span-7 media-tile">
+            <h2>Send the decision, not the whole browser session.</h2>
+            <p>Each approval request should compress the browser state into the smallest useful packet: what the agent wants to do, why it thinks that is correct, what evidence it saw, and what happens after approval.</p>
+          </article>
+          <article class="tile span-5">
+            <h3>Use an exception taxonomy.</h3>
+            <p>Route only meaningful exceptions. If every minor ambiguity becomes a text, the queue dies. Start with four categories: payment, identity, customer impact, and irreversible record changes.</p>
+            <ul class="checklist">
+              <li>Payment threshold crossed</li>
+              <li>Login or account ownership changed</li>
+              <li>Outbound message may affect trust</li>
+              <li>Agent confidence below the action floor</li>
+            </ul>
+          </article>
+          <article class="tile span-4">
+            <h3>Require a receipt.</h3>
+            <p>Store prompt, evidence, human response, timestamp, and completed action. That receipt turns a quick text into an auditable operating record.</p>
+          </article>
+          <article class="tile span-4">
+            <h3>Make denial useful.</h3>
+            <p>A rejection should teach the workflow. Add a reason code so future runs can avoid the same exception or escalate with better context.</p>
+          </article>
+          <article class="tile span-4">
+            <h3>Resume safely.</h3>
+            <p>After approval, the agent should re-check page state before acting. Browser tabs drift, carts expire, and SaaS forms mutate while humans are deciding.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <p class="scrub" id="scrubText">A good approval queue does not slow the agent down. It protects the handful of moments where speed without judgment becomes expensive.</p>
+    </section>
+
+    <section id="rules">
+      <div class="section-inner steps">
+        <div class="sticky-title">
+          <h2 class="section-title">Four rules keep the queue calm.</h2>
+          <p class="section-copy">The goal is not to put a human in every loop. The goal is to put a human at the edge of consequence, then let the agent continue.</p>
+        </div>
+        <div class="stack">
+          <article class="step-card">
+            <img src="https://picsum.photos/seed/approval-rule-context/1000/520" alt="Operator reviewing a decision packet">
+            <h3>Bundle context into one message.</h3>
+            <p>Every text should include the proposed action, current evidence, risk class, default fallback, and a short reply menu. A human should not need to open a dashboard for normal approvals.</p>
+          </article>
+          <article class="step-card">
+            <img src="https://picsum.photos/seed/approval-rule-timeout/1000/520" alt="Timed approval workflow dashboard">
+            <h3>Set timeout behavior before the first run.</h3>
+            <p>If nobody responds, the agent needs a predefined path: stop, continue under a smaller limit, retry later, or escalate to another person. Silent waiting is not a policy.</p>
+          </article>
+          <article class="step-card">
+            <img src="https://picsum.photos/seed/approval-rule-proof/1000/520" alt="Proof trail interface with browser evidence">
+            <h3>Attach proof for high-risk actions.</h3>
+            <p>For refunds, billing edits, account permissions, or customer messages, include screenshots or extracted text. This mirrors the receipt-led browser workflows described in the <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a> use case.</p>
+          </article>
+          <article class="step-card">
+            <img src="https://picsum.photos/seed/approval-rule-closure/1000/520" alt="Completed AI agent task receipt">
+            <h3>Close the loop with completion status.</h3>
+            <p>After the human approves, the agent should text back when the action is done, skipped, or blocked. That final message is what makes the queue feel reliable instead of mysterious.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-inner">
+        <h2 class="section-title">Approval patterns worth copying.</h2>
+        <p class="section-copy">Different agent jobs need different exception messages. Keep the structure consistent, but tune the proof and fallback policy to the workflow.</p>
+
+        <div class="accordion">
+          <article class="panel">
+            <div class="mono">Inbox agent</div>
+            <h3>Customer reply approval</h3>
+            <p>Ask before sending messages that mention refunds, legal commitments, discounts, or customer disappointment. Include draft, source email, and suggested tone.</p>
+          </article>
+          <article class="panel">
+            <div class="mono">Browser agent</div>
+            <h3>Checkout confirmation</h3>
+            <p>Ask when a cart total, subscription term, shipping address, or payment method changes. Include exact cost and cancellation terms.</p>
+          </article>
+          <article class="panel">
+            <div class="mono">Operations agent</div>
+            <h3>System-of-record edits</h3>
+            <p>Ask before changing CRM status, assigning ownership, closing tickets, or updating account permissions. Include previous value and new value.</p>
+          </article>
+          <article class="panel">
+            <div class="mono">Research agent</div>
+            <h3>External submission</h3>
+            <p>Ask before submitting forms, publishing notes, joining waitlists, or using a personal identity. Include destination and data fields.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="section-inner">
+        <h2 class="section-title">FAQ for operators adding human approvals to AI agents.</h2>
+        <div class="faq">
+          <details open>
+            <summary>Should every agent action require text approval?</summary>
+            <p>No. Approvals are for consequences, not activity. Let the agent browse, summarize, compare, and draft freely. Pause only when the next step spends, sends, edits, submits, deletes, or commits.</p>
+          </details>
+          <details>
+            <summary>What should the human reply with?</summary>
+            <p>Use compact reply options such as approve, reject, retry with budget, ask for proof, or escalate. Free-form replies are useful, but the agent needs a structured fallback when the answer is short.</p>
+          </details>
+          <details>
+            <summary>Where does Supers fit?</summary>
+            <p><a href="https://getsupers.com/">Supers</a> is useful when the approval surface should live in messaging instead of a dashboard. The <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text-message AI assistant</a> pattern is especially natural for exception queues.</p>
+          </details>
+          <details>
+            <summary>Can this work for website-building agents?</summary>
+            <p>Yes. A build agent can ask before publishing, changing DNS, buying assets, or modifying production copy. See the <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent website builder</a> use case for adjacent deployment workflows.</p>
+          </details>
+        </div>
+
+        <div class="sources">
+          <strong>Sources and implementation references</strong>
+          <span><a href="https://getsupers.com/">Supers</a> for messaging-first agent workflows.</span>
+          <span><a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Text-message AI assistant</a> for SMS-based control loops.</span>
+          <span><a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a> for browser evidence and action receipts.</span>
+          <span><a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent website builder</a> for publish-time approval workflows.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="cta-box">
+        <h2>Put the human at the decision edge.</h2>
+        <p>Start with one approval category, one timeout policy, and one receipt format. Once the queue feels calm, expand it to every agent workflow where a wrong action would be hard to unwind.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="https://getsupers.com/">Try Supers</a>
+          <a class="button secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Open the SMS use case</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>Kalsh Hunter publishes practical notes on personal AI agents, approval queues, and browser automation.</span>
+      <span>
+        <a href="https://kalshhunter.com/">Home</a>
+        <a href="https://getsupers.com/">Supers</a>
+      </span>
+    </footer>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+
+      gsap.utils.toArray(".step-card img").forEach((image) => {
+        gsap.fromTo(image,
+          { scale: 0.82, opacity: 0.45 },
+          {
+            scale: 1,
+            opacity: 1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: image,
+              start: "top 82%",
+              end: "bottom 22%",
+              scrub: true
+            }
+          }
+        );
+      });
+
+      const text = document.getElementById("scrubText");
+      const words = text.textContent.trim().split(" ");
+      text.innerHTML = words.map((word) => `<span>${word}&nbsp;</span>`).join("");
+      gsap.to("#scrubText span", {
+        color: "rgba(246, 247, 239, 1)",
+        stagger: 0.08,
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#scrubText",
+          start: "top 82%",
+          end: "bottom 26%",
+          scrub: true
+        }
+      });
+    }
+  </script>
+</body>
+</html>
