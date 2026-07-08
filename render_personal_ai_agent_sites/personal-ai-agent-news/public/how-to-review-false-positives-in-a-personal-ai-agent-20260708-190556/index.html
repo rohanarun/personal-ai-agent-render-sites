@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to Review False Positives in a Personal AI Agent</title>
+  <meta name="description" content="A practical workflow for reviewing false positives and false negatives in personal AI agents that text, browse, summarize, and escalate work.">
+  <link rel="canonical" href="https://kalshhunter.com/how-to-review-false-positives-in-a-personal-ai-agent-20260708-190556/">
+  <meta property="og:title" content="How to Review False Positives in a Personal AI Agent">
+  <meta property="og:description" content="Turn bad proactive alerts into better system prompts, source checks, and escalation rules.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://kalshhunter.com/how-to-review-false-positives-in-a-personal-ai-agent-20260708-190556/">
+  <meta property="og:image" content="https://picsum.photos/seed/false-positive-agent-review/1920/1080">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <style>
+    :root {
+      --bg: #070909;
+      --ink: #f8f5eb;
+      --muted: rgba(248,245,235,.72);
+      --line: rgba(248,245,235,.14);
+      --panel: rgba(255,255,255,.066);
+      --mint: #c6ffd7;
+      --blue: #a7d5ff;
+      --peach: #ffc0a6;
+      --lilac: #d9c7ff;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Geist", system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 78% 8%, rgba(198,255,215,.2), transparent 31rem),
+        radial-gradient(circle at 12% 28%, rgba(167,213,255,.16), transparent 30rem),
+        linear-gradient(145deg, #050706 0%, #101311 54%, #070909 100%);
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+      opacity: .16;
+      mix-blend-mode: soft-light;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+    }
+    main { overflow-x: hidden; width: 100%; max-width: 100%; }
+    a { color: inherit; }
+    .wrap { width: min(1180px, calc(100vw - 40px)); margin: 0 auto; }
+    .nav {
+      position: fixed;
+      z-index: 10;
+      top: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1120px, calc(100vw - 32px));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      padding: 12px 14px 12px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(7,9,9,.7);
+      backdrop-filter: blur(22px);
+      box-shadow: 0 22px 80px rgba(0,0,0,.36);
+    }
+    .brand { text-decoration: none; font-weight: 800; }
+    .nav-links { display: flex; gap: 22px; color: var(--muted); font-size: .94rem; }
+    .nav-links a { text-decoration: none; }
+    .nav-cta {
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 18px;
+      border-radius: 999px;
+      background: var(--mint);
+      color: #06110a;
+      text-decoration: none;
+      font-weight: 760;
+    }
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      align-items: center;
+      padding: 150px 0 92px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1fr) minmax(320px,.72fr);
+      gap: clamp(32px,6vw,82px);
+      align-items: center;
+    }
+    h1 {
+      margin: 0;
+      max-width: min(1080px, 94vw);
+      font-size: clamp(2.75rem, 4.75vw, 5.1rem);
+      line-height: .97;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .inline-photo {
+      display: inline-block;
+      width: clamp(74px,8vw,124px);
+      height: clamp(34px,4vw,54px);
+      margin: 0 8px;
+      border-radius: 999px;
+      vertical-align: middle;
+      background: url("https://picsum.photos/seed/agent-alert-review-strip/420/210") center/cover;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.28);
+      filter: contrast(1.18) saturate(.9);
+    }
+    .lead {
+      max-width: 700px;
+      margin: 28px 0 0;
+      color: var(--muted);
+      font-size: clamp(1.08rem,1.55vw,1.27rem);
+      line-height: 1.62;
+    }
+    .actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 34px; }
+    .btn {
+      min-height: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 22px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 760;
+      transition: transform .22s ease, border-color .22s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn.primary { background: var(--mint); color: #06110a; }
+    .btn.secondary { color: white; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.22); }
+    .hero-media {
+      min-height: 540px;
+      border-radius: 34px;
+      border: 1px solid rgba(255,255,255,.14);
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(7,9,9,.04), rgba(7,9,9,.78)),
+        url("https://picsum.photos/seed/false-positive-review-room/900/1300") center/cover;
+      filter: grayscale(.16) contrast(1.16);
+      box-shadow: 0 44px 128px rgba(0,0,0,.42);
+      position: relative;
+    }
+    .hero-media::after {
+      content: "A bad alert is not a nuisance. It is training data.";
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      padding: 22px;
+      border-radius: 24px;
+      background: rgba(5,7,7,.64);
+      border: 1px solid rgba(255,255,255,.16);
+      backdrop-filter: blur(18px);
+      color: rgba(255,255,255,.82);
+      line-height: 1.42;
+      font-weight: 760;
+      font-size: 1.15rem;
+    }
+    section { padding: 136px 0; }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0,.85fr) minmax(280px,.55fr);
+      gap: 48px;
+      align-items: end;
+      margin-bottom: 42px;
+    }
+    h2 { margin: 0; font-size: clamp(2.3rem,4.7vw,4.8rem); line-height: .99; letter-spacing: 0; text-wrap: balance; }
+    .section-head p, .card p, .article p, .faq p, .panel p, .step p { color: var(--muted); line-height: 1.7; font-size: 1.04rem; }
+    .bento { display: grid; grid-template-columns: repeat(12,1fr); grid-auto-flow: dense; gap: 16px; }
+    .card {
+      min-height: 280px;
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 26px;
+      background: var(--panel);
+      overflow: hidden;
+      transition: transform .52s ease, border-color .52s ease;
+    }
+    .card:hover { transform: translateY(-7px); border-color: rgba(198,255,215,.44); }
+    .card-inner { padding: 30px; }
+    .card h3 { margin: 0 0 14px; font-size: 1.55rem; line-height: 1.1; }
+    .span-8 { grid-column: span 8; }
+    .span-4 { grid-column: span 4; }
+    .image-card {
+      min-height: 382px;
+      background:
+        linear-gradient(120deg, rgba(7,9,9,.1), rgba(7,9,9,.78)),
+        url("https://picsum.photos/seed/agent-alert-board/1200/780") center/cover;
+    }
+    .mint { background: linear-gradient(145deg, rgba(198,255,215,.17), rgba(255,255,255,.055)); }
+    .blue { background: linear-gradient(145deg, rgba(167,213,255,.16), rgba(255,255,255,.055)); }
+    .peach { background: linear-gradient(145deg, rgba(255,192,166,.16), rgba(255,255,255,.055)); }
+    .lilac { background: linear-gradient(145deg, rgba(217,199,255,.16), rgba(255,255,255,.055)); }
+    .scrub-text {
+      max-width: 980px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: clamp(2.1rem,4.2vw,4.25rem);
+      line-height: 1.08;
+      color: rgba(248,245,235,.18);
+    }
+    .scrub-text span { color: rgba(248,245,235,.18); }
+    .pin-grid {
+      display: grid;
+      grid-template-columns: minmax(260px,.42fr) minmax(0,.58fr);
+      gap: clamp(34px,6vw,84px);
+      align-items: start;
+    }
+    .pin-title { position: relative; }
+    .steps { display: grid; gap: 28px; }
+    .step {
+      min-height: 350px;
+      padding: 34px;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.07);
+    }
+    .step img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 22px;
+      margin-bottom: 24px;
+      filter: grayscale(.22) contrast(1.16);
+    }
+    .step h3 { margin: 0 0 12px; font-size: 1.72rem; }
+    .accordion {
+      min-height: 480px;
+      display: flex;
+      overflow: hidden;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,.14);
+    }
+    .panel {
+      flex: 1;
+      min-width: 0;
+      padding: 30px;
+      display: flex;
+      align-items: flex-end;
+      background-size: cover;
+      background-position: center;
+      filter: grayscale(.55) contrast(1.15);
+      transition: flex .7s cubic-bezier(.2,.8,.2,1), filter .7s ease;
+    }
+    .panel:hover { flex: 2.4; filter: grayscale(.08) contrast(1.15); }
+    .panel:nth-child(1) { background-image: linear-gradient(rgba(0,0,0,.12), rgba(0,0,0,.74)), url("https://picsum.photos/seed/false-positive-classify/900/1200"); }
+    .panel:nth-child(2) { background-image: linear-gradient(rgba(0,0,0,.12), rgba(0,0,0,.74)), url("https://picsum.photos/seed/agent-source-check/900/1200"); }
+    .panel:nth-child(3) { background-image: linear-gradient(rgba(0,0,0,.12), rgba(0,0,0,.74)), url("https://picsum.photos/seed/prompt-rewrite-desk/900/1200"); }
+    .panel:nth-child(4) { background-image: linear-gradient(rgba(0,0,0,.12), rgba(0,0,0,.74)), url("https://picsum.photos/seed/quiet-hours-agent/900/1200"); }
+    .panel-copy { max-width: 330px; }
+    .panel h3 { margin: 0 0 10px; font-size: 1.55rem; }
+    .panel p { color: rgba(255,255,255,.74); line-height: 1.6; }
+    .article-grid { display: grid; grid-template-columns: minmax(0,.66fr) minmax(280px,.34fr); gap: 42px; align-items: start; }
+    .article, .sidebox, .faq article {
+      border: 1px solid rgba(255,255,255,.13);
+      background: rgba(255,255,255,.06);
+      border-radius: 28px;
+    }
+    .article { padding: 38px; }
+    .article h3 { margin: 30px 0 8px; font-size: 2rem; }
+    .article h3:first-child { margin-top: 0; }
+    .article li { margin: 12px 0; color: var(--muted); line-height: 1.68; }
+    .article a, .sidebox a { color: var(--mint); text-underline-offset: 4px; }
+    .sidebox {
+      position: sticky;
+      top: 120px;
+      padding: 28px;
+      background: rgba(198,255,215,.1);
+      border-color: rgba(198,255,215,.22);
+    }
+    .sidebox h3 { margin-top: 0; }
+    .faq { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; }
+    .faq article { padding: 28px; border-radius: 24px; }
+    .faq h3 { margin: 0 0 10px; }
+    .marquee {
+      display: flex;
+      overflow: hidden;
+      border-block: 1px solid rgba(255,255,255,.12);
+      padding: 24px 0;
+      color: rgba(255,255,255,.58);
+      font-weight: 800;
+      font-size: clamp(1.22rem,2.5vw,2.08rem);
+      white-space: nowrap;
+    }
+    .marquee-track { display: flex; gap: 44px; padding-right: 44px; animation: slide 26s linear infinite; }
+    @keyframes slide { to { transform: translateX(-50%); } }
+    .cta {
+      padding: 116px 0;
+      background:
+        linear-gradient(90deg, rgba(198,255,215,.28), rgba(167,213,255,.18)),
+        url("https://picsum.photos/seed/agent-review-command-room/1920/1080") center/cover;
+      background-blend-mode: screen;
+      border-top: 1px solid rgba(255,255,255,.14);
+    }
+    .cta-box { width: min(980px, calc(100vw - 40px)); margin: 0 auto; }
+    .cta h2 { color: #06110a; text-shadow: 0 1px 0 rgba(255,255,255,.22); }
+    .cta p { max-width: 680px; color: rgba(6,17,10,.76); line-height: 1.62; font-size: 1.15rem; }
+    .cta .btn.secondary { color: #06110a; background: rgba(255,255,255,.42); border-color: rgba(6,17,10,.28); }
+    footer { padding: 42px 0 58px; color: rgba(255,255,255,.58); }
+    .footer-row { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+    .footer-row a { text-decoration: none; margin-left: 18px; }
+    @media (max-width: 880px) {
+      .nav { top: 12px; border-radius: 26px; }
+      .nav-links { display: none; }
+      .hero-grid, .section-head, .pin-grid, .article-grid, .faq { grid-template-columns: 1fr; }
+      .hero-media { min-height: 430px; }
+      section { padding: 98px 0; }
+      .bento { grid-template-columns: 1fr; }
+      .span-8, .span-4 { grid-column: span 1; }
+      .accordion { flex-direction: column; }
+      .panel { min-height: 260px; }
+      .sidebox { position: relative; top: 0; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="Main navigation">
+    <a class="brand" href="https://kalshhunter.com/">Kalsh Hunter</a>
+    <div class="nav-links">
+      <a href="#triage">Triage</a>
+      <a href="#workflow">Workflow</a>
+      <a href="#checklist">Checklist</a>
+    </div>
+    <a class="nav-cta" href="https://getsupers.com/">Explore Supers</a>
+  </nav>
+  <main>
+    <header class="hero wrap">
+      <div class="hero-grid">
+        <div>
+          <h1>How to review false positives <span class="inline-photo" aria-hidden="true"></span> in a personal AI agent</h1>
+          <p class="lead">False positives are not just annoying alerts. They are evidence that the agent misunderstood timing, confidence, consequence, or user preference. A clean review loop turns each bad proactive message into a better system prompt.</p>
+          <div class="actions">
+            <a class="btn primary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Review a text agent</a>
+            <a class="btn secondary" href="#workflow">Follow the workflow</a>
+          </div>
+        </div>
+        <aside class="hero-media" aria-label="False positive review desk"></aside>
+      </div>
+    </header>
+
+    <section id="triage" class="wrap">
+      <div class="section-head">
+        <h2>Separate wrong alerts from wrong timing.</h2>
+        <p>A personal agent can be factually accurate and still wrong to interrupt. The review should classify the failure before changing the prompt.</p>
+      </div>
+      <div class="bento">
+        <article class="card image-card span-8"><div class="card-inner"><h3>False positive</h3><p>The agent interrupted about something that did not deserve attention. Usually the source was weak, the consequence was low, or the rule was too broad.</p></div></article>
+        <article class="card mint span-4"><div class="card-inner"><h3>False negative</h3><p>The agent stayed quiet when it should have warned, summarized, or escalated.</p></div></article>
+        <article class="card blue span-4"><div class="card-inner"><h3>Too early</h3><p>The alert mattered eventually, but the agent sent it before action was possible.</p></div></article>
+        <article class="card peach span-4"><div class="card-inner"><h3>Too late</h3><p>The agent noticed the issue after the useful action window had closed.</p></div></article>
+        <article class="card lilac span-4"><div class="card-inner"><h3>Duplicate</h3><p>The agent repeated a signal the user had already seen or resolved.</p></div></article>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <p class="scrub-text">Review the alert, name the failure, identify the missing source check, rewrite the system prompt, and verify the next similar event.</p>
+    </section>
+
+    <section id="workflow" class="wrap">
+      <div class="pin-grid">
+        <div class="pin-title">
+          <h2>A weekly review loop is enough if the examples are concrete.</h2>
+          <p class="lead">Do not tune the agent from vibes. Use the bad alert itself as the training artifact.</p>
+        </div>
+        <div class="steps">
+          <article class="step">
+            <img src="https://picsum.photos/seed/alert-receipt-review/1200/760" alt="Alert receipt review board">
+            <h3>Save the interruption receipt.</h3>
+            <p>Keep the original alert, source, timestamp, confidence, and recommended action. This is essential for a <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text message AI assistant</a> because the channel is so expensive in attention.</p>
+          </article>
+          <article class="step">
+            <img src="https://picsum.photos/seed/source-check-review/1200/760" alt="Source check review interface">
+            <h3>Find the missing gate.</h3>
+            <p>Ask what source, time window, human confirmation, or confidence threshold would have prevented the bad interruption.</p>
+          </article>
+          <article class="step">
+            <img src="https://picsum.photos/seed/system-prompt-correction/1200/760" alt="System prompt correction notes">
+            <h3>Rewrite the instruction.</h3>
+            <p>Tell the system prompt what went wrong and what should always happen instead. Replace vague preferences with precise rules.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>false positive</span><span>false negative</span><span>source check</span><span>confidence gate</span><span>prompt rewrite</span><span>weekly review</span>
+        <span>false positive</span><span>false negative</span><span>source check</span><span>confidence gate</span><span>prompt rewrite</span><span>weekly review</span>
+      </div>
+    </div>
+
+    <section class="wrap">
+      <div class="section-head">
+        <h2>Use the same review modes across channels.</h2>
+        <p>The details differ by workflow, but the review taxonomy should stay stable.</p>
+      </div>
+      <div class="accordion" aria-label="Review modes">
+        <article class="panel"><div class="panel-copy"><h3>Classify</h3><p>Name the failure before editing the prompt or changing a threshold.</p></div></article>
+        <article class="panel"><div class="panel-copy"><h3>Verify</h3><p>Require stronger source proof before another proactive interruption.</p></div></article>
+        <article class="panel"><div class="panel-copy"><h3>Rewrite</h3><p>Translate the failure into exact replacement behavior.</p></div></article>
+        <article class="panel"><div class="panel-copy"><h3>Retest</h3><p>Watch the next similar event and confirm the agent behaves differently.</p></div></article>
+      </div>
+    </section>
+
+    <section id="checklist" class="wrap article-grid">
+      <article class="article">
+        <h3>False-positive review checklist</h3>
+        <ul>
+          <li>Was the agent's fact correct but the interruption unnecessary?</li>
+          <li>Did the agent have enough evidence to justify urgency?</li>
+          <li>Was there a time window where the alert would have been more useful?</li>
+          <li>Did the alert duplicate information the user already had?</li>
+          <li>Should this have been batched, escalated, archived, or sent immediately?</li>
+          <li>What exact prompt instruction would prevent this next time?</li>
+        </ul>
+
+        <h3>Prompt update template</h3>
+        <p>When you see a similar event, do not interrupt unless the source is verified, the action window is open, and waiting creates real cost. If those conditions are not met, batch the item into the next digest and include the source for later review.</p>
+
+        <h3>Where Supers fits</h3>
+        <p>Supers workflows can span SMS, browser automation, and generated deliverables. Start by reviewing proactive texts, then apply the same false-positive taxonomy to <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache workflows</a> and progress updates from an <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent that builds websites</a>.</p>
+
+        <h3>Sources</h3>
+        <ul>
+          <li><a href="https://www.microsoft.com/en-us/research/publication/the-cost-of-interrupted-work-more-speed-and-stress/">Microsoft Research on interrupted work</a> for why poor alerts carry cognitive cost.</li>
+          <li><a href="https://www.nngroup.com/articles/notification-design/">Nielsen Norman Group on notification design</a> for alert clarity and user-control principles.</li>
+          <li><a href="https://getsupers.com/">Supers</a> for personal AI agent workflows across SMS, browser work, and web tasks.</li>
+        </ul>
+
+        <h3>FAQ</h3>
+        <div class="faq">
+          <article><h3>How many examples are enough?</h3><p>Five to ten reviewed alerts can reveal the first bad rules. High-cost misses should be reviewed immediately.</p></article>
+          <article><h3>Should false negatives be in the same review?</h3><p>Yes. Reviewing only noisy alerts can make the agent too quiet and miss important events.</p></article>
+          <article><h3>What should change after review?</h3><p>The system prompt, source gates, quiet-hour bypasses, or escalation thresholds should change in concrete language.</p></article>
+          <article><h3>What is the goal?</h3><p>Fewer unnecessary interruptions and fewer missed urgent events, with clear receipts for every proactive alert.</p></article>
+        </div>
+      </article>
+      <aside class="sidebox">
+        <h3>Review rule</h3>
+        <p>Do not say "be less noisy." Tell the agent exactly which source, timing, and consequence checks must pass before interrupting.</p>
+        <p><a href="https://getsupers.com/">Explore Supers</a> for the broader personal agent workflow context.</p>
+      </aside>
+    </section>
+
+    <section class="cta">
+      <div class="cta-box">
+        <h2>Turn every bad alert into a better personal agent.</h2>
+        <p>Supers can help you test text, browser, and website-building agents with review loops that improve the next decision instead of merely hiding the last mistake.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://getsupers.com/">Visit Supers</a>
+          <a class="btn secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Start with SMS</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="wrap">
+    <div class="footer-row">
+      <span>Kalsh Hunter personal AI agent how-to guides</span>
+      <span>
+        <a href="https://getsupers.com/">Supers</a>
+        <a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use workflows</a>
+      </span>
+    </div>
+  </footer>
+  <script>
+    window.addEventListener("load", function () {
+      if (!window.gsap || !window.ScrollTrigger) return;
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.from(".hero h1, .lead, .actions", { y: 36, opacity: 0, duration: 1.1, stagger: .12, ease: "power3.out" });
+      var text = document.querySelector(".scrub-text");
+      if (text) {
+        text.innerHTML = text.textContent.split(" ").map(function(word) { return "<span>" + word + "</span>"; }).join(" ");
+        gsap.to(".scrub-text span", { color: "rgba(248,245,235,1)", stagger: .08, ease: "none", scrollTrigger: { trigger: ".scrub-text", start: "top 82%", end: "bottom 35%", scrub: true } });
+      }
+      ScrollTrigger.create({ trigger: "#workflow", start: "top top", end: "bottom bottom", pin: ".pin-title", pinSpacing: false });
+      gsap.utils.toArray(".step img").forEach(function(img) {
+        gsap.fromTo(img, { scale: .84, opacity: .48 }, { scale: 1, opacity: 1, ease: "none", scrollTrigger: { trigger: img, start: "top 88%", end: "bottom 35%", scrub: true } });
+      });
+    });
+  </script>
+</body>
+</html>

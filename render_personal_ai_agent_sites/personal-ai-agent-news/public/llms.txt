@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [How to Review False Positives in a Personal AI Agent](how-to-review-false-positives-in-a-personal-ai-agent-20260708-190556/): Use case
 - [AI Agent Interruption Audits vs Notification Filters](ai-agent-interruption-audits-vs-notification-filters-20260708-185555/): Competitor comparison
 - [Personal AI Agent Interruption Audit Software](personal-ai-agent-interruption-audit-software-20260708-185055/): Niche research landing page
 - [Personal AI Agents Need Interruption Audits](personal-ai-agents-need-interruption-audits-20260708-184555/): Research and news analysis
