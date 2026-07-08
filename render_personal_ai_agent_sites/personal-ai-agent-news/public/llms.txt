@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Personal AI agent inbox triage benchmark for busy operators](personal-ai-agent-inbox-triage-benchmark-20260708-080323/): Research and news analysis
 - [How to use a personal AI agent to build a client brief](how-to-use-a-personal-ai-agent-to-build-a-client-brief-20260708-075823/): Use case
 - [Super vs virtual assistant services for solo founders](super-vs-virtual-assistant-services-for-solo-founders-20260708-075323/): Competitor comparison
 - [Super for freelancers running client ops with AI](super-for-freelancers-running-client-ops-with-ai-20260708-074823/): Niche research landing page
