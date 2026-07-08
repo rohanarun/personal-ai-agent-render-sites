@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Personal AI Agents Need Signal Quality Scores](personal-ai-agents-need-signal-quality-scores-20260708-204326/): Research and news analysis
 - [How to Score Evidence Before an AI Agent Texts You](how-to-score-evidence-before-an-ai-agent-texts-you-20260708-203327/): Use case
 - [Evidence Weighting vs AI Confidence Scoring](evidence-weighting-vs-ai-confidence-scoring-20260708-202826/): Competitor comparison
 - [Personal AI Agent Evidence Weighting Software](personal-ai-agent-evidence-weighting-software-20260708-202326/): Niche research landing page
