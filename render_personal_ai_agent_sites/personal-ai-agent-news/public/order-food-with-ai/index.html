@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Order food with AI | Super</title>
+  <meta name="description" content="Order food with AI using a personal agent that actually operates delivery apps. Learn how Super places, confirms, and repeats food orders using a computer-use cache." />
+  <link rel="canonical" href="https://app.getsupers.com/use-cases/order-food-with-ai/" />
+  <meta property="og:title" content="Order food with AI | Super" />
+  <meta property="og:description" content="A practical field guide to using a personal AI agent to order meals and groceries without babysitting apps." />
+  <meta property="og:url" content="https://app.getsupers.com/use-cases/order-food-with-ai/" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+<div class="ambient-grid"></div>
+<div class="paper-noise"></div>
+<div class="page">
+
+  <nav class="nav">
+    <div class="brand"><img src="https://storage.googleapis.com/cheatlayer/landing/icon-transparent-512.png" alt="Super logo" /></div>
+    <div class="nav-links">
+      <a href="https://app.getsupers.com/use-cases/order-food-with-ai/">Use cases</a>
+      <a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a>
+    </div>
+    <div class="nav-cta"><a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Try Super</a></div>
+  </nav>
+
+  <header class="hero shell">
+    <div class="hero-inner">
+      <h1>Order food with AI — without juggling delivery apps or screens</h1>
+      <p class="hero-sub">Super is a personal AI agent that can operate real food delivery and grocery apps for you. You state what you want, review the order, and confirm — and Super handles the clicks, forms, and repetition using a reusable computer-use cache.</p>
+      <div class="hero-actions">
+        <a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Start ordering with Super</a>
+        <a class="btn btn-white" href="#guide">Read the field guide</a>
+      </div>
+      <div class="media-frame">
+        <video src="https://storage.googleapis.com/cheatlayer/landing/hero-0607-2-3.mp4" autoplay muted loop playsinline></video>
+      </div>
+    </div>
+  </header>
+
+  <section class="chapter shell">
+    <h2>Why ordering food with an AI agent is different now</h2>
+    <div class="bento">
+      <div class="bento-item">
+        <h3>Apps are adding AI — but keep you inside their walls</h3>
+        <p>Delivery platforms like DoorDash now let customers order with prompts or photos, which reduces typing but still locks you into a single app experience.</p>
+      </div>
+      <div class="bento-item">
+        <h3>Computer-use agents can cross app boundaries</h3>
+        <p>Agents that can control a browser or desktop can move between grocery stores, restaurant sites, and saved preferences the way a human would.</p>
+      </div>
+      <div class="bento-item">
+        <h3>Repetition is the real unlock</h3>
+        <p>The computer-use cache means successful orders can be replayed reliably, so weekly groceries or favorite lunches get cheaper and faster over time.</p>
+      </div>
+    </div>
+  </section>
+
+  <article id="guide" class="long-form-guide shell">
+    <p class="byline">Field guide by the Super editorial team · Updated July 2026 · Based on current reporting and agent best-practice research</p>
+
+    <h2>Market context</h2>
+    <p>Ordering food looks simple, but anyone who relies on delivery apps regularly knows the friction adds up. Each app has its own menus, substitutions, address confirmations, tipping defaults, and occasional UI changes. Recent reporting shows platforms racing to add AI chat layers to reduce friction, but those assistants still live inside a single company’s ecosystem and cannot coordinate across apps. At the same time, broader computer-use agents like Gemini, ChatGPT, and others are learning to control real interfaces — which raises both opportunity and security concerns.</p>
+    <p>For people who want an AI assistant to order meals, groceries, and delivery without babysitting apps, the key question is reliability. Can the agent handle login flows, menu changes, and confirmation screens? Can it repeat last week’s grocery order without re-learning everything? Super is positioned specifically around this problem. Instead of improvising clicks every time, it reuses a computer-use cache of successful actions, which is especially valuable for recurring food orders where consistency matters more than novelty.</p>
+
+    <h2>How to evaluate and use this workflow</h2>
+
+    <h3>How to describe your order clearly to an agent</h3>
+    <p>Start by giving Super the same information you would give a human assistant. Specify the restaurant or store, the exact items, and any non-obvious preferences such as substitutions, spice levels, or delivery notes. Mention constraints like “use the saved home address” or “same payment method as last time.” This upfront clarity reduces back-and-forth and makes it easier for the agent to build a reusable computer-use cache entry that will work again next week.</p>
+
+    <h3>How to let the agent operate the app safely</h3>
+    <p>When Super begins operating a delivery or grocery app, it does so in a controlled environment and pauses at confirmation points. You should expect to review the cart, total price, delivery address, and timing before final submission. This mirrors best practices recommended in agent safety research: humans stay in the loop for irreversible actions like payments or address changes, while the agent handles the repetitive navigation steps.</p>
+
+    <h3>How to confirm and reuse a successful order</h3>
+    <p>After an order completes successfully, explicitly tell Super that this is a repeatable workflow. For example, say “save this as my weekly grocery order.” This instruction helps the system treat the completed sequence as a durable pattern. The next time you request it, Super can replay the same sequence from the computer-use cache, adapting only where prices or availability have changed.</p>
+
+    <h3>How to handle substitutions and out-of-stock items</h3>
+    <p>Food ordering often fails when items are unavailable. To avoid this, include substitution rules in your initial request, such as “if brand A is out, pick brand B” or “skip the item if unavailable.” Over time, Super can learn these preferences and apply them automatically. This is especially useful for groceries, where small substitutions are common and manual handling becomes tedious.</p>
+
+    <h3>How to expand beyond one app</h3>
+    <p>Once you are comfortable with a single delivery app, you can ask Super to compare options across multiple services, such as checking both a grocery chain’s website and a delivery marketplace. Because Super operates the computer directly, it is not limited to one integration. The same computer-use cache principle applies: each successful path can be reused later, reducing future effort.</p>
+
+    <h2>Implementation checklist</h2>
+    <ul>
+      <li><strong>Define default addresses and payment methods.</strong> Make sure your preferred delivery address and payment option are clearly set and confirmed. This reduces the chance of errors and ensures that repeated orders through the computer-use cache behave consistently over time.</li>
+      <li><strong>Write down your common orders.</strong> List your usual grocery basket or favorite meal orders in plain language. This makes it easier to communicate clearly with the agent and to verify that the saved workflow matches your intent.</li>
+      <li><strong>Set substitution rules explicitly.</strong> Decide in advance how you want out-of-stock items handled. Clear rules prevent unnecessary pauses and reduce the need for real-time intervention during the order.</li>
+      <li><strong>Review the first run carefully.</strong> Treat the first successful order as a training run. Watch for small issues like tip defaults or delivery notes, because these details will be reused in future cached workflows.</li>
+      <li><strong>Confirm repeatability.</strong> Tell Super which orders should be reused and how often. This instruction is what turns a one-off automation into a durable computer-use cache entry.</li>
+      <li><strong>Revisit saved workflows periodically.</strong> Apps and menus change. Periodically re-run and confirm your saved orders to ensure they still reflect your preferences and current pricing realities.</li>
+    </ul>
+
+    <h2>Risks and limits</h2>
+    <ul>
+      <li><strong>UI changes can break automations.</strong> Delivery apps frequently update their interfaces. While Super’s approach is more resilient than brittle scripts, major redesigns may require a fresh run before a workflow can be cached again.</li>
+      <li><strong>Human confirmation is still required.</strong> Payments and addresses are sensitive. You should expect to confirm these details each time. Fully autonomous purchasing without oversight is not realistic or advisable today.</li>
+      <li><strong>Security trade-offs exist.</strong> Agents that can control computers expand the attack surface, as highlighted by recent security research. Using scoped permissions and reviewing actions remains essential.</li>
+      <li><strong>Availability and pricing fluctuate.</strong> An AI agent cannot guarantee that items will be in stock or prices will remain stable. The workflow helps manage effort, not market volatility.</li>
+    </ul>
+
+    <h2>FAQ</h2>
+    <h3>Can Super order from any food delivery app?</h3>
+    <p>Super can operate many common delivery and grocery apps because it uses real computer interaction rather than narrow integrations. That said, success depends on whether the app can be accessed through a browser or supported environment and whether you can review and confirm the order before payment.</p>
+
+    <h3>Is this different from Siri, ChatGPT, Gemini, or Grok?</h3>
+    <p>Voice assistants like Siri and conversational tools like ChatGPT, Gemini, and Grok are excellent for planning and recommendations. Super focuses more narrowly on actually operating apps and reusing a computer-use cache, which makes it better suited for repeated operational tasks like weekly food orders.</p>
+
+    <h3>What about other agent tools like Folk or Orchids?</h3>
+    <p>Folk and Orchids are part of the broader agent ecosystem and explore different automation approaches. Super’s distinguishing feature is its emphasis on durable computer-use workflows that improve with repetition rather than starting from scratch each time.</p>
+
+    <h3>Do I need to watch the agent the whole time?</h3>
+    <p>No. You can let Super handle the navigation and item selection, then step in at defined checkpoints to review the cart and confirm payment. This balance is what makes the workflow practical rather than stressful.</p>
+
+    <h3>Can this handle groceries as well as restaurant meals?</h3>
+    <p>Yes. In fact, groceries are where the computer-use cache shines the most, because weekly or biweekly orders are highly repetitive. Once saved, the agent can replay the same pattern with minimal effort.</p>
+
+    <h3>What’s the first step to trying this?</h3>
+    <p>The easiest way is to start with a single, low-stakes order from a familiar restaurant or store. Let Super place the order with you reviewing each step. Once you’re comfortable, you can expand to recurring orders and comparisons across apps.</p>
+
+    <h2>Sources</h2>
+    <ul>
+      <li><a href="https://www.cnbc.com/2026/06/11/doordash-lets-customers-use-photos-prompts-to-order-food.html">CNBC on DoorDash’s AI ordering push</a></li>
+      <li><a href="https://techcrunch.com/2026/06/11/doordashs-new-ai-chatbot-lets-you-order-with-prompts-and-photos/">TechCrunch on prompt-based food ordering</a></li>
+      <li><a href="https://www.searchenginejournal.com/google-gemini-can-now-control-your-computer-hackers-are-already-targeting-ai-agents/">Search Engine Journal on computer-use agent risks</a></li>
+      <li><a href="https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-computer-use-model/">Google on computer-use models</a></li>
+      <li><a href="https://www.anthropic.com/engineering/building-effective-agents">Anthropic on building effective agents</a></li>
+      <li><a href="https://www.bain.com/insights/online-grocery-pricing-for-both-humans-and-bots/">Bain & Company on online grocery economics</a></li>
+    </ul>
+  </article>
+
+  <section class="chapter shell">
+    <h2>Explore related Super use cases</h2>
+    <ul class="cluster-links">
+      <li><a href="https://app.getsupers.com/use-cases/order-food-with-ai/">Order food with AI</a></li>
+      <li><a href="https://app.getsupers.com/use-cases/book-rides-with-ai/">Book rides with AI</a></li>
+      <li><a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Text message AI assistant</a></li>
+      <li><a href="https://app.getsupers.com/use-cases/meta-display-ai-assistant/">Meta Display AI assistant</a></li>
+      <li><a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent to build websites</a></li>
+      <li><a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a></li>
+    </ul>
+  </section>
+
+  <section class="cta-band shell">
+    <h2>Let a personal AI agent handle your next order</h2>
+    <p>Super is built for people who want real work done — not just suggestions. Start with one order, keep confirmation in your hands, and let repetition do the rest.</p>
+    <a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Try Super now</a>
+  </section>
+
+</div>
+<script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+<script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="./app.js"></script>
+
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://app.getsupers.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Use cases", "item": "https://app.getsupers.com/use-cases/"},
+    {"@type": "ListItem", "position": 3, "name": "Order food with AI", "item": "https://app.getsupers.com/use-cases/order-food-with-ai/"}
+  ]
+}</script>
+
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to order food with a personal AI agent",
+  "step": [
+    {"@type": "HowToStep", "name": "Describe your order", "text": "Clearly describe the restaurant or store, items, preferences, and constraints so the agent can execute reliably."},
+    {"@type": "HowToStep", "name": "Let the agent operate the app", "text": "Allow the agent to navigate menus and forms while you remain available for confirmation."},
+    {"@type": "HowToStep", "name": "Review the cart", "text": "Check items, address, timing, and total before approving payment."},
+    {"@type": "HowToStep", "name": "Confirm and complete", "text": "Approve the order once details are correct."},
+    {"@type": "HowToStep", "name": "Save as repeatable", "text": "Tell the agent to save the successful run so it can be reused via the computer-use cache."}
+  ]
+}</script>
+
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Can Super order from any food delivery app?", "acceptedAnswer": {"@type": "Answer", "text": "Super can operate many delivery and grocery apps through real computer interaction, with user confirmation."}},
+    {"@type": "Question", "name": "Is this different from Siri or ChatGPT?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Super focuses on operating apps and reusing a computer-use cache for repeated workflows."}},
+    {"@type": "Question", "name": "Do I need to supervise every step?", "acceptedAnswer": {"@type": "Answer", "text": "You supervise confirmations, not every click."}}
+  ]
+}</script>
+</body>
+</html>

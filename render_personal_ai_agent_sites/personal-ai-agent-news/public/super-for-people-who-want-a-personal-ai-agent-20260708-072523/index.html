@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Super for people who want a personal AI agent</title>
+  <meta name="description" content="A focused landing page for people searching for a personal AI agent that can help with texts, browser tasks, follow-up, and published work.">
+  <link rel="canonical" href="https://kalshhunter.com/super-for-people-who-want-a-personal-ai-agent-20260708-072523/">
+  <meta property="og:title" content="Super for people who want a personal AI agent">
+  <meta property="og:description" content="Learn where Super fits for people evaluating personal AI agents that move beyond chat and into finished work.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kalshhunter.com/super-for-people-who-want-a-personal-ai-agent-20260708-072523/">
+  <style>
+    :root {
+      --ink: #11131a;
+      --muted: #5c6674;
+      --paper: #faf6ec;
+      --panel: #fffaf0;
+      --line: rgba(17, 19, 26, 0.12);
+      --green: #176d5a;
+      --blue: #274f8d;
+      --amber: #d19a32;
+      --night: #141821;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 8%, rgba(209, 154, 50, 0.2), transparent 30rem),
+        radial-gradient(circle at 90% 12%, rgba(23, 109, 90, 0.17), transparent 30rem),
+        linear-gradient(180deg, #fbf6eb 0%, #edf5f2 48%, #fbf6eb 100%);
+    }
+    a { color: inherit; }
+    .page { width: 100%; max-width: 100%; overflow-x: hidden; }
+    .nav {
+      position: sticky;
+      top: 16px;
+      z-index: 20;
+      width: min(1140px, calc(100% - 32px));
+      margin: 16px auto 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 14px 12px 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(250, 246, 236, 0.82);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 24px 70px rgba(17, 19, 26, 0.12);
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-weight: 850;
+      letter-spacing: 0;
+    }
+    .mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: conic-gradient(from 140deg, var(--green), var(--blue), var(--amber), var(--green));
+      box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.58);
+    }
+    .nav-links { display: flex; gap: 18px; color: var(--muted); font-size: 14px; }
+    .nav a { text-decoration: none; }
+    .nav-cta {
+      color: #fff;
+      background: var(--night);
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-weight: 840;
+    }
+    .hero {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 124px 0 112px;
+      text-align: center;
+    }
+    .eyebrow {
+      margin: 0 0 22px;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    h1 {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      font-size: clamp(3.1rem, 7vw, 6.6rem);
+      line-height: 0.92;
+      letter-spacing: 0;
+    }
+    .inline-image {
+      display: inline-block;
+      width: clamp(88px, 12vw, 154px);
+      height: clamp(38px, 5.2vw, 58px);
+      margin: 0 10px;
+      border-radius: 999px;
+      vertical-align: middle;
+      background: url("https://picsum.photos/seed/personal-ai-agent-super/520/200") center / cover;
+      filter: contrast(1.14) saturate(0.92);
+      box-shadow: 0 18px 48px rgba(17, 19, 26, 0.16);
+    }
+    .lead {
+      max-width: 790px;
+      margin: 30px auto 0;
+      color: #394250;
+      font-size: clamp(1.08rem, 1.9vw, 1.3rem);
+      line-height: 1.64;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 34px;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 20px;
+      border-radius: 999px;
+      border: 1px solid var(--night);
+      font-weight: 850;
+      text-decoration: none;
+    }
+    .primary { background: var(--night); color: #fff; }
+    .secondary { background: rgba(255, 255, 255, 0.72); color: var(--night); }
+    .hero-media {
+      width: min(1060px, calc(100% - 40px));
+      margin: -44px auto 0;
+      min-height: 430px;
+      border-radius: 34px;
+      padding: 24px;
+      display: flex;
+      align-items: flex-end;
+      background:
+        linear-gradient(180deg, rgba(20, 24, 33, 0.04), rgba(20, 24, 33, 0.78)),
+        url("https://picsum.photos/seed/agent-command-center/1600/900") center / cover;
+      box-shadow: 0 38px 110px rgba(17, 19, 26, 0.24);
+    }
+    .media-note {
+      width: min(650px, 100%);
+      border-radius: 24px;
+      padding: 24px;
+      color: #fff;
+      background: rgba(20, 24, 33, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(14px);
+    }
+    .media-note p { margin-bottom: 0; color: rgba(255, 255, 255, 0.74); line-height: 1.6; }
+    .section {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 128px 0;
+    }
+    h2 {
+      margin: 0 0 24px;
+      max-width: 900px;
+      font-size: clamp(2.35rem, 5vw, 4.9rem);
+      line-height: 0.98;
+      letter-spacing: 0;
+    }
+    .section-intro {
+      max-width: 780px;
+      margin: 0 0 42px;
+      color: var(--muted);
+      font-size: 1.15rem;
+      line-height: 1.72;
+    }
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-auto-flow: dense;
+      gap: 16px;
+    }
+    .tile {
+      min-height: 260px;
+      border-radius: 28px;
+      padding: 28px;
+      background: rgba(255, 255, 255, 0.76);
+      border: 1px solid var(--line);
+      box-shadow: 0 22px 72px rgba(40, 47, 58, 0.09);
+      overflow: hidden;
+    }
+    .tile h3 { margin: 0 0 12px; font-size: 1.55rem; }
+    .tile p, .tile li { color: #46515f; line-height: 1.64; }
+    .tile ul { margin-bottom: 0; padding-left: 20px; }
+    .span-2 { grid-column: span 2; }
+    .row-2 { grid-row: span 2; }
+    .dark { background: var(--night); color: #fff; }
+    .dark p, .dark li { color: rgba(255, 255, 255, 0.74); }
+    .photo {
+      color: #fff;
+      background:
+        linear-gradient(180deg, rgba(23, 109, 90, 0.14), rgba(20, 24, 33, 0.78)),
+        url("https://picsum.photos/seed/personal-agent-delegation/900/1100") center / cover;
+    }
+    .workflow {
+      display: grid;
+      grid-template-columns: 0.82fr 1.18fr;
+      gap: 34px;
+      align-items: start;
+    }
+    .sticky {
+      position: sticky;
+      top: 118px;
+      border-radius: 30px;
+      padding: 32px;
+      color: #fff;
+      background: var(--night);
+    }
+    .sticky p { color: rgba(255, 255, 255, 0.72); line-height: 1.68; }
+    .cards { display: grid; gap: 18px; }
+    .card, details {
+      padding: 28px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid var(--line);
+      box-shadow: 0 24px 76px rgba(17, 19, 26, 0.08);
+    }
+    .card h3 { margin: 0 0 10px; font-size: 1.58rem; }
+    .card p, details p { margin-bottom: 0; color: var(--muted); line-height: 1.68; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    summary { cursor: pointer; font-weight: 850; }
+    .final {
+      padding: 118px 0 64px;
+      color: #fff;
+      background:
+        radial-gradient(circle at 80% 10%, rgba(209, 154, 50, 0.22), transparent 28rem),
+        var(--night);
+    }
+    .final-inner { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    .final h2 { margin: 0; max-width: 980px; font-size: clamp(2.8rem, 6vw, 6rem); line-height: 0.95; }
+    .final p { max-width: 720px; color: rgba(255, 255, 255, 0.74); line-height: 1.7; font-size: 1.14rem; }
+    .footer-links {
+      margin-top: 70px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      color: rgba(255, 255, 255, 0.74);
+    }
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .workflow { grid-template-columns: 1fr; }
+      .bento, .grid-2 { grid-template-columns: 1fr; }
+      .span-2, .row-2 { grid-column: span 1; grid-row: span 1; }
+      .hero { padding-top: 90px; }
+      .section { padding: 92px 0; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="https://kalshhunter.com/"><span class="mark" aria-hidden="true"></span><span>Personal AI Agent News</span></a>
+      <div class="nav-links">
+        <a href="#fit">Fit</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <a class="nav-cta" href="https://getsupers.com/">Try Super</a>
+    </nav>
+
+    <header class="hero">
+      <p class="eyebrow">Niche landing page for personal AI agent buyers</p>
+      <h1>Super for people who want a <span class="inline-image" aria-hidden="true"></span> personal AI agent</h1>
+      <p class="lead">If you are searching for a personal AI agent, you probably do not want another blank chat window. You want an assistant that can start from a message, remember the request, use tools, and come back with work that is ready to review.</p>
+      <div class="actions">
+        <a class="button primary" href="https://getsupers.com/">Start with Super</a>
+        <a class="button secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">See text-message AI</a>
+      </div>
+    </header>
+
+    <aside class="hero-media">
+      <div class="media-note">
+        <strong>What this page is for</strong>
+        <p>A buyer-focused guide for people comparing personal AI agents, SMS assistants, browser agents, and tools that can turn a request into a finished step.</p>
+      </div>
+    </aside>
+
+    <section class="section" id="fit">
+      <h2>When Super fits better than a generic chatbot</h2>
+      <p class="section-intro">A generic chatbot can help you think. A personal AI agent should help you move. Super is most useful when the task begins as a short request and needs follow-through across messages, web pages, or documents.</p>
+      <div class="bento">
+        <article class="tile span-2 dark">
+          <h3>You want delegation, not just conversation</h3>
+          <p>Super is a stronger fit when the user can describe the outcome: reply to this person, research this option, publish this page, check this source, or remind me after the next step.</p>
+        </article>
+        <article class="tile row-2 photo">
+          <h3>Personal work rarely stays in one app</h3>
+          <p>The useful assistant has to cross the boundary between messages, browser context, and final response.</p>
+        </article>
+        <article class="tile">
+          <h3>Text-first requests</h3>
+          <p>Use <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text message AI assistant</a> workflows when the request starts in SMS or iMessage.</p>
+        </article>
+        <article class="tile">
+          <h3>Browser-backed tasks</h3>
+          <p>Use <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a> when the assistant needs to check pages, forms, or web context.</p>
+        </article>
+        <article class="tile span-2">
+          <h3>Signs you need an agent</h3>
+          <ul>
+            <li>The request has a clear finish line.</li>
+            <li>The assistant needs to ask for one missing detail.</li>
+            <li>The task touches a website, document, message, or calendar.</li>
+            <li>You want a concise update, not a long brainstorm.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="workflow">
+      <div class="workflow">
+        <div class="sticky">
+          <h2>The Super-style workflow</h2>
+          <p>Think of the assistant as an operator: intake, clarify, act, verify, and report back.</p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <h3>Capture the request</h3>
+            <p>The best personal AI agent keeps the user’s original wording, the intended outcome, and the current blocker in one place.</p>
+          </article>
+          <article class="card">
+            <h3>Ask narrowly</h3>
+            <p>Instead of dumping a form on the user, it should ask the one thing it needs to continue.</p>
+          </article>
+          <article class="card">
+            <h3>Use the right surface</h3>
+            <p>Some tasks belong in messages. Some require a browser. Some require a generated artifact, such as a page from <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent website building</a>.</p>
+          </article>
+          <article class="card">
+            <h3>Return with receipts</h3>
+            <p>The final update should say what changed, what source was checked, and what the user needs to approve.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Useful starting points</h2>
+      <p class="section-intro">These are the most relevant Super paths for personal AI agent search intent.</p>
+      <div class="grid-2">
+        <article class="card">
+          <h3>Super homepage</h3>
+          <p><a href="https://getsupers.com/">getsupers.com</a> is the main destination for people evaluating Super as a personal AI assistant.</p>
+        </article>
+        <article class="card">
+          <h3>Text message AI assistant</h3>
+          <p><a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">app.getsupers.com/use-cases/text-message-ai-assistant</a> is the right next page for SMS and iMessage workflows.</p>
+        </article>
+        <article class="card">
+          <h3>Computer-use cache</h3>
+          <p><a href="https://app.getsupers.com/use-cases/computer-use-cache/">app.getsupers.com/use-cases/computer-use-cache</a> explains the browser-backed work layer.</p>
+        </article>
+        <article class="card">
+          <h3>AI agent website building</h3>
+          <p><a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">app.getsupers.com/use-cases/ai-agent-build-websites</a> shows how agent work can end in a published artifact.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <h2>FAQ</h2>
+      <div class="grid-2">
+        <details open>
+          <summary>Is Super a personal AI agent?</summary>
+          <p>Super fits the personal AI agent category when the job is practical delegation: text intake, web work, follow-up, and concise reporting.</p>
+        </details>
+        <details>
+          <summary>Who is this best for?</summary>
+          <p>Busy people, small teams, creators, recruiters, operators, and anyone who gets requests through messages and needs help moving them forward.</p>
+        </details>
+        <details>
+          <summary>How is this different from ChatGPT?</summary>
+          <p>ChatGPT is a strong general-purpose assistant. Super is better framed for workflows where the user wants the task to leave the chat box and become action.</p>
+        </details>
+        <details>
+          <summary>Where should I start?</summary>
+          <p>Start with <a href="https://getsupers.com/">Super</a>, then choose the use case that matches your first recurring task.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="final">
+      <div class="final-inner">
+        <h2>A useful personal AI agent should make the next step easier to approve.</h2>
+        <p>Super is built around the practical layer: message intake, browser-backed work, generated artifacts, and follow-up that does not disappear after the first answer.</p>
+        <div class="actions">
+          <a class="button primary" href="https://getsupers.com/">Try Super</a>
+          <a class="button secondary" href="https://app.getsupers.com/use-cases/computer-use-cache/">See computer-use workflows</a>
+        </div>
+        <div class="footer-links">
+          <a href="https://kalshhunter.com/">Personal AI Agent News</a>
+          <a href="https://getsupers.com/">Super</a>
+          <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Text message AI</a>
+          <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">Website-building agents</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>
+    const reveal = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.animate(
+          [
+            { opacity: 0, transform: "translateY(26px) scale(0.985)" },
+            { opacity: 1, transform: "translateY(0) scale(1)" }
+          ],
+          { duration: 720, easing: "cubic-bezier(.2,.8,.2,1)", fill: "forwards" }
+        );
+        reveal.unobserve(entry.target);
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll(".tile, .card, details").forEach((node) => reveal.observe(node));
+  </script>
+</body>
+</html>

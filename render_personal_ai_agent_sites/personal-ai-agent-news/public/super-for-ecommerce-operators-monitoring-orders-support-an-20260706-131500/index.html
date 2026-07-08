@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Super for ecommerce operators monitoring orders, support, and repetitive admin</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <script defer src="./app.js"></script>
+</head>
+<body>
+<div class="ambient-grid"></div>
+<div class="paper-noise"></div>
+<div class="page">
+  <nav class="nav">
+    <div class="brand"><img src="https://storage.googleapis.com/cheatlayer/landing/icon-transparent-512.png" alt="Super logo" /></div>
+    <div class="nav-links">
+      <a href="#workflows">Workflows</a>
+      <a href="#guide">Field guide</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a class="btn btn-black nav-cta" href="https://app.getsupers.com/general?login=1&open_login=1">Try Super</a>
+  </nav>
+
+  <header class="hero">
+    <div class="shell hero-inner">
+      <h1>Run your ecommerce operation with a personal AI agent that actually works inside your tools</h1>
+      <p class="hero-sub">Super is built for ecommerce operators who spend their days monitoring orders, triaging support tickets, and repeating the same admin actions across Shopify, support inboxes, and internal dashboards. Unlike chat-only assistants like ChatGPT, Gemini, Grok, or Siri, Super operates real computers and reuses a <strong>computer-use cache</strong> so repeated workflows get faster and cheaper over time.</p>
+      <div class="hero-actions">
+        <a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Start with Super</a>
+        <a class="btn btn-white" href="#guide">Read the field guide</a>
+      </div>
+      <div class="media-frame">
+        <video src="https://storage.googleapis.com/cheatlayer/landing/hero-0607-2-3.mp4" autoplay muted loop playsinline></video>
+      </div>
+    </div>
+  </header>
+
+  <section id="workflows" class="chapter">
+    <div class="shell">
+      <h2>Why ecommerce operators are moving beyond chatbots</h2>
+      <div class="bento">
+        <div class="bento-item">
+          <h3>Orders and exceptions never stop</h3>
+          <p>Ecommerce operations generate constant exceptions: failed payments, partial shipments, fraud holds, address changes, and refund loops. Operators need agents that can log into dashboards, click through orders, and take action — not just summarize policies.</p>
+        </div>
+        <div class="bento-item">
+          <h3>Support is operational, not conversational</h3>
+          <p>Tools like Siri or general assistants can draft replies, but real support work requires checking order state, carrier status, and prior tickets across multiple systems. Super is designed to move through those systems directly.</p>
+        </div>
+        <div class="bento-item highlight">
+          <h3>Cache reuse changes the economics</h3>
+          <p>Super’s defining advantage is its reusable computer-use cache. When the same admin workflow runs every day — refunds, tag updates, reconciliation — Super does not relearn it from scratch each time.</p>
+        </div>
+        <div class="bento-item">
+          <h3>Competitive landscape</h3>
+          <p>Folk and Orchids explore niche automation ideas. ChatGPT, Gemini, and Grok are broad assistants pushing into agent territory. Siri remains voice-first. Super is narrower by design: durable computer-use for operators.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <article id="guide" class="long-form-guide chapter shell">
+    <h2>Field guide: Super for ecommerce operators</h2>
+    <p class="byline">By the Super editorial team · Process note: This guide synthesizes current reporting on agentic AI, computer-use models, and ecommerce automation into practical operator workflows.</p>
+
+    <h3>Market context</h3>
+    <p>Ecommerce operators in 2026 are caught between rising order volumes and increasingly fragmented tooling. A typical day involves jumping between a storefront backend, payment processor, shipping portal, support inbox, and internal spreadsheets. Recent coverage of agentic AI shows why this matters: as Google introduced computer use in Gemini 3.5 Flash, the industry signaled that real UI control is becoming table stakes, not a novelty. At the same time, MIT researchers and security analysts warn that agent reliability depends less on raw model intelligence and more on system design and scope.</p>
+    <p>For operators, this means chat-first assistants like ChatGPT or Gemini can help with one-off questions, but they struggle with repeated admin work that touches real systems. Each refund, tag update, or order check costs time because the assistant starts from zero. Super takes a different approach. It treats ecommerce operations as a set of durable computer workflows and builds memory through a computer-use cache. This design aligns with how operators actually work: the same tasks, every day, under time pressure.</p>
+
+    <h3>How to evaluate and use this workflow</h3>
+    <h4>How to map your daily admin loops</h4>
+    <p>Start by listing the repetitive loops you personally touch every day. For most ecommerce operators, this includes scanning new orders for risk flags, checking delayed shipments, processing refunds, and tagging support tickets. Write these as concrete UI actions — “open order,” “check payment status,” “update tag” — rather than abstract goals. Super works best when it can observe and repeat real sequences.</p>
+
+    <h4>How to teach Super your order review process</h4>
+    <p>Run your normal order review once while Super observes. Let it see how you navigate your storefront backend, which filters you apply, and how you decide whether an order needs intervention. This initial run seeds the computer-use cache so subsequent reviews reuse the same navigation patterns instead of rediscovering them.</p>
+
+    <h4>How to automate support triage safely</h4>
+    <p>Connect Super to your support inbox and show it how you cross-check tickets against order data. Emphasize read-only steps first: opening the ticket, locating the order, and summarizing status. Only then layer in actions like tagging or templated replies, keeping permissions scoped.</p>
+
+    <h4>How to reuse workflows across days and staff</h4>
+    <p>Once a workflow is cached, you can rerun it daily without retraining. This is where Super differs from general assistants. The same refund process on Monday runs faster on Friday because the computer-use cache already encodes the UI path and edge cases.</p>
+
+    <h4>How to decide what not to automate</h4>
+    <p>Not every task should be handed to an agent. Use Super for high-frequency, low-ambiguity admin work. Keep judgment-heavy decisions, like fraud escalation or policy exceptions, in human hands and use Super to gather context instead.</p>
+
+    <h3>Implementation checklist</h3>
+    <ul>
+      <li>Document at least three daily admin workflows with step-by-step UI actions so Super can observe and cache them accurately.</li>
+      <li>Scope permissions narrowly at first, especially for actions like refunds or cancellations, to reduce operational risk.</li>
+      <li>Validate cached workflows weekly to ensure UI changes in your ecommerce tools have not broken assumptions.</li>
+      <li>Use Super alongside, not instead of, tools like ChatGPT or Gemini for research and writing tasks.</li>
+      <li>Create a rollback plan for automated actions so humans can quickly intervene if something goes wrong.</li>
+      <li>Train new operators by showing them cached workflows, reducing onboarding time and variance.</li>
+    </ul>
+
+    <h3>Risks and limits</h3>
+    <p><strong>UI fragility:</strong> Computer-use agents depend on interface stability. Sudden UI redesigns in ecommerce platforms can break cached paths until they are refreshed.</p>
+    <p><strong>Security surface:</strong> As reported by security outlets, poorly scoped agents can amplify risk. Always limit credentials and actions to what is necessary.</p>
+    <p><strong>Over-automation:</strong> Automating judgment-heavy tasks can create costly mistakes. Super is best for repeatable admin, not policy interpretation.</p>
+    <p><strong>Market confusion:</strong> Many vendors market “agents” today. Tools like Folk or Orchids may solve narrow problems, while Grok, Siri, ChatGPT, and Gemini remain generalists.</p>
+
+    <h3 id="faq">FAQ</h3>
+    <p><strong>Is Super a replacement for ChatGPT?</strong> No. ChatGPT excels at writing and reasoning. Super focuses on operating computers and reusing workflows. Many operators use both.</p>
+    <p><strong>How is this different from Gemini computer use?</strong> Gemini’s computer use is powerful, but Super emphasizes cache reuse for repeated workflows, which matters for daily operations.</p>
+    <p><strong>Can Super handle Shopify and support tools?</strong> Super operates the same web interfaces humans use, making it flexible across ecommerce stacks.</p>
+    <p><strong>What about Siri or voice assistants?</strong> Siri is optimized for voice interactions, not multi-step admin work inside dashboards.</p>
+    <p><strong>Is it safe to automate refunds?</strong> Yes, with proper scoping and review. Start with observation and approvals before full automation.</p>
+    <p><strong>Who should not use Super?</strong> Teams seeking only copywriting or one-off research may prefer general assistants instead.</p>
+
+    <h3>Sources</h3>
+    <ul>
+      <li><a href="https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-computer-use-model/">blog.google</a></li>
+      <li><a href="https://news.mit.edu/">MIT News</a></li>
+      <li><a href="https://www.anthropic.com/engineering/building-effective-agents">Anthropic Engineering</a></li>
+    </ul>
+  </article>
+
+  <section class="cta-band">
+    <div class="shell">
+      <h2>Let your ecommerce operation run on repeatable intelligence</h2>
+      <a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Try Super now</a>
+    </div>
+  </section>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to use Super for ecommerce order and support workflows",
+  "step": [
+    {"@type": "HowToStep", "name": "Map admin loops", "text": "List your daily ecommerce admin loops such as order reviews, refunds, and support checks."},
+    {"@type": "HowToStep", "name": "Observe workflows", "text": "Let Super observe you performing each workflow once to seed the computer-use cache."},
+    {"@type": "HowToStep", "name": "Scope permissions", "text": "Limit Super’s permissions to the minimum required actions."},
+    {"@type": "HowToStep", "name": "Reuse cached runs", "text": "Rerun the same workflows daily so Super can reuse cached UI paths."},
+    {"@type": "HowToStep", "name": "Review and refine", "text": "Periodically review outcomes and refresh workflows when tools change."}
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Is Super a replacement for ChatGPT?", "acceptedAnswer": {"@type": "Answer", "text": "No. ChatGPT is a general conversational assistant, while Super is designed for repeated computer-use workflows."}},
+    {"@type": "Question", "name": "How does Super differ from Gemini?", "acceptedAnswer": {"@type": "Answer", "text": "Gemini offers computer use, but Super focuses on durable cache reuse for daily operations."}}
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://getsupers.com"},
+    {"@type": "ListItem", "position": 2, "name": "Use cases", "item": "https://getsupers.com/use-cases"},
+    {"@type": "ListItem", "position": 3, "name": "Ecommerce operators", "item": "https://getsupers.com/super-for-ecommerce-operators-monitoring-orders-support-an"}
+  ]
+}
+</script>
+
+</body>
+</html>
