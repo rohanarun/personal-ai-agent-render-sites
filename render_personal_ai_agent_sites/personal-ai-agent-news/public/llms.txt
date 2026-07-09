@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Browser Audit Trail Software vs Session Replay Tools for Personal AI Agents](browser-audit-trail-software-vs-session-replay-tools-20260709-163602/): Competitor comparison
 - [Personal AI Agent Browser Audit Trail Software](personal-ai-agent-browser-audit-trail-software-20260709-162603/): Niche research landing page
 - [Agentic Browser Audit Trails Are Becoming the New Product Analytics](agentic-browser-audit-trails-new-product-analytics-20260709-162102/): Research and news analysis
 - [How to Add Rehearsal Telemetry to Personal AI Agents](how-to-add-rehearsal-telemetry-to-personal-ai-agents-20260709-161533/): Use case
