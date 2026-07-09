@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Agent Launch Room Software for AI-Built Sites](agent-launch-room-software-for-ai-built-sites-20260709-102731/): Niche research landing page
 - [Personal AI Agents Are Moving from Session Replay to Evidence Rooms](personal-ai-agents-are-moving-from-session-replay-to-evidence-rooms-20260709-102231/): Research and news analysis
 - [How to Build an Agent Evidence Room for Website Launches](how-to-build-an-agent-evidence-room-for-website-launches-20260709-101731/): Use case
 - [Agent Evidence Rooms vs Session Replay Tools](agent-evidence-rooms-vs-session-replay-tools-20260709-100731/): Competitor comparison
