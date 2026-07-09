@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Personal AI Agents Are Moving Toward Decision Replay</title>
+  <meta name="description" content="A research brief on why personal AI agents need decision replay: compact records that show what the agent saw, chose, skipped, and remembered before acting.">
+  <link rel="canonical" href="https://kalshhunter.com/personal-ai-agent-decision-replay-20260709-021000/">
+  <meta property="og:title" content="Personal AI Agents Are Moving Toward Decision Replay">
+  <meta property="og:description" content="The next trust layer for personal AI agents is not more chat history. It is decision replay.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://kalshhunter.com/personal-ai-agent-decision-replay-20260709-021000/">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap');
+    :root {
+      --bg: #0b0d12;
+      --ink: #f6f0e5;
+      --muted: #aeb2bc;
+      --line: rgba(246,240,229,.17);
+      --panel: rgba(246,240,229,.07);
+      --gold: #ffd66b;
+      --mint: #9cf3c8;
+      --coral: #ff8f7b;
+      --blue: #8fb7ff;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Outfit, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 16% 12%, rgba(255,214,107,.2), transparent 31rem),
+        radial-gradient(circle at 86% 22%, rgba(143,183,255,.19), transparent 28rem),
+        radial-gradient(circle at 58% 82%, rgba(156,243,200,.12), transparent 31rem),
+        linear-gradient(180deg, #11141d 0%, var(--bg) 38%, #08090c 100%);
+      overflow-x: hidden;
+    }
+    body:after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .33;
+      background-image: radial-gradient(rgba(255,255,255,.22) .7px, transparent .7px);
+      background-size: 5px 5px;
+      mix-blend-mode: overlay;
+      z-index: 0;
+    }
+    a { color: inherit; }
+    main { position: relative; z-index: 1; overflow-x: hidden; width: 100%; max-width: 100%; }
+    .wrap { width: min(1200px, calc(100vw - 40px)); margin: 0 auto; }
+    .nav {
+      position: fixed;
+      z-index: 20;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1160px, calc(100vw - 32px));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 14px 12px 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(9, 11, 16, .7);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 24px 90px rgba(0,0,0,.35);
+    }
+    .brand { font-weight: 900; letter-spacing: 0; }
+    .navlinks { display: flex; gap: 22px; color: var(--muted); font-size: 14px; }
+    .navlinks a { text-decoration: none; }
+    .nav-cta {
+      text-decoration: none;
+      padding: 10px 16px;
+      background: var(--ink);
+      color: #0b0d12;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 14px;
+    }
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      align-items: center;
+      padding: 132px 0 92px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(340px, .86fr);
+      gap: clamp(34px, 6vw, 90px);
+      align-items: center;
+    }
+    h1 {
+      margin: 0;
+      max-width: min(1060px, 94vw);
+      font-size: clamp(3rem, 5vw, 5.6rem);
+      line-height: .93;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .inline-img {
+      display: inline-block;
+      width: clamp(76px, 9vw, 128px);
+      height: clamp(34px, 4vw, 48px);
+      margin: 0 .12em;
+      border-radius: 999px;
+      vertical-align: middle;
+      background-image: url('https://picsum.photos/seed/decision-replay-strip/520/220');
+      background-size: cover;
+      background-position: center;
+      filter: grayscale(.15) contrast(1.2) saturate(.82);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.3);
+    }
+    .lede {
+      color: var(--muted);
+      max-width: 690px;
+      margin: 26px 0 0;
+      font-size: clamp(1.08rem, 1.45vw, 1.32rem);
+      line-height: 1.58;
+    }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 900;
+      transition: transform .5s ease, border-color .5s ease;
+    }
+    .btn:hover { transform: translateY(-3px); }
+    .btn.primary { background: var(--gold); color: #101016; }
+    .btn.secondary { background: rgba(255,255,255,.045); color: #fff; border: 1px solid rgba(246,240,229,.32); }
+    .hero-media {
+      position: relative;
+      min-height: 590px;
+      border-radius: 34px;
+      border: 1px solid var(--line);
+      overflow: hidden;
+      background-image: linear-gradient(to bottom, rgba(0,0,0,.03), rgba(0,0,0,.62)), url('https://picsum.photos/seed/agent-decision-room/1100/1320');
+      background-size: cover;
+      background-position: center;
+      filter: grayscale(.1) contrast(1.12);
+      box-shadow: 0 44px 120px rgba(0,0,0,.43);
+    }
+    .hero-media:after {
+      content: "saw -> chose -> skipped -> remembered";
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(5,6,9,.62);
+      border: 1px solid rgba(255,255,255,.18);
+      color: rgba(246,240,229,.84);
+      font-weight: 800;
+    }
+    section { padding: 152px 0; }
+    .marquee {
+      overflow: hidden;
+      border-block: 1px solid var(--line);
+      background: rgba(246,240,229,.04);
+      padding: 18px 0;
+    }
+    .track {
+      display: flex;
+      gap: 34px;
+      width: max-content;
+      animation: move 36s linear infinite;
+      color: rgba(246,240,229,.72);
+      font-weight: 900;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    @keyframes move { to { transform: translateX(-50%); } }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 36px;
+      margin-bottom: 52px;
+    }
+    h2 {
+      margin: 0;
+      max-width: 850px;
+      font-size: clamp(2.4rem, 4.4vw, 5rem);
+      line-height: .96;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .section-head p {
+      max-width: 420px;
+      color: var(--muted);
+      line-height: 1.58;
+      margin: 0;
+      font-size: 1.04rem;
+    }
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-flow: dense;
+      gap: 16px;
+    }
+    .card {
+      position: relative;
+      overflow: hidden;
+      min-height: 270px;
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: var(--panel);
+      transition: transform .7s ease, border-color .7s ease;
+    }
+    .card:hover { transform: translateY(-6px); border-color: rgba(255,214,107,.5); }
+    .span7 { grid-column: span 7; }
+    .span5 { grid-column: span 5; }
+    .third { grid-column: span 4; }
+    .half { grid-column: span 6; }
+    .card h3 { margin: 0 0 16px; font-size: clamp(1.5rem, 2.2vw, 2.35rem); line-height: 1.04; letter-spacing: 0; }
+    .card p, .card li { color: var(--muted); line-height: 1.64; font-size: 1rem; }
+    .card ul { margin: 0; padding-left: 18px; }
+    .media-card {
+      min-height: 380px;
+      background-image: linear-gradient(to bottom, rgba(0,0,0,.08), rgba(0,0,0,.68)), url('https://picsum.photos/seed/replay-console/1200/820');
+      background-size: cover;
+      background-position: center;
+      filter: grayscale(.08) contrast(1.15);
+    }
+    .pin-layout {
+      display: grid;
+      grid-template-columns: .75fr 1.25fr;
+      gap: 72px;
+      align-items: start;
+    }
+    .pin-title { position: sticky; top: 136px; }
+    .stack { display: grid; gap: 24px; }
+    .stack-card {
+      min-height: 330px;
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      background: rgba(246,240,229,.065);
+      padding: 34px;
+      box-shadow: 0 30px 80px rgba(0,0,0,.28);
+    }
+    .stack-card h3 { margin: 0 0 18px; font-size: 2rem; letter-spacing: 0; }
+    .stack-card p { color: var(--muted); line-height: 1.68; font-size: 1.05rem; margin: 0; }
+    .quote-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .quote {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.045);
+      border-radius: 26px;
+      padding: 26px;
+      min-height: 260px;
+    }
+    .avatar {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      margin-bottom: 18px;
+      background-size: cover;
+      background-position: center;
+      filter: grayscale(.15) contrast(1.12);
+    }
+    .quote:nth-child(1) .avatar { background-image: url('https://picsum.photos/seed/operator-portrait-one/200/200'); }
+    .quote:nth-child(2) .avatar { background-image: url('https://picsum.photos/seed/operator-portrait-two/200/200'); }
+    .quote:nth-child(3) .avatar { background-image: url('https://picsum.photos/seed/operator-portrait-three/200/200'); }
+    .quote p { color: var(--muted); line-height: 1.58; margin: 0; }
+    .quote strong { display: block; color: var(--ink); margin-bottom: 10px; }
+    .essay {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      color: var(--muted);
+      line-height: 1.74;
+      font-size: 1.06rem;
+    }
+    .essay strong { color: var(--ink); }
+    .sources, .faq {
+      border-top: 1px solid var(--line);
+      padding-top: 34px;
+      display: grid;
+      grid-template-columns: .65fr 1.35fr;
+      gap: 44px;
+    }
+    .sources ul, .faq-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 16px; }
+    .sources li, .faq-item {
+      padding: 20px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.045);
+      color: var(--muted);
+      line-height: 1.56;
+    }
+    .faq-item h3 { margin: 0 0 8px; color: var(--ink); letter-spacing: 0; }
+    .final { text-align: center; padding-bottom: 82px; }
+    .final-box {
+      border: 1px solid rgba(246,240,229,.2);
+      border-radius: 42px;
+      padding: clamp(46px, 8vw, 106px);
+      background:
+        radial-gradient(circle at 18% 18%, rgba(255,214,107,.22), transparent 32rem),
+        radial-gradient(circle at 82% 28%, rgba(143,183,255,.2), transparent 30rem),
+        rgba(255,255,255,.06);
+    }
+    .final p { max-width: 720px; color: var(--muted); margin: 24px auto 0; line-height: 1.62; }
+    footer { padding: 34px 0 52px; color: rgba(246,240,229,.58); }
+    footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    footer a { text-decoration: none; color: rgba(246,240,229,.76); }
+    @media (max-width: 880px) {
+      .navlinks { display: none; }
+      .hero-grid, .pin-layout, .essay, .sources, .faq, .quote-row { grid-template-columns: 1fr; }
+      .hero-media { min-height: 410px; }
+      .span7, .span5, .third, .half { grid-column: span 12; }
+      section { padding: 106px 0; }
+      .section-head { display: block; }
+      .section-head p { margin-top: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <nav class="nav" aria-label="Primary navigation">
+      <div class="brand">Kalsh Hunter</div>
+      <div class="navlinks">
+        <a href="#brief">Brief</a>
+        <a href="#replay">Replay</a>
+        <a href="#checklist">Checklist</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <a class="nav-cta" href="https://getsupers.com/">Explore Super</a>
+    </nav>
+
+    <header class="hero wrap">
+      <div class="hero-grid">
+        <div>
+          <h1>Personal AI agents need decision <span class="inline-img" aria-hidden="true"></span> replay, not longer chat history</h1>
+          <p class="lede">As personal AI agents graduate from answering questions to taking action, users need a compact way to inspect why an agent acted. Decision replay is the emerging trust layer: a readable record of what the agent saw, chose, skipped, and remembered before it moved.</p>
+          <div class="cta-row">
+            <a class="btn primary" href="#brief">Read the research brief</a>
+            <a class="btn secondary" href="https://app.getsupers.com/use-cases/computer-use-cache/">See cached computer-use context</a>
+          </div>
+        </div>
+        <div class="hero-media gsap-image" role="img" aria-label="Decision replay console for a personal AI agent"></div>
+      </div>
+    </header>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="track">
+        <span>decision replay</span><span>source trail</span><span>skipped options</span><span>approval memory</span><span>resume checkpoint</span><span>human trust</span><span>decision replay</span><span>source trail</span><span>skipped options</span><span>approval memory</span><span>resume checkpoint</span><span>human trust</span>
+      </div>
+    </div>
+
+    <section id="brief" class="wrap">
+      <div class="section-head">
+        <h2>The personal AI agent market is running into a trust visibility problem.</h2>
+        <p>Chat transcripts show what was said. Audit logs show what happened. Decision replay explains why the agent believed a specific action was the right next move.</p>
+      </div>
+      <div class="research-grid">
+        <article class="card span7">
+          <h3>Decision replay compresses the reasoning context into an inspectable artifact.</h3>
+          <p>The point is not to expose hidden chain-of-thought or overwhelm the user with raw prompts. A useful replay shows the user-facing decision model: the goal, relevant evidence, constraints, rejected alternatives, tool outcomes, approval state, and the memory update the agent carried forward.</p>
+          <p>This matters for personal AI agents because the same assistant may text a customer, browse a site, buy lunch, summarize a meeting, or build a page. Super's broader <a href="https://getsupers.com/">personal AI assistant</a> positioning sits in that action-heavy zone, where replay can become more valuable than a plain chat archive.</p>
+        </article>
+        <article class="card span5 media-card gsap-image">
+          <h3>Replay is a product feature, not an internal debug trace.</h3>
+          <p>It should be short, visual, source-linked, and easy to scan after the agent finishes a meaningful task.</p>
+        </article>
+        <article class="card third">
+          <h3>What it saw</h3>
+          <ul>
+            <li>Source pages</li>
+            <li>User messages</li>
+            <li>Tool responses</li>
+            <li>Calendar or inbox context</li>
+          </ul>
+        </article>
+        <article class="card third">
+          <h3>What it chose</h3>
+          <ul>
+            <li>Recommended action</li>
+            <li>Confidence boundary</li>
+            <li>Approval result</li>
+            <li>Execution checkpoint</li>
+          </ul>
+        </article>
+        <article class="card third">
+          <h3>What it skipped</h3>
+          <ul>
+            <li>Rejected options</li>
+            <li>Unsafe routes</li>
+            <li>Missing evidence</li>
+            <li>Deferred tasks</li>
+          </ul>
+        </article>
+        <article class="card half">
+          <h3>Replay helps users correct agent behavior.</h3>
+          <p>If a user only sees the final output, their correction is vague. If they see the decision replay, they can say, "that source was weak," "never use that assumption again," or "next time skip approval for this exact case."</p>
+        </article>
+        <article class="card half">
+          <h3>Replay helps agents resume work.</h3>
+          <p>A replay artifact is also a restart packet. When a workflow pauses, moves channels, or recovers from failure, the agent can reload the decision state instead of rereading an entire conversation.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="replay" class="wrap">
+      <div class="pin-layout">
+        <div class="pin-title">
+          <h2>Four replay layers are becoming table stakes.</h2>
+          <p class="lede">The replay should be concise for the human and structured for the agent. These layers keep it from turning into another noisy activity feed.</p>
+        </div>
+        <div class="stack">
+          <article class="stack-card">
+            <h3>Evidence layer</h3>
+            <p>Show the handful of sources or signals that actually influenced the action. In browser workflows, cached pages, tool outputs, and screenshots can keep the user from wondering what the agent was looking at. This overlaps with the pattern behind Super's <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a>.</p>
+          </article>
+          <article class="stack-card">
+            <h3>Choice layer</h3>
+            <p>State the decision in plain language. A useful replay does not say "the model inferred." It says, "the agent chose to send a follow-up because the customer asked for pricing, the last reply was four days ago, and the draft stayed within the approved template."</p>
+          </article>
+          <article class="stack-card">
+            <h3>Boundary layer</h3>
+            <p>Record what the agent refused, skipped, or escalated. This is often the most trust-building section because it proves the agent recognized limits instead of silently guessing through them.</p>
+          </article>
+          <article class="stack-card">
+            <h3>Memory layer</h3>
+            <p>Explain what the agent will remember for next time. If the user approved a one-off action, the replay should say that. If the approval becomes a reusable preference, that should be explicit too.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <div class="section-head">
+        <h2>Operators will not trust invisible autonomy.</h2>
+        <p>Replay gives different users the same reassurance: the agent can move fast, but its choices remain inspectable.</p>
+      </div>
+      <div class="quote-row">
+        <article class="quote">
+          <div class="avatar" aria-hidden="true"></div>
+          <strong>For founders</strong>
+          <p>Replay turns follow-up automation into a reviewable sales loop: why this person, why this message, why now, and what changed after the reply.</p>
+        </article>
+        <article class="quote">
+          <div class="avatar" aria-hidden="true"></div>
+          <strong>For personal operators</strong>
+          <p>Replay makes daily delegation easier because the assistant can prove which facts it used and which tasks it intentionally deferred.</p>
+        </article>
+        <article class="quote">
+          <div class="avatar" aria-hidden="true"></div>
+          <strong>For product teams</strong>
+          <p>Replay becomes the feedback surface for policy tuning, approval reduction, and safer expansion into higher-consequence work.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <div class="essay">
+        <div>
+          <p><strong>Why this is different from logs:</strong> a log is chronological. A replay is explanatory. Logs are useful when something breaks; replays are useful when a human wants to understand or correct normal operation. That distinction matters because personal AI agents increasingly run small workflows where nothing technically fails, but the user still needs confidence that the agent made a reasonable call.</p>
+          <p>For example, an agent that sends a text follow-up should be able to show the original request, the chosen tone, the deadline, the relevant customer context, and the approval state. The replay should not require the user to scroll through every prior message. For text-native workflows, Super's <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text message AI assistant</a> use case points toward the channel where compact replay could be especially valuable.</p>
+          <p>Decision replay also creates a bridge between user trust and agent improvement. The user can correct the replay in the same terms the agent uses to act: source quality, timing, permission, tone, and memory scope.</p>
+        </div>
+        <div>
+          <p><strong>Why this matters for website and browser agents:</strong> autonomous web work needs resumability. If an agent builds a landing page, researches a market, or compares tools, the user should be able to inspect the brief, sources, design decisions, publication state, and skipped alternatives. Super's <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent website-building</a> use case is a good example of work where a replay record can turn "the agent made a page" into "the agent made these choices for these reasons."</p>
+          <p>The market pressure is clear: as agents move from chat to action, plain chat history becomes less useful. Users need artifacts that are dense, structured, and connected to outcomes. Decision replay is one of those artifacts.</p>
+          <p>Teams building personal AI agents should treat replay as a first-class product surface early. It is easier to add friendly summaries on top of structured decision records than to reconstruct decision records from unstructured transcripts later.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="checklist" class="wrap">
+      <div class="sources">
+        <div><h2>Replay checklist</h2></div>
+        <ul>
+          <li><strong>Keep it user-facing.</strong> Summarize the decision model without exposing raw hidden reasoning or noisy internal traces.</li>
+          <li><strong>Link every decisive source.</strong> A replay without evidence is just another generated summary.</li>
+          <li><strong>Record skipped paths.</strong> Users trust agents more when they can see what the agent chose not to do.</li>
+          <li><strong>Attach memory updates.</strong> Make it clear whether the agent learned a reusable preference or only completed a one-time task.</li>
+          <li><strong>Make replay searchable.</strong> Over time, decision records become a personal operating history that should be easy to retrieve by task, person, source, or approval.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <div class="sources">
+        <div><h2>Sources and reference points</h2></div>
+        <ul>
+          <li><a href="https://www.nist.gov/itl/ai-risk-management-framework">NIST AI Risk Management Framework</a>: useful context for mapping, measuring, managing, and governing AI risks.</li>
+          <li><a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/">OWASP Top 10 for LLM Applications</a>: a security-oriented view of agency, tool access, prompt injection, and data exposure.</li>
+          <li><a href="https://getsupers.com/">Super</a>: a personal AI assistant platform context for action-oriented assistants and text-native workflows.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="faq" class="wrap">
+      <div class="faq">
+        <div><h2>FAQ</h2></div>
+        <div class="faq-list">
+          <article class="faq-item">
+            <h3>Is decision replay the same as chain-of-thought?</h3>
+            <p>No. Decision replay should be a user-facing explanation of evidence, constraints, alternatives, approvals, and memory updates. It does not need to expose private model reasoning.</p>
+          </article>
+          <article class="faq-item">
+            <h3>Who needs decision replay first?</h3>
+            <p>Agents that send messages, spend money, publish content, browse websites, edit files, or resume long-running work need it earliest because their actions have visible consequences.</p>
+          </article>
+          <article class="faq-item">
+            <h3>How long should a replay be?</h3>
+            <p>Short enough to scan in under a minute, with expandable evidence for users who want detail. The default view should explain the decision, not archive everything.</p>
+          </article>
+          <article class="faq-item">
+            <h3>Can replay reduce approvals?</h3>
+            <p>Yes. Repeated replay records reveal which decisions are consistently safe, which need better policy, and which should keep human approval.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="final wrap">
+      <div class="final-box">
+        <h2>The next trust layer is replayable action.</h2>
+        <p>Personal AI agents will win trust when users can inspect not only what happened, but why the agent believed the action was appropriate at that moment.</p>
+        <div class="cta-row" style="justify-content:center">
+          <a class="btn primary" href="https://getsupers.com/">Explore Super</a>
+          <a class="btn secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Open text assistant use cases</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        <span>Kalsh Hunter personal AI agent market research</span>
+        <span><a href="https://getsupers.com/">Super</a> · <a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a> · <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">Website agents</a></span>
+      </div>
+    </footer>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      if (!window.gsap || !window.ScrollTrigger) return;
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.from('.nav', { y: -28, opacity: 0, duration: .8, ease: 'power3.out' });
+      gsap.from('.hero h1, .lede, .cta-row', { y: 42, opacity: 0, duration: .9, stagger: .12, ease: 'power3.out' });
+      gsap.fromTo('.hero-media', { scale: .9, opacity: .7 }, { scale: 1, opacity: 1, duration: 1.2, ease: 'power3.out' });
+      gsap.utils.toArray('.gsap-image').forEach(function (el) {
+        gsap.fromTo(el, { scale: .84, opacity: .72 }, {
+          scale: 1,
+          opacity: 1,
+          ease: 'none',
+          scrollTrigger: { trigger: el, start: 'top 88%', end: 'bottom 18%', scrub: true }
+        });
+      });
+      gsap.utils.toArray('.stack-card').forEach(function (card, index) {
+        gsap.from(card, {
+          y: 120,
+          opacity: 0,
+          scale: .94,
+          ease: 'power3.out',
+          scrollTrigger: { trigger: card, start: 'top 86%', end: 'top 42%', scrub: true },
+          delay: index * .03
+        });
+      });
+    });
+  </script>
+</body>
+</html>

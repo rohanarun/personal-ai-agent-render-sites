@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Personal AI Agents Are Moving Toward Decision Replay](personal-ai-agent-decision-replay-20260709-021000/): Research and news analysis
 - [How to Build a Personal AI Agent Escalation Inbox](personal-ai-agent-escalation-inbox-20260709-020229/): Use case
 - [Memory Verification Software vs Agent Audit Logs](memory-verification-software-vs-agent-audit-logs-20260709-015729/): Competitor comparison
 - [Personal AI Agent Memory Verification Software](personal-ai-agent-memory-verification-software-20260709-015229/): Niche research landing page
