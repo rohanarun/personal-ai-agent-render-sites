@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Personal AI Agents Need Consent Boundary Diffs</title>
+  <meta name="description" content="Why personal AI agents need consent boundary diffs: a way to show what changed in permission memory before agents resume autonomous work.">
+  <link rel="canonical" href="https://kalshhunter.com/personal-ai-agents-need-consent-boundary-diffs-20260709-030659/">
+  <meta property="og:title" content="Personal AI Agents Need Consent Boundary Diffs">
+  <meta property="og:description" content="Consent boundary diffs are becoming a practical trust layer for personal AI agents that learn from corrections.">
+  <meta property="og:url" content="https://kalshhunter.com/personal-ai-agents-need-consent-boundary-diffs-20260709-030659/">
+  <meta property="og:type" content="article">
+  <style>
+    :root{--bg:#090908;--ink:#f7f2e8;--muted:#b8b0a2;--line:rgba(247,242,232,.18);--gold:#f1c96b;--mint:#9ddfbd;--rose:#dc8873;--blue:#9db8ff}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:"Cabinet Grotesk",ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(circle at 12% 10%,rgba(157,184,255,.2),transparent 34%),radial-gradient(circle at 82% 18%,rgba(220,136,115,.2),transparent 32%),radial-gradient(circle at 50% 100%,rgba(157,223,189,.14),transparent 40%)}
+    body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.08;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='170'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.86' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='170' height='170' filter='url(%23n)' opacity='.85'/%3E%3C/svg%3E")}
+    a{color:inherit}.wrap{width:min(1180px,92vw);margin:0 auto}.nav{position:fixed;left:50%;top:18px;transform:translateX(-50%);z-index:25;width:min(1060px,92vw);display:flex;align-items:center;justify-content:space-between;border:1px solid var(--line);background:rgba(9,9,8,.74);backdrop-filter:blur(22px);border-radius:999px;padding:10px 10px 10px 22px;box-shadow:0 20px 70px rgba(0,0,0,.28)}.brand{text-decoration:none;font-weight:860}.links{display:flex;gap:24px;align-items:center;color:var(--muted);font-size:14px}.links a{text-decoration:none}.links .navcta{background:var(--ink);color:#11100e;border-radius:999px;padding:10px 15px;font-weight:850}
+    main{overflow-x:hidden;width:100%;max-width:100%}.hero{min-height:100vh;display:grid;place-items:center;text-align:center;padding:150px 0 90px;position:relative}.hero h1{font-size:clamp(3.2rem,6vw,6.6rem);line-height:.94;letter-spacing:0;margin:0 auto;max-width:min(1160px,94vw);text-wrap:balance}.inline-img{display:inline-block;width:clamp(82px,10vw,136px);height:clamp(36px,4.8vw,62px);border-radius:999px;background:url('https://picsum.photos/seed/consent-boundary-diff/420/220') center/cover;vertical-align:middle;margin:0 .08em;filter:grayscale(.1) contrast(1.25) saturate(.9);box-shadow:inset 0 0 0 1px rgba(255,255,255,.26)}.lede{font-size:clamp(1.1rem,1.55vw,1.35rem);line-height:1.68;color:var(--muted);max-width:760px;margin:28px auto 0}.cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px}.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;border:1px solid var(--line);padding:15px 22px;text-decoration:none;font-weight:850}.primary{background:var(--gold);color:#11100c;border-color:transparent}.secondary{background:rgba(255,255,255,.04);color:var(--ink)}.hero-bg{position:absolute;inset:auto 0 0;height:42%;overflow:hidden;z-index:-1}.hero-bg img{width:100%;height:100%;object-fit:cover;filter:grayscale(.22) contrast(1.22) opacity(.38);mask-image:linear-gradient(to top,#000,transparent)}
+    section{padding:145px 0}.kicker{font-size:12px;font-weight:850;color:var(--mint);text-transform:uppercase;letter-spacing:.14em}.section-title{font-size:clamp(2.25rem,4.8vw,5.2rem);line-height:1;margin:12px 0 24px;text-wrap:balance}.copy{font-size:18px;line-height:1.82;color:var(--muted);max-width:840px}.bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-flow:dense;gap:14px;margin-top:48px}.card{min-height:242px;border:1px solid var(--line);border-radius:28px;background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025));padding:28px;overflow:hidden;position:relative}.card h3{font-size:30px;line-height:1.06;margin:0 0 12px}.card p,.card li{color:var(--muted);line-height:1.66}.span8{grid-column:span 8}.span4{grid-column:span 4}.span6{grid-column:span 6}.visual{padding:0}.visual img{width:100%;height:100%;min-height:330px;object-fit:cover;filter:grayscale(.22) contrast(1.26);transition:transform .7s ease}.visual:hover img{transform:scale(1.05)}
+    .marquee{display:flex;overflow:hidden;border-block:1px solid var(--line);margin-top:44px;color:rgba(247,242,232,.52);white-space:nowrap;font-size:clamp(2rem,5vw,5rem);font-weight:900}.track{display:inline-flex;gap:44px;padding:24px 0;animation:scroll 34s linear infinite}.track span{color:var(--ink)}@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .quote-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}.media-stack{position:relative;min-height:500px}.photo{position:absolute;border:1px solid var(--line);border-radius:34px;overflow:hidden;background:#111}.photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(.18) contrast(1.22)}.p1{left:0;top:0;width:62%;height:68%}.p2{right:0;bottom:0;width:58%;height:58%}.quote{font-size:clamp(2rem,4.5vw,4.8rem);line-height:1.02;margin:0;text-wrap:balance}.quote span{color:var(--gold)}.checklist{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:36px}.check{border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.04);padding:22px;color:var(--muted);line-height:1.58}.check strong{display:block;color:var(--ink);margin-bottom:5px}.faq{display:grid;gap:14px;margin-top:36px}.faq details{border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.04);padding:21px}.faq summary{cursor:pointer;font-weight:850}.faq p{color:var(--muted);line-height:1.72}.sources{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.sources a{border:1px solid var(--line);border-radius:22px;padding:20px;text-decoration:none;color:var(--muted);background:rgba(255,255,255,.04);line-height:1.5}.final{padding-bottom:70px}.final-box{border:1px solid var(--line);border-radius:36px;padding:58px;background:linear-gradient(135deg,rgba(241,201,107,.18),rgba(157,184,255,.1),rgba(157,223,189,.12));display:grid;grid-template-columns:1.15fr .85fr;gap:34px;align-items:end}.final h2{font-size:clamp(2.5rem,5.6vw,6rem);line-height:.95;margin:0}.footer{padding:30px 0 60px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:var(--muted)}
+    @media(max-width:900px){.links a:not(.navcta){display:none}.quote-grid,.final-box{grid-template-columns:1fr}.bento{grid-template-columns:1fr}.span8,.span4,.span6{grid-column:span 1}.checklist,.sources{grid-template-columns:1fr}section{padding:96px 0}.media-stack{min-height:420px}.p1{width:66%}.p2{width:62%}}
+  </style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Personal AI Agents Need Consent Boundary Diffs","description":"Why personal AI agents need consent boundary diffs before resuming autonomous work.","datePublished":"2026-07-09","author":{"@type":"Organization","name":"Super Agent Market Notes"},"publisher":{"@type":"Organization","name":"Super Agent Market Notes"},"mainEntityOfPage":"https://kalshhunter.com/personal-ai-agents-need-consent-boundary-diffs-20260709-030659/"}</script>
+</head>
+<body>
+<nav class="nav">
+  <a class="brand" href="/">Agent Market Notes</a>
+  <div class="links">
+    <a href="#why">Why</a>
+    <a href="#checklist">Checklist</a>
+    <a href="#faq">FAQ</a>
+    <a class="navcta" href="https://getsupers.com/">Super</a>
+  </div>
+</nav>
+<main>
+  <header class="hero wrap">
+    <div>
+      <h1>Personal AI agents need consent <span class="inline-img" aria-hidden="true"></span> boundary diffs.</h1>
+      <p class="lede">When an agent learns from corrections, it should not quietly rewrite the permission map. Operators need a visible diff: what changed, why it changed, where it applies, and which future actions now move faster or slower.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Route approval diffs by text</a>
+        <a class="btn secondary" href="#why">Read the analysis</a>
+      </div>
+    </div>
+    <div class="hero-bg"><img src="https://picsum.photos/seed/consent-diff-control-room/1920/900" alt=""></div>
+  </header>
+
+  <section id="why">
+    <div class="wrap">
+      <p class="kicker">Research note</p>
+      <h2 class="section-title">Consent memory is only trustworthy if changes are reviewable.</h2>
+      <p class="copy">Personal AI agents are becoming less like chat windows and more like delegated operators. They remember tone, people, projects, preferred tools, and the difference between work they can do immediately and work they must escalate. That creates a new operational problem: consent drift. A user correction can improve the system, but it can also silently expand or restrict the agent's authority. Consent boundary diffs make that change explicit before the agent resumes autonomous work.</p>
+      <div class="marquee" aria-hidden="true"><div class="track"><span>consent</span> boundary diff receipt approval memory review <span>consent</span> boundary diff receipt approval memory review</div></div>
+      <div class="bento">
+        <article class="card span8">
+          <h3>A diff is the missing layer between memory and permission.</h3>
+          <p>Most agent memory systems answer, "what should I remember?" A consent boundary diff answers, "what did that memory change about what I am allowed to do?" The distinction matters when agents send messages, browse websites, coordinate with humans, or make recommendations with private context.</p>
+        </article>
+        <article class="card visual span4 gsap-image"><img src="https://picsum.photos/seed/permission-diff-ledger/800/700" alt="Permission diff ledger for an AI agent"></article>
+        <article class="card span4">
+          <h3>Scope</h3>
+          <p>The diff should state whether the change applies globally, to a person, project, channel, date range, or task type.</p>
+        </article>
+        <article class="card span4">
+          <h3>Reason</h3>
+          <p>The agent should preserve the correction that caused the change, not just the polished rule that came out of it.</p>
+        </article>
+        <article class="card span4">
+          <h3>Effect</h3>
+          <p>The operator should see whether future actions will proceed, batch, ask, or block because of the update.</p>
+        </article>
+        <article class="card span6">
+          <h3>Text approvals make diffs practical.</h3>
+          <p>A dashboard is fine for weekly review, but urgent consent diffs need to meet the operator where they already respond. <a href="https://getsupers.com/">Super</a> and the <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text message AI assistant</a> pattern are natural fits for approval prompts that include the changed boundary.</p>
+        </article>
+        <article class="card span6">
+          <h3>Browser agents need replayable proof.</h3>
+          <p>When a personal agent performs browser tasks, diffs should pair with receipts and replay. The <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a> and <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI website-building workflow</a> show why cached proof matters when autonomy touches external systems.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap quote-grid">
+      <div class="media-stack">
+        <figure class="photo p1 gsap-image"><img src="https://picsum.photos/seed/operator-consent-review/800/920" alt="Operator reviewing consent boundary changes"></figure>
+        <figure class="photo p2 gsap-image"><img src="https://picsum.photos/seed/agent-permission-map/760/820" alt="Agent permission map visualization"></figure>
+      </div>
+      <div>
+        <p class="quote">The agent should never make the operator wonder, <span>"what did you just learn about my limits?"</span></p>
+        <p class="copy scrub">A consent diff is small enough to read quickly, but specific enough to audit later. It turns a vague memory update into a concrete permission event: old boundary, new boundary, evidence, affected scope, expiration, and escalation path.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="checklist">
+    <div class="wrap">
+      <p class="kicker">Checklist</p>
+      <h2 class="section-title">A useful consent boundary diff has six fields.</h2>
+      <div class="checklist">
+        <div class="check"><strong>Old boundary</strong> What the agent believed it could do before the correction.</div>
+        <div class="check"><strong>New boundary</strong> The proposed permission rule after the correction.</div>
+        <div class="check"><strong>Source event</strong> The message, task, or approval moment that produced the change.</div>
+        <div class="check"><strong>Affected scope</strong> The people, projects, channels, or time period covered by the rule.</div>
+        <div class="check"><strong>Escalation effect</strong> Whether the rule changes proceed, batch, ask, or block behavior.</div>
+        <div class="check"><strong>Review date</strong> When the operator should re-check whether the boundary still applies.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <p class="kicker">FAQ</p>
+      <h2 class="section-title">Consent diffs in practice.</h2>
+      <div class="faq">
+        <details open><summary>Is this different from an audit log?</summary><p>Yes. An audit log records what happened. A consent boundary diff explains how a memory update changes what the agent is allowed to do next.</p></details>
+        <details><summary>Should every memory update require a diff?</summary><p>No. Low-impact preferences can be summarized in periodic review. Diffs matter most when the update changes an action boundary, privacy boundary, communication rule, or approval threshold.</p></details>
+        <details><summary>How should an operator approve a diff?</summary><p>For urgent or personal contexts, text is often the fastest approval surface. For larger batches, a weekly review queue can group diffs by person, project, and consequence.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="kicker">Sources and references</p>
+      <div class="sources">
+        <a href="https://www.nist.gov/itl/ai-risk-management-framework">NIST AI Risk Management Framework for risk mapping and review practices.</a>
+        <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/">OWASP LLM Top 10 for risks around unsafe agent actions and system behavior.</a>
+        <a href="https://getsupers.com/">Super for personal AI assistant workflows with human approval loops.</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap final-box">
+      <h2>Let agents learn, but show the boundary change.</h2>
+      <div>
+        <p class="copy">The next trust layer for personal AI agents is not just better memory. It is memory with visible consent diffs, approval routing, and receipts that make every new rule easier to trust.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="https://getsupers.com/">Explore Super</a>
+          <a class="btn secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Text assistant use case</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="footer wrap">
+  <span>Super Agent Market Notes</span>
+  <span>Research notes on consent, memory, and personal AI agent operations.</span>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded',function(){if(!window.gsap||!window.ScrollTrigger)return;gsap.registerPlugin(ScrollTrigger);gsap.from('.nav',{y:-28,opacity:0,duration:.8,ease:'power3.out'});gsap.from('.hero h1,.lede,.cta-row',{y:42,opacity:0,duration:1,stagger:.12,ease:'power3.out'});gsap.utils.toArray('.copy,.quote,.scrub').forEach(function(el){gsap.fromTo(el,{opacity:.24},{opacity:1,ease:'none',scrollTrigger:{trigger:el,start:'top 88%',end:'bottom 48%',scrub:true}})});gsap.utils.toArray('.gsap-image').forEach(function(el){gsap.fromTo(el,{scale:.84,opacity:.64},{scale:1,opacity:1,ease:'none',scrollTrigger:{trigger:el,start:'top 90%',end:'bottom 22%',scrub:true}})})});
+</script>
+</body>
+</html>

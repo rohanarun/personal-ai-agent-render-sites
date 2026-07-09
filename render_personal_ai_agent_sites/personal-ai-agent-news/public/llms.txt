@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Personal AI Agents Need Consent Boundary Diffs](personal-ai-agents-need-consent-boundary-diffs-20260709-030659/): Research and news analysis
 - [Approval Memory Maps vs Workflow Automation](approval-memory-maps-vs-workflow-automation-20260709-030129/): Competitor comparison
 - [How to Build Approval Memory Escalation Maps](how-to-build-approval-memory-escalation-maps-20260709-025559/): Use case
 - [Personal AI Agent Approval Memory Software](personal-ai-agent-approval-memory-software-20260709-025034/): Niche research landing page
