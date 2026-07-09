@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How to Run Context Checks Before a Personal AI Agent Resumes</title>
+  <meta name="description" content="A practical workflow for running context checks before personal AI agents resume browser tasks, text approvals, and public publishing actions." />
+  <link rel="canonical" href="https://kalshhunter.com/how-to-run-context-checks-before-ai-agent-resumes-20260709-005930/" />
+  <meta property="og:title" content="How to Run Context Checks Before a Personal AI Agent Resumes" />
+  <meta property="og:description" content="A field guide for context checks that help personal AI agents detect stale evidence, expired approvals, and unsafe live state before resuming." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://kalshhunter.com/how-to-run-context-checks-before-ai-agent-resumes-20260709-005930/" />
+  <style>
+    :root{--bg:#070b0d;--ink:#fbf8ef;--muted:rgba(251,248,239,.72);--soft:rgba(251,248,239,.5);--line:rgba(251,248,239,.15);--panel:rgba(16,24,28,.82);--mint:#baf7ce;--blue:#9ec8ff;--clay:#eec59f;--font:"Outfit","Cabinet Grotesk","Geist",Arial,sans-serif}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 16% 8%,rgba(186,247,206,.17),transparent 34rem),radial-gradient(circle at 82% 18%,rgba(158,200,255,.15),transparent 32rem),linear-gradient(180deg,#070b0d 0%,#11191c 48%,#070b0d 100%);color:var(--ink);font-family:var(--font);overflow-x:hidden}body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.14;mix-blend-mode:soft-light;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.58'/%3E%3C/svg%3E")}main{width:100%;max-width:100%;overflow-x:hidden}a{color:inherit}.nav{position:fixed;z-index:40;top:22px;left:50%;transform:translateX(-50%);width:min(1120px,calc(100vw - 32px));display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 14px 12px 20px;border:1px solid var(--line);border-radius:999px;background:rgba(7,11,13,.72);backdrop-filter:blur(18px);box-shadow:0 20px 90px rgba(0,0,0,.36)}.brand{text-decoration:none;font-weight:900}.nav-links{display:flex;align-items:center;gap:8px}.nav-links a{padding:9px 12px;border-radius:999px;color:var(--muted);text-decoration:none;font-size:.9rem}.nav-links .nav-cta{background:var(--mint);color:#06100a;font-weight:900}.hero{min-height:100vh;display:grid;align-items:center;text-align:center;padding:150px 20px 86px;position:relative}.hero:after{content:"";position:absolute;left:50%;bottom:34px;width:min(1040px,88vw);height:min(390px,38vh);transform:translateX(-50%);border-radius:8px;background:linear-gradient(180deg,rgba(7,11,13,.05),rgba(7,11,13,.76)),url("https://picsum.photos/seed/context-checks-before-resume-hero/1800/820") center/cover;filter:grayscale(.2) contrast(1.18);border:1px solid var(--line);box-shadow:0 50px 150px rgba(0,0,0,.46);z-index:0}.hero-inner{position:relative;z-index:2;width:min(1180px,94vw);margin:0 auto 300px}h1{max-width:min(1180px,94vw);margin:0 auto;font-size:clamp(2.7rem,5vw,5.45rem);line-height:.95;letter-spacing:0;text-wrap:balance}.inline-img{display:inline-block;width:clamp(76px,8vw,132px);height:clamp(34px,3.9vw,54px);margin:0 .14em;border-radius:999px;vertical-align:middle;background:url("https://picsum.photos/seed/context-check-inline-resume/620/320") center/cover;filter:grayscale(.18) contrast(1.2);box-shadow:inset 0 0 0 1px rgba(251,248,239,.22),0 18px 68px rgba(0,0,0,.34)}.hero p{max-width:790px;margin:28px auto 0;color:var(--muted);font-size:clamp(1.06rem,1.55vw,1.32rem);line-height:1.64}.actions{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:34px}.button{min-height:49px;padding:0 20px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;text-decoration:none;font-weight:900;border:1px solid var(--line)}.button.primary{background:var(--mint);color:#06100a;border-color:transparent}.button.secondary{background:rgba(251,248,239,.08);color:var(--ink)}
+    section{padding:150px 20px}.wrap{width:min(1160px,94vw);margin:0 auto}.section-head{display:grid;grid-template-columns:1.04fr .96fr;gap:44px;align-items:end;margin-bottom:44px}h2{margin:0;font-size:clamp(2.15rem,4vw,4.7rem);line-height:.99;letter-spacing:0;text-wrap:balance}.lead{margin:0;color:var(--muted);font-size:1.08rem;line-height:1.72}.bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-flow:dense;gap:16px}.card{min-height:260px;position:relative;overflow:hidden;padding:28px;border-radius:8px;border:1px solid var(--line);background:var(--panel);box-shadow:0 24px 90px rgba(0,0,0,.24)}.card h3{margin:0 0 14px;font-size:clamp(1.3rem,1.9vw,2rem);line-height:1.09}.card p,.card li{color:var(--muted);line-height:1.66}.card ul,.card ol{margin:18px 0 0;padding-left:20px}.span-8{grid-column:span 8}.span-6{grid-column:span 6}.span-4{grid-column:span 4}.media{padding:0}.media img{width:100%;height:100%;min-height:330px;object-fit:cover;filter:grayscale(.24) contrast(1.18);transition:transform .7s ease}.media:hover img,.step:hover img{transform:scale(1.05)}.marquee{overflow:hidden;white-space:nowrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 0;color:var(--soft);font-size:clamp(1.5rem,3.1vw,3.25rem);font-weight:900}.marquee-track{display:inline-block;animation:marquee 38s linear infinite}@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}.reveal-copy{font-size:clamp(2rem,3.9vw,4.5rem);line-height:1.08;letter-spacing:0;max-width:1040px;margin:0 auto;color:var(--ink);text-wrap:balance}.reveal-copy span{opacity:.16}.steps{display:grid;gap:22px}.step{position:sticky;top:110px;display:grid;grid-template-columns:210px 1fr;min-height:235px;overflow:hidden;border:1px solid var(--line);border-radius:8px;background:rgba(251,248,239,.06);box-shadow:0 30px 100px rgba(0,0,0,.26)}.step img{width:100%;height:100%;object-fit:cover;filter:grayscale(.25) contrast(1.2);transition:transform .7s ease}.step div{padding:26px}.step h3{margin:0 0 12px;font-size:1.5rem}.step p{margin:0;color:var(--muted);line-height:1.66}.checklist{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.check{border:1px solid var(--line);border-radius:8px;background:rgba(251,248,239,.06);padding:22px}.check strong{display:block;margin-bottom:8px}.check p{margin:0;color:var(--muted);line-height:1.62}.sources{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.source-card,details{border:1px solid var(--line);border-radius:8px;background:rgba(251,248,239,.06);padding:22px}.source-card h3{margin-top:0}.source-card p,details p{color:var(--muted);line-height:1.66}.source-card a{color:var(--mint);font-weight:900}.faq{display:grid;gap:14px}summary{cursor:pointer;font-size:1.08rem;font-weight:900}.cta{padding:130px 20px;border-top:1px solid var(--line);background:radial-gradient(circle at 22% 24%,rgba(186,247,206,.15),transparent 32rem),linear-gradient(135deg,rgba(158,200,255,.11),rgba(238,197,159,.08))}.cta-box{width:min(1120px,94vw);margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:34px;align-items:center}footer{padding:38px 20px 70px;color:var(--soft)}footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}footer a{color:var(--muted);text-decoration:none;margin-left:16px}@media(max-width:880px){.nav{border-radius:22px}.nav-links{display:none}.hero{padding-top:132px}.hero-inner{margin-bottom:260px}.section-head,.cta-box{grid-template-columns:1fr}.bento{grid-template-columns:1fr}.span-4,.span-6,.span-8{grid-column:span 1}.checklist,.sources{grid-template-columns:1fr}.step{position:relative;top:auto;grid-template-columns:1fr}section{padding:108px 20px}}
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="Primary navigation">
+    <a class="brand" href="/">Kalsh Hunter</a>
+    <div class="nav-links">
+      <a href="#overview">Overview</a>
+      <a href="#steps">Steps</a>
+      <a href="#checklist">Checklist</a>
+      <a class="nav-cta" href="https://getsupers.com/">Explore Super</a>
+    </div>
+  </nav>
+  <main>
+    <header class="hero">
+      <div class="hero-inner">
+        <h1>How to run context checks <span class="inline-img" aria-hidden="true"></span> before a personal AI agent resumes</h1>
+        <p>A resume moment is where personal AI agents are most likely to act on stale evidence. This workflow shows how to compare remembered context, validate live state, and route failed checks back to the user before the agent sends, submits, buys, schedules, or publishes.</p>
+        <div class="actions">
+          <a class="button primary" href="https://getsupers.com/">Build with Super</a>
+          <a class="button secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">See text assistants</a>
+        </div>
+      </div>
+    </header>
+
+    <section id="overview">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>The resume check has three jobs.</h2>
+          <p class="lead">The agent must know what it remembered, what changed, and whether the current environment is safe for the next action. Treat those as separate checks instead of one vague confidence score.</p>
+        </div>
+        <div class="bento">
+          <article class="card span-8">
+            <h3>Start by writing down the reference state.</h3>
+            <p>A context check only works if the original state is explicit. Store the URL, timestamp, extracted values, screenshot name, approval text, chosen account, expected recipient, draft output, and planned next action. The agent should be able to explain exactly what it is comparing when it resumes.</p>
+            <ul>
+              <li>For text workflows, record the message, recipient, and approval wording.</li>
+              <li>For browser workflows, record the page, form values, visible price, and account state.</li>
+              <li>For publishing workflows, record the reviewed title, destination, and deploy target.</li>
+            </ul>
+          </article>
+          <article class="card media span-4"><img class="scale-media" src="https://picsum.photos/seed/context-check-reference-state/900/1200" alt="Reference state for a personal AI agent context check" /></article>
+          <article class="card span-4"><h3>Remembered evidence</h3><p>Compare the agent's saved observations with fresh evidence before trusting any delayed continuation.</p></article>
+          <article class="card span-4"><h3>Approval boundaries</h3><p>Confirm that a previous user approval still applies to the same amount, recipient, task, page, and output.</p></article>
+          <article class="card span-4"><h3>Live readiness</h3><p>Validate the current account, browser URL, form state, permissions, and publish destination before action.</p></article>
+          <article class="card media span-6"><img class="scale-media" src="https://picsum.photos/seed/resume-check-command-center/1200/820" alt="Resume check command center for personal AI agents" /></article>
+          <article class="card span-6">
+            <h3>Where Super fits</h3>
+            <p>Super-style personal agents can expose context checks around <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text message AI assistants</a>, <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a>, and <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent website building</a>. The user should see whether the agent checked remembered evidence, live state, or both.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true"><div class="marquee-track">capture reference state · compare current evidence · validate live action · ask again when drift appears · capture reference state · compare current evidence · validate live action · ask again when drift appears · </div></div>
+
+    <section>
+      <div class="wrap">
+        <p class="reveal-copy" aria-label="Context checks should turn stale-agent failures into visible routing decisions.">
+          <span>Context</span> <span>checks</span> <span>should</span> <span>turn</span> <span>stale-agent</span> <span>failures</span> <span>into</span> <span>visible</span> <span>routing</span> <span>decisions,</span> <span>not</span> <span>silent</span> <span>continuations.</span>
+        </p>
+      </div>
+    </section>
+
+    <section id="steps">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>A practical six-step resume workflow.</h2>
+          <p class="lead">This is the minimum useful sequence for personal agents that work across messages, browsers, and public artifacts.</p>
+        </div>
+        <div class="steps">
+          <article class="step"><img class="scale-media" src="https://picsum.photos/seed/context-check-step-capture/700/900" alt="Capture step for context checks" /><div><h3>Capture the reference packet</h3><p>Before pausing, save the evidence that justified the next action: source, timestamp, visible values, selected item, draft text, destination, and user approval.</p></div></article>
+          <article class="step"><img class="scale-media" src="https://picsum.photos/seed/context-check-step-compare/700/900" alt="Compare step for context checks" /><div><h3>Compare against fresh evidence</h3><p>On resume, refresh the page, message draft, or output file and compare it to the saved packet. Do not let the agent continue from memory alone.</p></div></article>
+          <article class="step"><img class="scale-media" src="https://picsum.photos/seed/context-check-step-classify/700/900" alt="Classify drift step for context checks" /><div><h3>Classify the drift</h3><p>Name whether the mismatch is harmless, requires a refresh, changes the decision, or invalidates the user's approval.</p></div></article>
+          <article class="step"><img class="scale-media" src="https://picsum.photos/seed/context-check-step-validate/700/900" alt="Validate live state step" /><div><h3>Validate live state</h3><p>Confirm that the agent is in the right account, browser tab, conversation, domain, form, or deployment target before any external action.</p></div></article>
+          <article class="step"><img class="scale-media" src="https://picsum.photos/seed/context-check-step-route/700/900" alt="Route failed context check step" /><div><h3>Route failed checks</h3><p>If the context changed, pause and ask again. The agent should show the old value, the new value, and the proposed recovery path.</p></div></article>
+          <article class="step"><img class="scale-media" src="https://picsum.photos/seed/context-check-step-log/700/900" alt="Log context check result step" /><div><h3>Log the result</h3><p>Store the check result as a receipt so future resumes have a trail of what was verified, what failed, and who approved the recovery.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="checklist">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Checklist for a system prompt.</h2>
+          <p class="lead">When a resume check fails, train the prompt on the failure. Tell the agent what went wrong and what must always happen instead.</p>
+        </div>
+        <div class="checklist">
+          <div class="check"><strong>Never resume from memory alone.</strong><p>Always compare saved evidence with current evidence before continuing a delayed task.</p></div>
+          <div class="check"><strong>Never reuse approval after material drift.</strong><p>If price, recipient, account, output, destination, or timing changed, ask for a new approval.</p></div>
+          <div class="check"><strong>Never act before live-state validation.</strong><p>Before external impact, validate account, URL, form state, tool permission, and destination.</p></div>
+          <div class="check"><strong>Always explain the mismatch.</strong><p>Name the old value, current value, risk, and recovery option in plain language.</p></div>
+          <div class="check"><strong>Always log the check.</strong><p>Store the result with enough detail for the next agent run to audit the decision.</p></div>
+          <div class="check"><strong>Always route uncertainty to the user.</strong><p>When the agent cannot classify drift safely, stop and ask instead of guessing.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Sources and references.</h2>
+          <p class="lead">These references support the governance, risk, and excessive-agency framing behind resume checks.</p>
+        </div>
+        <div class="sources">
+          <article class="source-card"><h3>NIST AI Risk Management Framework</h3><p>NIST is useful for thinking about measurement, documentation, and governance around AI systems operating in real contexts.</p><a href="https://www.nist.gov/itl/ai-risk-management-framework" rel="nofollow">Open NIST AI RMF</a></article>
+          <article class="source-card"><h3>OWASP LLM Application Risks</h3><p>OWASP's LLM guidance maps well to excessive agency, tool misuse, prompt injection, sensitive data exposure, and weak oversight.</p><a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" rel="nofollow">Open OWASP LLM Top 10</a></article>
+          <article class="source-card"><h3>Super</h3><p>Super provides the practical personal-agent surface for text approvals, cached browser work, and agent-generated websites.</p><a href="https://getsupers.com/">Open Super</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <h2>FAQ</h2>
+          <p class="lead">Short answers for teams adding resume checks to personal AI agents.</p>
+        </div>
+        <div class="faq">
+          <details><summary>When should the agent run a context check?</summary><p>Run it whenever the agent resumes after a delay, uses cached browser evidence, reuses an approval, sends a prepared message, or publishes a reviewed output.</p></details>
+          <details><summary>What counts as material drift?</summary><p>Any change that could alter the user's decision: price, recipient, destination, account, visible source, schedule, page content, draft output, or permission boundary.</p></details>
+          <details><summary>Should every mismatch block the task?</summary><p>No. Some mismatches are harmless, but the agent must classify the drift and explain why it is safe before continuing.</p></details>
+          <details><summary>How does this differ from ordinary chat memory?</summary><p>Chat memory recalls what happened. A context check proves whether the remembered state still matches the current task environment.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="cta-box">
+        <div>
+          <h2>Make the resume moment visible.</h2>
+          <p class="lead">A personal AI agent should show what it checked before it acts after a pause.</p>
+        </div>
+        <a class="button primary" href="https://getsupers.com/">Explore Super</a>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap">
+      <span>Kalsh Hunter personal AI agent market notes</span>
+      <span><a href="https://getsupers.com/">Super</a><a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Text assistants</a><a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a></span>
+    </div>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    if(window.gsap&&window.ScrollTrigger){
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.utils.toArray(".scale-media").forEach(function(img){
+        gsap.fromTo(img,{scale:.84,opacity:.58},{scale:1,opacity:1,ease:"none",scrollTrigger:{trigger:img,start:"top 88%",end:"bottom 18%",scrub:true}});
+      });
+      gsap.utils.toArray(".reveal-copy span").forEach(function(word,index){
+        gsap.to(word,{opacity:1,ease:"none",scrollTrigger:{trigger:".reveal-copy",start:"top 78%",end:"bottom 42%",scrub:true},delay:index*.015});
+      });
+      gsap.utils.toArray(".step").forEach(function(card,index){
+        gsap.from(card,{y:70,opacity:0,scale:.96,duration:.9,ease:"power3.out",scrollTrigger:{trigger:card,start:"top 88%"}});
+        card.style.zIndex=String(index+1);
+      });
+      gsap.utils.toArray(".card,.check").forEach(function(card,index){
+        gsap.from(card,{y:42,opacity:0,duration:.8,delay:index*.018,ease:"power3.out",scrollTrigger:{trigger:card,start:"top 86%"}});
+      });
+    }
+  </script>
+</body>
+</html>

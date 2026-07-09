@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [How to Run Context Checks Before a Personal AI Agent Resumes](how-to-run-context-checks-before-ai-agent-resumes-20260709-005930/): Use case
 - [Context Checksums vs State Validation for Personal AI Agents](context-checksums-vs-state-validation-20260709-005429/): Competitor comparison
 - [Personal AI Agent Context Checksum Software](personal-ai-agent-context-checksum-software-20260709-004430/): Niche research landing page
 - [Personal AI Agents Need Context Checksums](personal-ai-agents-need-context-checksums-20260709-003430/): Research and news analysis
