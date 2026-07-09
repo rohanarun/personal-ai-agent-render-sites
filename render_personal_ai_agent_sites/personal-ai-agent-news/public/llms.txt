@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Rehearsal Room Software vs Staging Checklists for Personal AI Agents](rehearsal-room-software-vs-staging-checklists-20260709-154032/): Competitor comparison
 - [Personal AI Agent Rehearsal Room Software](personal-ai-agent-rehearsal-room-software-20260709-153502/): Niche research landing page
 - [Autonomy Gate Rehearsals Are Becoming the New Agent QA Layer](autonomy-gate-rehearsals-are-becoming-the-new-agent-qa-layer-20260709-153002/): Research and news analysis
 - [How to Run Autonomy Gate Rehearsals for Personal AI Agents](how-to-run-autonomy-gate-rehearsals-for-personal-ai-agents-20260709-152004/): Use case

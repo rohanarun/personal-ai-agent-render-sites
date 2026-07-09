@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rehearsal Room Software vs Staging Checklists for Personal AI Agents</title>
+  <meta name="description" content="A long-form competitor comparison of personal AI agent rehearsal room software and ordinary staging checklists, with decision criteria, sources, FAQ, and operator-ready evaluation guidance.">
+  <link rel="canonical" href="https://kalshhunter.com/rehearsal-room-software-vs-staging-checklists-20260709-154032/">
+  <meta property="og:title" content="Rehearsal Room Software vs Staging Checklists for Personal AI Agents">
+  <meta property="og:description" content="Compare rehearsal rooms, staging checklists, QA scripts, and approval queues for personal AI agent work.">
+  <meta property="og:url" content="https://kalshhunter.com/rehearsal-room-software-vs-staging-checklists-20260709-154032/">
+  <meta property="og:type" content="article">
+  <style>
+    @font-face{font-family:Cabinet;src:local("Cabinet Grotesk");font-display:swap}
+    :root{--ink:#f8f7f2;--muted:#b8b3a6;--paper:#080806;--line:rgba(248,247,242,.14);--gold:#e9c46a;--clay:#dd8b5d;--sage:#91b89f;--blue:#9fc5e8}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:radial-gradient(circle at 78% 9%,rgba(221,139,93,.22),transparent 32%),radial-gradient(circle at 8% 35%,rgba(145,184,159,.18),transparent 29%),linear-gradient(180deg,#080806,#15130f 48%,#090908);color:var(--ink);font-family:Cabinet,Arial,sans-serif;letter-spacing:0;overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.48'/%3E%3C/svg%3E")}
+    a{color:inherit;text-decoration:none}
+    main{overflow-x:hidden;width:100%;max-width:100%}
+    .nav{position:fixed;top:22px;left:50%;transform:translateX(-50%);z-index:20;width:min(1120px,calc(100vw - 32px));display:flex;align-items:center;justify-content:space-between;padding:10px 12px 10px 18px;border:1px solid var(--line);border-radius:999px;background:rgba(8,8,6,.72);backdrop-filter:blur(18px);box-shadow:0 18px 80px rgba(0,0,0,.35)}
+    .brand{font-weight:800;font-size:15px}
+    .navlinks{display:flex;gap:18px;color:var(--muted);font-size:13px}
+    .navcta{padding:11px 17px;border-radius:999px;background:var(--ink);color:#090908;font-weight:800;font-size:13px}
+    .hero{min-height:96vh;display:grid;grid-template-columns:minmax(0,1.06fr) minmax(340px,.74fr);gap:clamp(28px,5vw,72px);align-items:center;width:min(1240px,92vw);margin:0 auto;padding:150px 0 92px}
+    h1{max-width:min(1040px,92vw);font-size:clamp(3.2rem,5.2vw,6.35rem);line-height:.9;margin:0 0 26px;letter-spacing:0;font-weight:900;text-wrap:balance}
+    .inline-img{display:inline-block;width:clamp(84px,9vw,138px);height:clamp(38px,4vw,58px);border-radius:999px;vertical-align:middle;margin:0 .16em;background:url("https://picsum.photos/seed/agent-rehearsal-control/420/180") center/cover;filter:grayscale(.25) contrast(1.18) saturate(.9)}
+    .lede{max-width:720px;color:#d8d2c5;font-size:clamp(1.1rem,1.55vw,1.34rem);line-height:1.65;margin:0 0 34px}
+    .actions{display:flex;gap:14px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:999px;font-weight:850;border:1px solid var(--line)}
+    .btn.primary{background:#f8f7f2;color:#090908}
+    .btn.secondary{background:rgba(255,255,255,.05);color:#fff}
+    .visual{position:relative;min-height:620px;border-radius:42px;overflow:hidden;border:1px solid var(--line);background:#15110e;box-shadow:0 40px 120px rgba(0,0,0,.42)}
+    .visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(.38) contrast(1.2) brightness(.78)}
+    .visual:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(8,8,6,.85)),radial-gradient(circle at 30% 20%,rgba(233,196,106,.24),transparent 34%)}
+    .console{position:absolute;z-index:2;left:26px;right:26px;bottom:26px;border:1px solid rgba(255,255,255,.18);border-radius:24px;background:rgba(8,8,6,.72);backdrop-filter:blur(18px);padding:22px}
+    .console p{margin:0;color:#e7e1d5;line-height:1.55}
+    section{padding:clamp(108px,14vw,190px) 0}
+    .wrap{width:min(1180px,92vw);margin:0 auto}
+    .section-title{font-size:clamp(2.3rem,4.3vw,5.2rem);line-height:.96;margin:0 0 28px;letter-spacing:0;text-wrap:balance}
+    .intro{font-size:clamp(1.02rem,1.35vw,1.22rem);line-height:1.72;color:#d7d0c4;max-width:840px}
+    .bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-flow:dense;gap:16px;margin-top:56px}
+    .card{position:relative;overflow:hidden;min-height:280px;border-radius:30px;border:1px solid var(--line);background:rgba(255,255,255,.055);padding:28px;transition:transform .7s ease,border-color .7s ease}
+    .card:hover{transform:translateY(-6px);border-color:rgba(248,247,242,.38)}
+    .card h3{font-size:clamp(1.45rem,2vw,2.05rem);line-height:1.05;margin:0 0 16px}
+    .card p,.card li{color:#cfc8ba;line-height:1.65}
+    .span7{grid-column:span 7}.span5{grid-column:span 5}.span4{grid-column:span 4}.span6{grid-column:span 6}
+    .soft{background:linear-gradient(135deg,rgba(233,196,106,.16),rgba(255,255,255,.05))}
+    .clay{background:linear-gradient(135deg,rgba(221,139,93,.18),rgba(255,255,255,.045))}
+    .sage{background:linear-gradient(135deg,rgba(145,184,159,.18),rgba(255,255,255,.045))}
+    .blue{background:linear-gradient(135deg,rgba(159,197,232,.15),rgba(255,255,255,.045))}
+    .thumb{height:180px;border-radius:22px;margin:-4px -4px 22px;overflow:hidden}
+    .thumb img{width:100%;height:100%;object-fit:cover;filter:grayscale(.35) contrast(1.25);transition:transform .7s ease}
+    .card:hover .thumb img{transform:scale(1.06)}
+    table{width:100%;border-collapse:collapse;margin-top:34px;border:1px solid var(--line);border-radius:24px;overflow:hidden;display:block}
+    tbody, tr{display:table;width:100%;table-layout:fixed}
+    th,td{text-align:left;padding:20px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.55}
+    th{color:#fff;background:rgba(255,255,255,.07)}
+    td{color:#cdc6b8}
+    .pin-grid{display:grid;grid-template-columns:.78fr 1.22fr;gap:64px;align-items:start}
+    .pin-title{position:relative}
+    .steps{display:grid;gap:28px}
+    .step{min-height:360px;border:1px solid var(--line);border-radius:34px;overflow:hidden;background:rgba(255,255,255,.045)}
+    .step img{width:100%;height:210px;object-fit:cover;filter:grayscale(.25) contrast(1.2) brightness(.78);transform:scale(.84);opacity:.72}
+    .step div{padding:26px}
+    .step h3{font-size:2rem;margin:0 0 12px;line-height:1}
+    .accordion{display:flex;min-height:420px;border:1px solid var(--line);border-radius:34px;overflow:hidden;margin-top:48px}
+    .slice{flex:1;position:relative;overflow:hidden;transition:flex .7s ease;background:#15110f;border-right:1px solid var(--line)}
+    .slice:last-child{border-right:0}
+    .slice:hover{flex:2.4}
+    .slice img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(.45) brightness(.58) contrast(1.28);transition:transform .7s ease}
+    .slice:hover img{transform:scale(1.05)}
+    .slice div{position:absolute;inset:auto 22px 22px;z-index:2}
+    .slice h3{margin:0 0 10px;font-size:1.7rem}
+    .slice p{margin:0;color:#ddd4c5;line-height:1.5;max-width:420px}
+    .marquee{display:flex;overflow:hidden;border-block:1px solid var(--line);padding:28px 0;color:#e9c46a;font-size:clamp(1.9rem,4vw,4rem);font-weight:900;white-space:nowrap}
+    .track{display:flex;gap:44px;animation:mar 24s linear infinite}
+    @keyframes mar{to{transform:translateX(-50%)}}
+    .faq{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:42px}
+    details{border:1px solid var(--line);border-radius:24px;background:rgba(255,255,255,.045);padding:22px}
+    summary{cursor:pointer;font-weight:850;font-size:1.1rem}
+    details p{color:#cdc6b8;line-height:1.65}
+    .cta{padding:120px 0 70px;background:#f8f7f2;color:#090908}
+    .cta .section-title{color:#090908}
+    .cta p{color:#423d34}
+    .cta .btn.primary{background:#090908;color:#fff}
+    .cta .btn.secondary{background:transparent;color:#090908;border-color:rgba(9,9,8,.24)}
+    footer{display:flex;justify-content:space-between;gap:22px;flex-wrap:wrap;margin-top:80px;color:#5e574d}
+    footer a{text-decoration:underline}
+    @media(max-width:900px){.hero,.pin-grid{grid-template-columns:1fr}.visual{min-height:480px}.navlinks{display:none}.bento{grid-template-columns:1fr}.span7,.span5,.span4,.span6{grid-column:span 1}.accordion{flex-direction:column}.slice{min-height:220px}.faq{grid-template-columns:1fr}table,tbody,tr,th,td{display:block}th{display:none}td{border-bottom:1px solid var(--line)}}
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="Primary navigation">
+    <a class="brand" href="https://kalshhunter.com/">Agent Market Notes</a>
+    <div class="navlinks">
+      <a href="#comparison">Comparison</a>
+      <a href="#workflow">Workflow</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a class="navcta" href="https://getsupers.com/">See Super</a>
+  </nav>
+  <main>
+    <header class="hero">
+      <div>
+        <h1>Rehearsal room software <span class="inline-img"></span> vs staging checklists</h1>
+        <p class="lede">Personal AI agents are no longer only drafting messages or opening browsers. They are changing live customer records, sending appointment replies, launching web pages, and resuming work after interruptions. The comparison that matters is no longer checklist versus checklist. It is whether the operator can rehearse a risky action, inspect the evidence trail, approve the boundary, and replay the decision later.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">Review agent-built sites</a>
+          <a class="btn secondary" href="#comparison">Compare the options</a>
+        </div>
+      </div>
+      <div class="visual">
+        <img src="https://picsum.photos/seed/agent-staging-theater/1200/1600" alt="Abstract operations room for testing AI agent actions">
+        <div class="console">
+          <p><strong>Verdict:</strong> staging checklists catch visible launch mistakes. Rehearsal rooms catch the harder failure: an agent acting with stale context, missing approval evidence, or a boundary that changed after the checklist was written.</p>
+        </div>
+      </div>
+    </header>
+
+    <section id="comparison">
+      <div class="wrap">
+        <h2 class="section-title">The category split is evidence, not polish.</h2>
+        <p class="intro">A staging checklist is a static artifact. It asks whether links work, copy reads cleanly, and a human remembered the intended release steps. A personal AI agent rehearsal room is closer to an operating theater: it assembles the proposed action, the source messages, the tool state, the approval rule, and the expected rollback path before the agent is allowed to act. That difference matters most when the user expects a personal agent to work across SMS, browser sessions, local files, calendar bookings, and publishing tools.</p>
+        <div class="bento">
+          <article class="card span7 soft">
+            <div class="thumb"><img src="https://picsum.photos/seed/approval-evidence-wall/1200/600" alt="Evidence wall for personal AI agent decisions"></div>
+            <h3>Rehearsal rooms preserve the proposed action as a reviewable object.</h3>
+            <p>Ordinary staging tools tend to validate the final surface. A rehearsal room captures the proposed action before execution: the message the agent wants to send, the browser click it plans to make, the file it wants to publish, or the appointment it wants to confirm. That gives the operator a chance to ask whether the action still fits the current instruction, whether the agent is using the right memory, and whether the evidence is strong enough.</p>
+          </article>
+          <article class="card span5 clay">
+            <h3>Checklists stay useful for deterministic defects.</h3>
+            <p>Broken links, missing titles, blank images, and obvious layout regressions still belong in a checklist. The problem is that checklists are weakest exactly where agent risk is strongest: contextual judgment, stale consent, incomplete tool state, and cross-channel ambiguity.</p>
+          </article>
+          <article class="card span4 sage">
+            <h3>Approval queues are not enough.</h3>
+            <p>A queue asks a person to say yes or no. A rehearsal room asks whether the person has enough context to say yes or no responsibly.</p>
+          </article>
+          <article class="card span4 blue">
+            <h3>Session replay is after-the-fact.</h3>
+            <p>Replay helps diagnose what happened. Rehearsal changes what happens next by preventing an under-evidenced action from going live.</p>
+          </article>
+          <article class="card span4 soft">
+            <h3>Agent memory needs a courtroom.</h3>
+            <p>When memory changes behavior, the operator needs a place to see which memory mattered, why it was trusted, and how it can be corrected.</p>
+          </article>
+          <article class="card span6 clay">
+            <h3>Best fit for high-context personal work.</h3>
+            <p>Use rehearsal rooms when the agent is doing work that blends preference, identity, money, reputation, or calendar commitments. A personal assistant that drafts a dinner reply may only need light review. A personal agent that publishes a landing page, schedules a paid appointment, changes a customer record, or texts a prospect needs a stronger pre-action layer.</p>
+          </article>
+          <article class="card span6 sage">
+            <h3>Best fit for Super-style operator loops.</h3>
+            <p>Super is positioned around personal agents that move through text, browser work, and receipts rather than a single chat window. That makes rehearsal rooms a natural comparison point for teams evaluating <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text-message AI assistants</a>, <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache workflows</a>, and agent-built site launches.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="track">
+        <span>evidence before execution</span><span>fresh consent</span><span>rollback paths</span><span>source-linked review</span><span>operator confidence</span>
+        <span>evidence before execution</span><span>fresh consent</span><span>rollback paths</span><span>source-linked review</span><span>operator confidence</span>
+      </div>
+    </div>
+
+    <section>
+      <div class="wrap">
+        <h2 class="section-title">Head-to-head evaluation</h2>
+        <p class="intro">The practical buyer question is not whether staging checklists are bad. They are cheap, familiar, and still useful. The question is whether they can carry the burden of autonomous or semi-autonomous work. For personal AI agents, the answer is usually no unless the agent is limited to low-risk drafts.</p>
+        <table>
+          <tbody>
+            <tr><th>Criterion</th><th>Staging checklist</th><th>Rehearsal room software</th></tr>
+            <tr><td>Primary job</td><td>Confirm that a known release process was followed.</td><td>Evaluate whether a proposed agent action has enough context, consent, evidence, and rollback coverage.</td></tr>
+            <tr><td>Timing</td><td>Usually before launch or after a QA pass.</td><td>Immediately before execution, and again when the agent resumes after a pause or correction.</td></tr>
+            <tr><td>Evidence model</td><td>Human-entered checks, screenshots, issue lists, and pass/fail notes.</td><td>Source messages, tool state, memory references, approval rules, output previews, and receipts in one review object.</td></tr>
+            <tr><td>Weakness</td><td>Static, easy to rubber-stamp, and disconnected from the agent's live reasoning path.</td><td>Requires careful product design so the review object stays concise instead of becoming another noisy dashboard.</td></tr>
+            <tr><td>Best buyer</td><td>Teams shipping predictable websites or apps with stable manual workflows.</td><td>Operators using personal AI agents for text replies, browser actions, site publishing, customer proof follow-up, appointments, or revenue workflows.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="workflow">
+      <div class="wrap pin-grid">
+        <div class="pin-title">
+          <h2 class="section-title">A stronger review loop has four rooms.</h2>
+          <p class="intro">A good rehearsal room does not make the operator read every token. It turns the agent's work into four inspectable rooms: intent, evidence, boundary, and recovery. Each room should answer one question quickly, with the option to drill down when the action is risky.</p>
+        </div>
+        <div class="steps">
+          <article class="step media-step">
+            <img src="https://picsum.photos/seed/agent-intent-room/1100/520" alt="Intent preview for AI agent action">
+            <div><h3>Intent room</h3><p>The operator sees the agent's proposed action in plain language. For example: send a follow-up text, update a page, book a slot, approve a refund, or resume a browser task. The preview should include who is affected and what visible change will occur.</p></div>
+          </article>
+          <article class="step media-step">
+            <img src="https://picsum.photos/seed/source-evidence-room/1100/520" alt="Source evidence for AI agent decision">
+            <div><h3>Evidence room</h3><p>The system shows the source trail: recent user messages, extracted preferences, relevant browser state, cached computer-use context, and any previous receipt. This is where thin AI confidence scores should give way to concrete evidence.</p></div>
+          </article>
+          <article class="step media-step">
+            <img src="https://picsum.photos/seed/agent-boundary-room/1100/520" alt="Boundary rules for AI agent approval">
+            <div><h3>Boundary room</h3><p>The operator sees which rule or approval boundary applies. A strong system can say whether the action is inside standing consent, needs fresh confirmation, or must be escalated. This is especially important for agents working through SMS or browser sessions where context changes quickly.</p></div>
+          </article>
+          <article class="step media-step">
+            <img src="https://picsum.photos/seed/rollback-recovery-room/1100/520" alt="Recovery plan for AI agent action">
+            <div><h3>Recovery room</h3><p>Before execution, the agent should describe what can be undone, what cannot be undone, and what receipt will be stored. For publishing flows, this may include a previous version. For communication flows, it may include a correction draft and a record of why the original answer passed review.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2 class="section-title">Where each competitor pattern wins</h2>
+        <p class="intro">No one pattern owns the entire market. The right answer depends on the cost of a wrong action, how often the agent repeats the workflow, and whether the operator needs a receipt later.</p>
+        <div class="accordion">
+          <article class="slice"><img src="https://picsum.photos/seed/static-checklist-card/900/900" alt="Static checklist pattern"><div><h3>Static checklist</h3><p>Wins when the workflow is stable, the same person owns every step, and the only expected failures are visible surface defects.</p></div></article>
+          <article class="slice"><img src="https://picsum.photos/seed/approval-queue-card/900/900" alt="Approval queue pattern"><div><h3>Approval queue</h3><p>Wins when the operator already knows the context and only needs a fast yes or no, especially for repetitive low-risk drafts.</p></div></article>
+          <article class="slice"><img src="https://picsum.photos/seed/session-replay-card/900/900" alt="Session replay pattern"><div><h3>Session replay</h3><p>Wins when the goal is forensic analysis after an incident, not pre-action prevention.</p></div></article>
+          <article class="slice"><img src="https://picsum.photos/seed/rehearsal-room-card/900/900" alt="Rehearsal room pattern"><div><h3>Rehearsal room</h3><p>Wins when an agent is trusted to act across tools and the operator needs evidence before allowing the next step.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2 class="section-title">Checklist for choosing a rehearsal layer</h2>
+        <p class="intro">Use this buying checklist before replacing a simple staging process. A rehearsal room is worth adopting when it reduces operator doubt without burying the person in another dashboard.</p>
+        <div class="bento">
+          <article class="card span4 soft"><h3>Demand source-linked evidence.</h3><p>Every recommendation should connect to the messages, pages, files, or receipts that caused it. If the system cannot show why an action is safe, the operator cannot responsibly approve it.</p></article>
+          <article class="card span4 clay"><h3>Require fresh-consent states.</h3><p>The product should distinguish standing permission from stale permission and new permission. This aligns with the spirit of risk management guidance in the <a href="https://www.nist.gov/itl/ai-risk-management-framework">NIST AI Risk Management Framework</a>.</p></article>
+          <article class="card span4 sage"><h3>Test prompt-injection posture.</h3><p>For browser and message agents, the review layer should treat external content as untrusted until verified. OWASP's <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/">Top 10 for Large Language Model Applications</a> is a useful source for security-oriented evaluation.</p></article>
+          <article class="card span6 blue"><h3>Measure operator latency.</h3><p>If every action requires a long human inspection, the agent will feel slower than manual work. Good rehearsal software summarizes risk, separates routine actions from unusual ones, and escalates only when evidence or boundaries are weak.</p></article>
+          <article class="card span6 soft"><h3>Prefer receipt-native systems.</h3><p>For Super-style workflows, a receipt is not decoration. It is how the user remembers what happened, why it happened, and what the agent should do differently next time. Explore <a href="https://getsupers.com/">Super</a> when the goal is a personal agent that works through useful receipts instead of disposable chat history.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="wrap">
+        <h2 class="section-title">FAQ</h2>
+        <div class="faq">
+          <details open><summary>Is rehearsal room software a replacement for QA?</summary><p>No. It replaces only the part of QA that tries to reason about agent intent with static checks. You still need automated link checks, visual review, accessibility checks, and ordinary release hygiene.</p></details>
+          <details><summary>When is a staging checklist enough?</summary><p>A checklist is enough when the agent is not making contextual decisions or when the work is fully deterministic. If the agent is only formatting a draft that a human will rewrite anyway, a rehearsal layer may be excessive.</p></details>
+          <details><summary>Why compare this to personal AI agents instead of enterprise automation?</summary><p>Personal agents often work in messier environments: text messages, browser tabs, local files, calendars, and preferences that change midstream. That makes evidence and consent more important than in a locked-down enterprise workflow.</p></details>
+          <details><summary>What should teams evaluate first?</summary><p>Start with one workflow where a wrong action is annoying but recoverable. For example, review agent-built landing pages through <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI website workflows</a> before testing higher-risk appointment or revenue tasks.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="wrap">
+        <h2 class="section-title">Choose the layer that shows the work before it happens.</h2>
+        <p class="intro">Staging checklists help teams remember release chores. Rehearsal rooms help operators trust personal AI agents with real work. The market will reward products that make approvals faster, receipts clearer, and risky actions easier to rehearse before they become public.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://getsupers.com/">Explore Super</a>
+          <a class="btn secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">See text-message agents</a>
+        </div>
+        <footer>
+          <span>Agent Market Notes for kalshhunter.com</span>
+          <span><a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a> · <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">Agent-built websites</a></span>
+        </footer>
+      </div>
+    </section>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.from(".visual", {opacity:0, y:70, duration:1.1, ease:"power3.out"});
+      gsap.utils.toArray(".media-step img").forEach(function(img){
+        gsap.to(img,{scale:1,opacity:1,ease:"none",scrollTrigger:{trigger:img,start:"top 85%",end:"bottom 25%",scrub:true}});
+      });
+      ScrollTrigger.create({trigger:"#workflow",start:"top top+=100",end:"bottom bottom",pin:".pin-title",pinSpacing:false});
+      gsap.utils.toArray(".card").forEach(function(card){
+        gsap.from(card,{opacity:0,y:44,duration:.8,ease:"power2.out",scrollTrigger:{trigger:card,start:"top 86%"}});
+      });
+    }
+  </script>
+</body>
+</html>
