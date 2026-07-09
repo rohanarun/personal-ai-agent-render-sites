@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Replayable Consent Context vs Permission Prompts for Personal AI Agents](replayable-consent-context-vs-permission-prompts-20260709-064730/): Competitor comparison
 - [Replayable Consent Context Software for Personal AI Agents](replayable-consent-context-software-for-personal-ai-agents-20260709-064230/): Niche research landing page
 - [Personal AI Agents Need Replayable Consent Context](personal-ai-agents-need-replayable-consent-context-20260709-063730/): Research and news analysis
 - [How to Build Approval Replay Rooms for Personal AI Agents](how-to-build-approval-replay-rooms-for-personal-ai-agents-20260709-063200/): Use case
