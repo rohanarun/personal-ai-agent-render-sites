@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agent Consent Dashboards vs Approval Queues</title>
+  <meta name="description" content="A competitor comparison page explaining when personal AI agent teams should use consent dashboards instead of ordinary approval queues.">
+  <link rel="canonical" href="https://kalshhunter.com/agent-consent-dashboards-vs-approval-queues-20260709-173332/">
+  <meta property="og:title" content="Agent Consent Dashboards vs Approval Queues">
+  <meta property="og:description" content="Why AI agent approval queues are not enough once buyers need evidence, expiry, revocation, and replayable work receipts.">
+  <meta property="og:url" content="https://kalshhunter.com/agent-consent-dashboards-vs-approval-queues-20260709-173332/">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800;900&display=swap');
+    :root{--ink:#101312;--paper:#f4efe6;--muted:#65706c;--line:rgba(16,19,18,.14);--dark:#0e1513;--mint:#c6f1da;--red:#d9634c;--sky:#dcecf5;--yellow:#edd07a}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Outfit,system-ui,sans-serif;letter-spacing:0;overflow-x:hidden}main{overflow-x:hidden;width:100%;max-width:100%}a{color:inherit}
+    .nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:50;width:min(1140px,92vw);display:flex;align-items:center;justify-content:space-between;padding:11px 14px 11px 22px;border-radius:999px;background:rgba(14,21,19,.78);color:white;backdrop-filter:blur(18px);box-shadow:0 18px 65px rgba(0,0,0,.2);border:1px solid rgba(255,255,255,.14)}.brand{font-weight:900;text-decoration:none}.navlinks{display:flex;gap:18px;font-size:14px;color:rgba(255,255,255,.76)}.nav a{text-decoration:none}.navcta{padding:10px 16px;border-radius:999px;background:#fff;color:#0e1513;font-weight:900}
+    .hero{position:relative;min-height:92vh;padding:150px 5vw 84px;display:flex;align-items:center;text-align:center;background:radial-gradient(circle at 50% 15%,rgba(198,241,218,.45),transparent 28%),radial-gradient(circle at 20% 80%,rgba(217,99,76,.25),transparent 30%),#0e1513;color:white}.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(14,21,19,.2),rgba(14,21,19,.84)),url("https://picsum.photos/seed/approval-queue-vs-dashboard/1920/1080") center/cover;opacity:.32;filter:grayscale(1) contrast(130%);pointer-events:none}.hero-inner{position:relative;z-index:1;width:min(1180px,94vw);margin:0 auto}.eyebrow{font-size:14px;text-transform:uppercase;letter-spacing:.08em;color:var(--mint);font-weight:900}.hero h1{max-width:min(1180px,94vw);margin:18px auto 24px;font-size:clamp(3.2rem,6.4vw,7.1rem);line-height:.88;font-weight:900}.inline-img{display:inline-block;width:clamp(78px,9vw,136px);height:clamp(34px,4.5vw,58px);border-radius:999px;background:url("https://picsum.photos/seed/comparison-console/420/220") center/cover;vertical-align:middle;margin:0 .08em;filter:grayscale(1) contrast(135%)}.hero p{max-width:790px;margin:0 auto;font-size:clamp(1.1rem,1.7vw,1.5rem);line-height:1.42;color:rgba(255,255,255,.78)}.cta-row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:34px}.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:15px 22px;text-decoration:none;font-weight:900}.btn.primary{background:#fff;color:#0e1513}.btn.secondary{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.3);color:#fff}
+    section{padding:clamp(100px,14vw,190px) 5vw}.wrap{width:min(1180px,92vw);margin:0 auto}.section-head{display:flex;justify-content:space-between;align-items:end;gap:42px;margin-bottom:56px}.section-head h2{font-size:clamp(2.35rem,4.7vw,5.2rem);line-height:.92;margin:0;max-width:890px}.section-head p{max-width:430px;font-size:19px;line-height:1.45;color:var(--muted)}
+    .bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-flow:dense;gap:16px}.tile{border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.58);padding:30px;min-height:280px;overflow:hidden;transition:transform .7s ease,background .7s ease}.tile:hover{transform:translateY(-6px);background:#fff}.tile h3{font-size:32px;line-height:1;margin:0 0 16px}.tile p,.tile li{font-size:18px;line-height:1.48;color:#53605d}.tile.big{grid-column:span 7;min-height:390px;background:#fff}.tile.side{grid-column:span 5;background:#0e1513;color:white}.tile.side p{color:rgba(255,255,255,.72)}.tile.third{grid-column:span 4}.tile.half{grid-column:span 6}.tile.media{padding:0}.tile.media img{width:100%;height:100%;min-height:310px;object-fit:cover;filter:grayscale(1) contrast(130%);transition:transform .7s ease}.tile.media:hover img{transform:scale(1.05)}
+    .compare{background:#fff}.table{border:1px solid var(--line);border-radius:8px;overflow:hidden}.row{display:grid;grid-template-columns:1.1fr 1fr 1fr;border-bottom:1px solid var(--line)}.row:last-child{border-bottom:0}.cell{padding:24px;font-size:18px;line-height:1.45;color:#46514e}.cell strong{font-size:20px;color:#101312}.head .cell{background:#0e1513;color:#fff;font-weight:900}.head .cell strong{color:#fff}
+    .stack-zone{background:#0e1513;color:#fff}.stack-intro{text-align:center;max-width:950px;margin:0 auto 70px}.stack-intro h2{font-size:clamp(2.7rem,5.3vw,5.9rem);line-height:.9;margin:0 0 24px}.stack-intro p{font-size:20px;color:rgba(255,255,255,.7)}.stack{display:grid;gap:26px;max-width:880px;margin:0 auto}.stack-card{position:sticky;top:108px;border:1px solid rgba(255,255,255,.16);border-radius:8px;background:linear-gradient(140deg,rgba(255,255,255,.14),rgba(255,255,255,.045));min-height:340px;padding:38px;box-shadow:0 30px 80px rgba(0,0,0,.28)}.stack-card:nth-child(2){top:132px}.stack-card:nth-child(3){top:156px}.stack-card:nth-child(4){top:180px}.stack-card h3{font-size:38px;line-height:1;margin:0 0 16px}.stack-card p{font-size:19px;line-height:1.55;color:rgba(255,255,255,.72)}.stack-card img{width:100%;height:170px;object-fit:cover;border-radius:7px;margin-bottom:24px;filter:grayscale(1) contrast(130%);opacity:.78;transform:scale(.88)}
+    .article{background:#f4efe6}.article-grid{display:grid;grid-template-columns:minmax(220px,320px) minmax(0,760px);gap:7vw}.side-note{position:sticky;top:115px;align-self:start;border-top:1px solid var(--line);padding-top:24px;color:#65706c}.side-note strong{color:#101312}.side-note a{display:block;margin:12px 0;text-decoration:none;font-weight:800}.prose h2{font-size:clamp(2.1rem,3.5vw,3.8rem);line-height:.98;margin:0 0 22px}.prose h3{font-size:30px;margin:44px 0 12px}.prose p,.prose li{font-size:20px;line-height:1.62;color:#3f4a46}.prose a{font-weight:900}.callout{background:#fff;border-left:5px solid var(--red);padding:24px 28px;margin:42px 0}
+    .marquee{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 0;background:var(--mint)}.marquee-track{display:flex;width:max-content;gap:42px;animation:mar 28s linear infinite;font-size:42px;font-weight:900;white-space:nowrap;color:#0e1513}@keyframes mar{to{transform:translateX(-50%)}}
+    .accordions{display:flex;height:460px;gap:10px}.panel{flex:1;border-radius:8px;overflow:hidden;position:relative;background:#111;color:white;transition:flex .7s ease}.panel:hover{flex:2.35}.panel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(128%);opacity:.52;transition:transform .7s ease}.panel:hover img{transform:scale(1.05)}.panel div{position:absolute;inset:auto 24px 24px}.panel h3{font-size:30px;margin:0 0 10px}.panel p{font-size:17px;line-height:1.4;color:rgba(255,255,255,.76)}
+    .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.quote{border:1px solid var(--line);border-radius:8px;background:#fff;padding:28px;min-height:270px}.quote img{width:64px;height:64px;border-radius:50%;object-fit:cover;filter:grayscale(1);margin-bottom:20px}.quote p{font-size:19px;line-height:1.45;color:#3f4a46}.quote strong{display:block;margin-top:18px}
+    .sources{background:var(--sky)}.source-list{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.source-list a{padding:24px;border:1px solid rgba(16,19,18,.16);border-radius:8px;background:rgba(255,255,255,.65);font-weight:900;text-decoration:none}.faq details{border-top:1px solid var(--line);padding:24px 0}.faq summary{cursor:pointer;font-size:25px;font-weight:900}.faq p{font-size:19px;color:var(--muted);line-height:1.5}
+    .footer{padding:120px 5vw;background:#0e1513;color:white}.footer h2{font-size:clamp(3rem,7vw,7rem);line-height:.88;margin:0 0 28px}.footer p{font-size:21px;line-height:1.5;color:rgba(255,255,255,.7);max-width:780px}.footer .cta-row{justify-content:flex-start}.footer-links{display:flex;gap:18px;flex-wrap:wrap;margin-top:34px}.footer-links a{color:white;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35)}
+    @media(max-width:900px){.navlinks{display:none}.section-head,.article-grid{display:grid;grid-template-columns:1fr}.bento{grid-template-columns:1fr}.tile,.tile.big,.tile.side,.tile.third,.tile.half{grid-column:span 1}.row{grid-template-columns:1fr}.accordions{height:auto;flex-direction:column}.panel{min-height:240px}.quotes,.source-list{grid-template-columns:1fr}.side-note{position:static}.stack-card{position:relative;top:auto!important}}
+  </style>
+</head>
+<body>
+  <main>
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="https://kalshhunter.com/">Agent Market Notes</a>
+      <div class="navlinks">
+        <a href="#difference">Difference</a>
+        <a href="#matrix">Matrix</a>
+        <a href="#choice">Choose</a>
+      </div>
+      <a class="navcta" href="https://getsupers.com/">Explore Super</a>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-inner">
+        <div class="eyebrow">Competitor comparison for personal AI agent teams</div>
+        <h1>Agent consent dashboards <span class="inline-img" aria-hidden="true"></span> vs approval queues</h1>
+        <p>Approval queues answer “should this action happen now?” Consent dashboards answer the larger buyer question: “what is this agent allowed to do, what did it already do, and can we prove the boundary held?”</p>
+        <div class="cta-row">
+          <a class="btn primary" href="#matrix">Compare the models</a>
+          <a class="btn secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">See text approval workflows</a>
+        </div>
+      </div>
+    </header>
+
+    <section id="difference">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>The approval queue is a moment. The consent dashboard is memory.</h2>
+          <p>Both are useful, but they solve different problems. The queue routes a decision. The dashboard explains and governs the operating boundary around many decisions.</p>
+        </div>
+        <div class="bento">
+          <article class="tile big">
+            <h3>Approval queues are necessary, but incomplete.</h3>
+            <p>A queue is excellent when a personal AI agent needs a human to approve a specific pending action: send this text, book this appointment, submit this browser form, publish this page, or make this purchase. But once buyers review the agent as a product, the queue is too narrow. It does not show consent expiry, revocation, repeated corrections, action receipts, or whether completed work stayed inside a durable policy.</p>
+          </article>
+          <article class="tile side">
+            <h3>Consent dashboards make the boundary inspectable.</h3>
+            <p>They show active scopes, stale approvals, evidence packets, revoked permissions, and work receipts. That makes them a better fit for buyer diligence and operator review.</p>
+          </article>
+          <article class="tile third">
+            <h3>Queue strength</h3>
+            <p>Fast human-in-the-loop routing for a pending action.</p>
+          </article>
+          <article class="tile third">
+            <h3>Dashboard strength</h3>
+            <p>Long-lived visibility into what the agent can do and why.</p>
+          </article>
+          <article class="tile third media">
+            <img src="https://picsum.photos/seed/consent-comparison-grid/900/720" alt="Abstract comparison grid">
+          </article>
+          <article class="tile half">
+            <h3>Where Super fits</h3>
+            <p>A text-native assistant like <a href="https://getsupers.com/">Super</a> can use conversational approvals for speed while turning those approvals into structured evidence for later review.</p>
+          </article>
+          <article class="tile half">
+            <h3>Where browser agents differ</h3>
+            <p>When agents use browsers, consent evidence should connect to replay and cached state through patterns like <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a>.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>approval queue</span><span>consent dashboard</span><span>action receipt</span><span>scope expiry</span><span>buyer room</span><span>approval queue</span><span>consent dashboard</span><span>action receipt</span><span>scope expiry</span><span>buyer room</span>
+      </div>
+    </div>
+
+    <section id="matrix" class="compare">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Comparison matrix</h2>
+          <p>The simplest way to choose is to ask whether the product needs to route a decision, or explain a system of decisions over time.</p>
+        </div>
+        <div class="table">
+          <div class="row head"><div class="cell"><strong>Criteria</strong></div><div class="cell"><strong>Approval queue</strong></div><div class="cell"><strong>Consent dashboard</strong></div></div>
+          <div class="row"><div class="cell"><strong>Primary job</strong></div><div class="cell">Get a human yes or no on a pending action.</div><div class="cell">Show what the agent is allowed to do, what changed, and what evidence exists.</div></div>
+          <div class="row"><div class="cell"><strong>Time horizon</strong></div><div class="cell">Immediate task moment.</div><div class="cell">Ongoing relationship between user, agent, tools, and buyer review.</div></div>
+          <div class="row"><div class="cell"><strong>Best for</strong></div><div class="cell">Escalation, exception routing, sensitive one-off actions.</div><div class="cell">Consent expiry, revocation, receipts, buyer diligence, policy review.</div></div>
+          <div class="row"><div class="cell"><strong>Weakness</strong></div><div class="cell">Becomes noisy and loses context when everything is routed through it.</div><div class="cell">Requires structured events and careful privacy boundaries.</div></div>
+          <div class="row"><div class="cell"><strong>Ideal pairing</strong></div><div class="cell">Text, email, or mobile approval prompts.</div><div class="cell">A buyer evidence room and replayable action history.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stack-zone">
+      <div class="wrap">
+        <div class="stack-intro">
+          <h2>Migration path from queue to dashboard</h2>
+          <p>The best teams do not throw away approval queues. They promote queue events into durable consent evidence.</p>
+        </div>
+        <div class="stack">
+          <article class="stack-card">
+            <img src="https://picsum.photos/seed/pending-approval-action/900/420" alt="Pending approval action">
+            <h3>Capture the pending action</h3>
+            <p>Keep the queue simple. It should ask for a decision with enough context to avoid confusion: action, destination, risk, deadline, and expected result.</p>
+          </article>
+          <article class="stack-card">
+            <img src="https://picsum.photos/seed/approval-basis-receipt/900/420" alt="Approval basis receipt">
+            <h3>Create the approval basis</h3>
+            <p>When a user approves, store the response as a structured consent grant, not just a message in a transcript.</p>
+          </article>
+          <article class="stack-card">
+            <img src="https://picsum.photos/seed/completed-action-evidence/900/420" alt="Completed action evidence">
+            <h3>Attach the completed action</h3>
+            <p>After the agent acts, connect the action receipt to the approval basis, including browser traces or publishing records where relevant.</p>
+          </article>
+          <article class="stack-card">
+            <img src="https://picsum.photos/seed/buyer-diligence-export/900/420" alt="Buyer diligence export">
+            <h3>Export a buyer room</h3>
+            <p>Package sanitized examples of approval, scope, expiry, revocation, and receipts. This is the layer buyers inspect before trusting more autonomy.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="article">
+      <div class="wrap article-grid">
+        <aside class="side-note">
+          <strong>Decision guide</strong>
+          <a href="#queue">Use queues when</a>
+          <a href="#dashboard">Use dashboards when</a>
+          <a href="#hybrid">Hybrid pattern</a>
+          <a href="#faq">FAQ</a>
+        </aside>
+        <article class="prose">
+          <h2 id="queue">Use an approval queue when the problem is interruption routing</h2>
+          <p>Approval queues are still the right answer when the agent is blocked on a concrete decision. A user should not need to open a dashboard to say yes to a draft text, confirm an appointment, approve a browser submission, or reject an ambiguous instruction. The queue can live in the channel where the user already is: text, email, push notification, or a compact operator inbox.</p>
+          <p>The risk appears when the queue becomes the only governance layer. If every sensitive detail is buried inside individual queue items, the buyer has no durable way to inspect the overall system. They can see that humans were asked, but not whether the agent's standing permissions are coherent. They can see a yes or no, but not whether that yes expired, whether it was reused, or whether it produced a receipt.</p>
+
+          <h2 id="dashboard">Use a consent dashboard when the problem is trust over time</h2>
+          <p>A consent dashboard is better when the agent has ongoing access to tools or recurring permission to act. It lets operators understand the current boundary without reconstructing it from dozens of approval events. It also lets buyers review the product's evidence layer without watching a demo or reading internal logs. This matters for agents that manage appointments, operate browsers, send customer messages, prepare purchases, or publish updates.</p>
+          <p>Dashboard design should start from the questions buyers ask: what can the agent do now, who approved that scope, when does it expire, what work happened under that scope, and how can the user revoke it? If the dashboard answers those questions, it becomes a commercial trust surface rather than an administrative afterthought.</p>
+
+          <div class="callout">
+            <p>The winning pattern is not queue versus dashboard. The winning pattern is a queue that creates durable dashboard evidence.</p>
+          </div>
+
+          <h2 id="hybrid">The hybrid pattern for personal AI agents</h2>
+          <p>The hybrid pattern is straightforward. Use an approval queue for urgent, high-risk, or ambiguous actions. Store every approval as structured consent. Attach completed work receipts to that consent. Show active and expired boundaries in the dashboard. Provide buyer-ready exports that hide irrelevant private conversation but preserve the evidence chain.</p>
+          <p>This is especially important for <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text message AI assistants</a>, because the approval experience can feel casual even when the action is important. A user might text “yes, book it” or “send that version.” The agent can obey, but the product should preserve a structured record: what “it” referred to, what was booked or sent, what account was used, and whether the action stayed inside the accepted scope.</p>
+          <p>The same pattern matters for agents that build or publish pages. With <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">agent-built websites</a>, the approval queue may approve a launch, while the consent dashboard shows the launch receipt, review basis, rollback option, and resulting artifact.</p>
+
+          <h3>Practical checklist</h3>
+          <ul>
+            <li>Keep approval prompts short enough to answer quickly.</li>
+            <li>Store approvals as structured consent grants with scope and expiry.</li>
+            <li>Connect completed actions to their approval basis.</li>
+            <li>Show revoked and stale consent, not only active consent.</li>
+            <li>Give buyers a sanitized evidence room instead of raw transcripts.</li>
+            <li>Turn repeated corrections into proposed rules only after confirmation.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Where each model wins</h2>
+          <p>These are not enemies. They are layers in the same control system.</p>
+        </div>
+        <div class="accordions">
+          <article class="panel">
+            <img src="https://picsum.photos/seed/fast-human-approval/800/900" alt="Fast human approval">
+            <div><h3>Approval queue</h3><p>Best for immediate yes/no decisions and exception handling.</p></div>
+          </article>
+          <article class="panel">
+            <img src="https://picsum.photos/seed/live-consent-map/800/900" alt="Live consent map">
+            <div><h3>Consent dashboard</h3><p>Best for current scope, expiry, revocation, and buyer review.</p></div>
+          </article>
+          <article class="panel">
+            <img src="https://picsum.photos/seed/agent-evidence-room/800/900" alt="Agent evidence room">
+            <div><h3>Evidence room</h3><p>Best for procurement, internal approval, and trust transfer.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="choice">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Operator feedback</h2>
+          <p>The moment teams add receipts and expiry, the queue stops carrying the whole trust burden.</p>
+        </div>
+        <div class="quotes">
+          <article class="quote">
+            <img src="https://picsum.photos/seed/queue-operator-one/160/160" alt="Operator portrait">
+            <p>“The queue got us approvals. The dashboard got us confidence that approvals were still valid.”</p>
+            <strong>Agent operations manager</strong>
+          </article>
+          <article class="quote">
+            <img src="https://picsum.photos/seed/queue-operator-two/160/160" alt="Operator portrait">
+            <p>“Buyers stopped asking for screenshots once we could show receipt trails by scope.”</p>
+            <strong>Founder, AI services platform</strong>
+          </article>
+          <article class="quote">
+            <img src="https://picsum.photos/seed/queue-operator-three/160/160" alt="Operator portrait">
+            <p>“The queue was noisy until we let low-risk work run under policy and escalated only the right actions.”</p>
+            <strong>Product lead, personal agents</strong>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="sources">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Governance references</h2>
+          <p>These sources help frame agent controls, risk language, and application-layer security reviews.</p>
+        </div>
+        <div class="source-list">
+          <a href="https://www.nist.gov/itl/ai-risk-management-framework">NIST AI Risk Management Framework</a>
+          <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/">OWASP Top 10 for Large Language Model Applications</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="faq">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>FAQ</h2>
+          <p>Short answers for teams deciding whether to extend an approval queue into a dashboard.</p>
+        </div>
+        <details open>
+          <summary>Should an early agent product build both?</summary>
+          <p>If the agent performs sensitive actions, yes. Start with a simple queue for decisions and a simple dashboard for active scopes, expired scopes, and completed receipts.</p>
+        </details>
+        <details>
+          <summary>Can a dashboard replace all approvals?</summary>
+          <p>No. High-risk or ambiguous actions still need fresh approval. The dashboard makes those approvals easier to understand later.</p>
+        </details>
+        <details>
+          <summary>What is the fastest upgrade from a queue?</summary>
+          <p>Add structured approval records with scope, expiry, action type, and receipt links. Then display them in a current-boundary view.</p>
+        </details>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="wrap">
+        <h2>Route the decision. Preserve the evidence.</h2>
+        <p>Super’s text-native assistant surface is a natural place for approval. The next layer is turning those approvals into consent evidence that users and buyers can inspect.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="https://getsupers.com/">Visit Super</a>
+          <a class="btn secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Open the text assistant use case</a>
+        </div>
+        <div class="footer-links">
+          <a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a>
+          <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">Agent-built websites</a>
+          <a href="https://kalshhunter.com/">More comparisons</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+  <script>
+    window.addEventListener("load", function(){
+      if(!window.gsap || !window.ScrollTrigger) return;
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.utils.toArray(".stack-card img").forEach(function(img){
+        gsap.fromTo(img,{scale:.82,opacity:.35},{scale:1,opacity:1,ease:"none",scrollTrigger:{trigger:img,start:"top 88%",end:"bottom 38%",scrub:true}});
+      });
+      gsap.utils.toArray(".stack-card").forEach(function(card){
+        gsap.fromTo(card,{y:80,opacity:.7},{y:0,opacity:1,ease:"none",scrollTrigger:{trigger:card,start:"top 92%",end:"top 36%",scrub:true}});
+      });
+      gsap.from(".tile",{y:32,opacity:0,stagger:.08,duration:.8,ease:"power3.out",scrollTrigger:{trigger:".bento",start:"top 80%"}});
+    });
+  </script>
+</body>
+</html>
