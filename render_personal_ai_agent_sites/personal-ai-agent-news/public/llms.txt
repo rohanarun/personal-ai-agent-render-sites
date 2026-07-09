@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Personal AI Agents for Local Service Booking Teams](personal-ai-agents-for-local-service-booking-teams-20260709-114238/): Niche research landing page
 - [Personal AI Agents Are Moving from Launch Checks to Launch Loops](personal-ai-agents-are-moving-from-launch-checks-to-launch-loops-20260709-113702/): Research and news analysis
 - [How to Use Launch Review Loops for Agent-Built Websites](how-to-use-launch-review-loops-for-agent-built-websites-20260709-112601/): Use case
 - [Launch Review Loops vs Agent QA Checklists](launch-review-loops-vs-agent-qa-checklists-20260709-112101/): Competitor comparison

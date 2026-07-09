@@ -1,0 +1,732 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Personal AI Agents for Local Service Booking Teams</title>
+  <meta name="description" content="A practical landing page for local service teams using personal AI agents to capture, qualify, schedule, and follow up on booking requests without losing the human handoff.">
+  <link rel="canonical" href="https://kalshhunter.com/personal-ai-agents-for-local-service-booking-teams-20260709-114238/">
+  <meta property="og:title" content="Personal AI Agents for Local Service Booking Teams">
+  <meta property="og:description" content="How service businesses can use personal AI agents for booking requests, lead qualification, quote prep, and follow-up loops.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://kalshhunter.com/personal-ai-agents-for-local-service-booking-teams-20260709-114238/">
+  <meta property="og:image" content="https://picsum.photos/seed/local-service-agent-dispatch/1600/900">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <style>
+    :root {
+      --ink: #101014;
+      --paper: #f6f1e8;
+      --muted: #686257;
+      --line: rgba(16, 16, 20, 0.14);
+      --green: #16392d;
+      --clay: #b85f38;
+      --gold: #d7b46a;
+      --night: #090b10;
+      --white: #fffaf1;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Cabinet Grotesk", "Geist", "Outfit", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 16% 4%, rgba(184, 95, 56, 0.18), transparent 34rem),
+        radial-gradient(circle at 83% 12%, rgba(22, 57, 45, 0.21), transparent 30rem),
+        linear-gradient(180deg, #fffaf1 0%, var(--paper) 52%, #ebe2d3 100%);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+    main { overflow-x: hidden; width: 100%; max-width: 100%; }
+    a { color: inherit; }
+    .nav {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      width: min(1120px, calc(100vw - 32px));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px 12px 20px;
+      border: 1px solid rgba(255,255,255,0.5);
+      border-radius: 999px;
+      background: rgba(255, 250, 241, 0.74);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 18px 50px rgba(16,16,20,0.12);
+    }
+    .brand { font-size: 14px; font-weight: 800; letter-spacing: 0; }
+    .nav-links { display: flex; gap: 20px; align-items: center; font-size: 13px; color: var(--muted); }
+    .nav-links a { text-decoration: none; }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 18px;
+      border-radius: 999px;
+      background: var(--ink);
+      color: var(--white);
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: minmax(0, 1.04fr) minmax(320px, 0.96fr);
+      gap: clamp(36px, 5vw, 86px);
+      align-items: center;
+      width: min(1240px, calc(100vw - 40px));
+      margin: 0 auto;
+      padding: 150px 0 110px;
+    }
+    .kicker {
+      margin: 0 0 26px;
+      color: var(--clay);
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 0.16em;
+    }
+    h1 {
+      max-width: min(920px, 94vw);
+      margin: 0;
+      font-size: clamp(3rem, 5.35vw, 5.75rem);
+      line-height: 0.92;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .inline-img {
+      display: inline-block;
+      width: clamp(78px, 8vw, 132px);
+      height: clamp(34px, 3.5vw, 54px);
+      margin: 0 10px;
+      border-radius: 999px;
+      vertical-align: middle;
+      background: url("https://picsum.photos/seed/front-desk-calendar/420/220") center/cover;
+      filter: grayscale(0.15) contrast(1.16) saturate(0.9);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.35), 0 18px 42px rgba(16,16,20,0.18);
+    }
+    .hero-copy {
+      max-width: 660px;
+      margin: 28px 0 0;
+      color: #4a463e;
+      font-size: clamp(1.04rem, 1.4vw, 1.22rem);
+      line-height: 1.72;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 999px;
+      font-weight: 900;
+      text-decoration: none;
+      border: 1px solid transparent;
+    }
+    .button.dark { background: var(--ink); color: var(--white); }
+    .button.light { background: var(--white); color: var(--ink); border-color: rgba(16,16,20,0.18); }
+    .hero-media {
+      position: relative;
+      min-height: 660px;
+      border-radius: 34px;
+      overflow: hidden;
+      background: #111;
+      box-shadow: 0 34px 90px rgba(16,16,20,0.25);
+      isolation: isolate;
+    }
+    .hero-media::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("https://picsum.photos/seed/service-dispatch-counter/1400/1800") center/cover;
+      filter: grayscale(0.35) contrast(1.22) saturate(0.72);
+      transform: scale(1.04);
+      transition: transform 900ms ease;
+    }
+    .hero-media:hover::before { transform: scale(1.1); }
+    .hero-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 18% 16%, rgba(255,250,241,0.38), transparent 24rem),
+        linear-gradient(180deg, rgba(9,11,16,0.08), rgba(9,11,16,0.72));
+      z-index: 1;
+    }
+    .media-panel {
+      position: absolute;
+      z-index: 2;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      padding: 22px;
+      border-radius: 24px;
+      color: var(--white);
+      background: rgba(9,11,16,0.54);
+      border: 1px solid rgba(255,255,255,0.22);
+      backdrop-filter: blur(18px);
+    }
+    .media-panel strong { display: block; font-size: 24px; line-height: 1.08; margin-bottom: 10px; }
+    .media-panel p { margin: 0; color: rgba(255,250,241,0.78); line-height: 1.6; }
+    section { padding: 150px 0; }
+    .section-inner { width: min(1180px, calc(100vw - 40px)); margin: 0 auto; }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(280px, 0.55fr);
+      gap: 48px;
+      align-items: end;
+      margin-bottom: 54px;
+    }
+    h2 {
+      margin: 0;
+      font-size: clamp(2.25rem, 4.8vw, 5rem);
+      line-height: 0.98;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .section-head p, .lead { margin: 0; color: var(--muted); font-size: 18px; line-height: 1.72; }
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-flow: dense;
+      gap: 16px;
+    }
+    .card {
+      position: relative;
+      min-height: 300px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px;
+      background: rgba(255,250,241,0.74);
+      overflow: hidden;
+      box-shadow: 0 20px 70px rgba(16,16,20,0.08);
+      transition: transform 700ms ease, box-shadow 700ms ease;
+    }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 34px 90px rgba(16,16,20,0.14); }
+    .wide { grid-column: span 7; }
+    .side { grid-column: span 5; }
+    .third { grid-column: span 4; }
+    .half { grid-column: span 6; }
+    .card h3 { margin: 0 0 16px; font-size: clamp(1.4rem, 2vw, 2.1rem); line-height: 1.04; }
+    .card p { color: #575247; line-height: 1.7; margin: 0; font-size: 16px; }
+    .card ul { margin: 20px 0 0; padding-left: 18px; color: #575247; line-height: 1.8; }
+    .image-card {
+      color: var(--white);
+      min-height: 390px;
+      background: #101014;
+    }
+    .image-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("https://picsum.photos/seed/field-service-van-route/1400/900") center/cover;
+      filter: grayscale(0.28) contrast(1.22) saturate(0.78);
+      transform: scale(1.02);
+      transition: transform 800ms ease;
+    }
+    .image-card:hover::before { transform: scale(1.08); }
+    .image-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(9,11,16,0.1), rgba(9,11,16,0.84));
+    }
+    .image-card > * { position: relative; z-index: 1; }
+    .image-card p { color: rgba(255,250,241,0.8); }
+    .dark-band {
+      background:
+        radial-gradient(circle at 24% 20%, rgba(215,180,106,0.22), transparent 32rem),
+        radial-gradient(circle at 80% 78%, rgba(184,95,56,0.22), transparent 34rem),
+        var(--night);
+      color: var(--white);
+    }
+    .dark-band .section-head p, .dark-band .lead { color: rgba(255,250,241,0.68); }
+    .pin-wrap {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.72fr) minmax(0, 1fr);
+      gap: 70px;
+      align-items: start;
+    }
+    .pin-title { position: relative; }
+    .pin-title h2 { color: var(--white); }
+    .scrub-text {
+      margin-top: 30px;
+      max-width: 480px;
+      color: rgba(255,250,241,0.72);
+      font-size: 20px;
+      line-height: 1.68;
+    }
+    .scrub-word { opacity: 0.14; display: inline-block; margin-right: 0.26em; }
+    .timeline { display: grid; gap: 22px; }
+    .timeline-card {
+      min-height: 240px;
+      border-radius: 26px;
+      padding: 30px;
+      background: rgba(255,250,241,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      overflow: hidden;
+      transform-origin: center;
+    }
+    .timeline-card h3 { margin: 0 0 12px; font-size: 30px; }
+    .timeline-card p { margin: 0; color: rgba(255,250,241,0.72); line-height: 1.7; }
+    .quote-row {
+      display: grid;
+      grid-template-columns: minmax(300px, 0.62fr) minmax(0, 1fr);
+      gap: 48px;
+      align-items: center;
+    }
+    .portraits {
+      position: relative;
+      min-height: 430px;
+      border-radius: 30px;
+      overflow: hidden;
+      background: #151515;
+      box-shadow: 0 30px 90px rgba(16,16,20,0.2);
+    }
+    .portraits img {
+      position: absolute;
+      width: 54%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      border-radius: 24px;
+      filter: grayscale(0.36) contrast(1.18);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.26);
+      transition: transform 700ms ease;
+    }
+    .portraits:hover img { transform: scale(1.05); }
+    .p1 { left: 8%; top: 10%; }
+    .p2 { right: 8%; bottom: 9%; }
+    .quote blockquote {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 4.3rem);
+      line-height: 1.04;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .quote p { margin: 24px 0 0; color: var(--muted); line-height: 1.7; font-size: 17px; }
+    .accordion {
+      display: flex;
+      min-height: 440px;
+      border-radius: 30px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--white);
+    }
+    .slice {
+      flex: 1;
+      min-width: 0;
+      padding: 28px;
+      border-right: 1px solid var(--line);
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      transition: flex 800ms ease;
+      color: var(--white);
+      overflow: hidden;
+    }
+    .slice:last-child { border-right: 0; }
+    .slice:hover { flex: 2.1; }
+    .slice::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(9,11,16,0.14), rgba(9,11,16,0.86));
+    }
+    .slice div { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; }
+    .slice h3 { margin: 0 0 12px; font-size: 28px; }
+    .slice p { margin: 0; max-width: 360px; color: rgba(255,250,241,0.74); line-height: 1.62; opacity: 0; transition: opacity 500ms ease; }
+    .slice:hover p { opacity: 1; }
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 32px;
+    }
+    .check {
+      padding: 22px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: rgba(255,250,241,0.68);
+      line-height: 1.62;
+      color: #4f493e;
+    }
+    .sources, .faq {
+      display: grid;
+      gap: 16px;
+    }
+    details {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(255,250,241,0.72);
+      padding: 22px 24px;
+    }
+    summary { cursor: pointer; font-weight: 900; font-size: 18px; }
+    details p { color: var(--muted); line-height: 1.68; margin: 14px 0 0; }
+    .marquee {
+      display: flex;
+      overflow: hidden;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 24px 0;
+      background: rgba(255,250,241,0.45);
+    }
+    .marquee-track {
+      display: flex;
+      gap: 42px;
+      min-width: max-content;
+      animation: drift 28s linear infinite;
+      font-size: clamp(1.5rem, 3vw, 3rem);
+      font-weight: 900;
+      color: rgba(16,16,20,0.36);
+    }
+    @keyframes drift { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .footer {
+      padding: 130px 0 46px;
+      background: var(--ink);
+      color: var(--white);
+    }
+    .footer h2 { max-width: 940px; }
+    .footer p { color: rgba(255,250,241,0.7); line-height: 1.7; max-width: 680px; font-size: 18px; }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px 26px;
+      margin-top: 60px;
+      padding-top: 26px;
+      border-top: 1px solid rgba(255,255,255,0.14);
+      color: rgba(255,250,241,0.68);
+      font-size: 14px;
+    }
+    .footer-links a { text-decoration: none; }
+    @media (max-width: 920px) {
+      .hero, .section-head, .pin-wrap, .quote-row { grid-template-columns: 1fr; }
+      .hero { padding-top: 130px; }
+      .hero-media { min-height: 520px; }
+      .wide, .side, .third, .half { grid-column: span 12; }
+      .checklist { grid-template-columns: 1fr; }
+      .accordion { flex-direction: column; min-height: 760px; }
+      .slice:hover { flex: 1.4; }
+      .nav-links a:not(.nav-cta) { display: none; }
+    }
+    @media (max-width: 560px) {
+      .nav { top: 10px; width: calc(100vw - 20px); }
+      .hero { width: min(100% - 24px, 1240px); padding-bottom: 80px; }
+      h1 { font-size: clamp(2.55rem, 14vw, 4rem); }
+      section { padding: 104px 0; }
+      .section-inner { width: min(100% - 24px, 1180px); }
+      .card { padding: 22px; border-radius: 20px; }
+      .hero-actions { flex-direction: column; }
+      .button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="https://kalshhunter.com/">Kalsh Hunter</a>
+      <div class="nav-links">
+        <a href="#playbook">Playbook</a>
+        <a href="#handoff">Handoff</a>
+        <a href="#faq">FAQ</a>
+        <a class="nav-cta" href="https://getsupers.com/">Explore Supers</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div>
+        <p class="kicker">Local service booking agents</p>
+        <h1>Turn missed calls into booked jobs with personal AI <span class="inline-img" aria-hidden="true"></span> agents.</h1>
+        <p class="hero-copy">A local business does not need a generic chatbot. It needs a personal AI agent that understands request urgency, collects the right details, prepares the handoff, and keeps the customer warm until a human confirms the job.</p>
+        <div class="hero-actions">
+          <a class="button dark" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Build the text workflow</a>
+          <a class="button light" href="#checklist">View readiness checklist</a>
+        </div>
+      </div>
+      <div class="hero-media reveal-img" aria-label="Service booking desk with scheduling workflow">
+        <div class="media-panel">
+          <strong>The booking agent is the first responder, not the final authority.</strong>
+          <p>It captures context, checks intent, drafts the quote path, and routes high-risk or high-value requests to the person who should own them.</p>
+        </div>
+      </div>
+    </header>
+
+    <section id="playbook">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>Where the agent earns its keep before the calendar invite.</h2>
+          <p>Booking teams lose revenue in the small gaps: a missed voicemail, an incomplete address, a no-show reminder, a vague repair description, or a price shopper who needed one more touch. Personal AI agents make those gaps visible and workable.</p>
+        </div>
+        <div class="bento">
+          <article class="card wide image-card reveal-img">
+            <h3>Capture demand when the office is closed.</h3>
+            <p>A text-first personal assistant can acknowledge the request, identify the service category, ask for photos or access details, and flag urgent jobs without pretending to be a technician.</p>
+          </article>
+          <article class="card side">
+            <h3>Qualify without interrogating the customer.</h3>
+            <p>The best agent asks fewer, better questions: location, timing, service type, budget sensitivity, safety issue, and preferred contact. The conversation feels like intake, not a form.</p>
+            <ul>
+              <li>Collect address and service area fit.</li>
+              <li>Detect emergency language and escalation needs.</li>
+              <li>Summarize the job in the team's normal vocabulary.</li>
+            </ul>
+          </article>
+          <article class="card third">
+            <h3>Prepare the human handoff.</h3>
+            <p>Every automation should leave a clean trail: the customer's words, the agent's interpretation, missing fields, and recommended next action.</p>
+          </article>
+          <article class="card third">
+            <h3>Keep follow-up alive.</h3>
+            <p>When the team is busy, the agent can send status nudges, gather missing photos, and remind prospects before the window closes.</p>
+          </article>
+          <article class="card third">
+            <h3>Protect trust.</h3>
+            <p>Guardrails matter. The agent should avoid final pricing, licensing claims, warranty promises, and safety instructions unless the business has approved those responses.</p>
+          </article>
+          <article class="card half">
+            <h3>Pair the booking flow with reusable agent memory.</h3>
+            <p>Local service teams repeat the same work: neighborhoods, access instructions, common issue types, and technician routing rules. A personal AI agent can use those patterns while still surfacing uncertainty. For teams building broader automations, the <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache workflow</a> is a practical way to preserve repeated browser and ops steps.</p>
+          </article>
+          <article class="card half">
+            <h3>Publish service pages that match real demand.</h3>
+            <p>The same intake data can reveal what customers actually ask for. If you are turning those insights into pages or microsites, the <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent website-building use case</a> shows how agents can help assemble focused service pages without drifting into thin shells.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="dark-band" id="handoff">
+      <div class="section-inner pin-wrap">
+        <div class="pin-title">
+          <h2>Pin the judgment to the human. Let the agent move the request.</h2>
+          <p class="scrub-text" id="scrubText">The best booking agent does not replace dispatch judgment. It turns messy first contact into a structured decision: respond now, ask for more detail, schedule a call, quote later, escalate, or politely decline the request.</p>
+        </div>
+        <div class="timeline">
+          <article class="timeline-card">
+            <h3>First contact</h3>
+            <p>The agent greets, captures the customer's request, and asks for the minimum details needed to understand urgency and service fit.</p>
+          </article>
+          <article class="timeline-card">
+            <h3>Context build</h3>
+            <p>Photos, location, access notes, preferred windows, and issue history are gathered before the booking team has to spend time on the thread.</p>
+          </article>
+          <article class="timeline-card">
+            <h3>Risk routing</h3>
+            <p>Emergency language, hazardous conditions, out-of-area requests, and price-sensitive leads are separated from straightforward booking requests.</p>
+          </article>
+          <article class="timeline-card">
+            <h3>Human confirmation</h3>
+            <p>The final schedule, price, warranty, and operational promise still belong to the business. The agent makes that confirmation easier.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-inner quote-row">
+        <div class="portraits reveal-img">
+          <img class="p1" src="https://picsum.photos/seed/dispatcher-portrait/720/900" alt="Dispatcher reviewing a service request">
+          <img class="p2" src="https://picsum.photos/seed/technician-tablet/720/900" alt="Technician checking job notes on a tablet">
+        </div>
+        <div class="quote">
+          <blockquote>"The win is not that an agent talks more. The win is that every request arrives ready for a real decision."</blockquote>
+          <p>That distinction keeps local service automation grounded. Teams can use <a href="https://getsupers.com/">Supers</a> to explore personal agent workflows while preserving the operational control customers expect from a real business.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-label="Service workflow categories">
+      <div class="marquee-track">
+        <span>intake</span><span>triage</span><span>scheduling</span><span>dispatch</span><span>follow-up</span><span>handoff</span>
+        <span>intake</span><span>triage</span><span>scheduling</span><span>dispatch</span><span>follow-up</span><span>handoff</span>
+      </div>
+    </div>
+
+    <section>
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>Three operating modes for the booking desk.</h2>
+          <p>Start narrow. Prove the handoff. Then expand only where the agent is consistently improving response time, data quality, or booking completion.</p>
+        </div>
+        <div class="accordion">
+          <article class="slice" style="background-image:url('https://picsum.photos/seed/after-hours-message/1000/1200')">
+            <div>
+              <h3>After-hours capture</h3>
+              <p>Use the agent to acknowledge requests, collect basics, and tell customers when a human will respond.</p>
+            </div>
+          </article>
+          <article class="slice" style="background-image:url('https://picsum.photos/seed/job-photo-upload/1000/1200')">
+            <div>
+              <h3>Photo-led diagnosis</h3>
+              <p>Ask customers for the right photos, access notes, and issue history before the team starts quoting or scheduling.</p>
+            </div>
+          </article>
+          <article class="slice" style="background-image:url('https://picsum.photos/seed/dispatcher-routing-board/1000/1200')">
+            <div>
+              <h3>Dispatch prep</h3>
+              <p>Summarize the request, mark uncertainty, and route it to the owner who can make the final call.</p>
+            </div>
+          </article>
+          <article class="slice" style="background-image:url('https://picsum.photos/seed/customer-follow-up-window/1000/1200')">
+            <div>
+              <h3>Follow-up loops</h3>
+              <p>Send reminders, gather missing details, and keep undecided prospects from disappearing.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="checklist">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>Readiness checklist for a service-booking agent.</h2>
+          <p>Use this before turning the agent loose on customer conversations. The goal is to reduce ambiguity, not to create a theatrical automation layer.</p>
+        </div>
+        <div class="checklist">
+          <div class="check"><strong>Approved language:</strong> Define what the agent can promise, what it must avoid, and where it should say a human will confirm.</div>
+          <div class="check"><strong>Escalation rules:</strong> List emergency words, unsafe conditions, expensive job signals, and angry-customer signals that require human review.</div>
+          <div class="check"><strong>Service boundaries:</strong> Give the agent zip codes, job categories, minimum job sizes, and out-of-scope request handling.</div>
+          <div class="check"><strong>Handoff format:</strong> Standardize the summary: request, location, urgency, photos, missing details, next recommended action.</div>
+          <div class="check"><strong>Data retention:</strong> Decide what conversation data is saved, who can view it, and when sensitive notes should be removed.</div>
+          <div class="check"><strong>Quality review:</strong> Sample conversations weekly and update the agent prompts when the same failure repeats.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>Questions service owners ask before adopting agents.</h2>
+          <p>The practical answer is usually not "automate everything." It is "automate the repeatable intake work and make the human decision faster."</p>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Should a personal AI agent give prices?</summary>
+            <p>Only if the business has an approved pricing rule for that exact scenario. Otherwise the safer pattern is to gather job details, explain that a human will confirm, and route a clean summary to the team.</p>
+          </details>
+          <details>
+            <summary>Is text better than web chat for booking?</summary>
+            <p>For many local services, yes. Customers already send photos, addresses, and access notes by text. A <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text-message AI assistant</a> can meet that behavior directly while preserving a human escalation path.</p>
+          </details>
+          <details>
+            <summary>What should be measured first?</summary>
+            <p>Start with response time, completed intake fields, human review rate, booking conversion, and customer confusion. If the agent increases message volume but does not improve these metrics, narrow the scope.</p>
+          </details>
+          <details>
+            <summary>How often should the prompt be updated?</summary>
+            <p>Update the prompt whenever a repeated failure appears: wrong escalation, missing fields, overpromising, awkward tone, or poor summary quality. Treat the system prompt as the operating manual for the front desk.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>Sources and operating references.</h2>
+          <p>These references support the page's guidance around AI risk management, human oversight, and application-level security expectations.</p>
+        </div>
+        <div class="sources">
+          <details open>
+            <summary>NIST AI Risk Management Framework</summary>
+            <p>The NIST AI RMF is useful for thinking about governance, measurement, and risk controls around AI systems that affect real customer interactions. Source: <a href="https://www.nist.gov/itl/ai-risk-management-framework">nist.gov/itl/ai-risk-management-framework</a>.</p>
+          </details>
+          <details open>
+            <summary>OWASP Top 10 for Large Language Model Applications</summary>
+            <p>OWASP's LLM application guidance is relevant when agents handle prompts, customer data, tool calls, and business workflows. Source: <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/">owasp.org/www-project-top-10-for-large-language-model-applications</a>.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="section-inner">
+        <h2>Give the booking desk an agent that knows when to stop.</h2>
+        <p>Use personal AI agents to make intake faster, cleaner, and easier to review. Keep final judgment, pricing, and customer promises with the people responsible for delivering the work.</p>
+        <div class="hero-actions">
+          <a class="button light" href="https://getsupers.com/">Visit Supers</a>
+          <a class="button dark" style="background:#d7b46a;color:#101014" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Start with text intake</a>
+        </div>
+        <div class="footer-links">
+          <a href="https://getsupers.com/">Supers</a>
+          <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Text-message AI assistant</a>
+          <a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a>
+          <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">Agent-built websites</a>
+          <span>Published for kalshhunter.com</span>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    window.addEventListener("load", function () {
+      if (!window.gsap || !window.ScrollTrigger) return;
+      gsap.registerPlugin(ScrollTrigger);
+
+      gsap.utils.toArray(".reveal-img").forEach(function (el) {
+        gsap.fromTo(el, { scale: 0.86, opacity: 0.74 }, {
+          scale: 1,
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 84%",
+            end: "bottom 18%",
+            scrub: true
+          }
+        });
+      });
+
+      var pin = document.querySelector(".pin-title");
+      var wrap = document.querySelector(".pin-wrap");
+      if (pin && wrap) {
+        ScrollTrigger.create({
+          trigger: wrap,
+          start: "top 12%",
+          end: "bottom 78%",
+          pin: pin,
+          pinSpacing: false
+        });
+      }
+
+      var scrub = document.getElementById("scrubText");
+      if (scrub) {
+        var words = scrub.textContent.trim().split(/\s+/);
+        scrub.innerHTML = words.map(function (word) {
+          return '<span class="scrub-word">' + word + '</span>';
+        }).join(" ");
+        gsap.to(".scrub-word", {
+          opacity: 1,
+          stagger: 0.04,
+          ease: "none",
+          scrollTrigger: {
+            trigger: scrub,
+            start: "top 76%",
+            end: "bottom 28%",
+            scrub: true
+          }
+        });
+      }
+
+      gsap.utils.toArray(".timeline-card").forEach(function (card, index) {
+        gsap.from(card, {
+          y: 70,
+          opacity: 0.2,
+          rotateX: 8,
+          duration: 0.9,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 86%"
+          },
+          delay: index * 0.03
+        });
+      });
+    });
+  </script>
+</body>
+</html>
