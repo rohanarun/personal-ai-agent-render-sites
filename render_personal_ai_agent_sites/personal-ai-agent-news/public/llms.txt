@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Personal AI Agents Need Resume Gates After Rollbacks](personal-ai-agents-need-resume-gates-after-rollbacks-20260709-043330/): Research and news analysis
 - [How to Test Rollback Evidence Before AI Agent Resumes](how-to-test-rollback-evidence-before-ai-agent-resumes-20260709-042829/): Use case
 - [Rollback Evidence Software vs Version History](rollback-evidence-software-vs-version-history-20260709-042329/): Competitor comparison
 - [Personal AI Agent Rollback Evidence Software](personal-ai-agent-rollback-evidence-software-20260709-041829/): Niche research landing page
