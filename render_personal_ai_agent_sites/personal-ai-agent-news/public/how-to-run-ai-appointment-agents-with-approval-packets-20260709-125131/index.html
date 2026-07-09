@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to Run AI Appointment Agents With Approval Packets</title>
+  <meta name="description" content="A practical how-to page for service teams that want AI appointment agents to negotiate bookings by text while preserving human review, receipts, and consent boundaries.">
+  <link rel="canonical" href="https://kalshhunter.com/how-to-run-ai-appointment-agents-with-approval-packets-20260709-125131/">
+  <meta property="og:title" content="How to Run AI Appointment Agents With Approval Packets">
+  <meta property="og:description" content="A field guide for running AI appointment agents with approval packets, review rules, receipts, and safe resume workflows.">
+  <meta property="og:url" content="https://kalshhunter.com/how-to-run-ai-appointment-agents-with-approval-packets-20260709-125131/">
+  <meta property="og:type" content="article">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <style>
+    :root{--ink:#101312;--paper:#f5f0e7;--cream:#fffaf0;--line:rgba(16,19,18,.15);--muted:#646962;--green:#3d564a;--clay:#a76a4e;--teal:#426b73}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:"Geist","Avenir Next",system-ui,sans-serif;overflow-x:hidden}
+    main{overflow-x:hidden;width:100%;max-width:100%}
+    a{color:inherit}
+    .grain{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.13;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 150 150' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='.45'/%3E%3C/svg%3E")}
+    .nav{position:fixed;top:22px;left:50%;transform:translateX(-50%);z-index:10;width:min(1140px,calc(100vw - 32px));display:flex;align-items:center;justify-content:space-between;border:1px solid rgba(16,19,18,.13);background:rgba(255,250,240,.78);backdrop-filter:blur(18px);border-radius:999px;padding:13px 14px 13px 22px;box-shadow:0 22px 70px rgba(16,19,18,.13)}
+    .brand{text-decoration:none;font-weight:950;font-size:18px}
+    .navlinks{display:flex;gap:18px;align-items:center;font-size:13px;font-weight:850;color:#4e544e}
+    .navlinks a{text-decoration:none}
+    .nav-cta{background:var(--ink);color:white;border-radius:999px;padding:12px 18px}
+    .hero{position:relative;min-height:94vh;width:min(1240px,calc(100vw - 40px));margin:0 auto;padding:150px 0 88px;text-align:center;display:grid;place-items:center}
+    .hero:before{content:"";position:absolute;inset:5% auto auto 50%;transform:translateX(-50%);width:78vw;height:52vw;background:radial-gradient(circle,rgba(66,107,115,.26),rgba(167,106,78,.16) 42%,transparent 72%);filter:blur(44px);z-index:-1}
+    h1{font-size:clamp(3.05rem,5.25vw,5.85rem);line-height:.92;letter-spacing:0;max-width:min(1120px,94vw);margin:0 auto;font-weight:950}
+    .inline-img{display:inline-block;width:clamp(86px,10vw,150px);height:clamp(32px,4.3vw,56px);border-radius:999px;background-size:cover;background-position:center;vertical-align:middle;margin:0 .13em;filter:grayscale(.18) contrast(1.22) saturate(.76)}
+    .lead{font-size:clamp(1.05rem,1.65vw,1.4rem);line-height:1.62;color:#4e554f;max-width:780px;margin:28px auto 0}
+    .actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+    .button{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:15px 22px;border-radius:999px;border:1px solid var(--ink);font-weight:950;text-decoration:none}
+    .button.dark{background:var(--ink);color:white}.button.light{background:transparent;color:var(--ink)}
+    .hero-media{width:min(1080px,94vw);height:430px;margin:54px auto 0;border-radius:30px;overflow:hidden;box-shadow:0 34px 110px rgba(16,19,18,.24);background:#111}
+    .hero-media img{width:100%;height:100%;object-fit:cover;filter:grayscale(.28) contrast(1.2) saturate(.75);opacity:.88;transition:transform .8s ease}
+    .hero-media:hover img{transform:scale(1.05)}
+    section{position:relative;width:min(1180px,calc(100vw - 40px));margin:0 auto;padding:150px 0}
+    .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:42px;margin-bottom:48px}
+    .section-head h2{font-size:clamp(2.4rem,4.8vw,5.2rem);line-height:.96;margin:0;max-width:780px}
+    .section-head p{max-width:440px;color:var(--muted);line-height:1.65;margin:0}
+    .bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-flow:dense;gap:18px}
+    .tile{min-height:260px;border:1px solid var(--line);border-radius:20px;background:rgba(255,250,240,.7);padding:28px;overflow:hidden;box-shadow:0 22px 70px rgba(16,19,18,.06)}
+    .tile.dark{background:var(--ink);color:white}.tile.img{padding:0}
+    .tile.img img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(.25) contrast(1.2) saturate(.75);transition:transform .8s ease}
+    .tile:hover img{transform:scale(1.05)}
+    .span8{grid-column:span 8}.span4{grid-column:span 4}.span6{grid-column:span 6}
+    .tile h3{font-size:clamp(1.45rem,2.25vw,2.5rem);line-height:1;margin:0 0 18px}
+    .tile p,.tile li{font-size:15.5px;line-height:1.7;color:#555b55}.tile.dark p,.tile.dark li{color:rgba(255,255,255,.74)}
+    .tile ul{padding-left:18px;margin:18px 0 0}
+    .marquee{overflow:hidden;border-block:1px solid var(--line);padding:28px 0;white-space:nowrap}
+    .marquee-track{display:inline-flex;gap:48px;animation:move 26s linear infinite;font-size:clamp(2rem,4.2vw,4.4rem);font-weight:950;color:rgba(16,19,18,.23)}
+    @keyframes move{to{transform:translateX(-50%)}}
+    .workflow{display:grid;grid-template-columns:.88fr 1.12fr;gap:70px;align-items:start}
+    .pin{position:sticky;top:130px}
+    .pin h2{font-size:clamp(2.5rem,5.1vw,5.6rem);line-height:.94;margin:0}.pin p{color:var(--muted);line-height:1.65;font-size:18px}
+    .step{min-height:360px;margin-bottom:32px;border-radius:28px;border:1px solid var(--line);background:var(--cream);overflow:hidden;box-shadow:0 28px 90px rgba(16,19,18,.09);display:grid;grid-template-columns:.9fr 1.1fr}
+    .step img{width:100%;height:100%;object-fit:cover;filter:grayscale(.28) contrast(1.18) saturate(.76)}
+    .step div{padding:34px}.step h3{font-size:clamp(1.8rem,3vw,3.35rem);line-height:1;margin:0 0 16px}.step p{line-height:1.72;color:#4f554f}
+    .article{background:#fff9ec;border:1px solid var(--line);border-radius:30px;padding:56px;box-shadow:0 28px 90px rgba(16,19,18,.07)}
+    .article h2{font-size:clamp(2.05rem,3.7vw,4.1rem);line-height:1;margin:0 0 24px}.article h3{font-size:1.65rem;margin:42px 0 12px}
+    .article p,.article li{font-size:17px;line-height:1.78;color:#454b45}.article a{font-weight:950;text-decoration-thickness:2px;text-underline-offset:4px}
+    .checklist,.faq{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:26px}
+    .check,.faq div{border:1px solid var(--line);border-radius:18px;background:rgba(16,19,18,.045);padding:22px}.faq h3{margin-top:0}
+    .accordions{display:flex;height:520px;border-radius:26px;overflow:hidden;background:var(--ink);border:1px solid var(--line);margin-top:34px}
+    .slice{position:relative;flex:1;overflow:hidden;color:white;border-right:1px solid rgba(255,255,255,.16);transition:flex .7s cubic-bezier(.2,.8,.2,1)}.slice:last-child{border-right:0}.slice:hover{flex:2.75}
+    .slice img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(.35) contrast(1.18);opacity:.6;transition:transform .8s ease,opacity .8s ease}.slice:hover img{transform:scale(1.05);opacity:.8}
+    .slice div{position:absolute;inset:auto 24px 24px 24px}.slice h3{writing-mode:vertical-rl;transform:rotate(180deg);font-size:30px;margin:0;transition:all .5s ease}.slice:hover h3{writing-mode:horizontal-tb;transform:none}.slice p{opacity:0;max-width:360px;line-height:1.55;color:rgba(255,255,255,.78);transition:opacity .5s ease}.slice:hover p{opacity:1}
+    .cta{width:100%;background:var(--ink);color:white;text-align:center;padding:120px 40px;margin-top:90px}
+    .cta-inner{width:min(1000px,calc(100vw - 40px));margin:0 auto}.cta h2{font-size:clamp(3rem,7vw,7rem);line-height:.9;margin:0 0 24px}.cta p{font-size:20px;line-height:1.6;color:rgba(255,255,255,.72);max-width:760px;margin:0 auto 32px}.cta .button{border-color:white}
+    footer{display:flex;justify-content:space-between;gap:28px;width:min(1180px,calc(100vw - 40px));margin:0 auto;padding:44px 0 70px;color:#687068;font-size:14px}footer a{text-decoration:none;font-weight:900}
+    @media (max-width:920px){.navlinks a:not(.nav-cta){display:none}.section-head,.workflow{display:block}.bento{grid-template-columns:1fr}.span8,.span4,.span6{grid-column:span 1}.step{grid-template-columns:1fr}.article{padding:30px}.checklist,.faq{grid-template-columns:1fr}.accordions{height:auto;display:grid}.slice{min-height:220px}.slice h3{writing-mode:horizontal-tb;transform:none}.slice p{opacity:1}footer{display:block}}
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+  <nav class="nav" aria-label="Primary navigation">
+    <a class="brand" href="/">Kalsh Hunter</a>
+    <div class="navlinks">
+      <a href="#setup">Setup</a><a href="#workflow">Workflow</a><a href="#faq">FAQ</a><a class="nav-cta" href="https://getsupers.com/">Explore Super</a>
+    </div>
+  </nav>
+  <main>
+    <header class="hero">
+      <div>
+        <h1>How to run AI appointment agents <span class="inline-img" style="background-image:url('https://picsum.photos/seed/appointment-agent-workflow/420/180')"></span> with approval packets</h1>
+        <p class="lead">A practical operating model for service teams that want AI agents to handle appointment conversations by text, use browser tools when needed, and still leave a clear human approval trail before customer-facing commitments are made.</p>
+        <div class="actions"><a class="button dark" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Start with text agents</a><a class="button light" href="#setup">Read the workflow</a></div>
+        <div class="hero-media"><img src="https://picsum.photos/seed/appointment-approval-room/1500/780" alt="Appointment approval workflow room"></div>
+      </div>
+    </header>
+
+    <section id="setup">
+      <div class="section-head"><h2>Build the workflow around reviewable decisions, not raw chat logs.</h2><p>The packet gives every appointment decision a shared shape: request, evidence, proposed action, risk, consent, and receipt.</p></div>
+      <div class="bento">
+        <article class="tile dark span8"><h3>Use the agent for speed, but use the packet for judgment.</h3><p>An AI appointment agent can draft replies, summarize customer intent, inspect scheduling data, and prepare the next action. That is useful, but it also creates a new operational question: what exactly did the agent understand before it asked the customer to commit?</p><p>The approval packet answers that question. It compresses the task into the smallest reviewable unit. Instead of asking a manager to reread an entire text thread, it shows the relevant customer ask, the proposed reply, the slot or action being recommended, the risk flags, and the consent boundary.</p></article>
+        <article class="tile img span4"><img src="https://picsum.photos/seed/text-agent-intake/900/760" alt="Text agent appointment intake desk"></article>
+        <article class="tile span4"><h3>Choose triggers</h3><p>Ask for approval when price, scope, urgency, sensitive details, staff constraints, or stale consent enter the appointment conversation.</p></article>
+        <article class="tile span4"><h3>Attach proof</h3><p>Every approved action should leave behind the source evidence and final customer-facing message that was approved.</p></article>
+        <article class="tile span4"><h3>Expire approvals</h3><p>If calendar state, policy, customer intent, or service scope changes, the packet should refresh before the agent resumes.</p></article>
+        <article class="tile img span6"><img src="https://picsum.photos/seed/browser-agent-appointment/1000/740" alt="Browser agent checking appointment systems"></article>
+        <article class="tile span6"><h3>Connect the surrounding tools</h3><ul><li>Use a text-first assistant for customer intake and negotiation.</li><li>Use browser workflows for portal or CRM actions.</li><li>Use generated pages only after launch approval.</li><li>Keep one packet ID across the whole task.</li></ul></article>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true"><div class="marquee-track"><span>intake</span><span>evidence</span><span>approval</span><span>receipt</span><span>resume</span><span>intake</span><span>evidence</span><span>approval</span><span>receipt</span><span>resume</span></div></div>
+
+    <section id="workflow" class="workflow">
+      <div class="pin"><h2>The operating loop.</h2><p>Run the agent like a teammate who prepares a case file before acting. The packet keeps the human review moment short without hiding the evidence.</p></div>
+      <div>
+        <article class="step"><img src="https://picsum.photos/seed/customer-appointment-message/900/900" alt="Customer appointment message"><div><h3>Capture the request</h3><p>Start with the customer conversation. A <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text message AI assistant</a> should quote the relevant parts of the request, identify the appointment intent, and separate facts from guesses.</p></div></article>
+        <article class="step"><img src="https://picsum.photos/seed/approval-packet-builder/900/900" alt="Approval packet builder"><div><h3>Prepare the packet</h3><p>The packet should include the proposed message, recommended booking action, evidence, risk flags, and a clear approval boundary. It should be readable in under a minute.</p></div></article>
+        <article class="step"><img src="https://picsum.photos/seed/browser-task-cache/900/900" alt="Browser workflow cache"><div><h3>Act with receipts</h3><p>If the agent needs a browser or portal, connect the approval to <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a> workflows so repeated actions still show what changed before execution.</p></div></article>
+        <article class="step"><img src="https://picsum.photos/seed/site-appointment-launch/900/900" alt="Website appointment launch"><div><h3>Publish carefully</h3><p>When appointment promises appear on a site, route them through <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI website-building agents</a> with a launch packet before public changes go live.</p></div></article>
+      </div>
+    </section>
+
+    <section>
+      <article class="article">
+        <h2>The how-to: define packet fields before you automate more appointments.</h2>
+        <p>Most teams start by asking what the agent can do. A better starting point is what the agent must prove. For appointment work, the proof should be practical. The reviewer needs to know what the customer asked, what the agent intends to say, whether the slot or action is still available, what policy or service constraint applies, and whether the approval expires.</p>
+        <p>Keep the packet compact. If the packet becomes a second inbox, operators will ignore it. Use the agent to compress context, not to bury the human in generated prose. A good packet has a short customer summary, source snippets, proposed response, proposed tool action, risk category, approval buttons, and a receipt ID. If the operator edits the reply, the edit should become part of the receipt.</p>
+        <p>The approval should also be scoped. A manager might approve sending a clarifying text, but not approve confirming a paid booking. They might approve rescheduling within the same week, but not changing service type. Treat approval as a permission boundary, not a generic yes. This makes the agent more useful because it can continue autonomously within the approved boundary while still stopping when the situation changes.</p>
+        <h3>Checklist for the first pilot</h3>
+        <div class="checklist">
+          <div class="check"><strong>Pick one appointment path.</strong><br>Choose a high-volume text workflow where mistakes are recoverable and review time is currently painful.</div>
+          <div class="check"><strong>Write five trigger rules.</strong><br>Start with scope, price, urgency, stale consent, and customer dissatisfaction.</div>
+          <div class="check"><strong>Show the exact reply.</strong><br>Never approve an appointment action without showing the final customer-facing language.</div>
+          <div class="check"><strong>Require resume receipts.</strong><br>If the agent continues later, it must reference the packet and explain what changed.</div>
+        </div>
+        <h3>Governance and security context</h3>
+        <p>This operating model lines up with broader guidance around AI risk. The <a href="https://www.nist.gov/itl/ai-risk-management-framework">NIST AI Risk Management Framework</a> gives teams a vocabulary for mapping, measuring, and managing risks in AI systems. The <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/">OWASP Top 10 for Large Language Model Applications</a> highlights application risks that matter when language models connect to tools, data, and external actions. Approval packets are not a complete governance program, but they are a concrete workflow layer that makes delegated decisions easier to inspect.</p>
+        <div class="accordions">
+          <div class="slice"><img src="https://picsum.photos/seed/approval-evidence/720/900" alt="Approval evidence"><div><h3>Evidence</h3><p>Show the customer request, tool state, and policy note that shaped the agent recommendation.</p></div></div>
+          <div class="slice"><img src="https://picsum.photos/seed/approval-consent/720/900" alt="Approval consent"><div><h3>Consent</h3><p>Record what the operator approved and when that approval expires.</p></div></div>
+          <div class="slice"><img src="https://picsum.photos/seed/approval-receipt/720/900" alt="Approval receipt"><div><h3>Receipt</h3><p>Attach the final reply and action outcome to the packet so the agent can resume safely.</p></div></div>
+        </div>
+      </article>
+    </section>
+
+    <section id="faq">
+      <div class="section-head"><h2>FAQ for appointment-agent pilots.</h2><p>These are the decision points that usually determine whether the pilot becomes a trusted operating loop.</p></div>
+      <div class="faq">
+        <div><h3>Should every appointment require approval?</h3><p>No. Routine confirmations can often run automatically. Approval packets are most useful for exceptions, ambiguity, customer promises, and tool actions with consequences.</p></div>
+        <div><h3>Who should review packets?</h3><p>Route low-risk packets to coordinators and high-risk packets to managers or specialists. The packet should make routing obvious from the risk flags.</p></div>
+        <div><h3>What if the customer changes their mind?</h3><p>The old packet should become stale. The agent should create a delta packet that shows what changed and asks for a fresh decision.</p></div>
+        <div><h3>How do we know it is working?</h3><p>Track review time, approval edits, escalation rate, stale approval catches, booking error rate, and customer response quality.</p></div>
+      </div>
+    </section>
+
+    <section class="cta"><div class="cta-inner"><h2>Make every delegated appointment decision reviewable.</h2><p>Super connects text-first AI assistants, browser workflows, and website-building agents with practical approval patterns for real operations.</p><a class="button dark" href="https://getsupers.com/">Explore Super</a></div></section>
+  </main>
+  <footer><div>Kalsh Hunter use-case guides for personal AI agent operators.</div><div><a href="https://getsupers.com/">Super</a> · <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Text agents</a> · <a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a></div></footer>
+  <script>
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.utils.toArray('.hero-media img,.tile.img img,.step img').forEach(function(img){gsap.fromTo(img,{scale:.82,opacity:.58},{scale:1,opacity:1,ease:'none',scrollTrigger:{trigger:img,start:'top 92%',end:'bottom 18%',scrub:true}});});
+      gsap.utils.toArray('.step').forEach(function(card){gsap.fromTo(card,{y:88,scale:.94,opacity:.44},{y:0,scale:1,opacity:1,ease:'none',scrollTrigger:{trigger:card,start:'top 88%',end:'top 38%',scrub:true}});});
+      ScrollTrigger.create({trigger:'#workflow',start:'top top',end:'bottom bottom',pin:'.pin',pinSpacing:false});
+    }
+  </script>
+</body>
+</html>
