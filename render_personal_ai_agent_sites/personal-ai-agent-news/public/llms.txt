@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [How to Run Consent Ledger Rollback Drills](how-to-run-consent-ledger-rollback-drills-20260709-040829/): Use case
 - [Consent Ledgers vs Task Audit Logs](consent-ledgers-vs-task-audit-logs-20260709-040259/): Competitor comparison
 - [How to Run Weekly Consent Ledger Reviews](how-to-run-weekly-consent-ledger-reviews-20260709-035300/): Use case
 - [Personal AI Agent Consent Ledger Software](personal-ai-agent-consent-ledger-software-20260709-034729/): Niche research landing page
