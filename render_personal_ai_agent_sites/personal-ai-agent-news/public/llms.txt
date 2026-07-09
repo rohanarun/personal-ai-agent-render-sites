@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Personal Agent Revocation Inbox Software](personal-agent-revocation-inbox-software-20260709-211440/): Niche research landing page
 - [Revocation Inboxes Are the New Agent Memory Control Plane](revocation-inboxes-are-the-new-agent-memory-control-plane-20260709-210933/): Research and news analysis
 - [How to Build a Revocation Receipt Inbox for Personal Agents](how-to-build-a-revocation-receipt-inbox-for-personal-agents-20260709-210409/): Use case
 - [Revocation Receipt Software vs Agent Audit Logs](revocation-receipt-software-vs-agent-audit-logs-20260709-205409/): Competitor comparison
