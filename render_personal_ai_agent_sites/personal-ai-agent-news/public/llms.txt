@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [How to Wire Stale Consent Guards into Approval Queues](how-to-wire-stale-consent-guards-into-approval-queues-20260709-082730/): Use case
 - [Stale Consent Guards vs Approval Queues](stale-consent-guards-vs-approval-queues-20260709-082230/): Competitor comparison
 - [Stale Consent Guard Software for Personal AI Agents](stale-consent-guard-software-for-personal-ai-agents-20260709-081700/): Niche research landing page
 - [Personal AI Agents Are Getting Stale Consent Guards](personal-ai-agents-are-getting-stale-consent-guards-20260709-081131/): Research and news analysis
