@@ -1,1 +1,0 @@
-(function(){try{if(!window.gsap)return;gsap.from('.hero h1',{y:20,opacity:0,duration:.8});gsap.from('.bento-item',{scrollTrigger:{trigger:'.bento',start:'top 80%'},y:24,opacity:0,stagger:.1});}catch(e){}})();
