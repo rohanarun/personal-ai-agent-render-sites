@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Agent Consent Refresh Is Becoming the New Booking Layer](agent-consent-refresh-is-becoming-the-new-booking-layer-20260709-133933/): Research and news analysis
 - [How to Run Consent Refresh Checks Before an AI Agent Books](how-to-run-consent-refresh-checks-before-an-ai-agent-books-20260709-133401/): Use case
 - [Agent Consent Infrastructure vs Calendar Booking Tools](agent-consent-infrastructure-vs-calendar-booking-tools-20260709-132841/): Competitor comparison
 - [Agent Appointment Consent Infrastructure Software](agent-appointment-consent-infrastructure-software-20260709-132301/): Niche research landing page
