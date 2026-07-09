@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Agent Handoff Briefs Become the New AI Agent Newsroom](agent-handoff-briefs-become-the-new-ai-agent-newsroom-20260709-050401/): Research and news analysis
 - [How to Build Resume Gates After Approval Queue Changes](how-to-build-resume-gates-after-approval-queue-changes-20260709-045830/): Use case
 - [Resume Gate Software vs Approval Queues](resume-gate-software-vs-approval-queues-20260709-045330/): Competitor comparison
 - [Personal AI Agent Resume Gate Software](personal-ai-agent-resume-gate-software-20260709-044331/): Niche research landing page
