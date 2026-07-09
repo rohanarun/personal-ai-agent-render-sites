@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [How to Run Autonomy Gate Rehearsals for Personal AI Agents](how-to-run-autonomy-gate-rehearsals-for-personal-ai-agents-20260709-152004/): Use case
 - [Autonomy Gates vs Approval Queues for Personal AI Agents](autonomy-gates-vs-approval-queues-for-personal-ai-agents-20260709-151503/): Competitor comparison
 - [AI Agent Autonomy Gate Software for Rule Review Rooms](ai-agent-autonomy-gate-software-for-rule-review-rooms-20260709-150503/): Niche research landing page
 - [Agent Rule Review Rooms Are Becoming the New Autonomy Gate](agent-rule-review-rooms-are-becoming-the-new-autonomy-gate-20260709-150002/): Research and news analysis
