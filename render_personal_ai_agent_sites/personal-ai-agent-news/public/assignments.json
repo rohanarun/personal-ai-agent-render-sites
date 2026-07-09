@@ -2,6 +2,29 @@
   {
     "assigned_domain": "kalshhunter.com",
     "assigned_slot": "personal-ai-agent-news",
+    "assigned_url": "https://kalshhunter.com/agent-consent-evidence-is-replacing-trust-badges-20260709-174902/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/text-message-ai-assistant/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "blog",
+    "content_kind_label": "Research and news analysis",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://kalshhunter.com/agent-consent-evidence-is-replacing-trust-badges-20260709-174902/",
+    "receipt_created_at": "2026-07-09T17:49:02.748+00:00",
+    "receipt_status": "success",
+    "slug": "agent-consent-evidence-is-replacing-trust-badges-20260709-174902",
+    "source_path": "sms_published_sites/agent-consent-evidence-is-replacing-trust-badges-20260709-174902",
+    "target_slot": "personal-ai-agent-news",
+    "title": "Agent Consent Evidence Is Replacing Trust Badges"
+  },
+  {
+    "assigned_domain": "kalshhunter.com",
+    "assigned_slot": "personal-ai-agent-news",
     "assigned_url": "https://kalshhunter.com/how-to-build-consent-dashboards-for-ai-agent-buyers-20260709-173902/",
     "backlinks": [
       "https://getsupers.com/",
