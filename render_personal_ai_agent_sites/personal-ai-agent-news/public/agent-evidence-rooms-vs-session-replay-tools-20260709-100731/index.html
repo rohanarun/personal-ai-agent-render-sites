@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agent Evidence Rooms vs Session Replay Tools</title>
+  <meta name="description" content="A competitor comparison page for personal AI operators deciding between agent evidence rooms and session replay tools for delegated AI work.">
+  <link rel="canonical" href="https://kalshhunter.com/agent-evidence-rooms-vs-session-replay-tools-20260709-100731/">
+  <meta property="og:title" content="Agent Evidence Rooms vs Session Replay Tools">
+  <meta property="og:description" content="Why personal AI agents need evidence rooms, not only session replay, when delegated work crosses approval, browser, and release boundaries.">
+  <meta property="og:url" content="https://kalshhunter.com/agent-evidence-rooms-vs-session-replay-tools-20260709-100731/">
+  <meta property="og:type" content="article">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <style>
+    :root{--ink:#101317;--paper:#f5f1e8;--muted:#66645d;--line:rgba(16,19,23,.15);--panel:#fffbf1;--dark:#11161a;--red:#d86e5a;--blue:#8ab6d6;--green:#b8cf86}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Outfit,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{color:inherit}main{overflow-x:hidden;width:100%;max-width:100%}
+    body:before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(circle at 12% 14%,rgba(216,110,90,.22),transparent 32%),radial-gradient(circle at 86% 18%,rgba(138,182,214,.25),transparent 34%),radial-gradient(circle at 56% 88%,rgba(184,207,134,.22),transparent 32%)}body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.2;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23g)' opacity='.24'/%3E%3C/svg%3E")}
+    .shell{width:min(1180px,92vw);margin:0 auto}.nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:30;width:min(980px,92vw);display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border:1px solid rgba(255,255,255,.36);border-radius:999px;background:rgba(245,241,232,.75);backdrop-filter:blur(18px);box-shadow:0 18px 60px rgba(16,19,23,.12)}.brand{font-weight:900;text-decoration:none}.navlinks{display:flex;gap:18px;font-size:13px;color:#3f4240}.navlinks a{text-decoration:none}.nav .launch{padding:10px 14px;border-radius:999px;background:var(--dark);color:#fff;text-decoration:none;font-weight:800}
+    .hero{min-height:94vh;padding:150px 0 94px;display:grid;align-items:center}.heroGrid{display:grid;grid-template-columns:1fr 1fr;gap:58px;align-items:center}.kicker{text-transform:uppercase;letter-spacing:.16em;color:#716c62;font-size:13px;margin-bottom:24px}.hero h1{max-width:min(1060px,94vw);font-size:clamp(3rem,5vw,5.7rem);line-height:.94;letter-spacing:0;margin:0;font-weight:900}.lede{font-size:clamp(1.05rem,1.7vw,1.35rem);line-height:1.58;color:#464842;margin:26px 0 0;max-width:700px}.cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:999px;border:1px solid var(--line);text-decoration:none;font-weight:850}.btn.primary{background:var(--dark);color:#fff}.btn.secondary{background:#fff7dc;color:#111}.heroMedia{position:relative;min-height:560px}.splitCard{position:absolute;overflow:hidden;border-radius:8px;border:1px solid rgba(255,255,255,.35);box-shadow:0 26px 90px rgba(16,19,23,.22);background:#ddd}.splitCard img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(.28) contrast(1.2) saturate(.85);transition:transform .7s ease}.splitCard:hover img{transform:scale(1.05)}.splitCard.one{left:0;top:18px;width:68%;height:390px}.splitCard.two{right:0;bottom:0;width:60%;height:340px}.caption{position:absolute;left:26px;right:26px;bottom:26px;background:rgba(17,22,26,.86);color:#fff;padding:18px;border-radius:8px;backdrop-filter:blur(12px);line-height:1.45}
+    section{padding:128px 0}.intro{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;border-top:1px solid var(--line)}.eyebrow{text-transform:uppercase;letter-spacing:.15em;font-size:12px;color:#766f63}.sectionTitle,.intro h2{font-size:clamp(2.2rem,4vw,4.9rem);line-height:.98;letter-spacing:0;margin:0}.copy{font-size:18px;line-height:1.75;color:#444741}.copy a{font-weight:850;text-decoration-thickness:2px;text-underline-offset:4px}
+    .bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-flow:dense;gap:16px}.card{border:1px solid var(--line);background:rgba(255,251,241,.78);border-radius:8px;overflow:hidden;position:relative;min-height:290px}.pad{padding:28px}.span6{grid-column:span 6}.span4{grid-column:span 4}.span7{grid-column:span 7}.span5{grid-column:span 5}.card h3{font-size:clamp(1.45rem,2.5vw,2.45rem);line-height:1.02;margin:0 0 18px}.card p,.card li{line-height:1.65;color:#4f514b}.card ul{padding-left:20px}.media img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(.35) contrast(1.2);transition:transform .7s ease}.media:hover img{transform:scale(1.05)}.wash{position:absolute;inset:auto 0 0;padding:28px;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.82))}.wash p{color:rgba(255,255,255,.8)}
+    .compare{width:100%;border-collapse:collapse;background:rgba(255,251,241,.8);border:1px solid var(--line);border-radius:8px;overflow:hidden;display:table}.compare th,.compare td{padding:20px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}.compare th{font-size:15px;text-transform:uppercase;letter-spacing:.12em;color:#6d675d}.compare td{line-height:1.55;color:#42443f}.stack{position:relative;display:grid;gap:22px}.stackCard{position:sticky;top:110px;padding:34px;border-radius:8px;background:var(--dark);color:#fff;border:1px solid rgba(255,255,255,.12);min-height:260px}.stackCard:nth-child(2){top:135px;background:#20272a}.stackCard:nth-child(3){top:160px;background:#2a302c}.stackCard h3{font-size:clamp(1.8rem,3vw,3.4rem);line-height:1;margin:0 0 18px}.stackCard p{color:rgba(255,255,255,.76);line-height:1.7}.reveal span{opacity:.16}
+    .accordion{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;height:420px}.slice{position:relative;overflow:hidden;border-radius:8px;background:#222;transition:grid-column .5s ease}.slice:hover{grid-column:span 2}.slice img{width:100%;height:100%;object-fit:cover;filter:grayscale(.45) contrast(1.2) brightness(.82);transition:transform .7s ease}.slice:hover img{transform:scale(1.05)}.slice strong{position:absolute;left:18px;right:18px;bottom:18px;color:#fff;font-size:22px;line-height:1.05}.quote{display:grid;grid-template-columns:.8fr 1.2fr;gap:44px;align-items:center;border:1px solid var(--line);background:rgba(255,251,241,.78);border-radius:8px;padding:28px}.portraits{display:flex}.portraits img{width:92px;height:92px;border-radius:999px;object-fit:cover;border:4px solid var(--paper);margin-left:-18px;filter:grayscale(.28) contrast(1.15)}.portraits img:first-child{margin-left:0}.marquee{overflow:hidden;border-block:1px solid var(--line);padding:20px 0;background:rgba(255,255,255,.32)}.track{display:flex;gap:44px;white-space:nowrap;animation:marquee 30s linear infinite;font-size:clamp(1.6rem,3vw,3.5rem);font-weight:900}.track span{color:#7b7467}@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .checklist{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.check{border-radius:8px;background:var(--panel);border:1px solid var(--line);padding:26px}.check p{line-height:1.65;color:#4d504a}.faq{display:grid;grid-template-columns:1fr 1fr;gap:18px}.faq details{padding:22px;border-radius:8px;border:1px solid var(--line);background:rgba(255,251,241,.78)}.faq summary{cursor:pointer;font-weight:900}.faq p{line-height:1.65;color:#4b4d48}.sources li{margin:10px 0;color:#494b45;line-height:1.55}.final{background:var(--dark);color:#fff;padding:128px 0}.finalBox{display:grid;grid-template-columns:1.18fr .82fr;gap:50px;align-items:center}.final h2{font-size:clamp(2.6rem,5vw,5.8rem);line-height:.95;margin:0}.final .copy{color:rgba(255,255,255,.74)}.final .btn.secondary{background:#fff;color:#111}.footer{padding:36px 0;display:flex;justify-content:space-between;gap:20px;color:#6d675d;font-size:14px}
+    @media (max-width:900px){.navlinks{display:none}.heroGrid,.intro,.quote,.finalBox{grid-template-columns:1fr}.heroMedia{min-height:430px}.splitCard.one{height:310px}.splitCard.two{height:270px}.bento,.checklist,.faq{grid-template-columns:1fr}.span6,.span4,.span7,.span5{grid-column:span 1}.accordion{grid-template-columns:1fr;height:auto}.slice,.slice:hover{height:240px;grid-column:span 1}.compare{display:block;overflow-x:auto}section{padding:92px 0}.footer{flex-direction:column}}
+  </style>
+</head>
+<body>
+  <nav class="nav"><a class="brand" href="https://kalshhunter.com/">Agent Market Notes</a><div class="navlinks"><a href="#comparison">Comparison</a><a href="#fit">Fit</a><a href="#faq">FAQ</a></div><a class="launch" href="https://getsupers.com/">Super</a></nav>
+  <main>
+    <header class="hero">
+      <div class="shell heroGrid">
+        <div>
+          <div class="kicker">Competitor comparison for personal AI operators</div>
+          <h1>Agent evidence rooms vs session replay tools</h1>
+          <p class="lede">Session replay tools are excellent at showing what happened inside a product session. Personal AI operators need something broader: a room that links the request, approval, source evidence, browser proof, changed artifact, and final receipt across the whole delegated task.</p>
+          <div class="cta"><a class="btn primary" href="https://getsupers.com/">Explore Super</a><a class="btn secondary" href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache workflow</a></div>
+        </div>
+        <div class="heroMedia">
+          <figure class="splitCard one gsap-image"><img src="https://picsum.photos/seed/session-replay-timeline/1100/800" alt="Session replay timeline interface"></figure>
+          <figure class="splitCard two gsap-image"><img src="https://picsum.photos/seed/agent-evidence-room-comparison/1000/760" alt="Agent evidence room comparison board"><figcaption class="caption">Replay answers what the screen did. Evidence rooms answer why the agent was allowed to do it.</figcaption></figure>
+        </div>
+      </div>
+    </header>
+
+    <section class="shell intro">
+      <div><div class="eyebrow">Bottom line</div><h2>Replay is a lens. Evidence rooms are an operating file.</h2></div>
+      <div><p class="copy">The comparison matters because personal AI agents are starting to operate across messages, browsers, documents, and publishing systems. A replay tool may show the pixels of a session, but it usually does not preserve the owner instruction, approval window, source list, reasoning note, changed file, and failed-link report in one place.</p><p class="copy">For a <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text-message AI assistant</a>, evidence room software can attach the approval message to the action. For a browser agent, it can store screenshots and validation output. For an agent that publishes a page, it can retain the release receipt, backlink targets, and deployment status.</p></div>
+    </section>
+
+    <section id="comparison" class="shell">
+      <h2 class="sectionTitle">Side-by-side comparison</h2>
+      <table class="compare" style="margin-top:42px">
+        <thead><tr><th>Decision area</th><th>Session replay tools</th><th>Agent evidence rooms</th></tr></thead>
+        <tbody>
+          <tr><td>Primary job</td><td>Record and replay what happened in a session, often for product analytics, support, and debugging.</td><td>Organize delegated AI work into a reviewable file with intent, authority, observations, and outcome.</td></tr>
+          <tr><td>Approval context</td><td>Usually separate from replay unless custom metadata is added.</td><td>Core object: who approved what, when, under which constraints, and whether consent is stale.</td></tr>
+          <tr><td>Source grounding</td><td>May show visited pages, but not necessarily which sources support each claim or output.</td><td>Stores source links, source dates, cited notes, and the distinction between observed fact and agent inference.</td></tr>
+          <tr><td>Release proof</td><td>Can show a user or agent path before release, but not always the post-release artifact.</td><td>Connects final URL, changed files, screenshot proof, validation output, failed links, and follow-up owner actions.</td></tr>
+          <tr><td>Best fit</td><td>Understanding UX friction inside an app session.</td><td>Trusting personal AI agents that send, publish, book, buy, edit, or recover across tools.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="shell">
+      <h2 class="sectionTitle">Where each tool is strongest</h2>
+      <div class="bento" style="margin-top:42px">
+        <article class="card pad span6"><h3>Use session replay when the question is behavioral.</h3><p>Session replay is strong when a team needs to understand where a user clicked, where they hesitated, what errors appeared, or why a product flow felt confusing. It is especially useful for product analytics, UX review, and customer support diagnostics.</p></article>
+        <article class="card pad span6"><h3>Use evidence rooms when the question is delegated authority.</h3><p>Evidence rooms are strong when a personal AI agent takes action on behalf of an owner. The important question is not just what happened on screen. It is whether the agent had permission, whether the evidence was current, and whether the final outcome can be reviewed.</p></article>
+        <article class="card pad span4"><h3>Replay for product sessions</h3><p>Great for debugging funnels, support tickets, onboarding confusion, and visual bugs.</p></article>
+        <article class="card pad span4"><h3>Evidence for agent actions</h3><p>Better for approvals, release receipts, source trails, browser validation, and recovery history.</p></article>
+        <article class="card pad span4"><h3>Together for high-risk flows</h3><p>Replay can be embedded as one evidence artifact inside a broader room.</p></article>
+        <article class="card media span7 gsap-image"><img src="https://picsum.photos/seed/agent-release-proof-comparison/1300/900" alt="Agent release proof comparison"><div class="wash"><h3>The strongest pattern combines both</h3><p>Replay becomes one proof stream; the room provides the operating context around it.</p></div></article>
+        <article class="card pad span5"><h3>What Super-style workflows need</h3><p>Products like <a href="https://getsupers.com/">Super</a> sit closer to the evidence-room side because the work often starts in conversation and ends in action. A user may ask an agent to research, build, message, validate, and publish. That path needs proof across tools, not only playback inside one product session.</p></article>
+      </div>
+    </section>
+
+    <section id="fit" class="shell intro">
+      <div><div class="eyebrow">Buying lens</div><h2>Pick based on the risk you need to reduce.</h2></div>
+      <div class="stack">
+        <article class="stackCard"><h3>Confusion risk</h3><p>If the user journey is confusing, session replay is usually the faster answer. It shows exactly how the session unfolded and helps product teams tune the interface.</p></article>
+        <article class="stackCard"><h3>Authority risk</h3><p>If the agent may take action on the owner's behalf, evidence rooms are the better fit. They show why the action was allowed and what boundary conditions were active.</p></article>
+        <article class="stackCard"><h3>Outcome risk</h3><p>If the agent ships something public or irreversible, evidence rooms should capture the final artifact, validation proof, and any failed links or unresolved checks.</p></article>
+      </div>
+    </section>
+
+    <section class="shell">
+      <p class="copy reveal" style="font-size:clamp(1.7rem,3.2vw,3.7rem);line-height:1.15;color:#141713;max-width:1060px">The next generation of personal AI agent software will not win trust by saying the task is done. It will win trust by showing the room where the task can be inspected, approved, replayed, and safely resumed.</p>
+    </section>
+
+    <section class="shell">
+      <h2 class="sectionTitle">Visual comparison gallery</h2>
+      <div class="accordion" style="margin-top:42px">
+        <div class="slice"><img src="https://picsum.photos/seed/replay-product-analytics/900/900" alt="Product analytics replay"><strong>Replay a product session</strong></div>
+        <div class="slice"><img src="https://picsum.photos/seed/approval-message-proof/900/900" alt="Approval message proof"><strong>Attach approval context</strong></div>
+        <div class="slice"><img src="https://picsum.photos/seed/browser-agent-source-trail/900/900" alt="Browser agent source trail"><strong>Preserve source trails</strong></div>
+        <div class="slice"><img src="https://picsum.photos/seed/release-receipt-stack/900/900" alt="Release receipt stack"><strong>Issue release receipts</strong></div>
+      </div>
+    </section>
+
+    <section class="shell">
+      <div class="quote"><div class="portraits"><img src="https://picsum.photos/seed/operator-portrait-one/200/200" alt="Operator portrait one"><img src="https://picsum.photos/seed/operator-portrait-two/200/200" alt="Operator portrait two"><img src="https://picsum.photos/seed/operator-portrait-three/200/200" alt="Operator portrait three"></div><p class="copy" style="font-size:clamp(1.4rem,2.8vw,3rem);line-height:1.12;margin:0">A replay can explain a session. An evidence room can explain a delegated decision.</p></div>
+    </section>
+
+    <section class="marquee" aria-label="Comparison criteria"><div class="track"><strong>Approval context</strong><span>Session playback</span><strong>Source evidence</strong><span>Browser checkpoints</span><strong>Release receipts</strong><span>Recovery trails</span><strong>Approval context</strong><span>Session playback</span><strong>Source evidence</strong><span>Browser checkpoints</span><strong>Release receipts</strong><span>Recovery trails</span></div></section>
+
+    <section class="shell">
+      <h2 class="sectionTitle">Operator checklist</h2>
+      <div class="checklist" style="margin-top:42px">
+        <div class="check"><h3>Choose replay if</h3><p>You need to debug where a person clicked, which UI element failed, or why a product flow created confusion.</p></div>
+        <div class="check"><h3>Choose evidence rooms if</h3><p>You need to prove instruction, approval, source grounding, browser state, validation output, and final artifact for an AI agent action.</p></div>
+        <div class="check"><h3>Use both if</h3><p>The AI agent controls a browser in a high-risk path. The replay should become one artifact inside the larger evidence room.</p></div>
+      </div>
+    </section>
+
+    <section class="shell intro">
+      <div><div class="eyebrow">Super context</div><h2>Why this matters for personal agents</h2></div>
+      <div><p class="copy">A personal AI agent is not only a product visitor. It is an operator moving through a task. That task may begin in a text message, continue through a browser, reuse cached computer-use steps, and end with a published asset. This is why <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">agent-built website workflows</a> and <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache workflows</a> benefit from evidence rooms.</p><p class="copy">Session replay remains valuable, but it is only one layer. The broader market need is a trust container that can keep approval provenance, source grounding, browser proof, and release receipts together.</p></div>
+    </section>
+
+    <section id="faq" class="shell">
+      <h2 class="sectionTitle">FAQ</h2>
+      <div class="faq" style="margin-top:42px">
+        <details open><summary>Are evidence rooms competitors to session replay tools?</summary><p>Sometimes, but the cleaner framing is that evidence rooms are a broader category for delegated AI work. Session replay can feed evidence rooms as one proof artifact.</p></details>
+        <details><summary>When is session replay enough?</summary><p>Session replay is enough when the primary goal is diagnosing a user experience inside a known product surface, and approval provenance is not the central risk.</p></details>
+        <details><summary>When is an evidence room necessary?</summary><p>An evidence room becomes necessary when an AI agent sends messages, publishes pages, books services, spends money, changes files, or resumes after a failure.</p></details>
+        <details><summary>What should the final receipt include?</summary><p>It should include the task request, approvals, changed artifact, live URL, source links, validation checks, failed links, and remaining follow-up items.</p></details>
+      </div>
+    </section>
+
+    <section class="shell">
+      <h2 class="sectionTitle">Sources</h2>
+      <ul class="sources">
+        <li><a href="https://www.nist.gov/itl/ai-risk-management-framework">NIST AI Risk Management Framework</a> for trustworthy AI governance concepts.</li>
+        <li><a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/">OWASP Top 10 for Large Language Model Applications</a> for LLM application risk categories.</li>
+        <li><a href="https://getsupers.com/">Super</a> and Super use-case pages for personal AI agent workflow examples.</li>
+      </ul>
+    </section>
+
+    <section class="final"><div class="shell finalBox"><h2>Use replay for sessions. Use evidence rooms for delegated decisions.</h2><div><p class="copy">The more authority a personal AI agent has, the more its work needs a room where proof and approval stay attached.</p><div class="cta"><a class="btn secondary" href="https://getsupers.com/">Visit Super</a><a class="btn primary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Text assistant use case</a></div></div></div></section>
+  </main>
+  <footer class="footer shell"><span>Super Agent Market Notes</span><span>Comparison research for agent evidence rooms and session replay tools.</span></footer>
+  <script>
+    window.addEventListener("DOMContentLoaded",function(){if(!window.gsap||!window.ScrollTrigger)return;gsap.registerPlugin(ScrollTrigger);gsap.from(".nav",{y:-28,opacity:0,duration:.8,ease:"power3.out"});gsap.from(".hero h1,.lede,.cta,.splitCard",{y:44,opacity:0,duration:1,stagger:.12,ease:"power3.out"});var reveal=document.querySelector(".reveal");if(reveal){reveal.innerHTML=reveal.textContent.split(" ").map(function(word){return "<span>"+word+"</span>"}).join(" ");gsap.to(".reveal span",{opacity:1,stagger:.02,ease:"none",scrollTrigger:{trigger:".reveal",start:"top 82%",end:"bottom 35%",scrub:true}})}gsap.utils.toArray(".stackCard").forEach(function(card){gsap.from(card,{y:90,opacity:.38,scale:.94,scrollTrigger:{trigger:card,start:"top 86%",end:"top 44%",scrub:true}})});gsap.utils.toArray(".gsap-image").forEach(function(item){gsap.fromTo(item,{scale:.84,opacity:.64},{scale:1,opacity:1,ease:"none",scrollTrigger:{trigger:item,start:"top 88%",end:"bottom 24%",scrub:true}})})});
+  </script>
+</body>
+</html>

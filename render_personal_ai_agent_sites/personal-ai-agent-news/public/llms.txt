@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Agent Evidence Rooms vs Session Replay Tools](agent-evidence-rooms-vs-session-replay-tools-20260709-100731/): Competitor comparison
 - [Agent Evidence Room Software for Personal AI Operators](agent-evidence-room-software-for-personal-ai-operators-20260709-100202/): Niche research landing page
 - [Personal AI Agents Are Turning Releases into Approval Receipts](personal-ai-agents-are-turning-releases-into-approval-receipts-20260709-095632/): Research and news analysis
 - [Approval Provenance vs Website QA Checklists](approval-provenance-vs-website-qa-checklists-20260709-095101/): Competitor comparison
