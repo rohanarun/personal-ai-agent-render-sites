@@ -2,6 +2,29 @@
   {
     "assigned_domain": "kalshhunter.com",
     "assigned_slot": "personal-ai-agent-news",
+    "assigned_url": "https://kalshhunter.com/personal-ai-agents-need-context-checksums-20260709-003430/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/text-message-ai-assistant/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "blog",
+    "content_kind_label": "Research and news analysis",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://kalshhunter.com/personal-ai-agents-need-context-checksums-20260709-003430/",
+    "receipt_created_at": "2026-07-09T00:34:30.155+00:00",
+    "receipt_status": "success",
+    "slug": "personal-ai-agents-need-context-checksums-20260709-003430",
+    "source_path": "sms_published_sites/personal-ai-agents-need-context-checksums-20260709-003430",
+    "target_slot": "personal-ai-agent-news",
+    "title": "Personal AI Agents Need Context Checksums"
+  },
+  {
+    "assigned_domain": "kalshhunter.com",
+    "assigned_slot": "personal-ai-agent-news",
     "assigned_url": "https://kalshhunter.com/how-to-use-resume-packets-in-browser-ai-agents-20260709-002430/",
     "backlinks": [
       "https://getsupers.com/",
