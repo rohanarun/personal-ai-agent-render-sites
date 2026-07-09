@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Agent Memory Rollback Software](agent-memory-rollback-software-20260709-182341/): Niche research landing page
 - [Rollback Receipts Are Becoming the Agent Trust Primitive](rollback-receipts-are-becoming-agent-trust-primitive-20260709-181832/): Research and news analysis
 - [How to Wire Rollback Receipts Into Agent Work Queues](how-to-wire-rollback-receipts-into-agent-work-queues-20260709-181209/): Use case
 - [Rollback First Agents vs Approval First Agents](rollback-first-agents-vs-approval-first-agents-20260709-180632/): Competitor comparison
