@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Appointment Approval Network Software for AI Agents](appointment-approval-network-software-for-ai-agents-20260709-130201/): Niche research landing page
 - [Personal AI Agents Are Turning Appointment Ops Into Approval Networks](personal-ai-agents-are-turning-appointment-ops-into-approval-networks-20260709-125701/): Research and news analysis
 - [How to Run AI Appointment Agents With Approval Packets](how-to-run-ai-appointment-agents-with-approval-packets-20260709-125131/): Use case
 - [Approval Packet Software vs Calendar Schedulers](approval-packet-software-vs-calendar-schedulers-20260709-124602/): Competitor comparison
