@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [How to Add Memory Revocation Flows to Personal Agents](how-to-add-memory-revocation-flows-to-personal-agents-20260709-203239/): Use case
 - [Memory Permission Drift Monitoring vs Data Loss Prevention](memory-permission-drift-monitoring-vs-data-loss-prevention-20260709-202733/): Competitor comparison
 - [Agent Memory Permission Drift Monitoring Software](agent-memory-permission-drift-monitoring-software-20260709-202209/): Niche research landing page
 - [Notification Budgets Are the Next Agent Control Plane](notification-budgets-are-the-next-agent-control-plane-20260709-201533/): Research and news analysis
