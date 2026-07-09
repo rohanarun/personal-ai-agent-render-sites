@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Approval Packet Software vs Calendar Schedulers](approval-packet-software-vs-calendar-schedulers-20260709-124602/): Competitor comparison
 - [Agent Appointment Control Plane Software](agent-appointment-control-plane-software-20260709-124002/): Niche research landing page
 - [Approval Packets Are Becoming the Agent Appointment Control Plane](approval-packets-are-becoming-the-agent-appointment-control-plane-20260709-123306/): Research and news analysis
 - [How to Build Appointment Approval Packets for AI Agents](how-to-build-appointment-approval-packets-for-ai-agents-20260709-122306/): Use case
