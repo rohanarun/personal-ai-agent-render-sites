@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Rollback First Agents vs Approval First Agents](rollback-first-agents-vs-approval-first-agents-20260709-180632/): Competitor comparison
 - [Agent Consent Evidence Room Software](agent-consent-evidence-room-software-20260709-175902/): Niche research landing page
 - [Agent Consent Evidence Is Replacing Trust Badges](agent-consent-evidence-is-replacing-trust-badges-20260709-174902/): Research and news analysis
 - [How to Build Consent Dashboards for AI Agent Buyers](how-to-build-consent-dashboards-for-ai-agent-buyers-20260709-173902/): Use case
