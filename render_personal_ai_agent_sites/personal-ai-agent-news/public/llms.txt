@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Personal AI Agents Are Turning Releases into Approval Receipts](personal-ai-agents-are-turning-releases-into-approval-receipts-20260709-095632/): Research and news analysis
 - [Approval Provenance vs Website QA Checklists](approval-provenance-vs-website-qa-checklists-20260709-095101/): Competitor comparison
 - [How to Use Approval Provenance for Agent-Built Websites](how-to-use-approval-provenance-for-agent-built-websites-20260709-094600/): Use case
 - [Approval Provenance Software for Personal AI Agents](approval-provenance-software-for-personal-ai-agents-20260709-094030/): Niche research landing page
