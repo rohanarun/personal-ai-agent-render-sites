@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to Triage Personal Agent Memory Revocation Receipts</title>
+  <meta name="description" content="A practical long-form workflow for reviewing personal AI agent memory revocation receipts, separating urgent privacy risks from routine cleanup, and preserving an audit trail.">
+  <link rel="canonical" href="https://kalshhunter.com/how-to-triage-personal-agent-memory-revocation-receipts-20260709-213533/">
+  <meta property="og:title" content="How to Triage Personal Agent Memory Revocation Receipts">
+  <meta property="og:description" content="A practical workflow for teams operating personal AI agents with revocable memory, consent trails, and audit-ready deletion evidence.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://kalshhunter.com/how-to-triage-personal-agent-memory-revocation-receipts-20260709-213533/">
+  <meta property="og:image" content="https://picsum.photos/seed/agent-memory-revocation-receipts/1600/900">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap');
+    :root {
+      --ink: #f5f3ea;
+      --muted: rgba(245, 243, 234, .72);
+      --faint: rgba(245, 243, 234, .12);
+      --coal: #070805;
+      --moss: #20362b;
+      --amber: #d7b46a;
+      --coral: #e26d5a;
+      --paper: #f6f0df;
+      --green: #8bd6a2;
+      --line: rgba(255,255,255,.16);
+      --shadow: 0 30px 90px rgba(0,0,0,.42);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--coal); }
+    body {
+      margin: 0;
+      font-family: "Geist", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 18% 8%, rgba(226,109,90,.2), transparent 28rem),
+        radial-gradient(circle at 85% 14%, rgba(139,214,162,.15), transparent 34rem),
+        linear-gradient(180deg, #070805 0%, #10140d 46%, #070805 100%);
+      overflow-x: hidden;
+    }
+    body:before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .12;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.74' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+      mix-blend-mode: soft-light;
+      z-index: 0;
+    }
+    a { color: inherit; }
+    main { width: 100%; max-width: 100%; overflow-x: hidden; position: relative; z-index: 1; }
+    .nav {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      width: min(1120px, calc(100vw - 32px));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 12px 10px 18px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(7,8,5,.62);
+      backdrop-filter: blur(18px);
+      border-radius: 999px;
+      box-shadow: 0 12px 50px rgba(0,0,0,.35);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: conic-gradient(from 140deg, var(--amber), var(--green), var(--coral), var(--amber));
+      box-shadow: inset 0 0 0 5px rgba(7,8,5,.62);
+    }
+    .nav-links { display: flex; align-items: center; gap: 18px; font-size: 14px; color: var(--muted); }
+    .nav-links a { text-decoration: none; }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 0 16px;
+      border-radius: 999px;
+      color: #080906;
+      background: var(--paper);
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .hero {
+      min-height: 96svh;
+      display: grid;
+      place-items: center;
+      position: relative;
+      padding: 140px 20px 80px;
+      isolation: isolate;
+    }
+    .hero:after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at center, rgba(7,8,5,.26), rgba(7,8,5,.9) 72%),
+        linear-gradient(180deg, rgba(7,8,5,.12), #070805 94%),
+        url("https://picsum.photos/seed/agent-memory-revocation-receipts/2400/1400") center/cover;
+      filter: contrast(1.12) saturate(.82) grayscale(.24);
+      z-index: -2;
+      opacity: .78;
+    }
+    .hero:before {
+      content: "";
+      position: absolute;
+      inset: 8%;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(215,180,106,.18), transparent 64%);
+      filter: blur(32px);
+      z-index: -1;
+    }
+    .hero-inner {
+      width: min(1120px, 94vw);
+      text-align: center;
+      margin: 0 auto;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(3rem, 6.2vw, 6.5rem);
+      line-height: .93;
+      letter-spacing: 0;
+      font-weight: 800;
+    }
+    .inline-photo {
+      display: inline-block;
+      width: clamp(72px, 10vw, 140px);
+      height: clamp(38px, 5vw, 62px);
+      margin: 0 .16em;
+      border-radius: 999px;
+      vertical-align: middle;
+      background: url("https://picsum.photos/seed/revocation-ledger-closeup/420/190") center/cover;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.25), 0 12px 32px rgba(0,0,0,.36);
+      filter: grayscale(.18) contrast(1.18);
+    }
+    .hero-copy {
+      max-width: 780px;
+      margin: 28px auto 0;
+      color: rgba(245,243,234,.82);
+      font-size: clamp(1.05rem, 1.6vw, 1.32rem);
+      line-height: 1.65;
+    }
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 34px;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 24px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 800;
+      border: 1px solid rgba(255,255,255,.22);
+      transition: transform .35s ease, background .35s ease;
+    }
+    .button:hover { transform: translateY(-3px); }
+    .button.primary { background: var(--paper); color: #070805; }
+    .button.secondary { background: rgba(7,8,5,.58); color: var(--ink); }
+    section { padding: 150px 20px; position: relative; }
+    .wrap { width: min(1180px, calc(100vw - 36px)); margin: 0 auto; }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, .92fr) minmax(280px, .55fr);
+      gap: 52px;
+      align-items: end;
+      margin-bottom: 50px;
+    }
+    h2 {
+      margin: 0;
+      font-size: clamp(2.35rem, 5vw, 5.5rem);
+      line-height: .98;
+      letter-spacing: 0;
+      font-weight: 800;
+    }
+    .lead { color: var(--muted); line-height: 1.75; font-size: 1.05rem; margin: 0; }
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      grid-auto-flow:dense;
+      gap: 14px;
+    }
+    .card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      min-height: 260px;
+      padding: 28px;
+      background: rgba(255,255,255,.06);
+      box-shadow: var(--shadow);
+      isolation: isolate;
+    }
+    .card h3 { margin: 0 0 16px; font-size: clamp(1.35rem, 2.2vw, 2.15rem); line-height: 1.05; letter-spacing: 0; }
+    .card p, .card li { color: rgba(245,243,234,.75); line-height: 1.7; }
+    .card ul { padding-left: 18px; margin: 0; }
+    .span-8 { grid-column: span 8; }
+    .span-4 { grid-column: span 4; }
+    .span-6 { grid-column: span 6; }
+    .photo-card {
+      min-height: 520px;
+      padding: 0;
+    }
+    .photo-card img, .accordion-panel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(.32) contrast(1.2) saturate(.76);
+      transition: transform .7s ease;
+    }
+    .photo-card:hover img, .accordion-panel:hover img { transform: scale(1.05); }
+    .metric {
+      font-size: clamp(3.4rem, 7vw, 7rem);
+      line-height: .9;
+      font-weight: 800;
+      color: var(--amber);
+      margin-bottom: 18px;
+    }
+    .marquee {
+      padding: 36px 0;
+      border-block: 1px solid var(--line);
+      overflow: hidden;
+      background: rgba(246,240,223,.04);
+    }
+    .marquee-track {
+      display: flex;
+      gap: 42px;
+      white-space: nowrap;
+      width: max-content;
+      animation: slide 30s linear infinite;
+      color: rgba(245,243,234,.62);
+      font-size: clamp(1.2rem, 2vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+    @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .pin-grid {
+      display: grid;
+      grid-template-columns: minmax(260px, .7fr) minmax(0, 1fr);
+      gap: 62px;
+      align-items: start;
+    }
+    .pin-title { top: 120px; align-self: start; }
+    .stack { display: grid; gap: 24px; }
+    .stack-card {
+      min-height: 430px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: linear-gradient(135deg, rgba(246,240,223,.12), rgba(139,214,162,.06));
+      padding: 34px;
+      box-shadow: var(--shadow);
+    }
+    .stack-card h3 { font-size: clamp(1.7rem, 3vw, 3.1rem); margin: 0 0 16px; line-height: 1; letter-spacing: 0; }
+    .stack-card p { color: rgba(245,243,234,.76); line-height: 1.78; font-size: 1.03rem; }
+    .stack-card img {
+      width: 100%;
+      height: 180px;
+      border-radius: 8px;
+      object-fit: cover;
+      margin-top: 24px;
+      filter: grayscale(.22) contrast(1.2);
+    }
+    .accordion {
+      display: grid;
+      grid-template-columns: 1fr 1.25fr .95fr;
+      min-height: 560px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .accordion-panel {
+      position: relative;
+      min-width: 0;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      background: rgba(255,255,255,.05);
+      transition: grid-column .5s ease, background .5s ease;
+      overflow: hidden;
+    }
+    .accordion-panel:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent, rgba(7,8,5,.86));
+      z-index: 1;
+    }
+    .accordion-panel img { position: absolute; inset: 0; z-index: 0; opacity: .74; }
+    .accordion-panel h3, .accordion-panel p { position: relative; z-index: 2; }
+    .accordion-panel h3 { margin: 0 0 10px; font-size: 1.7rem; line-height: 1.04; letter-spacing: 0; }
+    .accordion-panel p { margin: 0; color: rgba(245,243,234,.78); line-height: 1.62; }
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 36px;
+    }
+    .check {
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.055);
+      padding: 24px;
+    }
+    .check strong { display: block; font-size: 1.1rem; margin-bottom: 10px; }
+    .check span { color: var(--muted); line-height: 1.65; display: block; }
+    .faq {
+      display: grid;
+      gap: 12px;
+      margin-top: 38px;
+    }
+    details {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255,255,255,.055);
+      padding: 22px 24px;
+    }
+    summary { cursor: pointer; font-weight: 800; font-size: 1.1rem; }
+    details p { color: var(--muted); line-height: 1.72; margin-bottom: 0; }
+    .sources {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 34px;
+    }
+    .source-link {
+      display: block;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 22px;
+      text-decoration: none;
+      color: var(--ink);
+      background: rgba(246,240,223,.05);
+    }
+    .source-link span { display: block; color: var(--muted); margin-top: 8px; line-height: 1.55; }
+    .cta {
+      text-align: center;
+      padding: 170px 20px 90px;
+      background:
+        radial-gradient(circle at 50% 18%, rgba(215,180,106,.24), transparent 36rem),
+        linear-gradient(180deg, transparent, rgba(246,240,223,.08));
+    }
+    .cta h2 { width: min(980px, 94vw); margin: 0 auto; }
+    .cta p { max-width: 700px; margin: 26px auto 0; color: var(--muted); line-height: 1.75; }
+    footer {
+      padding: 32px 20px 52px;
+      border-top: 1px solid var(--line);
+      color: rgba(245,243,234,.6);
+    }
+    .footer-row {
+      width: min(1180px, calc(100vw - 36px));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .footer-row a { color: rgba(245,243,234,.8); text-decoration: none; margin-left: 16px; }
+    @media (max-width: 860px) {
+      .nav-links a:not(.nav-cta) { display: none; }
+      .section-head, .pin-grid, .checklist, .sources { grid-template-columns: 1fr; }
+      .bento { grid-template-columns: 1fr; }
+      .span-8, .span-4, .span-6 { grid-column: span 1; }
+      .photo-card { min-height: 360px; }
+      .accordion { grid-template-columns: 1fr; }
+      section { padding: 110px 20px; }
+      .hero { min-height: auto; padding-top: 132px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="https://kalshhunter.com/"><span class="brand-mark" aria-hidden="true"></span><span>Agent Receipt Review</span></a>
+      <div class="nav-links">
+        <a href="#workflow">Workflow</a>
+        <a href="#checklist">Checklist</a>
+        <a href="#faq">FAQ</a>
+        <a class="nav-cta" href="https://getsupers.com/">Build with Super</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-inner">
+        <h1>How to triage personal agent <span class="inline-photo" aria-hidden="true"></span> memory revocation receipts</h1>
+        <p class="hero-copy">A personal AI agent can remember preferences, names, private requests, project context, and delegated tasks. When a user revokes memory, the receipt becomes more than a log line: it is the proof that the agent understood the request, scoped the records, removed or isolated the right artifacts, and left enough evidence for the user or operator to trust the result.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#workflow">Review the workflow</a>
+          <a class="button secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">See personal agent use cases</a>
+        </div>
+      </div>
+    </header>
+
+    <section id="workflow">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Sort receipts by risk, ambiguity, and downstream action.</h2>
+          <p class="lead">A revocation receipt is useful only if it answers three questions quickly: what was requested, what was affected, and what still requires human judgment. The practical triage model below keeps the review calm when receipts arrive from SMS agents, browser agents, computer-use workflows, or long-running research assistants.</p>
+        </div>
+        <div class="bento">
+          <article class="card span-8">
+            <h3>The receipt should carry the user’s intent in plain language.</h3>
+            <p>Start by reading the revocation request as the user would phrase it. “Forget my apartment address,” “remove my debit card screenshot,” and “stop using last week’s job search context” are different orders. A strong personal agent should translate each request into the exact memory classes it touched: profile facts, conversation embeddings, uploaded files, cached browser state, tool outputs, and derived summaries. The triage reviewer should never have to infer scope from opaque ids alone.</p>
+            <p>If the receipt only says deletion succeeded, downgrade it to manual review. The absence of scope is itself a risk because the user cannot tell whether the agent removed source data, summaries, downstream copies, or only the most obvious row.</p>
+          </article>
+          <article class="card span-4">
+            <div class="metric">15m</div>
+            <h3>Urgent privacy review window</h3>
+            <p>Receipts involving credentials, financial records, health details, addresses, minors, or legal material should move through the first human check before the next agent run uses adjacent context.</p>
+          </article>
+          <article class="card photo-card span-4">
+            <img src="https://picsum.photos/seed/agent-ledger-review-desk/900/1200" alt="Abstract review desk with layered records">
+          </article>
+          <article class="card span-4">
+            <h3>Evidence beats confidence language.</h3>
+            <ul>
+              <li>Show the request timestamp and actor.</li>
+              <li>List affected stores and retention state.</li>
+              <li>Separate deleted, redacted, quarantined, and not-found items.</li>
+              <li>Preserve a non-sensitive receipt hash for audit trails.</li>
+            </ul>
+          </article>
+          <article class="card span-4">
+            <h3>Route ambiguous receipts to a user-safe fallback.</h3>
+            <p>If the agent cannot determine whether a memory is personal, shared, or required for billing and compliance, it should freeze reuse, ask a narrow clarification, and avoid silently keeping the record active.</p>
+          </article>
+          <article class="card span-6">
+            <h3>Match the review to the agent surface.</h3>
+            <p>For SMS assistants, memory often feels intimate because it is threaded through short personal requests. Super’s <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text message AI assistant</a> pattern is a good reference for receipt wording: keep the explanation short enough for the channel, but preserve links to a richer audit view when the request is sensitive.</p>
+          </article>
+          <article class="card span-6">
+            <h3>Check cached actions as carefully as stored facts.</h3>
+            <p>Agents that operate computers can retain screenshots, task plans, files, and browser residues. If your workflow uses a <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a>, the receipt should distinguish remembered facts from operational artifacts. The user may want one deleted and the other retained for a pending task.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>consent trail</span><span>scope proof</span><span>revocation inbox</span><span>receipt hash</span><span>memory freeze</span><span>audit-ready deletion</span>
+        <span>consent trail</span><span>scope proof</span><span>revocation inbox</span><span>receipt hash</span><span>memory freeze</span><span>audit-ready deletion</span>
+      </div>
+    </div>
+
+    <section class="desire">
+      <div class="wrap pin-grid">
+        <div class="pin-title">
+          <h2>Review like an operator, not a log parser.</h2>
+          <p class="lead">The most useful receipt process is built around decisions. Each step below turns a raw revocation event into a durable action that a user, support lead, or compliance partner can understand later.</p>
+        </div>
+        <div class="stack">
+          <article class="stack-card">
+            <h3>Confirm the revocation boundary.</h3>
+            <p>Identify whether the user revoked a single fact, a category, a whole conversation, a file, a delegated task, or future personalization. Boundary mistakes create the most painful failures. If a user says “forget that trip,” the receipt should name the memories that were tied to the trip, not erase unrelated travel preferences that the user still wants the assistant to use.</p>
+            <p>Boundary confirmation also helps when the memory was shared across agents. A website-building agent may have inherited brand facts from a personal assistant. If a user removes the source fact, the receipt must tell downstream agents whether to delete, freeze, or refresh generated drafts. This matters for teams using agents to ship websites, and it pairs naturally with <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent website building</a> workflows.</p>
+            <img src="https://picsum.photos/seed/revocation-boundary-map/1200/520" alt="Abstract map of connected memory boundaries">
+          </article>
+          <article class="stack-card">
+            <h3>Classify the receipt before acting on it.</h3>
+            <p>Give every receipt a tier. Routine receipts cover stale preferences, harmless corrections, and user-requested cleanup. Sensitive receipts involve personal identifiers, financial records, health context, work secrets, household details, or private media. Blocking receipts involve a memory that is still powering an active task, billing process, safety rule, or legal retention requirement.</p>
+            <p>The classification should be visible because it drives the next step. Routine receipts can auto-close when the scope and deletion evidence are clear. Sensitive receipts deserve a second check and user-visible confirmation. Blocking receipts need a human decision that names the reason a piece of data cannot be fully deleted yet and what mitigation was applied instead.</p>
+            <img src="https://picsum.photos/seed/privacy-risk-routing-board/1200/520" alt="Abstract routing board for privacy risk levels">
+          </article>
+          <article class="stack-card">
+            <h3>Resolve, explain, and preserve only the proof.</h3>
+            <p>A closed receipt should not keep the sensitive content it was meant to remove. The audit record can preserve request time, memory category, deletion method, reviewer, affected systems, and a one-way hash without storing the revoked fact itself. This gives operators evidence without recreating the privacy problem.</p>
+            <p>When the receipt cannot be fully closed, do not hide the limitation. Say what remains, why it remains, when it will expire or be reviewed again, and how the user can escalate. The best receipt is boring in the right way: direct, specific, and free of vague “we improved your privacy” language.</p>
+            <img src="https://picsum.photos/seed/minimal-audit-proof/1200/520" alt="Abstract minimal audit proof record">
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Three receipt views keep the inbox from becoming a junk drawer.</h2>
+          <p class="lead">A single chronological list is not enough. Operators need different lenses for urgency, user communication, and system repair. The views below work well for small agent teams because they separate privacy response from product quality feedback.</p>
+        </div>
+        <div class="accordion">
+          <article class="accordion-panel">
+            <img src="https://picsum.photos/seed/receipt-risk-queue/900/1100" alt="Receipt risk queue">
+            <h3>Risk queue</h3>
+            <p>Shows sensitive and blocking receipts first, grouped by the next unsafe agent run or pending user expectation.</p>
+          </article>
+          <article class="accordion-panel">
+            <img src="https://picsum.photos/seed/user-reply-receipt-view/900/1100" alt="User reply view">
+            <h3>User reply view</h3>
+            <p>Converts the receipt into a short explanation the user can understand without exposing deleted content again.</p>
+          </article>
+          <article class="accordion-panel">
+            <img src="https://picsum.photos/seed/system-repair-backlog/900/1100" alt="System repair backlog">
+            <h3>Repair backlog</h3>
+            <p>Captures why revocations happened so prompts, memory schemas, and retention defaults can improve over time.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="checklist">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>A practical checklist for the first review pass.</h2>
+          <p class="lead">Use this when a new revocation receipt enters the queue. It is deliberately plain because the point is to remove ambiguity before the agent touches related memory again.</p>
+        </div>
+        <div class="checklist">
+          <div class="check"><strong>Request captured</strong><span>The receipt quotes or paraphrases the user’s deletion request without storing unnecessary sensitive text.</span></div>
+          <div class="check"><strong>Actor verified</strong><span>The receipt shows whether the request came from the user, an admin, an automated policy, or a support action.</span></div>
+          <div class="check"><strong>Stores named</strong><span>The affected memory stores, file stores, cache layers, vector indexes, and generated summaries are listed separately.</span></div>
+          <div class="check"><strong>Outcome separated</strong><span>Deleted, redacted, quarantined, not found, retained, and awaiting clarification are not collapsed into one success state.</span></div>
+          <div class="check"><strong>Reuse blocked</strong><span>Any adjacent memories that might leak the revoked content are frozen until they are re-scoped or regenerated.</span></div>
+          <div class="check"><strong>User response ready</strong><span>The user-facing answer is specific, legible, and honest about any limitation or retention requirement.</span></div>
+          <div class="check"><strong>Audit proof minimal</strong><span>The retained record proves the action happened without preserving the revoked private content.</span></div>
+          <div class="check"><strong>Prompt repair logged</strong><span>If the revocation exposed a bad memory habit, the system prompt or memory policy receives a concrete improvement note.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Questions teams ask when receipts start arriving.</h2>
+          <p class="lead">Personal agent memory feels simple until real users begin correcting, pruning, and revoking it. These answers keep the process grounded.</p>
+        </div>
+        <div class="faq">
+          <details open>
+            <summary>Should every revocation receipt receive human review?</summary>
+            <p>No. Routine receipts can close automatically when the request is narrow, the affected stores are clear, and the proof is complete. Human review is most important for sensitive data, ambiguous wording, shared memories, active tasks, or any receipt that says the agent could not fully remove the information.</p>
+          </details>
+          <details>
+            <summary>What makes a receipt audit-ready?</summary>
+            <p>It should show who requested the change, when it happened, what memory classes were affected, what action was taken in each store, what remains if anything, and how the operator can verify the action without keeping the sensitive material.</p>
+          </details>
+          <details>
+            <summary>How should agents handle derived memories?</summary>
+            <p>Derived memories need explicit treatment. If the agent learned a preference from a deleted conversation, the receipt should either remove that derived preference, regenerate it from still-allowed sources, or mark it as retained with a clear reason. Silent retention is the risky path.</p>
+          </details>
+          <details>
+            <summary>Where does Super fit into this workflow?</summary>
+            <p><a href="https://getsupers.com/">Super</a> is useful when teams want personal agents that operate across messaging, browser, and workflow surfaces. The receipt triage pattern here is a companion operating practice: it helps the agent’s memory remain understandable as users delegate more work.</p>
+          </details>
+        </div>
+        <div class="sources">
+          <a class="source-link" href="https://www.nist.gov/itl/ai-risk-management-framework">NIST AI Risk Management Framework<span>Useful for thinking about governance, measurement, and management practices around AI risk.</span></a>
+          <a class="source-link" href="https://owasp.org/www-project-top-10-for-large-language-model-applications/">OWASP Top 10 for Large Language Model Applications<span>Helpful background for prompt, data, and agentic system risks that can inform memory handling.</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2>Make memory revocation a product surface users can trust.</h2>
+      <p>Receipts should not live as obscure backend artifacts. Treat them as part of the personal agent experience: readable, scoped, auditable, and connected to the user’s next action.</p>
+      <div class="hero-actions">
+        <a class="button primary" href="https://getsupers.com/">Explore Super</a>
+        <a class="button secondary" href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">See agent website workflows</a>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-row">
+        <span>Generated directly for kalshhunter.com. No model API content generation was used.</span>
+        <span>
+          <a href="https://getsupers.com/">Super</a>
+          <a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a>
+          <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Text agents</a>
+        </span>
+      </div>
+    </footer>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script>
+    window.addEventListener("DOMContentLoaded", function () {
+      if (!window.gsap || !window.ScrollTrigger) return;
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.from(".hero-inner", { opacity: 0, y: 38, duration: 1.2, ease: "power3.out" });
+      gsap.utils.toArray(".photo-card img, .stack-card img").forEach(function (img) {
+        gsap.fromTo(img, { scale: .82, opacity: .42 }, {
+          scale: 1,
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: { trigger: img, start: "top 88%", end: "bottom 22%", scrub: true }
+        });
+      });
+      ScrollTrigger.create({
+        trigger: ".desire",
+        start: "top top",
+        end: "bottom bottom",
+        pin: ".pin-title",
+        pinSpacing: false
+      });
+      gsap.utils.toArray(".stack-card").forEach(function (card, index) {
+        gsap.fromTo(card, { y: 96, opacity: .35, scale: .94 }, {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 88%",
+            end: "top 28%",
+            scrub: true
+          }
+        });
+        gsap.to(card, {
+          y: -index * 20,
+          scrollTrigger: {
+            trigger: card,
+            start: "top 42%",
+            end: "bottom 18%",
+            scrub: true
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
