@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [How to Use Launch Review Loops for Agent-Built Websites](how-to-use-launch-review-loops-for-agent-built-websites-20260709-112601/): Use case
 - [Launch Review Loops vs Agent QA Checklists](launch-review-loops-vs-agent-qa-checklists-20260709-112101/): Competitor comparison
 - [Launch Review Loop Software for Personal AI Agents](launch-review-loop-software-for-personal-ai-agents-20260709-111601/): Niche research landing page
 - [Personal AI Agents Are Getting Launch Memory Review Loops](personal-ai-agents-are-getting-launch-memory-review-loops-20260709-111101/): Research and news analysis

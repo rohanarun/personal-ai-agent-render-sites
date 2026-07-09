@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to Use Launch Review Loops for Agent-Built Websites</title>
+  <meta name="description" content="A practical use-case guide for using launch review loops to publish agent-built websites with source checks, receipts, approvals, and deploy truth.">
+  <link rel="canonical" href="https://kalshhunter.com/how-to-use-launch-review-loops-for-agent-built-websites-20260709-112601/">
+  <meta property="og:title" content="How to Use Launch Review Loops for Agent-Built Websites">
+  <meta property="og:description" content="Use launch review loops to help personal AI agents publish websites repeatedly without forgetting receipts, sources, approvals, or failed live checks.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://kalshhunter.com/how-to-use-launch-review-loops-for-agent-built-websites-20260709-112601/">
+  <meta property="og:image" content="https://picsum.photos/seed/use-launch-review-loops/1600/900">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800;900&display=swap');
+    :root{--bg:#0b0c10;--ink:#f8f2e8;--muted:#bbb3a7;--line:rgba(248,242,232,.15);--panel:#171820;--lime:#d8ff72;--cyan:#88dcf5;--coral:#ff997a}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Outfit,system-ui,sans-serif;letter-spacing:0;overflow-x:hidden}a{color:inherit}main{overflow-x:hidden;width:100%;max-width:100%}.shell{width:min(1180px,92vw);margin:0 auto}.nav{position:fixed;top:18px;left:50%;z-index:20;transform:translateX(-50%);width:min(1010px,92vw);display:flex;justify-content:space-between;align-items:center;padding:12px 14px 12px 20px;border:1px solid var(--line);border-radius:999px;background:rgba(11,12,16,.72);backdrop-filter:blur(18px);box-shadow:0 18px 70px rgba(0,0,0,.42)}.brand{font-weight:900}.links{display:flex;gap:18px;align-items:center;color:var(--muted);font-size:14px}.links a{text-decoration:none}.navBtn{padding:10px 16px;border-radius:999px;background:var(--ink);color:#0b0c10;font-weight:900}.hero{position:relative;min-height:100vh;padding:165px 0 112px;display:grid;align-items:center;text-align:center;background:radial-gradient(circle at 50% 10%,rgba(216,255,114,.22),transparent 34%),radial-gradient(circle at 15% 78%,rgba(255,153,122,.18),transparent 32%),radial-gradient(circle at 86% 78%,rgba(136,220,245,.18),transparent 34%),#0b0c10}.hero:before{content:"";position:absolute;inset:0;opacity:.14;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.68' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E")}.heroInner{position:relative}.hero h1{max-width:min(1120px,94vw);margin:0 auto;font-size:clamp(3.25rem,6vw,6.75rem);line-height:.88;font-weight:900;letter-spacing:0}.inlineImg{display:inline-block;width:clamp(84px,10vw,150px);height:clamp(38px,4.8vw,62px);border-radius:999px;background:url('https://picsum.photos/seed/agent-built-site-loop-inline/500/220') center/cover;vertical-align:middle;margin:0 10px;filter:grayscale(.25) contrast(1.18)}.lede{max-width:790px;margin:30px auto 0;color:#d9d1c6;font-size:clamp(1.12rem,1.65vw,1.42rem);line-height:1.48}.cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:14px 21px;border-radius:999px;text-decoration:none;font-weight:900}.primary{background:var(--lime);color:#111509}.secondary{border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--ink)}.heroMedia{margin:70px auto 0;width:min(1040px,94vw);height:370px;border-radius:10px;overflow:hidden;background:url('https://picsum.photos/seed/agent-built-website-review-loop/1600/720') center/cover;filter:grayscale(.42) contrast(1.2);box-shadow:0 42px 130px rgba(0,0,0,.54)}.section{padding:150px 0}.split{display:grid;grid-template-columns:.76fr 1.24fr;gap:64px}.kicker{font-size:14px;text-transform:uppercase;letter-spacing:.1em;color:var(--lime);font-weight:900}.copy{color:#d4ccc1;font-size:1.1rem;line-height:1.74}.copy a{color:#fff;text-decoration-color:var(--lime);text-underline-offset:4px}.bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-flow:dense;gap:16px;margin-top:56px}.card{min-height:286px;border:1px solid var(--line);border-radius:8px;background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.025));padding:28px;overflow:hidden}.card h3{font-size:clamp(1.6rem,2.5vw,2.75rem);line-height:1;margin:0 0 16px}.card p,.card li{color:#cfc8bd;line-height:1.58}.eight{grid-column:span 8}.four{grid-column:span 4}.third{grid-column:span 4}.half{grid-column:span 6}.imageCard{padding:0}.imageCard .pic{height:100%;min-height:330px;background:url('https://picsum.photos/seed/agent-website-loop-board/950/850') center/cover;filter:grayscale(.55) contrast(1.22);transition:transform .7s ease}.imageCard:hover .pic{transform:scale(1.05)}.marquee{display:flex;overflow:hidden;border-block:1px solid var(--line);padding:22px 0;white-space:nowrap}.track{display:flex;gap:42px;animation:roll 30s linear infinite;font-weight:900;font-size:clamp(1.5rem,3vw,3.8rem)}@keyframes roll{from{transform:translateX(0)}to{transform:translateX(-50%)}}.pinWrap{display:grid;grid-template-columns:.86fr 1.14fr;gap:64px;align-items:start}.pinTitle h2{font-size:clamp(2.7rem,5vw,5.5rem);line-height:.92;margin:12px 0 22px}.steps{display:grid;gap:26px}.step{border:1px solid var(--line);border-radius:8px;background:#12141b;overflow:hidden}.stepImg{height:220px;background-size:cover;background-position:center;filter:grayscale(.42) contrast(1.2)}.stepBody{padding:28px}.stepBody h3{font-size:2rem;margin:0 0 10px}.quoteBox{display:grid;grid-template-columns:230px 1fr;gap:34px;align-items:center;padding:34px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.045)}.portraits{display:flex}.portrait{width:88px;height:88px;border-radius:50%;border:3px solid var(--bg);margin-left:-20px;background-size:cover;background-position:center;filter:grayscale(.35) contrast(1.12)}.portrait:first-child{margin-left:0}.quote{font-size:clamp(1.55rem,3vw,3.2rem);line-height:1.05;margin:0}.check{columns:2;column-gap:44px}.check li{break-inside:avoid;margin:0 0 16px;color:#d3ccc1;line-height:1.5}.faq{display:grid;grid-template-columns:1fr 1fr;gap:18px}.faqItem{border-top:1px solid var(--line);padding:24px 0}.faqItem h3{margin:0 0 10px;font-size:1.45rem}.sources{border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.04);padding:30px}.sources li{margin:0 0 12px;color:#d6cfc3}.final{padding:150px 0 80px}.finalBox{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:end;background:var(--ink);color:#0b0c10;border-radius:8px;padding:56px}.finalBox h2{font-size:clamp(2.7rem,5vw,5.7rem);line-height:.9;margin:0}.finalBox p{color:#403932}.finalBox .secondary{background:#0b0c10;color:#fff}.footer{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding:34px 0 60px;color:#8f887e}@media(max-width:860px){.links a:not(.navBtn){display:none}.split,.pinWrap,.finalBox,.quoteBox{grid-template-columns:1fr}.bento{grid-template-columns:1fr}.eight,.four,.third,.half{grid-column:span 1}.heroMedia{height:260px}.faq{grid-template-columns:1fr}.check{columns:1}.footer{display:grid;gap:10px}}
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="brand">Agent Site Loop</div>
+    <div class="links"><a href="#workflow">Workflow</a><a href="#steps">Steps</a><a href="#checklist">Checklist</a><a class="navBtn" href="https://getsupers.com/">Super</a></div>
+  </nav>
+  <main>
+    <section class="hero">
+      <div class="shell heroInner">
+        <h1>How to use launch review <span class="inlineImg" aria-hidden="true"></span> loops for agent-built websites</h1>
+        <p class="lede">When personal AI agents publish websites repeatedly, operators need a repeatable loop that checks the page, records the evidence, routes human approval, and feeds the lesson into the next run. This guide shows how to use launch review loops as the control layer for AI-built website programs.</p>
+        <div class="cta"><a class="btn primary" href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">Website agent workflow</a><a class="btn secondary" href="https://getsupers.com/">Visit Super</a></div>
+        <div class="heroMedia gsap-image"></div>
+      </div>
+    </section>
+
+    <section class="section shell split" id="workflow">
+      <div><div class="kicker">Use-case guide</div></div>
+      <div class="copy">
+        <p>A launch review loop is a practical workflow for turning agent-built website publishing into a memory system. The agent does not merely create a page and stop. It reads the latest receipt, writes exactly one new page, validates sources and backlinks, rebuilds the distribution bundle, pushes the deployment repo, checks live state, and reports what failed clearly.</p>
+        <p>This matters because website agents operate across several surfaces. A user might coordinate through a <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text message AI assistant</a>, reuse environment context through a <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a>, and ask an <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI website agent</a> to ship the actual page. The review loop keeps those surfaces aligned.</p>
+        <p>The simplest useful loop has a strict rhythm: read memory, create one artifact, validate the artifact, rebuild the bundle, deploy or push, check live links, record a receipt, and remove the lock. Over time, that rhythm becomes the operating system for fast, responsible agent publishing.</p>
+      </div>
+    </section>
+
+    <section class="section shell">
+      <div class="kicker">What to include</div>
+      <div class="bento">
+        <article class="card eight"><h3>Use the receipt as the first prompt input.</h3><p>The latest receipt tells the next agent what just happened: the content kind, headline, target domain, local path, planned live URL, bundle status, deployment method, and known live failures. The loop should start there, not from a blank instruction.</p></article>
+        <article class="card four imageCard"><div class="pic gsap-image"></div></article>
+        <article class="card third"><h3>Source proof</h3><p>Visible references matter when the page discusses AI governance, application risks, or operational safety.</p></article>
+        <article class="card third"><h3>Backlink proof</h3><p>Links to <a href="https://getsupers.com/">Super</a> and app use cases should appear naturally and be checked live.</p></article>
+        <article class="card third"><h3>Deploy proof</h3><p>The report should separate local build success from a live 200 response on the custom domain.</p></article>
+        <article class="card half"><h3>Approval proof</h3><p>Use message-native approval when the page changes claims, positioning, pricing, or risk-sensitive copy. The decision should become future context.</p></article>
+        <article class="card half"><h3>Failure proof</h3><p>Every broken link, stale sitemap, delayed deploy, or duplicate-shell risk should become a clear next-run instruction.</p></article>
+      </div>
+    </section>
+
+    <section class="marquee" aria-label="Launch review loop actions"><div class="track"><span>read</span><span>create</span><span>validate</span><span>bundle</span><span>push</span><span>check</span><span>record</span><span>read</span><span>create</span><span>validate</span><span>bundle</span><span>push</span><span>check</span><span>record</span></div></section>
+
+    <section class="section shell pinWrap" id="steps">
+      <div class="pinTitle">
+        <div class="kicker">Pinned workflow</div>
+        <h2>Run the loop the same way every time.</h2>
+        <p class="copy">A consistent review loop helps the agent become faster because it knows what proof has to be collected. It also helps the human because every final report has the same shape.</p>
+      </div>
+      <div class="steps">
+        <article class="step"><div class="stepImg gsap-image" style="background-image:url('https://picsum.photos/seed/read-launch-memory/1200/650')"></div><div class="stepBody"><h3>Read memory</h3><p class="copy">Check the last receipt, domain config, content rotation, and known failures before writing new HTML.</p></div></article>
+        <article class="step"><div class="stepImg gsap-image" style="background-image:url('https://picsum.photos/seed/create-agent-built-site/1200/650')"></div><div class="stepBody"><h3>Create one page</h3><p class="copy">Generate exactly one long-form static page with useful content, contextual backlinks, visible sources, and no duplicate shell.</p></div></article>
+        <article class="step"><div class="stepImg gsap-image" style="background-image:url('https://picsum.photos/seed/validate-agent-site/1200/650')"></div><div class="stepBody"><h3>Validate locally</h3><p class="copy">Check word count, canonical URL, backlinks, sources, banned labels, render script syntax, and bundle references.</p></div></article>
+        <article class="step"><div class="stepImg gsap-image" style="background-image:url('https://picsum.photos/seed/report-live-agent-site/1200/650')"></div><div class="stepBody"><h3>Report live truth</h3><p class="copy">After pushing, check the custom domain, Render URL, sitemap, backlinks, and sources. Name 404s clearly when auto-deploy has not caught up.</p></div></article>
+      </div>
+    </section>
+
+    <section class="section shell">
+      <div class="quoteBox">
+        <div class="portraits"><div class="portrait" style="background-image:url('https://picsum.photos/seed/site-loop-one/300/300')"></div><div class="portrait" style="background-image:url('https://picsum.photos/seed/site-loop-two/300/300')"></div><div class="portrait" style="background-image:url('https://picsum.photos/seed/site-loop-three/300/300')"></div></div>
+        <p class="quote reveal">The review loop is where agent-built websites stop being isolated artifacts and start becoming an operating system.</p>
+      </div>
+    </section>
+
+    <section class="section shell" id="checklist">
+      <div class="kicker">Checklist</div>
+      <h2 style="font-size:clamp(2.6rem,5vw,5.2rem);line-height:.95;margin:12px 0 34px">The launch review loop checklist</h2>
+      <ul class="check copy">
+        <li>Confirm no lock is active before starting the run.</li>
+        <li>Read the latest completed receipt and verify the run is due.</li>
+        <li>Create a lock with the current automation and target domain.</li>
+        <li>Select the next content kind in rotation.</li>
+        <li>Use only the enabled Render slot and avoid reserved domains.</li>
+        <li>Write exactly one long-form static page directly in the workspace.</li>
+        <li>Include natural Super backlinks and relevant app use-case links.</li>
+        <li>Add visible sources where claims need support.</li>
+        <li>Validate the generated HTML before appending a success receipt.</li>
+        <li>Rebuild the enabled Render bundle and verify index, sitemap, and llms references.</li>
+        <li>Push the bundle repo when no Render API key is available.</li>
+        <li>Check live pages and mention failed links clearly.</li>
+        <li>Remove the lock and report the receipt summary.</li>
+      </ul>
+    </section>
+
+    <section class="section shell">
+      <div class="faq">
+        <div class="faqItem"><h3>Who should use this workflow?</h3><p class="copy">Founders, growth teams, and agent operators publishing recurring AI-built market pages should use it to keep velocity and proof connected.</p></div>
+        <div class="faqItem"><h3>Does the loop replace QA?</h3><p class="copy">No. It includes QA, but it also records the results and turns them into context for the next agent run.</p></div>
+        <div class="faqItem"><h3>Why mention failed live links?</h3><p class="copy">Because a pushed bundle and a live page are different states. Clear failed-link reporting prevents the next operator from assuming deployment succeeded.</p></div>
+        <div class="faqItem"><h3>How does Super fit?</h3><p class="copy">Super can act as the message-native layer where humans approve, correct, and redirect personal AI agents before those decisions become launch memory.</p></div>
+      </div>
+    </section>
+
+    <section class="section shell sources">
+      <div class="kicker">Sources and references</div>
+      <ul>
+        <li><a href="https://www.nist.gov/itl/ai-risk-management-framework">NIST AI Risk Management Framework</a> for AI risk governance concepts relevant to monitoring and managing AI systems.</li>
+        <li><a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/">OWASP Top 10 for Large Language Model Applications</a> for common LLM application risks that shape agent publishing controls.</li>
+        <li><a href="https://getsupers.com/">Super</a> for personal AI agent product context.</li>
+        <li><a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">Super AI website agent use case</a> for the workflow this guide describes.</li>
+      </ul>
+    </section>
+
+    <section class="final"><div class="shell finalBox"><h2>Use the loop to make every publish smarter.</h2><div><p class="copy">Agent-built websites get safer when receipts, sources, approvals, and live checks become the next run's starting point.</p><div class="cta"><a class="btn secondary" href="https://getsupers.com/">Visit Super</a><a class="btn primary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Text agent use case</a></div></div></div></section>
+  </main>
+  <footer class="footer shell"><span>Super Agent Market Notes</span><span>Use-case guide for agent-built website launch loops.</span></footer>
+  <script>
+    window.addEventListener("DOMContentLoaded",function(){if(!window.gsap||!window.ScrollTrigger)return;gsap.registerPlugin(ScrollTrigger);gsap.from(".nav",{y:-28,opacity:0,duration:.8,ease:"power3.out"});gsap.from(".hero h1,.lede,.cta,.heroMedia",{y:46,opacity:0,duration:1,stagger:.12,ease:"power3.out"});ScrollTrigger.matchMedia({"(min-width: 861px)":function(){ScrollTrigger.create({trigger:".pinWrap",start:"top 12%",end:"bottom bottom",pin:".pinTitle",pinSpacing:false})}});var reveal=document.querySelector(".reveal");if(reveal){reveal.innerHTML=reveal.textContent.split(" ").map(function(word){return "<span>"+word+"</span>"}).join(" ");gsap.to(".reveal span",{opacity:1,stagger:.018,ease:"none",scrollTrigger:{trigger:".reveal",start:"top 82%",end:"bottom 34%",scrub:true}})}gsap.utils.toArray(".gsap-image").forEach(function(item){gsap.fromTo(item,{scale:.82,opacity:.6},{scale:1,opacity:1,ease:"none",scrollTrigger:{trigger:item,start:"top 90%",end:"bottom 26%",scrub:true}})})});
+  </script>
+</body>
+</html>
