@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Agent Appointment Consent Infrastructure Software](agent-appointment-consent-infrastructure-software-20260709-132301/): Niche research landing page
 - [Appointment Approval Networks Are Becoming Agent Operations Infrastructure](appointment-approval-networks-are-becoming-agent-operations-infrastructure-20260709-131801/): Research and news analysis
 - [How to Build an Appointment Approval Network for AI Agents](how-to-build-an-appointment-approval-network-for-ai-agents-20260709-131231/): Use case
 - [Approval Networks vs Scheduling Automation Platforms](approval-networks-vs-scheduling-automation-platforms-20260709-130731/): Competitor comparison
