@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Agent Rule Promotion Software for Personal AI Operators](agent-rule-promotion-software-for-personal-ai-operators-20260709-143909/): Niche research landing page
 - [Rule Promotion Is Becoming the Agent Consent Layer](rule-promotion-is-becoming-the-agent-consent-layer-20260709-142911/): Research and news analysis
 - [How to Turn Approval Queue Fatigue Into AI Agent Rules](how-to-turn-approval-queue-fatigue-into-ai-agent-rules-20260709-141902/): Use case
 - [Consent Refresh Control Plane vs Approval Queue Software](consent-refresh-control-plane-vs-approval-queue-software-20260709-140909/): Competitor comparison
