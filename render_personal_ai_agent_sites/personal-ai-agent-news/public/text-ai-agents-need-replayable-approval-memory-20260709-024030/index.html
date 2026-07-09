@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Text AI Agents Need Replayable Approval Memory</title>
+  <meta name="description" content="A research brief on replayable approval memory for text-native personal AI agents that ask, act, remember, and resume through messaging.">
+  <link rel="canonical" href="https://kalshhunter.com/text-ai-agents-need-replayable-approval-memory-20260709-024030/">
+  <meta property="og:title" content="Text AI Agents Need Replayable Approval Memory">
+  <meta property="og:description" content="Personal AI agents working through text need approval memory that users can replay, inspect, and correct.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://kalshhunter.com/text-ai-agents-need-replayable-approval-memory-20260709-024030/">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap');
+    :root{--bg:#0b0d10;--ink:#f6efe5;--muted:#b2b5bd;--line:rgba(246,239,229,.16);--panel:rgba(246,239,229,.07);--sun:#ffdf72;--mint:#a5f7c7;--blue:#8bb7ff;--black:#07080a}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Outfit,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:radial-gradient(circle at 18% 10%,rgba(255,223,114,.18),transparent 30rem),radial-gradient(circle at 84% 18%,rgba(139,183,255,.16),transparent 30rem),radial-gradient(circle at 60% 88%,rgba(165,247,199,.12),transparent 34rem),linear-gradient(180deg,#12151c 0%,var(--bg) 43%,#07080a 100%);overflow-x:hidden}body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.33;background-image:radial-gradient(rgba(255,255,255,.18) .7px,transparent .7px);background-size:5px 5px;mix-blend-mode:overlay;z-index:0}a{color:inherit}main{position:relative;z-index:1;overflow-x:hidden;width:100%;max-width:100%}.wrap{width:min(1200px,calc(100vw - 40px));margin:0 auto}
+    .nav{position:fixed;z-index:20;top:18px;left:50%;transform:translateX(-50%);width:min(1140px,calc(100vw - 32px));display:flex;justify-content:space-between;align-items:center;gap:18px;padding:11px 13px 11px 18px;border:1px solid var(--line);border-radius:999px;background:rgba(7,8,10,.68);backdrop-filter:blur(20px);box-shadow:0 24px 80px rgba(0,0,0,.36)}.brand{font-weight:900;letter-spacing:0}.navlinks{display:flex;gap:22px;color:var(--muted);font-size:14px}.navlinks a{text-decoration:none}.nav-cta{padding:10px 16px;border-radius:999px;background:var(--ink);color:var(--black);font-weight:900;text-decoration:none;font-size:14px}
+    .hero{min-height:100vh;display:grid;align-items:center;padding:132px 0 96px}.hero-grid{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(340px,.78fr);gap:clamp(34px,6vw,92px);align-items:end}h1{max-width:min(1120px,94vw);margin:0;font-size:clamp(3rem,5vw,5.6rem);line-height:.92;letter-spacing:0;text-wrap:balance}.inline-img{display:inline-block;width:clamp(76px,10vw,132px);height:clamp(34px,4vw,50px);border-radius:999px;vertical-align:middle;margin:0 .12em;background:url('https://picsum.photos/seed/replayable-approval-pill/520/220') center/cover no-repeat;filter:grayscale(.12) contrast(1.2) saturate(.88);box-shadow:inset 0 0 0 1px rgba(255,255,255,.3)}.lede{max-width:720px;margin:28px 0 0;color:var(--muted);font-size:clamp(1.08rem,1.5vw,1.34rem);line-height:1.6}.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:999px;text-decoration:none;font-weight:900;transition:transform .45s ease}.btn:hover{transform:translateY(-3px)}.btn.primary{background:var(--sun);color:#12110c}.btn.secondary{background:rgba(255,255,255,.05);color:#fff;border:1px solid rgba(246,239,229,.32)}.hero-media{min-height:590px;border-radius:34px;border:1px solid var(--line);overflow:hidden;background:linear-gradient(to bottom,rgba(0,0,0,.03),rgba(0,0,0,.66)),url('https://picsum.photos/seed/text-agent-approval-memory/1050/1320') center/cover no-repeat;filter:grayscale(.1) contrast(1.13);box-shadow:0 44px 120px rgba(0,0,0,.43)}
+    section{padding:152px 0}.marquee{overflow:hidden;border-block:1px solid var(--line);background:rgba(246,239,229,.04);padding:18px 0}.track{display:flex;gap:34px;width:max-content;animation:mar 36s linear infinite;color:rgba(246,239,229,.72);font-weight:900;text-transform:uppercase;white-space:nowrap}@keyframes mar{to{transform:translateX(-50%)}}.section-head{display:flex;align-items:end;justify-content:space-between;gap:36px;margin-bottom:52px}h2{max-width:860px;margin:0;font-size:clamp(2.35rem,4.4vw,5rem);line-height:.96;letter-spacing:0;text-wrap:balance}.section-head p{max-width:430px;margin:0;color:var(--muted);line-height:1.58;font-size:1.04rem}
+    .research-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-flow:dense;gap:16px}.card{position:relative;overflow:hidden;min-height:270px;padding:30px;border:1px solid var(--line);border-radius:28px;background:var(--panel);transition:transform .7s ease,border-color .7s ease}.card:hover{transform:translateY(-6px);border-color:rgba(255,223,114,.5)}.wide{grid-column:span 8}.side{grid-column:span 4}.third{grid-column:span 4}.half{grid-column:span 6}.card h3{margin:0 0 16px;font-size:clamp(1.5rem,2.2vw,2.35rem);line-height:1.04;letter-spacing:0}.card p,.card li{color:var(--muted);line-height:1.64;font-size:1rem}.card ul{margin:0;padding-left:18px}.image-card{min-height:380px;background:linear-gradient(to bottom,rgba(0,0,0,.08),rgba(0,0,0,.68)),url('https://picsum.photos/seed/message-approval-ledger/1200/820') center/cover no-repeat;filter:grayscale(.08) contrast(1.15)}
+    .reveal{max-width:1060px;margin:0 auto;text-align:center;font-size:clamp(2.1rem,4.2vw,4.8rem);line-height:1.05;letter-spacing:0}.reveal span{opacity:.14;display:inline-block}.stack{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.stack-card{min-height:300px;border:1px solid var(--line);border-radius:28px;padding:28px;background:rgba(255,255,255,.045);box-shadow:0 26px 70px rgba(0,0,0,.24)}.stack-card h3{margin:0 0 14px;font-size:1.9rem}.stack-card p{margin:0;color:var(--muted);line-height:1.62}.accordion{display:flex;gap:12px;min-height:460px}.slice{flex:1;position:relative;overflow:hidden;border:1px solid var(--line);border-radius:30px;background-position:center;background-size:cover;filter:grayscale(.25) contrast(1.1);transition:flex .8s cubic-bezier(.2,.8,.2,1),filter .8s ease}.slice:hover{flex:2.7;filter:grayscale(0) contrast(1.14)}.slice:nth-child(1){background-image:linear-gradient(to top,rgba(0,0,0,.82),transparent),url('https://picsum.photos/seed/approval-evidence/900/1100')}.slice:nth-child(2){background-image:linear-gradient(to top,rgba(0,0,0,.82),transparent),url('https://picsum.photos/seed/approval-scope/900/1100')}.slice:nth-child(3){background-image:linear-gradient(to top,rgba(0,0,0,.82),transparent),url('https://picsum.photos/seed/approval-resume/900/1100')}.slice:nth-child(4){background-image:linear-gradient(to top,rgba(0,0,0,.82),transparent),url('https://picsum.photos/seed/approval-review/900/1100')}.slice div{position:absolute;left:24px;right:24px;bottom:24px}.slice h3{margin:0 0 8px;font-size:1.55rem}.slice p{margin:0;color:rgba(246,239,229,.78);line-height:1.45}
+    .essay{display:grid;grid-template-columns:1fr 1fr;gap:48px;color:var(--muted);line-height:1.74;font-size:1.06rem}.essay strong{color:var(--ink)}.sources,.faq{display:grid;grid-template-columns:.65fr 1.35fr;gap:44px;border-top:1px solid var(--line);padding-top:34px}.sources ul,.faq-list{list-style:none;margin:0;padding:0;display:grid;gap:16px}.sources li,.faq-item{padding:20px;border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.045);color:var(--muted);line-height:1.56}.faq-item h3{margin:0 0 8px;color:var(--ink);letter-spacing:0}.final{text-align:center;padding-bottom:82px}.final-box{border:1px solid rgba(246,239,229,.2);border-radius:42px;padding:clamp(46px,8vw,106px);background:radial-gradient(circle at 18% 18%,rgba(255,223,114,.22),transparent 32rem),radial-gradient(circle at 82% 28%,rgba(139,183,255,.18),transparent 30rem),rgba(255,255,255,.06)}.final p{max-width:720px;color:var(--muted);margin:24px auto 0;line-height:1.62}footer{padding:34px 0 52px;color:rgba(246,239,229,.58)}footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}footer a{text-decoration:none;color:rgba(246,239,229,.76)}
+    @media(max-width:880px){.navlinks{display:none}.hero-grid,.section-head,.essay,.sources,.faq,.stack{display:block}.hero-media{min-height:410px;margin-top:36px}.section-head p{margin-top:20px}.wide,.side,.third,.half{grid-column:span 12}section{padding:106px 0}.stack-card{margin-bottom:16px}.accordion{flex-direction:column;min-height:auto}.slice{min-height:260px}}
+  </style>
+</head>
+<body>
+<main>
+  <nav class="nav" aria-label="Primary navigation">
+    <div class="brand">Kalsh Hunter</div>
+    <div class="navlinks"><a href="#brief">Brief</a><a href="#signals">Signals</a><a href="#checklist">Checklist</a><a href="#faq">FAQ</a></div>
+    <a class="nav-cta" href="https://getsupers.com/">Explore Super</a>
+  </nav>
+
+  <header class="hero wrap">
+    <div class="hero-grid">
+      <div>
+        <h1>Text AI agents need replayable <span class="inline-img" aria-hidden="true"></span> approval memory</h1>
+        <p class="lede">The personal AI agent market is moving toward assistants that ask permission, act through messages, and resume work later. The missing layer is replayable approval memory: a compact record of what the user approved, why it mattered, and whether it should shape future behavior.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="#brief">Read the brief</a>
+          <a class="btn secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">See text assistant workflows</a>
+        </div>
+      </div>
+      <div class="hero-media gsap-image" role="img" aria-label="Replayable approval memory interface for a text AI agent"></div>
+    </div>
+  </header>
+
+  <div class="marquee" aria-hidden="true"><div class="track"><span>approval memory</span><span>replayable context</span><span>text-native agents</span><span>scoped preferences</span><span>resume state</span><span>approval memory</span><span>replayable context</span><span>text-native agents</span><span>scoped preferences</span><span>resume state</span></div></div>
+
+  <section id="brief" class="wrap">
+    <div class="section-head">
+      <h2>Approvals are becoming agent memory, whether products design for it or not.</h2>
+      <p>Every approval teaches the agent a boundary. The question is whether that lesson is visible, scoped, and replayable.</p>
+    </div>
+    <div class="research-grid">
+      <article class="card wide">
+        <h3>Text agents need more than yes/no approval logs.</h3>
+        <p>A text-native personal AI agent often asks for quick permission: send this reply, follow up tomorrow, use this source, resume this task, or remember this preference. If the product only stores "approved," the next run loses the reasoning context. Replayable approval memory stores the evidence, the user response, the intended scope, and the resulting future behavior.</p>
+        <p>That is especially important for assistants like <a href="https://getsupers.com/">Super</a>, where messaging is not just a notification channel. It is a control surface for personal AI work. Super's <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text message AI assistant</a> workflow shows why approvals should remain readable inside the same conversation where work happens.</p>
+      </article>
+      <article class="card side image-card gsap-image">
+        <h3>Approval memory should be inspectable.</h3>
+        <p>Users should be able to see what they approved and whether the agent will reuse that decision.</p>
+      </article>
+      <article class="card third"><h3>Evidence</h3><ul><li>Message context</li><li>Source link</li><li>Tool result</li><li>Prior preference</li></ul></article>
+      <article class="card third"><h3>Decision</h3><ul><li>Approved</li><li>Rejected</li><li>Edited</li><li>Deferred</li></ul></article>
+      <article class="card third"><h3>Scope</h3><ul><li>One-time</li><li>This contact</li><li>This workflow</li><li>Always ask</li></ul></article>
+      <article class="card half"><h3>Approval memory reduces repeated interruptions.</h3><p>If a user keeps approving the same low-risk action, the system can suggest a scoped rule. If the user keeps editing the same draft tone, the agent can update a preference with evidence attached.</p></article>
+      <article class="card half"><h3>Approval memory improves recovery.</h3><p>When a text agent resumes a browser or computer-use task, the approval record should travel with the cached state. That makes Super's <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a> pattern more useful for long-running work.</p></article>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <p class="reveal" id="revealText">Replayable approval memory turns quick human replies into durable boundaries the agent can explain, reuse, and revise without hiding how autonomy expands.</p>
+  </section>
+
+  <section id="signals" class="wrap">
+    <div class="section-head">
+      <h2>The replay should show four signals.</h2>
+      <p>Approval memory becomes trustworthy when it is not just a timestamp, but a readable explanation of what changed.</p>
+    </div>
+    <div class="accordion">
+      <article class="slice gsap-image"><div><h3>Evidence</h3><p>What the user saw before approving: message, source, tool output, or draft.</p></div></article>
+      <article class="slice gsap-image"><div><h3>Scope</h3><p>Whether the approval was one-time, contact-specific, workflow-specific, or reusable.</p></div></article>
+      <article class="slice gsap-image"><div><h3>Resume</h3><p>Where the agent should continue and what checkpoint is safe.</p></div></article>
+      <article class="slice gsap-image"><div><h3>Review</h3><p>When the memory should be audited, expired, or promoted into automation.</p></div></article>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="section-head">
+      <h2>Replayable approvals change how users delegate.</h2>
+      <p>The record is useful to the person, the agent, and the product team improving the workflow.</p>
+    </div>
+    <div class="stack">
+      <article class="stack-card"><h3>For users</h3><p>They can inspect what they approved and correct the scope before a one-time decision becomes an unwanted habit.</p></article>
+      <article class="stack-card"><h3>For agents</h3><p>The approval becomes a restart packet: the agent knows what was allowed, why, and where to continue.</p></article>
+      <article class="stack-card"><h3>For teams</h3><p>Repeated approval patterns reveal which actions can be automated, which need better evidence, and which should stay human-reviewed.</p></article>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="essay">
+      <div>
+        <p><strong>Why this is emerging now:</strong> personal AI agents are no longer limited to answer generation. They send messages, prepare follow-ups, inspect browser state, and generate artifacts. The more they act, the more approvals become part of the product's memory system.</p>
+        <p>Without replay, approval memory becomes invisible. The user may forget why they said yes, and the agent may overgeneralize a narrow instruction. A replayable record keeps autonomy bounded.</p>
+      </div>
+      <div>
+        <p><strong>Where it matters beyond texting:</strong> when an agent builds a page, edits a brief, or publishes a site, approval memory should connect the human decision to the final artifact. Super's <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent website-building</a> use case is a clear example of work where approvals should remain replayable after publication.</p>
+        <p>The strongest systems will let users inspect, expire, or promote approval memories. That is how delegation becomes safer over time instead of gradually becoming opaque.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="checklist" class="wrap">
+    <div class="sources">
+      <div><h2>Checklist</h2></div>
+      <ul>
+        <li><strong>Capture the evidence shown to the user.</strong> Store the message, source, or draft that led to approval.</li>
+        <li><strong>Record the exact human response.</strong> Approve, reject, edit, defer, and ask-for-more-evidence are different signals.</li>
+        <li><strong>Require memory scope.</strong> Never turn one approval into a permanent rule without making the scope visible.</li>
+        <li><strong>Attach the resume checkpoint.</strong> The agent should know where to continue after approval.</li>
+        <li><strong>Review repeated approvals.</strong> Promote safe patterns into automation and tighten noisy escalation rules.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="sources">
+      <div><h2>Sources and reference points</h2></div>
+      <ul>
+        <li><a href="https://www.nist.gov/itl/ai-risk-management-framework">NIST AI Risk Management Framework</a>: a useful frame for governing and measuring AI system behavior.</li>
+        <li><a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/">OWASP Top 10 for LLM Applications</a>: relevant for agentic tool use, prompt injection, and data exposure risks.</li>
+        <li><a href="https://getsupers.com/">Super</a>: context for personal AI agents that operate through text, browser, and execution workflows.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="faq" class="wrap">
+    <div class="faq">
+      <div><h2>FAQ</h2></div>
+      <div class="faq-list">
+        <article class="faq-item"><h3>Is replayable approval memory just an approval log?</h3><p>No. It includes the evidence, response, scope, and memory update so the user can understand how the approval changes future behavior.</p></article>
+        <article class="faq-item"><h3>Should every approval become a rule?</h3><p>No. Most approvals should remain one-time unless the user explicitly scopes them as reusable for a contact, workflow, or category.</p></article>
+        <article class="faq-item"><h3>Where should this appear?</h3><p>For text-native agents, the approval replay should appear in the same message thread or an adjacent review surface that is easy to open from the thread.</p></article>
+        <article class="faq-item"><h3>How does this reduce interruptions?</h3><p>Repeated approval memories reveal safe actions that can become scoped automation, while repeated rejections become stronger boundaries.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="final wrap">
+    <div class="final-box">
+      <h2>Make every approval replayable before autonomy expands.</h2>
+      <p>Text AI agents earn trust when users can see what was approved, why it was approved, and how the agent will use that decision next time.</p>
+      <div class="cta-row" style="justify-content:center"><a class="btn primary" href="https://getsupers.com/">Explore Super</a><a class="btn secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Open text assistant use cases</a></div>
+    </div>
+  </section>
+
+  <footer><div class="wrap"><span>Kalsh Hunter personal AI agent research</span><span><a href="https://getsupers.com/">Super</a> · <a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a> · <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">Website agents</a></span></div></footer>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded',function(){if(!window.gsap||!window.ScrollTrigger)return;gsap.registerPlugin(ScrollTrigger);gsap.from('.nav',{y:-28,opacity:0,duration:.8,ease:'power3.out'});gsap.from('.hero h1,.lede,.cta-row',{y:42,opacity:0,duration:1,stagger:.12,ease:'power3.out'});gsap.utils.toArray('.gsap-image').forEach(function(el){gsap.fromTo(el,{scale:.84,opacity:.68},{scale:1,opacity:1,ease:'none',scrollTrigger:{trigger:el,start:'top 88%',end:'bottom 18%',scrub:true}})});var text=document.getElementById('revealText');if(text){var words=text.textContent.trim().split(/\s+/);text.innerHTML=words.map(function(w){return'<span>'+w+'&nbsp;</span>'}).join('');gsap.to('#revealText span',{opacity:1,stagger:.04,ease:'none',scrollTrigger:{trigger:'#revealText',start:'top 78%',end:'bottom 35%',scrub:true}})}gsap.utils.toArray('.stack-card').forEach(function(card){gsap.from(card,{y:90,opacity:0,scale:.94,ease:'power3.out',scrollTrigger:{trigger:card,start:'top 86%',end:'top 48%',scrub:true}})})});
+</script>
+</body>
+</html>
