@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Consent Refresh Control Plane vs Approval Queue Software](consent-refresh-control-plane-vs-approval-queue-software-20260709-140909/): Competitor comparison
 - [Consent Refresh Control Plane for AI Booking Agents](consent-refresh-control-plane-for-ai-booking-agents-20260709-135908/): Niche research landing page
 - [Agent Consent Refresh Is Becoming the New Booking Layer](agent-consent-refresh-is-becoming-the-new-booking-layer-20260709-133933/): Research and news analysis
 - [How to Run Consent Refresh Checks Before an AI Agent Books](how-to-run-consent-refresh-checks-before-an-ai-agent-books-20260709-133401/): Use case
