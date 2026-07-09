@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Agent Rule Review Rooms Are Becoming the New Autonomy Gate](agent-rule-review-rooms-are-becoming-the-new-autonomy-gate-20260709-150002/): Research and news analysis
 - [How to Design Promoted Rule Reviews for Personal AI Agents](how-to-design-promoted-rule-reviews-for-personal-ai-agents-20260709-145002/): Use case
 - [Rule Promotion vs Prompt Memory: Personal AI Agent Comparison](rule-promotion-vs-prompt-memory-comparison-20260709-144432/): Competitor comparison
 - [Agent Rule Promotion Software for Personal AI Operators](agent-rule-promotion-software-for-personal-ai-operators-20260709-143909/): Niche research landing page
