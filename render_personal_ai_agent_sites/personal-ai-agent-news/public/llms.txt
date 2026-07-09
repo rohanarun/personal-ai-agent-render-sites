@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [How to Design Stale Consent Checks for Personal AI Agents](how-to-design-stale-consent-checks-for-personal-ai-agents-20260709-080131/): Use case
 - [Audit Linked Consent vs Standalone Approval Prompts](audit-linked-consent-vs-standalone-approval-prompts-20260709-075600/): Competitor comparison
 - [Audit Linked Consent Software for Personal AI Agents](audit-linked-consent-software-for-personal-ai-agents-20260709-075030/): Niche research landing page
 - [Personal AI Agents Are Getting Audit Linked Consent](personal-ai-agents-are-getting-audit-linked-consent-20260709-074530/): Research and news analysis
