@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [How to Build Appointment Approval Packets for AI Agents](how-to-build-appointment-approval-packets-for-ai-agents-20260709-122306/): Use case
 - [Appointment Memory Agents vs Scheduling Widgets](appointment-memory-agents-vs-scheduling-widgets-20260709-121802/): Competitor comparison
 - [Appointment Memory Agents for Service Teams](appointment-memory-agents-for-service-teams-20260709-121301/): Niche research landing page
 - [Personal AI Agents Are Replacing Static Intake with Operational Memory](personal-ai-agents-are-replacing-static-intake-with-operational-memory-20260709-120308/): Research and news analysis
