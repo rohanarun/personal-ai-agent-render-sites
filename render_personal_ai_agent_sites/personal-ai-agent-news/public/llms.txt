@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Personal AI Agents Are Getting Launch Memory Review Loops](personal-ai-agents-are-getting-launch-memory-review-loops-20260709-111101/): Research and news analysis
 - [How to Run a Launch Memory Review Before an AI Agent Publishes](how-to-run-a-launch-memory-review-before-an-ai-agent-publishes-20260709-110531/): Use case
 - [Launch Memory Software vs Traditional Website QA Tools](launch-memory-software-vs-traditional-website-qa-tools-20260709-105906/): Competitor comparison
 - [Launch Memory Software for Personal AI Agent Websites](launch-memory-software-for-personal-ai-agent-websites-20260709-104907/): Niche research landing page
