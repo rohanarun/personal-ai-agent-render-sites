@@ -2,6 +2,29 @@
   {
     "assigned_domain": "kalshhunter.com",
     "assigned_slot": "personal-ai-agent-news",
+    "assigned_url": "https://kalshhunter.com/approval-memory-maps-vs-workflow-automation-20260709-030129/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/text-message-ai-assistant/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "competitor_comparison",
+    "content_kind_label": "Competitor comparison",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://kalshhunter.com/approval-memory-maps-vs-workflow-automation-20260709-030129/",
+    "receipt_created_at": "2026-07-09T03:01:29.639+00:00",
+    "receipt_status": "success",
+    "slug": "approval-memory-maps-vs-workflow-automation-20260709-030129",
+    "source_path": "sms_published_sites/approval-memory-maps-vs-workflow-automation-20260709-030129",
+    "target_slot": "personal-ai-agent-news",
+    "title": "Approval Memory Maps vs Workflow Automation"
+  },
+  {
+    "assigned_domain": "kalshhunter.com",
+    "assigned_slot": "personal-ai-agent-news",
     "assigned_url": "https://kalshhunter.com/how-to-build-approval-memory-escalation-maps-20260709-025559/",
     "backlinks": [
       "https://getsupers.com/",
