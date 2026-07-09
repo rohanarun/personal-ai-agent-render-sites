@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to Wire Rollback Receipts Into Agent Work Queues</title>
+  <meta name="description" content="A practical how-to guide for adding rollback receipts to personal AI agent work queues, with implementation steps, checklist, FAQ, and sources.">
+  <link rel="canonical" href="https://kalshhunter.com/how-to-wire-rollback-receipts-into-agent-work-queues-20260709-181209/">
+  <meta property="og:title" content="How to Wire Rollback Receipts Into Agent Work Queues">
+  <meta property="og:description" content="Rollback receipts make personal AI agent autonomy inspectable, reversible, and easier to approve over time.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://kalshhunter.com/how-to-wire-rollback-receipts-into-agent-work-queues-20260709-181209/">
+  <meta property="og:image" content="https://picsum.photos/seed/agent-rollback-receipt-work-queue/1600/900">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #090908;
+      --ink: #f8f1e6;
+      --muted: rgba(248, 241, 230, 0.72);
+      --line: rgba(248, 241, 230, 0.16);
+      --panel: rgba(20, 20, 18, 0.75);
+      --green: #bde976;
+      --blue: #8bd3ef;
+      --rose: #e18472;
+      --silver: #d8d4ca;
+      --font: Satoshi, "Avenir Next", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      color: var(--ink);
+      font-family: var(--font);
+      background:
+        radial-gradient(circle at 18% 18%, rgba(139, 211, 239, 0.18), transparent 31%),
+        radial-gradient(circle at 84% 12%, rgba(189, 233, 118, 0.14), transparent 33%),
+        radial-gradient(circle at 66% 82%, rgba(225, 132, 114, 0.14), transparent 35%),
+        linear-gradient(135deg, #090908, #15140f 58%, #080808);
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.13;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='170'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='170' height='170' filter='url(%23n)' opacity='.82'/%3E%3C/svg%3E");
+      mix-blend-mode: soft-light;
+    }
+    a { color: inherit; }
+    main { overflow-x: hidden; width: 100%; max-width: 100%; }
+    .wrap { width: min(1160px, calc(100vw - 36px)); margin: 0 auto; }
+    .nav {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      z-index: 40;
+      transform: translateX(-50%);
+      width: min(1080px, calc(100vw - 32px));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 10px 10px 20px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(9, 9, 8, 0.69);
+      backdrop-filter: blur(22px);
+      box-shadow: 0 22px 80px rgba(0, 0, 0, 0.34);
+    }
+    .brand { text-decoration: none; font-weight: 860; }
+    .links { display: flex; align-items: center; gap: 8px; }
+    .links a {
+      color: var(--muted);
+      text-decoration: none;
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      transition: color 220ms ease, background 220ms ease;
+    }
+    .links a:hover { color: var(--ink); background: rgba(255,255,255,0.07); }
+    .links .nav-cta { color: #11140a; background: var(--green); font-weight: 850; }
+    section { padding: 9rem 0; }
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      align-items: center;
+      padding: 9.5rem 0 6rem;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(330px, 0.78fr);
+      gap: clamp(2.2rem, 5vw, 5.6rem);
+      align-items: center;
+    }
+    h1 {
+      max-width: min(1160px, 94vw);
+      margin: 0;
+      font-size: clamp(3rem, 5.05vw, 5.7rem);
+      line-height: 0.94;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .inline-img {
+      display: inline-block;
+      width: clamp(78px, 9.5vw, 136px);
+      height: clamp(34px, 4.3vw, 58px);
+      margin: 0 0.1em;
+      border-radius: 999px;
+      vertical-align: middle;
+      background: url("https://picsum.photos/seed/rollback-receipt-inline/420/180") center/cover;
+      filter: grayscale(0.82) contrast(1.3) brightness(0.86);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.26);
+    }
+    .lede {
+      max-width: 750px;
+      margin: 28px 0 0;
+      color: var(--muted);
+      font-size: clamp(1.08rem, 1.55vw, 1.32rem);
+      line-height: 1.68;
+    }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 850;
+      transition: transform 240ms ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn.primary { color: #11140a; background: var(--green); }
+    .btn.secondary { color: var(--ink); border: 1px solid var(--line); background: rgba(255,255,255,0.06); }
+    .hero-art {
+      position: relative;
+      min-height: 580px;
+      transform: rotate(1.5deg);
+    }
+    .floating-shot {
+      position: absolute;
+      inset: 0;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #141414;
+      box-shadow: 0 40px 120px rgba(0,0,0,0.35);
+    }
+    .floating-shot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(0.8) contrast(1.26) brightness(0.68);
+      transition: transform 700ms ease;
+    }
+    .floating-shot:hover img { transform: scale(1.05); }
+    .receipt-card {
+      position: absolute;
+      left: -28px;
+      right: 30px;
+      bottom: 34px;
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 8px;
+      padding: 20px;
+      background: rgba(9,9,8,0.78);
+      backdrop-filter: blur(18px);
+      transform: rotate(-1.5deg);
+    }
+    .receipt-card strong { display: block; font-size: 1.12rem; }
+    .receipt-card p { margin: 8px 0 0; color: var(--muted); line-height: 1.55; }
+    .chapter-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+      gap: 3rem;
+      align-items: end;
+      margin-bottom: 48px;
+    }
+    h2 {
+      margin: 0;
+      font-size: clamp(2.35rem, 4.45vw, 5rem);
+      line-height: 0.98;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .chapter-head p, .tile p, .step p, .quote p, .check p, .faq p, .source p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.74;
+      font-size: 1.04rem;
+    }
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-flow: dense;
+      gap: 16px;
+    }
+    .tile {
+      min-height: 262px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 28px;
+      overflow: hidden;
+      background: linear-gradient(145deg, rgba(255,255,255,0.072), rgba(255,255,255,0.028));
+      transition: transform 300ms ease, background 300ms ease;
+    }
+    .tile:hover { transform: translateY(-5px); background: rgba(255,255,255,0.086); }
+    .tile h3, .step h3, .quote h3, .check strong {
+      margin: 0 0 14px;
+      font-size: clamp(1.35rem, 2.2vw, 2.25rem);
+      line-height: 1.06;
+      letter-spacing: 0;
+    }
+    .span-8 { grid-column: span 8; }
+    .span-4 { grid-column: span 4; }
+    .span-6 { grid-column: span 6; }
+    .visual { padding: 0; }
+    .visual img {
+      width: 100%;
+      height: 100%;
+      min-height: 340px;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(0.78) contrast(1.25) brightness(0.72);
+      transition: transform 700ms ease;
+    }
+    .visual:hover img { transform: scale(1.05); }
+    .scrub-copy {
+      max-width: 960px;
+      margin: 0 auto;
+      font-size: clamp(2rem, 4vw, 4.4rem);
+      line-height: 1.08;
+      letter-spacing: 0;
+      text-align: center;
+    }
+    .scrub-copy span { opacity: 0.16; }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 52px;
+    }
+    .step {
+      min-height: 300px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 26px;
+      background: rgba(255,255,255,0.045);
+    }
+    .marquee {
+      overflow: hidden;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      white-space: nowrap;
+      margin-top: 52px;
+    }
+    .marquee-track {
+      display: inline-flex;
+      gap: 36px;
+      padding: 22px 0;
+      color: rgba(248, 241, 230, 0.54);
+      font-size: clamp(1.8rem, 4.3vw, 4.7rem);
+      font-weight: 900;
+      animation: drift 32s linear infinite;
+    }
+    .marquee-track span { color: var(--ink); }
+    @keyframes drift { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .quotes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 46px;
+    }
+    .quote {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      background: rgba(255,255,255,0.045);
+    }
+    .faces { display: flex; margin-bottom: 22px; }
+    .face {
+      width: 58px;
+      height: 58px;
+      border-radius: 999px;
+      border: 2px solid var(--bg);
+      background-size: cover;
+      background-position: center;
+      margin-left: -12px;
+      filter: grayscale(0.72) contrast(1.22);
+    }
+    .face:first-child { margin-left: 0; }
+    .checklist, .sources {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 42px;
+    }
+    .check, .source {
+      min-height: 168px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      background: rgba(255,255,255,0.045);
+    }
+    .source a { color: var(--ink); font-weight: 820; text-decoration-color: rgba(255,255,255,0.35); }
+    .faq { display: grid; gap: 14px; margin-top: 36px; }
+    .faq details {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 22px 24px;
+      background: rgba(255,255,255,0.045);
+    }
+    .faq summary { cursor: pointer; font-weight: 850; font-size: 1.1rem; }
+    .faq p { margin-top: 14px; }
+    .final { padding-bottom: 5rem; }
+    .final-box {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      gap: 36px;
+      align-items: end;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: clamp(2rem, 5vw, 4.2rem);
+      background:
+        linear-gradient(135deg, rgba(189, 233, 118, 0.18), rgba(139, 211, 239, 0.1), rgba(225, 132, 114, 0.11)),
+        rgba(255,255,255,0.035);
+    }
+    .final-box h2 { font-size: clamp(2.55rem, 5.4vw, 6rem); }
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding: 30px 0 62px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+    }
+    @media (max-width: 920px) {
+      .links a:not(.nav-cta) { display: none; }
+      .hero-grid, .chapter-head, .final-box { grid-template-columns: 1fr; }
+      .hero-art { min-height: 440px; transform: none; }
+      .receipt-card { left: 18px; right: 18px; transform: none; }
+      section { padding: 6.5rem 0; }
+      .bento, .steps, .quotes, .checklist, .sources { grid-template-columns: 1fr; }
+      .span-8, .span-4, .span-6 { grid-column: span 1; }
+    }
+  </style>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Wire Rollback Receipts Into Agent Work Queues",
+      "description": "A practical implementation guide for adding rollback receipts to personal AI agent work queues.",
+      "datePublished": "2026-07-09",
+      "publisher": {"@type": "Organization", "name": "Super Agent Market Notes"},
+      "mainEntityOfPage": "https://kalshhunter.com/how-to-wire-rollback-receipts-into-agent-work-queues-20260709-181209/"
+    }
+  </script>
+</head>
+<body>
+  <nav class="nav" aria-label="Primary navigation">
+    <a class="brand" href="/">Agent Market Notes</a>
+    <div class="links">
+      <a href="#model">Model</a>
+      <a href="#steps">Steps</a>
+      <a href="#faq">FAQ</a>
+      <a class="nav-cta" href="https://getsupers.com/">Super</a>
+    </div>
+  </nav>
+  <main>
+    <header class="hero wrap">
+      <div class="hero-grid">
+        <div>
+          <h1>Wire rollback receipts <span class="inline-img" aria-hidden="true"></span> into agent work queues.</h1>
+          <p class="lede">A rollback receipt is the compact record that lets a personal AI agent move faster without hiding risk. It states what changed, why the agent changed it, what evidence was used, and how the user can restore or narrow the action later.</p>
+          <div class="cta-row">
+            <a class="btn primary" href="https://app.getsupers.com/use-cases/computer-use-cache/">Use replay evidence</a>
+            <a class="btn secondary" href="#steps">Read the build steps</a>
+          </div>
+        </div>
+        <div class="hero-art gsap-image">
+          <figure class="floating-shot">
+            <img src="https://picsum.photos/seed/agent-rollback-receipt-work-queue/980/1220" alt="Personal AI agent queue with rollback receipt evidence">
+          </figure>
+          <aside class="receipt-card">
+            <strong>Receipt before autonomy.</strong>
+            <p>If the agent cannot explain and reverse the action, the action belongs in approval first mode.</p>
+          </aside>
+        </div>
+      </div>
+    </header>
+
+    <section id="model">
+      <div class="wrap">
+        <div class="chapter-head">
+          <h2>Start with the receipt schema, not the approval button.</h2>
+          <p>Most agent work queues begin with tasks, owners, due dates, and status. Personal AI agent queues need an additional primitive: the rollback receipt. Without it, the queue can show that the agent finished work, but not whether the work can be trusted, inspected, repeated, or undone.</p>
+        </div>
+        <div class="bento">
+          <article class="tile span-8">
+            <h3>Define the receipt as the agent's promise of reversibility.</h3>
+            <p>A useful receipt includes the original state, changed state, action class, evidence links, model or policy reason, user-facing summary, rollback command, expiration, and approval history. It should be short enough to scan in a queue but complete enough to support repair. For web actions, connect the receipt to the <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a> so operators can replay the session that produced the change.</p>
+          </article>
+          <article class="tile visual span-4 gsap-image">
+            <img src="https://picsum.photos/seed/rollback-receipt-schema/840/680" alt="Rollback receipt schema for agent work queue">
+          </article>
+          <article class="tile span-4">
+            <h3>Original state</h3>
+            <p>Store the snapshot needed to explain or reconstruct the previous condition. Do not rely on memory alone.</p>
+          </article>
+          <article class="tile span-4">
+            <h3>Action reason</h3>
+            <p>Capture the rule, user instruction, or pattern that caused the agent to act without a fresh approval.</p>
+          </article>
+          <article class="tile span-4">
+            <h3>Rollback path</h3>
+            <p>Make the reversal path explicit. A receipt without repair mechanics is just a log entry.</p>
+          </article>
+          <article class="tile span-6">
+            <h3>Text review lane</h3>
+            <p>When the receipt involves outbound messages, private context, or urgency, route it through the <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text message AI assistant</a> pattern so the user can approve, narrow, or undo from the phone.</p>
+          </article>
+          <article class="tile span-6">
+            <h3>Publish gate lane</h3>
+            <p>For generated pages, docs, and artifacts, rollback receipts should distinguish draft changes from public release changes. The <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent website-building workflow</a> is a natural place to keep build evidence and final publish approvals separate.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="steps">
+      <div class="wrap">
+        <p class="scrub-copy">
+          <span>Receipts</span> <span>turn</span> <span>agent</span> <span>speed</span> <span>into</span> <span>inspectable</span> <span>autonomy:</span> <span>the</span> <span>queue</span> <span>shows</span> <span>the</span> <span>work,</span> <span>the</span> <span>reason,</span> <span>the</span> <span>evidence,</span> <span>and</span> <span>the</span> <span>undo.</span>
+        </p>
+        <div class="steps">
+          <article class="step">
+            <h3>Mark reversible action classes.</h3>
+            <p>Label queue actions as blocked, approval first, rollback first, or autonomous. Only rollback first actions require immediate receipt generation.</p>
+          </article>
+          <article class="step">
+            <h3>Capture pre-action evidence.</h3>
+            <p>Before the agent changes anything, save the state or source evidence needed to explain why the action seemed valid.</p>
+          </article>
+          <article class="step">
+            <h3>Write the user-facing delta.</h3>
+            <p>The receipt should say what changed in plain language. Operators should not need to read a raw trace to understand the result.</p>
+          </article>
+          <article class="step">
+            <h3>Attach rollback controls.</h3>
+            <p>Add restore, narrow, approve future, and escalate controls. The receipt becomes the control surface for trust repair.</p>
+          </article>
+        </div>
+        <div class="marquee" aria-hidden="true">
+          <div class="marquee-track">
+            <span>snapshot</span> delta evidence restore narrow approve snapshot delta evidence restore narrow approve
+            <span>snapshot</span> delta evidence restore narrow approve snapshot delta evidence restore narrow approve
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="chapter-head">
+          <h2>What good receipts feel like in the queue.</h2>
+          <p>Receipts should make autonomy feel calmer, not more bureaucratic. The operator should understand the change, see the proof, and choose a recovery action without opening a separate incident report.</p>
+        </div>
+        <div class="quotes">
+          <article class="quote">
+            <div class="faces" aria-hidden="true"><span class="face" style="background-image:url('https://picsum.photos/seed/receipt-operator-a/180/180')"></span><span class="face" style="background-image:url('https://picsum.photos/seed/receipt-operator-b/180/180')"></span></div>
+            <h3>Queue owner</h3>
+            <p>"The receipt tells me if this is a harmless cleanup or something I need to review before the next task runs."</p>
+          </article>
+          <article class="quote">
+            <div class="faces" aria-hidden="true"><span class="face" style="background-image:url('https://picsum.photos/seed/receipt-founder-a/180/180')"></span><span class="face" style="background-image:url('https://picsum.photos/seed/receipt-founder-b/180/180')"></span></div>
+            <h3>Founder user</h3>
+            <p>"I want to approve the future rule, not just this one action. A rollback receipt gives me that narrow control."</p>
+          </article>
+          <article class="quote">
+            <div class="faces" aria-hidden="true"><span class="face" style="background-image:url('https://picsum.photos/seed/receipt-builder-a/180/180')"></span><span class="face" style="background-image:url('https://picsum.photos/seed/receipt-builder-b/180/180')"></span></div>
+            <h3>Agent builder</h3>
+            <p>"Receipts are the bridge between logs and product UX. They let the model move while keeping the human in charge."</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="chapter-head">
+          <h2>Implementation checklist.</h2>
+          <p>Use this checklist to make sure rollback receipts are product-grade rather than a developer-only audit log.</p>
+        </div>
+        <div class="checklist">
+          <article class="check"><strong>Receipt ID</strong><p>Give every rollback first action a stable ID that can be referenced by the queue, text approval, and replay view.</p></article>
+          <article class="check"><strong>Before snapshot</strong><p>Store the state required to reconstruct or explain what existed before the agent acted.</p></article>
+          <article class="check"><strong>After delta</strong><p>Summarize the changed fields, files, messages, records, or browser state in human language.</p></article>
+          <article class="check"><strong>Evidence links</strong><p>Attach source documents, browser replay, screenshots, or prior user instructions that justify the action.</p></article>
+          <article class="check"><strong>Repair controls</strong><p>Expose restore, narrow future rule, approve similar, and escalate controls where the user reviews the receipt.</p></article>
+          <article class="check"><strong>Expiry</strong><p>Set a review date for rollback lanes that are based on temporary projects, customers, trips, or launch periods.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="wrap">
+        <div class="chapter-head">
+          <h2>FAQ for agent teams.</h2>
+          <p>These are the questions teams usually hit when adding rollback receipts to personal AI agent queues.</p>
+        </div>
+        <div class="faq">
+          <details open>
+            <summary>Is a rollback receipt the same as an audit log?</summary>
+            <p>No. An audit log is usually written for compliance or debugging. A rollback receipt is a user-facing control object. It must explain the change and provide a repair path from the queue.</p>
+          </details>
+          <details>
+            <summary>Which actions should never be rollback first?</summary>
+            <p>Irreversible deletes, payments, access changes, sensitive outbound messages, and public commitments should stay approval first unless the product has extremely narrow limits and explicit user training.</p>
+          </details>
+          <details>
+            <summary>Where does Super fit in this workflow?</summary>
+            <p><a href="https://getsupers.com/">Super</a> can act as the lightweight human approval and review surface. Receipts can be routed to text when the user needs to approve, narrow, or roll back an agent action quickly.</p>
+          </details>
+          <details>
+            <summary>What is the fastest proof that receipts are working?</summary>
+            <p>Pick a low-risk queue action, let the agent complete it, then ask a user to restore the prior state using only the receipt. If they cannot do that, the receipt is not yet complete.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="chapter-head">
+          <h2>Sources and references.</h2>
+          <p>The receipt pattern is grounded in AI risk management, agentic action risk, and practical operator review loops.</p>
+        </div>
+        <div class="sources">
+          <article class="source"><a href="https://www.nist.gov/itl/ai-risk-management-framework">NIST AI Risk Management Framework</a><p>Risk governance framing for identifying and managing AI system behavior.</p></article>
+          <article class="source"><a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/">OWASP Top 10 for Large Language Model Applications</a><p>Agentic risk and excessive agency concerns for systems that can take external actions.</p></article>
+          <article class="source"><a href="https://getsupers.com/">Super</a><p>Personal AI agent approval loops for users who need fast review, text control, and practical operator workflows.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="final">
+      <div class="wrap final-box">
+        <h2>Make every autonomous action repairable.</h2>
+        <div>
+          <p class="lede">Rollback receipts are how personal AI agents earn more autonomy without asking users to trust invisible work.</p>
+          <div class="cta-row">
+            <a class="btn primary" href="https://getsupers.com/">Explore Super</a>
+            <a class="btn secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Route reviews by text</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer wrap">
+    <span>Super Agent Market Notes</span>
+    <span>How-to notes for personal AI agent builders and operators.</span>
+  </footer>
+  <script>
+    window.addEventListener("DOMContentLoaded", function () {
+      if (!window.gsap || !window.ScrollTrigger) return;
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.from(".nav", { y: -28, opacity: 0, duration: 0.75, ease: "power3.out" });
+      gsap.from(".hero h1, .lede, .cta-row", { y: 46, opacity: 0, duration: 1, stagger: 0.12, ease: "power3.out" });
+      gsap.utils.toArray(".gsap-image").forEach(function (el) {
+        gsap.fromTo(el, { scale: 0.82, opacity: 0.58 }, {
+          scale: 1,
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: { trigger: el, start: "top 92%", end: "bottom 24%", scrub: true }
+        });
+      });
+      gsap.utils.toArray(".scrub-copy span").forEach(function (word, index) {
+        gsap.to(word, {
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".scrub-copy",
+            start: "top 82%",
+            end: "bottom 34%",
+            scrub: true
+          },
+          delay: index * 0.02
+        });
+      });
+    });
+  </script>
+</body>
+</html>
