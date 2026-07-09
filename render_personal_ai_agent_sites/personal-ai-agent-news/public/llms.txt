@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [How to Build a Personal AI Agent Escalation Inbox](personal-ai-agent-escalation-inbox-20260709-020229/): Use case
 - [Memory Verification Software vs Agent Audit Logs](memory-verification-software-vs-agent-audit-logs-20260709-015729/): Competitor comparison
 - [Personal AI Agent Memory Verification Software](personal-ai-agent-memory-verification-software-20260709-015229/): Niche research landing page
 - [AI Agents Need Memory Verification Before Resume](ai-agents-need-memory-verification-before-resume-20260709-014729/): Research and news analysis

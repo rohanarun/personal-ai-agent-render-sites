@@ -1,0 +1,601 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to Build a Personal AI Agent Escalation Inbox</title>
+  <meta name="description" content="A practical playbook for building a personal AI agent escalation inbox that keeps autonomous work moving while preserving approvals, audit trails, and human judgment.">
+  <link rel="canonical" href="https://kalshhunter.com/personal-ai-agent-escalation-inbox-20260709-020229/">
+  <meta property="og:title" content="How to Build a Personal AI Agent Escalation Inbox">
+  <meta property="og:description" content="Design the inbox where personal AI agents ask for approval, preserve context, and recover from uncertainty.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://kalshhunter.com/personal-ai-agent-escalation-inbox-20260709-020229/">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap');
+    :root {
+      --ink: #f7f3ea;
+      --muted: #b9b1a3;
+      --paper: #10110f;
+      --panel: rgba(247, 243, 234, .075);
+      --line: rgba(247, 243, 234, .16);
+      --lime: #d7ff70;
+      --blue: #85a8ff;
+      --rose: #ff9d90;
+      --dark: #080907;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Geist, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 18% 8%, rgba(215, 255, 112, .2), transparent 31rem),
+        radial-gradient(circle at 82% 4%, rgba(133, 168, 255, .16), transparent 29rem),
+        radial-gradient(circle at 70% 78%, rgba(255, 157, 144, .13), transparent 33rem),
+        var(--paper);
+      overflow-x: hidden;
+    }
+    body:before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .42;
+      background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: radial-gradient(circle at center, black, transparent 72%);
+      z-index: 0;
+    }
+    a { color: inherit; }
+    main {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+      position: relative;
+      z-index: 1;
+    }
+    .nav {
+      position: fixed;
+      left: 50%;
+      top: 20px;
+      transform: translateX(-50%);
+      z-index: 20;
+      width: min(1120px, calc(100vw - 32px));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 12px 10px 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(8, 9, 7, .66);
+      backdrop-filter: blur(22px);
+      box-shadow: 0 24px 70px rgba(0,0,0,.34);
+    }
+    .brand { font-weight: 800; letter-spacing: 0; }
+    .navlinks { display: flex; gap: 20px; color: var(--muted); font-size: 14px; }
+    .navlinks a { text-decoration: none; }
+    .nav-cta {
+      background: var(--ink);
+      color: var(--dark);
+      text-decoration: none;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 14px;
+    }
+    .wrap { width: min(1180px, calc(100vw - 40px)); margin: 0 auto; }
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      align-items: center;
+      padding: 132px 0 96px;
+      position: relative;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, .7fr);
+      gap: clamp(28px, 5vw, 82px);
+      align-items: end;
+    }
+    h1 {
+      max-width: min(1120px, 94vw);
+      margin: 0;
+      font-size: clamp(3rem, 5.2vw, 5.9rem);
+      line-height: .91;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .inline-img {
+      display: inline-block;
+      width: clamp(72px, 10vw, 128px);
+      height: clamp(34px, 4vw, 48px);
+      border-radius: 999px;
+      vertical-align: middle;
+      margin: 0 .12em;
+      background-image: url('https://picsum.photos/seed/escalation-console/480/220');
+      background-size: cover;
+      background-position: center;
+      filter: grayscale(.2) contrast(1.18) saturate(.85);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.32);
+    }
+    .lede {
+      margin: 26px 0 0;
+      max-width: 720px;
+      color: var(--muted);
+      font-size: clamp(1.08rem, 1.55vw, 1.35rem);
+      line-height: 1.55;
+    }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 800;
+      transition: transform .45s ease, background .45s ease;
+    }
+    .btn:hover { transform: translateY(-3px); }
+    .btn.primary { background: var(--lime); color: #10110f; }
+    .btn.secondary { border: 1px solid rgba(247,243,234,.34); color: #fff; background: rgba(255,255,255,.045); }
+    .hero-media {
+      min-height: 560px;
+      border-radius: 36px;
+      overflow: hidden;
+      border: 1px solid rgba(247,243,234,.18);
+      background-image: linear-gradient(to bottom, rgba(0,0,0,.05), rgba(0,0,0,.48)), url('https://picsum.photos/seed/human-approval-desk/980/1280');
+      background-size: cover;
+      background-position: center;
+      filter: grayscale(.12) contrast(1.12);
+      box-shadow: 0 42px 120px rgba(0,0,0,.42);
+    }
+    section { padding: 150px 0; }
+    .marquee {
+      border-block: 1px solid var(--line);
+      padding: 18px 0;
+      overflow: hidden;
+      color: rgba(247,243,234,.74);
+      background: rgba(255,255,255,.035);
+    }
+    .track {
+      display: flex;
+      width: max-content;
+      gap: 34px;
+      animation: drift 34s linear infinite;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+    @keyframes drift { to { transform: translateX(-50%); } }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 36px;
+      align-items: end;
+      margin-bottom: 52px;
+    }
+    h2 {
+      margin: 0;
+      font-size: clamp(2.3rem, 4.6vw, 5rem);
+      line-height: .96;
+      letter-spacing: 0;
+      max-width: 870px;
+      text-wrap: balance;
+    }
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 410px;
+      line-height: 1.55;
+      font-size: 1.04rem;
+    }
+    .howto-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-flow: dense;
+      gap: 16px;
+    }
+    .card {
+      min-height: 260px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: var(--panel);
+      overflow: hidden;
+      position: relative;
+      transition: transform .7s ease, border-color .7s ease;
+    }
+    .card:hover { transform: translateY(-6px); border-color: rgba(215,255,112,.45); }
+    .wide { grid-column: span 8; }
+    .side { grid-column: span 4; }
+    .third { grid-column: span 4; }
+    .half { grid-column: span 6; }
+    .card h3 { margin: 0 0 16px; font-size: clamp(1.45rem, 2.2vw, 2.4rem); line-height: 1.04; letter-spacing: 0; }
+    .card p, .card li { color: var(--muted); line-height: 1.62; font-size: 1rem; }
+    .card ul { padding-left: 18px; margin: 0; }
+    .image-card {
+      min-height: 360px;
+      background-image: linear-gradient(to bottom, rgba(0,0,0,.08), rgba(0,0,0,.55)), url('https://picsum.photos/seed/agent-inbox-routing/1200/800');
+      background-size: cover;
+      background-position: center;
+      filter: grayscale(.08) contrast(1.12);
+    }
+    .workflow {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 70px;
+      align-items: start;
+    }
+    .sticky-title { position: sticky; top: 140px; }
+    .steps { display: grid; gap: 18px; }
+    .step {
+      border: 1px solid var(--line);
+      background: rgba(8,9,7,.52);
+      border-radius: 28px;
+      padding: 30px;
+      min-height: 220px;
+    }
+    .step h3 { margin: 0 0 14px; font-size: 1.9rem; letter-spacing: 0; }
+    .step p { color: var(--muted); line-height: 1.65; margin: 0; }
+    .reveal-text {
+      font-size: clamp(2rem, 4vw, 4.7rem);
+      line-height: 1.08;
+      letter-spacing: 0;
+      max-width: 1040px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .reveal-text span { opacity: .13; display: inline-block; }
+    .accordion {
+      display: flex;
+      gap: 12px;
+      min-height: 480px;
+    }
+    .slice {
+      flex: 1;
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      overflow: hidden;
+      position: relative;
+      transition: flex .8s cubic-bezier(.2,.8,.2,1), filter .8s ease;
+      background-size: cover;
+      background-position: center;
+      filter: grayscale(.25) contrast(1.08);
+    }
+    .slice:hover { flex: 2.6; filter: grayscale(0) contrast(1.12); }
+    .slice:nth-child(1) { background-image: linear-gradient(to top, rgba(0,0,0,.82), transparent), url('https://picsum.photos/seed/context-escalation/900/1100'); }
+    .slice:nth-child(2) { background-image: linear-gradient(to top, rgba(0,0,0,.82), transparent), url('https://picsum.photos/seed/approval-thread/900/1100'); }
+    .slice:nth-child(3) { background-image: linear-gradient(to top, rgba(0,0,0,.82), transparent), url('https://picsum.photos/seed/audit-timeline/900/1100'); }
+    .slice:nth-child(4) { background-image: linear-gradient(to top, rgba(0,0,0,.82), transparent), url('https://picsum.photos/seed/resume-agent-work/900/1100'); }
+    .slice div {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+    }
+    .slice h3 { margin: 0 0 8px; font-size: 1.55rem; letter-spacing: 0; }
+    .slice p { margin: 0; color: rgba(247,243,234,.78); line-height: 1.45; }
+    .essay {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 46px;
+      color: var(--muted);
+      line-height: 1.72;
+      font-size: 1.05rem;
+    }
+    .essay strong { color: var(--ink); }
+    .sources, .faq {
+      border-top: 1px solid var(--line);
+      padding-top: 34px;
+      display: grid;
+      grid-template-columns: .65fr 1.35fr;
+      gap: 44px;
+    }
+    .sources ul, .faq-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 16px; }
+    .sources li, .faq-item {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(255,255,255,.045);
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    .faq-item h3 { margin: 0 0 8px; color: var(--ink); }
+    .final {
+      padding-bottom: 80px;
+      text-align: center;
+    }
+    .final-box {
+      border-radius: 40px;
+      padding: clamp(42px, 8vw, 104px);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(215,255,112,.22), transparent 32rem),
+        radial-gradient(circle at 80% 30%, rgba(133,168,255,.22), transparent 28rem),
+        rgba(255,255,255,.07);
+      border: 1px solid rgba(247,243,234,.2);
+    }
+    .final p { color: var(--muted); max-width: 730px; margin: 24px auto 0; line-height: 1.62; }
+    footer {
+      padding: 34px 0 52px;
+      color: rgba(247,243,234,.58);
+    }
+    footer .wrap { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    footer a { color: rgba(247,243,234,.74); text-decoration: none; }
+    @media (max-width: 860px) {
+      .navlinks { display: none; }
+      .hero-grid, .workflow, .essay, .sources, .faq { grid-template-columns: 1fr; }
+      .hero-media { min-height: 390px; }
+      .wide, .side, .third, .half { grid-column: span 12; }
+      section { padding: 104px 0; }
+      .section-head { display: block; }
+      .section-head p { margin-top: 20px; }
+      .accordion { flex-direction: column; min-height: auto; }
+      .slice { min-height: 260px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <nav class="nav" aria-label="Primary navigation">
+      <div class="brand">Kalsh Hunter</div>
+      <div class="navlinks">
+        <a href="#blueprint">Blueprint</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#checklist">Checklist</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <a class="nav-cta" href="https://getsupers.com/">Explore Super</a>
+    </nav>
+
+    <header class="hero wrap">
+      <div class="hero-grid">
+        <div>
+          <h1>Build the escalation <span class="inline-img" aria-hidden="true"></span> inbox your personal AI agent needs</h1>
+          <p class="lede">Autonomous agents do not fail only when they make the wrong call. They fail when uncertainty disappears into a chat transcript, an approval gets buried, or the next run cannot remember why a human said yes. This guide shows how to design an escalation inbox that keeps agent work fast, accountable, and recoverable.</p>
+          <div class="cta-row">
+            <a class="btn primary" href="#blueprint">Read the playbook</a>
+            <a class="btn secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">See text assistant use cases</a>
+          </div>
+        </div>
+        <div class="hero-media gsap-image" role="img" aria-label="A human approval desk for personal AI agents"></div>
+      </div>
+    </header>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="track">
+        <span>human approval</span><span>context packets</span><span>retry memory</span><span>source trails</span><span>bounded autonomy</span><span>handoff queues</span><span>human approval</span><span>context packets</span><span>retry memory</span><span>source trails</span><span>bounded autonomy</span><span>handoff queues</span>
+      </div>
+    </div>
+
+    <section id="blueprint" class="wrap">
+      <div class="section-head">
+        <h2>The inbox is not a chat box. It is the control surface for agent uncertainty.</h2>
+        <p>A good escalation inbox converts vague agent hesitation into a compact decision packet: what happened, what the agent wants to do, what evidence supports the choice, what risk remains, and what the agent should remember after the human responds.</p>
+      </div>
+      <div class="howto-grid">
+        <article class="card wide">
+          <h3>Start with escalation types, not notification channels.</h3>
+          <p>Before choosing SMS, email, Slack, or a mobile app, write the categories that deserve human attention. Most personal AI agents need approvals for money movement, identity-sensitive messages, irreversible file edits, public posts, policy uncertainty, low-confidence research, and failed tool recovery. Each type should have a different urgency, evidence requirement, and allowed response set.</p>
+          <p>For users who want the agent close at hand, a text-first interface can be a practical control layer. Super's <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text message AI assistant</a> pattern is useful because it keeps lightweight approvals in the same channel where people already answer real life interruptions.</p>
+        </article>
+        <article class="card side image-card gsap-image">
+          <h3>Make every ask small enough to answer.</h3>
+          <p>Escalation is not a place for giant context dumps. It should compress the work into a decision the human can make in under a minute.</p>
+        </article>
+        <article class="card third">
+          <h3>Decision packet</h3>
+          <ul>
+            <li>Requested action</li>
+            <li>Reason for escalation</li>
+            <li>Relevant source links</li>
+            <li>Risk if approved</li>
+            <li>Risk if ignored</li>
+          </ul>
+        </article>
+        <article class="card third">
+          <h3>Human response</h3>
+          <ul>
+            <li>Approve</li>
+            <li>Reject</li>
+            <li>Edit instruction</li>
+            <li>Ask for more evidence</li>
+            <li>Pause this workflow</li>
+          </ul>
+        </article>
+        <article class="card third">
+          <h3>Agent memory</h3>
+          <ul>
+            <li>What changed</li>
+            <li>Why the human decided</li>
+            <li>Whether this applies next time</li>
+            <li>When to ask again</li>
+            <li>Which source was decisive</li>
+          </ul>
+        </article>
+        <article class="card half">
+          <h3>Route by consequence.</h3>
+          <p>A low-risk draft can wait in a daily review queue. A payment approval, account access request, or public outreach message needs a faster path and a cleaner audit trail. Treat consequence as the core routing signal, then add confidence, deadline, and reversibility as secondary signals.</p>
+        </article>
+        <article class="card half">
+          <h3>Preserve the failed attempt.</h3>
+          <p>Many teams overwrite the useful part: the agent's failed plan. Keep the attempted tool calls, the blocked assumption, and the recovery options. When the agent resumes, that context prevents the same loop from repeating.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <p class="reveal-text" id="revealText">The best personal agent inbox does not make humans manage more work. It teaches the system when to stop, what to ask, how to learn from the answer, and how to continue without pretending uncertainty never happened.</p>
+    </section>
+
+    <section id="workflow" class="wrap">
+      <div class="workflow">
+        <div class="sticky-title">
+          <h2>How the escalation loop should move</h2>
+          <p class="lede">The loop is simple, but the data contract matters. Each stage should create enough structure for future automation while staying readable to the person approving the work.</p>
+        </div>
+        <div class="steps">
+          <article class="step">
+            <h3>Detect</h3>
+            <p>The agent flags uncertainty from rules, confidence, missing credentials, external policy, irreversible outcomes, or repeated tool failures. The detection rule should name the reason plainly, because that reason becomes the first line of the human ask.</p>
+          </article>
+          <article class="step">
+            <h3>Package</h3>
+            <p>The agent turns raw context into an approval card: proposed action, supporting evidence, alternatives considered, and a default recommendation. For browser or computer-use workflows, cached task context can reduce repeated setup; see Super's <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a> use case for the broader pattern.</p>
+          </article>
+          <article class="step">
+            <h3>Ask</h3>
+            <p>The inbox sends the packet to the right channel with limited response options. Do not ask open-ended questions when an approval, rejection, or edit would be enough. The more structured the reply, the easier it is for the agent to resume safely.</p>
+          </article>
+          <article class="step">
+            <h3>Resume</h3>
+            <p>The agent applies the human answer, writes a durable note about the decision, and continues from the last safe checkpoint. If the answer changes future behavior, store it as a scoped preference rather than a universal rule.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <div class="section-head">
+        <h2>Design the inbox as four expandable lanes.</h2>
+        <p>Each lane should reveal the minimum information needed first, then expand when the human wants source detail, prior attempts, or next-step options.</p>
+      </div>
+      <div class="accordion">
+        <article class="slice gsap-image"><div><h3>Context</h3><p>Show what the agent was trying to finish and what state it reached before asking.</p></div></article>
+        <article class="slice gsap-image"><div><h3>Approval</h3><p>Make the requested human decision explicit, reversible when possible, and easy to answer.</p></div></article>
+        <article class="slice gsap-image"><div><h3>Audit</h3><p>Keep source links, prompts, tool calls, and human replies tied to the final action.</p></div></article>
+        <article class="slice gsap-image"><div><h3>Resume</h3><p>Return the agent to the last safe checkpoint with the human decision attached.</p></div></article>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <div class="essay">
+        <div>
+          <p><strong>Why this matters now:</strong> the personal AI agent market is shifting from impressive demos toward systems that actually run errands, draft messages, browse websites, manage tasks, and coordinate with people. The uncomfortable middle ground is where the agent is capable enough to act but not trusted enough to act silently. The escalation inbox is the product pattern that makes that middle ground usable.</p>
+          <p>Without it, users either over-automate and accept hidden risk, or under-automate and manually supervise every step. Both modes are brittle. A structured inbox lets the agent work independently until a defined threshold is crossed, then pulls the human in with enough context to decide quickly.</p>
+          <p>This is especially important for agents that create public or semi-public artifacts. If an agent is helping build a website, publish a support reply, or send outreach, the approval record is not bureaucracy. It is the difference between a recoverable workflow and a mystery action. Super's <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent website-building</a> use case is a useful example of work that benefits from checkpoints before publishing.</p>
+        </div>
+        <div>
+          <p><strong>The implementation trap:</strong> many teams add a notification after the agent already failed. That creates a noisy exception feed, not an escalation inbox. The better approach is to make escalation a first-class state in the agent runtime. An escalated task should have an owner, a reason, an evidence packet, an expiration policy, and a resume plan.</p>
+          <p>Start with one high-value workflow. Define the unsafe actions, the ambiguous actions, and the actions that can proceed without asking. Then run a weekly review of every escalation. If humans keep approving the same low-risk request, automate it. If they keep rejecting a category, tighten the trigger. If they keep asking for more evidence, improve the packet.</p>
+          <p>The point is not to make the human approve everything forever. The point is to make human judgment train the boundary where autonomy becomes safe. That boundary is the real product.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="checklist" class="wrap">
+      <div class="sources">
+        <div>
+          <h2>Build checklist</h2>
+        </div>
+        <ul>
+          <li><strong>Write the escalation taxonomy.</strong> Include spend, identity, irreversible edits, external publication, low confidence, repeated failure, and policy uncertainty.</li>
+          <li><strong>Design the decision packet.</strong> Include proposed action, reason, evidence, risks, alternatives, and allowed replies.</li>
+          <li><strong>Store the decision record.</strong> Keep human answer, timestamp, source material, resumed action, and whether the answer should become a future preference.</li>
+          <li><strong>Separate urgent from reviewable.</strong> Not every escalation deserves a push notification. Create daily review and immediate approval queues.</li>
+          <li><strong>Review escalations weekly.</strong> Promote repeated approvals into automation, convert repeated rejections into policy, and improve packets that trigger follow-up questions.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <div class="sources">
+        <div>
+          <h2>Sources and useful references</h2>
+        </div>
+        <ul>
+          <li><a href="https://www.nist.gov/itl/ai-risk-management-framework">NIST AI Risk Management Framework</a>: useful for thinking about governance, measurement, and human oversight of AI systems.</li>
+          <li><a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/">OWASP Top 10 for LLM Applications</a>: a practical security lens for tool access, agency, data exposure, and unsafe output handling.</li>
+          <li><a href="https://getsupers.com/">Super</a>: personal AI assistant platform context for text-first agents, browser/computer-use workflows, and agent task execution.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="faq" class="wrap">
+      <div class="faq">
+        <div>
+          <h2>FAQ</h2>
+        </div>
+        <div class="faq-list">
+          <article class="faq-item">
+            <h3>Should every agent action require approval?</h3>
+            <p>No. Approval should be reserved for consequence, ambiguity, or recovery. If everything requires approval, the inbox becomes manual work with extra steps.</p>
+          </article>
+          <article class="faq-item">
+            <h3>What is the most important field in an escalation?</h3>
+            <p>The reason for escalation. It tells the human why they are being interrupted and gives the agent a durable learning signal after the decision.</p>
+          </article>
+          <article class="faq-item">
+            <h3>How do you avoid notification fatigue?</h3>
+            <p>Separate immediate approvals from daily review, suppress duplicate requests, expire stale escalations, and turn repeated human decisions into scoped automation rules.</p>
+          </article>
+          <article class="faq-item">
+            <h3>Where should the inbox live?</h3>
+            <p>Where the human can respond fastest for that workflow. Text is strong for quick personal approvals; dashboards are better for batch review and audit-heavy work.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="final wrap">
+      <div class="final-box">
+        <h2>Give your agent a place to ask, remember, and resume.</h2>
+        <p>Escalation is not a weakness in personal AI agents. It is the mechanism that lets them do more real work without hiding risk from the person they serve.</p>
+        <div class="cta-row" style="justify-content:center">
+          <a class="btn primary" href="https://getsupers.com/">Explore Super</a>
+          <a class="btn secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Open the text assistant use case</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        <span>Kalsh Hunter personal AI agent market notes</span>
+        <span><a href="https://getsupers.com/">Super</a> · <a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a> · <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">Website agents</a></span>
+      </div>
+    </footer>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      if (!window.gsap || !window.ScrollTrigger) return;
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.from('.nav', { y: -28, opacity: 0, duration: .8, ease: 'power3.out' });
+      gsap.from('.hero h1, .lede, .cta-row', { y: 40, opacity: 0, duration: 1, stagger: .12, ease: 'power3.out' });
+      gsap.utils.toArray('.gsap-image').forEach(function (el) {
+        gsap.fromTo(el, { scale: .88, opacity: .72 }, {
+          scale: 1,
+          opacity: 1,
+          ease: 'none',
+          scrollTrigger: { trigger: el, start: 'top 88%', end: 'bottom 18%', scrub: true }
+        });
+      });
+      var text = document.getElementById('revealText');
+      if (text) {
+        var words = text.textContent.trim().split(/\s+/);
+        text.innerHTML = words.map(function (word) { return '<span>' + word + '&nbsp;</span>'; }).join('');
+        gsap.to('#revealText span', {
+          opacity: 1,
+          stagger: .04,
+          ease: 'none',
+          scrollTrigger: { trigger: '#revealText', start: 'top 78%', end: 'bottom 35%', scrub: true }
+        });
+      }
+      gsap.utils.toArray('.step').forEach(function (card, index) {
+        gsap.from(card, {
+          y: 90,
+          opacity: 0,
+          duration: .9,
+          ease: 'power3.out',
+          scrollTrigger: { trigger: card, start: 'top 86%' },
+          delay: index * .03
+        });
+      });
+    });
+  </script>
+</body>
+</html>
