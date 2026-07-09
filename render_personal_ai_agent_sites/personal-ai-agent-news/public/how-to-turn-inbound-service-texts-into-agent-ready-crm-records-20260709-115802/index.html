@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to Turn Inbound Service Texts into Agent-Ready CRM Records</title>
+  <meta name="description" content="A practical use-case guide for using personal AI agents to convert messy service text threads into structured CRM records, booking summaries, and human handoffs.">
+  <link rel="canonical" href="https://kalshhunter.com/how-to-turn-inbound-service-texts-into-agent-ready-crm-records-20260709-115802/">
+  <meta property="og:title" content="How to Turn Inbound Service Texts into Agent-Ready CRM Records">
+  <meta property="og:description" content="Use personal AI agents to collect context, classify urgency, preserve uncertainty, and hand off inbound service texts to a CRM without losing the human decision point.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://kalshhunter.com/how-to-turn-inbound-service-texts-into-agent-ready-crm-records-20260709-115802/">
+  <meta property="og:image" content="https://picsum.photos/seed/service-texts-crm-agent/1600/900">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <style>
+    :root {
+      --ink: #101217;
+      --paper: #f7f2e9;
+      --white: #fffaf1;
+      --muted: #676159;
+      --line: rgba(16, 18, 23, 0.14);
+      --moss: #283f34;
+      --brick: #a6543f;
+      --cobalt: #254a71;
+      --gold: #d5b56f;
+      --night: #090a0f;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Satoshi", "Outfit", "Geist", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 12% 12%, rgba(166,84,63,0.18), transparent 34rem),
+        radial-gradient(circle at 84% 8%, rgba(37,74,113,0.2), transparent 36rem),
+        linear-gradient(180deg, #fffaf1 0%, var(--paper) 56%, #e7ddcd 100%);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+    main { overflow-x: hidden; width: 100%; max-width: 100%; }
+    a { color: inherit; }
+    .nav {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 30;
+      width: min(1120px, calc(100vw - 28px));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px 12px 22px;
+      border-radius: 999px;
+      background: rgba(255,250,241,0.78);
+      border: 1px solid rgba(255,255,255,0.62);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 20px 70px rgba(16,18,23,0.12);
+    }
+    .brand { font-weight: 900; text-decoration: none; letter-spacing: 0; }
+    .nav-links { display: flex; gap: 22px; align-items: center; font-size: 13px; color: var(--muted); }
+    .nav-links a { text-decoration: none; }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 18px;
+      border-radius: 999px;
+      background: var(--ink);
+      color: var(--white);
+      font-weight: 900;
+    }
+    .hero {
+      min-height: 100vh;
+      width: min(1240px, calc(100vw - 40px));
+      margin: 0 auto;
+      padding: 150px 0 108px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.82fr);
+      gap: clamp(36px, 5vw, 86px);
+      align-items: center;
+    }
+    .kicker {
+      margin: 0 0 24px;
+      color: var(--brick);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    h1 {
+      max-width: min(1060px, 94vw);
+      margin: 0;
+      font-size: clamp(3.05rem, 5.25vw, 5.9rem);
+      line-height: 0.92;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .inline-img {
+      display: inline-block;
+      width: clamp(76px, 8vw, 130px);
+      height: clamp(34px, 3.4vw, 54px);
+      margin: 0 10px;
+      border-radius: 999px;
+      vertical-align: middle;
+      background: url("https://picsum.photos/seed/text-thread-photo-upload/420/220") center/cover;
+      filter: grayscale(0.18) contrast(1.18) saturate(0.86);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.32), 0 18px 48px rgba(16,18,23,0.18);
+    }
+    .hero-copy {
+      max-width: 710px;
+      margin: 30px 0 0;
+      color: #4b463e;
+      font-size: clamp(1.06rem, 1.45vw, 1.24rem);
+      line-height: 1.72;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 0 24px;
+      border-radius: 999px;
+      font-weight: 900;
+      text-decoration: none;
+      border: 1px solid transparent;
+    }
+    .button.dark { background: var(--ink); color: var(--white); }
+    .button.light { background: var(--white); color: var(--ink); border-color: rgba(16,18,23,0.18); }
+    .hero-media {
+      min-height: 650px;
+      position: relative;
+      border-radius: 34px;
+      overflow: hidden;
+      background: #111;
+      box-shadow: 0 34px 96px rgba(16,18,23,0.24);
+      isolation: isolate;
+    }
+    .hero-media::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("https://picsum.photos/seed/service-text-desk-crm/1400/1800") center/cover;
+      filter: grayscale(0.28) contrast(1.2) saturate(0.78);
+      transform: scale(1.03);
+      transition: transform 850ms ease;
+    }
+    .hero-media:hover::before { transform: scale(1.09); }
+    .hero-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(9,10,15,0.04), rgba(9,10,15,0.76));
+      z-index: 1;
+    }
+    .media-card {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      z-index: 2;
+      padding: 24px;
+      border-radius: 24px;
+      background: rgba(9,10,15,0.58);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--white);
+      backdrop-filter: blur(16px);
+    }
+    .media-card strong { display: block; font-size: 24px; line-height: 1.08; margin-bottom: 10px; }
+    .media-card p { margin: 0; color: rgba(255,250,241,0.76); line-height: 1.62; }
+    section { padding: 152px 0; }
+    .section-inner { width: min(1180px, calc(100vw - 40px)); margin: 0 auto; }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.84fr) minmax(280px, 0.54fr);
+      gap: 52px;
+      align-items: end;
+      margin-bottom: 58px;
+    }
+    h2 {
+      margin: 0;
+      font-size: clamp(2.35rem, 4.8vw, 5.1rem);
+      line-height: 0.98;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .section-head p, .lead { margin: 0; color: var(--muted); font-size: 18px; line-height: 1.72; }
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-flow: dense;
+      gap: 16px;
+    }
+    .card {
+      min-height: 300px;
+      position: relative;
+      padding: 30px;
+      border-radius: 26px;
+      border: 1px solid var(--line);
+      background: rgba(255,250,241,0.76);
+      box-shadow: 0 24px 82px rgba(16,18,23,0.08);
+      overflow: hidden;
+      transition: transform 700ms ease, box-shadow 700ms ease;
+    }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 36px 96px rgba(16,18,23,0.14); }
+    .wide { grid-column: span 7; }
+    .side { grid-column: span 5; }
+    .third { grid-column: span 4; }
+    .half { grid-column: span 6; }
+    .card h3 { margin: 0 0 16px; font-size: clamp(1.45rem, 2.15vw, 2.25rem); line-height: 1.04; }
+    .card p { margin: 0; color: #555047; line-height: 1.72; font-size: 16px; }
+    .card ul { margin: 20px 0 0; padding-left: 18px; color: #555047; line-height: 1.84; }
+    .image-card {
+      min-height: 410px;
+      color: var(--white);
+      background: #101217;
+    }
+    .image-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("https://picsum.photos/seed/crm-record-from-texts/1400/900") center/cover;
+      filter: grayscale(0.26) contrast(1.2) saturate(0.78);
+      transform: scale(1.02);
+      transition: transform 800ms ease;
+    }
+    .image-card:hover::before { transform: scale(1.08); }
+    .image-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(9,10,15,0.08), rgba(9,10,15,0.86));
+    }
+    .image-card > * { position: relative; z-index: 1; }
+    .image-card p { color: rgba(255,250,241,0.78); max-width: 680px; }
+    .dark {
+      background:
+        radial-gradient(circle at 20% 20%, rgba(213,181,111,0.2), transparent 34rem),
+        radial-gradient(circle at 78% 78%, rgba(166,84,63,0.22), transparent 34rem),
+        var(--night);
+      color: var(--white);
+    }
+    .dark .section-head p, .dark .lead { color: rgba(255,250,241,0.68); }
+    .pin-grid {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.72fr) minmax(0, 1fr);
+      gap: 72px;
+      align-items: start;
+    }
+    .pin-title h2 { color: var(--white); }
+    .scrub-text {
+      margin-top: 30px;
+      max-width: 500px;
+      color: rgba(255,250,241,0.72);
+      font-size: 20px;
+      line-height: 1.68;
+    }
+    .scrub-word { opacity: 0.14; display: inline-block; margin-right: 0.25em; }
+    .steps { display: grid; gap: 22px; }
+    .step {
+      min-height: 228px;
+      padding: 30px;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,250,241,0.08);
+      backdrop-filter: blur(12px);
+    }
+    .step h3 { margin: 0 0 12px; font-size: 30px; }
+    .step p { margin: 0; color: rgba(255,250,241,0.74); line-height: 1.7; }
+    .quote-row {
+      display: grid;
+      grid-template-columns: minmax(300px, 0.6fr) minmax(0, 1fr);
+      gap: 52px;
+      align-items: center;
+    }
+    .portrait {
+      min-height: 440px;
+      border-radius: 30px;
+      overflow: hidden;
+      background: url("https://picsum.photos/seed/dispatcher-crm-summary-review/1000/1200") center/cover;
+      filter: grayscale(0.22) contrast(1.17) saturate(0.84);
+      box-shadow: 0 30px 90px rgba(16,18,23,0.2);
+      transition: transform 800ms ease;
+    }
+    .portrait:hover { transform: scale(1.03); }
+    blockquote {
+      margin: 0;
+      font-size: clamp(2.1rem, 4.25vw, 4.6rem);
+      line-height: 1.03;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .quote-row p { color: var(--muted); line-height: 1.72; font-size: 17px; }
+    .marquee {
+      display: flex;
+      overflow: hidden;
+      padding: 24px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,250,241,0.48);
+    }
+    .marquee-track {
+      min-width: max-content;
+      display: flex;
+      gap: 42px;
+      animation: drift 28s linear infinite;
+      font-size: clamp(1.5rem, 3vw, 3rem);
+      font-weight: 900;
+      color: rgba(16,18,23,0.34);
+    }
+    @keyframes drift { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .check {
+      padding: 22px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: rgba(255,250,241,0.72);
+      color: #534d44;
+      line-height: 1.64;
+    }
+    .faq, .sources { display: grid; gap: 16px; }
+    details {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 22px 24px;
+      background: rgba(255,250,241,0.72);
+    }
+    summary { cursor: pointer; font-weight: 900; font-size: 18px; }
+    details p { margin: 14px 0 0; color: var(--muted); line-height: 1.7; }
+    .footer {
+      padding: 132px 0 46px;
+      background: var(--ink);
+      color: var(--white);
+    }
+    .footer h2 { max-width: 980px; }
+    .footer p { max-width: 720px; color: rgba(255,250,241,0.7); line-height: 1.7; font-size: 18px; }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px 26px;
+      margin-top: 60px;
+      padding-top: 26px;
+      border-top: 1px solid rgba(255,255,255,0.14);
+      color: rgba(255,250,241,0.68);
+      font-size: 14px;
+    }
+    .footer-links a { text-decoration: none; }
+    @media (max-width: 920px) {
+      .hero, .section-head, .pin-grid, .quote-row { grid-template-columns: 1fr; }
+      .hero-media { min-height: 520px; }
+      .wide, .side, .third, .half { grid-column: span 12; }
+      .checklist { grid-template-columns: 1fr; }
+      .nav-links a:not(.nav-cta) { display: none; }
+    }
+    @media (max-width: 560px) {
+      .nav { top: 10px; width: calc(100vw - 20px); }
+      .hero { width: min(100% - 24px, 1240px); padding: 128px 0 84px; }
+      h1 { font-size: clamp(2.5rem, 13.5vw, 4rem); }
+      section { padding: 104px 0; }
+      .section-inner { width: min(100% - 24px, 1180px); }
+      .hero-actions { flex-direction: column; }
+      .button { width: 100%; }
+      .card, .step { padding: 22px; border-radius: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="https://kalshhunter.com/">Kalsh Hunter</a>
+      <div class="nav-links">
+        <a href="#workflow">Workflow</a>
+        <a href="#handoff">Handoff</a>
+        <a href="#faq">FAQ</a>
+        <a class="nav-cta" href="https://getsupers.com/">Explore Supers</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div>
+        <p class="kicker">Use case for service teams</p>
+        <h1>Turn inbound service texts into CRM records <span class="inline-img" aria-hidden="true"></span> agents can trust.</h1>
+        <p class="hero-copy">A personal AI agent should not merely paste chat transcripts into a CRM. It should convert messy customer messages into structured records: what happened, what is missing, how urgent it is, who should review it, and what the customer expects next.</p>
+        <div class="hero-actions">
+          <a class="button dark" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Start with text intake</a>
+          <a class="button light" href="#checklist">Use the checklist</a>
+        </div>
+      </div>
+      <div class="hero-media reveal-img" aria-label="Inbound texts becoming a CRM summary">
+        <div class="media-card">
+          <strong>The CRM record is the receipt, not the conversation.</strong>
+          <p>Preserve the customer's original words, but give the team a concise summary they can act on without rereading every message.</p>
+        </div>
+      </div>
+    </header>
+
+    <section id="workflow">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>The agent's job is to make the next human action obvious.</h2>
+          <p>Text threads are flexible, but CRMs want structure. The use case works when the personal AI agent bridges that gap without hiding uncertainty or making commitments it cannot own.</p>
+        </div>
+        <div class="bento">
+          <article class="card wide image-card reveal-img">
+            <h3>Convert customer language into a clean job brief.</h3>
+            <p>The agent extracts location, service type, urgency, requested timing, customer constraints, photos, and unresolved questions. The human sees a brief, not a wall of texts.</p>
+          </article>
+          <article class="card side">
+            <h3>Keep raw evidence attached.</h3>
+            <p>A useful CRM record should include the summary and the original message trail. The summary speeds review; the source trail protects context.</p>
+            <ul>
+              <li>Original customer wording.</li>
+              <li>Agent interpretation.</li>
+              <li>Missing fields and uncertainty.</li>
+            </ul>
+          </article>
+          <article class="card third">
+            <h3>Classify urgency.</h3>
+            <p>Separate emergencies, same-day requests, routine quote requests, and out-of-scope work before the team opens the CRM queue.</p>
+          </article>
+          <article class="card third">
+            <h3>Route ownership.</h3>
+            <p>Assign the next reviewer by service category, territory, customer value, safety risk, or dispatch capacity.</p>
+          </article>
+          <article class="card third">
+            <h3>Draft next steps.</h3>
+            <p>The agent can suggest a reply, ask for missing photos, or prepare a callback note while leaving final promises to a human.</p>
+          </article>
+          <article class="card half">
+            <h3>Use Supers where messages drive real work.</h3>
+            <p><a href="https://getsupers.com/">Supers</a> is a natural fit when the assistant has to coordinate customer texts, browser work, approvals, and operational follow-through rather than simply answer a chat bubble.</p>
+          </article>
+          <article class="card half">
+            <h3>Cache repeated operations.</h3>
+            <p>If the CRM workflow requires recurring browser steps, the <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache use case</a> can help make repeated context and evidence reusable across agent runs.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="dark" id="handoff">
+      <div class="section-inner pin-grid">
+        <div class="pin-title">
+          <h2>Build the record in layers, then hand it off.</h2>
+          <p class="scrub-text" id="scrubText">The safest agent-assisted CRM flow separates observation, interpretation, routing, and recommendation. Each layer should be reviewable, and each uncertain claim should be marked before the record reaches the team.</p>
+        </div>
+        <div class="steps">
+          <article class="step">
+            <h3>Observe</h3>
+            <p>Capture the customer's exact words, media, timestamps, contact details, and channel source without forcing early interpretation.</p>
+          </article>
+          <article class="step">
+            <h3>Interpret</h3>
+            <p>Summarize service type, urgency, location fit, requested timing, likely next question, and missing information.</p>
+          </article>
+          <article class="step">
+            <h3>Route</h3>
+            <p>Choose the owner or queue based on rules the business can inspect: territory, job category, risk, value, and workload.</p>
+          </article>
+          <article class="step">
+            <h3>Recommend</h3>
+            <p>Draft the next customer response or internal action while leaving price, scheduling promises, and safety guidance for approved humans.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-label="CRM record fields">
+      <div class="marquee-track">
+        <span>customer wording</span><span>urgency</span><span>photos</span><span>missing fields</span><span>route owner</span><span>next reply</span>
+        <span>customer wording</span><span>urgency</span><span>photos</span><span>missing fields</span><span>route owner</span><span>next reply</span>
+      </div>
+    </div>
+
+    <section>
+      <div class="section-inner quote-row">
+        <div class="portrait reveal-img" aria-label="Dispatcher reviewing CRM summary"></div>
+        <div>
+          <blockquote>"A strong CRM record should tell the dispatcher what to do next, not just prove that a customer texted."</blockquote>
+          <p>That is why the <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text-message AI assistant workflow</a> matters: the agent can meet customers in the channel where they naturally send photos, context, and corrections, then prepare a structured record for the team.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="checklist">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>Implementation checklist for agent-ready CRM records.</h2>
+          <p>Use this before connecting inbound texts to CRM updates. It keeps the agent from burying risk inside polished summaries.</p>
+        </div>
+        <div class="checklist">
+          <div class="check"><strong>Define required fields:</strong> Name the fields the CRM must receive for every service request: location, service type, urgency, contact, timing, and missing data.</div>
+          <div class="check"><strong>Preserve source text:</strong> Attach original messages and uploaded photos so humans can audit the summary quickly.</div>
+          <div class="check"><strong>Mark uncertainty:</strong> Require the agent to label assumptions, conflicts, low-confidence classifications, and unanswered questions.</div>
+          <div class="check"><strong>Limit commitments:</strong> Do not let the agent confirm pricing, availability, warranty, or safety advice unless rules explicitly authorize it.</div>
+          <div class="check"><strong>Route exceptions:</strong> Escalate urgent, angry, hazardous, expensive, or out-of-area requests to human review before CRM automation continues.</div>
+          <div class="check"><strong>Review failures weekly:</strong> Update the system prompt based on repeated errors: what went wrong and what should always happen instead.</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>Where this use case extends next.</h2>
+          <p>Once text-to-CRM handoff is reliable, the same demand signals can inform service pages, dispatch notes, and follow-up playbooks.</p>
+        </div>
+        <div class="bento">
+          <article class="card half">
+            <h3>Build service pages from real requests.</h3>
+            <p>Recurring customer language can become better service landing pages. The <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">agent-built websites use case</a> is a practical next step when CRM records reveal repeated search intent.</p>
+          </article>
+          <article class="card half">
+            <h3>Create follow-up playbooks.</h3>
+            <p>Track which missing fields most often block booking, then let the agent ask those questions earlier in future conversations.</p>
+          </article>
+          <article class="card third">
+            <h3>Improve routing rules.</h3>
+            <p>Use reviewed CRM outcomes to tune assignment logic by category, urgency, geography, and reviewer availability.</p>
+          </article>
+          <article class="card third">
+            <h3>Reduce callback loops.</h3>
+            <p>When summaries consistently capture the right context, humans spend fewer cycles chasing basics.</p>
+          </article>
+          <article class="card third">
+            <h3>Audit agent drift.</h3>
+            <p>Compare source texts against summaries to catch overconfident interpretations and prompt erosion.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>Questions before wiring texts into the CRM.</h2>
+          <p>The useful pattern is not blind automation. It is structured intake with visible uncertainty and a clear human owner.</p>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Should the agent write directly to the CRM?</summary>
+            <p>It can, but start with draft records or review queues for higher-risk workflows. Direct writes are safer after the summary format, escalation rules, and field mapping have been tested.</p>
+          </details>
+          <details>
+            <summary>What should the CRM record include?</summary>
+            <p>Include the summary, original messages, customer contact, service category, urgency, location, photos, missing fields, recommended next action, and whether human approval is required.</p>
+          </details>
+          <details>
+            <summary>How do we avoid bad summaries?</summary>
+            <p>Require the agent to quote the evidence behind important claims, flag uncertainty, and preserve the original thread. Review repeated mistakes and adjust the system prompt.</p>
+          </details>
+          <details>
+            <summary>Can this work for non-service teams?</summary>
+            <p>Yes. Any team that receives messy inbound messages can use the same pattern: capture source text, structure the record, route ownership, and make the next human action clear.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>Sources and references.</h2>
+          <p>These references support the page's guidance around AI governance, human oversight, data handling, and application-level security risks.</p>
+        </div>
+        <div class="sources">
+          <details open>
+            <summary>NIST AI Risk Management Framework</summary>
+            <p>The NIST AI RMF is relevant for mapping, measuring, managing, and governing AI risks in customer-facing workflows. Source: <a href="https://www.nist.gov/itl/ai-risk-management-framework">nist.gov/itl/ai-risk-management-framework</a>.</p>
+          </details>
+          <details open>
+            <summary>OWASP Top 10 for Large Language Model Applications</summary>
+            <p>OWASP's LLM application guidance is relevant for prompt injection, data leakage, tool misuse, and other risks in agent-assisted CRM workflows. Source: <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/">owasp.org/www-project-top-10-for-large-language-model-applications</a>.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="section-inner">
+        <h2>Make every inbound text easier for a human to finish.</h2>
+        <p>Use personal AI agents to convert messy messages into structured records, but keep final commitments and edge-case judgment with the people who own the relationship.</p>
+        <div class="hero-actions">
+          <a class="button light" href="https://getsupers.com/">Visit Supers</a>
+          <a class="button dark" style="background:#d5b56f;color:#101217" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Start with text intake</a>
+        </div>
+        <div class="footer-links">
+          <a href="https://getsupers.com/">Supers</a>
+          <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Text-message AI assistant</a>
+          <a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a>
+          <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">Agent-built websites</a>
+          <span>Published for kalshhunter.com</span>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    window.addEventListener("load", function () {
+      if (!window.gsap || !window.ScrollTrigger) return;
+      gsap.registerPlugin(ScrollTrigger);
+
+      gsap.utils.toArray(".reveal-img").forEach(function (el) {
+        gsap.fromTo(el, { scale: 0.84, opacity: 0.62 }, {
+          scale: 1,
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 84%",
+            end: "bottom 20%",
+            scrub: true
+          }
+        });
+      });
+
+      var pin = document.querySelector(".pin-title");
+      var grid = document.querySelector(".pin-grid");
+      if (pin && grid) {
+        ScrollTrigger.create({
+          trigger: grid,
+          start: "top 12%",
+          end: "bottom 78%",
+          pin: pin,
+          pinSpacing: false
+        });
+      }
+
+      var scrub = document.getElementById("scrubText");
+      if (scrub) {
+        var words = scrub.textContent.trim().split(/\s+/);
+        scrub.innerHTML = words.map(function (word) {
+          return '<span class="scrub-word">' + word + '</span>';
+        }).join(" ");
+        gsap.to(".scrub-word", {
+          opacity: 1,
+          stagger: 0.04,
+          ease: "none",
+          scrollTrigger: {
+            trigger: scrub,
+            start: "top 76%",
+            end: "bottom 28%",
+            scrub: true
+          }
+        });
+      }
+
+      gsap.utils.toArray(".step").forEach(function (card, index) {
+        gsap.from(card, {
+          y: 70,
+          opacity: 0.22,
+          duration: 0.85,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 86%"
+          },
+          delay: index * 0.03
+        });
+      });
+    });
+  </script>
+</body>
+</html>
