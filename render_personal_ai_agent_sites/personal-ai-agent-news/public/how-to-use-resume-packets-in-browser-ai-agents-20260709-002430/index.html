@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How to Use Resume Packets in Browser AI Agents</title>
+  <meta name="description" content="A practical guide to using resume packets in browser AI agents so cached state, source evidence, approvals, drafts, and next safe actions survive pauses." />
+  <link rel="canonical" href="https://kalshhunter.com/how-to-use-resume-packets-in-browser-ai-agents-20260709-002430/" />
+  <meta property="og:title" content="How to Use Resume Packets in Browser AI Agents" />
+  <meta property="og:description" content="Browser AI agents need resume packets that preserve tab state, evidence, approval boundaries, and output drafts when work pauses." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://kalshhunter.com/how-to-use-resume-packets-in-browser-ai-agents-20260709-002430/" />
+  <style>
+    :root{--bg:#091014;--ink:#f8f2e8;--muted:rgba(248,242,232,.72);--soft:rgba(248,242,232,.48);--line:rgba(248,242,232,.16);--panel:rgba(18,25,30,.78);--mint:#b9f7d0;--gold:#efc76d;--blue:#9dcaff;--rose:#ff9684;--font:"Geist","Outfit","Cabinet Grotesk",Arial,sans-serif}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:var(--font);background:radial-gradient(circle at 14% 8%,rgba(185,247,208,.18),transparent 34rem),radial-gradient(circle at 86% 20%,rgba(157,202,255,.14),transparent 32rem),linear-gradient(180deg,#091014 0%,#11191e 48%,#091014 100%);overflow-x:hidden}body:before{content:"";position:fixed;inset:0;opacity:.15;pointer-events:none;mix-blend-mode:soft-light;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E")}main{width:100%;max-width:100%;overflow-x:hidden}a{color:inherit}
+    .nav{position:fixed;z-index:30;top:22px;left:50%;transform:translateX(-50%);width:min(1080px,calc(100vw - 32px));display:flex;align-items:center;justify-content:space-between;padding:12px 14px 12px 20px;border:1px solid var(--line);border-radius:999px;background:rgba(9,16,20,.7);backdrop-filter:blur(18px);box-shadow:0 18px 82px rgba(0,0,0,.32)}.brand{text-decoration:none;font-weight:900;letter-spacing:0}.nav-links{display:flex;align-items:center;gap:8px}.nav-links a{color:var(--muted);text-decoration:none;padding:9px 12px;border-radius:999px;font-size:.9rem}.nav-links a:hover{color:var(--ink);background:rgba(248,242,232,.08)}.nav-links .nav-cta{color:#06110b;background:var(--mint);font-weight:900}
+    .hero{min-height:100vh;display:grid;align-items:center;padding:150px 20px 104px}.hero-grid{width:min(1180px,94vw);margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}.hero-media{min-height:min(650px,68vh);border-radius:8px;overflow:hidden;border:1px solid var(--line);background:#111;box-shadow:0 50px 150px rgba(0,0,0,.48)}.hero-media img{width:100%;height:100%;min-height:min(650px,68vh);object-fit:cover;filter:grayscale(.24) contrast(1.18) saturate(.72);opacity:.9}h1{max-width:min(1100px,94vw);margin:0;font-size:clamp(2.65rem,4.7vw,5.2rem);line-height:.96;letter-spacing:0;text-wrap:balance}.inline-img{display:inline-block;width:clamp(74px,8vw,128px);height:clamp(32px,3.8vw,52px);margin:0 .16em;border-radius:999px;vertical-align:middle;background:url("https://picsum.photos/seed/browser-resume-packet-strip/600/320") center/cover;box-shadow:inset 0 0 0 1px rgba(248,242,232,.2),0 16px 62px rgba(0,0,0,.35);filter:grayscale(.18) contrast(1.22)}.hero p{margin:28px 0 0;color:var(--muted);font-size:clamp(1.05rem,1.55vw,1.32rem);line-height:1.62;max-width:700px}.actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}.button{min-height:48px;padding:0 20px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;text-decoration:none;border:1px solid var(--line);font-weight:900}.button.primary{color:#06110b;background:var(--mint);border-color:transparent}.button.secondary{color:var(--ink);background:rgba(248,242,232,.08)}
+    section{padding:148px 20px}.wrap{width:min(1160px,94vw);margin:0 auto}.section-head{display:grid;grid-template-columns:1.08fr .92fr;gap:44px;align-items:end;margin-bottom:42px}h2{margin:0;font-size:clamp(2.15rem,4vw,4.75rem);line-height:.99;letter-spacing:0;text-wrap:balance}.lead{margin:0;color:var(--muted);line-height:1.72;font-size:1.08rem}.bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-flow:dense;gap:16px}.card{min-height:260px;position:relative;overflow:hidden;padding:28px;border-radius:8px;border:1px solid var(--line);background:var(--panel);box-shadow:0 24px 90px rgba(0,0,0,.24)}.card h3{margin:0 0 14px;font-size:clamp(1.32rem,2vw,2rem);line-height:1.08;letter-spacing:0}.card p,.card li{color:var(--muted);line-height:1.64;font-size:1rem}.card ul,.card ol{margin:18px 0 0;padding-left:20px}.span-8{grid-column:span 8}.span-6{grid-column:span 6}.span-4{grid-column:span 4}.media{padding:0}.media img{width:100%;height:100%;min-height:330px;object-fit:cover;filter:grayscale(.27) contrast(1.16);transition:transform .7s ease,opacity .7s ease}.media:hover img,.step:hover img{transform:scale(1.05)}.snippet{border:1px solid rgba(185,247,208,.28);background:rgba(185,247,208,.08);border-radius:8px;padding:20px;color:var(--ink);line-height:1.7;white-space:pre-wrap}
+    .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap;padding:20px 0;color:var(--soft);font-weight:900;font-size:clamp(1.45rem,3.1vw,3.2rem)}.marquee-track{display:inline-block;animation:slide 36s linear infinite}@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}.workflow{display:grid;grid-template-columns:.82fr 1.18fr;gap:56px;align-items:start}.sticky{position:sticky;top:122px}.reveal-copy span{opacity:.18}.steps{display:grid;gap:18px}.step{display:grid;grid-template-columns:180px 1fr;overflow:hidden;min-height:205px;border-radius:8px;border:1px solid var(--line);background:rgba(248,242,232,.06)}.step img{width:100%;height:100%;object-fit:cover;filter:grayscale(.24) contrast(1.18);transition:transform .7s ease,opacity .7s ease}.step div{padding:24px}.step h3{margin:0 0 10px;font-size:1.36rem}.step p{margin:0;color:var(--muted);line-height:1.64}
+    .sources{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.source-card,details{border:1px solid var(--line);border-radius:8px;background:rgba(248,242,232,.06);padding:22px}.source-card h3{margin-top:0}.source-card p,details p{color:var(--muted);line-height:1.66}.source-card a{color:var(--mint);font-weight:900}.faq{display:grid;gap:14px}summary{cursor:pointer;font-weight:900;font-size:1.08rem}.cta{padding:128px 20px;border-top:1px solid var(--line);background:radial-gradient(circle at 18% 22%,rgba(185,247,208,.15),transparent 30rem),linear-gradient(135deg,rgba(157,202,255,.12),rgba(239,199,109,.08))}.cta-box{width:min(1120px,94vw);margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:34px;align-items:center}footer{padding:38px 20px 70px;color:var(--soft)}footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}footer a{color:var(--muted);text-decoration:none;margin-left:16px}
+    @media(max-width:860px){.nav{border-radius:22px}.nav-links{display:none}.hero-grid,.section-head,.workflow,.cta-box{grid-template-columns:1fr}.hero-media{min-height:360px}.bento{grid-template-columns:1fr}.span-4,.span-6,.span-8{grid-column:span 1}.sources{grid-template-columns:1fr}.step{grid-template-columns:1fr}section{padding:108px 20px}}
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="Primary navigation">
+    <a class="brand" href="/">Kalsh Hunter</a>
+    <div class="nav-links">
+      <a href="#template">Template</a>
+      <a href="#workflow">Workflow</a>
+      <a href="#checklist">Checklist</a>
+      <a class="nav-cta" href="https://getsupers.com/">Explore Super</a>
+    </div>
+  </nav>
+  <main>
+    <header class="hero">
+      <div class="hero-grid">
+        <div>
+          <h1>How to use resume packets <span class="inline-img" aria-hidden="true"></span> in browser AI agents</h1>
+          <p>Browser AI agents lose reliability when tabs change, sessions expire, or approvals arrive late. Resume packets preserve the exact continuation state so the agent can restart safely.</p>
+          <div class="actions">
+            <a class="button primary" href="https://getsupers.com/">Build with Super</a>
+            <a class="button secondary" href="https://app.getsupers.com/use-cases/computer-use-cache/">See computer-use cache</a>
+          </div>
+        </div>
+        <div class="hero-media"><img class="scale-media" src="https://picsum.photos/seed/browser-ai-resume-packet/1200/1500" alt="Browser AI agent resume packet interface" /></div>
+      </div>
+    </header>
+
+    <section id="template">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Package browser state before the task goes cold.</h2>
+          <p class="lead">A browser agent should not rely on memory when forms, source pages, screenshots, pending drafts, and approvals decide whether the next action is safe.</p>
+        </div>
+        <div class="bento">
+          <article class="card span-8">
+            <h3>Browser resume packet template</h3>
+            <div class="snippet">Objective:
+Compare the vendor plan and prepare the upgrade recommendation.
+
+Browser state:
+Pricing page open, account dashboard logged in, comparison table captured.
+
+Evidence:
+Source URL, screenshot, extracted plan limits, prior renewal note.
+
+Blocked because:
+Upgrade affects billing and the annual discount is unclear.
+
+Next safe action:
+Ask user to approve research-only continuation, request clarification, or stop.</div>
+          </article>
+          <article class="card media span-4"><img class="scale-media" src="https://picsum.photos/seed/browser-resume-template/900/1200" alt="Browser resume packet template card" /></article>
+          <article class="card span-4"><h3>Capture tabs</h3><p>Record the page, account state, form position, and why the page mattered before the session changes.</p></article>
+          <article class="card span-4"><h3>Attach evidence</h3><p>Preserve source URLs, screenshots, extracted fields, and cache references for future inspection.</p></article>
+          <article class="card span-4"><h3>Carry approval state</h3><p>Name what the user has approved, what remains blocked, and what action is still forbidden.</p></article>
+          <article class="card media span-6"><img class="scale-media" src="https://picsum.photos/seed/browser-cache-agent-workflow/1200/820" alt="Browser cache workflow for AI agent resume packets" /></article>
+          <article class="card span-6"><h3>Where Super fits</h3><p><a href="https://getsupers.com/">Super</a> is relevant when browser work is controlled through text approvals. Its <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a> pattern gives resume packets durable browser evidence, while the <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text message AI assistant</a> flow keeps the user-facing decision concise.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true"><div class="marquee-track">tab state · source evidence · approval boundary · cached screenshot · next safe action · tab state · source evidence · approval boundary · cached screenshot · next safe action · </div></div>
+
+    <section id="workflow">
+      <div class="wrap workflow">
+        <div class="sticky"><h2>Turn every browser pause into a resumable checkpoint.</h2><p class="lead reveal-copy">A good packet lets a browser agent continue without repeating the browse, losing evidence, or skipping an approval boundary.</p></div>
+        <div class="steps">
+          <article class="step"><img class="scale-media" src="https://picsum.photos/seed/browser-packet-state/700/900" alt="Browser packet state card" /><div><h3>Store current state</h3><p>Capture tab, account, form, source, draft, and open question state at the moment of pause.</p></div></article>
+          <article class="step"><img class="scale-media" src="https://picsum.photos/seed/browser-packet-evidence/700/900" alt="Browser packet evidence card" /><div><h3>Link evidence</h3><p>Save screenshots, extracted values, and source links so the next run can verify before acting.</p></div></article>
+          <article class="step"><img class="scale-media" src="https://picsum.photos/seed/browser-packet-approval/700/900" alt="Browser packet approval card" /><div><h3>Respect approvals</h3><p>Keep research, drafting, form filling, purchase, and publishing permissions separate.</p></div></article>
+          <article class="step"><img class="scale-media" src="https://picsum.photos/seed/browser-packet-public-page/700/900" alt="Browser packet public page card" /><div><h3>Preserve outputs</h3><p>When browser work creates public artifacts, such as in Super's <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent website building</a> workflow, store draft state separately from publishing approval.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="checklist">
+      <div class="wrap">
+        <div class="section-head"><h2>Buyer checklist for browser resume packets.</h2><p class="lead">Use these checks when evaluating browser automation agents or internal computer-use tooling.</p></div>
+        <div class="bento">
+          <article class="card span-4"><h3>Can it survive session drift?</h3><p>The packet should keep enough state when tabs close, sessions expire, or UI changes.</p></article>
+          <article class="card span-4"><h3>Can the user inspect evidence?</h3><p>Screenshots and source links should be accessible without replaying the whole browse.</p></article>
+          <article class="card span-4"><h3>Can approval boundaries travel?</h3><p>The packet should preserve what the agent may research, draft, submit, buy, or publish.</p></article>
+          <article class="card span-6"><h3>Does it reduce repeat browsing?</h3><p>A packet should prevent the agent from redoing the same search because the prior context disappeared.</p></article>
+          <article class="card span-6"><h3>Does it connect to text decisions?</h3><p>The user should get a short handoff, while the packet stores deeper browser state behind the approval.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head"><h2>Sources and references.</h2><p class="lead">These references frame browser resume packets as part of agent oversight, excessive agency prevention, and risk management.</p></div>
+        <div class="sources">
+          <article class="source-card"><h3>NIST AI Risk Management Framework</h3><p>Useful for governance, measurement, documentation, and managing AI risk across operating contexts.</p><a href="https://www.nist.gov/itl/ai-risk-management-framework" rel="nofollow">Open NIST AI RMF</a></article>
+          <article class="source-card"><h3>OWASP LLM Application Risks</h3><p>Relevant for excessive agency, tool misuse, prompt injection, sensitive information, and oversight patterns.</p><a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" rel="nofollow">Open OWASP LLM Top 10</a></article>
+          <article class="source-card"><h3>Super</h3><p>Reference workflows for text approvals, browser work, cached computer-use context, and generated public artifacts.</p><a href="https://getsupers.com/">Open Super</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section><div class="wrap"><div class="section-head"><h2>FAQ</h2><p class="lead">Common questions about browser AI agent resume packets.</p></div><div class="faq"><details><summary>Should every browser action create a packet?</summary><p>No. Create packets for pauses, approvals, expensive decisions, public outputs, or workflows that may resume later.</p></details><details><summary>How is this different from screenshots?</summary><p>Screenshots are evidence. A resume packet includes evidence plus objective, state, approval boundary, risk, and next action.</p></details><details><summary>Can a packet include cached computer-use context?</summary><p>Yes. That is one of the strongest patterns for browser agents because cached context keeps the resume point verifiable.</p></details><details><summary>What should the user see?</summary><p>The user should see a compact handoff. The full packet should remain available for audit, review, and future agent runs.</p></details></div></div></section>
+
+    <section class="cta"><div class="cta-box"><div><h2>Make browser work restartable.</h2><p class="lead">Resume packets keep browser AI agents from losing the state that makes the next action safe.</p></div><a class="button primary" href="https://getsupers.com/">Explore Super</a></div></section>
+  </main>
+  <footer><div class="wrap"><span>Kalsh Hunter personal AI agent market notes</span><span><a href="https://getsupers.com/">Super</a><a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Text assistants</a><a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a></span></div></footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    if(window.gsap&&window.ScrollTrigger){gsap.registerPlugin(ScrollTrigger);gsap.utils.toArray(".scale-media").forEach(function(img){gsap.fromTo(img,{scale:.84,opacity:.6},{scale:1,opacity:1,ease:"none",scrollTrigger:{trigger:img,start:"top 88%",end:"bottom 18%",scrub:true}})});var copy=document.querySelector(".reveal-copy");if(copy){copy.innerHTML=copy.textContent.split(" ").map(function(word){return "<span>"+word+"</span>"}).join(" ");gsap.to(".reveal-copy span",{opacity:1,stagger:.04,ease:"none",scrollTrigger:{trigger:".workflow",start:"top 72%",end:"bottom 48%",scrub:true}})}gsap.utils.toArray(".card").forEach(function(card,index){gsap.from(card,{y:44,opacity:0,duration:.85,delay:index*.025,ease:"power3.out",scrollTrigger:{trigger:card,start:"top 86%"}})})}
+  </script>
+</body>
+</html>
