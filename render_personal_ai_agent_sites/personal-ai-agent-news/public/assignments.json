@@ -2,6 +2,29 @@
   {
     "assigned_domain": "kalshhunter.com",
     "assigned_slot": "personal-ai-agent-news",
+    "assigned_url": "https://kalshhunter.com/personal-ai-agents-are-turning-appointment-ops-into-approval-networks-20260709-125701/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/text-message-ai-assistant/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "blog",
+    "content_kind_label": "Research and news analysis",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://kalshhunter.com/personal-ai-agents-are-turning-appointment-ops-into-approval-networks-20260709-125701/",
+    "receipt_created_at": "2026-07-09T12:57:01.637+00:00",
+    "receipt_status": "success",
+    "slug": "personal-ai-agents-are-turning-appointment-ops-into-approval-networks-20260709-125701",
+    "source_path": "sms_published_sites/personal-ai-agents-are-turning-appointment-ops-into-approval-networks-20260709-125701",
+    "target_slot": "personal-ai-agent-news",
+    "title": "Personal AI Agents Are Turning Appointment Ops Into Approval Networks"
+  },
+  {
+    "assigned_domain": "kalshhunter.com",
+    "assigned_slot": "personal-ai-agent-news",
     "assigned_url": "https://kalshhunter.com/how-to-run-ai-appointment-agents-with-approval-packets-20260709-125131/",
     "backlinks": [
       "https://getsupers.com/",
