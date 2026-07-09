@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agent Memory Revocation Is Becoming the New Consent Surface</title>
+  <meta name="description" content="A long-form market analysis on why personal AI agent memory revocation is becoming a product, compliance, and trust surface for consumer agents.">
+  <link rel="canonical" href="https://kalshhunter.com/agent-memory-revocation-is-becoming-the-new-consent-surface-20260709-214303/">
+  <meta property="og:title" content="Agent Memory Revocation Is Becoming the New Consent Surface">
+  <meta property="og:description" content="Why revoking remembered facts, files, and agent context is shifting from a settings-page feature into a core trust workflow.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://kalshhunter.com/agent-memory-revocation-is-becoming-the-new-consent-surface-20260709-214303/">
+  <meta property="og:image" content="https://picsum.photos/seed/agent-memory-consent-surface/1600/900">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&display=swap');
+    :root {
+      --ink: #f8f2e6;
+      --muted: rgba(248, 242, 230, .72);
+      --coal: #080806;
+      --night: #10110d;
+      --sage: #9fc6a8;
+      --clay: #d98162;
+      --gold: #dec170;
+      --paper: #f5ead2;
+      --line: rgba(248,242,230,.16);
+      --shadow: 0 34px 92px rgba(0,0,0,.44);
+    }
+    * { box-sizing: border-box; }
+    html { background: var(--coal); scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Cabinet Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 14% 8%, rgba(217,129,98,.18), transparent 30rem),
+        radial-gradient(circle at 78% 18%, rgba(159,198,168,.18), transparent 34rem),
+        linear-gradient(180deg, #080806 0%, #13150f 52%, #080806 100%);
+      overflow-x: hidden;
+    }
+    body:before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .13;
+      mix-blend-mode: soft-light;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.86' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='.45'/%3E%3C/svg%3E");
+      z-index: 0;
+    }
+    a { color: inherit; }
+    main { position: relative; z-index: 1; overflow-x: hidden; width: 100%; max-width: 100%; }
+    .nav {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      width: min(1160px, calc(100vw - 32px));
+      min-height: 58px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 12px 10px 18px;
+      border: 1px solid rgba(248,242,230,.18);
+      border-radius: 999px;
+      background: rgba(8,8,6,.68);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 18px 55px rgba(0,0,0,.34);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+    .brand-mark {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--sage) 54%, var(--clay));
+      box-shadow: inset 0 0 0 6px rgba(8,8,6,.56);
+    }
+    .nav-links { display: flex; align-items: center; gap: 18px; color: var(--muted); font-size: 14px; }
+    .nav-links a { text-decoration: none; }
+    .nav-cta {
+      color: #080806;
+      background: var(--paper);
+      border-radius: 999px;
+      min-height: 38px;
+      padding: 0 16px;
+      display: inline-flex;
+      align-items: center;
+      font-weight: 900;
+    }
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(360px, .78fr);
+      gap: 54px;
+      align-items: center;
+      width: min(1220px, calc(100vw - 40px));
+      margin: 0 auto;
+      padding: 138px 0 86px;
+    }
+    .hero-copy-wrap { max-width: min(760px, 92vw); }
+    h1 {
+      margin: 0;
+      font-size: clamp(3.15rem, 6vw, 6.7rem);
+      line-height: .92;
+      letter-spacing: 0;
+      font-weight: 900;
+    }
+    .inline-photo {
+      display: inline-block;
+      width: clamp(72px, 9vw, 126px);
+      height: clamp(38px, 4.8vw, 58px);
+      margin: 0 .12em;
+      vertical-align: middle;
+      border-radius: 999px;
+      background: url("https://picsum.photos/seed/consent-receipt-ink/420/190") center/cover;
+      filter: grayscale(.2) contrast(1.18);
+      box-shadow: inset 0 0 0 1px rgba(248,242,230,.24), 0 14px 32px rgba(0,0,0,.36);
+    }
+    .hero-copy {
+      margin: 28px 0 0;
+      max-width: 700px;
+      color: rgba(248,242,230,.8);
+      font-size: clamp(1.05rem, 1.5vw, 1.28rem);
+      line-height: 1.66;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+    .button {
+      min-height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 0 24px;
+      font-weight: 900;
+      text-decoration: none;
+      border: 1px solid rgba(248,242,230,.22);
+      transition: transform .35s ease, background .35s ease;
+    }
+    .button:hover { transform: translateY(-3px); }
+    .button.primary { background: var(--paper); color: #080806; }
+    .button.secondary { background: rgba(8,8,6,.58); color: var(--ink); }
+    .hero-media {
+      height: min(700px, 72vh);
+      min-height: 480px;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+    }
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(.22) contrast(1.2) saturate(.72);
+      transform: scale(1.02);
+    }
+    .hero-media:after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(8,8,6,.04), rgba(8,8,6,.78));
+    }
+    section { padding: 150px 20px; }
+    .wrap { width: min(1180px, calc(100vw - 36px)); margin: 0 auto; }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, .95fr) minmax(280px, .55fr);
+      gap: 54px;
+      align-items: end;
+      margin-bottom: 52px;
+    }
+    h2 {
+      margin: 0;
+      font-size: clamp(2.4rem, 5vw, 5.7rem);
+      line-height: .96;
+      letter-spacing: 0;
+      font-weight: 900;
+    }
+    .lead { color: var(--muted); line-height: 1.76; font-size: 1.08rem; margin: 0; }
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      grid-auto-flow:dense;
+      gap: 14px;
+    }
+    .card {
+      min-height: 260px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 28px;
+      background: rgba(248,242,230,.058);
+      box-shadow: var(--shadow);
+    }
+    .card h3 { margin: 0 0 16px; font-size: clamp(1.35rem, 2.15vw, 2.15rem); line-height: 1.04; letter-spacing: 0; }
+    .card p, .card li { color: rgba(248,242,230,.76); line-height: 1.72; }
+    .card ul { margin: 0; padding-left: 18px; }
+    .span-7 { grid-column: span 7; }
+    .span-5 { grid-column: span 5; }
+    .span-4 { grid-column: span 4; }
+    .span-6 { grid-column: span 6; }
+    .image-card { padding: 0; min-height: 490px; }
+    .image-card img, .quote-photo img, .accordion-panel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(.3) contrast(1.22) saturate(.76);
+      transition: transform .7s ease;
+    }
+    .image-card:hover img, .quote-photo:hover img, .accordion-panel:hover img { transform: scale(1.05); }
+    .number {
+      font-size: clamp(3.5rem, 7vw, 7rem);
+      line-height: .9;
+      font-weight: 900;
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
+    .scrub-section {
+      min-height: 150vh;
+      display: grid;
+      align-items: center;
+      background:
+        radial-gradient(circle at 50% 35%, rgba(159,198,168,.16), transparent 34rem),
+        rgba(248,242,230,.035);
+    }
+    .scrub-text {
+      width: min(980px, 92vw);
+      margin: 0 auto;
+      font-size: clamp(2.2rem, 5vw, 5.3rem);
+      line-height: 1.04;
+      font-weight: 900;
+      letter-spacing: 0;
+      text-align: center;
+    }
+    .scrub-word { opacity: .16; display: inline-block; }
+    .accordion {
+      display: grid;
+      grid-template-columns: .9fr 1.2fr .9fr;
+      min-height: 560px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .accordion-panel {
+      position: relative;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+      background: rgba(248,242,230,.05);
+    }
+    .accordion-panel img { position: absolute; inset: 0; opacity: .74; }
+    .accordion-panel:after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 18%, rgba(8,8,6,.88));
+    }
+    .accordion-panel h3, .accordion-panel p { position: relative; z-index: 2; }
+    .accordion-panel h3 { margin: 0 0 10px; font-size: 1.8rem; line-height: 1.02; letter-spacing: 0; }
+    .accordion-panel p { margin: 0; color: rgba(248,242,230,.78); line-height: 1.62; }
+    .quote-grid {
+      display: grid;
+      grid-template-columns: .72fr 1fr;
+      gap: 22px;
+      align-items: stretch;
+      margin-top: 52px;
+    }
+    .quote-photo {
+      border-radius: 8px;
+      overflow: hidden;
+      min-height: 420px;
+      border: 1px solid var(--line);
+    }
+    .quote-box {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 38px;
+      background: rgba(248,242,230,.06);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .quote-box blockquote {
+      margin: 0;
+      font-size: clamp(1.8rem, 3vw, 3.3rem);
+      line-height: 1.08;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+    .quote-box p { color: var(--muted); line-height: 1.74; font-size: 1.05rem; }
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 34px;
+    }
+    .check {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      background: rgba(248,242,230,.055);
+    }
+    .check strong { display: block; font-size: 1.12rem; margin-bottom: 10px; }
+    .check span { display: block; color: var(--muted); line-height: 1.64; }
+    .faq { display: grid; gap: 12px; margin-top: 36px; }
+    details {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(248,242,230,.055);
+      padding: 22px 24px;
+    }
+    summary { cursor: pointer; font-weight: 900; font-size: 1.12rem; }
+    details p { color: var(--muted); line-height: 1.72; margin-bottom: 0; }
+    .sources {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 34px;
+    }
+    .source-link {
+      display: block;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 22px;
+      text-decoration: none;
+      background: rgba(248,242,230,.052);
+    }
+    .source-link span { display: block; color: var(--muted); line-height: 1.55; margin-top: 8px; }
+    .cta {
+      text-align: center;
+      padding: 170px 20px 92px;
+      background:
+        radial-gradient(circle at 50% 20%, rgba(222,193,112,.25), transparent 36rem),
+        linear-gradient(180deg, transparent, rgba(248,242,230,.08));
+    }
+    .cta h2 { width: min(980px, 94vw); margin: 0 auto; }
+    .cta p { max-width: 720px; margin: 26px auto 0; color: var(--muted); line-height: 1.74; }
+    .cta .hero-actions { justify-content: center; }
+    footer {
+      padding: 32px 20px 54px;
+      border-top: 1px solid var(--line);
+      color: rgba(248,242,230,.62);
+    }
+    .footer-row {
+      width: min(1180px, calc(100vw - 36px));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .footer-row a { text-decoration: none; color: rgba(248,242,230,.84); margin-left: 16px; }
+    @media (max-width: 900px) {
+      .nav-links a:not(.nav-cta) { display: none; }
+      .hero, .section-head, .quote-grid, .checklist, .sources { grid-template-columns: 1fr; }
+      .hero-media { min-height: 360px; height: 46vh; }
+      .bento { grid-template-columns: 1fr; }
+      .span-7, .span-5, .span-4, .span-6 { grid-column: span 1; }
+      .accordion { grid-template-columns: 1fr; }
+      section { padding: 112px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="https://kalshhunter.com/"><span class="brand-mark" aria-hidden="true"></span><span>Consent Ledger</span></a>
+      <div class="nav-links">
+        <a href="#market">Market</a>
+        <a href="#signals">Signals</a>
+        <a href="#checklist">Checklist</a>
+        <a class="nav-cta" href="https://getsupers.com/">Explore Super</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-copy-wrap">
+        <h1>Agent memory revocation is becoming the new <span class="inline-photo" aria-hidden="true"></span> consent surface</h1>
+        <p class="hero-copy">Personal AI agents are moving from chat windows into phones, browsers, files, calendars, and background task runners. That makes memory more valuable, but it also makes revocation more visible. The next trust layer is not just asking permission to remember. It is proving, clearly and repeatedly, that the user can withdraw that permission.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#market">Read the market analysis</a>
+          <a class="button secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">See personal assistant patterns</a>
+        </div>
+      </div>
+      <figure class="hero-media">
+        <img src="https://picsum.photos/seed/agent-consent-wall/1100/1400" alt="Abstract consent ledger wall for personal AI agents">
+      </figure>
+    </header>
+
+    <section id="market">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>The market is shifting from memory controls to memory receipts.</h2>
+          <p class="lead">A settings toggle answers the first-order question: may the agent remember this? A receipt answers the harder question: what happened after the user changed their mind? That second question is becoming essential as agents gain more autonomy.</p>
+        </div>
+        <div class="bento">
+          <article class="card span-7">
+            <h3>Revocation is where personalization becomes accountable.</h3>
+            <p>Consumer AI products have spent the last wave teaching users that remembered context makes an assistant more useful. A travel preference helps with booking, a pantry habit helps with grocery planning, and a work style helps with task delegation. But as soon as memory becomes useful, it also becomes sensitive. Users need a way to remove remembered facts without wondering whether the system merely hid them from view.</p>
+            <p>The strongest personal agents will treat revocation as a first-class event. A user should be able to say “forget that address,” “remove that card photo,” or “do not use my job search context anymore,” and receive a compact explanation of what changed. That explanation is not legal theater. It is product evidence that the agent respects the user’s boundary.</p>
+          </article>
+          <article class="card image-card span-5">
+            <img src="https://picsum.photos/seed/revocation-market-signal/900/1100" alt="Abstract market signal board for agent memory">
+          </article>
+          <article class="card span-4">
+            <div class="number">3</div>
+            <h3>Core receipt outcomes</h3>
+            <p>Deleted, quarantined, or retained with a stated reason. Anything softer leaves the user guessing.</p>
+          </article>
+          <article class="card span-4">
+            <h3>Messaging agents make this visible.</h3>
+            <p>A <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text message AI assistant</a> lives in the same channel as family plans, errands, addresses, and private reminders. Revocation has to be short enough for the channel and specific enough to trust.</p>
+          </article>
+          <article class="card span-4">
+            <h3>Computer-use agents raise the stakes.</h3>
+            <p>When an agent clicks, reads, screenshots, and stores operating context, a <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a> needs deletion evidence for artifacts as well as remembered facts.</p>
+          </article>
+          <article class="card span-6">
+            <h3>Website-building agents need source hygiene.</h3>
+            <p>If a personal agent uses remembered brand preferences or user goals to publish a site, revocation should ripple through drafts, generated pages, and future instructions. Teams exploring <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent website workflows</a> should think of memory receipts as a publishing safeguard, not just a privacy appendix.</p>
+          </article>
+          <article class="card span-6">
+            <h3>Super’s broader lesson is portability of trust.</h3>
+            <p><a href="https://getsupers.com/">Super</a> points toward agents that operate across everyday surfaces. The more places an agent can act, the more the user needs one understandable record of what the agent remembered, why it used that context, and how revocation was honored.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="scrub-section" id="signals">
+      <p class="scrub-text" aria-label="Trust moves from one-time consent to continuous proof as personal agents remember, act, and recover from user revocation.">
+        <span class="scrub-word">Trust</span>
+        <span class="scrub-word">moves</span>
+        <span class="scrub-word">from</span>
+        <span class="scrub-word">one-time</span>
+        <span class="scrub-word">consent</span>
+        <span class="scrub-word">to</span>
+        <span class="scrub-word">continuous</span>
+        <span class="scrub-word">proof</span>
+        <span class="scrub-word">as</span>
+        <span class="scrub-word">personal</span>
+        <span class="scrub-word">agents</span>
+        <span class="scrub-word">remember,</span>
+        <span class="scrub-word">act,</span>
+        <span class="scrub-word">and</span>
+        <span class="scrub-word">recover</span>
+        <span class="scrub-word">from</span>
+        <span class="scrub-word">user</span>
+        <span class="scrub-word">revocation.</span>
+      </p>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Three product patterns are emerging around memory withdrawal.</h2>
+          <p class="lead">The best teams are not waiting for revocation to become a support ticket. They are turning it into a normal product motion that can be handled automatically when safe and escalated when ambiguous.</p>
+        </div>
+        <div class="accordion">
+          <article class="accordion-panel">
+            <img src="https://picsum.photos/seed/agent-memory-inbox/900/1100" alt="Abstract memory inbox">
+            <h3>Revocation inbox</h3>
+            <p>A queue for new withdrawal requests, grouped by risk and by the next agent run that could reuse adjacent context.</p>
+          </article>
+          <article class="accordion-panel">
+            <img src="https://picsum.photos/seed/agent-receipt-ledger/900/1100" alt="Abstract receipt ledger">
+            <h3>Receipt ledger</h3>
+            <p>A minimal proof trail that keeps request metadata and action evidence without preserving the deleted private content.</p>
+          </article>
+          <article class="accordion-panel">
+            <img src="https://picsum.photos/seed/agent-memory-repair-loop/900/1100" alt="Abstract repair loop">
+            <h3>Repair loop</h3>
+            <p>A product feedback path that turns repeated revocations into better prompts, safer defaults, and clearer memory categories.</p>
+          </article>
+        </div>
+        <div class="quote-grid">
+          <div class="quote-photo"><img src="https://picsum.photos/seed/agent-consent-portrait-stack/900/1000" alt="Layered abstract portraits for user consent"></div>
+          <div class="quote-box">
+            <blockquote>Users will not judge agent memory by how much it remembers. They will judge it by how precisely it forgets.</blockquote>
+            <p>That is the product wedge. A memory feature that cannot be cleanly revoked eventually feels like surveillance, even if its original purpose was convenience. A memory feature with crisp receipts feels more like a loyal assistant: useful when invited, quiet when dismissed, and honest about the residue of its work.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="checklist">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>What a credible revocation surface should show.</h2>
+          <p class="lead">The point is not to expose every database detail. The point is to give users and operators a faithful map of the action that happened.</p>
+        </div>
+        <div class="checklist">
+          <div class="check"><strong>Plain request summary</strong><span>The receipt restates the user’s request in concise language without keeping the sensitive text unnecessarily.</span></div>
+          <div class="check"><strong>Memory classes affected</strong><span>Profile facts, uploaded files, conversation summaries, vector entries, screenshots, browser state, and tool outputs are named separately.</span></div>
+          <div class="check"><strong>Clear outcome state</strong><span>Deleted, redacted, quarantined, retained, not found, and awaiting clarification have distinct meanings.</span></div>
+          <div class="check"><strong>Downstream propagation</strong><span>Agents that inherited the memory are told to refresh, freeze, or discard generated context where appropriate.</span></div>
+          <div class="check"><strong>Minimal audit proof</strong><span>The system keeps enough evidence to prove the action without recreating the private material.</span></div>
+          <div class="check"><strong>User-facing closure</strong><span>The final message tells the user what changed, what did not change, and what they can do next.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Why this matters for the personal agent market.</h2>
+          <p class="lead">Memory is becoming a competitive feature, but trust will determine how much users are willing to delegate. Revocation receipts give users a way to inspect the agent’s loyalty without becoming system administrators.</p>
+        </div>
+        <article class="card span-7">
+          <h3>Receipts turn privacy posture into product behavior.</h3>
+          <p>Policy language can say the user controls their data. A receipt can prove it in the moment when control matters. That moment often arrives after the user has shared something unusually personal: a health concern, a financial plan, a family address, a work secret, or a private file. If the user can revoke that context and see a clean response, they are more likely to keep using the agent for ordinary tasks.</p>
+          <p>The market implication is straightforward. The agents that win daily trust will not merely be more capable. They will be more legible. Users will understand when the agent is remembering, when it is acting from cached context, and when it has stopped using something they withdrew. That legibility becomes a growth lever because it lowers the emotional cost of delegation.</p>
+          <p>For builders, the implementation work is also strategic. A receipt layer forces cleaner memory schemas, better retention policies, and more disciplined prompt behavior. It reveals where the system is over-remembering and where generated artifacts create hidden dependencies. Those lessons improve the assistant even for users who never open a receipt.</p>
+        </article>
+        <div class="faq">
+          <details open>
+            <summary>Is memory revocation only a compliance issue?</summary>
+            <p>No. Compliance is part of the story, but the bigger product issue is user confidence. A user who believes they can withdraw context is more willing to share context in the first place.</p>
+          </details>
+          <details>
+            <summary>Should a receipt include the deleted content?</summary>
+            <p>Usually no. The receipt should include enough scope and evidence to be useful without preserving the private fact, file, or screenshot the user wanted removed.</p>
+          </details>
+          <details>
+            <summary>How should teams handle memories that cannot be fully removed?</summary>
+            <p>They should say so clearly, explain the retention reason, reduce reuse wherever possible, and provide an expiration or review path. A vague success message is worse than a precise limitation.</p>
+          </details>
+          <details>
+            <summary>Where should this live in the product?</summary>
+            <p>For a personal assistant, revocation should work inside the natural channel, such as SMS or chat, while also linking to a durable ledger for complex cases. Users should not need to hunt through a settings page to ask the agent to forget something.</p>
+          </details>
+        </div>
+        <div class="sources">
+          <a class="source-link" href="https://www.nist.gov/itl/ai-risk-management-framework">NIST AI Risk Management Framework<span>Useful grounding for AI governance, measurement, and risk-management practices.</span></a>
+          <a class="source-link" href="https://owasp.org/www-project-top-10-for-large-language-model-applications/">OWASP Top 10 for Large Language Model Applications<span>Helpful background on data, prompt, and agentic risks that shape memory safeguards.</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2>Personal agents need memory that can be trusted, used, and withdrawn.</h2>
+      <p>Build the receipt layer before revocation becomes a crisis queue. The agents that feel safest will be the ones that make their memory behavior easiest to inspect.</p>
+      <div class="hero-actions">
+        <a class="button primary" href="https://getsupers.com/">Explore Super</a>
+        <a class="button secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">See text agent workflows</a>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-row">
+        <span>Generated directly for kalshhunter.com. No model API content generation was used.</span>
+        <span>
+          <a href="https://getsupers.com/">Super</a>
+          <a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a>
+          <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">Website agents</a>
+        </span>
+      </div>
+    </footer>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script>
+    window.addEventListener("DOMContentLoaded", function () {
+      if (!window.gsap || !window.ScrollTrigger) return;
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.from(".hero-copy-wrap", { opacity: 0, y: 34, duration: 1.1, ease: "power3.out" });
+      gsap.from(".hero-media", { opacity: 0, scale: .9, y: 28, duration: 1.15, ease: "power3.out", delay: .12 });
+      gsap.utils.toArray(".image-card img, .quote-photo img, .hero-media img").forEach(function (img) {
+        gsap.fromTo(img, { scale: .84, opacity: .48 }, {
+          scale: 1,
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: { trigger: img, start: "top 88%", end: "bottom 20%", scrub: true }
+        });
+      });
+      gsap.to(".scrub-word", {
+        opacity: 1,
+        stagger: .08,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".scrub-section",
+          start: "top top",
+          end: "bottom bottom",
+          scrub: true,
+          pin: ".scrub-text"
+        }
+      });
+    });
+  </script>
+</body>
+</html>

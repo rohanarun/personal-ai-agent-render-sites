@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Agent Memory Revocation Is Becoming the New Consent Surface](agent-memory-revocation-is-becoming-the-new-consent-surface-20260709-214303/): Research and news analysis
 - [How to Triage Personal Agent Memory Revocation Receipts](how-to-triage-personal-agent-memory-revocation-receipts-20260709-213533/): Use case
 - [Revocation Inbox Software vs Privacy Dashboards](revocation-inbox-software-vs-privacy-dashboards-20260709-212535/): Competitor comparison
 - [Personal Agent Revocation Inbox Software](personal-agent-revocation-inbox-software-20260709-211440/): Niche research landing page
