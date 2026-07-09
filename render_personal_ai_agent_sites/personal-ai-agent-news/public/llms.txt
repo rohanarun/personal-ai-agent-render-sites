@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Notification Budgets Are the Next Agent Control Plane](notification-budgets-are-the-next-agent-control-plane-20260709-201533/): Research and news analysis
 - [How to Reduce Agent Approval Latency Without Noise](how-to-reduce-agent-approval-latency-without-noise-20260709-201010/): Use case
 - [Approval Latency Monitoring vs Observability Dashboards](approval-latency-monitoring-vs-observability-dashboards-20260709-200003/): Competitor comparison
 - [Approval Latency Monitoring Software for Personal AI Agents](approval-latency-monitoring-software-20260709-195010/): Niche research landing page
