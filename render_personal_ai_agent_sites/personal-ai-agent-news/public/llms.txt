@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Personal AI Agents Are Getting Consent Change Ledgers](personal-ai-agents-are-getting-consent-change-ledgers-20260709-033730/): Research and news analysis
 - [Consent Diff Software vs Role Based Access Control](consent-diff-software-vs-role-based-access-control-20260709-032730/): Competitor comparison
 - [How to Review Consent Diffs Before AI Agents Resume](how-to-review-consent-diffs-before-ai-agents-resume-20260709-031729/): Use case
 - [Personal AI Agent Consent Diff Software](personal-ai-agent-consent-diff-software-20260709-031159/): Niche research landing page
