@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Text Approval Newsrooms vs SMS Approval Queues for Personal AI Agents](text-approval-newsrooms-vs-sms-approval-queues-20260709-060030/): Competitor comparison
 - [Text Approval Newsroom Software for Personal AI Agents](text-approval-newsroom-software-for-personal-ai-agents-20260709-055030/): Niche research landing page
 - [Personal AI Agents Are Getting Text Approval Newsrooms](personal-ai-agents-are-getting-text-approval-newsrooms-20260709-054030/): Research and news analysis
 - [How to Write Agent Handoff Briefs for Text Approvals](how-to-write-agent-handoff-briefs-for-text-approvals-20260709-053500/): Use case
