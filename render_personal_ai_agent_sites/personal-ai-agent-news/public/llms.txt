@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Personal AI Agents Need Resume Packets](personal-ai-agents-need-resume-packets-20260709-000332/): Research and news analysis
 - [How to Use Handoff Logs in Text AI Agents](how-to-use-handoff-logs-in-text-ai-agents-20260708-235334/): Use case
 - [Handoff Logs vs AI Agent Audit Logs](handoff-logs-vs-ai-agent-audit-logs-20260708-234332/): Competitor comparison
 - [Personal AI Agent Handoff Log Software](personal-ai-agent-handoff-log-software-20260708-233334/): Niche research landing page
