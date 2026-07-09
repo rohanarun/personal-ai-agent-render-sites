@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to Build Approval Replay Rooms for Personal AI Agents</title>
+  <meta name="description" content="A practical guide to designing approval replay rooms for personal AI agents, including evidence bundles, consent scope, SMS approvals, browser traces, QA checklists, and replay-ready handoffs.">
+  <link rel="canonical" href="https://kalshhunter.com/how-to-build-approval-replay-rooms-for-personal-ai-agents-20260709-063200/">
+  <meta property="og:title" content="How to Build Approval Replay Rooms for Personal AI Agents">
+  <meta property="og:description" content="A long-form operator guide for turning approvals into reusable context for personal AI agents.">
+  <meta property="og:url" content="https://kalshhunter.com/how-to-build-approval-replay-rooms-for-personal-ai-agents-20260709-063200/">
+  <meta property="og:type" content="article">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <style>
+    :root{--ink:#121216;--paper:#f8f2e8;--muted:#625c54;--line:#d9cdbd;--mint:#baf7d1;--blue:#a9d8ff;--plum:#4b314f;--night:#101114;--coral:#ffb097}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Cabinet Grotesk",Outfit,Geist,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;overflow-x:hidden}a{color:inherit}.shell{width:min(1200px,92vw);margin:0 auto}.nav{position:fixed;z-index:50;top:20px;left:50%;transform:translateX(-50%);width:min(1060px,92vw);display:flex;align-items:center;justify-content:space-between;padding:10px 12px 10px 20px;border:1px solid rgba(18,18,22,.14);border-radius:999px;background:rgba(248,242,232,.78);backdrop-filter:blur(20px);box-shadow:0 18px 70px rgba(35,30,23,.14)}.brand{font-weight:950;text-decoration:none}.navlinks{display:flex;align-items:center;gap:22px;font-size:14px;color:#4f4942}.navlinks a{text-decoration:none}.navcta{background:#111;color:#fff;border-radius:999px;padding:10px 17px;font-weight:900}.hero{position:relative;min-height:96vh;padding:150px 0 100px;overflow:hidden}.hero:before{content:"";position:absolute;inset:-18%;background:radial-gradient(circle at 12% 28%,rgba(186,247,209,.64),transparent 28%),radial-gradient(circle at 91% 22%,rgba(169,216,255,.58),transparent 33%),radial-gradient(circle at 75% 83%,rgba(255,176,151,.42),transparent 30%);filter:saturate(1.05)}.heroGrid{position:relative;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(320px,.92fr);gap:66px;align-items:center}.hero h1{max-width:1100px;margin:0;font-size:clamp(3rem,5vw,5.5rem);line-height:.97;letter-spacing:0;font-weight:950}.inline-img{display:inline-block;width:122px;height:45px;margin:0 10px;border-radius:999px;vertical-align:middle;background-size:cover;background-position:center;filter:grayscale(.25) contrast(1.24) saturate(.85)}.hero p{max-width:720px;margin:28px 0 0;color:#504942;font-size:20px;line-height:1.65}.ctaRow{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 23px;border-radius:999px;text-decoration:none;font-weight:950}.btn.dark{background:#111;color:#fff}.btn.light{background:#fff;color:#111;border:1px solid #c7bbaa}.heroMedia{position:relative;height:590px;border-radius:8px;background:url("https://picsum.photos/seed/approval-replay-room-workbench/1100/1400") center/cover;filter:grayscale(.2) contrast(1.2);box-shadow:0 40px 120px rgba(38,31,25,.26);border:1px solid rgba(18,18,22,.14);overflow:hidden}.heroMedia:after{content:"";position:absolute;inset:0;background:linear-gradient(150deg,rgba(16,17,20,.12),rgba(75,49,79,.42))}.marquee{overflow:hidden;background:#111;color:#fff;padding:32px 0;white-space:nowrap}.track{display:inline-block;animation:slide 26s linear infinite;font-size:clamp(2.1rem,5vw,5rem);font-weight:950}.track span{padding-right:56px;color:var(--mint)}@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}section{padding:155px 0}.sectionHead{display:grid;grid-template-columns:1.15fr .85fr;gap:62px;align-items:end;margin-bottom:44px}.sectionHead h2{font-size:clamp(2.35rem,4vw,4.8rem);line-height:1;margin:0;letter-spacing:0}.sectionHead p{margin:0;color:var(--muted);font-size:17px;line-height:1.78}.bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-flow:dense;gap:16px}.card{min-height:255px;padding:28px;border:1px solid rgba(18,18,22,.14);border-radius:8px;background:rgba(255,255,255,.58);overflow:hidden}.card h3{margin:0 0 16px;font-size:28px;line-height:1.05}.card p,.card li{color:#5c554d;line-height:1.78}.wide7{grid-column:span 7}.wide5{grid-column:span 5}.third{grid-column:span 4}.half{grid-column:span 6}.visual{padding:0}.visual img{display:block;width:100%;height:100%;min-height:340px;object-fit:cover;filter:grayscale(.38) contrast(1.22);transition:transform .75s ease}.visual:hover img{transform:scale(1.05)}.checklist{padding-left:20px}.dark{background:#101114;color:#fbf7ef}.pinGrid{display:grid;grid-template-columns:.84fr 1.16fr;gap:70px;align-items:start}.pinTitle h2{font-size:clamp(2.55rem,5vw,5.35rem);line-height:.98;margin:0}.pinTitle p{color:#cfc6ba;line-height:1.75}.storyWords{font-size:clamp(1.8rem,3vw,3.2rem);line-height:1.18;font-weight:900;margin:0 0 48px}.storyWords span{opacity:.12}.stackCard{background:#fbf7ef;color:#111;border-radius:8px;margin-bottom:20px;padding:30px;box-shadow:0 24px 80px rgba(0,0,0,.3)}.stackCard h3{font-size:30px;margin:0 0 12px}.stackCard p{color:#514b43;line-height:1.8}.accordion{display:flex;min-height:430px;border:1px solid rgba(18,18,22,.14);border-radius:8px;overflow:hidden;background:#fff}.slice{position:relative;flex:1;padding:28px;transition:flex .55s ease;background-size:cover;background-position:center;color:#fff;overflow:hidden}.slice:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,17,20,.22),rgba(16,17,20,.78))}.slice:hover{flex:2.4}.slice h3,.slice p{position:relative;z-index:1}.slice h3{font-size:28px;margin:0 0 18px}.slice p{max-width:420px;line-height:1.7;color:#efe9df}.faq{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.faq details{border:1px solid rgba(18,18,22,.14);border-radius:8px;background:#fff;padding:22px}.faq summary{cursor:pointer;font-weight:950}.faq p{color:var(--muted);line-height:1.72}.sources{margin-top:28px;border-top:1px solid var(--line);padding-top:24px;color:#5b544c}.sources li{line-height:1.7}.footer{padding:125px 0;background:#111;color:#fff}.footer h2{font-size:clamp(2.9rem,6vw,6.6rem);line-height:.95;margin:0 0 28px}.footer p{max-width:690px;color:#d9d1c6;line-height:1.75}.footlinks{display:flex;gap:18px;flex-wrap:wrap;margin-top:36px}.footlinks a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.38)}@media(max-width:880px){.navlinks{display:none}.heroGrid,.sectionHead,.pinGrid,.faq{grid-template-columns:1fr}.heroMedia{height:360px}.wide7,.wide5,.third,.half{grid-column:span 12}.accordion{flex-direction:column}.slice{min-height:230px}section{padding:112px 0}.hero h1{font-size:clamp(2.75rem,12vw,4.35rem)}}
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a class="brand" href="/">Kalshunter</a>
+    <div class="navlinks">
+      <a href="#map">Map</a>
+      <a href="#workflow">Workflow</a>
+      <a href="#faq">FAQ</a>
+      <a class="navcta" href="https://getsupers.com/">Open Super</a>
+    </div>
+  </nav>
+  <main class="overflow-x-hidden w-full max-w-full">
+    <header class="hero">
+      <div class="shell heroGrid">
+        <div>
+          <h1>How to build approval <span class="inline-img" style="background-image:url('https://picsum.photos/seed/replay-room-inline-evidence/520/220')"></span> replay rooms for agents</h1>
+          <p>A replay room is the operator-facing memory layer around an approval. It stores what the agent asked, what evidence the human saw, what the human allowed, and what future runs should remember before asking again.</p>
+          <div class="ctaRow">
+            <a class="btn dark" href="https://getsupers.com/">Explore Super</a>
+            <a class="btn light" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Design text approvals</a>
+          </div>
+        </div>
+        <div class="heroMedia" aria-label="Operator workbench for approval replay rooms"></div>
+      </div>
+    </header>
+
+    <div class="marquee">
+      <div class="track"><span>evidence bundles</span><span>consent scope</span><span>replayable handoffs</span><span>safe resumes</span><span>evidence bundles</span><span>consent scope</span></div>
+    </div>
+
+    <section id="map">
+      <div class="shell">
+        <div class="sectionHead">
+          <h2>Start by separating approval from memory.</h2>
+          <p>The approval itself can be a short tap, reply, or confirmation. The replay room is the durable context that lets the operator, the agent, and a future reviewer understand the decision without reconstructing the whole session from raw logs.</p>
+        </div>
+        <div class="bento">
+          <article class="card wide7">
+            <h3>The minimum viable replay room</h3>
+            <p>A useful replay room starts with six objects: the agent request, the proposed action, the evidence bundle, the human response, the consent boundary, and the outcome. Without those pieces, the system can still claim that a person approved something, but it cannot confidently explain what the person believed they were approving.</p>
+            <p>For a <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text-message AI assistant</a>, the request might be short enough to fit in SMS. The replay room should preserve the broader context that did not fit in the message: screenshots, document excerpts, payment amount, recipient, deadline, and rollback instructions.</p>
+          </article>
+          <article class="card wide5 visual">
+            <img src="https://picsum.photos/seed/approval-room-evidence-wall/900/700" alt="Evidence wall for a replay room">
+          </article>
+          <article class="card third">
+            <h3>Request</h3>
+            <p>Write the agent request in human language. Avoid only storing internal tool names or opaque traces.</p>
+          </article>
+          <article class="card third">
+            <h3>Evidence</h3>
+            <p>Attach the artifacts the operator relied on: screenshots, diffs, extracted text, source links, and risk notes.</p>
+          </article>
+          <article class="card third">
+            <h3>Boundary</h3>
+            <p>Record what the approval allows, what it does not allow, and when the permission should expire.</p>
+          </article>
+          <article class="card half">
+            <h3>Implementation checklist</h3>
+            <ul class="checklist">
+              <li>Create a stable approval id before asking the human.</li>
+              <li>Snapshot the evidence bundle at the moment of approval.</li>
+              <li>Store the exact human response, channel, and timestamp.</li>
+              <li>Summarize the consent boundary in plain language.</li>
+              <li>Link any browser cache, file diff, or generated output.</li>
+              <li>Write a resume instruction for the next agent run.</li>
+            </ul>
+          </article>
+          <article class="card half">
+            <h3>What not to store alone</h3>
+            <p>A bare event log, isolated SMS reply, or database boolean is too thin for high-value delegation. It may tell you that approval happened, but it does not tell a future agent whether a similar action is safe, whether the user was approving one item or a category, or whether the evidence has since changed.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="shell">
+        <div class="sectionHead">
+          <h2>Design the room around the reviewer, not the database.</h2>
+          <p>Replay rooms become useful when they are organized around the questions an operator actually asks after a delegation: what was proposed, what proof was shown, what changed, and what should happen next.</p>
+        </div>
+        <div class="accordion">
+          <div class="slice" style="background-image:url('https://picsum.photos/seed/replay-room-request-panel/900/900')">
+            <h3>Approval prompt</h3>
+            <p>Show the original prompt and a short operator-readable reason for the ask.</p>
+          </div>
+          <div class="slice" style="background-image:url('https://picsum.photos/seed/replay-room-browser-cache/900/900')">
+            <h3>Evidence panel</h3>
+            <p>Include screenshots, citations, page state, and diffs. A <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a> is especially valuable here.</p>
+          </div>
+          <div class="slice" style="background-image:url('https://picsum.photos/seed/replay-room-consent-ledger/900/900')">
+            <h3>Consent ledger</h3>
+            <p>Make scope explicit: single action, repeated action, spending limit, account boundary, or time window.</p>
+          </div>
+          <div class="slice" style="background-image:url('https://picsum.photos/seed/replay-room-publish-diff/900/900')">
+            <h3>Outcome trace</h3>
+            <p>For generated artifacts such as pages from <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent website building</a>, show the final URL, publish state, and rollback path.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="dark" id="workflow">
+      <div class="shell pinGrid">
+        <div class="pinTitle">
+          <h2>Make approvals replayable before they become expensive.</h2>
+          <p>Good replay rooms reduce repeated questions, improve operator trust, and give agents safer context when they resume work.</p>
+        </div>
+        <div>
+          <p class="storyWords"><span>Capture</span> <span>the</span> <span>evidence,</span> <span>bind</span> <span>it</span> <span>to</span> <span>consent,</span> <span>then</span> <span>teach</span> <span>future</span> <span>runs</span> <span>what</span> <span>the</span> <span>approval</span> <span>meant.</span></p>
+          <article class="stackCard">
+            <h3>Before the ask</h3>
+            <p>Generate a proposed action and gather proof before contacting the operator. Do not ask for approval while evidence is still being fetched. The replay room should already know the relevant account, object, amount, recipient, page, file, or output before the human is interrupted.</p>
+          </article>
+          <article class="stackCard">
+            <h3>During the ask</h3>
+            <p>Send the shortest safe prompt over the user’s chosen channel, then link that prompt to the room. In SMS and iMessage workflows, the message can stay compact while the replay room keeps the full decision context available behind the scenes.</p>
+          </article>
+          <article class="stackCard">
+            <h3>After the response</h3>
+            <p>Convert the human reply into structured consent. A reply of “yes” should become a machine-readable boundary, such as approve this specific purchase, approve this publish action, or approve this browser session only for the next ten minutes.</p>
+          </article>
+          <article class="stackCard">
+            <h3>At resume time</h3>
+            <p>When the agent resumes, it should load the replay room before deciding whether to ask again. If the new action is inside the original boundary and the evidence has not materially changed, the agent can proceed or present a lighter confirmation. If the evidence changed, it should ask again with a fresh room.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="shell">
+        <div class="sectionHead">
+          <h2>FAQ for operators building approval memory.</h2>
+          <p>Approval replay rooms are not only compliance artifacts. They are product surfaces that help personal agents become more predictable and less annoying.</p>
+        </div>
+        <div class="faq">
+          <details open>
+            <summary>Is a replay room the same as an audit log?</summary>
+            <p>No. An audit log is usually chronological and technical. A replay room is decision-centered and operator-readable. It can link to the audit log, but it should explain the approval in plain language.</p>
+          </details>
+          <details>
+            <summary>How long should consent last?</summary>
+            <p>Consent should last only as long as the operator would reasonably expect. Tie it to one action, a narrow task, a time window, or a budget. Avoid broad standing consent unless the product has strong review and revocation controls.</p>
+          </details>
+          <details>
+            <summary>What evidence is worth preserving?</summary>
+            <p>Preserve anything that would change the decision if it were different: price, recipient, screen state, calendar time, file diff, generated page, source citation, or policy note.</p>
+          </details>
+          <details>
+            <summary>Where does Super fit?</summary>
+            <p><a href="https://getsupers.com/">Super</a> focuses on practical personal agent workflows across messaging, browser use, and generated outputs. Replay rooms are a natural design layer for that kind of delegated work.</p>
+          </details>
+        </div>
+        <div class="sources">
+          <strong>Sources and reference anchors</strong>
+          <ul>
+            <li><a href="https://www.nist.gov/itl/ai-risk-management-framework">NIST AI Risk Management Framework</a> for risk framing, transparency, and governance vocabulary.</li>
+            <li><a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/">OWASP Top 10 for LLM Applications</a> for common application-layer risks around agentic and LLM-backed systems.</li>
+            <li><a href="https://getsupers.com/">Super</a> and related use cases for text approval, browser cache, and website-building agent workflows.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="shell">
+        <h2>Turn every approval into better future delegation.</h2>
+        <p>A personal agent should not forget the evidence behind a human decision. Build replay rooms that preserve context, consent, and next-step guidance in a format both humans and agents can use.</p>
+        <div class="footlinks">
+          <a href="https://getsupers.com/">Super homepage</a>
+          <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Text-message AI assistant</a>
+          <a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a>
+          <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">Website-building agents</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.create({trigger:".dark",start:"top top",end:"bottom bottom",pin:".pinTitle",pinSpacing:false});
+    gsap.utils.toArray(".storyWords span").forEach(function(word,index){
+      gsap.to(word,{opacity:1,scrollTrigger:{trigger:".storyWords",start:"top 76%",end:"bottom 32%",scrub:true},delay:index*.025});
+    });
+    gsap.utils.toArray(".stackCard").forEach(function(card,index){
+      gsap.fromTo(card,{y:95,opacity:.34},{y:index*-12,opacity:1,scrollTrigger:{trigger:card,start:"top 88%",end:"top 42%",scrub:true}});
+    });
+    gsap.utils.toArray(".heroMedia,.visual img").forEach(function(el){
+      gsap.fromTo(el,{scale:.84,opacity:.74},{scale:1,opacity:1,scrollTrigger:{trigger:el,start:"top 88%",end:"bottom 22%",scrub:true}});
+    });
+  </script>
+</body>
+</html>
