@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Appointment Memory Agents for Service Teams](appointment-memory-agents-for-service-teams-20260709-121301/): Niche research landing page
 - [Personal AI Agents Are Replacing Static Intake with Operational Memory](personal-ai-agents-are-replacing-static-intake-with-operational-memory-20260709-120308/): Research and news analysis
 - [How to Turn Inbound Service Texts into Agent-Ready CRM Records](how-to-turn-inbound-service-texts-into-agent-ready-crm-records-20260709-115802/): Use case
 - [Personal AI Booking Agents vs CRM Lead Forms](personal-ai-booking-agents-vs-crm-lead-forms-20260709-115231/): Competitor comparison

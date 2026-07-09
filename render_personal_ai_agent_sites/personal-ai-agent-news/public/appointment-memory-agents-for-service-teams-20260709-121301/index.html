@@ -1,0 +1,666 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Appointment Memory Agents for Service Teams</title>
+  <meta name="description" content="A niche landing page for appointment-heavy service teams using personal AI agents to reconcile text requests, CRM records, and calendar capacity.">
+  <link rel="canonical" href="https://kalshhunter.com/appointment-memory-agents-for-service-teams-20260709-121301/">
+  <meta property="og:title" content="Appointment Memory Agents for Service Teams">
+  <meta property="og:description" content="How personal AI agents help appointment-heavy teams preserve context, reconcile calendar changes, and hand off customer requests with evidence.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://kalshhunter.com/appointment-memory-agents-for-service-teams-20260709-121301/">
+  <meta property="og:image" content="https://picsum.photos/seed/appointment-memory-agent/1600/900">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <style>
+    :root {
+      --ink: #101218;
+      --paper: #f6f0e7;
+      --white: #fffaf1;
+      --muted: #696158;
+      --line: rgba(16,18,24,0.14);
+      --forest: #183b32;
+      --brick: #a9553f;
+      --blue: #274f76;
+      --gold: #d6b76d;
+      --night: #080a0f;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Cabinet Grotesk", "Geist", "Outfit", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 16% 8%, rgba(169,85,63,0.18), transparent 34rem),
+        radial-gradient(circle at 82% 10%, rgba(39,79,118,0.2), transparent 36rem),
+        linear-gradient(180deg, #fffaf1 0%, var(--paper) 54%, #e8decd 100%);
+      overflow-x: hidden;
+    }
+    main { overflow-x: hidden; width: 100%; max-width: 100%; }
+    a { color: inherit; }
+    .nav {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 30;
+      width: min(1120px, calc(100vw - 28px));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 12px 14px 12px 22px;
+      border: 1px solid rgba(255,255,255,0.62);
+      border-radius: 999px;
+      background: rgba(255,250,241,0.78);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 20px 70px rgba(16,18,24,0.12);
+    }
+    .brand { font-weight: 900; text-decoration: none; letter-spacing: 0; }
+    .nav-links { display: flex; gap: 22px; align-items: center; font-size: 13px; color: var(--muted); }
+    .nav-links a { text-decoration: none; }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 18px;
+      border-radius: 999px;
+      background: var(--ink);
+      color: var(--white);
+      font-weight: 900;
+    }
+    .hero {
+      width: min(1240px, calc(100vw - 40px));
+      min-height: 100vh;
+      margin: 0 auto;
+      padding: 150px 0 108px;
+      display: grid;
+      grid-template-columns: minmax(0, 0.94fr) minmax(320px, 0.86fr);
+      gap: clamp(38px, 5vw, 88px);
+      align-items: center;
+    }
+    .kicker {
+      margin: 0 0 24px;
+      color: var(--brick);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    h1 {
+      max-width: min(980px, 94vw);
+      margin: 0;
+      font-size: clamp(3rem, 5.15vw, 5.75rem);
+      line-height: 0.92;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .hero-copy {
+      max-width: 700px;
+      margin: 30px 0 0;
+      color: #4b463e;
+      font-size: clamp(1.06rem, 1.45vw, 1.24rem);
+      line-height: 1.72;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 0 24px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 900;
+      text-decoration: none;
+    }
+    .button.dark { background: var(--ink); color: var(--white); }
+    .button.light { background: var(--white); color: var(--ink); border-color: rgba(16,18,24,0.18); }
+    .hero-media {
+      min-height: 650px;
+      border-radius: 34px;
+      overflow: hidden;
+      position: relative;
+      background: var(--night);
+      box-shadow: 0 34px 96px rgba(16,18,24,0.24);
+      isolation: isolate;
+    }
+    .hero-media::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("https://picsum.photos/seed/appointment-calendar-memory/1400/1800") center/cover;
+      filter: grayscale(0.28) contrast(1.2) saturate(0.78);
+      transform: scale(1.03);
+      transition: transform 850ms ease;
+    }
+    .hero-media:hover::before { transform: scale(1.09); }
+    .hero-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(180deg, rgba(8,10,15,0.04), rgba(8,10,15,0.78));
+    }
+    .media-card {
+      position: absolute;
+      z-index: 2;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      padding: 24px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(8,10,15,0.58);
+      color: var(--white);
+      backdrop-filter: blur(16px);
+    }
+    .media-card strong { display: block; font-size: 24px; line-height: 1.08; margin-bottom: 10px; }
+    .media-card p { margin: 0; color: rgba(255,250,241,0.76); line-height: 1.62; }
+    section { padding: 152px 0; }
+    .section-inner { width: min(1180px, calc(100vw - 40px)); margin: 0 auto; }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.84fr) minmax(280px, 0.54fr);
+      gap: 52px;
+      align-items: end;
+      margin-bottom: 58px;
+    }
+    h2 {
+      margin: 0;
+      font-size: clamp(2.35rem, 4.85vw, 5.15rem);
+      line-height: 0.98;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .section-head p, .lead { margin: 0; color: var(--muted); font-size: 18px; line-height: 1.72; }
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-flow: dense;
+      gap: 16px;
+    }
+    .card {
+      min-height: 300px;
+      padding: 30px;
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: rgba(255,250,241,0.76);
+      overflow: hidden;
+      box-shadow: 0 24px 82px rgba(16,18,24,0.08);
+      transition: transform 700ms ease, box-shadow 700ms ease;
+    }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 36px 96px rgba(16,18,24,0.14); }
+    .wide { grid-column: span 7; }
+    .side { grid-column: span 5; }
+    .third { grid-column: span 4; }
+    .half { grid-column: span 6; }
+    .card h3 { margin: 0 0 16px; font-size: clamp(1.45rem, 2.15vw, 2.25rem); line-height: 1.04; }
+    .card p { margin: 0; color: #555047; line-height: 1.72; font-size: 16px; }
+    .card ul { margin: 20px 0 0; padding-left: 18px; color: #555047; line-height: 1.84; }
+    .image-card {
+      min-height: 410px;
+      color: var(--white);
+      background: var(--night);
+    }
+    .image-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("https://picsum.photos/seed/service-capacity-calendar/1400/900") center/cover;
+      filter: grayscale(0.25) contrast(1.2) saturate(0.78);
+      transform: scale(1.02);
+      transition: transform 800ms ease;
+    }
+    .image-card:hover::before { transform: scale(1.08); }
+    .image-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(8,10,15,0.08), rgba(8,10,15,0.86));
+    }
+    .image-card > * { position: relative; z-index: 1; }
+    .image-card p { color: rgba(255,250,241,0.78); max-width: 680px; }
+    .dark {
+      background:
+        radial-gradient(circle at 18% 18%, rgba(214,183,109,0.22), transparent 34rem),
+        radial-gradient(circle at 82% 78%, rgba(169,85,63,0.22), transparent 34rem),
+        var(--night);
+      color: var(--white);
+    }
+    .dark .section-head p, .dark .lead { color: rgba(255,250,241,0.68); }
+    .pin-grid {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.72fr) minmax(0, 1fr);
+      gap: 72px;
+      align-items: start;
+    }
+    .pin-title h2 { color: var(--white); }
+    .steps { display: grid; gap: 22px; }
+    .step {
+      min-height: 228px;
+      padding: 30px;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,250,241,0.08);
+      backdrop-filter: blur(12px);
+    }
+    .step h3 { margin: 0 0 12px; font-size: 30px; }
+    .step p { margin: 0; color: rgba(255,250,241,0.74); line-height: 1.7; }
+    .accordion {
+      display: flex;
+      min-height: 430px;
+      border-radius: 30px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+    .slice {
+      flex: 1;
+      min-width: 0;
+      position: relative;
+      padding: 28px;
+      color: var(--white);
+      background-position: center;
+      background-size: cover;
+      overflow: hidden;
+      border-right: 1px solid rgba(255,255,255,0.18);
+      transition: flex 800ms ease;
+    }
+    .slice:last-child { border-right: 0; }
+    .slice:hover { flex: 2.05; }
+    .slice::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(8,10,15,0.14), rgba(8,10,15,0.86));
+    }
+    .slice div { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; }
+    .slice h3 { margin: 0 0 12px; font-size: 28px; }
+    .slice p { margin: 0; max-width: 350px; color: rgba(255,250,241,0.76); line-height: 1.62; opacity: 0; transition: opacity 500ms ease; }
+    .slice:hover p { opacity: 1; }
+    .quote-row {
+      display: grid;
+      grid-template-columns: minmax(300px, 0.6fr) minmax(0, 1fr);
+      gap: 52px;
+      align-items: center;
+    }
+    .portrait {
+      min-height: 440px;
+      border-radius: 30px;
+      overflow: hidden;
+      background: url("https://picsum.photos/seed/dispatcher-calendar-summary/1000/1200") center/cover;
+      filter: grayscale(0.22) contrast(1.17) saturate(0.84);
+      box-shadow: 0 30px 90px rgba(16,18,24,0.2);
+      transition: transform 800ms ease;
+    }
+    .portrait:hover { transform: scale(1.03); }
+    blockquote {
+      margin: 0;
+      font-size: clamp(2.1rem, 4.25vw, 4.6rem);
+      line-height: 1.03;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .quote-row p { color: var(--muted); line-height: 1.72; font-size: 17px; }
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .check {
+      padding: 22px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: rgba(255,250,241,0.72);
+      color: #534d44;
+      line-height: 1.64;
+    }
+    .marquee {
+      display: flex;
+      overflow: hidden;
+      padding: 24px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,250,241,0.48);
+    }
+    .marquee-track {
+      min-width: max-content;
+      display: flex;
+      gap: 42px;
+      animation: drift 28s linear infinite;
+      font-size: clamp(1.5rem, 3vw, 3rem);
+      font-weight: 900;
+      color: rgba(16,18,24,0.34);
+    }
+    @keyframes drift { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .faq, .sources { display: grid; gap: 16px; }
+    details {
+      padding: 22px 24px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: rgba(255,250,241,0.72);
+    }
+    summary { cursor: pointer; font-size: 18px; font-weight: 900; }
+    details p { margin: 14px 0 0; color: var(--muted); line-height: 1.7; }
+    .footer {
+      padding: 132px 0 46px;
+      background: var(--ink);
+      color: var(--white);
+    }
+    .footer h2 { max-width: 980px; }
+    .footer p { max-width: 720px; color: rgba(255,250,241,0.7); line-height: 1.7; font-size: 18px; }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px 26px;
+      margin-top: 60px;
+      padding-top: 26px;
+      border-top: 1px solid rgba(255,255,255,0.14);
+      color: rgba(255,250,241,0.68);
+      font-size: 14px;
+    }
+    .footer-links a { text-decoration: none; }
+    @media (max-width: 920px) {
+      .hero, .section-head, .pin-grid, .quote-row { grid-template-columns: 1fr; }
+      .hero-media { min-height: 520px; }
+      .wide, .side, .third, .half { grid-column: span 12; }
+      .accordion { flex-direction: column; min-height: 760px; }
+      .slice:hover { flex: 1.4; }
+      .checklist { grid-template-columns: 1fr; }
+      .nav-links a:not(.nav-cta) { display: none; }
+    }
+    @media (max-width: 560px) {
+      .nav { top: 10px; width: calc(100vw - 20px); }
+      .hero { width: min(100% - 24px, 1240px); padding: 128px 0 84px; }
+      h1 { font-size: clamp(2.5rem, 13.5vw, 4rem); }
+      section { padding: 104px 0; }
+      .section-inner { width: min(100% - 24px, 1180px); }
+      .hero-actions { flex-direction: column; }
+      .button { width: 100%; }
+      .card, .step { padding: 22px; border-radius: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="https://kalshhunter.com/">Kalsh Hunter</a>
+      <div class="nav-links">
+        <a href="#fit">Fit</a>
+        <a href="#memory">Memory</a>
+        <a href="#faq">FAQ</a>
+        <a class="nav-cta" href="https://getsupers.com/">Explore Supers</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div>
+        <p class="kicker">Niche landing page for service operations</p>
+        <h1>Appointment memory agents for teams that schedule through text.</h1>
+        <p class="hero-copy">Appointment-heavy teams do not just need a booking link. They need a personal AI agent that remembers what the customer asked for, what the calendar can support, what the CRM already knows, and what a human must confirm before the appointment becomes real.</p>
+        <div class="hero-actions">
+          <a class="button dark" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Build a text intake agent</a>
+          <a class="button light" href="#checklist">Review the checklist</a>
+        </div>
+      </div>
+      <div class="hero-media reveal-img" aria-label="Appointment memory agent calendar workflow">
+        <div class="media-card">
+          <strong>The agent remembers the path to the appointment.</strong>
+          <p>It preserves the request, calendar constraint, CRM record, approval history, and next customer response in one reviewable packet.</p>
+        </div>
+      </div>
+    </header>
+
+    <section id="fit">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>Built for requests that change before they book.</h2>
+          <p>The hard part is not showing a calendar. The hard part is reconciling a live customer thread with capacity, service rules, existing records, and human judgment.</p>
+        </div>
+        <div class="bento">
+          <article class="card wide image-card reveal-img">
+            <h3>Appointment memory keeps the booking story intact.</h3>
+            <p>The agent tracks the customer's words, requested window, service constraints, missing details, route owner, and approval state so the scheduler does not have to reconstruct context from scattered notes.</p>
+          </article>
+          <article class="card side">
+            <h3>Where it fits best</h3>
+            <p>Use it when appointment requests come through text, change across multiple messages, or require human confirmation before a calendar slot is safe.</p>
+            <ul>
+              <li>Home services and repairs.</li>
+              <li>Mobile health and wellness teams.</li>
+              <li>Consultation-heavy local operators.</li>
+            </ul>
+          </article>
+          <article class="card third">
+            <h3>Calendar context</h3>
+            <p>The agent records requested windows, constraints, tentative slots, conflicts, and whether capacity has been human-confirmed.</p>
+          </article>
+          <article class="card third">
+            <h3>CRM context</h3>
+            <p>It links the appointment request to existing customer records, previous notes, and unresolved fields before anyone confirms.</p>
+          </article>
+          <article class="card third">
+            <h3>Customer context</h3>
+            <p>It remembers photos, access instructions, service expectations, and timing changes that are easy to lose in long text threads.</p>
+          </article>
+          <article class="card half">
+            <h3>Start with the text channel</h3>
+            <p>The <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text-message AI assistant</a> workflow is the most natural place to begin because customers already use text for appointment changes, photos, and quick clarifications.</p>
+          </article>
+          <article class="card half">
+            <h3>Keep repeated operations reusable</h3>
+            <p>When appointment work requires repeated browser or back-office steps, the <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache workflow</a> can preserve repeatable context and reduce rework.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="dark" id="memory">
+      <div class="section-inner pin-grid">
+        <div class="pin-title">
+          <h2>What the appointment memory packet should preserve.</h2>
+          <p class="lead">A reliable packet distinguishes customer evidence, agent interpretation, calendar state, CRM state, and human approval. The point is not to automate every decision. It is to prevent every reviewer from starting from zero.</p>
+        </div>
+        <div class="steps">
+          <article class="step">
+            <h3>Request evidence</h3>
+            <p>Original text, uploaded photos, timestamps, customer contact, requested location, and the exact language that shaped the appointment.</p>
+          </article>
+          <article class="step">
+            <h3>Operational interpretation</h3>
+            <p>Service category, urgency, missing fields, likely duration, special access needs, and why the agent recommends a given next step.</p>
+          </article>
+          <article class="step">
+            <h3>Capacity state</h3>
+            <p>Suggested windows, conflicts, travel or routing notes, and whether the slot is tentative, confirmed, or blocked for human review.</p>
+          </article>
+          <article class="step">
+            <h3>Approval trail</h3>
+            <p>Who approved the appointment, what changed, and which promises the agent should not make without another human check.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-label="Appointment memory terms">
+      <div class="marquee-track">
+        <span>capacity</span><span>CRM state</span><span>customer text</span><span>approval</span><span>handoff</span><span>follow-up</span>
+        <span>capacity</span><span>CRM state</span><span>customer text</span><span>approval</span><span>handoff</span><span>follow-up</span>
+      </div>
+    </div>
+
+    <section>
+      <div class="section-inner quote-row">
+        <div class="portrait reveal-img" aria-label="Dispatcher reviewing appointment memory"></div>
+        <div>
+          <blockquote>"A booking link asks when. An appointment memory agent remembers why that time is safe."</blockquote>
+          <p>That distinction matters for real service operations. <a href="https://getsupers.com/">Supers</a> is useful when the agent needs to coordinate messages, context, browser work, and human approval instead of simply handing out a calendar URL.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>Four ways teams use appointment memory.</h2>
+          <p>Start narrow: choose one appointment failure mode and make the agent responsible for preserving the context around it.</p>
+        </div>
+        <div class="accordion">
+          <article class="slice" style="background-image:url('https://picsum.photos/seed/reschedule-text-thread/1000/1200')">
+            <div>
+              <h3>Reschedule threads</h3>
+              <p>Track what changed, which slot is still tentative, and what the customer has already accepted.</p>
+            </div>
+          </article>
+          <article class="slice" style="background-image:url('https://picsum.photos/seed/service-photo-before-visit/1000/1200')">
+            <div>
+              <h3>Photo prep</h3>
+              <p>Collect the right images before arrival and attach them to the appointment packet.</p>
+            </div>
+          </article>
+          <article class="slice" style="background-image:url('https://picsum.photos/seed/calendar-capacity-routing/1000/1200')">
+            <div>
+              <h3>Capacity routing</h3>
+              <p>Mark whether a window is safe, tentative, unavailable, or waiting for dispatch review.</p>
+            </div>
+          </article>
+          <article class="slice" style="background-image:url('https://picsum.photos/seed/service-page-demand/1000/1200')">
+            <div>
+              <h3>Demand signals</h3>
+              <p>Use repeated appointment questions to improve service pages through the <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">agent-built websites</a> workflow.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="checklist">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>Readiness checklist for appointment memory agents.</h2>
+          <p>Use this before letting the agent touch customer-facing scheduling language or CRM records.</p>
+        </div>
+        <div class="checklist">
+          <div class="check"><strong>Define appointment states:</strong> Separate requested, tentative, blocked, human-approved, customer-confirmed, and completed.</div>
+          <div class="check"><strong>Attach evidence:</strong> Preserve the original customer text, photos, and calendar events behind every summary.</div>
+          <div class="check"><strong>Limit promises:</strong> The agent should not promise arrival windows, prices, warranties, or technician assignments without approved rules.</div>
+          <div class="check"><strong>Escalate conflicts:</strong> Route double bookings, angry customers, urgent conditions, or out-of-area requests to human review.</div>
+          <div class="check"><strong>Sync CRM fields:</strong> Map appointment memory into clear fields rather than leaving it buried in notes.</div>
+          <div class="check"><strong>Review drift:</strong> Sample appointment packets weekly and update the system prompt when the same failure repeats.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>Questions before deploying appointment memory.</h2>
+          <p>The safest rollout keeps humans responsible for operational promises while agents preserve context and prepare the next action.</p>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Is this different from a scheduling widget?</summary>
+            <p>Yes. A scheduling widget exposes availability. An appointment memory agent preserves the context that makes a slot appropriate, risky, tentative, or ready for confirmation.</p>
+          </details>
+          <details>
+            <summary>Should the agent confirm appointments automatically?</summary>
+            <p>Only for narrow scenarios with approved rules. Start by having the agent prepare a recommendation and route uncertain appointments to a human.</p>
+          </details>
+          <details>
+            <summary>What should be visible in the CRM?</summary>
+            <p>Show request evidence, appointment state, missing details, approval status, recommended next action, and links to relevant customer messages or media.</p>
+          </details>
+          <details>
+            <summary>How does this improve customer experience?</summary>
+            <p>Customers repeat themselves less, appointment changes are less likely to disappear, and the business can respond with clearer next steps.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>Sources and references.</h2>
+          <p>These references support the guidance around AI governance, human oversight, and application-level security controls for agentic scheduling workflows.</p>
+        </div>
+        <div class="sources">
+          <details open>
+            <summary>NIST AI Risk Management Framework</summary>
+            <p>NIST's AI RMF is relevant for governing and managing risk in AI systems that influence real customer appointments and business operations. Source: <a href="https://www.nist.gov/itl/ai-risk-management-framework">nist.gov/itl/ai-risk-management-framework</a>.</p>
+          </details>
+          <details open>
+            <summary>OWASP Top 10 for Large Language Model Applications</summary>
+            <p>OWASP's LLM application guidance is relevant for prompt injection, data handling, tool access, and agent behavior controls. Source: <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/">owasp.org/www-project-top-10-for-large-language-model-applications</a>.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="section-inner">
+        <h2>Make every appointment carry its own context.</h2>
+        <p>Appointment memory agents help service teams preserve the path from request to confirmation, with enough evidence for a human to trust the next step.</p>
+        <div class="hero-actions">
+          <a class="button light" href="https://getsupers.com/">Visit Supers</a>
+          <a class="button dark" style="background:#d6b76d;color:#101218" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Start with text intake</a>
+        </div>
+        <div class="footer-links">
+          <a href="https://getsupers.com/">Supers</a>
+          <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Text-message AI assistant</a>
+          <a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a>
+          <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">Agent-built websites</a>
+          <span>Published for kalshhunter.com</span>
+        </div>
+      </div>
+    </footer>
+  </main>
+  <script>
+    window.addEventListener("load", function () {
+      if (!window.gsap || !window.ScrollTrigger) return;
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.utils.toArray(".reveal-img").forEach(function (el) {
+        gsap.fromTo(el, { scale: 0.84, opacity: 0.62 }, {
+          scale: 1,
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 84%",
+            end: "bottom 20%",
+            scrub: true
+          }
+        });
+      });
+      var pin = document.querySelector(".pin-title");
+      var grid = document.querySelector(".pin-grid");
+      if (pin && grid) {
+        ScrollTrigger.create({
+          trigger: grid,
+          start: "top 12%",
+          end: "bottom 78%",
+          pin: pin,
+          pinSpacing: false
+        });
+      }
+      gsap.utils.toArray(".step").forEach(function (card, index) {
+        gsap.from(card, {
+          y: 70,
+          opacity: 0.22,
+          duration: 0.85,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 86%"
+          },
+          delay: index * 0.03
+        });
+      });
+    });
+  </script>
+</body>
+</html>
