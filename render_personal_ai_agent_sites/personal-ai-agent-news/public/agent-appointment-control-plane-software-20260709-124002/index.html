@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agent Appointment Control Plane Software</title>
+  <meta name="description" content="A niche research landing page for teams using approval packets, text-message AI assistants, and browser agents to coordinate appointment booking decisions.">
+  <link rel="canonical" href="https://kalshhunter.com/agent-appointment-control-plane-software-20260709-124002/">
+  <meta property="og:title" content="Agent Appointment Control Plane Software">
+  <meta property="og:description" content="How approval packets turn appointment booking agents into reviewable, auditable, and safer operating systems for service teams.">
+  <meta property="og:url" content="https://kalshhunter.com/agent-appointment-control-plane-software-20260709-124002/">
+  <meta property="og:type" content="article">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <style>
+    :root{--ink:#101210;--paper:#f3efe7;--muted:#6f716a;--line:rgba(16,18,16,.16);--coal:#171a18;--leaf:#556b4d;--gold:#c79548;--cream:#fffaf0;--blue:#3a6676}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:"Cabinet Grotesk","Satoshi","Avenir Next",system-ui,sans-serif;overflow-x:hidden}
+    main{overflow-x:hidden;width:100%;max-width:100%}
+    a{color:inherit}
+    .grain{position:fixed;inset:0;pointer-events:none;opacity:.16;z-index:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E")}
+    .nav{position:fixed;top:24px;left:50%;transform:translateX(-50%);width:min(1120px,calc(100vw - 32px));z-index:10;display:flex;justify-content:space-between;align-items:center;padding:12px 14px 12px 22px;background:rgba(255,250,240,.78);border:1px solid rgba(16,18,16,.13);backdrop-filter:blur(18px);border-radius:999px;box-shadow:0 20px 60px rgba(16,18,16,.12)}
+    .brand{font-weight:900;letter-spacing:0;font-size:18px}
+    .navlinks{display:flex;gap:18px;align-items:center;color:#4f524b;font-size:13px;font-weight:700}
+    .nav a{text-decoration:none}
+    .nav-cta{background:var(--ink);color:white;border-radius:999px;padding:12px 18px}
+    .hero{position:relative;min-height:92vh;display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:center;width:min(1240px,calc(100vw - 40px));margin:0 auto;padding:150px 0 90px}
+    .hero:before{content:"";position:absolute;inset:7% -18% auto auto;width:54vw;height:54vw;background:radial-gradient(circle,rgba(85,107,77,.34),rgba(199,149,72,.15) 40%,transparent 70%);filter:blur(44px);z-index:-1}
+    h1{font-size:clamp(3.05rem,5.15vw,5.85rem);line-height:.93;letter-spacing:0;max-width:min(1040px,92vw);margin:0;font-weight:950}
+    .inline-img{display:inline-block;width:clamp(84px,10vw,150px);height:clamp(34px,4.6vw,58px);border-radius:999px;background-size:cover;background-position:center;vertical-align:middle;margin:0 .14em;filter:grayscale(.15) contrast(1.18) saturate(.72)}
+    .lead{font-size:clamp(1.05rem,1.7vw,1.42rem);line-height:1.62;color:#4c4e48;max-width:660px;margin:28px 0 0}
+    .actions{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+    .button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:15px 22px;border-radius:999px;font-weight:900;text-decoration:none;border:1px solid var(--ink)}
+    .button.primary{background:var(--ink);color:white}
+    .button.secondary{background:transparent;color:var(--ink)}
+    .hero-card{position:relative;min-height:610px;border-radius:28px;overflow:hidden;background:#111;box-shadow:0 34px 100px rgba(16,18,16,.25)}
+    .hero-card img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover;filter:grayscale(.3) contrast(1.2) saturate(.8);opacity:.86;transition:transform .8s ease}
+    .hero-card:hover img{transform:scale(1.05)}
+    .hero-card .overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.72))}
+    .hero-card .panel{position:absolute;left:28px;right:28px;bottom:28px;color:white;border-top:1px solid rgba(255,255,255,.26);padding-top:22px}
+    .panel h2{font-size:clamp(1.8rem,3vw,3.4rem);line-height:.98;margin:0 0 14px}
+    .panel p{margin:0;color:rgba(255,255,255,.78);line-height:1.55;font-size:15px}
+    section{position:relative;width:min(1180px,calc(100vw - 40px));margin:0 auto;padding:150px 0}
+    .section-head{display:flex;justify-content:space-between;gap:40px;align-items:flex-end;margin-bottom:48px}
+    .section-head h2{font-size:clamp(2.4rem,4.8vw,5.2rem);line-height:.96;letter-spacing:0;margin:0;max-width:760px}
+    .section-head p{max-width:420px;color:var(--muted);line-height:1.6;margin:0}
+    .bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-flow:dense;gap:18px}
+    .tile{border:1px solid var(--line);border-radius:18px;background:rgba(255,250,240,.64);overflow:hidden;min-height:260px;padding:28px;position:relative;box-shadow:0 20px 80px rgba(16,18,16,.06)}
+    .tile.dark{background:var(--coal);color:white}
+    .tile.img{padding:0}
+    .tile.img img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(.28) contrast(1.18) saturate(.75);transition:transform .8s ease}
+    .tile:hover img{transform:scale(1.05)}
+    .span7{grid-column:span 7}.span5{grid-column:span 5}.span4{grid-column:span 4}.span6{grid-column:span 6}
+    .tile h3{font-size:clamp(1.45rem,2.3vw,2.5rem);line-height:1;margin:0 0 18px}
+    .tile p,.tile li{color:#5d6059;line-height:1.65;font-size:15px}
+    .tile.dark p,.tile.dark li{color:rgba(255,255,255,.74)}
+    .tile ul{padding-left:18px;margin:18px 0 0}
+    .marquee{padding:28px 0;border-block:1px solid var(--line);overflow:hidden;white-space:nowrap}
+    .marquee-track{display:inline-flex;gap:46px;animation:move 24s linear infinite;font-size:clamp(1.9rem,4vw,4.2rem);font-weight:950;color:rgba(16,18,16,.24)}
+    @keyframes move{to{transform:translateX(-50%)}}
+    .split{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:start}
+    .pin-title{top:120px}
+    .pin-title h2{font-size:clamp(2.5rem,5.4vw,5.8rem);line-height:.94;margin:0}
+    .pin-title p{color:var(--muted);line-height:1.65;font-size:18px}
+    .accordions{display:flex;height:560px;border-radius:24px;overflow:hidden;border:1px solid var(--line);background:var(--coal)}
+    .slice{position:relative;flex:1;min-width:0;transition:flex .7s cubic-bezier(.2,.8,.2,1);overflow:hidden;color:white;border-right:1px solid rgba(255,255,255,.16)}
+    .slice:last-child{border-right:0}
+    .slice:hover{flex:2.85}
+    .slice img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(.35) contrast(1.2);opacity:.58;transition:transform .8s ease,opacity .8s ease}
+    .slice:hover img{transform:scale(1.05);opacity:.78}
+    .slice div{position:absolute;inset:auto 24px 24px 24px}
+    .slice h3{writing-mode:vertical-rl;transform:rotate(180deg);font-size:30px;margin:0;transition:all .5s ease}
+    .slice:hover h3{writing-mode:horizontal-tb;transform:none}
+    .slice p{max-width:360px;opacity:0;line-height:1.55;color:rgba(255,255,255,.78);transition:opacity .5s ease;margin:12px 0 0}
+    .slice:hover p{opacity:1}
+    .article{background:#fff8ea;border-radius:28px;border:1px solid var(--line);padding:54px;box-shadow:0 30px 90px rgba(16,18,16,.07)}
+    .article h2{font-size:clamp(2rem,3.5vw,4rem);line-height:1;margin:0 0 24px}
+    .article h3{font-size:1.65rem;margin:42px 0 12px}
+    .article p,.article li{font-size:17px;line-height:1.78;color:#464943}
+    .article a{font-weight:900;text-decoration-thickness:2px;text-underline-offset:4px}
+    .scrub span{opacity:.12}
+    .checklist{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:24px}
+    .check{background:rgba(85,107,77,.08);border:1px solid rgba(85,107,77,.25);border-radius:16px;padding:18px}
+    .faq{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:26px}
+    .faq div{background:rgba(16,18,16,.05);border:1px solid var(--line);border-radius:16px;padding:22px}
+    .faq h3{margin-top:0}
+    .cta{width:100%;background:var(--ink);color:white;margin-top:90px;padding:120px 40px;border-radius:0;text-align:center}
+    .cta-inner{width:min(1000px,calc(100vw - 40px));margin:0 auto}
+    .cta h2{font-size:clamp(3rem,7vw,7rem);line-height:.9;margin:0 0 24px}
+    .cta p{font-size:20px;line-height:1.6;color:rgba(255,255,255,.72);max-width:760px;margin:0 auto 32px}
+    .cta .button{border-color:white}
+    footer{display:flex;justify-content:space-between;gap:26px;width:min(1180px,calc(100vw - 40px));margin:0 auto;padding:44px 0 70px;color:#686a64;font-size:14px}
+    footer a{font-weight:800;text-decoration:none}
+    @media (max-width:900px){.navlinks a:not(.nav-cta){display:none}.hero,.split{grid-template-columns:1fr}.hero{padding-top:130px}.hero-card{min-height:430px}.section-head{display:block}.bento{grid-template-columns:1fr}.span7,.span5,.span4,.span6{grid-column:span 1}.accordions{height:auto;display:grid}.slice{min-height:220px}.slice h3{writing-mode:horizontal-tb;transform:none}.slice p{opacity:1}.article{padding:30px}.checklist,.faq{grid-template-columns:1fr}footer{display:block}}
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+  <nav class="nav" aria-label="Primary navigation">
+    <a class="brand" href="/">Kalsh Hunter</a>
+    <div class="navlinks">
+      <a href="#model">Model</a>
+      <a href="#control">Controls</a>
+      <a href="#faq">FAQ</a>
+      <a class="nav-cta" href="https://getsupers.com/">Explore Super</a>
+    </div>
+  </nav>
+  <main>
+    <header class="hero">
+      <div>
+        <h1>Agent appointment <span class="inline-img" style="background-image:url('https://picsum.photos/seed/appointment-desk/420/180')"></span> control plane software</h1>
+        <p class="lead">Appointment agents are no longer only booking assistants. They are becoming operational control planes that gather context, propose decisions, request consent, and leave behind proof that a real person had the right moment to intervene.</p>
+        <div class="actions">
+          <a class="button primary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">See text agents</a>
+          <a class="button secondary" href="#model">Read the model</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <img src="https://picsum.photos/seed/approval-control-room/1200/1500" alt="Control room desk for appointment operations">
+        <div class="overlay"></div>
+        <div class="panel">
+          <h2>Approval packets make every booking decision reviewable.</h2>
+          <p>The packet is the unit of judgment: customer request, agent interpretation, available options, risk flags, proposed message, and the receipt that proves what happened next.</p>
+        </div>
+      </div>
+    </header>
+
+    <section id="model">
+      <div class="section-head">
+        <h2>The market is shifting from calendars to controlled delegation.</h2>
+        <p>Classic scheduling tools expose openings. Appointment control-plane software governs the work around the opening: qualification, urgency, reschedule etiquette, customer promises, team rules, and approval memory.</p>
+      </div>
+      <div class="bento">
+        <article class="tile span7 dark">
+          <h3>Why this category exists</h3>
+          <p>Teams are giving personal AI agents enough context to draft replies, hold intake conversations, open browser tools, and prepare bookings. The risk is not that the agent sees a calendar slot. The risk is that it misunderstands an exception, confirms the wrong scope, ignores consent, or resumes after a change without proving what it remembers.</p>
+          <p>Approval-packet software gives the operator a compact view before action. It turns a raw conversation into a decision object with evidence, proposed next step, confidence, owner, and expiration. That is the difference between an AI assistant that asks "Is this okay?" and an operational agent that can be reviewed like a teammate.</p>
+        </article>
+        <article class="tile img span5">
+          <img src="https://picsum.photos/seed/field-service-calendar/900/760" alt="Field service appointment planning desk">
+        </article>
+        <article class="tile span4">
+          <h3>For service teams</h3>
+          <p>Home services, clinics, studios, agencies, and field teams need agents that can negotiate details by text without silently changing the promise made to the customer.</p>
+        </article>
+        <article class="tile span4">
+          <h3>For operators</h3>
+          <p>The control plane answers who approved, what evidence was shown, when consent expires, and whether the agent can safely continue after new context arrives.</p>
+        </article>
+        <article class="tile span4">
+          <h3>For builders</h3>
+          <p>Browser agents, cached workflows, and website-building agents need the same approval object when a task crosses from suggestion into action.</p>
+        </article>
+        <article class="tile img span6">
+          <img src="https://picsum.photos/seed/agent-workbench/1000/740" alt="Agent workbench with notes and laptop">
+        </article>
+        <article class="tile span6">
+          <h3>The product surface</h3>
+          <ul>
+            <li>Inbound request summary with quoted source snippets.</li>
+            <li>Proposed booking, reschedule, or escalation action.</li>
+            <li>Risk flags for price, scope, urgency, policy, and stale consent.</li>
+            <li>Operator approval, edit, deny, delegate, or hold controls.</li>
+            <li>Receipt trail that can be replayed when the agent resumes.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>approval packets</span><span>consent receipts</span><span>booking evidence</span><span>operator review</span><span>resume proof</span><span>approval packets</span><span>consent receipts</span><span>booking evidence</span><span>operator review</span><span>resume proof</span>
+      </div>
+    </div>
+
+    <section id="control" class="split">
+      <div class="pin-title">
+        <h2>Pinned review beats scattered chat history.</h2>
+        <p>A control plane should keep the decision layer visible while individual packets move. The operator should not need to reread a full thread to know whether an agent can book, delay, ask, or escalate.</p>
+      </div>
+      <div>
+        <div class="accordions">
+          <div class="slice">
+            <img src="https://picsum.photos/seed/text-approval/720/920" alt="Text approval queue">
+            <div><h3>Evidence</h3><p>Pull the minimum context into the packet: customer request, agent summary, tool state, and policy notes.</p></div>
+          </div>
+          <div class="slice">
+            <img src="https://picsum.photos/seed/operator-consent/720/920" alt="Operator approval desk">
+            <div><h3>Consent</h3><p>Capture the approval boundary, expiration, and what the agent is allowed to do without a second interruption.</p></div>
+          </div>
+          <div class="slice">
+            <img src="https://picsum.photos/seed/browser-agent-booking/720/920" alt="Browser agent booking workflow">
+            <div><h3>Action</h3><p>Send the approved message, update the appointment system, or hand the task to a browser agent with the receipt attached.</p></div>
+          </div>
+        </div>
+        <article class="article">
+          <h2 class="scrub">Appointment control planes need approval packets, not just smarter prompts.</h2>
+          <p>Prompts can tell an agent to be careful. A packet changes the workflow. It gives the agent a durable object to prepare, gives the human a focused review surface, and gives the business a record that can be inspected later. This matters because appointment work is full of edge cases: travel windows, cancellation rules, health disclosures, pricing uncertainty, deposits, staff preference, and the polite language that keeps a customer from feeling ignored.</p>
+          <p>A useful packet does not overwhelm the reviewer. It compresses the conversation into the few things that matter for the decision. It says what the customer wants, what the agent thinks it should do, what could go wrong, what rule is being applied, and what response will be sent. For text-first operators, a product like <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Super's text message AI assistant</a> is the natural front door because customers already negotiate appointments over SMS-style threads.</p>
+          <p>The same concept travels to other agent workflows. When a browser agent fills a form or repeats a multi-step web task, <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache workflows</a> can benefit from a packet that states what is being reused, what changed, and whether the cached path is still valid. When an agent builds or updates a page, <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI website-building workflows</a> need a launch packet before publishing changes that affect customer-facing promises.</p>
+          <h3>What belongs in an appointment approval packet</h3>
+          <p>The strongest packets are structured but humane. They should include the source conversation, the proposed customer-facing reply, the booking or reschedule target, and the agent's reason for selecting that option. They should also include a short risk panel that distinguishes low-risk etiquette from high-risk commitment. A customer asking for the first available time may be low risk. A customer asking whether a technician can handle a job that changes price, warranty, or safety scope deserves a human review.</p>
+          <p>There is also a memory problem. If the agent is paused, edited, or resumed later, it should not pretend that the old approval still applies forever. The approval packet should have a freshness rule. If inventory, calendar state, customer intent, policy, or staff assignment changes, the agent should request a new approval or generate a delta packet. This is where a control plane becomes more than a queue. It becomes an operating memory for delegated appointment work.</p>
+          <div class="checklist">
+            <div class="check"><strong>Capture evidence.</strong><br>Quote the request and point to the tool state that shaped the recommendation.</div>
+            <div class="check"><strong>Separate action from explanation.</strong><br>Show the proposed message and the internal reason side by side.</div>
+            <div class="check"><strong>Set consent limits.</strong><br>Define what the agent may do once approved and when that approval expires.</div>
+            <div class="check"><strong>Attach resume proof.</strong><br>When the agent continues later, show the approval packet it is relying on.</div>
+          </div>
+          <h3>Sources shaping this niche</h3>
+          <p>The category aligns with broader AI risk-management guidance. The <a href="https://www.nist.gov/itl/ai-risk-management-framework">NIST AI Risk Management Framework</a> emphasizes governance, measurement, and managing AI risk across real systems. The <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/">OWASP Top 10 for Large Language Model Applications</a> highlights application risks that become more important when agents touch tools, data, and external actions. Appointment approval packets are a practical operator-facing layer for those concerns: they do not replace security or governance, but they make delegated action visible before it turns into a customer commitment.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="section-head">
+        <h2>Questions operators ask before adopting this layer.</h2>
+        <p>The useful test is whether the packet reduces review time while increasing trust. If it only creates another inbox, it is not a control plane.</p>
+      </div>
+      <div class="faq">
+        <div>
+          <h3>Is this just an approval queue?</h3>
+          <p>No. A queue asks for a yes or no. A packet carries evidence, policy, proposed language, tool state, consent limits, and a replayable receipt. It lets the reviewer understand the decision without reconstructing the entire task.</p>
+        </div>
+        <div>
+          <h3>When should the agent ask for approval?</h3>
+          <p>Approvals should trigger when the agent changes a customer promise, handles sensitive context, sees stale consent, crosses price or scope thresholds, or resumes after a meaningful state change.</p>
+        </div>
+        <div>
+          <h3>What makes appointment work different?</h3>
+          <p>Appointments mix social tone, calendar availability, service scope, human preferences, and business constraints. The agent is not just finding a slot; it is negotiating a promise on behalf of the team.</p>
+        </div>
+        <div>
+          <h3>Where should teams start?</h3>
+          <p>Start with one high-volume text workflow, define the approval packet fields, and require receipts before the agent confirms or changes bookings. Then expand into browser workflows and publishing workflows once the review model is trusted.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="cta-inner">
+        <h2>Turn appointment agents into accountable operators.</h2>
+        <p>Super gives teams a practical way to connect text-first AI assistants, browser workflows, and website-building agents with the human review layer that real operations need.</p>
+        <a class="button primary" href="https://getsupers.com/">Visit Super</a>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div>Kalsh Hunter market notes for personal AI agent operators.</div>
+    <div><a href="https://getsupers.com/">Super</a> · <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Text agents</a> · <a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a></div>
+  </footer>
+  <script>
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.utils.toArray('.tile.img img,.hero-card img').forEach(function(img){
+        gsap.fromTo(img,{scale:.84,opacity:.58},{scale:1,opacity:1,ease:'none',scrollTrigger:{trigger:img,start:'top 92%',end:'bottom 18%',scrub:true}});
+      });
+      ScrollTrigger.create({trigger:'#control',start:'top top',end:'bottom bottom',pin:'.pin-title',pinSpacing:false});
+      gsap.utils.toArray('.scrub').forEach(function(el){
+        var words=el.textContent.trim().split(/\s+/);
+        el.innerHTML=words.map(function(w){return '<span>'+w+'</span>';}).join(' ');
+        gsap.to(el.querySelectorAll('span'),{opacity:1,stagger:.08,ease:'none',scrollTrigger:{trigger:el,start:'top 78%',end:'bottom 45%',scrub:true}});
+      });
+    }
+  </script>
+</body>
+</html>
