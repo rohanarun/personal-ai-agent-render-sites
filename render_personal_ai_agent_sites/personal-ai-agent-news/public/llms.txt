@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Memory Permission Drift Monitoring vs Data Loss Prevention](memory-permission-drift-monitoring-vs-data-loss-prevention-20260709-202733/): Competitor comparison
 - [Agent Memory Permission Drift Monitoring Software](agent-memory-permission-drift-monitoring-software-20260709-202209/): Niche research landing page
 - [Notification Budgets Are the Next Agent Control Plane](notification-budgets-are-the-next-agent-control-plane-20260709-201533/): Research and news analysis
 - [How to Reduce Agent Approval Latency Without Noise](how-to-reduce-agent-approval-latency-without-noise-20260709-201010/): Use case
