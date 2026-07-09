@@ -1,0 +1,619 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Personal AI Agents Are Replacing Static Intake with Operational Memory</title>
+  <meta name="description" content="A market briefing on how personal AI agents are moving beyond static intake forms toward operational memory, structured handoffs, and reviewable customer workflows.">
+  <link rel="canonical" href="https://kalshhunter.com/personal-ai-agents-are-replacing-static-intake-with-operational-memory-20260709-120308/">
+  <meta property="og:title" content="Personal AI Agents Are Replacing Static Intake with Operational Memory">
+  <meta property="og:description" content="Why the personal AI agent market is shifting from simple intake capture to operational memory and human-ready handoffs.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://kalshhunter.com/personal-ai-agents-are-replacing-static-intake-with-operational-memory-20260709-120308/">
+  <meta property="og:image" content="https://picsum.photos/seed/agent-operational-memory-market/1600/900">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <style>
+    :root {
+      --ink: #101116;
+      --paper: #f6f0e6;
+      --white: #fffaf1;
+      --muted: #696156;
+      --line: rgba(16,17,22,0.14);
+      --pine: #173f35;
+      --oxide: #ad523c;
+      --blue: #274f76;
+      --gold: #d8b867;
+      --night: #080a0f;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Geist", "Satoshi", "Outfit", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 20% 10%, rgba(173,82,60,0.18), transparent 35rem),
+        radial-gradient(circle at 78% 4%, rgba(39,79,118,0.2), transparent 36rem),
+        linear-gradient(180deg, #fffaf1 0%, var(--paper) 54%, #e7dccb 100%);
+      overflow-x: hidden;
+    }
+    main { overflow-x: hidden; width: 100%; max-width: 100%; }
+    a { color: inherit; }
+    .nav {
+      position: fixed;
+      z-index: 30;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1120px, calc(100vw - 28px));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      padding: 12px 14px 12px 22px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.6);
+      background: rgba(255,250,241,0.78);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 20px 70px rgba(16,17,22,0.12);
+    }
+    .brand { font-weight: 900; text-decoration: none; letter-spacing: 0; }
+    .nav-links { display: flex; gap: 22px; align-items: center; color: var(--muted); font-size: 13px; }
+    .nav-links a { text-decoration: none; }
+    .nav-cta {
+      display: inline-flex;
+      min-height: 42px;
+      padding: 0 18px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: var(--ink);
+      color: var(--white);
+      font-weight: 900;
+    }
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 154px 20px 112px;
+      isolation: isolate;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        radial-gradient(circle at 50% 24%, rgba(255,250,241,0.95), rgba(255,250,241,0.3) 25rem, transparent 44rem),
+        linear-gradient(180deg, rgba(246,240,230,0.15), rgba(246,240,230,0.86)),
+        url("https://picsum.photos/seed/operations-memory-wall/2200/1300") center/cover;
+      filter: grayscale(0.22) contrast(1.18) saturate(0.82);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: radial-gradient(circle at 50% 42%, transparent, rgba(16,17,22,0.24));
+    }
+    .kicker {
+      margin: 0 0 24px;
+      color: var(--oxide);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    h1 {
+      max-width: min(1140px, 94vw);
+      margin: 0 auto;
+      font-size: clamp(3.1rem, 5.35vw, 6.1rem);
+      line-height: 0.92;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .inline-img {
+      display: inline-block;
+      width: clamp(76px, 8vw, 132px);
+      height: clamp(34px, 3.5vw, 54px);
+      margin: 0 10px;
+      border-radius: 999px;
+      vertical-align: middle;
+      background: url("https://picsum.photos/seed/memory-receipt-card/420/220") center/cover;
+      filter: grayscale(0.18) contrast(1.18) saturate(0.82);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.34), 0 18px 48px rgba(16,17,22,0.18);
+    }
+    .hero-copy {
+      max-width: 800px;
+      margin: 30px auto 0;
+      color: #4b453d;
+      font-size: clamp(1.08rem, 1.5vw, 1.28rem);
+      line-height: 1.72;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 34px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 0 24px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 900;
+      border: 1px solid transparent;
+    }
+    .button.dark { background: var(--ink); color: var(--white); }
+    .button.light { background: var(--white); color: var(--ink); border-color: rgba(16,17,22,0.18); }
+    section { padding: 154px 0; }
+    .section-inner { width: min(1180px, calc(100vw - 40px)); margin: 0 auto; }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.86fr) minmax(280px, 0.54fr);
+      gap: 54px;
+      align-items: end;
+      margin-bottom: 58px;
+    }
+    h2 {
+      margin: 0;
+      font-size: clamp(2.35rem, 4.85vw, 5.15rem);
+      line-height: 0.98;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .section-head p, .lead { margin: 0; color: var(--muted); font-size: 18px; line-height: 1.72; }
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-flow: dense;
+      gap: 16px;
+    }
+    .card {
+      position: relative;
+      min-height: 300px;
+      padding: 30px;
+      border-radius: 26px;
+      border: 1px solid var(--line);
+      background: rgba(255,250,241,0.76);
+      overflow: hidden;
+      box-shadow: 0 24px 82px rgba(16,17,22,0.08);
+      transition: transform 700ms ease, box-shadow 700ms ease;
+    }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 36px 96px rgba(16,17,22,0.14); }
+    .wide { grid-column: span 8; }
+    .side { grid-column: span 4; }
+    .third { grid-column: span 4; }
+    .half { grid-column: span 6; }
+    .card h3 { margin: 0 0 16px; font-size: clamp(1.45rem, 2.15vw, 2.25rem); line-height: 1.04; }
+    .card p { margin: 0; color: #555047; line-height: 1.72; font-size: 16px; }
+    .card ul { margin: 20px 0 0; padding-left: 18px; color: #555047; line-height: 1.84; }
+    .image-card {
+      min-height: 420px;
+      color: var(--white);
+      background: var(--night);
+    }
+    .image-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("https://picsum.photos/seed/agent-ops-memory-dashboard/1400/900") center/cover;
+      filter: grayscale(0.26) contrast(1.2) saturate(0.8);
+      transform: scale(1.02);
+      transition: transform 800ms ease;
+    }
+    .image-card:hover::before { transform: scale(1.08); }
+    .image-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(8,10,15,0.06), rgba(8,10,15,0.86));
+    }
+    .image-card > * { position: relative; z-index: 1; }
+    .image-card p { color: rgba(255,250,241,0.78); max-width: 700px; }
+    .dark-band {
+      background:
+        radial-gradient(circle at 18% 18%, rgba(216,184,103,0.22), transparent 34rem),
+        radial-gradient(circle at 82% 78%, rgba(173,82,60,0.22), transparent 34rem),
+        var(--night);
+      color: var(--white);
+    }
+    .dark-band .section-head p { color: rgba(255,250,241,0.68); }
+    .stack { display: grid; gap: 28px; max-width: 950px; margin: 0 auto; }
+    .stack-card {
+      position: sticky;
+      top: 116px;
+      min-height: 360px;
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(260px, 0.55fr);
+      gap: 34px;
+      align-items: end;
+      padding: 34px;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,250,241,0.09);
+      backdrop-filter: blur(12px);
+      overflow: hidden;
+    }
+    .stack-card:nth-child(2) { top: 138px; }
+    .stack-card:nth-child(3) { top: 160px; }
+    .stack-card h3 { margin: 0 0 16px; font-size: clamp(2rem, 4vw, 4rem); line-height: 0.98; }
+    .stack-card p { margin: 0; color: rgba(255,250,241,0.72); line-height: 1.72; }
+    .stack-card img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 22px;
+      filter: grayscale(0.34) contrast(1.18);
+      transition: transform 700ms ease;
+    }
+    .stack-card:hover img { transform: scale(1.05); }
+    .accordion {
+      display: flex;
+      min-height: 430px;
+      border-radius: 30px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+    .slice {
+      flex: 1;
+      min-width: 0;
+      position: relative;
+      color: var(--white);
+      padding: 28px;
+      background-position: center;
+      background-size: cover;
+      overflow: hidden;
+      border-right: 1px solid rgba(255,255,255,0.18);
+      transition: flex 800ms ease;
+    }
+    .slice:last-child { border-right: 0; }
+    .slice:hover { flex: 2.05; }
+    .slice::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(8,10,15,0.14), rgba(8,10,15,0.86));
+    }
+    .slice div { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; }
+    .slice h3 { margin: 0 0 12px; font-size: 28px; }
+    .slice p { margin: 0; max-width: 350px; color: rgba(255,250,241,0.76); line-height: 1.62; opacity: 0; transition: opacity 500ms ease; }
+    .slice:hover p { opacity: 1; }
+    .marquee {
+      display: flex;
+      overflow: hidden;
+      padding: 24px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,250,241,0.48);
+    }
+    .marquee-track {
+      min-width: max-content;
+      display: flex;
+      gap: 42px;
+      animation: drift 28s linear infinite;
+      font-size: clamp(1.5rem, 3vw, 3rem);
+      font-weight: 900;
+      color: rgba(16,17,22,0.34);
+    }
+    @keyframes drift { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .check {
+      padding: 22px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: rgba(255,250,241,0.72);
+      color: #534d44;
+      line-height: 1.64;
+    }
+    .faq, .sources { display: grid; gap: 16px; }
+    details {
+      padding: 22px 24px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: rgba(255,250,241,0.72);
+    }
+    summary { cursor: pointer; font-size: 18px; font-weight: 900; }
+    details p { margin: 14px 0 0; color: var(--muted); line-height: 1.7; }
+    .footer {
+      padding: 132px 0 46px;
+      background: var(--ink);
+      color: var(--white);
+    }
+    .footer h2 { max-width: 980px; }
+    .footer p { max-width: 720px; color: rgba(255,250,241,0.7); line-height: 1.7; font-size: 18px; }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px 26px;
+      margin-top: 60px;
+      padding-top: 26px;
+      border-top: 1px solid rgba(255,255,255,0.14);
+      color: rgba(255,250,241,0.68);
+      font-size: 14px;
+    }
+    .footer-links a { text-decoration: none; }
+    @media (max-width: 920px) {
+      .section-head, .stack-card { grid-template-columns: 1fr; }
+      .wide, .side, .third, .half { grid-column: span 12; }
+      .accordion { flex-direction: column; min-height: 760px; }
+      .slice:hover { flex: 1.4; }
+      .checklist { grid-template-columns: 1fr; }
+      .nav-links a:not(.nav-cta) { display: none; }
+    }
+    @media (max-width: 560px) {
+      .nav { top: 10px; width: calc(100vw - 20px); }
+      .hero { padding: 128px 12px 86px; }
+      h1 { font-size: clamp(2.55rem, 14vw, 4rem); }
+      section { padding: 104px 0; }
+      .section-inner { width: min(100% - 24px, 1180px); }
+      .hero-actions { flex-direction: column; }
+      .button { width: 100%; }
+      .card, .stack-card { padding: 22px; border-radius: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="https://kalshhunter.com/">Kalsh Hunter</a>
+      <div class="nav-links">
+        <a href="#briefing">Briefing</a>
+        <a href="#market">Market</a>
+        <a href="#faq">FAQ</a>
+        <a class="nav-cta" href="https://getsupers.com/">Explore Supers</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div>
+        <p class="kicker">Personal AI agent market briefing</p>
+        <h1>Personal AI agents are replacing static intake with operational <span class="inline-img" aria-hidden="true"></span> memory.</h1>
+        <p class="hero-copy">The market is moving past forms that capture fields once. The valuable layer is becoming memory that can explain what happened, what changed, who approved it, and what a human should do next.</p>
+        <div class="hero-actions">
+          <a class="button dark" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Explore text agents</a>
+          <a class="button light" href="#briefing">Read the briefing</a>
+        </div>
+      </div>
+    </header>
+
+    <section id="briefing">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>Intake is becoming a living operations layer.</h2>
+          <p>Static intake tools assume the first submission is enough. Personal AI agents assume the first message is only the beginning: the customer adds photos, the team asks a follow-up, an approval changes the path, and the final record needs to remember the sequence.</p>
+        </div>
+        <div class="bento">
+          <article class="card wide image-card reveal-img">
+            <h3>The new unit of value is not a lead. It is a reviewable work packet.</h3>
+            <p>A work packet contains the customer's original words, the agent's summary, missing data, risk flags, handoff owner, approval history, and the recommended next step.</p>
+          </article>
+          <article class="card side">
+            <h3>Why static intake feels insufficient</h3>
+            <p>Forms capture answers, but they rarely preserve the context behind changing requests. That makes follow-up fragile and forces humans to reconstruct the story.</p>
+            <ul>
+              <li>Missing fields become callbacks.</li>
+              <li>Approval changes become tribal memory.</li>
+              <li>Risk flags disappear inside notes.</li>
+            </ul>
+          </article>
+          <article class="card third">
+            <h3>Memory beats transcript storage</h3>
+            <p>Raw transcripts help audit. Operational memory helps act. The agent needs both: evidence and a structured interpretation.</p>
+          </article>
+          <article class="card third">
+            <h3>Agents need boundaries</h3>
+            <p>The more memory an agent uses, the more clearly it must mark uncertainty, permissions, and human-owned decisions.</p>
+          </article>
+          <article class="card third">
+            <h3>Handoffs become products</h3>
+            <p>Teams will judge agents by the quality of the handoff: concise, sourced, routed, and ready for action.</p>
+          </article>
+          <article class="card half">
+            <h3>Text is the proving ground</h3>
+            <p>The <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text-message AI assistant</a> use case shows why memory matters: customers naturally add context over time, and the agent has to turn that thread into a usable operational record.</p>
+          </article>
+          <article class="card half">
+            <h3>Browser work needs receipts too</h3>
+            <p>When agents act across web apps, repeated workflows need evidence. The <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache workflow</a> points toward reusable state, proof, and repeatable operational steps.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="dark-band" id="market">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>Three market shifts are making memory a requirement.</h2>
+          <p>As personal agents enter real workflows, the old chatbot metric of "did it answer?" is being replaced by "can the next person trust what it remembers?"</p>
+        </div>
+        <div class="stack">
+          <article class="stack-card">
+            <div>
+              <h3>From response to continuity</h3>
+              <p>Customers do not experience service as isolated messages. They experience a thread. Agents that remember the thread can reduce repeated questions and prevent context loss.</p>
+            </div>
+            <img class="reveal-img" src="https://picsum.photos/seed/thread-continuity-agent/900/700" alt="Customer thread continuity across messages">
+          </article>
+          <article class="stack-card">
+            <div>
+              <h3>From notes to evidence</h3>
+              <p>Summaries are only useful when the team can inspect the source. The emerging standard is a summary that links back to customer words, approvals, and tool outcomes.</p>
+            </div>
+            <img class="reveal-img" src="https://picsum.photos/seed/evidence-linked-summary/900/700" alt="Evidence-linked operational summary">
+          </article>
+          <article class="stack-card">
+            <div>
+              <h3>From automation to review</h3>
+              <p>Human oversight is not a product tax. It is how agents earn trust in workflows where pricing, safety, customer promises, and account changes matter.</p>
+            </div>
+            <img class="reveal-img" src="https://picsum.photos/seed/human-review-agent-memory/900/700" alt="Human reviewing agent memory before action">
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-label="Market shift themes">
+      <div class="marquee-track">
+        <span>continuity</span><span>evidence</span><span>handoff</span><span>approval</span><span>memory</span><span>review</span>
+        <span>continuity</span><span>evidence</span><span>handoff</span><span>approval</span><span>memory</span><span>review</span>
+      </div>
+    </div>
+
+    <section>
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>What operational memory should contain.</h2>
+          <p>A personal AI agent should remember enough to make the next action safer, but not so much that sensitive context becomes unbounded or unreviewable.</p>
+        </div>
+        <div class="accordion">
+          <article class="slice" style="background-image:url('https://picsum.photos/seed/customer-source-evidence/1000/1200')">
+            <div>
+              <h3>Source evidence</h3>
+              <p>Original messages, timestamps, files, and tool results that support the agent's summary.</p>
+            </div>
+          </article>
+          <article class="slice" style="background-image:url('https://picsum.photos/seed/agent-interpretation-layer/1000/1200')">
+            <div>
+              <h3>Interpretation</h3>
+              <p>The agent's structured read of urgency, missing data, likely intent, and recommended next step.</p>
+            </div>
+          </article>
+          <article class="slice" style="background-image:url('https://picsum.photos/seed/approval-memory-record/1000/1200')">
+            <div>
+              <h3>Approval trail</h3>
+              <p>Who approved a step, what changed, and what the agent should never assume without review.</p>
+            </div>
+          </article>
+          <article class="slice" style="background-image:url('https://picsum.photos/seed/publishing-agent-page/1000/1200')">
+            <div>
+              <h3>Reusable output</h3>
+              <p>Patterns that can inform follow-up workflows, service pages, and agent-built customer experiences.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>Readiness checklist for memory-backed agents.</h2>
+          <p>Before expanding from intake capture to operational memory, make sure the agent can explain and constrain what it remembers.</p>
+        </div>
+        <div class="checklist">
+          <div class="check"><strong>Evidence links:</strong> Every important summary claim should trace back to source text, a user approval, or a tool result.</div>
+          <div class="check"><strong>Memory scope:</strong> Define which facts persist, which expire, and which require renewed user consent.</div>
+          <div class="check"><strong>Human-owned decisions:</strong> Keep pricing, safety, legal, and relationship-sensitive promises behind review.</div>
+          <div class="check"><strong>Correction loops:</strong> When a human edits an agent summary, feed that pattern into future prompt expectations.</div>
+          <div class="check"><strong>Channel fit:</strong> Start where customers already provide context, especially text threads and uploaded images.</div>
+          <div class="check"><strong>Publishing reuse:</strong> If repeated needs appear, use them carefully in pages created through the <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">agent-built websites</a> workflow.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>Questions the market is asking now.</h2>
+          <p>The practical debate is no longer whether agents can answer. It is whether they can carry operational context without losing accountability.</p>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Is operational memory the same as chat history?</summary>
+            <p>No. Chat history is a record of messages. Operational memory is structured context that helps the agent and human decide what should happen next.</p>
+          </details>
+          <details>
+            <summary>Why does memory matter for personal AI agents?</summary>
+            <p>Personal agents often work across days, channels, and tools. Without memory, they repeatedly ask the same questions or lose the reason behind a prior decision.</p>
+          </details>
+          <details>
+            <summary>What is the main risk?</summary>
+            <p>The main risk is overconfident reuse. Agents should distinguish durable facts from stale context, assumptions, and information that requires consent or human review.</p>
+          </details>
+          <details>
+            <summary>Where should teams start?</summary>
+            <p>Start with one high-context workflow, such as inbound text intake, and measure whether the agent creates better summaries, fewer callbacks, and clearer handoffs.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-inner">
+        <div class="section-head">
+          <h2>Sources and references.</h2>
+          <p>These references support the discussion of AI risk management, accountability, and application-level controls for memory-backed agent workflows.</p>
+        </div>
+        <div class="sources">
+          <details open>
+            <summary>NIST AI Risk Management Framework</summary>
+            <p>The NIST AI RMF is relevant for governing, mapping, measuring, and managing AI risks in workflows that affect real user outcomes. Source: <a href="https://www.nist.gov/itl/ai-risk-management-framework">nist.gov/itl/ai-risk-management-framework</a>.</p>
+          </details>
+          <details open>
+            <summary>OWASP Top 10 for Large Language Model Applications</summary>
+            <p>OWASP's LLM application guidance is relevant for prompt injection, data exposure, tool misuse, and agent behavior in connected workflows. Source: <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/">owasp.org/www-project-top-10-for-large-language-model-applications</a>.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="section-inner">
+        <h2>The next personal agent moat is trustworthy memory.</h2>
+        <p>Static intake captured a moment. Operational memory preserves the path from customer signal to human decision, with enough evidence for the team to trust the next step.</p>
+        <div class="hero-actions" style="justify-content:flex-start">
+          <a class="button light" href="https://getsupers.com/">Visit Supers</a>
+          <a class="button dark" style="background:#d8b867;color:#101116" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Explore text agents</a>
+        </div>
+        <div class="footer-links">
+          <a href="https://getsupers.com/">Supers</a>
+          <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Text-message AI assistant</a>
+          <a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a>
+          <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">Agent-built websites</a>
+          <span>Published for kalshhunter.com</span>
+        </div>
+      </div>
+    </footer>
+  </main>
+  <script>
+    window.addEventListener("load", function () {
+      if (!window.gsap || !window.ScrollTrigger) return;
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.utils.toArray(".reveal-img").forEach(function (el) {
+        gsap.fromTo(el, { scale: 0.84, opacity: 0.62 }, {
+          scale: 1,
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 84%",
+            end: "bottom 20%",
+            scrub: true
+          }
+        });
+      });
+      gsap.utils.toArray(".stack-card").forEach(function (card, index) {
+        gsap.fromTo(card, { y: 90, opacity: 0.3, scale: 0.96 }, {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 88%",
+            end: "top 38%",
+            scrub: true
+          },
+          delay: index * 0.04
+        });
+      });
+    });
+  </script>
+</body>
+</html>
