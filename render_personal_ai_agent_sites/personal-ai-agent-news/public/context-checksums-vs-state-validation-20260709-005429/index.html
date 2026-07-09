@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Context Checksums vs State Validation for Personal AI Agents</title>
+  <meta name="description" content="A detailed comparison of context checksums and state validation for personal AI agents that resume browser work, text approvals, and public publishing tasks." />
+  <link rel="canonical" href="https://kalshhunter.com/context-checksums-vs-state-validation-20260709-005429/" />
+  <meta property="og:title" content="Context Checksums vs State Validation for Personal AI Agents" />
+  <meta property="og:description" content="Compare context checksums and state validation for personal AI agents that need safer resume behavior across messages, browsers, and public outputs." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://kalshhunter.com/context-checksums-vs-state-validation-20260709-005429/" />
+  <style>
+    :root{--bg:#080d10;--ink:#fbf7ee;--muted:rgba(251,247,238,.72);--soft:rgba(251,247,238,.5);--line:rgba(251,247,238,.15);--panel:rgba(17,24,28,.82);--mint:#bff8d8;--gold:#f3d38a;--rose:#f5aaa5;--font:"Cabinet Grotesk","Outfit","Geist",Arial,sans-serif}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 18% 10%,rgba(191,248,216,.18),transparent 34rem),radial-gradient(circle at 86% 14%,rgba(245,170,165,.14),transparent 30rem),linear-gradient(180deg,#080d10 0%,#11191d 45%,#080d10 100%);color:var(--ink);font-family:var(--font);overflow-x:hidden}body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.13;mix-blend-mode:soft-light;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23noise)' opacity='.58'/%3E%3C/svg%3E")}main{width:100%;max-width:100%;overflow-x:hidden}a{color:inherit}.nav{position:fixed;z-index:40;top:22px;left:50%;transform:translateX(-50%);width:min(1120px,calc(100vw - 32px));display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 14px 12px 20px;border:1px solid var(--line);border-radius:999px;background:rgba(8,13,16,.72);backdrop-filter:blur(18px);box-shadow:0 20px 90px rgba(0,0,0,.36)}.brand{text-decoration:none;font-weight:900}.nav-links{display:flex;align-items:center;gap:8px}.nav-links a{padding:9px 12px;border-radius:999px;color:var(--muted);text-decoration:none;font-size:.9rem}.nav-links .nav-cta{background:var(--mint);color:#06100b;font-weight:900}.hero{min-height:100vh;display:grid;align-items:center;padding:152px 20px 104px}.hero-grid{width:min(1200px,94vw);margin:0 auto;display:grid;grid-template-columns:1.02fr .98fr;gap:58px;align-items:center}.hero-copy{position:relative;z-index:2}h1{max-width:min(1120px,94vw);margin:0;font-size:clamp(2.55rem,4.65vw,5.15rem);line-height:.96;letter-spacing:0;text-wrap:balance}.inline-img{display:inline-block;width:clamp(76px,8vw,130px);height:clamp(34px,3.9vw,54px);margin:0 .14em;border-radius:999px;vertical-align:middle;background:url("https://picsum.photos/seed/context-checksum-state-validation-inline/620/320") center/cover;filter:grayscale(.2) contrast(1.2);box-shadow:inset 0 0 0 1px rgba(251,247,238,.22),0 18px 68px rgba(0,0,0,.34)}.hero p{max-width:710px;margin:28px 0 0;color:var(--muted);font-size:clamp(1.05rem,1.52vw,1.28rem);line-height:1.64}.actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}.button{min-height:49px;padding:0 20px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;text-decoration:none;font-weight:900;border:1px solid var(--line)}.button.primary{background:var(--mint);color:#06100b;border-color:transparent}.button.secondary{background:rgba(251,247,238,.08);color:var(--ink)}.hero-media{min-height:min(650px,70vh);border-radius:8px;overflow:hidden;border:1px solid var(--line);box-shadow:0 54px 150px rgba(0,0,0,.5);background:#111}.hero-media img{width:100%;height:100%;min-height:min(650px,70vh);object-fit:cover;filter:grayscale(.28) contrast(1.18) saturate(.72)}
+    section{padding:150px 20px}.wrap{width:min(1160px,94vw);margin:0 auto}.section-head{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:end;margin-bottom:44px}h2{margin:0;font-size:clamp(2.15rem,4vw,4.7rem);line-height:.99;letter-spacing:0;text-wrap:balance}.lead{margin:0;color:var(--muted);font-size:1.08rem;line-height:1.72}.bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-flow:dense;gap:16px}.card{min-height:260px;position:relative;overflow:hidden;padding:28px;border-radius:8px;border:1px solid var(--line);background:var(--panel);box-shadow:0 24px 90px rgba(0,0,0,.24)}.card h3{margin:0 0 14px;font-size:clamp(1.28rem,1.9vw,2rem);line-height:1.09}.card p,.card li{color:var(--muted);line-height:1.66}.card ul{margin:18px 0 0;padding-left:20px}.span-7{grid-column:span 7}.span-6{grid-column:span 6}.span-5{grid-column:span 5}.span-4{grid-column:span 4}.media{padding:0}.media img{width:100%;height:100%;min-height:330px;object-fit:cover;filter:grayscale(.24) contrast(1.18);transition:transform .7s ease}.media:hover img,.accordion:hover img{transform:scale(1.05)}.decision{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}.decision div{border:1px solid var(--line);border-radius:8px;background:rgba(251,247,238,.05);padding:14px}.decision strong{display:block;color:var(--ink);margin-bottom:5px}.marquee{overflow:hidden;white-space:nowrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 0;color:var(--soft);font-size:clamp(1.5rem,3.1vw,3.25rem);font-weight:900}.marquee-track{display:inline-block;animation:marquee 38s linear infinite}@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}.pinned{display:grid;grid-template-columns:.82fr 1.18fr;gap:58px;align-items:start}.pin-title{position:sticky;top:124px}.stack{display:grid;gap:18px}.accordion{display:grid;grid-template-columns:180px 1fr;min-height:210px;overflow:hidden;border:1px solid var(--line);border-radius:8px;background:rgba(251,247,238,.06)}.accordion img{width:100%;height:100%;object-fit:cover;filter:grayscale(.25) contrast(1.2);transition:transform .7s ease}.accordion div{padding:24px}.accordion h3{margin:0 0 10px;font-size:1.34rem}.accordion p{margin:0;color:var(--muted);line-height:1.64}.table{display:grid;grid-template-columns:1fr 1fr 1fr;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:rgba(251,247,238,.05)}.table div{padding:20px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-height:112px}.table div:nth-child(3n){border-right:0}.table div:nth-last-child(-n+3){border-bottom:0}.table strong{display:block;margin-bottom:8px}.table p{margin:0;color:var(--muted);line-height:1.55}.sources{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.source-card,details{border:1px solid var(--line);border-radius:8px;background:rgba(251,247,238,.06);padding:22px}.source-card h3{margin-top:0}.source-card p,details p{color:var(--muted);line-height:1.66}.source-card a{color:var(--mint);font-weight:900}.faq{display:grid;gap:14px}summary{cursor:pointer;font-size:1.08rem;font-weight:900}.cta{padding:130px 20px;border-top:1px solid var(--line);background:radial-gradient(circle at 22% 24%,rgba(191,248,216,.15),transparent 32rem),linear-gradient(135deg,rgba(245,170,165,.11),rgba(243,211,138,.08))}.cta-box{width:min(1120px,94vw);margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:34px;align-items:center}footer{padding:38px 20px 70px;color:var(--soft)}footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}footer a{color:var(--muted);text-decoration:none;margin-left:16px}@media(max-width:880px){.nav{border-radius:22px}.nav-links{display:none}.hero-grid,.section-head,.pinned,.cta-box{grid-template-columns:1fr}.hero{padding-top:132px}.bento{grid-template-columns:1fr}.span-4,.span-5,.span-6,.span-7{grid-column:span 1}.decision,.sources,.table{grid-template-columns:1fr}.table div,.table div:nth-child(3n),.table div:nth-last-child(-n+3){border-right:0;border-bottom:1px solid var(--line)}.table div:last-child{border-bottom:0}.accordion{grid-template-columns:1fr}section{padding:108px 20px}}
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="Primary navigation">
+    <a class="brand" href="/">Kalsh Hunter</a>
+    <div class="nav-links">
+      <a href="#compare">Compare</a>
+      <a href="#workflow">Workflow</a>
+      <a href="#matrix">Matrix</a>
+      <a class="nav-cta" href="https://getsupers.com/">Explore Super</a>
+    </div>
+  </nav>
+  <main>
+    <header class="hero">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <h1>Context checksums <span class="inline-img" aria-hidden="true"></span> vs state validation for personal AI agents</h1>
+          <p>Both patterns reduce stale-agent risk, but they solve different parts of the resume problem. Context checksums prove that remembered evidence still matches. State validation proves the current environment is safe enough for the next action.</p>
+          <div class="actions">
+            <a class="button primary" href="https://getsupers.com/">Build with Super</a>
+            <a class="button secondary" href="https://app.getsupers.com/use-cases/computer-use-cache/">Review browser context</a>
+          </div>
+        </div>
+        <div class="hero-media">
+          <img class="scale-media" src="https://picsum.photos/seed/context-checksum-vs-state-validation-hero/1200/1500" alt="Comparison interface for context checksums and state validation" />
+        </div>
+      </div>
+    </header>
+
+    <section id="compare">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>The short answer: use both, but at different moments.</h2>
+          <p class="lead">A personal AI agent that resumes work needs a memory test and a live-environment test. Context checksums are the memory test. State validation is the environment test.</p>
+        </div>
+        <div class="bento">
+          <article class="card span-7">
+            <h3>Context checksums are best before trusting old evidence.</h3>
+            <p>A checksum packages the details the agent relied on earlier: extracted prices, page titles, screenshots, URLs, approval text, draft output, and timestamps. When the agent resumes, it compares the current continuation context against that package.</p>
+            <ul>
+              <li>Use it before sending a user-approved text.</li>
+              <li>Use it before publishing a reviewed page.</li>
+              <li>Use it before using cached browser observations.</li>
+            </ul>
+          </article>
+          <article class="card media span-5">
+            <img class="scale-media" src="https://picsum.photos/seed/checksum-comparison-card/900/1200" alt="Checksum comparison card" />
+          </article>
+          <article class="card span-4">
+            <h3>State validation is best before acting.</h3>
+            <p>State validation inspects the live system: active account, browser URL, selected cart, form values, permissions, tool availability, and policy boundaries.</p>
+          </article>
+          <article class="card span-4">
+            <h3>The overlap is intentional.</h3>
+            <p>Checksums catch mismatched memory. Validation catches unsafe action conditions. The same resume step can need both signals.</p>
+          </article>
+          <article class="card span-4">
+            <h3>The failure mode is different.</h3>
+            <p>A checksum failure says the remembered context changed. A validation failure says the current action environment is not ready.</p>
+          </article>
+          <article class="card media span-6">
+            <img class="scale-media" src="https://picsum.photos/seed/personal-agent-validation-map/1200/820" alt="Personal AI agent validation map" />
+          </article>
+          <article class="card span-6">
+            <h3>Decision rule for builders</h3>
+            <p>When the agent relies on prior evidence, run a checksum. When the agent is about to touch the world, validate live state. When it resumes after minutes or hours, run both.</p>
+            <div class="decision">
+              <div><strong>Checksum asks</strong><span>Is my remembered context still true?</span></div>
+              <div><strong>Validation asks</strong><span>Is the current action safe now?</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true"><div class="marquee-track">remembered evidence · live state · approval match · browser readiness · remembered evidence · live state · approval match · browser readiness · </div></div>
+
+    <section id="workflow">
+      <div class="wrap pinned">
+        <div class="pin-title">
+          <h2>Where the comparison changes product design.</h2>
+          <p class="lead">The best personal AI agent products make the distinction visible in their resume workflow. Super-style agents can connect these checks to text approvals, browser caches, and generated website output.</p>
+        </div>
+        <div class="stack">
+          <article class="accordion">
+            <img class="scale-media" src="https://picsum.photos/seed/text-agent-approval-checksum/700/900" alt="Text approval checksum workflow" />
+            <div>
+              <h3>Text message agents</h3>
+              <p>For a <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text message AI assistant</a>, checksums verify that the user-approved content still matches the outgoing message. State validation confirms the recipient, channel, rate limit, and action policy.</p>
+            </div>
+          </article>
+          <article class="accordion">
+            <img class="scale-media" src="https://picsum.photos/seed/browser-agent-state-validation/700/900" alt="Browser state validation workflow" />
+            <div>
+              <h3>Browser agents</h3>
+              <p>For <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a>, checksums compare cached observations with fresh page evidence. State validation confirms the browser is on the right account, page, and form state.</p>
+            </div>
+          </article>
+          <article class="accordion">
+            <img class="scale-media" src="https://picsum.photos/seed/agent-website-publish-validation/700/900" alt="Website publish validation workflow" />
+            <div>
+              <h3>Website-building agents</h3>
+              <p>For <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent website building</a>, checksums verify that the reviewed page content has not changed. State validation confirms the publish destination, domain, and deploy path.</p>
+            </div>
+          </article>
+          <article class="accordion">
+            <img class="scale-media" src="https://picsum.photos/seed/agent-human-review-gate/700/900" alt="Human review gate for AI agent state" />
+            <div>
+              <h3>Human review gates</h3>
+              <p>When either signal fails, the agent should stop, show the mismatch, refresh evidence, and request a new approval instead of continuing from a stale assumption.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="matrix">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Comparison matrix for agent builders.</h2>
+          <p class="lead">Use this matrix to decide which guardrail belongs in each part of the personal AI agent loop.</p>
+        </div>
+        <div class="table" role="table" aria-label="Context checksums versus state validation comparison">
+          <div><strong>Question</strong><p>What are we checking?</p></div>
+          <div><strong>Context checksum</strong><p>Whether prior evidence, approval, or output still matches.</p></div>
+          <div><strong>State validation</strong><p>Whether the live environment is ready for the next action.</p></div>
+          <div><strong>Best trigger</strong><p>Resume, retry, delayed execution, handoff, or cached context reuse.</p></div>
+          <div><strong>Checksum trigger</strong><p>The agent is relying on old observations or old approvals.</p></div>
+          <div><strong>Validation trigger</strong><p>The agent is about to click, submit, send, buy, schedule, or publish.</p></div>
+          <div><strong>Failure response</strong><p>What should the agent do?</p></div>
+          <div><strong>Checksum response</strong><p>Explain what changed and refresh the evidence packet.</p></div>
+          <div><strong>Validation response</strong><p>Pause the action and request human confirmation or environment repair.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Implementation checklist.</h2>
+          <p class="lead">A useful system prompt or agent policy should tell the agent what went wrong and what must happen next when either guardrail fails.</p>
+        </div>
+        <div class="bento">
+          <article class="card span-4"><h3>Record the reference state.</h3><p>Capture the evidence the agent used, not just the final answer. Include URL, timestamp, selected values, screenshots, and approval text.</p></article>
+          <article class="card span-4"><h3>Compare before resuming.</h3><p>Before continuing delayed work, compare the live observation with the saved reference state and name every mismatch.</p></article>
+          <article class="card span-4"><h3>Validate before action.</h3><p>Before sending or submitting, confirm account, destination, amount, form state, permission, and policy boundary.</p></article>
+          <article class="card span-6"><h3>Train the prompt on failures.</h3><p>If the agent resumed from stale context, update the system prompt to say: never continue after a resume without comparing remembered evidence to current evidence. If live state is not validated, do not act.</p></article>
+          <article class="card span-6"><h3>Expose the result to the user.</h3><p>Show whether the agent ran a checksum, state validation, or both. A simple "verified" state is less useful than a named check with a recoverable failure path.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Sources and references.</h2>
+          <p class="lead">These references support the safety framing behind state checks, excessive agency controls, and risk documentation.</p>
+        </div>
+        <div class="sources">
+          <article class="source-card"><h3>NIST AI Risk Management Framework</h3><p>NIST frames AI risk management around governance, measurement, documentation, and managing context-specific harms.</p><a href="https://www.nist.gov/itl/ai-risk-management-framework" rel="nofollow">Open NIST AI RMF</a></article>
+          <article class="source-card"><h3>OWASP LLM Application Risks</h3><p>OWASP's LLM guidance is relevant for excessive agency, prompt injection, tool misuse, sensitive data, and oversight failures.</p><a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" rel="nofollow">Open OWASP LLM Top 10</a></article>
+          <article class="source-card"><h3>Super</h3><p>Super is the practical reference point for personal agents that operate through text, browser context, cached work, and public outputs.</p><a href="https://getsupers.com/">Open Super</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <h2>FAQ</h2>
+          <p class="lead">Direct answers for teams deciding whether this is one feature or two.</p>
+        </div>
+        <div class="faq">
+          <details><summary>Are context checksums a replacement for state validation?</summary><p>No. They prove remembered context still matches. They do not prove the live environment is safe for action.</p></details>
+          <details><summary>Can state validation replace context checksums?</summary><p>Not when the agent relies on prior evidence. A page can be valid for action while the remembered price, message, or draft is stale.</p></details>
+          <details><summary>Which one should a personal agent run first?</summary><p>Run the checksum first when resuming from memory, then validate live state before action. If the agent is not relying on old context, state validation may be enough.</p></details>
+          <details><summary>What should happen when a check fails?</summary><p>The agent should pause, explain the mismatch, refresh evidence, and ask for a new approval when the action has user or external impact.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="cta-box">
+        <div>
+          <h2>Build agents that know when memory is stale.</h2>
+          <p class="lead">Context checksums and state validation together make personal AI agents safer at the exact moment they resume and act.</p>
+        </div>
+        <a class="button primary" href="https://getsupers.com/">Explore Super</a>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap">
+      <span>Kalsh Hunter personal AI agent market notes</span>
+      <span><a href="https://getsupers.com/">Super</a><a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Text assistants</a><a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a></span>
+    </div>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    if(window.gsap&&window.ScrollTrigger){
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.utils.toArray(".scale-media").forEach(function(img){
+        gsap.fromTo(img,{scale:.84,opacity:.58},{scale:1,opacity:1,ease:"none",scrollTrigger:{trigger:img,start:"top 88%",end:"bottom 18%",scrub:true}});
+      });
+      gsap.utils.toArray(".card,.accordion").forEach(function(card,index){
+        gsap.from(card,{y:46,opacity:0,duration:.85,delay:index*.022,ease:"power3.out",scrollTrigger:{trigger:card,start:"top 86%"}});
+      });
+    }
+  </script>
+</body>
+</html>
