@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Approval Latency Monitoring vs Observability Dashboards](approval-latency-monitoring-vs-observability-dashboards-20260709-200003/): Competitor comparison
 - [Approval Latency Monitoring Software for Personal AI Agents](approval-latency-monitoring-software-20260709-195010/): Niche research landing page
 - [Approval Latency Is the New Agent Market Metric](approval-latency-is-the-new-agent-market-metric-20260709-194009/): Research and news analysis
 - [How to Route Agent Approval Requests to SMS](how-to-route-agent-approval-requests-to-sms-20260709-193503/): Use case
