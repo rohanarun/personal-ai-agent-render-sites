@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Phone Native Governance vs Dashboard Only Agent Controls](phone-native-governance-vs-dashboard-only-agent-controls-20260709-190640/): Competitor comparison
 - [Phone Native Agent Governance Software](phone-native-agent-governance-software-20260709-185902/): Niche research landing page
 - [Phone Native Memory Governance Is the Next Agent Market Signal](phone-native-memory-governance-is-the-next-agent-market-signal-20260709-185339/): Research and news analysis
 - [How to Wire Memory Rollback Reviews Into Text Approvals](how-to-wire-memory-rollback-reviews-into-text-approvals-20260709-184340/): Use case
