@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Agent Consent Evidence Room Software](agent-consent-evidence-room-software-20260709-175902/): Niche research landing page
 - [Agent Consent Evidence Is Replacing Trust Badges](agent-consent-evidence-is-replacing-trust-badges-20260709-174902/): Research and news analysis
 - [How to Build Consent Dashboards for AI Agent Buyers](how-to-build-consent-dashboards-for-ai-agent-buyers-20260709-173902/): Use case
 - [Agent Consent Dashboards vs Approval Queues](agent-consent-dashboards-vs-approval-queues-20260709-173332/): Competitor comparison
