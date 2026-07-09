@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Personal AI Agent Approval Memory Software](personal-ai-agent-approval-memory-software-20260709-025034/): Niche research landing page
 - [Text AI Agents Need Replayable Approval Memory](text-ai-agents-need-replayable-approval-memory-20260709-024030/): Research and news analysis
 - [How to Build Decision Replay for Text AI Agents](how-to-build-decision-replay-for-text-ai-agents-20260709-023034/): Use case
 - [Decision Replay Software vs Agent Audit Logs](decision-replay-software-vs-agent-audit-logs-20260709-022034/): Competitor comparison
