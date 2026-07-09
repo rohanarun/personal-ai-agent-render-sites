@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Audit Linked Consent Software for Personal AI Agents](audit-linked-consent-software-for-personal-ai-agents-20260709-075030/): Niche research landing page
 - [Personal AI Agents Are Getting Audit Linked Consent](personal-ai-agents-are-getting-audit-linked-consent-20260709-074530/): Research and news analysis
 - [How to Connect Consent Receipts to Agent Audit Logs](how-to-connect-consent-receipts-to-agent-audit-logs-20260709-074030/): Use case
 - [Consent Receipt Ledgers vs Agent Audit Logs](consent-receipt-ledgers-vs-agent-audit-logs-20260709-073501/): Competitor comparison
