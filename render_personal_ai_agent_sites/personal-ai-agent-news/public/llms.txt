@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Launch Memory Software vs Traditional Website QA Tools](launch-memory-software-vs-traditional-website-qa-tools-20260709-105906/): Competitor comparison
 - [Launch Memory Software for Personal AI Agent Websites](launch-memory-software-for-personal-ai-agent-websites-20260709-104907/): Niche research landing page
 - [Personal AI Agents Are Turning QA into Launch Memory](personal-ai-agents-are-turning-qa-into-launch-memory-20260709-104301/): Research and news analysis
 - [How to Run Launch Room QA for AI-Built Sites](how-to-run-launch-room-qa-for-ai-built-sites-20260709-103801/): Use case
