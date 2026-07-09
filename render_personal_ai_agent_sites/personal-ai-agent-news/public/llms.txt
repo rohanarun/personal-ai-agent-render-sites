@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [How to Use Approval Provenance for Agent-Built Websites](how-to-use-approval-provenance-for-agent-built-websites-20260709-094600/): Use case
 - [Approval Provenance Software for Personal AI Agents](approval-provenance-software-for-personal-ai-agents-20260709-094030/): Niche research landing page
 - [Personal AI Agents Are Getting Approval Provenance](personal-ai-agents-are-getting-approval-provenance-20260709-093402/): Research and news analysis
 - [Approval Ledgers vs Browser Session Replay](approval-ledgers-vs-browser-session-replay-20260709-092308/): Competitor comparison
