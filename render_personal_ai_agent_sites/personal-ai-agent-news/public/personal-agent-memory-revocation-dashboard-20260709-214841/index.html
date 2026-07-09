@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Personal Agent Memory Revocation Dashboard</title>
+  <meta name="description" content="A niche landing page for teams building personal AI agent memory revocation dashboards, receipt ledgers, and user-safe consent workflows.">
+  <link rel="canonical" href="https://kalshhunter.com/personal-agent-memory-revocation-dashboard-20260709-214841/">
+  <meta property="og:title" content="Personal Agent Memory Revocation Dashboard">
+  <meta property="og:description" content="A practical product blueprint for reviewing revoked agent memories, preserving audit proof, and keeping personal AI assistants trustworthy.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kalshhunter.com/personal-agent-memory-revocation-dashboard-20260709-214841/">
+  <meta property="og:image" content="https://picsum.photos/seed/memory-revocation-dashboard/1600/900">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap');
+    :root {
+      --ink: #f8f3e7;
+      --muted: rgba(248,243,231,.72);
+      --coal: #080907;
+      --panel: rgba(248,243,231,.06);
+      --line: rgba(248,243,231,.16);
+      --moss: #7fb68f;
+      --terracotta: #d17656;
+      --butter: #e8cc78;
+      --paper: #f6ecd8;
+      --shadow: 0 34px 90px rgba(0,0,0,.46);
+    }
+    * { box-sizing: border-box; }
+    html { background: var(--coal); scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Outfit", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 18% 8%, rgba(209,118,86,.2), transparent 30rem),
+        radial-gradient(circle at 88% 22%, rgba(127,182,143,.18), transparent 36rem),
+        linear-gradient(180deg, #080907 0%, #12150f 48%, #080907 100%);
+      overflow-x: hidden;
+    }
+    body:before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: .12;
+      mix-blend-mode: soft-light;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+    }
+    a { color: inherit; }
+    main { position: relative; z-index: 1; width: 100%; max-width: 100%; overflow-x: hidden; }
+    .nav {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      width: min(1160px, calc(100vw - 32px));
+      min-height: 58px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(8,9,7,.66);
+      backdrop-filter: blur(20px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 10px 12px 10px 18px;
+      box-shadow: 0 16px 54px rgba(0,0,0,.34);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+    .brand-mark {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: conic-gradient(from 180deg, var(--butter), var(--moss), var(--terracotta), var(--butter));
+      box-shadow: inset 0 0 0 6px rgba(8,9,7,.58);
+    }
+    .nav-links { display: flex; align-items: center; gap: 18px; color: var(--muted); font-size: 14px; }
+    .nav-links a { text-decoration: none; }
+    .nav-cta {
+      min-height: 38px;
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 0 16px;
+      background: var(--paper);
+      color: #080907;
+      font-weight: 900;
+    }
+    .hero {
+      min-height: 100svh;
+      position: relative;
+      display: grid;
+      align-items: center;
+      width: min(1240px, calc(100vw - 40px));
+      margin: 0 auto;
+      padding: 138px 0 92px;
+    }
+    .hero-copy {
+      width: min(840px, 92vw);
+      position: relative;
+      z-index: 2;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(3.15rem, 6.2vw, 6.9rem);
+      line-height: .92;
+      letter-spacing: 0;
+      font-weight: 900;
+    }
+    .inline-photo {
+      display: inline-block;
+      width: clamp(72px, 10vw, 136px);
+      height: clamp(38px, 5vw, 62px);
+      margin: 0 .14em;
+      vertical-align: middle;
+      border-radius: 999px;
+      background: url("https://picsum.photos/seed/revocation-dashboard-pill/440/190") center/cover;
+      filter: grayscale(.18) contrast(1.18);
+      box-shadow: inset 0 0 0 1px rgba(248,243,231,.25), 0 14px 36px rgba(0,0,0,.36);
+    }
+    .hero-copy p {
+      max-width: 720px;
+      color: rgba(248,243,231,.8);
+      font-size: clamp(1.05rem, 1.55vw, 1.28rem);
+      line-height: 1.68;
+      margin: 28px 0 0;
+    }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 34px; }
+    .button {
+      min-height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      border: 1px solid rgba(248,243,231,.22);
+      padding: 0 24px;
+      text-decoration: none;
+      font-weight: 900;
+      transition: transform .35s ease, background .35s ease;
+    }
+    .button:hover { transform: translateY(-3px); }
+    .button.primary { background: var(--paper); color: #080907; }
+    .button.secondary { background: rgba(8,9,7,.58); color: var(--ink); }
+    .hero-art {
+      position: absolute;
+      right: 0;
+      bottom: 72px;
+      width: min(520px, 42vw);
+      height: min(660px, 68vh);
+      min-height: 460px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      z-index: 1;
+    }
+    .hero-art img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(.28) contrast(1.22) saturate(.72);
+      transform: scale(1.03);
+      transition: transform .7s ease;
+    }
+    .hero-art:hover img { transform: scale(1.08); }
+    .hero-art:after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(8,9,7,.5), transparent 52%), linear-gradient(180deg, transparent, rgba(8,9,7,.78));
+    }
+    section { padding: 150px 20px; }
+    .wrap { width: min(1180px, calc(100vw - 36px)); margin: 0 auto; }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, .95fr) minmax(280px, .55fr);
+      gap: 54px;
+      align-items: end;
+      margin-bottom: 52px;
+    }
+    h2 {
+      margin: 0;
+      font-size: clamp(2.45rem, 5vw, 5.7rem);
+      line-height: .96;
+      letter-spacing: 0;
+      font-weight: 900;
+    }
+    .lead { color: var(--muted); line-height: 1.76; font-size: 1.07rem; margin: 0; }
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      grid-auto-flow:dense;
+      gap: 14px;
+    }
+    .card {
+      min-height: 260px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 28px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+    .card h3 { margin: 0 0 16px; font-size: clamp(1.35rem, 2.2vw, 2.2rem); line-height: 1.04; letter-spacing: 0; }
+    .card p, .card li { color: rgba(248,243,231,.76); line-height: 1.72; }
+    .card ul { margin: 0; padding-left: 18px; }
+    .span-8 { grid-column: span 8; }
+    .span-4 { grid-column: span 4; }
+    .span-6 { grid-column: span 6; }
+    .image-card { padding: 0; min-height: 510px; }
+    .image-card img, .stack-card img, .accordion-panel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(.3) contrast(1.22) saturate(.76);
+      transition: transform .7s ease;
+    }
+    .image-card:hover img, .stack-card:hover img, .accordion-panel:hover img { transform: scale(1.05); }
+    .metric {
+      font-size: clamp(3.5rem, 7vw, 7rem);
+      line-height: .9;
+      font-weight: 900;
+      color: var(--butter);
+      margin-bottom: 18px;
+    }
+    .marquee {
+      overflow: hidden;
+      border-block: 1px solid var(--line);
+      padding: 34px 0;
+      background: rgba(248,243,231,.04);
+    }
+    .marquee-track {
+      display: flex;
+      gap: 42px;
+      white-space: nowrap;
+      width: max-content;
+      animation: slide 28s linear infinite;
+      font-size: clamp(1.2rem, 2vw, 2.2rem);
+      font-weight: 900;
+      color: rgba(248,243,231,.62);
+    }
+    @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .stack-zone {
+      min-height: 180vh;
+      background:
+        radial-gradient(circle at 50% 20%, rgba(127,182,143,.16), transparent 36rem),
+        rgba(248,243,231,.035);
+    }
+    .stack-grid {
+      display: grid;
+      grid-template-columns: minmax(280px, .72fr) minmax(0, 1fr);
+      gap: 60px;
+      align-items: start;
+    }
+    .stack-title { top: 120px; align-self: start; }
+    .stack-list { display: grid; gap: 24px; }
+    .stack-card {
+      min-height: 430px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: linear-gradient(135deg, rgba(248,243,231,.12), rgba(127,182,143,.06));
+      padding: 34px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .stack-card h3 { margin: 0 0 16px; font-size: clamp(1.75rem, 3vw, 3.15rem); line-height: 1; letter-spacing: 0; }
+    .stack-card p { color: rgba(248,243,231,.76); line-height: 1.76; font-size: 1.04rem; }
+    .stack-card img { height: 180px; border-radius: 8px; margin-top: 24px; }
+    .accordion {
+      display: grid;
+      grid-template-columns: .92fr 1.16fr .92fr;
+      min-height: 560px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .accordion-panel {
+      position: relative;
+      overflow: hidden;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      background: rgba(248,243,231,.05);
+    }
+    .accordion-panel img { position: absolute; inset: 0; opacity: .74; }
+    .accordion-panel:after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 20%, rgba(8,9,7,.88));
+    }
+    .accordion-panel h3, .accordion-panel p { position: relative; z-index: 2; }
+    .accordion-panel h3 { margin: 0 0 10px; font-size: 1.75rem; line-height: 1.02; letter-spacing: 0; }
+    .accordion-panel p { margin: 0; color: rgba(248,243,231,.78); line-height: 1.62; }
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 34px;
+    }
+    .check {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      background: var(--panel);
+    }
+    .check strong { display: block; font-size: 1.12rem; margin-bottom: 10px; }
+    .check span { display: block; color: var(--muted); line-height: 1.64; }
+    .faq { display: grid; gap: 12px; margin-top: 36px; }
+    details {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      padding: 22px 24px;
+    }
+    summary { cursor: pointer; font-size: 1.12rem; font-weight: 900; }
+    details p { color: var(--muted); line-height: 1.72; margin-bottom: 0; }
+    .sources {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 34px;
+    }
+    .source-link {
+      display: block;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 22px;
+      text-decoration: none;
+      background: var(--panel);
+    }
+    .source-link span { display: block; color: var(--muted); line-height: 1.55; margin-top: 8px; }
+    .cta {
+      padding: 170px 20px 92px;
+      text-align: center;
+      background:
+        radial-gradient(circle at 50% 20%, rgba(232,204,120,.23), transparent 36rem),
+        linear-gradient(180deg, transparent, rgba(248,243,231,.08));
+    }
+    .cta h2 { width: min(980px, 94vw); margin: 0 auto; }
+    .cta p { max-width: 720px; margin: 26px auto 0; color: var(--muted); line-height: 1.74; }
+    .cta .hero-actions { justify-content: center; }
+    footer {
+      padding: 32px 20px 54px;
+      border-top: 1px solid var(--line);
+      color: rgba(248,243,231,.62);
+    }
+    .footer-row {
+      width: min(1180px, calc(100vw - 36px));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+    .footer-row a { text-decoration: none; color: rgba(248,243,231,.84); margin-left: 16px; }
+    @media (max-width: 900px) {
+      .nav-links a:not(.nav-cta) { display: none; }
+      .hero-art { position: relative; right: auto; bottom: auto; width: 100%; height: 420px; margin-top: 36px; }
+      .section-head, .stack-grid, .checklist, .sources { grid-template-columns: 1fr; }
+      .bento { grid-template-columns: 1fr; }
+      .span-8, .span-4, .span-6 { grid-column: span 1; }
+      .accordion { grid-template-columns: 1fr; }
+      section { padding: 112px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="https://kalshhunter.com/"><span class="brand-mark" aria-hidden="true"></span><span>Memory Revocation Dashboard</span></a>
+      <div class="nav-links">
+        <a href="#overview">Overview</a>
+        <a href="#rollout">Rollout</a>
+        <a href="#checklist">Checklist</a>
+        <a class="nav-cta" href="https://getsupers.com/">Build with Super</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-copy">
+        <h1>Personal agent memory <span class="inline-photo" aria-hidden="true"></span> revocation dashboard</h1>
+        <p>A focused dashboard concept for teams building personal AI agents that remember user preferences, files, tasks, browser state, and delegated work. The goal is simple: make every memory withdrawal visible, scoped, and closed with evidence the user can trust.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#overview">Explore the dashboard</a>
+          <a class="button secondary" href="https://app.getsupers.com/use-cases/computer-use-cache/">Review cache workflows</a>
+        </div>
+      </div>
+      <figure class="hero-art">
+        <img src="https://picsum.photos/seed/personal-agent-dashboard-panel/1100/1400" alt="Abstract dashboard panel for personal agent memory revocation">
+      </figure>
+    </header>
+
+    <section id="overview">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>A control room for the moment users ask an agent to forget.</h2>
+          <p class="lead">Memory revocation cannot stay buried in logs once agents operate across messaging, files, and computer-use sessions. A dashboard gives support, product, and safety teams a shared view of what the user withdrew and what the system did in response.</p>
+        </div>
+        <div class="bento">
+          <article class="card span-8">
+            <h3>Designed for personal agents with real operating context.</h3>
+            <p>The dashboard is built around the practical shape of personal AI work. A user may revoke a remembered home address, a browser screenshot, a saved recipe preference, a job-search summary, or a generated site draft. Those records can live in profile memory, conversation history, uploaded files, vector indexes, cache layers, and downstream generated artifacts. A good dashboard pulls those pieces into one review queue without exposing the sensitive content again.</p>
+            <p>The important distinction is between memory visibility and memory reproduction. Operators need enough information to verify scope, but the product should avoid preserving the very material the user wanted removed. That is why receipt hashes, category names, request timestamps, actor fields, and system outcomes matter more than raw content replay.</p>
+          </article>
+          <article class="card span-4">
+            <div class="metric">1</div>
+            <h3>Unified revocation queue</h3>
+            <p>One place for user requests from SMS, chat, browser agents, background runs, and support actions.</p>
+          </article>
+          <article class="card image-card span-4">
+            <img src="https://picsum.photos/seed/dashboard-revocation-queue/900/1100" alt="Abstract revocation queue">
+          </article>
+          <article class="card span-4">
+            <h3>Receipts that users can understand.</h3>
+            <ul>
+              <li>Request summary without needless sensitive detail.</li>
+              <li>Memory stores affected by the action.</li>
+              <li>Outcome state for each store.</li>
+              <li>Next step if a record cannot be removed yet.</li>
+            </ul>
+          </article>
+          <article class="card span-4">
+            <h3>Useful for everyday assistant channels.</h3>
+            <p>A <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text message AI assistant</a> needs a short reply path, but teams still need the richer dashboard behind it for complex cases and repeated withdrawal patterns.</p>
+          </article>
+          <article class="card span-6">
+            <h3>Built for caches, not just facts.</h3>
+            <p>Computer-use agents retain operating artifacts: screenshots, copied text, task state, page summaries, and tool results. A dashboard connected to a <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a> can show whether a revocation removed the artifact, isolated it, or kept a minimal proof record.</p>
+          </article>
+          <article class="card span-6">
+            <h3>Prevents stale context from leaking into new work.</h3>
+            <p>When agents create websites, documents, or research outputs, revoked memory may have already shaped drafts. Teams using <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent website workflows</a> need propagation controls that refresh or freeze generated work before the agent ships something based on withdrawn context.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>revocation queue</span><span>receipt ledger</span><span>cache audit</span><span>memory freeze</span><span>user closure</span><span>prompt repair</span>
+        <span>revocation queue</span><span>receipt ledger</span><span>cache audit</span><span>memory freeze</span><span>user closure</span><span>prompt repair</span>
+      </div>
+    </div>
+
+    <section id="rollout" class="stack-zone">
+      <div class="wrap stack-grid">
+        <div class="stack-title">
+          <h2>Roll out the dashboard in three operational layers.</h2>
+          <p class="lead">The fastest teams will not start with a huge governance program. They will build a small review surface that receives withdrawal requests, closes safe ones, and teaches the agent where its memory policy needs to improve.</p>
+        </div>
+        <div class="stack-list">
+          <article class="stack-card">
+            <h3>Layer one: capture and classify.</h3>
+            <p>Every request to forget should become a receipt candidate with a source channel, actor, timestamp, and memory category. The dashboard should classify requests as routine, sensitive, ambiguous, or blocked. Routine items can close automatically when the evidence is complete. Sensitive and ambiguous items require human review before adjacent memory is reused.</p>
+            <img src="https://picsum.photos/seed/capture-classify-revocation/1200/520" alt="Abstract capture and classification board">
+          </article>
+          <article class="stack-card">
+            <h3>Layer two: resolve and explain.</h3>
+            <p>The dashboard should separate deleted, redacted, quarantined, retained, and not-found outcomes. It should also draft a user-facing explanation that is short, honest, and channel-aware. The support team should not need to invent wording for every receipt, but they should be able to edit a sensitive message before it reaches the user.</p>
+            <img src="https://picsum.photos/seed/resolve-explain-agent-memory/1200/520" alt="Abstract resolution and explanation ledger">
+          </article>
+          <article class="stack-card">
+            <h3>Layer three: repair the agent.</h3>
+            <p>Revocation patterns are product feedback. If users repeatedly remove a certain category of memory, the agent may be over-collecting, over-summarizing, or failing to explain why a fact is useful. The dashboard should create repair notes for prompts, memory schemas, retention defaults, and onboarding copy.</p>
+            <img src="https://picsum.photos/seed/agent-memory-repair-dashboard/1200/520" alt="Abstract agent repair dashboard">
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Views that keep revocation review crisp.</h2>
+          <p class="lead">A memory revocation dashboard should not feel like a generic ticket queue. The views should match the way personal agent memory fails, recovers, and becomes trustworthy again.</p>
+        </div>
+        <div class="accordion">
+          <article class="accordion-panel">
+            <img src="https://picsum.photos/seed/risk-route-view/900/1100" alt="Risk routing view">
+            <h3>Risk routing</h3>
+            <p>Prioritizes credentials, financial details, health context, addresses, minors, and private files before routine preference cleanup.</p>
+          </article>
+          <article class="accordion-panel">
+            <img src="https://picsum.photos/seed/downstream-agent-map/900/1100" alt="Downstream agent map">
+            <h3>Downstream map</h3>
+            <p>Shows which agents, drafts, caches, and generated artifacts may still rely on the revoked context.</p>
+          </article>
+          <article class="accordion-panel">
+            <img src="https://picsum.photos/seed/user-receipt-composer/900/1100" alt="User receipt composer">
+            <h3>Receipt composer</h3>
+            <p>Turns system outcomes into a user-safe reply that proves action without resurfacing sensitive content.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="checklist">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Dashboard requirements before launch.</h2>
+          <p class="lead">Use this checklist to keep the product grounded. A memory dashboard earns trust by being specific, restrained, and action-oriented.</p>
+        </div>
+        <div class="checklist">
+          <div class="check"><strong>Request source captured</strong><span>The system records whether revocation came from the user, admin, support, automated policy, or a delegated agent.</span></div>
+          <div class="check"><strong>Stores listed separately</strong><span>Profile memory, uploaded files, vector indexes, browser cache, screenshots, summaries, and drafts have separate outcomes.</span></div>
+          <div class="check"><strong>Reuse freeze available</strong><span>Adjacent memories can be blocked while an ambiguous receipt receives review.</span></div>
+          <div class="check"><strong>Minimal proof retained</strong><span>The receipt keeps action evidence without preserving the revoked content.</span></div>
+          <div class="check"><strong>User wording previewed</strong><span>The dashboard shows the exact explanation that will go back to the user.</span></div>
+          <div class="check"><strong>Repair notes generated</strong><span>Repeated revocations create prompt, schema, or retention follow-ups for the product team.</span></div>
+        </div>
+        <div class="faq">
+          <details open>
+            <summary>Who needs this dashboard first?</summary>
+            <p>Teams building personal agents with durable memory, file access, computer-use workflows, or multi-channel assistants need it first. The more surfaces an agent touches, the more important a shared revocation review surface becomes.</p>
+          </details>
+          <details>
+            <summary>Can this be automated?</summary>
+            <p>Routine receipts can be automated when the scope is narrow and evidence is clear. Sensitive, ambiguous, blocked, or downstream-dependent receipts should receive human review or at least a human-approved policy path.</p>
+          </details>
+          <details>
+            <summary>How does this help users?</summary>
+            <p>It gives users confidence that they can withdraw context without abandoning the assistant. Clear receipts lower the emotional cost of delegation because the user can see the agent honoring boundaries.</p>
+          </details>
+          <details>
+            <summary>How does this connect to Super?</summary>
+            <p><a href="https://getsupers.com/">Super</a> is relevant for teams building personal agents that operate across messaging, browser, and workflow surfaces. A revocation dashboard is the trust layer that helps those agents remain useful without feeling opaque.</p>
+          </details>
+        </div>
+        <div class="sources">
+          <a class="source-link" href="https://www.nist.gov/itl/ai-risk-management-framework">NIST AI Risk Management Framework<span>Useful grounding for AI governance, measurement, and risk-management practices.</span></a>
+          <a class="source-link" href="https://owasp.org/www-project-top-10-for-large-language-model-applications/">OWASP Top 10 for Large Language Model Applications<span>Helpful background for data, prompt, and agentic application risks that shape memory safeguards.</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2>Make memory withdrawal visible before users have to ask twice.</h2>
+      <p>A personal agent that remembers well needs a dashboard that forgets well. Start with the receipt queue, prove the action, and let repeated revocations improve the agent itself.</p>
+      <div class="hero-actions">
+        <a class="button primary" href="https://getsupers.com/">Explore Super</a>
+        <a class="button secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">See assistant workflows</a>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-row">
+        <span>Generated directly for kalshhunter.com. No model API content generation was used.</span>
+        <span>
+          <a href="https://getsupers.com/">Super</a>
+          <a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a>
+          <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">Website agents</a>
+        </span>
+      </div>
+    </footer>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script>
+    window.addEventListener("DOMContentLoaded", function () {
+      if (!window.gsap || !window.ScrollTrigger) return;
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.from(".hero-copy", { opacity: 0, y: 34, duration: 1.1, ease: "power3.out" });
+      gsap.from(".hero-art", { opacity: 0, scale: .88, x: 38, duration: 1.15, ease: "power3.out", delay: .12 });
+      gsap.utils.toArray(".image-card img, .stack-card img, .hero-art img").forEach(function (img) {
+        gsap.fromTo(img, { scale: .84, opacity: .48 }, {
+          scale: 1,
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: { trigger: img, start: "top 88%", end: "bottom 20%", scrub: true }
+        });
+      });
+      ScrollTrigger.create({
+        trigger: ".stack-zone",
+        start: "top top",
+        end: "bottom bottom",
+        pin: ".stack-title",
+        pinSpacing: false
+      });
+      gsap.utils.toArray(".stack-card").forEach(function (card, index) {
+        gsap.fromTo(card, { y: 95, opacity: .35, scale: .94 }, {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          ease: "none",
+          scrollTrigger: { trigger: card, start: "top 88%", end: "top 28%", scrub: true }
+        });
+        gsap.to(card, {
+          y: -index * 22,
+          scrollTrigger: { trigger: card, start: "top 42%", end: "bottom 18%", scrub: true }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
