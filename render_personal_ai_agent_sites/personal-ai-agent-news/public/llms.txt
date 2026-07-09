@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Agent Consent Receipts vs Chat Transcripts for Personal AI Agents](agent-consent-receipts-vs-chat-transcripts-20260709-071300/): Competitor comparison
 - [Consent Expiry Rule Software for Personal AI Agents](consent-expiry-rule-software-for-personal-ai-agents-20260709-070800/): Niche research landing page
 - [Personal AI Agents Are Getting Consent Expiry Rules](personal-ai-agents-are-getting-consent-expiry-rules-20260709-065800/): Research and news analysis
 - [How to Design Consent Expiry Rules for Personal AI Agents](how-to-design-consent-expiry-rules-for-personal-ai-agents-20260709-065230/): Use case
