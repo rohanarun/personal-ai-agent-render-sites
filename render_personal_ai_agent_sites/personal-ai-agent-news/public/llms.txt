@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [How to Build Buyer Diligence Rooms for Personal AI Agents](how-to-build-buyer-diligence-rooms-for-ai-agents-20260709-171732/): Use case
 - [Agent Buyer Diligence Rooms vs Security Questionnaires](agent-buyer-diligence-rooms-vs-security-questionnaires-20260709-170702/): Competitor comparison
 - [Personal AI Agent Buyer Diligence Room Software](personal-ai-agent-buyer-diligence-room-software-20260709-170202/): Niche research landing page
 - [Browser Audit Trails Are Becoming Buyer Diligence for Personal AI Agents](browser-audit-trails-become-agent-buyer-diligence-20260709-165634/): Research and news analysis
