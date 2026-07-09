@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Approval Freshness Control Software for Personal AI Agents](approval-freshness-control-software-for-personal-ai-agents-20260709-084230/): Niche research landing page
 - [Personal AI Agents Are Moving to Approval Freshness Controls](personal-ai-agents-are-moving-to-approval-freshness-controls-20260709-083730/): Research and news analysis
 - [How to Wire Stale Consent Guards into Approval Queues](how-to-wire-stale-consent-guards-into-approval-queues-20260709-082730/): Use case
 - [Stale Consent Guards vs Approval Queues](stale-consent-guards-vs-approval-queues-20260709-082230/): Competitor comparison
