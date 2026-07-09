@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rehearsal Telemetry vs Agent Observability Dashboards</title>
+  <meta name="description" content="A competitor comparison for personal AI operators evaluating rehearsal telemetry software versus ordinary agent observability dashboards.">
+  <link rel="canonical" href="https://kalshhunter.com/rehearsal-telemetry-vs-agent-observability-dashboards-20260709-160533/">
+  <meta property="og:title" content="Rehearsal Telemetry vs Agent Observability Dashboards">
+  <meta property="og:description" content="Compare readiness telemetry, observability dashboards, approval queues, and receipts for personal AI agent operations.">
+  <meta property="og:url" content="https://kalshhunter.com/rehearsal-telemetry-vs-agent-observability-dashboards-20260709-160533/">
+  <meta property="og:type" content="article">
+  <style>
+    @font-face{font-family:Cabinet;src:local("Cabinet Grotesk");font-display:swap}
+    :root{--bg:#080807;--ink:#f8f4ea;--muted:#bcb5a7;--line:rgba(248,244,234,.15);--gold:#f0c56b;--green:#94d2a5;--blue:#9dc3ea;--red:#ef927f}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 50% 0%,rgba(240,197,107,.22),transparent 34%),radial-gradient(circle at 12% 46%,rgba(148,210,165,.14),transparent 32%),linear-gradient(180deg,#080807,#16120f 50%,#080807);color:var(--ink);font-family:Cabinet,Arial,sans-serif;letter-spacing:0;overflow-x:hidden}body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.15;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='170' viewBox='0 0 170 170'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.86' numOctaves='3'/%3E%3C/filter%3E%3Crect width='170' height='170' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E")}a{color:inherit;text-decoration:none}main{overflow-x:hidden;width:100%;max-width:100%}
+    .nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:20;width:min(1160px,calc(100vw - 32px));display:flex;align-items:center;justify-content:space-between;padding:11px 12px 11px 18px;border:1px solid var(--line);border-radius:999px;background:rgba(8,8,7,.76);backdrop-filter:blur(18px);box-shadow:0 18px 80px rgba(0,0,0,.36)}.brand{font-weight:900;font-size:15px}.navlinks{display:flex;gap:18px;color:var(--muted);font-size:13px}.navcta{padding:11px 18px;border-radius:999px;background:#f8f4ea;color:#080807;font-weight:900;font-size:13px}
+    .hero{min-height:100vh;display:grid;place-items:center;text-align:center;width:min(1240px,94vw);margin:0 auto;padding:150px 0 92px}h1{max-width:min(1180px,94vw);font-size:clamp(3.25rem,5.4vw,6.4rem);line-height:.9;margin:0 0 26px;font-weight:950;text-wrap:balance;letter-spacing:0}.inline-img{display:inline-block;width:clamp(84px,9vw,146px);height:clamp(38px,4vw,58px);border-radius:999px;vertical-align:middle;margin:0 .16em;background:url("https://picsum.photos/seed/observability-rehearsal-pill/420/180") center/cover;filter:grayscale(.28) contrast(1.2)}.lede{max-width:870px;margin:0 auto 34px;color:#ddd6c8;font-size:clamp(1.1rem,1.45vw,1.32rem);line-height:1.68}.actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:49px;padding:0 20px;border-radius:999px;font-weight:900;border:1px solid var(--line)}.btn.primary{background:#f8f4ea;color:#080807}.btn.secondary{background:rgba(255,255,255,.055);color:#fff}.hero-media{width:min(1120px,92vw);height:clamp(320px,42vw,560px);border-radius:42px;overflow:hidden;border:1px solid var(--line);margin-top:58px;box-shadow:0 38px 130px rgba(0,0,0,.45);position:relative}.hero-media img{width:100%;height:100%;object-fit:cover;filter:grayscale(.35) contrast(1.24) brightness(.74)}.hero-media:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(8,8,7,.86))}
+    section{padding:clamp(112px,14vw,190px) 0}.wrap{width:min(1180px,92vw);margin:0 auto}.section-title{font-size:clamp(2.35rem,4.35vw,5.25rem);line-height:.96;margin:0 0 28px;text-wrap:balance;letter-spacing:0}.intro{max-width:860px;color:#d7d0c2;font-size:clamp(1.02rem,1.35vw,1.22rem);line-height:1.72}
+    .bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-flow:dense;gap:16px;margin-top:56px}.card{position:relative;overflow:hidden;min-height:278px;border:1px solid var(--line);border-radius:30px;background:rgba(255,255,255,.052);padding:28px;transition:transform .7s ease,border-color .7s ease}.card:hover{transform:translateY(-6px);border-color:rgba(248,244,234,.38)}.card h3{font-size:clamp(1.45rem,2vw,2.08rem);line-height:1.06;margin:0 0 16px}.card p,.card li{color:#cfc8ba;line-height:1.65}.span8{grid-column:span 8}.span4{grid-column:span 4}.span6{grid-column:span 6}.gold{background:linear-gradient(135deg,rgba(240,197,107,.16),rgba(255,255,255,.045))}.green{background:linear-gradient(135deg,rgba(148,210,165,.15),rgba(255,255,255,.045))}.blue{background:linear-gradient(135deg,rgba(157,195,234,.14),rgba(255,255,255,.045))}.red{background:linear-gradient(135deg,rgba(239,146,127,.15),rgba(255,255,255,.045))}
+    .thumb{height:190px;border-radius:22px;margin:-4px -4px 22px;overflow:hidden}.thumb img{width:100%;height:100%;object-fit:cover;filter:grayscale(.35) contrast(1.25);transition:transform .7s ease}.card:hover .thumb img{transform:scale(1.06)}
+    table{width:100%;border-collapse:collapse;margin-top:34px;border:1px solid var(--line);border-radius:24px;overflow:hidden;display:block}tbody,tr{display:table;width:100%;table-layout:fixed}th,td{text-align:left;padding:20px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.55}th{background:rgba(255,255,255,.07);color:#fff}td{color:#cdc6b8}
+    .stack{display:grid;gap:30px;margin-top:60px}.stack-card{position:sticky;top:118px;display:grid;grid-template-columns:.95fr 1.05fr;min-height:420px;border:1px solid var(--line);border-radius:36px;background:#11110f;overflow:hidden}.stack-card img{width:100%;height:100%;object-fit:cover;filter:grayscale(.34) contrast(1.22) brightness(.76);transform:scale(.82);opacity:.72}.stack-card div{padding:42px}.stack-card h3{font-size:clamp(2rem,3vw,3.5rem);line-height:.95;margin:0 0 18px}.stack-card p{color:#d2cbbe;line-height:1.68;font-size:1.05rem}
+    .marquee{display:flex;overflow:hidden;border-block:1px solid var(--line);padding:28px 0;color:#f0c56b;font-size:clamp(1.85rem,4vw,4rem);font-weight:950;white-space:nowrap}.track{display:flex;gap:44px;animation:mar 24s linear infinite}@keyframes mar{to{transform:translateX(-50%)}}
+    .faq{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:42px}details{border:1px solid var(--line);border-radius:24px;background:rgba(255,255,255,.045);padding:22px}summary{cursor:pointer;font-size:1.1rem;font-weight:900}details p{color:#cdc6b8;line-height:1.65}.cta{padding:122px 0 70px;background:#f8f4ea;color:#080807}.cta .section-title{color:#080807}.cta p{color:#413c34}.cta .btn.primary{background:#080807;color:#fff}.cta .btn.secondary{background:transparent;color:#080807;border-color:rgba(8,8,7,.24)}footer{display:flex;justify-content:space-between;gap:22px;flex-wrap:wrap;margin-top:80px;color:#5d574d}footer a{text-decoration:underline}
+    @media(max-width:900px){.navlinks{display:none}.bento{grid-template-columns:1fr}.span8,.span4,.span6{grid-column:span 1}.stack-card{grid-template-columns:1fr}.faq{grid-template-columns:1fr}table,tbody,tr,th,td{display:block}th{display:none}}
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="Primary navigation">
+    <a class="brand" href="https://kalshhunter.com/">Agent Market Notes</a>
+    <div class="navlinks"><a href="#compare">Compare</a><a href="#tradeoffs">Tradeoffs</a><a href="#faq">FAQ</a></div>
+    <a class="navcta" href="https://getsupers.com/">See Super</a>
+  </nav>
+  <main>
+    <header class="hero">
+      <div>
+        <h1>Rehearsal telemetry <span class="inline-img"></span> vs agent observability dashboards</h1>
+        <p class="lede">Agent observability dashboards help engineers see what happened inside a run. Rehearsal telemetry helps personal AI operators decide whether an agent should act in the first place. The distinction is becoming important as agents move from logs and traces into text replies, browser work, website launches, customer updates, and approval receipts.</p>
+        <div class="actions"><a class="btn primary" href="https://app.getsupers.com/use-cases/computer-use-cache/">Inspect browser context</a><a class="btn secondary" href="#compare">Compare the categories</a></div>
+        <div class="hero-media"><img src="https://picsum.photos/seed/rehearsal-vs-observability-dashboard/1600/900" alt="Abstract dashboard comparing telemetry and observability"></div>
+      </div>
+    </header>
+
+    <section id="compare">
+      <div class="wrap">
+        <h2 class="section-title">The difference is pre-action readiness.</h2>
+        <p class="intro">Observability is a powerful engineering category. It shows traces, tool calls, errors, latency, token usage, retries, and cost. But personal AI operators need another view: whether the proposed action is supported by fresh evidence, within consent, recoverable, and worth approving. Rehearsal telemetry is not a prettier log viewer. It is a readiness layer for deciding what the agent may do next.</p>
+        <div class="bento">
+          <article class="card span8 gold"><div class="thumb"><img src="https://picsum.photos/seed/pre-action-readiness-room/1200/620" alt="Pre-action readiness room"></div><h3>Rehearsal telemetry turns approval into an evidence product.</h3><p>An observability dashboard can show that an agent called a browser tool, parsed a message, or wrote a draft. A rehearsal telemetry system shows the exact proposed action, the source evidence, the freshness of the context, the approval boundary, and the receipt that will exist after execution. For operators, that is the difference between debugging and governing.</p></article>
+          <article class="card span4 green"><h3>Observability sees the run.</h3><p>It answers what happened, how long it took, where it failed, and what the model or tool chain did.</p></article>
+          <article class="card span4 blue"><h3>Telemetry sees readiness.</h3><p>It answers whether the agent has enough proof to send, publish, book, update, resume, or escalate.</p></article>
+          <article class="card span4 red"><h3>Approval queues see the person.</h3><p>They ask a human to decide, but often fail to show enough context for a confident decision.</p></article>
+          <article class="card span4 gold"><h3>Receipts see the aftermath.</h3><p>They prove what changed, why it changed, and what the operator corrected for future runs.</p></article>
+          <article class="card span6 green"><h3>Super sits closer to the operator layer.</h3><p>Super workflows span <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text-message AI assistants</a>, <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a>, and <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">agent-built websites</a>. That makes readiness evidence more useful than generic runtime logs.</p></article>
+          <article class="card span6 blue"><h3>The categories should integrate, not compete blindly.</h3><p>Observability is still necessary for engineering reliability. Rehearsal telemetry is necessary for operator trust. Mature platforms will connect them so a failed approval can be traced back to a tool state, and a tool error can be reflected in future readiness scoring.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true"><div class="track"><span>logs after action</span><span>proof before action</span><span>fresh consent</span><span>receipt quality</span><span>operator correction</span><span>logs after action</span><span>proof before action</span><span>fresh consent</span><span>receipt quality</span><span>operator correction</span></div></div>
+
+    <section>
+      <div class="wrap">
+        <h2 class="section-title">Head-to-head buyer criteria</h2>
+        <p class="intro">A buyer choosing between these categories should avoid false either-or thinking. The real question is which system owns the operator decision point.</p>
+        <table><tbody>
+          <tr><th>Criterion</th><th>Agent observability dashboard</th><th>Rehearsal telemetry software</th></tr>
+          <tr><td>Primary user</td><td>Engineer, platform owner, infrastructure team, or agent framework maintainer.</td><td>Operator, founder, support lead, executive assistant, or personal agent owner.</td></tr>
+          <tr><td>Primary question</td><td>What happened during the run, and why did it fail or cost more than expected?</td><td>Does this proposed action have enough evidence, permission, freshness, and recovery coverage to proceed?</td></tr>
+          <tr><td>Best data</td><td>Traces, tool calls, model responses, latency, exceptions, retries, token usage, and cost.</td><td>Intent preview, source evidence, consent boundary, stale context warnings, operator corrections, and receipts.</td></tr>
+          <tr><td>Risk posture</td><td>Improves reliability after observing runs.</td><td>Improves governance before allowing actions.</td></tr>
+          <tr><td>Best fit</td><td>Complex agent systems with many tool paths and engineering owners.</td><td>Personal AI agents acting across messages, browsers, calendars, customer records, publishing tools, and receipts.</td></tr>
+        </tbody></table>
+      </div>
+    </section>
+
+    <section id="tradeoffs">
+      <div class="wrap">
+        <h2 class="section-title">Four tradeoffs that decide the category</h2>
+        <p class="intro">The more an agent affects real people and public surfaces, the more pre-action telemetry matters. These tradeoffs show when a dashboard is sufficient and when a rehearsal layer becomes necessary.</p>
+        <div class="stack">
+          <article class="stack-card media-step"><img src="https://picsum.photos/seed/debugging-vs-governance/1000/900" alt="Debugging versus governance"><div><h3>Debugging vs governance</h3><p>Debugging asks why a run failed. Governance asks whether the run should happen. The <a href="https://www.nist.gov/itl/ai-risk-management-framework">NIST AI Risk Management Framework</a> points toward governable controls, which is why readiness evidence matters for personal agent workflows.</p></div></article>
+          <article class="stack-card media-step"><img src="https://picsum.photos/seed/tool-trace-vs-source-evidence/1000/900" alt="Tool traces versus source evidence"><div><h3>Tool trace vs source evidence</h3><p>A tool trace may say the agent opened a page. Source evidence shows the actual page state, when it was observed, and whether it was safe to use. This distinction matters for browser agents exposed to external content.</p></div></article>
+          <article class="stack-card media-step"><img src="https://picsum.photos/seed/security-risk-agent-observability/1000/900" alt="Security risk in agent operations"><div><h3>Security log vs unsafe input warning</h3><p>OWASP's <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/">Top 10 for Large Language Model Applications</a> highlights issues like prompt injection and unsafe tool use. Rehearsal telemetry should surface these risks before the agent acts, not only after an incident.</p></div></article>
+          <article class="stack-card media-step"><img src="https://picsum.photos/seed/receipt-led-operator-loop/1000/900" alt="Receipt led operator loop"><div><h3>Run history vs receipt loop</h3><p>A run history is useful for engineers. A receipt is useful for operators. It explains what happened in human terms and records the correction that should improve the next agent action. Explore <a href="https://getsupers.com/">Super</a> for a receipt-led view of personal AI agent work.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2 class="section-title">Evaluation checklist</h2>
+        <p class="intro">Use this checklist before buying or building either layer.</p>
+        <div class="bento">
+          <article class="card span4 gold"><h3>Need traces?</h3><p>If your biggest pain is debugging tool calls, latency, retries, and errors, start with observability.</p></article>
+          <article class="card span4 green"><h3>Need approvals?</h3><p>If your biggest pain is deciding whether the agent should act, start with rehearsal telemetry.</p></article>
+          <article class="card span4 blue"><h3>Need both?</h3><p>If agents are already in production, connect the two so readiness failures can be traced to runtime causes.</p></article>
+          <article class="card span6 red"><h3>Check evidence freshness.</h3><p>The product should expose stale browser state, old consent, missing source links, and external content risk as explicit review signals.</p></article>
+          <article class="card span6 gold"><h3>Check operator usefulness.</h3><p>A great dashboard for engineers may be unreadable for an operator. A great rehearsal room should make approval faster, clearer, and easier to explain later.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="wrap">
+        <h2 class="section-title">FAQ</h2>
+        <div class="faq">
+          <details open><summary>Can observability dashboards add rehearsal telemetry?</summary><p>Yes, but they need a different information architecture. Logs and traces must be translated into operator-ready evidence, not simply exposed as more raw events.</p></details>
+          <details><summary>Which category should a small team buy first?</summary><p>If the agent is not yet acting on behalf of users, buy observability first. If the agent is sending, publishing, booking, or updating real records, add rehearsal telemetry before expanding scope.</p></details>
+          <details><summary>Is this only for regulated workflows?</summary><p>No. Even non-regulated personal workflows need fresh context, approval boundaries, and receipts when the agent can affect relationships, public pages, or customer promises.</p></details>
+          <details><summary>How does this relate to Super?</summary><p>Super is closer to the operator workflow than a raw agent framework. That makes rehearsal telemetry a natural lens for text agents, computer-use cache, and agent-built site launches.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="wrap">
+        <h2 class="section-title">Use logs to debug the agent. Use rehearsal telemetry to trust the next move.</h2>
+        <p class="intro">Observability explains the run. Rehearsal telemetry governs the action. Personal AI agent platforms need both, but the market signal is shifting toward products that can prove readiness before a user lets the agent act.</p>
+        <div class="actions"><a class="btn primary" href="https://getsupers.com/">Explore Super</a><a class="btn secondary" href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">Review agent-built sites</a></div>
+        <footer><span>Agent Market Notes for kalshhunter.com</span><span><a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Text agents</a> · <a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a></span></footer>
+      </div>
+    </section>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.from(".hero-media", {opacity:0, y:72, scale:.94, duration:1.1, ease:"power3.out"});
+      gsap.utils.toArray(".media-step img").forEach(function(img){gsap.to(img,{scale:1,opacity:1,ease:"none",scrollTrigger:{trigger:img,start:"top 85%",end:"bottom 25%",scrub:true}})});
+      gsap.utils.toArray(".stack-card").forEach(function(card){gsap.from(card,{y:86,opacity:.28,scale:.96,duration:.8,ease:"power2.out",scrollTrigger:{trigger:card,start:"top 82%",end:"top 38%",scrub:true}})});
+      gsap.utils.toArray(".card").forEach(function(card){gsap.from(card,{opacity:0,y:42,duration:.8,ease:"power2.out",scrollTrigger:{trigger:card,start:"top 86%"}})});
+    }
+  </script>
+</body>
+</html>
