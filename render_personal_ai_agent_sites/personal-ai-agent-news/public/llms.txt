@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Approval Replay Room Software for Personal AI Agents](approval-replay-room-software-for-personal-ai-agents-20260709-062130/): Niche research landing page
 - [Personal AI Agents Need Approval Replay Rooms](personal-ai-agents-need-approval-replay-rooms-20260709-061630/): Research and news analysis
 - [How to Design Text Approval Newsrooms for AI Agents](how-to-design-text-approval-newsrooms-for-ai-agents-20260709-060601/): Use case
 - [Text Approval Newsrooms vs SMS Approval Queues for Personal AI Agents](text-approval-newsrooms-vs-sms-approval-queues-20260709-060030/): Competitor comparison
