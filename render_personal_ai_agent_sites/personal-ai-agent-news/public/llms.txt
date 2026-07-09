@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Personal AI Agent Rollback Evidence Software](personal-ai-agent-rollback-evidence-software-20260709-041829/): Niche research landing page
 - [Personal AI Agents Need Rollback Evidence](personal-ai-agents-need-rollback-evidence-20260709-041329/): Research and news analysis
 - [How to Run Consent Ledger Rollback Drills](how-to-run-consent-ledger-rollback-drills-20260709-040829/): Use case
 - [Consent Ledgers vs Task Audit Logs](consent-ledgers-vs-task-audit-logs-20260709-040259/): Competitor comparison
