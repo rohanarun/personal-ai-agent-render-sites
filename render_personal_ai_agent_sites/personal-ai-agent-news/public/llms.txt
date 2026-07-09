@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Revocation Receipt Software vs Agent Audit Logs](revocation-receipt-software-vs-agent-audit-logs-20260709-205409/): Competitor comparison
 - [Agent Memory Revocation Receipt Software](agent-memory-revocation-receipt-software-20260709-204733/): Niche research landing page
 - [Memory Revocation Receipts Are Becoming Agent Trust Infrastructure](memory-revocation-receipts-are-becoming-agent-trust-infrastructure-20260709-204233/): Research and news analysis
 - [How to Add Memory Revocation Flows to Personal Agents](how-to-add-memory-revocation-flows-to-personal-agents-20260709-203239/): Use case
