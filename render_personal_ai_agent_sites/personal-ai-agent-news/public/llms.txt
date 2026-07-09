@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [How to Wire Memory Rollback Reviews Into Text Approvals](how-to-wire-memory-rollback-reviews-into-text-approvals-20260709-184340/): Use case
 - [Agent Memory Rollback vs Vector Database Deletion](agent-memory-rollback-vs-vector-database-deletion-20260709-183339/): Competitor comparison
 - [Agent Memory Rollback Software](agent-memory-rollback-software-20260709-182341/): Niche research landing page
 - [Rollback Receipts Are Becoming the Agent Trust Primitive](rollback-receipts-are-becoming-agent-trust-primitive-20260709-181832/): Research and news analysis

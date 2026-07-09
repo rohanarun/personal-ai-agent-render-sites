@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to Wire Memory Rollback Reviews Into Text Approvals</title>
+  <meta name="description" content="A practical how-to guide for routing personal AI agent memory rollback reviews through text approvals, with implementation steps, checklist, FAQ, and sources.">
+  <link rel="canonical" href="https://kalshhunter.com/how-to-wire-memory-rollback-reviews-into-text-approvals-20260709-184340/">
+  <meta property="og:title" content="How to Wire Memory Rollback Reviews Into Text Approvals">
+  <meta property="og:description" content="Route sensitive AI agent memory rollback reviews to text so users can approve, narrow, or reject learned behavior from their phone.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://kalshhunter.com/how-to-wire-memory-rollback-reviews-into-text-approvals-20260709-184340/">
+  <meta property="og:image" content="https://picsum.photos/seed/memory-rollback-text-approval/1600/900">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #090a0a;
+      --ink: #f8f2e7;
+      --muted: rgba(248, 242, 231, 0.72);
+      --line: rgba(248, 242, 231, 0.16);
+      --mint: #b9edc8;
+      --blue: #91d4ef;
+      --amber: #edc66f;
+      --rose: #df826e;
+      --font: Satoshi, "Avenir Next", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      color: var(--ink);
+      font-family: var(--font);
+      background:
+        radial-gradient(circle at 16% 14%, rgba(145, 212, 239, 0.18), transparent 32%),
+        radial-gradient(circle at 83% 15%, rgba(185, 237, 200, 0.15), transparent 34%),
+        radial-gradient(circle at 69% 82%, rgba(223, 130, 110, 0.14), transparent 35%),
+        linear-gradient(135deg, #090a0a, #151410 58%, #080808);
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.13;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.82'/%3E%3C/svg%3E");
+      mix-blend-mode: soft-light;
+    }
+    a { color: inherit; }
+    main { overflow-x: hidden; width: 100%; max-width: 100%; }
+    .wrap { width: min(1180px, calc(100vw - 36px)); margin: 0 auto; }
+    .nav {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      z-index: 40;
+      transform: translateX(-50%);
+      width: min(1080px, calc(100vw - 32px));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 10px 10px 20px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(9, 10, 10, 0.69);
+      backdrop-filter: blur(22px);
+      box-shadow: 0 22px 80px rgba(0,0,0,0.34);
+    }
+    .brand { text-decoration: none; font-weight: 860; }
+    .links { display: flex; align-items: center; gap: 8px; }
+    .links a {
+      color: var(--muted);
+      text-decoration: none;
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      transition: color 220ms ease, background 220ms ease;
+    }
+    .links a:hover { color: var(--ink); background: rgba(255,255,255,0.07); }
+    .links .nav-cta { color: #071108; background: var(--mint); font-weight: 850; }
+    section { padding: 9rem 0; }
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      align-items: center;
+      justify-items: center;
+      text-align: center;
+      padding: 9.5rem 0 6rem;
+      position: relative;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 23vh 2vw 5vh;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      opacity: 0.72;
+    }
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(0.82) contrast(1.28) brightness(0.46);
+      transform: scale(1.04);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 45vh;
+      background: linear-gradient(to top, rgba(9,10,10,0.92), transparent);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 2; width: min(1180px, 94vw); }
+    h1 {
+      max-width: min(1180px, 94vw);
+      margin: 0 auto;
+      font-size: clamp(3rem, 5vw, 5.75rem);
+      line-height: 0.94;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .inline-img {
+      display: inline-block;
+      width: clamp(80px, 9.5vw, 138px);
+      height: clamp(34px, 4.3vw, 58px);
+      margin: 0 0.1em;
+      border-radius: 999px;
+      vertical-align: middle;
+      background: url("https://picsum.photos/seed/memory-text-inline/420/180") center/cover;
+      filter: grayscale(0.82) contrast(1.3) brightness(0.86);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.26);
+    }
+    .lede {
+      max-width: 780px;
+      margin: 28px auto 0;
+      color: var(--muted);
+      font-size: clamp(1.08rem, 1.55vw, 1.32rem);
+      line-height: 1.68;
+    }
+    .cta-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+    .btn {
+      display: inline-flex;
+      min-height: 52px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 0 22px;
+      text-decoration: none;
+      font-weight: 850;
+      transition: transform 240ms ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn.primary { color: #071108; background: var(--mint); }
+    .btn.secondary { color: var(--ink); border: 1px solid var(--line); background: rgba(255,255,255,0.07); }
+    .chapter-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+      gap: 3rem;
+      align-items: end;
+      margin-bottom: 48px;
+    }
+    h2 {
+      margin: 0;
+      font-size: clamp(2.35rem, 4.45vw, 5rem);
+      line-height: 0.98;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .chapter-head p, .tile p, .step-card p, .quote p, .check p, .faq p, .source p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.74;
+      font-size: 1.04rem;
+    }
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-flow: dense;
+      gap: 16px;
+    }
+    .tile {
+      min-height: 262px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 28px;
+      overflow: hidden;
+      background: linear-gradient(145deg, rgba(255,255,255,0.072), rgba(255,255,255,0.028));
+      transition: transform 300ms ease, background 300ms ease;
+    }
+    .tile:hover { transform: translateY(-5px); background: rgba(255,255,255,0.086); }
+    .tile h3, .step-card h3, .quote h3, .check strong {
+      margin: 0 0 14px;
+      font-size: clamp(1.35rem, 2.2vw, 2.25rem);
+      line-height: 1.06;
+      letter-spacing: 0;
+    }
+    .span-8 { grid-column: span 8; }
+    .span-4 { grid-column: span 4; }
+    .span-6 { grid-column: span 6; }
+    .visual { padding: 0; }
+    .visual img {
+      width: 100%;
+      height: 100%;
+      min-height: 340px;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(0.78) contrast(1.25) brightness(0.72);
+      transition: transform 700ms ease;
+    }
+    .visual:hover img { transform: scale(1.05); }
+    .scrub-copy {
+      max-width: 960px;
+      margin: 0 auto 56px;
+      font-size: clamp(2rem, 4vw, 4.4rem);
+      line-height: 1.08;
+      text-align: center;
+    }
+    .scrub-copy span { opacity: 0.16; }
+    .desire {
+      display: grid;
+      grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+      gap: 64px;
+      align-items: start;
+    }
+    .pin-copy { position: sticky; top: 118px; }
+    .steps { display: grid; gap: 22px; }
+    .step-card {
+      min-height: 250px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 32px;
+      background: rgba(255,255,255,0.047);
+      box-shadow: 0 28px 90px rgba(0,0,0,0.22);
+    }
+    .accordion {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      min-height: 430px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .panel {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      padding: 26px;
+      border-right: 1px solid var(--line);
+      background: #111412;
+    }
+    .panel:last-child { border-right: 0; }
+    .panel img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.28;
+      filter: grayscale(0.82) contrast(1.3) brightness(0.78);
+      transition: transform 700ms ease, opacity 450ms ease;
+    }
+    .panel:hover img { transform: scale(1.08); opacity: 0.58; }
+    .panel div { position: relative; z-index: 1; }
+    .panel h3 { margin: 0 0 8px; font-size: 1.55rem; }
+    .panel p { margin: 0; color: var(--muted); line-height: 1.55; }
+    .quotes, .checklist, .sources {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 42px;
+    }
+    .quote, .check, .source {
+      min-height: 168px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      background: rgba(255,255,255,0.045);
+    }
+    .faces { display: flex; margin-bottom: 20px; }
+    .face {
+      width: 56px;
+      height: 56px;
+      border-radius: 999px;
+      border: 2px solid var(--bg);
+      background-size: cover;
+      background-position: center;
+      margin-left: -12px;
+      filter: grayscale(0.72) contrast(1.22);
+    }
+    .face:first-child { margin-left: 0; }
+    .marquee {
+      overflow: hidden;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      white-space: nowrap;
+      margin-top: 52px;
+    }
+    .marquee-track {
+      display: inline-flex;
+      gap: 36px;
+      padding: 22px 0;
+      color: rgba(248,242,231,0.54);
+      font-size: clamp(1.8rem, 4.3vw, 4.7rem);
+      font-weight: 900;
+      animation: drift 32s linear infinite;
+    }
+    .marquee-track span { color: var(--ink); }
+    @keyframes drift { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .source a { color: var(--ink); font-weight: 820; text-decoration-color: rgba(255,255,255,0.35); }
+    .faq { display: grid; gap: 14px; margin-top: 36px; }
+    .faq details { border: 1px solid var(--line); border-radius: 8px; padding: 22px 24px; background: rgba(255,255,255,0.045); }
+    .faq summary { cursor: pointer; font-weight: 850; font-size: 1.1rem; }
+    .faq p { margin-top: 14px; }
+    .final { padding-bottom: 5rem; }
+    .final-box {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      gap: 36px;
+      align-items: end;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: clamp(2rem, 5vw, 4.2rem);
+      background:
+        linear-gradient(135deg, rgba(185,237,200,0.18), rgba(145,212,239,0.1), rgba(237,198,111,0.12)),
+        rgba(255,255,255,0.035);
+    }
+    .final-box h2 { font-size: clamp(2.55rem, 5.4vw, 6rem); }
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding: 30px 0 62px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+    }
+    @media (max-width: 920px) {
+      .links a:not(.nav-cta) { display: none; }
+      .chapter-head, .desire, .final-box { grid-template-columns: 1fr; }
+      .hero-bg { inset: 23vh 18px 5vh; }
+      section { padding: 6.5rem 0; }
+      .bento, .accordion, .quotes, .checklist, .sources { grid-template-columns: 1fr; }
+      .span-8, .span-4, .span-6 { grid-column: span 1; }
+      .pin-copy { position: relative; top: auto; }
+      .panel { min-height: 260px; border-right: 0; border-bottom: 1px solid var(--line); }
+      .panel:last-child { border-bottom: 0; }
+    }
+  </style>
+  <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"HowTo","name":"How to Wire Memory Rollback Reviews Into Text Approvals","description":"A practical implementation guide for routing personal AI agent memory rollback reviews through text approvals.","datePublished":"2026-07-09","publisher":{"@type":"Organization","name":"Super Agent Market Notes"},"mainEntityOfPage":"https://kalshhunter.com/how-to-wire-memory-rollback-reviews-into-text-approvals-20260709-184340/"}
+  </script>
+</head>
+<body>
+  <nav class="nav" aria-label="Primary navigation">
+    <a class="brand" href="/">Agent Market Notes</a>
+    <div class="links">
+      <a href="#model">Model</a>
+      <a href="#steps">Steps</a>
+      <a href="#faq">FAQ</a>
+      <a class="nav-cta" href="https://getsupers.com/">Super</a>
+    </div>
+  </nav>
+  <main>
+    <header class="hero">
+      <figure class="hero-bg gsap-image"><img src="https://picsum.photos/seed/memory-rollback-text-approval/1800/1100" alt="Text approval interface for AI agent memory rollback"></figure>
+      <div class="hero-content">
+        <h1>Wire memory rollback <span class="inline-img" aria-hidden="true"></span> reviews into text approvals.</h1>
+        <p class="lede">When an AI agent learns the wrong rule, the repair should reach the user where decisions already happen: the phone. Text approvals let operators approve, narrow, reject, or roll back learned behavior without opening a heavyweight dashboard.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Route reviews by text</a>
+          <a class="btn secondary" href="#steps">Read the implementation guide</a>
+        </div>
+      </div>
+    </header>
+
+    <section id="model">
+      <div class="wrap">
+        <div class="chapter-head">
+          <h2>Make memory repair interrupt only when consequence is real.</h2>
+          <p>Personal AI agents should not text the user for every tiny preference update. The text lane is for memory changes that affect identity, communication, spending, access, browser behavior, public output, or future approval thresholds. The product challenge is to compress the memory diff into a message the user can understand in seconds.</p>
+        </div>
+        <div class="bento">
+          <article class="tile span-8">
+            <h3>Start with a memory rollback receipt.</h3>
+            <p>The receipt should explain the old memory, the proposed repair, the source evidence, the future behavior change, and the available actions. That lets a user decide from text: approve the rollback, keep the memory, narrow it to a project, expire it later, or escalate for deeper review. <a href="https://getsupers.com/">Super</a> is a natural surface for this kind of phone-native control loop.</p>
+          </article>
+          <article class="tile visual span-4 gsap-image"><img src="https://picsum.photos/seed/text-memory-diff-receipt/840/680" alt="Memory rollback receipt inside text approval workflow"></article>
+          <article class="tile span-4"><h3>Plain summary</h3><p>Say what the agent learned, why it is risky, and what will change if the user approves rollback.</p></article>
+          <article class="tile span-4"><h3>Evidence link</h3><p>Attach the source receipt, browser replay, message draft, or prior approval that created the memory.</p></article>
+          <article class="tile span-4"><h3>Fast actions</h3><p>Use simple responses such as roll back, narrow, keep, expire, and ask me next time.</p></article>
+          <article class="tile span-6"><h3>Browser memory</h3><p>For browser-derived memory, link the approval to the <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a> so the user can inspect the session before deciding.</p></article>
+          <article class="tile span-6"><h3>Publishing memory</h3><p>For generated sites and public artifacts, pair text review with the <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI website-building workflow</a> so draft learning and publish decisions stay separate.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="steps">
+      <div class="wrap">
+        <p class="scrub-copy"><span>A</span> <span>good</span> <span>text</span> <span>approval</span> <span>does</span> <span>not</span> <span>dump</span> <span>logs.</span> <span>It</span> <span>turns</span> <span>memory</span> <span>repair</span> <span>into</span> <span>a</span> <span>clear</span> <span>choice.</span></p>
+        <div class="desire">
+          <div class="pin-copy">
+            <h2>The implementation path has four moves.</h2>
+            <p class="lede">The goal is not to make every memory change a text. The goal is to route sensitive memory repairs through a concise, auditable channel when the user needs to decide quickly.</p>
+          </div>
+          <div class="steps">
+            <article class="step-card"><h3>Classify the memory change.</h3><p>Tag memory changes by consequence: private context, outbound communication, money, access, browser action, publishing, or low-risk preference.</p></article>
+            <article class="step-card"><h3>Build the text receipt.</h3><p>Include old rule, proposed repaired rule, evidence, expected future effect, and one-tap response options.</p></article>
+            <article class="step-card"><h3>Handle replies as policy updates.</h3><p>A reply should update the memory rule, record the decision, and adjust future approval thresholds.</p></article>
+            <article class="step-card"><h3>Keep the audit trail human-readable.</h3><p>Store the text decision with the receipt so future reviewers can see who approved the rollback and why.</p></article>
+          </div>
+        </div>
+        <div class="marquee" aria-hidden="true">
+          <div class="marquee-track"><span>roll back</span> narrow keep expire ask me next time roll back narrow keep expire ask me next time</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="chapter-head">
+          <h2>What users should be able to answer from the message.</h2>
+          <p>If the text approval cannot answer these questions, it is not ready to ship. The user should not need a dashboard to understand the immediate decision.</p>
+        </div>
+        <div class="accordion">
+          <article class="panel"><img src="https://picsum.photos/seed/text-old-rule/720/900" alt=""><div><h3>Old rule</h3><p>What did the agent believe before repair?</p></div></article>
+          <article class="panel"><img src="https://picsum.photos/seed/text-new-rule/720/900" alt=""><div><h3>New rule</h3><p>What will change after approval?</p></div></article>
+          <article class="panel"><img src="https://picsum.photos/seed/text-memory-evidence/720/900" alt=""><div><h3>Evidence</h3><p>Which receipt or replay supports the change?</p></div></article>
+          <article class="panel"><img src="https://picsum.photos/seed/text-future-boundary/720/900" alt=""><div><h3>Boundary</h3><p>What should the agent do next time?</p></div></article>
+        </div>
+        <div class="quotes">
+          <article class="quote"><div class="faces" aria-hidden="true"><span class="face" style="background-image:url('https://picsum.photos/seed/text-memory-user-a/180/180')"></span><span class="face" style="background-image:url('https://picsum.photos/seed/text-memory-user-b/180/180')"></span></div><h3>Operator</h3><p>"If a memory affects outbound messages, I want the repair sent to my phone before the agent repeats it."</p></article>
+          <article class="quote"><div class="faces" aria-hidden="true"><span class="face" style="background-image:url('https://picsum.photos/seed/text-memory-founder-a/180/180')"></span><span class="face" style="background-image:url('https://picsum.photos/seed/text-memory-founder-b/180/180')"></span></div><h3>Founder</h3><p>"The text needs to show the old rule and the proposed new boundary. Otherwise I am just approving vibes."</p></article>
+          <article class="quote"><div class="faces" aria-hidden="true"><span class="face" style="background-image:url('https://picsum.photos/seed/text-memory-builder-a/180/180')"></span><span class="face" style="background-image:url('https://picsum.photos/seed/text-memory-builder-b/180/180')"></span></div><h3>Builder</h3><p>"Text replies are not just notifications. They become training data for safer future autonomy."</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="chapter-head">
+          <h2>Implementation checklist.</h2>
+          <p>Use this checklist before routing memory rollback reviews through text.</p>
+        </div>
+        <div class="checklist">
+          <article class="check"><strong>Severity filter</strong><p>Only text the user when the memory change affects consequential future action.</p></article>
+          <article class="check"><strong>Receipt ID</strong><p>Every text approval should map to a stable memory rollback receipt.</p></article>
+          <article class="check"><strong>Evidence link</strong><p>Attach replay, source, draft, or prior correction evidence when possible.</p></article>
+          <article class="check"><strong>Reply parser</strong><p>Support roll back, narrow, keep, expire, and ask next time as structured decisions.</p></article>
+          <article class="check"><strong>Expiry policy</strong><p>Temporary memory exceptions should expire instead of becoming permanent authority.</p></article>
+          <article class="check"><strong>Audit surface</strong><p>Store the text decision alongside the receipt for future review and repair.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="wrap">
+        <div class="chapter-head">
+          <h2>FAQ for implementation teams.</h2>
+          <p>These are the common questions teams hit when they add phone-native memory repair to personal AI agents.</p>
+        </div>
+        <div class="faq">
+          <details open><summary>Should every memory update be texted to the user?</summary><p>No. Low-risk preferences can be batched or shown in a digest. Use text for changes that affect identity, money, access, browser behavior, public output, or approval thresholds.</p></details>
+          <details><summary>What should the user be able to do from text?</summary><p>At minimum: approve rollback, keep the memory, narrow the rule, set an expiry, or ask the agent to request approval next time.</p></details>
+          <details><summary>How does this connect to Super?</summary><p>The <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text message AI assistant</a> pattern is the direct fit: Super can present the memory repair in a lightweight approval loop instead of a dashboard-only workflow.</p></details>
+          <details><summary>What is the failure mode to avoid?</summary><p>Do not send vague alerts like "memory changed." The message must explain old rule, proposed repair, evidence, future effect, and available choices.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="chapter-head">
+          <h2>Sources and references.</h2>
+          <p>These references ground the workflow in AI risk management, agentic application risk, and practical human-in-the-loop operations.</p>
+        </div>
+        <div class="sources">
+          <article class="source"><a href="https://www.nist.gov/itl/ai-risk-management-framework">NIST AI Risk Management Framework</a><p>Governance framing for AI system risk management and operator control.</p></article>
+          <article class="source"><a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/">OWASP Top 10 for Large Language Model Applications</a><p>Agentic risk and excessive agency framing for systems that can take external actions.</p></article>
+          <article class="source"><a href="https://getsupers.com/">Super</a><p>Personal AI agent approval loops for fast human review and text-native control.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="final">
+      <div class="wrap final-box">
+        <h2>Route sensitive memory repair to the phone.</h2>
+        <div>
+          <p class="lede">Text approvals make agent memory rollback fast enough for real life and explicit enough for future trust.</p>
+          <div class="cta-row">
+            <a class="btn primary" href="https://getsupers.com/">Explore Super</a>
+            <a class="btn secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Text approval use case</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer wrap">
+    <span>Super Agent Market Notes</span>
+    <span>How-to pages for personal AI agent builders and operators.</span>
+  </footer>
+  <script>
+    window.addEventListener("DOMContentLoaded", function () {
+      if (!window.gsap || !window.ScrollTrigger) return;
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.from(".nav", { y: -28, opacity: 0, duration: 0.75, ease: "power3.out" });
+      gsap.from(".hero-content h1, .hero-content .lede, .hero-content .cta-row", { y: 46, opacity: 0, duration: 1, stagger: 0.12, ease: "power3.out" });
+      gsap.utils.toArray(".gsap-image").forEach(function (el) {
+        gsap.fromTo(el, { scale: 0.82, opacity: 0.58 }, { scale: 1, opacity: 1, ease: "none", scrollTrigger: { trigger: el, start: "top 92%", end: "bottom 24%", scrub: true } });
+      });
+      ScrollTrigger.create({ trigger: ".desire", start: "top 12%", end: "bottom 72%", pin: ".pin-copy", pinSpacing: false });
+      gsap.utils.toArray(".scrub-copy span").forEach(function (word) {
+        gsap.to(word, { opacity: 1, ease: "none", scrollTrigger: { trigger: ".scrub-copy", start: "top 82%", end: "bottom 34%", scrub: true } });
+      });
+    });
+  </script>
+</body>
+</html>
