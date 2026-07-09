@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agent Consent Dashboards Are Becoming Buyer Evidence</title>
+  <meta name="description" content="A market research brief on why personal AI agent vendors need consent dashboards that buyers can inspect before they trust delegated work.">
+  <link rel="canonical" href="https://kalshhunter.com/agent-consent-dashboards-become-buyer-evidence-20260709-172302/">
+  <meta property="og:title" content="Agent Consent Dashboards Are Becoming Buyer Evidence">
+  <meta property="og:description" content="Why buyer diligence is moving from screenshots and questionnaires toward live consent evidence for personal AI agents.">
+  <meta property="og:url" content="https://kalshhunter.com/agent-consent-dashboards-become-buyer-evidence-20260709-172302/">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary_large_image">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&display=swap');
+    :root{--ink:#0d1117;--paper:#f7f3ea;--muted:#65706f;--line:rgba(13,17,23,.14);--dark:#101714;--lime:#d7ff72;--clay:#c76f4d;--ice:#dfeef0;--navy:#17212b}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Cabinet Grotesk",system-ui,sans-serif;letter-spacing:0;overflow-x:hidden}main{overflow-x:hidden;width:100%;max-width:100%}
+    a{color:inherit}.nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:30;width:min(1120px,92vw);display:flex;align-items:center;justify-content:space-between;padding:10px 12px 10px 20px;border:1px solid rgba(255,255,255,.25);border-radius:999px;background:rgba(16,23,20,.72);color:white;backdrop-filter:blur(18px);box-shadow:0 20px 60px rgba(0,0,0,.18)}.brand{font-weight:900}.navlinks{display:flex;gap:18px;font-size:14px;color:rgba(255,255,255,.76)}.nav a{text-decoration:none}.navcta{padding:10px 16px;border-radius:999px;background:var(--lime);color:#101714;font-weight:900}
+    .hero{position:relative;min-height:92vh;padding:150px 5vw 90px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(320px,.75fr);gap:6vw;align-items:center;background:radial-gradient(circle at 15% 20%,rgba(215,255,114,.28),transparent 32%),radial-gradient(circle at 82% 20%,rgba(199,111,77,.28),transparent 30%),#101714;color:white}.hero:after{content:"";position:absolute;inset:0;pointer-events:none;background-image:url("https://picsum.photos/seed/agent-consent-boardroom/1920/1080");background-size:cover;background-position:center;mix-blend-mode:luminosity;opacity:.14;filter:contrast(120%) grayscale(1)}.hero>*{position:relative;z-index:1}.kicker{font-size:15px;color:var(--lime);font-weight:800;text-transform:uppercase;letter-spacing:.08em}.hero h1{max-width:min(1120px,94vw);font-size:clamp(3.05rem,6vw,6.45rem);line-height:.88;margin:18px 0 24px;letter-spacing:0;font-weight:900}.hero p{max-width:720px;font-size:clamp(1.12rem,1.7vw,1.55rem);line-height:1.35;color:rgba(255,255,255,.78)}.inline-img{display:inline-block;width:clamp(74px,9vw,126px);height:clamp(34px,4.6vw,58px);border-radius:999px;background:url("https://picsum.photos/seed/consent-ledger-closeup/420/220") center/cover;vertical-align:middle;margin:0 .08em;filter:grayscale(1) contrast(130%)}.cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:15px 22px;font-weight:900;text-decoration:none}.btn.primary{background:#fff;color:#101714}.btn.secondary{border:1px solid rgba(255,255,255,.35);color:#fff;background:rgba(255,255,255,.08)}
+    .hero-card{min-height:530px;border-radius:8px;overflow:hidden;background:#18231f;border:1px solid rgba(255,255,255,.14);box-shadow:0 40px 100px rgba(0,0,0,.35)}.hero-card img{width:100%;height:330px;object-fit:cover;filter:grayscale(1) contrast(125%);transition:transform .7s ease}.hero-card:hover img{transform:scale(1.05)}.cardbody{padding:28px}.cardbody h2{font-size:31px;line-height:1;margin:0 0 18px}.cardbody p{font-size:18px;color:rgba(255,255,255,.69)}
+    section{padding:clamp(100px,14vw,190px) 5vw}.wrap{width:min(1180px,92vw);margin:0 auto}.section-head{display:flex;justify-content:space-between;gap:40px;align-items:end;margin-bottom:54px}.section-head h2{font-size:clamp(2.4rem,4.6vw,5.15rem);line-height:.92;margin:0;max-width:900px}.section-head p{max-width:410px;font-size:19px;line-height:1.45;color:var(--muted)}
+    .bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-flow:dense;gap:16px}.tile{border:1px solid var(--line);border-radius:8px;min-height:260px;padding:30px;background:rgba(255,255,255,.48);position:relative;overflow:hidden;transition:transform .7s ease,background .7s ease}.tile:hover{transform:translateY(-6px);background:#fff}.tile h3{font-size:34px;line-height:.98;margin:0 0 18px}.tile p,.tile li{font-size:18px;line-height:1.45;color:#53605d}.tile ul{padding-left:20px}.tile.big{grid-column:span 7;min-height:390px;background:#17212b;color:white}.tile.big p{color:rgba(255,255,255,.7)}.tile.side{grid-column:span 5}.tile.third{grid-column:span 4}.tile.half{grid-column:span 6}.tile.media{padding:0}.tile.media img{width:100%;height:100%;min-height:300px;object-fit:cover;filter:grayscale(1) contrast(125%);transition:transform .7s ease}.tile.media:hover img{transform:scale(1.05)}
+    .pin-zone{background:#101714;color:white}.pin-grid{display:grid;grid-template-columns:.72fr 1fr;gap:8vw;align-items:start}.pin-title{top:110px}.pin-title h2{font-size:clamp(2.6rem,5.2vw,5.6rem);line-height:.9;margin:0 0 24px}.pin-title p{font-size:20px;color:rgba(255,255,255,.68);line-height:1.45}.evidence-stack{display:grid;gap:24px}.evidence{border:1px solid rgba(255,255,255,.16);border-radius:8px;padding:34px;background:linear-gradient(135deg,rgba(255,255,255,.1),rgba(255,255,255,.035));min-height:330px}.evidence img{width:100%;height:190px;object-fit:cover;border-radius:7px;margin-bottom:24px;filter:grayscale(1) contrast(125%);transform:scale(.86);opacity:.75}.evidence h3{font-size:34px;margin:0 0 12px}.evidence p{font-size:18px;line-height:1.48;color:rgba(255,255,255,.7)}
+    .article{background:#fff}.article-grid{display:grid;grid-template-columns:minmax(220px,330px) minmax(0,760px);gap:7vw}.toc{position:sticky;top:110px;align-self:start;border-top:1px solid var(--line);padding-top:22px;color:var(--muted)}.toc a{display:block;text-decoration:none;margin:12px 0}.prose h2{font-size:clamp(2.1rem,3.5vw,3.8rem);line-height:.98;margin:0 0 22px}.prose h3{font-size:30px;margin:46px 0 12px}.prose p,.prose li{font-size:20px;line-height:1.62;color:#3e4946}.prose a{font-weight:900}.callout{border-left:5px solid var(--clay);padding:24px 26px;background:#f7f3ea;margin:42px 0}.marquee{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 0;background:#f7f3ea}.marquee-track{display:flex;width:max-content;gap:42px;animation:mar 26s linear infinite;font-size:42px;font-weight:900;white-space:nowrap;color:#17212b}@keyframes mar{to{transform:translateX(-50%)}}
+    .accordions{display:flex;height:470px;gap:10px}.panel{flex:1;border-radius:8px;overflow:hidden;position:relative;background:#111;color:white;transition:flex .7s ease}.panel:hover{flex:2.4}.panel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(130%);opacity:.55;transition:transform .7s ease}.panel:hover img{transform:scale(1.05)}.panel div{position:absolute;inset:auto 24px 24px 24px}.panel h3{font-size:31px;margin:0 0 10px}.panel p{font-size:17px;color:rgba(255,255,255,.75)}
+    .sources{background:#dfeef0}.source-list{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.source-list a{padding:24px;border:1px solid rgba(13,17,23,.16);border-radius:8px;background:rgba(255,255,255,.55);font-weight:900;text-decoration:none}.faq details{border-top:1px solid var(--line);padding:24px 0}.faq summary{cursor:pointer;font-size:25px;font-weight:900}.faq p{font-size:19px;color:var(--muted);line-height:1.5}
+    .footer{padding:120px 5vw;background:#0d1117;color:white}.footer h2{font-size:clamp(3rem,7vw,7rem);line-height:.88;margin:0 0 30px}.footer p{font-size:21px;max-width:760px;color:rgba(255,255,255,.7);line-height:1.5}.footer-links{display:flex;gap:18px;flex-wrap:wrap;margin-top:34px}.footer-links a{color:white;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35)}
+    @media(max-width:900px){.navlinks{display:none}.hero{grid-template-columns:1fr;padding-top:130px}.hero-card{min-height:unset}.section-head,.pin-grid,.article-grid{grid-template-columns:1fr;display:grid}.bento{grid-template-columns:1fr}.tile,.tile.big,.tile.side,.tile.third,.tile.half{grid-column:span 1}.accordions{height:auto;flex-direction:column}.panel{min-height:230px}.source-list{grid-template-columns:1fr}.toc{position:static}.pin-title{position:static}}
+  </style>
+</head>
+<body>
+  <main>
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="https://kalshhunter.com/">Agent Market Notes</a>
+      <div class="navlinks">
+        <a href="#signal">Signal</a>
+        <a href="#evidence">Evidence</a>
+        <a href="#checklist">Checklist</a>
+      </div>
+      <a class="navcta" href="https://getsupers.com/">Explore Super</a>
+    </nav>
+
+    <header class="hero">
+      <div>
+        <div class="kicker">Research brief for personal AI agent operators</div>
+        <h1>Agent consent dashboards are becoming <span class="inline-img" aria-hidden="true"></span> buyer evidence</h1>
+        <p>Buyers are learning that an agent demo is not enough. They want to see what the agent is allowed to do, when approval expires, how work is replayed, and whether consent is tied to the actual browser or text action.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="#checklist">Read the buyer checklist</a>
+          <a class="btn secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">See text agent workflows</a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <img src="https://picsum.photos/seed/buyer-consent-dashboard/900/700" alt="Abstract monochrome dashboard workspace">
+        <div class="cardbody">
+          <h2>The new diligence screen is not a questionnaire. It is a living control room.</h2>
+          <p>Consent state, approval history, task scope, and replayable receipts are merging into one buyer-facing evidence surface.</p>
+        </div>
+      </aside>
+    </header>
+
+    <section id="signal">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>The market is moving from promise to proof.</h2>
+          <p>Personal AI agents are leaving the novelty phase. As they touch inboxes, calendars, browsers, payments, and customer follow-up, buyers want a way to inspect the operating boundary before they let the agent work.</p>
+        </div>
+        <div class="bento">
+          <article class="tile big">
+            <h3>Consent is becoming a product surface, not a buried setting.</h3>
+            <p>Early agent products treated permission as a one-time onboarding moment: connect Gmail, connect calendar, approve a browser session, then hope the agent behaves. The buyer conversation is changing. Teams now ask whether the vendor can show current consent, expired consent, escalated consent, revoked consent, and the exact action that consumed that consent. This is why a simple settings page is losing ground to a dashboard built for inspection.</p>
+          </article>
+          <article class="tile side media">
+            <img src="https://picsum.photos/seed/consent-market-map/900/700" alt="Editorial abstract market map">
+          </article>
+          <article class="tile third">
+            <h3>Scope clarity</h3>
+            <p>Buyers want to know which action classes are delegated: drafting, browsing, buying, sending, scheduling, or escalating.</p>
+          </article>
+          <article class="tile third">
+            <h3>Time clarity</h3>
+            <p>Approval should expire. A consent grant that never gets stale is hard to defend during a review.</p>
+          </article>
+          <article class="tile third">
+            <h3>Replay clarity</h3>
+            <p>Each meaningful action needs a compact receipt that shows what happened and why it was in bounds.</p>
+          </article>
+          <article class="tile half">
+            <h3>Why this matters for Super-style agents</h3>
+            <p>A text-native personal assistant such as <a href="https://getsupers.com/">Super</a> can turn approvals into a natural conversation. That is powerful, but the approval trail must become inspectable when buyers evaluate reliability.</p>
+          </article>
+          <article class="tile half">
+            <h3>The buyer question</h3>
+            <p>Not “does your agent ask before it acts?” The sharper question is “can I audit the exact approval basis after the agent acts?”</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>consent state</span><span>approval receipts</span><span>browser replay</span><span>scope expiry</span><span>buyer evidence</span><span>consent state</span><span>approval receipts</span><span>browser replay</span><span>scope expiry</span><span>buyer evidence</span>
+      </div>
+    </div>
+
+    <section id="evidence" class="pin-zone">
+      <div class="wrap pin-grid">
+        <div class="pin-title">
+          <h2>What buyers expect to inspect</h2>
+          <p>Consent dashboards are valuable when they collapse fragmented logs into a few durable buyer questions. The best systems make permission obvious without forcing a reviewer to read a raw transcript.</p>
+        </div>
+        <div class="evidence-stack">
+          <article class="evidence">
+            <img src="https://picsum.photos/seed/approval-basis/900/520" alt="Monochrome approval basis interface">
+            <h3>The approval basis</h3>
+            <p>Show the prompt, the user confirmation, the interpreted rule, and the agent action in one line of sight. This is the difference between a chat history and evidence. A chat history preserves words. Evidence connects words to a governed action.</p>
+          </article>
+          <article class="evidence">
+            <img src="https://picsum.photos/seed/scope-expiry/900/520" alt="Abstract expiry timeline">
+            <h3>The expiry boundary</h3>
+            <p>Consent should have a time window, a scope window, and a task window. If any window closes, the agent should refresh approval instead of silently continuing.</p>
+          </article>
+          <article class="evidence">
+            <img src="https://picsum.photos/seed/browser-receipt/900/520" alt="Browser work receipt">
+            <h3>The work receipt</h3>
+            <p>Browser agents need a digestible record of where they went, what they clicked, what changed, and whether sensitive fields were touched. This pairs naturally with <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache workflows</a>.</p>
+          </article>
+          <article class="evidence">
+            <img src="https://picsum.photos/seed/agent-release-room/900/520" alt="Agent website launch room">
+            <h3>The launch surface</h3>
+            <p>For agents that build websites or publish assets, buyer evidence includes the final artifact, review state, rollout receipt, and rollback path. This is the emerging trust layer around <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">agent-built websites</a>.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="article">
+      <div class="wrap article-grid">
+        <aside class="toc">
+          <strong>In this brief</strong>
+          <a href="#why-now">Why now</a>
+          <a href="#dashboard">Dashboard shape</a>
+          <a href="#checklist">Checklist</a>
+          <a href="#faq">FAQ</a>
+        </aside>
+        <article class="prose">
+          <h2 id="why-now">Why the consent dashboard is arriving now</h2>
+          <p>The personal AI agent market is getting more operational. The earliest assistant use cases were mostly advisory: summarize, draft, brainstorm, search, and remind. Those workflows could survive with informal trust because the blast radius was low. The newer workflows are different. Agents are asked to message customers, operate software, coordinate appointments, inspect records, manage purchasing steps, and make changes inside tools the buyer depends on. Once an agent crosses from suggestion into execution, the buyer wants evidence that execution was governed.</p>
+          <p>This does not mean every action needs an interruptive confirmation. Mature buyers dislike constant approval prompts because prompts turn the user into the workflow engine. The opportunity is more precise: create a consent dashboard that shows which work can happen without interruption, which work requires escalation, which work is expired, and which work has already been completed under a valid approval trail.</p>
+          <p>The shift mirrors familiar enterprise software evolution. Logs were once enough for technical administrators, then compliance teams needed reports, then business buyers needed dashboards. Agent consent is moving through the same ladder. A raw event log is not the final buyer experience. A buyer wants narrative compression: what was allowed, what happened, who approved it, and what can be changed now.</p>
+
+          <div class="callout">
+            <p>A strong consent dashboard is not a surveillance feature. It is a trust product. It lets a buyer delegate more work because the boundary is visible, reviewable, and adjustable.</p>
+          </div>
+
+          <h2 id="dashboard">The dashboard shape that will win buyer trust</h2>
+          <p>The strongest consent dashboards will avoid the trap of becoming a wall of switches. Buyers do not want to manage one hundred toggles. They want a few intelligible control planes that map to real risk. One plane is action type: send, spend, schedule, browse, publish, delete, escalate. Another plane is context: personal account, work account, customer-facing account, production system, sandbox system. A third plane is evidence quality: transcript, browser trace, receipt, before-and-after state, and human correction.</p>
+          <p>The dashboard should also separate temporary consent from durable policy. Temporary consent covers a single task, such as approving an agent to confirm one appointment or complete one browser checkout. Durable policy covers repeatable work, such as allowing an agent to draft follow-ups under a price threshold but requiring approval before sending a refund offer. The buyer should see both layers in the same surface because the practical question is whether the agent is currently allowed to act.</p>
+          <p>For text-native agents, the dashboard should connect back to the conversation. A user may approve a task in a thread, but a buyer reviewing the account later needs a structured record. That makes <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text message AI assistant</a> workflows especially interesting: the approval UX can stay conversational while the evidence layer becomes structured behind the scenes.</p>
+
+          <h3>What changes in the sales motion</h3>
+          <p>Vendors that can show consent evidence will answer buyer concerns faster. Instead of saying “we ask for permission,” they can open a sample room and show the permission lifecycle. Instead of promising that an agent will not overstep, they can show how overstep is prevented, detected, and corrected. This shortens the distance between product demo and procurement confidence.</p>
+          <p>It also creates a useful wedge against generic assistants. A general chat assistant may have broad memory and tool access, but buyers evaluating operational agents need sharper control. The vendor that can show approval receipts, consent expiry, and replayable action history has a more credible answer to “why should we trust this agent with real work?”</p>
+
+          <h2 id="checklist">Buyer checklist for consent evidence</h2>
+          <ul>
+            <li>Can the buyer see the current consent state for each connected account and action class?</li>
+            <li>Does consent expire by time, task, or scope instead of remaining open forever?</li>
+            <li>Can a reviewer connect a completed action to the approval that authorized it?</li>
+            <li>Does the agent produce a receipt when it uses browser control, sends a message, schedules an appointment, or publishes a change?</li>
+            <li>Can the user revoke or narrow consent without deleting the entire agent setup?</li>
+            <li>Are corrections converted into future rules, or do they disappear into chat history?</li>
+            <li>Can the vendor export a buyer-facing evidence packet without exposing irrelevant private conversation?</li>
+          </ul>
+
+          <h3>Implementation note</h3>
+          <p>A practical implementation starts with event modeling, not UI. The system needs durable objects for consent grant, approval request, approval response, interpreted rule, agent action, evidence artifact, and revocation. The page that buyers see should be composed from those objects. If the dashboard is assembled from screenshots or unstructured transcript scraping, it will break under scrutiny.</p>
+          <p>Teams should also treat consent evidence as product data. It should be queryable by user, workspace, action type, risk level, approval freshness, and artifact availability. That makes it possible to build buyer rooms, weekly reviews, exception summaries, and deployment readiness checks without inventing a new compliance workflow every time.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Three surfaces will merge.</h2>
+          <p>Approval prompts, audit logs, and buyer diligence rooms are converging into one consent evidence layer.</p>
+        </div>
+        <div class="accordions">
+          <article class="panel">
+            <img src="https://picsum.photos/seed/text-approval-thread/800/900" alt="Text approval thread">
+            <div><h3>Conversational approval</h3><p>The user approves in the channel where the work already happens.</p></div>
+          </article>
+          <article class="panel">
+            <img src="https://picsum.photos/seed/agent-audit-ledger/800/900" alt="Agent audit ledger">
+            <div><h3>Structured receipt</h3><p>The system transforms a conversation into inspectable evidence.</p></div>
+          </article>
+          <article class="panel">
+            <img src="https://picsum.photos/seed/buyer-review-room/800/900" alt="Buyer review room">
+            <div><h3>Buyer room</h3><p>The vendor packages proof without exposing unrelated private context.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="sources">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Useful external references</h2>
+          <p>These frameworks are not agent-product playbooks, but they help teams frame risk, governance, and application-level controls.</p>
+        </div>
+        <div class="source-list">
+          <a href="https://www.nist.gov/itl/ai-risk-management-framework">NIST AI Risk Management Framework</a>
+          <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/">OWASP Top 10 for Large Language Model Applications</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="faq">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>FAQ</h2>
+          <p>Short answers for teams deciding whether consent evidence belongs in the product roadmap.</p>
+        </div>
+        <details open>
+          <summary>Is a consent dashboard only for enterprise buyers?</summary>
+          <p>No. Consumers also need visibility when an agent can send messages, book appointments, or operate browser sessions. Enterprise buyers simply make the need visible earlier because procurement asks for proof.</p>
+        </details>
+        <details>
+          <summary>Should every action require approval?</summary>
+          <p>No. The better pattern is tiered autonomy. Low-risk work can run under durable policy, while high-risk work requires fresh approval and produces a stronger receipt.</p>
+        </details>
+        <details>
+          <summary>What is the simplest first version?</summary>
+          <p>Start with current permissions, recent approvals, expired approvals, and completed action receipts. That gives buyers the minimum surface they need to understand whether the agent is operating inside a boundary.</p>
+        </details>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="wrap">
+        <h2>Trust is becoming the interface.</h2>
+        <p>As personal AI agents do more work, the winning products will make consent legible. Super’s text-native assistant surface gives operators a natural place to approve, correct, and review agent actions.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="https://getsupers.com/">Visit Super</a>
+          <a class="btn secondary" href="https://app.getsupers.com/use-cases/computer-use-cache/">Explore computer-use cache</a>
+        </div>
+        <div class="footer-links">
+          <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Text message assistant</a>
+          <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">Agent-built websites</a>
+          <a href="https://kalshhunter.com/">More agent market notes</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+  <script>
+    window.addEventListener("load", function(){
+      if(!window.gsap || !window.ScrollTrigger) return;
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.utils.toArray(".evidence img").forEach(function(img){
+        gsap.fromTo(img,{scale:.82,opacity:.42},{scale:1,opacity:1,ease:"none",scrollTrigger:{trigger:img,start:"top 86%",end:"bottom 30%",scrub:true}});
+      });
+      if(window.matchMedia("(min-width: 901px)").matches){
+        ScrollTrigger.create({trigger:".pin-zone",start:"top top",end:"bottom bottom",pin:".pin-title",pinSpacing:false});
+      }
+      gsap.from(".tile",{y:36,opacity:0,stagger:.08,duration:.9,ease:"power3.out",scrollTrigger:{trigger:".bento",start:"top 78%"}});
+    });
+  </script>
+</body>
+</html>
