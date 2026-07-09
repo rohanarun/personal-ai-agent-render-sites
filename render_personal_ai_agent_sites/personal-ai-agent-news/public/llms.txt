@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Personal Agent Market Receipts Are Becoming the Trust Layer](personal-agent-market-receipts-signal-20260709-191909/): Research and news analysis
 - [How to Run SMS First Agent Inbox Triage](how-to-run-sms-first-agent-inbox-triage-20260709-191302/): Use case
 - [Phone Native Governance vs Dashboard Only Agent Controls](phone-native-governance-vs-dashboard-only-agent-controls-20260709-190640/): Competitor comparison
 - [Phone Native Agent Governance Software](phone-native-agent-governance-software-20260709-185902/): Niche research landing page
