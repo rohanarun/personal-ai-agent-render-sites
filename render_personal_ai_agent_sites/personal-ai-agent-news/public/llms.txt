@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Resume Packets vs AI Agent Conversation Memory](resume-packets-vs-ai-agent-conversation-memory-20260709-001858/): Competitor comparison
 - [Personal AI Agent Resume Packet Software](personal-ai-agent-resume-packet-software-20260709-001334/): Niche research landing page
 - [Personal AI Agents Need Resume Packets](personal-ai-agents-need-resume-packets-20260709-000332/): Research and news analysis
 - [How to Use Handoff Logs in Text AI Agents](how-to-use-handoff-logs-in-text-ai-agents-20260708-235334/): Use case

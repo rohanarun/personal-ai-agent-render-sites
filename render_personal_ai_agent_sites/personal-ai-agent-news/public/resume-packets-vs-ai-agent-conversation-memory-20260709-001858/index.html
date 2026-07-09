@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resume Packets vs AI Agent Conversation Memory</title>
+  <meta name="description" content="A practical comparison of resume packets and conversation memory for personal AI agents that need safe continuation across text, browser, and public output workflows." />
+  <link rel="canonical" href="https://kalshhunter.com/resume-packets-vs-ai-agent-conversation-memory-20260709-001858/" />
+  <meta property="og:title" content="Resume Packets vs AI Agent Conversation Memory" />
+  <meta property="og:description" content="Conversation memory helps agents remember preferences. Resume packets help agents continue current work without losing state, evidence, approvals, or risk boundaries." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://kalshhunter.com/resume-packets-vs-ai-agent-conversation-memory-20260709-001858/" />
+  <style>
+    :root{--bg:#091014;--ink:#f8f2e8;--muted:rgba(248,242,232,.72);--soft:rgba(248,242,232,.48);--line:rgba(248,242,232,.16);--panel:rgba(18,25,30,.78);--mint:#b9f7d0;--gold:#efc76d;--blue:#9dcaff;--rose:#ff9684;--font:"Cabinet Grotesk","Outfit","Geist",Arial,sans-serif}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:var(--font);background:radial-gradient(circle at 16% 8%,rgba(185,247,208,.18),transparent 34rem),radial-gradient(circle at 86% 20%,rgba(157,202,255,.14),transparent 32rem),linear-gradient(180deg,#091014 0%,#11191e 48%,#091014 100%);overflow-x:hidden}body:before{content:"";position:fixed;inset:0;opacity:.15;pointer-events:none;mix-blend-mode:soft-light;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E")}main{width:100%;max-width:100%;overflow-x:hidden}a{color:inherit}
+    .nav{position:fixed;z-index:30;top:22px;left:50%;transform:translateX(-50%);width:min(1080px,calc(100vw - 32px));display:flex;align-items:center;justify-content:space-between;padding:12px 14px 12px 20px;border:1px solid var(--line);border-radius:999px;background:rgba(9,16,20,.7);backdrop-filter:blur(18px);box-shadow:0 18px 82px rgba(0,0,0,.32)}.brand{text-decoration:none;font-weight:900;letter-spacing:0}.nav-links{display:flex;align-items:center;gap:8px}.nav-links a{color:var(--muted);text-decoration:none;padding:9px 12px;border-radius:999px;font-size:.9rem}.nav-links a:hover{color:var(--ink);background:rgba(248,242,232,.08)}.nav-links .nav-cta{color:#06110b;background:var(--mint);font-weight:900}
+    .hero{min-height:100vh;display:grid;align-items:center;position:relative;padding:150px 20px 104px;isolation:isolate}.hero:after{content:"";position:absolute;right:-4vw;bottom:5vh;width:min(620px,56vw);height:min(720px,68vh);z-index:-1;border-radius:8px;background:linear-gradient(180deg,rgba(9,16,20,.02),rgba(9,16,20,.56)),url("https://picsum.photos/seed/resume-memory-comparison/1200/1500") center/cover;filter:grayscale(.27) contrast(1.2) saturate(.74);box-shadow:0 50px 150px rgba(0,0,0,.48),inset 0 0 0 1px rgba(248,242,232,.14);opacity:.78}.hero-inner{width:min(1180px,94vw);margin:0 auto}.hero-copy{width:min(760px,92vw)}h1{max-width:min(1080px,94vw);margin:0;font-size:clamp(2.65rem,4.65vw,5.15rem);line-height:.96;letter-spacing:0;text-wrap:balance}.inline-img{display:inline-block;width:clamp(74px,8vw,128px);height:clamp(32px,3.8vw,52px);margin:0 .16em;border-radius:999px;vertical-align:middle;background:url("https://picsum.photos/seed/resume-memory-strip/600/320") center/cover;box-shadow:inset 0 0 0 1px rgba(248,242,232,.2),0 16px 62px rgba(0,0,0,.35);filter:grayscale(.18) contrast(1.22)}.hero p{margin:28px 0 0;color:var(--muted);font-size:clamp(1.05rem,1.55vw,1.32rem);line-height:1.62;max-width:690px}.actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}.button{min-height:48px;padding:0 20px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;text-decoration:none;border:1px solid var(--line);font-weight:900}.button.primary{color:#06110b;background:var(--mint);border-color:transparent}.button.secondary{color:var(--ink);background:rgba(248,242,232,.08)}
+    section{padding:148px 20px}.wrap{width:min(1160px,94vw);margin:0 auto}.section-head{display:grid;grid-template-columns:1.08fr .92fr;gap:44px;align-items:end;margin-bottom:42px}h2{margin:0;font-size:clamp(2.15rem,4vw,4.75rem);line-height:.99;letter-spacing:0;text-wrap:balance}.lead{margin:0;color:var(--muted);line-height:1.72;font-size:1.08rem}.bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-flow:dense;gap:16px}.card{min-height:260px;position:relative;overflow:hidden;padding:28px;border-radius:8px;border:1px solid var(--line);background:var(--panel);box-shadow:0 24px 90px rgba(0,0,0,.24)}.card h3{margin:0 0 14px;font-size:clamp(1.32rem,2vw,2rem);line-height:1.08;letter-spacing:0}.card p,.card li{color:var(--muted);line-height:1.64;font-size:1rem}.card ul{margin:18px 0 0;padding-left:20px}.span-7{grid-column:span 7}.span-6{grid-column:span 6}.span-5{grid-column:span 5}.span-4{grid-column:span 4}.media{padding:0}.media img{width:100%;height:100%;min-height:330px;object-fit:cover;filter:grayscale(.27) contrast(1.16);transition:transform .7s ease,opacity .7s ease}.media:hover img,.accordion:hover img{transform:scale(1.05)}
+    .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap;padding:20px 0;color:var(--soft);font-weight:900;font-size:clamp(1.45rem,3.1vw,3.2rem)}.marquee-track{display:inline-block;animation:slide 36s linear infinite}@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}.compare-table{width:100%;border-collapse:collapse;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:rgba(248,242,232,.05)}.compare-table th,.compare-table td{padding:18px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}.compare-table th{color:var(--mint)}.compare-table td{color:var(--muted);line-height:1.58}.stack-wrap{display:grid;grid-template-columns:.82fr 1.18fr;gap:56px;align-items:start}.sticky{position:sticky;top:122px}.stack{display:grid;gap:18px}.accordion{display:grid;grid-template-columns:180px 1fr;overflow:hidden;min-height:205px;border-radius:8px;border:1px solid var(--line);background:rgba(248,242,232,.06)}.accordion img{width:100%;height:100%;object-fit:cover;filter:grayscale(.24) contrast(1.18);transition:transform .7s ease,opacity .7s ease}.accordion div{padding:24px}.accordion h3{margin:0 0 10px;font-size:1.36rem}.accordion p{margin:0;color:var(--muted);line-height:1.64}
+    .sources{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.source-card,details{border:1px solid var(--line);border-radius:8px;background:rgba(248,242,232,.06);padding:22px}.source-card h3{margin-top:0}.source-card p,details p{color:var(--muted);line-height:1.66}.source-card a{color:var(--mint);font-weight:900}.faq{display:grid;gap:14px}summary{cursor:pointer;font-weight:900;font-size:1.08rem}.cta{padding:128px 20px;border-top:1px solid var(--line);background:radial-gradient(circle at 18% 22%,rgba(185,247,208,.15),transparent 30rem),linear-gradient(135deg,rgba(157,202,255,.12),rgba(239,199,109,.08))}.cta-box{width:min(1120px,94vw);margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:34px;align-items:center}footer{padding:38px 20px 70px;color:var(--soft)}footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}footer a{color:var(--muted);text-decoration:none;margin-left:16px}
+    @media(max-width:860px){.nav{border-radius:22px}.nav-links{display:none}.hero:after{width:84vw;height:40vh;right:-18vw;opacity:.35}.section-head,.stack-wrap,.cta-box{grid-template-columns:1fr}.bento{grid-template-columns:1fr}.span-4,.span-5,.span-6,.span-7{grid-column:span 1}.sources{grid-template-columns:1fr}.accordion{grid-template-columns:1fr}section{padding:108px 20px}}
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="Primary navigation">
+    <a class="brand" href="/">Kalsh Hunter</a>
+    <div class="nav-links">
+      <a href="#compare">Compare</a>
+      <a href="#use">Use Cases</a>
+      <a href="#sources">Sources</a>
+      <a class="nav-cta" href="https://getsupers.com/">Explore Super</a>
+    </div>
+  </nav>
+  <main>
+    <header class="hero">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <h1>Resume packets <span class="inline-img" aria-hidden="true"></span> vs AI agent conversation memory</h1>
+          <p>Conversation memory helps a personal AI agent remember preferences. Resume packets help it continue a live task with the right state, evidence, approvals, and next safe action.</p>
+          <div class="actions">
+            <a class="button primary" href="https://getsupers.com/">Build with Super</a>
+            <a class="button secondary" href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">See text approvals</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="compare">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Memory is behavioral. Resume packets are operational.</h2>
+          <p class="lead">Both matter, but they solve different failures. Memory makes future interactions feel familiar. Resume packets make paused work restartable without rereading a transcript or rebuilding browser context.</p>
+        </div>
+        <div class="bento">
+          <article class="card span-7">
+            <h3>Where conversation memory wins</h3>
+            <p>Memory is the right layer for durable preferences, relationship context, default tone, recurring constraints, and long-term correction patterns. It should shape future behavior without forcing the user to repeat themselves.</p>
+            <ul><li>Preferred tone and channel.</li><li>Recurring scheduling constraints.</li><li>Known vendors, people, projects, and habits.</li></ul>
+          </article>
+          <article class="card media span-5"><img class="scale-media" src="https://picsum.photos/seed/agent-memory-archive/900/1200" alt="AI agent memory archive interface" /></article>
+          <article class="card span-4"><h3>Memory remembers defaults</h3><p>It is useful before the task begins, when the agent decides how to behave.</p></article>
+          <article class="card span-4"><h3>Packets preserve state</h3><p>They are useful while the task is alive, when the agent needs to resume exactly where it paused.</p></article>
+          <article class="card span-4"><h3>The layers cooperate</h3><p>A resume packet can cite memory, but it should not depend on hidden memory to explain current state.</p></article>
+          <article class="card media span-6"><img class="scale-media" src="https://picsum.photos/seed/resume-packet-comparison-board/1200/820" alt="Resume packet comparison board for personal AI agents" /></article>
+          <article class="card span-6"><h3>Why Super-style workflows need packets</h3><p><a href="https://getsupers.com/">Super</a> is relevant when agents move between text approvals and browser execution. The <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text message AI assistant</a> flow needs a compact user-facing handoff, while the <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache</a> keeps the underlying packet grounded in browser evidence.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true"><div class="marquee-track">memory shapes behavior · packets preserve state · memory shapes behavior · packets preserve state · </div></div>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head"><h2>Buyer comparison table.</h2><p class="lead">Use this when evaluating whether an agent product is promising true task continuation or only better personalization.</p></div>
+        <table class="compare-table">
+          <thead><tr><th>Decision area</th><th>Conversation memory</th><th>Resume packet</th></tr></thead>
+          <tbody>
+            <tr><td>Primary job</td><td>Store durable user preferences and recurring context.</td><td>Bundle current task state, evidence, approvals, and next action.</td></tr>
+            <tr><td>Best moment</td><td>Before a task starts or when adapting behavior across tasks.</td><td>During a pause, handoff, model change, or delayed resume.</td></tr>
+            <tr><td>Main risk</td><td>Outdated or overgeneralized preferences can shape the wrong behavior.</td><td>Incomplete packets can restart work without enough evidence or risk context.</td></tr>
+            <tr><td>Human value</td><td>The agent feels more personal.</td><td>The task feels easier to trust and continue.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="use">
+      <div class="wrap stack-wrap">
+        <div class="sticky"><h2>Use resume packets wherever context can decay.</h2><p class="lead">Browser tabs close, approval decisions arrive late, and public drafts change. Resume packets keep the current task coherent even when memory is not enough.</p></div>
+        <div class="stack">
+          <article class="accordion"><img class="scale-media" src="https://picsum.photos/seed/text-packet-use-case/700/900" alt="Text approval resume packet" /><div><h3>Text approvals</h3><p>Let the user reply from a compact message while the packet preserves the fuller state.</p></div></article>
+          <article class="accordion"><img class="scale-media" src="https://picsum.photos/seed/browser-packet-use-case/700/900" alt="Browser resume packet" /><div><h3>Browser work</h3><p>Preserve sources, forms, screenshots, and open questions so the agent can continue later.</p></div></article>
+          <article class="accordion"><img class="scale-media" src="https://picsum.photos/seed/public-packet-use-case/700/900" alt="Public output resume packet" /><div><h3>Public output</h3><p>For <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent website building</a>, packets separate draft state from publishing approval.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section><div class="wrap"><div class="section-head"><h2>Buyer checklist.</h2><p class="lead">Ask these questions before accepting memory as a substitute for resumability.</p></div><div class="bento"><article class="card span-4"><h3>Can another run use it?</h3><p>A packet should be consumable by a future agent without hidden chat state.</p></article><article class="card span-4"><h3>Can the user inspect it?</h3><p>The state should be readable enough for human trust.</p></article><article class="card span-4"><h3>Does evidence travel?</h3><p>Sources, screenshots, approval state, and risk should move with the packet.</p></article></div></div></section>
+
+    <section id="sources"><div class="wrap"><div class="section-head"><h2>Sources and reference points.</h2><p class="lead">These references frame memory and resumability as part of broader AI governance and oversight.</p></div><div class="sources"><article class="source-card"><h3>NIST AI Risk Management Framework</h3><p>Useful for governance, measurement, documentation, and managing AI risk across operating contexts.</p><a href="https://www.nist.gov/itl/ai-risk-management-framework" rel="nofollow">Open NIST AI RMF</a></article><article class="source-card"><h3>OWASP LLM Application Risks</h3><p>Relevant for excessive agency, tool misuse, prompt injection, sensitive information, and oversight patterns.</p><a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" rel="nofollow">Open OWASP LLM Top 10</a></article><article class="source-card"><h3>Super</h3><p>Reference workflows for text approvals, browser work, cached computer-use context, and generated public artifacts.</p><a href="https://getsupers.com/">Open Super</a></article></div></div></section>
+
+    <section><div class="wrap"><div class="section-head"><h2>FAQ</h2><p class="lead">Common questions about resume packets and AI agent memory.</p></div><div class="faq"><details><summary>Do resume packets replace memory?</summary><p>No. Memory shapes future behavior. Resume packets preserve current task state.</p></details><details><summary>Can memory be included in a packet?</summary><p>Yes, but it should be cited as context rather than treated as the whole continuation state.</p></details><details><summary>When is memory enough?</summary><p>Memory can be enough for tone and preference. It is not enough when evidence, approvals, or browser state matter.</p></details><details><summary>What should a packet include?</summary><p>Objective, current state, evidence, approval state, blocker, risk, and next safe action.</p></details></div></div></section>
+
+    <section class="cta"><div class="cta-box"><div><h2>Do not ask memory to do state transfer.</h2><p class="lead">Personal AI agents need memory for preference and resume packets for safe continuation.</p></div><a class="button primary" href="https://getsupers.com/">Explore Super</a></div></section>
+  </main>
+  <footer><div class="wrap"><span>Kalsh Hunter personal AI agent market notes</span><span><a href="https://getsupers.com/">Super</a><a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">Text assistants</a><a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a></span></div></footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    if(window.gsap&&window.ScrollTrigger){gsap.registerPlugin(ScrollTrigger);gsap.utils.toArray(".scale-media").forEach(function(img){gsap.fromTo(img,{scale:.84,opacity:.6},{scale:1,opacity:1,ease:"none",scrollTrigger:{trigger:img,start:"top 88%",end:"bottom 18%",scrub:true}})});gsap.utils.toArray(".card,.accordion").forEach(function(card,index){gsap.from(card,{y:44,opacity:0,duration:.85,delay:index*.025,ease:"power3.out",scrollTrigger:{trigger:card,start:"top 86%"}})})}
+  </script>
+</body>
+</html>
