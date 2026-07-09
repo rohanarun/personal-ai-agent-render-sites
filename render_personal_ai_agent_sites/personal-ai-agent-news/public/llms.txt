@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [How to Run Launch Room QA for AI-Built Sites](how-to-run-launch-room-qa-for-ai-built-sites-20260709-103801/): Use case
 - [Agent Launch Rooms vs Traditional CMS Publishing](agent-launch-rooms-vs-traditional-cms-publishing-20260709-103231/): Competitor comparison
 - [Agent Launch Room Software for AI-Built Sites](agent-launch-room-software-for-ai-built-sites-20260709-102731/): Niche research landing page
 - [Personal AI Agents Are Moving from Session Replay to Evidence Rooms](personal-ai-agents-are-moving-from-session-replay-to-evidence-rooms-20260709-102231/): Research and news analysis

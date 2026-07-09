@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to Run Launch Room QA for AI-Built Sites</title>
+  <meta name="description" content="A practical use-case guide for running launch room QA on AI-built sites with approvals, source checks, browser proof, failed links, and release receipts.">
+  <link rel="canonical" href="https://kalshhunter.com/how-to-run-launch-room-qa-for-ai-built-sites-20260709-103801/">
+  <meta property="og:title" content="How to Run Launch Room QA for AI-Built Sites">
+  <meta property="og:description" content="A workflow for personal AI operators who need launch-room QA before publishing AI-built websites.">
+  <meta property="og:url" content="https://kalshhunter.com/how-to-run-launch-room-qa-for-ai-built-sites-20260709-103801/">
+  <meta property="og:type" content="article">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <style>
+    :root{--ink:#101412;--paper:#f7f2e9;--muted:#676258;--line:rgba(16,20,18,.15);--dark:#141816;--gold:#e4c36d;--blue:#94c4db;--green:#b9d28c}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Geist,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{color:inherit}main{overflow-x:hidden;width:100%;max-width:100%}
+    body:before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(circle at 16% 18%,rgba(228,195,109,.24),transparent 32%),radial-gradient(circle at 84% 20%,rgba(148,196,219,.27),transparent 34%),radial-gradient(circle at 50% 86%,rgba(185,210,140,.24),transparent 30%)}body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.2;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.24'/%3E%3C/svg%3E")}
+    .shell{width:min(1180px,92vw);margin:0 auto}.nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:30;width:min(980px,92vw);display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border:1px solid rgba(255,255,255,.38);border-radius:999px;background:rgba(247,242,233,.78);backdrop-filter:blur(18px);box-shadow:0 18px 60px rgba(16,20,18,.12)}.brand{text-decoration:none;font-weight:900}.navlinks{display:flex;gap:18px;color:#46443e;font-size:13px}.navlinks a{text-decoration:none}.nav .launch{padding:10px 14px;border-radius:999px;background:var(--dark);color:#fff;text-decoration:none;font-weight:850}
+    .hero{min-height:94vh;padding:152px 0 96px;display:grid;align-items:center}.heroGrid{display:grid;grid-template-columns:1.08fr .92fr;gap:58px;align-items:center}.kicker{text-transform:uppercase;letter-spacing:.16em;color:#756d62;font-size:13px;margin-bottom:24px}.hero h1{max-width:min(1120px,94vw);font-size:clamp(3rem,5vw,5.7rem);line-height:.94;letter-spacing:0;margin:0;font-weight:950}.inlineImg{display:inline-block;width:clamp(78px,8vw,132px);height:clamp(36px,4vw,54px);border-radius:999px;vertical-align:middle;margin:0 .16em;background:url(https://picsum.photos/seed/launch-room-qa-inline/440/180) center/cover;filter:grayscale(.2) contrast(1.18) saturate(.82)}.lede{max-width:720px;margin:26px 0 0;color:#46433d;font-size:clamp(1.05rem,1.7vw,1.36rem);line-height:1.58}.cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:999px;border:1px solid var(--line);text-decoration:none;font-weight:850}.btn.primary{background:var(--dark);color:#fff}.btn.secondary{background:#fff7dc;color:#111}.heroArt{position:relative;min-height:540px}.photo{position:absolute;border-radius:10px;overflow:hidden;background:#ddd;box-shadow:0 28px 90px rgba(16,20,18,.2)}.photo img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(.3) contrast(1.2) saturate(.82);transition:transform .7s ease}.photo:hover img{transform:scale(1.05)}.photo.main{right:0;bottom:0;width:min(440px,86vw);height:520px}.photo.small{left:0;top:42px;width:260px;height:300px;mix-blend-mode:multiply}.ribbon{position:absolute;left:42px;right:38px;bottom:48px;padding:18px;border-radius:8px;background:rgba(20,24,22,.86);color:#fff;line-height:1.45;backdrop-filter:blur(12px)}
+    section{padding:128px 0}.intro{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;border-top:1px solid var(--line)}.eyebrow{text-transform:uppercase;letter-spacing:.15em;font-size:12px;color:#756d62}.sectionTitle,.intro h2{font-size:clamp(2.2rem,4vw,4.9rem);line-height:.98;margin:0;letter-spacing:0}.copy{font-size:18px;line-height:1.75;color:#46433d}.copy a{font-weight:850;text-decoration-thickness:2px;text-underline-offset:4px}
+    .bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-flow:dense;gap:16px}.card{min-height:280px;border:1px solid var(--line);border-radius:8px;background:rgba(255,251,241,.78);overflow:hidden;position:relative}.pad{padding:28px}.span7{grid-column:span 7}.span5{grid-column:span 5}.span4{grid-column:span 4}.card h3{font-size:clamp(1.4rem,2.5vw,2.45rem);line-height:1.02;margin:0 0 18px}.card p,.card li{line-height:1.65;color:#4e4b45}.card ul{padding-left:20px}.media img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(.34) contrast(1.2);transition:transform .7s ease}.media:hover img{transform:scale(1.05)}.wash{position:absolute;inset:auto 0 0;padding:28px;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.82))}.wash p{color:rgba(255,255,255,.8)}
+    .pinWrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:start}.steps{display:grid;gap:22px}.step{position:sticky;top:108px;min-height:250px;padding:34px;border-radius:8px;background:var(--dark);color:#fff;border:1px solid rgba(255,255,255,.12)}.step:nth-child(2){top:132px;background:#22241f}.step:nth-child(3){top:156px;background:#2d3029}.step:nth-child(4){top:180px;background:#343127}.step h3{font-size:clamp(1.7rem,3vw,3.3rem);line-height:1;margin:0 0 18px}.step p{line-height:1.7;color:rgba(255,255,255,.76)}
+    .accordion{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;height:420px}.slice{position:relative;overflow:hidden;border-radius:8px;background:#222;transition:grid-column .5s ease}.slice:hover{grid-column:span 2}.slice img{width:100%;height:100%;object-fit:cover;filter:grayscale(.42) contrast(1.22) brightness(.82);transition:transform .7s ease}.slice:hover img{transform:scale(1.05)}.slice strong{position:absolute;left:18px;right:18px;bottom:18px;color:#fff;font-size:22px;line-height:1.05}.quote{display:grid;grid-template-columns:.8fr 1.2fr;gap:44px;align-items:center;border:1px solid var(--line);border-radius:8px;background:rgba(255,251,241,.78);padding:28px}.portraits{display:flex}.portraits img{width:92px;height:92px;border-radius:999px;object-fit:cover;border:4px solid var(--paper);margin-left:-18px;filter:grayscale(.28) contrast(1.15)}.portraits img:first-child{margin-left:0}
+    .checklist{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.check{background:var(--dark);color:#fff;border-radius:8px;padding:26px}.check p{color:rgba(255,255,255,.76);line-height:1.65}.faq{display:grid;grid-template-columns:1fr 1fr;gap:18px}.faq details{border:1px solid var(--line);border-radius:8px;background:rgba(255,251,241,.78);padding:22px}.faq summary{cursor:pointer;font-weight:900}.faq p{line-height:1.65;color:#4b4943}.sources li{margin:10px 0;color:#4b4943;line-height:1.55}.final{background:var(--dark);color:#fff;padding:128px 0}.finalBox{display:grid;grid-template-columns:1.16fr .84fr;gap:50px;align-items:center}.final h2{font-size:clamp(2.6rem,5vw,5.8rem);line-height:.95;margin:0}.final .copy{color:rgba(255,255,255,.74)}.final .btn.secondary{background:#fff;color:#111}.footer{padding:36px 0;display:flex;justify-content:space-between;gap:20px;color:#6d675d;font-size:14px}
+    @media(max-width:900px){.navlinks{display:none}.heroGrid,.intro,.pinWrap,.quote,.finalBox{grid-template-columns:1fr}.heroArt{min-height:430px}.photo.main{height:400px}.photo.small{width:190px;height:230px}.bento,.checklist,.faq{grid-template-columns:1fr}.span7,.span5,.span4{grid-column:span 1}.accordion{grid-template-columns:1fr;height:auto}.slice,.slice:hover{grid-column:span 1;height:240px}section{padding:92px 0}.footer{flex-direction:column}}
+  </style>
+</head>
+<body>
+  <nav class="nav"><a class="brand" href="https://kalshhunter.com/">Agent Market Notes</a><div class="navlinks"><a href="#checks">Checks</a><a href="#steps">Steps</a><a href="#faq">FAQ</a></div><a class="launch" href="https://getsupers.com/">Super</a></nav>
+  <main>
+    <header class="hero">
+      <div class="shell heroGrid">
+        <div><div class="kicker">Use-case guide for launch operators</div><h1>How to run launch room QA <span class="inlineImg"></span> for AI-built sites</h1><p class="lede">AI-built sites should not go live on a confident summary alone. Launch room QA gives personal AI operators a repeatable way to check approvals, sources, browser state, links, deployment status, and final release receipts.</p><div class="cta"><a class="btn primary" href="https://getsupers.com/">Explore Super</a><a class="btn secondary" href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">Website agent use case</a></div></div>
+        <div class="heroArt"><figure class="photo small gsap-image"><img src="https://picsum.photos/seed/launch-room-qa-table/900/1100" alt="Launch room QA table"></figure><figure class="photo main gsap-image"><img src="https://picsum.photos/seed/ai-built-site-qa-console/1100/1300" alt="AI-built site QA console"></figure><div class="ribbon">The release is not ready until the evidence room can explain what changed and what still failed.</div></div>
+      </div>
+    </header>
+
+    <section class="shell intro">
+      <div><div class="eyebrow">Why QA changes</div><h2>Agent-built sites need proof-oriented QA.</h2></div>
+      <div><p class="copy">Traditional website QA usually checks visual layout, links, metadata, and deployment. AI-built websites add another layer: the operator needs to know whether the agent followed the brief, used trustworthy sources, respected approval boundaries, and reported incomplete deployment honestly.</p><p class="copy">Launch room QA is the workflow that turns that proof into a repeatable checklist. It fits naturally with <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agents that build websites</a>, message-native approvals, and <a href="https://app.getsupers.com/use-cases/computer-use-cache/">computer-use cache workflows</a> that rerun browser checks.</p></div>
+    </section>
+
+    <section id="checks" class="shell">
+      <h2 class="sectionTitle">The launch room QA map</h2>
+      <div class="bento" style="margin-top:42px">
+        <article class="card pad span7"><h3>Check the brief before the page.</h3><p>Start by comparing the generated page against the original ask: audience, offer, required backlinks, visual constraints, source requirements, and claims to avoid. A beautiful page can still fail if it answers the wrong brief.</p></article>
+        <article class="card media span5 gsap-image"><img src="https://picsum.photos/seed/qa-brief-evidence-board/1200/900" alt="QA brief evidence board"><div class="wash"><h3>Brief alignment</h3><p>The first QA question is whether the agent solved the right task.</p></div></article>
+        <article class="card pad span4"><h3>Approval freshness</h3><p>Confirm publish approval is current, specific, and attached to the final change set.</p></article>
+        <article class="card pad span4"><h3>Source support</h3><p>Make sure market claims, safety claims, and comparisons have visible source links.</p></article>
+        <article class="card pad span4"><h3>Browser reality</h3><p>Inspect actual rendered pages, not only local files or agent-written summaries.</p></article>
+        <article class="card media span5 gsap-image"><img src="https://picsum.photos/seed/live-link-check-results/1200/900" alt="Live link check results"><div class="wash"><h3>Failed links stay visible</h3><p>The receipt should report what is not live yet.</p></div></article>
+        <article class="card pad span7"><h3>End with the receipt, not the vibe.</h3><p>The launch room should produce a final receipt with page title, local path, planned live URL, backlinks, source links, failed links, deploy status, and residual risks. Products like <a href="https://getsupers.com/">Super</a> can send that receipt through a lightweight operator channel while preserving the deeper room for inspection.</p></article>
+      </div>
+    </section>
+
+    <section id="steps" class="shell pinWrap">
+      <div class="pinTitle"><div class="eyebrow">Step sequence</div><h2 class="sectionTitle">Run QA as four passes.</h2><p class="copy">The order matters. Approval and source checks should happen before the operator trusts browser proof, and browser proof should happen before the receipt says the page is live.</p></div>
+      <div class="steps">
+        <article class="step"><h3>Intent pass</h3><p>Compare the page against the original request, audience, CTA, required links, and no-go claims.</p></article>
+        <article class="step"><h3>Evidence pass</h3><p>Review sources, source dates, screenshots, browser states, and any external references the page depends on.</p></article>
+        <article class="step"><h3>Release pass</h3><p>Check canonical URL, sitemap, live page, internal links, backlinks, external links, and deploy status.</p></article>
+        <article class="step"><h3>Receipt pass</h3><p>Write the final receipt with the result, unresolved failures, and the next operator action.</p></article>
+      </div>
+    </section>
+
+    <section class="shell">
+      <h2 class="sectionTitle">QA views</h2>
+      <div class="accordion" style="margin-top:42px">
+        <div class="slice"><img src="https://picsum.photos/seed/intent-pass-view/900/900" alt="Intent pass view"><strong>Intent pass</strong></div>
+        <div class="slice"><img src="https://picsum.photos/seed/evidence-pass-view/900/900" alt="Evidence pass view"><strong>Evidence pass</strong></div>
+        <div class="slice"><img src="https://picsum.photos/seed/release-pass-view/900/900" alt="Release pass view"><strong>Release pass</strong></div>
+        <div class="slice"><img src="https://picsum.photos/seed/receipt-pass-view/900/900" alt="Receipt pass view"><strong>Receipt pass</strong></div>
+      </div>
+    </section>
+
+    <section class="shell">
+      <div class="quote"><div class="portraits"><img src="https://picsum.photos/seed/qa-operator-one/200/200" alt="QA operator portrait one"><img src="https://picsum.photos/seed/qa-operator-two/200/200" alt="QA operator portrait two"><img src="https://picsum.photos/seed/qa-operator-three/200/200" alt="QA operator portrait three"></div><p class="copy" style="font-size:clamp(1.4rem,2.8vw,3rem);line-height:1.12;margin:0">A launch room does not slow the agent down. It makes speed inspectable.</p></div>
+    </section>
+
+    <section class="shell">
+      <h2 class="sectionTitle">Operator checklist</h2>
+      <div class="checklist" style="margin-top:42px">
+        <div class="check"><h3>Before QA</h3><p>Collect the brief, approval note, required links, source policy, and expected live URL.</p></div>
+        <div class="check"><h3>During QA</h3><p>Check sources, layout, canonical tags, link behavior, responsive fit, and browser output.</p></div>
+        <div class="check"><h3>After QA</h3><p>Issue a receipt with success state, failed links, deployment status, source list, and next action.</p></div>
+      </div>
+    </section>
+
+    <section class="shell intro">
+      <div><div class="eyebrow">Text-first review</div><h2>Receipts can fit into a message thread.</h2></div>
+      <div><p class="copy">A <a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">text-message AI assistant</a> can return the launch-room receipt in a short format: title, URL, sources, failed links, deploy state, and next step. The full room remains available if the operator needs to inspect the evidence.</p><p class="copy">That gives personal AI operators the best of both worlds: a lightweight approval surface and a durable proof layer for launches that need more scrutiny.</p></div>
+    </section>
+
+    <section id="faq" class="shell">
+      <h2 class="sectionTitle">FAQ</h2>
+      <div class="faq" style="margin-top:42px">
+        <details open><summary>Is launch room QA different from ordinary website QA?</summary><p>Yes. It includes normal website QA plus agent-specific checks: approval provenance, source support, prompt-brief alignment, and release receipt quality.</p></details>
+        <details><summary>Should the agent hide pending deploys?</summary><p>No. Pending deploys and 404s should be reported clearly in the receipt so the operator knows what is real.</p></details>
+        <details><summary>Can this be automated?</summary><p>Much of it can be automated with cached browser routines, but the approval and risk interpretation should remain visible to the operator.</p></details>
+        <details><summary>What is the minimum final receipt?</summary><p>Title, local path, planned URL, backlinks, sources, link status, deploy status, and unresolved failures.</p></details>
+      </div>
+    </section>
+
+    <section class="shell">
+      <h2 class="sectionTitle">Sources</h2>
+      <ul class="sources">
+        <li><a href="https://www.nist.gov/itl/ai-risk-management-framework">NIST AI Risk Management Framework</a> for trustworthy AI governance and risk framing.</li>
+        <li><a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/">OWASP Top 10 for Large Language Model Applications</a> for common LLM application risks.</li>
+        <li><a href="https://getsupers.com/">Super</a> and related use-case pages for personal AI agent workflow examples.</li>
+      </ul>
+    </section>
+
+    <section class="final"><div class="shell finalBox"><h2>Run the QA. Keep the proof.</h2><div><p class="copy">Launch room QA helps AI-built sites ship with evidence that operators can trust after the agent moves on.</p><div class="cta"><a class="btn secondary" href="https://getsupers.com/">Visit Super</a><a class="btn primary" href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">Website agent use case</a></div></div></div></section>
+  </main>
+  <footer class="footer shell"><span>Super Agent Market Notes</span><span>Use-case guide for launch-room QA on AI-built sites.</span></footer>
+  <script>
+    window.addEventListener("DOMContentLoaded",function(){if(!window.gsap||!window.ScrollTrigger)return;gsap.registerPlugin(ScrollTrigger);gsap.from(".nav",{y:-28,opacity:0,duration:.8,ease:"power3.out"});gsap.from(".hero h1,.lede,.cta,.photo,.ribbon",{y:44,opacity:0,duration:1,stagger:.12,ease:"power3.out"});ScrollTrigger.create({trigger:".pinWrap",start:"top 12%",end:"bottom 76%",pin:".pinTitle",pinSpacing:false});gsap.utils.toArray(".step").forEach(function(card){gsap.from(card,{y:90,opacity:.38,scale:.94,scrollTrigger:{trigger:card,start:"top 86%",end:"top 44%",scrub:true}})});gsap.utils.toArray(".gsap-image").forEach(function(item){gsap.fromTo(item,{scale:.84,opacity:.64},{scale:1,opacity:1,ease:"none",scrollTrigger:{trigger:item,start:"top 88%",end:"bottom 24%",scrub:true}})})});
+  </script>
+</body>
+</html>
