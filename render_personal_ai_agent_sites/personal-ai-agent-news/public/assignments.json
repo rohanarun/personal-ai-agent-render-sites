@@ -2,6 +2,29 @@
   {
     "assigned_domain": "kalshhunter.com",
     "assigned_slot": "personal-ai-agent-news",
+    "assigned_url": "https://kalshhunter.com/browser-ai-agents-need-verifiable-resume-trails-20260709-012559/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/text-message-ai-assistant/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "blog",
+    "content_kind_label": "Research and news analysis",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://kalshhunter.com/browser-ai-agents-need-verifiable-resume-trails-20260709-012559/",
+    "receipt_created_at": "2026-07-09T01:25:59.262+00:00",
+    "receipt_status": "success",
+    "slug": "browser-ai-agents-need-verifiable-resume-trails-20260709-012559",
+    "source_path": "sms_published_sites/browser-ai-agents-need-verifiable-resume-trails-20260709-012559",
+    "target_slot": "personal-ai-agent-news",
+    "title": "Browser AI Agents Need Verifiable Resume Trails"
+  },
+  {
+    "assigned_domain": "kalshhunter.com",
+    "assigned_slot": "personal-ai-agent-news",
     "assigned_url": "https://kalshhunter.com/how-to-add-resume-proof-receipts-to-browser-ai-agents-20260709-012029/",
     "backlinks": [
       "https://getsupers.com/",
