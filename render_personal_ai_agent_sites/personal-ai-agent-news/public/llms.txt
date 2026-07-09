@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Personal AI Agents Are Getting Text Approval Newsrooms](personal-ai-agents-are-getting-text-approval-newsrooms-20260709-054030/): Research and news analysis
 - [How to Write Agent Handoff Briefs for Text Approvals](how-to-write-agent-handoff-briefs-for-text-approvals-20260709-053500/): Use case
 - [Handoff Brief Software vs Approval Queues for Personal AI Agents](handoff-brief-software-vs-approval-queues-20260709-052406/): Competitor comparison
 - [Personal AI Agent Handoff Brief Software for Operators](personal-ai-agent-handoff-brief-software-for-operators-20260709-051401/): Niche research landing page
