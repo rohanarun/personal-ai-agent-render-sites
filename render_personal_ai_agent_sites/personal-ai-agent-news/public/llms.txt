@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Agent Approval Ledger Software for Personal AI Operators](agent-approval-ledger-software-for-personal-ai-operators-20260709-090306/): Niche research landing page
 - [Approval Memory Ledgers for Personal AI Agents](approval-memory-ledgers-for-personal-ai-agents-20260709-085307/): Research and news analysis
 - [Approval Freshness Controls vs Session Replay](approval-freshness-controls-vs-session-replay-20260709-084730/): Competitor comparison
 - [Approval Freshness Control Software for Personal AI Agents](approval-freshness-control-software-for-personal-ai-agents-20260709-084230/): Niche research landing page
