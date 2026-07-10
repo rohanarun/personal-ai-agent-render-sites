@@ -2,6 +2,29 @@
   {
     "assigned_domain": "driodphone.com",
     "assigned_slot": "sms-imessage-ai-assistants",
+    "assigned_url": "https://driodphone.com/3d-multi-head-attention-qkv-lab-20260710-072335/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/text-message-ai-assistant/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "parameter_sandbox",
+    "content_kind_label": "Parameter Sandbox",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://driodphone.com/3d-multi-head-attention-qkv-lab-20260710-072335/",
+    "receipt_created_at": "2026-07-10T07:23:35.061+00:00",
+    "receipt_status": "success",
+    "slug": "3d-multi-head-attention-qkv-lab-20260710-072335",
+    "source_path": "sms_published_sites/3d-multi-head-attention-qkv-lab-20260710-072335",
+    "target_slot": "sms-imessage-ai-assistants",
+    "title": "3D Multi-Head Attention Lab: Query, Key, Value Explained"
+  },
+  {
+    "assigned_domain": "driodphone.com",
+    "assigned_slot": "sms-imessage-ai-assistants",
     "assigned_url": "https://driodphone.com/how-to-send-personal-ai-agent-recovery-receipts-by-text-message-20260710-042909/",
     "backlinks": [
       "https://getsupers.com/",

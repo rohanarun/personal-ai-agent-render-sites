@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [3D Multi-Head Attention Lab: Query, Key, Value Explained](3d-multi-head-attention-qkv-lab-20260710-072335/): Parameter Sandbox
 - [How to Send Personal AI Agent Recovery Receipts by Text Message](how-to-send-personal-ai-agent-recovery-receipts-by-text-message-20260710-042909/): Use case
 - [AI Agent CRM Freshness Gate Software](ai-agent-crm-freshness-gate-software-20260710-030405/): Niche research landing page
 - [How to Build Duplicate-Safe Outbound Messaging for AI Assistants](how-to-build-duplicate-safe-outbound-messaging-for-ai-assistants-20260710-020403/): Use case
