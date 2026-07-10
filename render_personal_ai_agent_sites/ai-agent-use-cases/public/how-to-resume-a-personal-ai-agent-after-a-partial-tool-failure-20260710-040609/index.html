@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to Resume a Personal AI Agent After a Partial Tool Failure</title>
+  <meta name="description" content="A practical recovery playbook for resuming personal AI agents after partial API, browser, messaging, and deployment tool failures without repeating side effects.">
+  <link rel="canonical" href="https://agentslayer.com/how-to-resume-a-personal-ai-agent-after-a-partial-tool-failure-20260710-040609/">
+  <meta property="og:title" content="How to Resume a Personal AI Agent After a Partial Tool Failure">
+  <meta property="og:description" content="Classify the failure, reconcile external effects, choose a safe checkpoint, and resume a personal AI agent with evidence.">
+  <meta property="og:type" content="article">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
+    :root{--ink:#11120f;--paper:#f5f2e9;--lime:#dfff3f;--coral:#ff7058;--sky:#8ed0ff;--muted:#65665f;--line:rgba(17,18,15,.2)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Outfit,Arial,sans-serif;letter-spacing:0}a{color:inherit}main{overflow-x:hidden;width:100%;max-width:100%}.wrap{width:min(1240px,calc(100% - 40px));margin:auto}.nav{position:fixed;z-index:30;top:20px;left:50%;transform:translateX(-50%);width:min(1190px,calc(100% - 28px));display:flex;justify-content:space-between;align-items:center;padding:12px 14px 12px 20px;background:rgba(245,242,233,.91);border:1px solid var(--ink);backdrop-filter:blur(15px)}.nav strong{font-size:14px}.nav-links{display:flex;align-items:center;gap:22px}.nav a{text-decoration:none;font-size:13px}.nav .cta-mini{background:var(--ink);color:white;padding:10px 15px;font-weight:700}.hero{min-height:94vh;padding:150px 0 85px;display:flex;align-items:center;position:relative;border-bottom:1px solid var(--ink)}.hero-grid{display:grid;grid-template-columns:8fr 4fr;align-items:center;gap:50px;position:relative}.hero-copy{position:relative;z-index:2}.eyebrow{text-transform:uppercase;font-size:13px;font-weight:700;margin-bottom:25px}.hero h1{font-size:clamp(3rem,6vw,6.4rem);line-height:.96;max-width:1180px;margin:0;font-weight:600}.hero h1 .inline-image{display:inline-block;width:clamp(80px,9vw,140px);height:clamp(38px,5vw,70px);vertical-align:middle;margin:0 8px;background:url('https://picsum.photos/seed/agent-recovery-console/420/210') center/cover;border-radius:999px;filter:grayscale(1) contrast(1.25)}.hero p{font-size:1.25rem;line-height:1.6;max-width:780px;margin:32px 0;color:#45463f}.actions{display:flex;gap:12px;flex-wrap:wrap}.btn{display:inline-flex;padding:15px 20px;border:1px solid var(--ink);text-decoration:none;font-weight:700;background:transparent}.btn.primary{background:var(--ink);color:white}.hero-art{height:500px;background:var(--coral);border:1px solid var(--ink);position:relative;overflow:hidden;transform:translateX(-30px)}.hero-art img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.2);mix-blend-mode:multiply;opacity:.75;transition:transform .7s ease}.hero-art:hover img{transform:scale(1.05)}.hero-art:after{content:"RESUME";position:absolute;bottom:15px;right:-5px;font-size:5rem;font-weight:700;writing-mode:vertical-rl}.marquee{border-bottom:1px solid var(--ink);overflow:hidden;background:var(--lime)}.track{display:flex;width:max-content;animation:move 28s linear infinite;padding:15px 0}.track span{font-weight:700;font-size:14px;margin-right:46px}@keyframes move{to{transform:translateX(-50%)}}.chapter{padding:150px 0}.dark{background:var(--ink);color:white}.sky{background:var(--sky)}.intro{display:grid;grid-template-columns:5fr 7fr;gap:80px}.intro h2,.heading h2{font-size:clamp(2.7rem,4.8vw,5.2rem);line-height:1;margin:0}.intro-copy{font-size:1.16rem;line-height:1.75}.intro-copy p:first-child{font-size:1.52rem;line-height:1.5;margin-top:0}.failure-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-flow:dense;gap:0;margin-top:80px;border:1px solid var(--line)}.failure{padding:36px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-height:265px;transition:background .3s}.failure:hover{background:white}.failure h3{font-size:1.6rem;margin:0 0 18px}.failure p{line-height:1.65;color:var(--muted)}.failure strong{display:block;margin-top:25px}.span8{grid-column:span 8}.span4{grid-column:span 4}.failure.lead{background:var(--ink);color:white;min-height:390px;position:relative;overflow:hidden}.failure.lead p{color:#c9cac3;max-width:670px;font-size:1.15rem}.failure.lead:after{content:"UNKNOWN IS A STATE";position:absolute;bottom:28px;left:36px;color:var(--lime);font-size:clamp(2.2rem,4vw,4.7rem);font-weight:700;line-height:.9}.recovery{display:grid;grid-template-columns:4fr 7fr;gap:90px;margin-top:80px;align-items:start}.recovery-aside{position:sticky;top:120px}.recovery-aside h2{font-size:clamp(2.7rem,4.4vw,5rem);line-height:1;margin:0 0 25px}.recovery-aside p{line-height:1.7;color:#bbb}.steps{border-top:1px solid rgba(255,255,255,.3)}.step{display:grid;grid-template-columns:70px 1fr;gap:20px;padding:40px 0;border-bottom:1px solid rgba(255,255,255,.24);min-height:280px;align-content:start}.step-num{font-size:1.1rem;color:var(--lime);font-weight:700}.step h3{font-size:2rem;margin:0 0 18px}.step p,.step li{line-height:1.7;color:#c9cac3}.step ul{padding-left:20px}.decision{margin-top:75px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--ink);border:1px solid var(--ink)}.decision article{background:var(--paper);padding:32px;min-height:310px}.decision article:nth-child(2){background:var(--lime)}.decision article:nth-child(3){background:var(--coral)}.decision h3{font-size:1.6rem;margin-top:0}.decision p,.decision li{line-height:1.65}.decision ul{padding-left:20px}.patterns{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:75px}.pattern{border:1px solid var(--ink);padding:30px;min-height:380px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;transition:transform .6s ease,background .3s}.pattern:hover{transform:translateY(-8px);background:white}.pattern h3{font-size:1.65rem;margin:0 0 18px}.pattern p{line-height:1.65;color:#4d4e48}.pattern code{display:block;background:var(--ink);color:var(--lime);padding:16px;white-space:normal;line-height:1.5;font-family:monospace}.pattern a{font-weight:700}.accordion{margin-top:70px;border-top:1px solid var(--ink)}.acc{display:grid;grid-template-columns:4fr 8fr;gap:40px;padding:30px 0;border-bottom:1px solid var(--ink);transition:background .3s,padding .3s}.acc:hover{background:white;padding-left:20px;padding-right:20px}.acc h3{margin:0;font-size:1.4rem}.acc p{margin:0;line-height:1.65;color:#555}.checklist{display:grid;grid-template-columns:repeat(2,1fr);gap:0;margin-top:70px;border-top:1px solid rgba(255,255,255,.25)}.check{padding:22px 8px;border-bottom:1px solid rgba(255,255,255,.25);display:grid;grid-template-columns:30px 1fr;gap:12px;line-height:1.55;color:#d0d1ca}.box{width:20px;height:20px;border:1px solid var(--lime);margin-top:2px}.faq{max-width:900px;margin:70px auto 0}.faq details{padding:24px 0;border-top:1px solid var(--line)}.faq summary{font-size:1.2rem;font-weight:700;cursor:pointer}.faq p{line-height:1.7;color:#555;max-width:790px}.sources{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;margin-top:55px}.source{display:block;border:1px solid var(--ink);padding:22px;text-decoration:none;transition:background .3s}.source:hover{background:white}.source small{display:block;margin-top:8px;color:#666}.final{padding:150px 0;background:var(--lime);text-align:center}.final h2{font-size:clamp(3rem,6vw,6.5rem);line-height:.95;max-width:1100px;margin:0 auto 32px}.final p{font-size:1.25rem;line-height:1.6;max-width:760px;margin:0 auto 30px}.footer{padding:50px 0;background:var(--ink);color:white}.footer .wrap{display:flex;justify-content:space-between;gap:35px;flex-wrap:wrap}.footer p{margin:0;color:#aaa;line-height:1.6;max-width:610px}.footer a{color:var(--lime)}
+    @media(max-width:880px){.nav-links a:not(.cta-mini){display:none}.hero-grid,.intro,.recovery{grid-template-columns:1fr}.hero-art{height:300px;transform:none}.failure-grid{grid-template-columns:1fr}.span8,.span4{grid-column:span 1}.failure{border-right:0}.decision,.patterns,.sources{grid-template-columns:1fr}.checklist{grid-template-columns:1fr}.acc{grid-template-columns:1fr;gap:12px}.recovery-aside{position:static}.chapter{padding:100px 0}.wrap{width:min(100% - 28px,1240px)}}
+  </style>
+</head>
+<body>
+<main>
+  <nav class="nav"><strong>Agent Recovery Field Guide</strong><div class="nav-links"><a href="#classify">Classify</a><a href="#procedure">Procedure</a><a href="#checklist">Checklist</a><a class="cta-mini" href="https://getsupers.com/">Explore Super</a></div></nav>
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">Operational playbook for personal AI agents</div>
+        <h1>Resume an agent <span class="inline-image"></span> after a partial tool failure</h1>
+        <p>Do not restart the whole run and hope for the best. Preserve the intent, classify what is known, reconcile external effects, choose the last safe checkpoint, and resume only the unfinished work.</p>
+        <div class="actions"><a class="btn primary" href="#procedure">Follow the procedure</a><a class="btn" href="#checklist">Open the checklist</a></div>
+      </div>
+      <div class="hero-art"><img src="https://picsum.photos/seed/personal-agent-recovery/900/1200" alt="Abstract operations console representing agent recovery"></div>
+    </div>
+  </header>
+  <div class="marquee"><div class="track"><span>FREEZE THE RUN</span><span>PRESERVE EVIDENCE</span><span>RECONCILE SIDE EFFECTS</span><span>SELECT A CHECKPOINT</span><span>RESUME WITH A NEW ATTEMPT</span><span>VERIFY THE OUTCOME</span><span>FREEZE THE RUN</span><span>PRESERVE EVIDENCE</span><span>RECONCILE SIDE EFFECTS</span><span>SELECT A CHECKPOINT</span><span>RESUME WITH A NEW ATTEMPT</span><span>VERIFY THE OUTCOME</span></div></div>
+
+  <section class="chapter">
+    <div class="wrap intro">
+      <h2>A partial failure is not a failed run</h2>
+      <div class="intro-copy">
+        <p>A partial tool failure means the agent crossed at least one boundary, received incomplete confirmation, or completed some steps before another step stopped.</p>
+        <p>The dangerous response is a full restart. A restart may resend a message, submit a form again, recreate a record, overwrite newer work, or trigger a second deployment. The correct response is recovery: determine which effects are confirmed, which are absent, and which remain unknown; then continue from a deliberately selected boundary.</p>
+        <p>This playbook applies to personal agents that combine model reasoning with API tools, browsers, text messages, files, queues, and human approvals. The exact infrastructure can vary, but the operational contract should remain stable. Every run needs an intent identity, every attempt needs a history, and every irreversible effect needs either an idempotency key or a postcondition check.</p>
+        <p>The model can help interpret evidence and propose the next step. It should not decide that an external effect “probably” did or did not happen. Facts about the world must come from provider records, durable events, database state, browser inspection, or an operator.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter sky" id="classify">
+    <div class="wrap heading"><h2>Classify before you retry</h2><p style="max-width:780px;font-size:1.15rem;line-height:1.7">Use four outcome states. Collapsing “unknown” into “failed” is the most common source of duplicate side effects.</p></div>
+    <div class="wrap failure-grid">
+      <article class="failure lead span8"><h3>The central rule</h3><p>A timeout, closed browser, worker crash, or missing response tells you that confirmation is missing. It does not establish whether the external system committed the action. Preserve that uncertainty until evidence resolves it.</p></article>
+      <article class="failure span4"><h3>Confirmed complete</h3><p>The provider returned a durable operation identifier, a matching event exists, or a postcondition proves the requested effect.</p><strong>Recovery: keep the result and advance.</strong></article>
+      <article class="failure span4"><h3>Confirmed absent</h3><p>The provider can authoritatively show that no matching effect exists and no asynchronous work remains pending.</p><strong>Recovery: safely retry the step.</strong></article>
+      <article class="failure span4"><h3>Confirmed failed</h3><p>The tool rejected the operation and supplies evidence that it did not commit the requested effect.</p><strong>Recovery: repair input or choose an alternative.</strong></article>
+      <article class="failure span4"><h3>Unknown outcome</h3><p>The call may have crossed the boundary, but no trustworthy evidence confirms success or absence.</p><strong>Recovery: reconcile or escalate; do not guess.</strong></article>
+    </div>
+  </section>
+
+  <section class="chapter dark" id="procedure">
+    <div class="wrap recovery">
+      <aside class="recovery-aside"><h2>The recovery procedure</h2><p>Keep the left-side mission fixed while the evidence changes on the right. A recovery attempt continues the original intent; it does not silently invent a new one.</p></aside>
+      <div class="steps">
+        <article class="step"><div class="step-num">01</div><div><h3>Freeze automatic retries</h3><p>Stop the affected run, its retry timer, and any competing worker lease. Capture the run ID, current attempt ID, workflow version, tool name, normalized input fingerprint, timestamps, and trace context. If the system has already scheduled another attempt, cancel or quarantine it before investigation.</p><ul><li>Do not delete the failed attempt.</li><li>Do not mutate its recorded input or output.</li><li>Do not launch a fresh run under a different identity.</li></ul></div></article>
+        <article class="step"><div class="step-num">02</div><div><h3>Restate the intended outcome</h3><p>Write one sentence describing the user-visible result, independent of implementation. “The customer receives one appointment confirmation” is safer than “retry sendMessage.” The first statement lets the recovery process consider existing messages, alternate channels, or cancellation; the second presumes a specific action must repeat.</p><p>Confirm that the user has not changed or revoked the intent while the run was paused. A recovery after delayed approval, cancellation, or new context may need to stop rather than resume.</p></div></article>
+        <article class="step"><div class="step-num">03</div><div><h3>Build an evidence ledger</h3><p>List every completed and attempted step in order. For each external effect, record its stable key, provider operation ID, request timestamp, response status, emitted events, observed postcondition, and current classification. Separate model-produced claims from system evidence.</p><p>The ledger should answer what is known without reading free-form logs. If two sources disagree, preserve both observations and mark the effect unknown until a stronger source resolves it.</p></div></article>
+        <article class="step"><div class="step-num">04</div><div><h3>Reconcile uncertain effects</h3><p>Query the system that owns the effect. Search a payment provider by idempotency key, a messaging provider by message ID, a database by a unique intent column, or a deployment platform by commit and service. For browser actions, reopen the target and inspect the expected postcondition: the created item, changed status, confirmation page, or outbound event.</p><p>If the target offers no reliable lookup and the effect is costly or irreversible, route the run to a human. An honest unknown state is safer than an automatic duplicate.</p></div></article>
+        <article class="step"><div class="step-num">05</div><div><h3>Select the last safe checkpoint</h3><p>A safe checkpoint is not merely the last serialized state. It is the newest boundary where all earlier effects are either confirmed complete or intentionally compensated, and all later work can be recomputed without violating the original intent.</p><ul><li>Reuse stable outputs that remain valid.</li><li>Refresh observations whose freshness window expired.</li><li>Do not rerun completed irreversible actions.</li><li>Pin the workflow and prompt version or run an explicit migration.</li></ul></div></article>
+        <article class="step"><div class="step-num">06</div><div><h3>Create a linked recovery attempt</h3><p>Resume under a new attempt ID linked to the original run and failed attempt. Carry forward the evidence ledger, selected checkpoint, operator or policy that authorized recovery, and the reason each step will be reused, retried, skipped, or reviewed.</p><p>At every service boundary, reuse the original operation identity for the same intended effect. A new attempt identifier is useful for observability; a new side-effect key can accidentally turn the same intent into a second action.</p></div></article>
+        <article class="step"><div class="step-num">07</div><div><h3>Verify and close the loop</h3><p>After resume, verify the user-visible outcome and every repaired postcondition. Emit a recovery receipt containing the original run, recovery attempt, failed tool, checkpoint, reconciled effects, final state, and links to traces. Notify the user only when the final state is accurate and actionable.</p><p>Finally, turn the incident into a reusable rule: add a missing idempotency key, improve a provider lookup, shorten a lease, capture a new event, or require approval for that ambiguous class. Recovery should make the next run safer.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <div class="wrap heading"><h2>Resume, compensate, or stop?</h2></div>
+    <div class="wrap decision">
+      <article><h3>Resume</h3><p>Continue when the original intent remains valid and earlier side effects are known.</p><ul><li>The failed step is retryable.</li><li>Inputs remain fresh enough.</li><li>Completed effects can be reused.</li><li>The next boundary accepts the original identity.</li></ul></article>
+      <article><h3>Compensate</h3><p>Reverse or neutralize earlier work before continuing when the plan is no longer internally consistent.</p><ul><li>A reservation must be released.</li><li>A draft message must be withdrawn.</li><li>A staged resource must be deleted.</li><li>The compensation itself is tracked as a new effect.</li></ul></article>
+      <article><h3>Stop and review</h3><p>Escalate when evidence cannot establish whether repeating the action is safe.</p><ul><li>The effect is irreversible or costly.</li><li>The browser target has no stable postcondition.</li><li>The user’s intent may have changed.</li><li>Credentials, policy, or code versions changed materially.</li></ul></article>
+    </div>
+  </section>
+
+  <section class="chapter sky">
+    <div class="wrap heading"><h2>Three applied patterns</h2><p style="max-width:780px;font-size:1.15rem;line-height:1.7">The same procedure looks different at each tool boundary. The stable idea is to verify the effect before deciding whether to repeat it.</p></div>
+    <div class="wrap patterns">
+      <article class="pattern"><div><h3>Text-message assistant</h3><p>The agent writes a response, calls the messaging provider, then loses the connection. Preserve the original outbound message identity. Query the provider or delivery-event store before sending again. If delivered, mark the step complete; if authoritatively absent, retry with the same key.</p><code>intent: confirm-appointment-847<br>effect: outbound-message-01<br>state: unknown -> delivered</code></div><a href="https://app.getsupers.com/use-cases/text-message-ai-assistant/">See the text-message assistant</a></article>
+      <article class="pattern"><div><h3>Computer-use agent</h3><p>The browser clicks “Publish” and the session closes before a confirmation appears. Reopen the target in a clean session and inspect the publication state, revision identifier, and timestamp. Do not click again solely because the screenshot is missing. Cache observations separately from actions.</p><code>intent: publish-revision-192<br>effect: browser-publish<br>state: unknown -> inspect</code></div><a href="https://app.getsupers.com/use-cases/computer-use-cache/">Explore computer-use caching</a></article>
+      <article class="pattern"><div><h3>Website-building agent</h3><p>Files are committed, a deploy is requested, and polling times out. Verify the repository commit and deployment service before triggering another release. Resume at health verification if the intended commit is already live; trigger a new deploy only when no matching deployment exists.</p><code>intent: release-site-311<br>effect: deploy-commit-a91c<br>state: unknown -> live</code></div><a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">Review the website-building agent</a></article>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <div class="wrap heading"><h2>Design the system for recovery</h2></div>
+    <div class="wrap accordion">
+      <article class="acc"><h3>Stable intent and effect identities</h3><p>Generate identities before crossing a boundary. Keep the same effect identity when repeating the same logical action, while giving each execution attempt a distinct attempt ID for traces and audit.</p></article>
+      <article class="acc"><h3>Immutable execution events</h3><p>Append state transitions instead of overwriting the previous explanation. Operators should reconstruct why a step moved from pending to unknown, then to confirmed or reviewed.</p></article>
+      <article class="acc"><h3>Explicit freshness windows</h3><p>Classify which outputs can be reused and for how long. A generated summary may remain valid while availability, price, authentication, and browser state need fresh observation.</p></article>
+      <article class="acc"><h3>Tool-specific reconciliation</h3><p>Every side-effecting tool should expose a lookup or postcondition strategy. A generic retry policy cannot replace provider-specific evidence about messages, charges, bookings, and deployments.</p></article>
+      <article class="acc"><h3>Operator-grade controls</h3><p>Provide freeze, inspect, skip, retry, compensate, resume, and terminate controls with reason capture. A dashboard that only shows “failed” leaves the hard decision hidden in ad hoc commands.</p></article>
+    </div>
+  </section>
+
+  <section class="chapter dark" id="checklist">
+    <div class="wrap heading"><h2>Pre-resume checklist</h2><p style="max-width:760px;color:#bbb;line-height:1.7;font-size:1.15rem">Do not unlock the run until each applicable statement is true or explicitly waived by an accountable operator.</p></div>
+    <div class="wrap checklist">
+      <div class="check"><span class="box"></span><div>Automatic retries and competing workers are stopped.</div></div>
+      <div class="check"><span class="box"></span><div>The original user intent is still valid and not revoked.</div></div>
+      <div class="check"><span class="box"></span><div>The run, failed attempt, workflow version, and trace are preserved.</div></div>
+      <div class="check"><span class="box"></span><div>Every attempted external effect has a classification.</div></div>
+      <div class="check"><span class="box"></span><div>Unknown effects were reconciled or routed to review.</div></div>
+      <div class="check"><span class="box"></span><div>The selected checkpoint follows all confirmed effects.</div></div>
+      <div class="check"><span class="box"></span><div>Reusable outputs remain within their freshness windows.</div></div>
+      <div class="check"><span class="box"></span><div>Completed irreversible steps are marked to skip.</div></div>
+      <div class="check"><span class="box"></span><div>Retried effects will reuse their original stable identities.</div></div>
+      <div class="check"><span class="box"></span><div>The new attempt links to the original run and failure.</div></div>
+      <div class="check"><span class="box"></span><div>Code or prompt version changes have an explicit migration decision.</div></div>
+      <div class="check"><span class="box"></span><div>Credentials and authorization are valid for the resumed work.</div></div>
+      <div class="check"><span class="box"></span><div>Kill controls and operator ownership are established.</div></div>
+      <div class="check"><span class="box"></span><div>Final postconditions and recovery receipt fields are defined.</div></div>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <div class="wrap heading"><h2>Frequently asked questions</h2></div>
+    <div class="wrap faq">
+      <details open><summary>Should the agent simply rerun the failed tool call?</summary><p>Only after the outcome is classified. A tool error may prove rejection, but a timeout or connection loss often leaves the effect unknown. First query the provider or inspect the postcondition. Retry only when the effect is confirmed absent or the boundary safely deduplicates the original operation identity.</p></details>
+      <details><summary>What is the difference between a run ID and an idempotency key?</summary><p>A run ID identifies the broader agent execution. An idempotency key identifies one logical side effect at a particular boundary. A single run can have many side-effect keys, and a recovery can have a new attempt ID while preserving both the original run ID and relevant effect keys.</p></details>
+      <details><summary>Can the model decide which checkpoint is safe?</summary><p>The model can summarize evidence and recommend a checkpoint, but the safety rule should be enforced by deterministic execution state and tool contracts. Earlier effects must be confirmed or compensated, later actions must be repeatable, and policy may require human approval for high-impact recovery.</p></details>
+      <details><summary>When should cached tool output be discarded?</summary><p>Discard or refresh it when its defined freshness window has expired, the underlying resource changed, authorization changed, or the recovery plan depends on current state. Keep immutable evidence of the original output even when the resumed run obtains a fresher observation.</p></details>
+      <details><summary>How should a human approval survive a failure?</summary><p>Store the approval as a durable event tied to the exact intent, scope, inputs, and expiry. A recovery can reuse it only if those conditions still match. Materially changed parameters require a new approval rather than silently stretching the old authorization.</p></details>
+      <details><summary>What should the user be told?</summary><p>Report the current state without inventing certainty. If recovery is complete, state the verified outcome. If an effect remains unknown, say that the system paused to prevent duplication and describe the next review step. Avoid sending duplicate failure notices for every internal retry.</p></details>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <div class="wrap heading"><h2>Primary references</h2><p style="max-width:760px;line-height:1.7">These specifications and official documentation sets anchor the concepts of idempotent operations, durable identity, uniqueness enforcement, and cross-service evidence.</p></div>
+    <div class="wrap sources">
+      <a class="source" href="https://www.rfc-editor.org/rfc/rfc9110.html"><strong>RFC 9110: HTTP Semantics</strong><small>HTTP method semantics, idempotency, and retry considerations.</small></a>
+      <a class="source" href="https://github.com/cloudevents/spec/blob/v1.0.2/cloudevents/spec.md"><strong>CloudEvents Specification</strong><small>Portable event identity and source context for durable event histories.</small></a>
+      <a class="source" href="https://opentelemetry.io/docs/concepts/observability-primer/"><strong>OpenTelemetry Observability Primer</strong><small>Traces, metrics, and logs for reconstructing distributed execution.</small></a>
+      <a class="source" href="https://www.postgresql.org/docs/current/ddl-constraints.html"><strong>PostgreSQL Constraints</strong><small>Unique and referential constraints for durable operation identity.</small></a>
+    </div>
+  </section>
+
+  <section class="final"><div class="wrap"><h2>Recovery is a product feature, not an incident trick.</h2><p>Super applies personal-agent workflows to messaging, browser work, and website operations where a careful resume can prevent duplicate real-world actions.</p><a class="btn primary" href="https://getsupers.com/">Explore Super</a></div></section>
+  <footer class="footer"><div class="wrap"><strong>Agent Recovery Field Guide</strong><p>A practical use-case library for teams building personal AI agents that can pause, reconcile, resume, and explain their work.</p><a href="https://getsupers.com/">getsupers.com</a></div></footer>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script>
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.from('.hero-copy > *',{opacity:0,y:38,duration:1,stagger:.12,ease:'power3.out'});
+    gsap.from('.hero-art',{opacity:0,x:90,scale:.8,duration:1.2,ease:'power3.out'});
+    gsap.to('.hero-art img',{scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true},scale:1.12,opacity:.3});
+    document.querySelectorAll('.failure,.pattern').forEach(function(item){gsap.from(item,{scrollTrigger:{trigger:item,start:'top 88%'},opacity:0,y:45,scale:.92,duration:.8,ease:'power2.out'});});
+    document.querySelectorAll('.step').forEach(function(step){gsap.from(step,{scrollTrigger:{trigger:step,start:'top 82%',end:'top 42%',scrub:true},opacity:.18,x:45});});
+    document.querySelectorAll('.acc').forEach(function(row){gsap.from(row,{scrollTrigger:{trigger:row,start:'top 92%'},opacity:0,y:24,duration:.65});});
+  }
+</script>
+</body>
+</html>
