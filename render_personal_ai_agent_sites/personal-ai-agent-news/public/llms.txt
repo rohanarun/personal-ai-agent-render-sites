@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [The Personal AI Agent Market Is Moving From Notifications to Task State](personal-ai-agent-market-is-moving-from-notifications-to-task-state-20260710-005238/): Research and news analysis
 - [Personal Agent Memory Dashboards vs Consent Management Platforms](personal-agent-memory-dashboards-vs-consent-management-platforms-20260709-221533/): Competitor comparison
 - [Personal Agent Memory Revocation Dashboard](personal-agent-memory-revocation-dashboard-20260709-214841/): Niche research landing page
 - [Agent Memory Revocation Is Becoming the New Consent Surface](agent-memory-revocation-is-becoming-the-new-consent-surface-20260709-214303/): Research and news analysis
