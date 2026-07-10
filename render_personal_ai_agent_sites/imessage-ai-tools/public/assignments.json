@@ -2,6 +2,28 @@
   {
     "assigned_domain": "droidph.one",
     "assigned_slot": "imessage-ai-tools",
+    "assigned_url": "https://droidph.one/3d-lora-low-rank-adaptation-lab-20260710-113612/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "lora_adaptation_lab",
+    "content_kind_label": "Lora Adaptation Lab",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://droidph.one/3d-lora-low-rank-adaptation-lab-20260710-113612/",
+    "receipt_created_at": "2026-07-10T11:36:12.104+00:00",
+    "receipt_status": "success",
+    "slug": "3d-lora-low-rank-adaptation-lab-20260710-113612",
+    "source_path": "sms_published_sites/3d-lora-low-rank-adaptation-lab-20260710-113612",
+    "target_slot": "imessage-ai-tools",
+    "title": "3D LoRA Lab: Low-Rank Adaptation and Fine-Tuning"
+  },
+  {
+    "assigned_domain": "droidph.one",
+    "assigned_slot": "imessage-ai-tools",
     "assigned_url": "https://droidph.one/3d-attention-softmax-temperature-lab-20260710-104235/",
     "backlinks": [
       "https://getsupers.com/",
