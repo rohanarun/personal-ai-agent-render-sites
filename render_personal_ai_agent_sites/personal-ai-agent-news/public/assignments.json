@@ -2,6 +2,24 @@
   {
     "assigned_domain": "kalshhunter.com",
     "assigned_slot": "personal-ai-agent-news",
+    "assigned_url": "https://kalshhunter.com/gradient-accumulation-effective-batch-lab-20260710-235015/",
+    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "cheatlayer_url": "",
+    "content_kind": "gradient_accumulation_lab",
+    "content_kind_label": "Gradient Accumulation Lab",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://kalshhunter.com/gradient-accumulation-effective-batch-lab-20260710-235015/",
+    "receipt_created_at": "2026-07-10T23:50:15.781+00:00",
+    "receipt_status": "success",
+    "slug": "gradient-accumulation-effective-batch-lab-20260710-235015",
+    "source_path": "sms_published_sites/gradient-accumulation-effective-batch-lab-20260710-235015",
+    "target_slot": "personal-ai-agent-news",
+    "title": "Gradient Accumulation Lab: Microbatches and Effective Batch Size"
+  },
+  {
+    "assigned_domain": "kalshhunter.com",
+    "assigned_slot": "personal-ai-agent-news",
     "assigned_url": "https://kalshhunter.com/3d-temporal-difference-q-learning-lab-20260710-111735/",
     "backlinks": [
       "https://getsupers.com/",
