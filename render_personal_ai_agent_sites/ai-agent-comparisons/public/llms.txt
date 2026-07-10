@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Personal AI Agent Purchase Approval Software vs Virtual Card Platforms](personal-ai-agent-purchase-approval-software-vs-virtual-card-platforms-20260710-055134/): Competitor comparison
 - [AI Agent Browser Postcondition Monitoring vs Synthetic Monitoring Platforms](ai-agent-browser-postcondition-monitoring-vs-synthetic-monitoring-platforms-20260710-051940/): Competitor comparison
 - [AI Agent Recovery Notifications vs Transactional Messaging Platforms](ai-agent-recovery-notifications-vs-transactional-messaging-platforms-20260710-045904/): Competitor comparison
 - [AI Agent Recovery Control Rooms vs Incident Management Platforms](ai-agent-recovery-control-rooms-vs-incident-management-platforms-20260710-042335/): Competitor comparison
@@ -56,4 +57,3 @@ A focused directory of Super personal AI agent market research, news analysis, c
 - [Super vs Siri — personal AI agents for real computer work](super-vs-siri-20260630-004934/): Competitor comparison
 - [Super vs Grok — personal AI agents for real computer work](super-vs-grok/): Competitor comparison
 - [Super for recruiters sourcing candidates and coordinating interviews](super-for-recruiters-sourcing-candidates-and-coordinating/): Niche research landing page
-- [Personal AI Agent Purchase Approval Software vs Virtual Card Platforms](personal-ai-agent-purchase-approval-software-vs-virtual-card-platforms-20260710-055134/): Competitor comparison
