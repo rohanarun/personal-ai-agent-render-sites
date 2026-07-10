@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [3D LLM Inference Economics Lab: Memory, Latency, Throughput, Cost](3d-llm-inference-economics-lab-20260710-091510/): Inference Economics Lab
 - [Personal AI Agent Purchase Approval Software for Households](personal-ai-agent-purchase-approval-software-for-households-20260710-054534/): Niche research landing page
 - [Outcome Verification Gates Are Becoming an AI Agent Product Requirement](outcome-verification-gates-are-becoming-an-ai-agent-product-requirement-20260710-053806/): Research and news analysis
 - [Browser Postcondition Coverage Is Becoming an AI Agent Reliability Metric](browser-postcondition-coverage-is-becoming-an-ai-agent-reliability-metric-20260710-050910/): Research and news analysis
