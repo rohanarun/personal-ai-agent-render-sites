@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Replay-Safe Remediation Is Becoming an AI Agent Buyer Metric](replay-safe-remediation-is-becoming-an-ai-agent-buyer-metric-20260710-034603/): Research and news analysis
 - [Data Incidents Are Becoming Action Policy Inputs for Personal AI Agents](data-incidents-are-becoming-action-policy-inputs-for-personal-ai-agents-20260710-032134/): Research and news analysis
 - [CRM Freshness Gates Are Becoming an AI Agent Safety Primitive](crm-freshness-gates-are-becoming-an-ai-agent-safety-primitive-20260710-025903/): Research and news analysis
 - [CRM Projection Lag Is Becoming a Personal Agent Operations Metric](crm-projection-lag-is-becoming-a-personal-agent-operations-metric-20260710-023304/): Research and news analysis
