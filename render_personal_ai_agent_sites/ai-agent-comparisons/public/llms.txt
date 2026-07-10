@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [3D Speculative Decoding Lab: Draft, Verify, Accept](3d-speculative-decoding-draft-verification-lab-20260710-112141/): Speculative Decoding Lab
 - [3D Diffusion Denoising Lab: Noise, Score Fields, Guidance](3d-diffusion-denoising-score-field-lab-20260710-111305/): Diffusion Denoising Lab
 - [3D Embedding Geometry Lab: Cosine Similarity and Retrieval](3d-embedding-cosine-similarity-lab-20260710-103635/): Embedding Geometry Lab
 - [3D Classification Boundary Lab: Generalization and Overfitting](3d-classification-boundary-generalization-lab-20260710-085105/): Classification Sandbox

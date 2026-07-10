@@ -2,6 +2,28 @@
   {
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/3d-speculative-decoding-draft-verification-lab-20260710-112141/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "speculative_decoding_lab",
+    "content_kind_label": "Speculative Decoding Lab",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://lists.new/3d-speculative-decoding-draft-verification-lab-20260710-112141/",
+    "receipt_created_at": "2026-07-10T11:21:41.654+00:00",
+    "receipt_status": "success",
+    "slug": "3d-speculative-decoding-draft-verification-lab-20260710-112141",
+    "source_path": "sms_published_sites/3d-speculative-decoding-draft-verification-lab-20260710-112141",
+    "target_slot": "ai-agent-comparisons",
+    "title": "3D Speculative Decoding Lab: Draft, Verify, Accept"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/3d-diffusion-denoising-score-field-lab-20260710-111305/",
     "backlinks": [
       "https://getsupers.com/",
