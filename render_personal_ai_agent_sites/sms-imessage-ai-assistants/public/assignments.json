@@ -2,6 +2,28 @@
   {
     "assigned_domain": "driodphone.com",
     "assigned_slot": "sms-imessage-ai-assistants",
+    "assigned_url": "https://driodphone.com/3d-agent-memory-clustering-retrieval-lab-20260710-090805/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/text-message-ai-assistant/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "memory_clustering_lab",
+    "content_kind_label": "Memory Clustering Lab",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://driodphone.com/3d-agent-memory-clustering-retrieval-lab-20260710-090805/",
+    "receipt_created_at": "2026-07-10T09:08:05.178+00:00",
+    "receipt_status": "success",
+    "slug": "3d-agent-memory-clustering-retrieval-lab-20260710-090805",
+    "source_path": "sms_published_sites/3d-agent-memory-clustering-retrieval-lab-20260710-090805",
+    "target_slot": "sms-imessage-ai-assistants",
+    "title": "3D Agent Memory Clustering Lab: K-Means and Retrieval"
+  },
+  {
+    "assigned_domain": "driodphone.com",
+    "assigned_slot": "sms-imessage-ai-assistants",
     "assigned_url": "https://driodphone.com/3d-multi-head-attention-qkv-lab-20260710-072335/",
     "backlinks": [
       "https://getsupers.com/",
