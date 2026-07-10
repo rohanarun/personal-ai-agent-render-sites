@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [CRM Projection Lag Is Becoming a Personal Agent Operations Metric](crm-projection-lag-is-becoming-a-personal-agent-operations-metric-20260710-023304/): Research and news analysis
 - [Message Operation Identity Is Becoming a Personal Agent Platform Primitive](message-operation-identity-is-becoming-a-personal-agent-platform-primitive-20260710-020933/): Research and news analysis
 - [Partial Is Becoming a Core Product State for Personal AI Agents](partial-is-becoming-a-core-product-state-for-personal-ai-agents-20260710-011904/): Research and news analysis
 - [The Personal AI Agent Market Is Moving From Notifications to Task State](personal-ai-agent-market-is-moving-from-notifications-to-task-state-20260710-005238/): Research and news analysis
