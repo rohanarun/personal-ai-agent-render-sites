@@ -2,6 +2,28 @@
   {
     "assigned_domain": "agentslayer.com",
     "assigned_slot": "ai-agent-use-cases",
+    "assigned_url": "https://agentslayer.com/3d-beam-search-nucleus-decoding-lab-20260710-115536/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "decoding_search_lab",
+    "content_kind_label": "Decoding Search Lab",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://agentslayer.com/3d-beam-search-nucleus-decoding-lab-20260710-115536/",
+    "receipt_created_at": "2026-07-10T11:55:36.974+00:00",
+    "receipt_status": "success",
+    "slug": "3d-beam-search-nucleus-decoding-lab-20260710-115536",
+    "source_path": "sms_published_sites/3d-beam-search-nucleus-decoding-lab-20260710-115536",
+    "target_slot": "ai-agent-use-cases",
+    "title": "3D Decoding Search Lab: Beam Search, Greedy, and Nucleus Sampling"
+  },
+  {
+    "assigned_domain": "agentslayer.com",
+    "assigned_slot": "ai-agent-use-cases",
     "assigned_url": "https://agentslayer.com/3d-contrastive-learning-infonce-lab-20260710-113037/",
     "backlinks": [
       "https://getsupers.com/",
