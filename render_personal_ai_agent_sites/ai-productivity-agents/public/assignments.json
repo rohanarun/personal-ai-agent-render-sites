@@ -2,6 +2,29 @@
   {
     "assigned_domain": "toy.new",
     "assigned_slot": "ai-productivity-agents",
+    "assigned_url": "https://toy.new/3d-embedding-space-explorer-why-similar-meanings-cluster-20260710-062734/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/text-message-ai-assistant/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "interactive_explainer",
+    "content_kind_label": "Interactive Explainer",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://toy.new/3d-embedding-space-explorer-why-similar-meanings-cluster-20260710-062734/",
+    "receipt_created_at": "2026-07-10T06:27:34.854+00:00",
+    "receipt_status": "success",
+    "slug": "3d-embedding-space-explorer-why-similar-meanings-cluster-20260710-062734",
+    "source_path": "sms_published_sites/3d-embedding-space-explorer-why-similar-meanings-cluster-20260710-062734",
+    "target_slot": "ai-productivity-agents",
+    "title": "3D Embedding Space Explorer: Why Similar Meanings Cluster"
+  },
+  {
+    "assigned_domain": "toy.new",
+    "assigned_slot": "ai-productivity-agents",
     "assigned_url": "https://toy.new/delegated-commerce-is-becoming-a-personal-ai-agent-product-category-20260710-061035/",
     "backlinks": [
       "https://getsupers.com/",
