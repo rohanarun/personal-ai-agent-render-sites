@@ -2,6 +2,28 @@
   {
     "assigned_domain": "parsercheat.com",
     "assigned_slot": "computer-use-ai-agents",
+    "assigned_url": "https://parsercheat.com/3d-llm-context-window-budget-lab-20260710-094005/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "context_budget_lab",
+    "content_kind_label": "Context Budget Lab",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://parsercheat.com/3d-llm-context-window-budget-lab-20260710-094005/",
+    "receipt_created_at": "2026-07-10T09:40:05.668+00:00",
+    "receipt_status": "success",
+    "slug": "3d-llm-context-window-budget-lab-20260710-094005",
+    "source_path": "sms_published_sites/3d-llm-context-window-budget-lab-20260710-094005",
+    "target_slot": "computer-use-ai-agents",
+    "title": "3D LLM Context Window Budget Lab: Allocation, Truncation, Lost-in-the-Middle"
+  },
+  {
+    "assigned_domain": "parsercheat.com",
+    "assigned_slot": "computer-use-ai-agents",
     "assigned_url": "https://parsercheat.com/3d-browser-agent-prompt-injection-defense-lab-20260710-083635/",
     "backlinks": [
       "https://getsupers.com/",
