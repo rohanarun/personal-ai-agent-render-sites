@@ -2,6 +2,28 @@
   {
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/3d-diffusion-denoising-score-field-lab-20260710-111305/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "diffusion_denoising_lab",
+    "content_kind_label": "Diffusion Denoising Lab",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://lists.new/3d-diffusion-denoising-score-field-lab-20260710-111305/",
+    "receipt_created_at": "2026-07-10T11:13:05.467+00:00",
+    "receipt_status": "success",
+    "slug": "3d-diffusion-denoising-score-field-lab-20260710-111305",
+    "source_path": "sms_published_sites/3d-diffusion-denoising-score-field-lab-20260710-111305",
+    "target_slot": "ai-agent-comparisons",
+    "title": "3D Diffusion Denoising Lab: Noise, Score Fields, Guidance"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/3d-embedding-cosine-similarity-lab-20260710-103635/",
     "backlinks": [
       "https://getsupers.com/",
