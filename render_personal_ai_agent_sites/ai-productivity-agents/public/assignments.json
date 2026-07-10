@@ -2,6 +2,28 @@
   {
     "assigned_domain": "toy.new",
     "assigned_slot": "ai-productivity-agents",
+    "assigned_url": "https://toy.new/3d-mixture-of-experts-routing-lab-20260710-110914/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "mixture_of_experts_lab",
+    "content_kind_label": "Mixture Of Experts Lab",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://toy.new/3d-mixture-of-experts-routing-lab-20260710-110914/",
+    "receipt_created_at": "2026-07-10T11:09:14.118+00:00",
+    "receipt_status": "success",
+    "slug": "3d-mixture-of-experts-routing-lab-20260710-110914",
+    "source_path": "sms_published_sites/3d-mixture-of-experts-routing-lab-20260710-110914",
+    "target_slot": "ai-productivity-agents",
+    "title": "3D Mixture-of-Experts Routing Lab: Top-K, Capacity, Balance"
+  },
+  {
+    "assigned_domain": "toy.new",
+    "assigned_slot": "ai-productivity-agents",
     "assigned_url": "https://toy.new/3d-kv-cache-prefill-decode-lab-20260710-095435/",
     "backlinks": [
       "https://getsupers.com/",
