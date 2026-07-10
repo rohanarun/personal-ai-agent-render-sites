@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [3D Browser Agent Postcondition Lab: Verify Every Action](3d-browser-agent-postcondition-lab-20260710-105811/): Browser Postcondition Lab
 - [3D LLM Context Window Budget Lab: Allocation, Truncation, Lost-in-the-Middle](3d-llm-context-window-budget-lab-20260710-094005/): Context Budget Lab
 - [3D Browser-Agent Prompt Injection Defense Lab](3d-browser-agent-prompt-injection-defense-lab-20260710-083635/): Security Simulator
 - [3D BPE Tokenization Lab: Watch Text Become Model Input](3d-bpe-tokenization-merge-lab-20260710-064906/): Interactive Simulator
