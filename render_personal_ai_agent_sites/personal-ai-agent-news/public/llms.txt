@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [CRM Freshness Gates Are Becoming an AI Agent Safety Primitive](crm-freshness-gates-are-becoming-an-ai-agent-safety-primitive-20260710-025903/): Research and news analysis
 - [CRM Projection Lag Is Becoming a Personal Agent Operations Metric](crm-projection-lag-is-becoming-a-personal-agent-operations-metric-20260710-023304/): Research and news analysis
 - [Message Operation Identity Is Becoming a Personal Agent Platform Primitive](message-operation-identity-is-becoming-a-personal-agent-platform-primitive-20260710-020933/): Research and news analysis
 - [Partial Is Becoming a Core Product State for Personal AI Agents](partial-is-becoming-a-core-product-state-for-personal-ai-agents-20260710-011904/): Research and news analysis
