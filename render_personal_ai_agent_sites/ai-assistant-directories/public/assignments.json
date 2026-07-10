@@ -2,6 +2,29 @@
   {
     "assigned_domain": "openagent.studio",
     "assigned_slot": "ai-assistant-directories",
+    "assigned_url": "https://openagent.studio/3d-llm-weight-quantization-error-lab-20260710-081910/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/text-message-ai-assistant/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "quantization_lab",
+    "content_kind_label": "Quantization Lab",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://openagent.studio/3d-llm-weight-quantization-error-lab-20260710-081910/",
+    "receipt_created_at": "2026-07-10T08:19:10.057+00:00",
+    "receipt_status": "success",
+    "slug": "3d-llm-weight-quantization-error-lab-20260710-081910",
+    "source_path": "sms_published_sites/3d-llm-weight-quantization-error-lab-20260710-081910",
+    "target_slot": "ai-assistant-directories",
+    "title": "3D LLM Quantization Lab: Bits, Groups, Outliers, and Reconstruction Error"
+  },
+  {
+    "assigned_domain": "openagent.studio",
+    "assigned_slot": "ai-assistant-directories",
     "assigned_url": "https://openagent.studio/ai-agent-recovery-control-room-software-20260710-041708/",
     "backlinks": [
       "https://getsupers.com/",
