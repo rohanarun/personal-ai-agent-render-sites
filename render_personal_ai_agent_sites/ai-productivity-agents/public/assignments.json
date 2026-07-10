@@ -2,6 +2,28 @@
   {
     "assigned_domain": "toy.new",
     "assigned_slot": "ai-productivity-agents",
+    "assigned_url": "https://toy.new/3d-backpropagation-gradient-signal-lab-20260710-085940/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "backpropagation_lab",
+    "content_kind_label": "Backpropagation Lab",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://toy.new/3d-backpropagation-gradient-signal-lab-20260710-085940/",
+    "receipt_created_at": "2026-07-10T08:59:40.236+00:00",
+    "receipt_status": "success",
+    "slug": "3d-backpropagation-gradient-signal-lab-20260710-085940",
+    "source_path": "sms_published_sites/3d-backpropagation-gradient-signal-lab-20260710-085940",
+    "target_slot": "ai-productivity-agents",
+    "title": "3D Backpropagation Lab: Follow the Gradient Signal"
+  },
+  {
+    "assigned_domain": "toy.new",
+    "assigned_slot": "ai-productivity-agents",
     "assigned_url": "https://toy.new/3d-gradient-descent-momentum-loss-surface-lab-20260710-075706/",
     "backlinks": [
       "https://getsupers.com/",

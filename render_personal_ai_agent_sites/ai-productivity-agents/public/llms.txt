@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [3D Backpropagation Lab: Follow the Gradient Signal](3d-backpropagation-gradient-signal-lab-20260710-085940/): Backpropagation Lab
 - [3D Gradient Descent Lab: Learning Rate, Momentum, Saddles, and Loss Surfaces](3d-gradient-descent-momentum-loss-surface-lab-20260710-075706/): Optimization Simulator
 - [3D Embedding Space Explorer: Why Similar Meanings Cluster](3d-embedding-space-explorer-why-similar-meanings-cluster-20260710-062734/): Interactive Explainer
 - [Delegated Commerce Is Becoming a Personal AI Agent Product Category](delegated-commerce-is-becoming-a-personal-ai-agent-product-category-20260710-061035/): Research and news analysis
