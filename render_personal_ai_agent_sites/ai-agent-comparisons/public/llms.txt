@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [3D Embedding Geometry Lab: Cosine Similarity and Retrieval](3d-embedding-cosine-similarity-lab-20260710-103635/): Embedding Geometry Lab
 - [3D Classification Boundary Lab: Generalization and Overfitting](3d-classification-boundary-generalization-lab-20260710-085105/): Classification Sandbox
 - [3D RAG Retrieval and Reranking Lab: Evaluate Evidence Before Generation](3d-rag-retrieval-reranking-evaluation-lab-20260710-073804/): Evaluation Tool
 - [Personal AI Agent Purchase Approval Software vs Virtual Card Platforms](personal-ai-agent-purchase-approval-software-vs-virtual-card-platforms-20260710-055134/): Competitor comparison
