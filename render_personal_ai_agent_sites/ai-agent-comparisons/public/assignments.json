@@ -2,6 +2,24 @@
   {
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/adamw-decoupled-weight-decay-lab-20260710-235510/",
+    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "cheatlayer_url": "",
+    "content_kind": "adamw_weight_decay_lab",
+    "content_kind_label": "AdamW Weight Decay Lab",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://lists.new/adamw-decoupled-weight-decay-lab-20260710-235510/",
+    "receipt_created_at": "2026-07-10T23:55:10.829+00:00",
+    "receipt_status": "success",
+    "slug": "adamw-decoupled-weight-decay-lab-20260710-235510",
+    "source_path": "sms_published_sites/adamw-decoupled-weight-decay-lab-20260710-235510",
+    "target_slot": "ai-agent-comparisons",
+    "title": "AdamW Lab: Decoupled Weight Decay vs L2"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/3d-direct-preference-optimization-dpo-lab-20260710-115045/",
     "backlinks": [
       "https://getsupers.com/",

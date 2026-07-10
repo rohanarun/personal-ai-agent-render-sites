@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [AdamW Lab: Decoupled Weight Decay vs L2](adamw-decoupled-weight-decay-lab-20260710-235510/): AdamW Weight Decay Lab
 - [3D Direct Preference Optimization Lab: DPO, Beta, and Policy Drift](3d-direct-preference-optimization-dpo-lab-20260710-115045/): Direct Preference Optimization Lab
 - [3D Speculative Decoding Lab: Draft, Verify, Accept](3d-speculative-decoding-draft-verification-lab-20260710-112141/): Speculative Decoding Lab
 - [3D Diffusion Denoising Lab: Noise, Score Fields, Guidance](3d-diffusion-denoising-score-field-lab-20260710-111305/): Diffusion Denoising Lab
