@@ -2,6 +2,28 @@
   {
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/3d-direct-preference-optimization-dpo-lab-20260710-115045/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "direct_preference_optimization_lab",
+    "content_kind_label": "Direct Preference Optimization Lab",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://lists.new/3d-direct-preference-optimization-dpo-lab-20260710-115045/",
+    "receipt_created_at": "2026-07-10T11:50:45.143+00:00",
+    "receipt_status": "success",
+    "slug": "3d-direct-preference-optimization-dpo-lab-20260710-115045",
+    "source_path": "sms_published_sites/3d-direct-preference-optimization-dpo-lab-20260710-115045",
+    "target_slot": "ai-agent-comparisons",
+    "title": "3D Direct Preference Optimization Lab: DPO, Beta, and Policy Drift"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/3d-speculative-decoding-draft-verification-lab-20260710-112141/",
     "backlinks": [
       "https://getsupers.com/",
