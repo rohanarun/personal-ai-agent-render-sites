@@ -2,6 +2,28 @@
   {
     "assigned_domain": "driodphone.com",
     "assigned_slot": "sms-imessage-ai-assistants",
+    "assigned_url": "https://driodphone.com/3d-tool-calling-schema-contract-lab-20260710-110436/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "tool_calling_contract_lab",
+    "content_kind_label": "Tool Calling Contract Lab",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://driodphone.com/3d-tool-calling-schema-contract-lab-20260710-110436/",
+    "receipt_created_at": "2026-07-10T11:04:36.382+00:00",
+    "receipt_status": "success",
+    "slug": "3d-tool-calling-schema-contract-lab-20260710-110436",
+    "source_path": "sms_published_sites/3d-tool-calling-schema-contract-lab-20260710-110436",
+    "target_slot": "sms-imessage-ai-assistants",
+    "title": "3D AI Tool Calling Contract Lab: JSON Schema and Validation"
+  },
+  {
+    "assigned_domain": "driodphone.com",
+    "assigned_slot": "sms-imessage-ai-assistants",
     "assigned_url": "https://driodphone.com/3d-agent-memory-clustering-retrieval-lab-20260710-090805/",
     "backlinks": [
       "https://getsupers.com/",
