@@ -2,6 +2,29 @@
   {
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/3d-rag-retrieval-reranking-evaluation-lab-20260710-073804/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/text-message-ai-assistant/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "evaluation_tool",
+    "content_kind_label": "Evaluation Tool",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://lists.new/3d-rag-retrieval-reranking-evaluation-lab-20260710-073804/",
+    "receipt_created_at": "2026-07-10T07:38:04.921+00:00",
+    "receipt_status": "success",
+    "slug": "3d-rag-retrieval-reranking-evaluation-lab-20260710-073804",
+    "source_path": "sms_published_sites/3d-rag-retrieval-reranking-evaluation-lab-20260710-073804",
+    "target_slot": "ai-agent-comparisons",
+    "title": "3D RAG Retrieval and Reranking Lab: Evaluate Evidence Before Generation"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/personal-ai-agent-purchase-approval-software-vs-virtual-card-platforms-20260710-055134/",
     "backlinks": [
       "https://getsupers.com/",
