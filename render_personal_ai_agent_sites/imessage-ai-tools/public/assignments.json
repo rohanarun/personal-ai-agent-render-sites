@@ -2,6 +2,28 @@
   {
     "assigned_domain": "droidph.one",
     "assigned_slot": "imessage-ai-tools",
+    "assigned_url": "https://droidph.one/3d-neural-network-pruning-sparsity-lab-20260710-120005/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agents/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "3d_neural_network_pruning_sparsity_lab",
+    "content_kind_label": "3D Neural Network Pruning Sparsity Lab",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://droidph.one/3d-neural-network-pruning-sparsity-lab-20260710-120005/",
+    "receipt_created_at": "2026-07-10T23:22:40+00:00",
+    "receipt_status": "success",
+    "slug": "3d-neural-network-pruning-sparsity-lab-20260710-120005",
+    "source_path": "sms_published_sites/3d-neural-network-pruning-sparsity-lab-20260710-120005",
+    "target_slot": "imessage-ai-tools",
+    "title": "3D Neural Network Pruning Lab: Sparsity Without Guesswork"
+  },
+  {
+    "assigned_domain": "droidph.one",
+    "assigned_slot": "imessage-ai-tools",
     "assigned_url": "https://droidph.one/3d-lora-low-rank-adaptation-lab-20260710-113612/",
     "backlinks": [
       "https://getsupers.com/",

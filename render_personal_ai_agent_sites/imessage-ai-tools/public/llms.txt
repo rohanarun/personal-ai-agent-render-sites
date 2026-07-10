@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [3D Neural Network Pruning Lab: Sparsity Without Guesswork](3d-neural-network-pruning-sparsity-lab-20260710-120005/): 3D Neural Network Pruning Sparsity Lab
 - [3D LoRA Lab: Low-Rank Adaptation and Fine-Tuning](3d-lora-low-rank-adaptation-lab-20260710-113612/): Lora Adaptation Lab
 - [3D Attention Softmax Lab: Temperature, Scaling, and Masks](3d-attention-softmax-temperature-lab-20260710-104235/): Attention Softmax Lab
 - [3D Hallucination Evaluation Lab: Claims, Evidence, Citations, Abstention](3d-hallucination-claim-evidence-evaluation-lab-20260710-092335/): Hallucination Evaluation Lab
