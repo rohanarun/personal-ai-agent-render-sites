@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [3D Transformer Residual Stream Lab: Attention, Norms, and MLPs](3d-transformer-residual-stream-lab-20260710-093110/): Transformer Architecture Lab
 - [3D Agent Planning Lab: From Tool Calls to Verified Outcomes](3d-agent-planning-tool-calling-lab-20260710-070204/): Animated Architecture Explainer
 - [How to Add Household Purchase Approval to an AI Shopping Agent](how-to-add-household-purchase-approval-to-an-ai-shopping-agent-20260710-060406/): Use case
 - [How to Resume a Personal AI Agent After a Partial Tool Failure](how-to-resume-a-personal-ai-agent-after-a-partial-tool-failure-20260710-040609/): Use case

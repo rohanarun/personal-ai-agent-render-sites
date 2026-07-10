@@ -2,6 +2,28 @@
   {
     "assigned_domain": "agentslayer.com",
     "assigned_slot": "ai-agent-use-cases",
+    "assigned_url": "https://agentslayer.com/3d-transformer-residual-stream-lab-20260710-093110/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "transformer_architecture_lab",
+    "content_kind_label": "Transformer Architecture Lab",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://agentslayer.com/3d-transformer-residual-stream-lab-20260710-093110/",
+    "receipt_created_at": "2026-07-10T09:31:10.756+00:00",
+    "receipt_status": "success",
+    "slug": "3d-transformer-residual-stream-lab-20260710-093110",
+    "source_path": "sms_published_sites/3d-transformer-residual-stream-lab-20260710-093110",
+    "target_slot": "ai-agent-use-cases",
+    "title": "3D Transformer Residual Stream Lab: Attention, Norms, and MLPs"
+  },
+  {
+    "assigned_domain": "agentslayer.com",
+    "assigned_slot": "ai-agent-use-cases",
     "assigned_url": "https://agentslayer.com/3d-agent-planning-tool-calling-lab-20260710-070204/",
     "backlinks": [
       "https://getsupers.com/",
