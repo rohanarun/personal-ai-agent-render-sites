@@ -913,5 +913,28 @@
     "slug": "super-for-recruiters-sourcing-candidates-and-coordinating",
     "source_path": "sms_published_sites/super-for-recruiters-sourcing-candidates-and-coordinating",
     "title": "Super for recruiters sourcing candidates and coordinating interviews"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/personal-ai-agent-purchase-approval-software-vs-virtual-card-platforms-20260710-055134/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/text-message-ai-assistant/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "competitor_comparison",
+    "content_kind_label": "Competitor comparison",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://lists.new/personal-ai-agent-purchase-approval-software-vs-virtual-card-platforms-20260710-055134/",
+    "receipt_created_at": "2026-07-10T05:51:34.769+00:00",
+    "receipt_status": "success",
+    "slug": "personal-ai-agent-purchase-approval-software-vs-virtual-card-platforms-20260710-055134",
+    "source_path": "sms_published_sites/personal-ai-agent-purchase-approval-software-vs-virtual-card-platforms-20260710-055134",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Personal AI Agent Purchase Approval Software vs Virtual Card Platforms"
   }
 ]
