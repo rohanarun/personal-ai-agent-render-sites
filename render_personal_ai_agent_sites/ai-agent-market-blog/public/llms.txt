@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Delegated Commerce Is Becoming a Personal AI Agent Product Category](delegated-commerce-is-becoming-a-personal-ai-agent-product-category-20260710-061035/): Research and news analysis
 - [Recovery Receipts Are Becoming the New Personal AI Agent Trust Signal](recovery-receipts-are-becoming-the-new-personal-ai-agent-trust-signal-20260710-041205/): Research and news analysis
 - [Idempotency Is Becoming Product Language for Personal AI Agents](idempotency-is-becoming-product-language-for-personal-ai-agents-20260710-014633/): Research and news analysis
 - [Text-Message Action Receipts Are Becoming the Interface for Personal AI Agents](text-message-action-receipts-are-becoming-the-interface-for-personal-ai-agents-20260710-003039/): Research and news analysis
