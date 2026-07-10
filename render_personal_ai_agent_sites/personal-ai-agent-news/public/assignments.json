@@ -2,6 +2,28 @@
   {
     "assigned_domain": "kalshhunter.com",
     "assigned_slot": "personal-ai-agent-news",
+    "assigned_url": "https://kalshhunter.com/3d-model-calibration-reliability-lab-20260710-105235/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "calibration_evaluation_lab",
+    "content_kind_label": "Calibration Evaluation Lab",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://kalshhunter.com/3d-model-calibration-reliability-lab-20260710-105235/",
+    "receipt_created_at": "2026-07-10T10:52:35.456+00:00",
+    "receipt_status": "success",
+    "slug": "3d-model-calibration-reliability-lab-20260710-105235",
+    "source_path": "sms_published_sites/3d-model-calibration-reliability-lab-20260710-105235",
+    "target_slot": "personal-ai-agent-news",
+    "title": "3D Model Calibration Lab: Confidence, ECE, Brier Score"
+  },
+  {
+    "assigned_domain": "kalshhunter.com",
+    "assigned_slot": "personal-ai-agent-news",
     "assigned_url": "https://kalshhunter.com/3d-llm-inference-economics-lab-20260710-091510/",
     "backlinks": [
       "https://getsupers.com/",

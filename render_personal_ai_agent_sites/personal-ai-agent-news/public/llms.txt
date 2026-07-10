@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [3D Model Calibration Lab: Confidence, ECE, Brier Score](3d-model-calibration-reliability-lab-20260710-105235/): Calibration Evaluation Lab
 - [3D LLM Inference Economics Lab: Memory, Latency, Throughput, Cost](3d-llm-inference-economics-lab-20260710-091510/): Inference Economics Lab
 - [Personal AI Agent Purchase Approval Software for Households](personal-ai-agent-purchase-approval-software-for-households-20260710-054534/): Niche research landing page
 - [Outcome Verification Gates Are Becoming an AI Agent Product Requirement](outcome-verification-gates-are-becoming-an-ai-agent-product-requirement-20260710-053806/): Research and news analysis
