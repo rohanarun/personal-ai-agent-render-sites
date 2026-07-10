@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [3D Hallucination Evaluation Lab: Claims, Evidence, Citations, Abstention](3d-hallucination-claim-evidence-evaluation-lab-20260710-092335/): Hallucination Evaluation Lab
 - [3D KV Cache Lab: Autoregressive Decoding, Memory, MQA, and GQA](3d-kv-cache-autoregressive-inference-lab-20260710-080834/): Inference Simulator
 - [AI Agent Recovery Notification Software for iMessage](ai-agent-recovery-notification-software-for-imessage-20260710-044908/): Niche research landing page
 - [Personal AI Agent Replay Safety Software](personal-ai-agent-replay-safety-software-20260710-035238/): Niche research landing page
