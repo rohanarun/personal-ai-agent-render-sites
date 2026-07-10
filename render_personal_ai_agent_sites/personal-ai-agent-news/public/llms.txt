@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Message Operation Identity Is Becoming a Personal Agent Platform Primitive](message-operation-identity-is-becoming-a-personal-agent-platform-primitive-20260710-020933/): Research and news analysis
 - [Partial Is Becoming a Core Product State for Personal AI Agents](partial-is-becoming-a-core-product-state-for-personal-ai-agents-20260710-011904/): Research and news analysis
 - [The Personal AI Agent Market Is Moving From Notifications to Task State](personal-ai-agent-market-is-moving-from-notifications-to-task-state-20260710-005238/): Research and news analysis
 - [Personal Agent Memory Dashboards vs Consent Management Platforms](personal-agent-memory-dashboards-vs-consent-management-platforms-20260709-221533/): Competitor comparison
