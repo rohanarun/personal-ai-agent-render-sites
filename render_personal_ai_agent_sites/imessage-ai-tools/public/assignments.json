@@ -2,6 +2,29 @@
   {
     "assigned_domain": "droidph.one",
     "assigned_slot": "imessage-ai-tools",
+    "assigned_url": "https://droidph.one/3d-kv-cache-autoregressive-inference-lab-20260710-080834/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/text-message-ai-assistant/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "inference_simulator",
+    "content_kind_label": "Inference Simulator",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://droidph.one/3d-kv-cache-autoregressive-inference-lab-20260710-080834/",
+    "receipt_created_at": "2026-07-10T08:08:34.965+00:00",
+    "receipt_status": "success",
+    "slug": "3d-kv-cache-autoregressive-inference-lab-20260710-080834",
+    "source_path": "sms_published_sites/3d-kv-cache-autoregressive-inference-lab-20260710-080834",
+    "target_slot": "imessage-ai-tools",
+    "title": "3D KV Cache Lab: Autoregressive Decoding, Memory, MQA, and GQA"
+  },
+  {
+    "assigned_domain": "droidph.one",
+    "assigned_slot": "imessage-ai-tools",
     "assigned_url": "https://droidph.one/ai-agent-recovery-notification-software-for-imessage-20260710-044908/",
     "backlinks": [
       "https://getsupers.com/",
