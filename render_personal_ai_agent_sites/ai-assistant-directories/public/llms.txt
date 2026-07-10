@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [3D Byte-Pair Tokenization Lab: Train BPE Step by Step](3d-byte-pair-tokenization-lab-20260710-100735/): Tokenization Lab
 - [3D LLM Quantization Lab: Bits, Groups, Outliers, and Reconstruction Error](3d-llm-weight-quantization-error-lab-20260710-081910/): Quantization Lab
 - [AI Agent Recovery Control Room Software](ai-agent-recovery-control-room-software-20260710-041708/): Niche research landing page
 - [AI Agent Incident Policy Adapter Software](ai-agent-incident-policy-adapter-software-20260710-032804/): Niche research landing page
