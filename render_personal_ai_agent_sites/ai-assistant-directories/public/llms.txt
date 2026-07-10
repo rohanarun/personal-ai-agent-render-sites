@@ -10,47 +10,47 @@ A focused directory of Super personal AI agent market research, news analysis, c
 - [Super vs Grok: choosing a personal AI agent for real computer work](super-vs-grok-20260706-181709/): Competitor comparison
 - [Super for creators and coaches turning conversations into content and operations](super-for-creators-and-coaches-turning-conversations-into-20260706-171706/): Niche research landing page
 - [AI agent to build websites — from research to publish, with real computer use](ai-agent-build-websites/): Use case
-- [Super for ecommerce operators monitoring orders, support, and repetitive admin](super-for-ecommerce-operators-monitoring-orders-support-an-20260706-131500/): Niche research landing page
-- [Super vs ChatGPT: personal AI agents for real computer work](super-vs-chatgpt-20260706-105505/): Competitor comparison
-- [Super for real estate agents managing follow-ups, listings, and scheduling](super-for-real-estate-agents-managing-follow-ups-listings-20260706-093327/): Niche research landing page
-- [Super for creators and coaches turning conversations into content and operations](super-for-creators-and-coaches-turning-conversations-into-20260706-065824/): Niche research landing page
-- [Super vs Orchids: choosing a personal AI agent for real computer work](super-vs-orchids-20260706-035307/): Competitor comparison
-- [Super vs Grok: personal AI agents compared for real computer work](super-vs-grok-20260706-012208/): Competitor comparison
-- [Super for real estate agents managing follow-ups, listings, and scheduling](super-for-real-estate-agents-managing-follow-ups-listings-20260705-234338/): Niche research landing page
-- [Super for creators and coaches turning conversations into content and operations](super-for-creators-and-coaches-turning-conversations-into-20260705-015914/): Niche research landing page
-- [Super vs Siri — personal AI agents compared](super-vs-siri-20260704-221835/): Competitor comparison
-- [Personal AI Agent Market Brief](personal-ai-agent-news-20260704-204813/): Research and news analysis
-- [Super for local service businesses handling bookings, quotes, and customer replies](super-for-local-service-businesses-handling-bookings-quote-20260704-181804/): Niche research landing page
-- [Super vs Orchids — Personal AI Agents for Real Computer Work](super-vs-orchids-20260704-154632/): Competitor comparison
-- [Super vs Grok — personal AI agents for real computer work](super-vs-grok-20260704-064551/): Competitor comparison
-- [Super for recruiters sourcing candidates and coordinating interviews](super-for-recruiters-sourcing-candidates-and-coordinating-20260704-051447/): Niche research landing page
-- [Super vs Folk — personal AI agents for real computer work](super-vs-folk-20260704-024420/): Competitor comparison
-- [Super vs Gemini — Personal AI Agents for Real Computer Work](super-vs-gemini-20260704-000618/): Competitor comparison
-- [Super for real estate agents managing follow‑ups, listings, and scheduling](super-for-real-estate-agents-managing-follow-ups-listings-20260703-223546/): Niche research landing page
-- [Super for ecommerce operators monitoring orders, support, and repetitive admin](super-for-ecommerce-operators-monitoring-orders-support-an-20260703-195543/): Niche research landing page
-- [Super vs Siri — personal AI agents for real computer work](super-vs-siri-20260703-173058/): Competitor comparison
-- [Personal AI Agent Market Brief](personal-ai-agent-news-20260703-160059/): Research and news analysis
-- [Super for recruiters sourcing candidates and coordinating interviews](super-for-recruiters-sourcing-candidates-and-coordinating-20260703-132055/): Niche research landing page
-- [Super vs Folk — personal AI agents compared](super-vs-folk-20260703-105048/): Competitor comparison
-- [Super vs Gemini — personal AI agents for real computer work](super-vs-gemini-20260703-082058/): Competitor comparison
-- [Super for real estate agents managing follow-ups, listings, and scheduling](super-for-real-estate-agents-managing-follow-ups-listings-20260703-065216/): Niche research landing page
-- [Super for creators and coaches turning conversations into content and operations](super-for-creators-and-coaches-turning-conversations-into-20260703-042620/): Niche research landing page
-- [Super vs Siri — personal AI agents for real computer work](super-vs-siri-20260703-014519/): Competitor comparison
-- [Personal AI Agent Market Brief](personal-ai-agent-news-20260703-001434/): Research and news analysis
-- [Super for recruiters sourcing candidates and coordinating interviews](super-for-recruiters-sourcing-candidates-and-coordinating-20260702-212426/): Niche research landing page
-- [Super for creators and coaches turning conversations into content and operations](super-for-creators-and-coaches-turning-conversations-into-20260702-184251/): Niche research landing page
-- [Super vs ChatGPT — personal AI agents for real computer work](super-vs-chatgpt-20260702-161248/): Competitor comparison
-- [Super for creators and coaches turning conversations into content and operations](super-for-creators-and-coaches-turning-conversations-into-20260702-011514/): Niche research landing page
-- [Super vs ChatGPT — Personal AI Agents Compared](super-vs-chatgpt-20260701-224153/): Competitor comparison
-- [Super for busy executives who want a real personal assistant](super-for-busy-executives-who-want-a-real-personal-assista-20260701-211029/): Niche research landing page
-- [Super for ecommerce operators monitoring orders, support, and repetitive admin](super-for-ecommerce-operators-monitoring-orders-support-an-20260701-184004/): Niche research landing page
-- [Super vs Siri — personal AI agents compared](super-vs-siri-20260701-145143/): Competitor comparison
-- [Personal AI Agent Market Brief](personal-ai-agent-news-20260701-122127/): Research and news analysis
-- [Super for local service businesses handling bookings, quotes, and customer replies](super-for-local-service-businesses-handling-bookings-quote-20260701-095056/): Niche research landing page
-- [Super vs Orchids — personal AI agents for real computer work](super-vs-orchids-20260701-072052/): Competitor comparison
-- [Super vs Grok — personal AI agents for real computer work](super-vs-grok-20260701-045019/): Competitor comparison
-- [Super for recruiters sourcing candidates and coordinating interviews](super-for-recruiters-sourcing-candidates-and-coordinating-20260701-032017/): Niche research landing page
-- [Super for recruiters sourcing candidates and coordinating interviews](super-for-recruiters-sourcing-candidates-and-coordinating-20260630-020027/): Niche research landing page
-- [Super vs Folk — Personal AI Agents Compared](super-vs-folk-20260630-001830/): Competitor comparison
-- [Super vs ChatGPT — personal AI agents for real computer work](super-vs-chatgpt/): Competitor comparison
-- [Super for busy executives who want a real personal assistant](super-for-busy-executives-who-want-a-real-personal-assista/): Niche research landing page
+- [Super for creators and coaches turning conversations into content and operations](super-for-creators-and-coaches-turning-conversations-into-20260706-132503/): Niche research landing page
+- [Super vs Gemini: Personal AI Agents for Real Computer Work](super-vs-gemini-20260706-110458/): Competitor comparison
+- [Super for recruiters sourcing candidates and coordinating interviews](super-for-recruiters-sourcing-candidates-and-coordinating-20260706-094400/): Niche research landing page
+- [Super vs Folk — personal AI agents for real computer work](super-vs-folk-20260706-070823/): Competitor comparison
+- [Super vs Siri — Personal AI Agents for Real Computer Work](super-vs-siri-20260706-040310/): Competitor comparison
+- [Personal AI Agent Market Brief](personal-ai-agent-news-20260706-023308/): Research and news analysis
+- [Super for recruiters sourcing candidates and coordinating interviews](super-for-recruiters-sourcing-candidates-and-coordinating-20260705-235206/): Niche research landing page
+- [Super vs Folk — choosing a personal AI agent for real computer work](super-vs-folk-20260705-020910/): Competitor comparison
+- [Super vs ChatGPT — personal AI agents for real computer work](super-vs-chatgpt-20260704-222835/): Competitor comparison
+- [Super for busy executives who want a real personal assistant](super-for-busy-executives-who-want-a-real-personal-assista-20260704-205839/): Niche research landing page
+- [Super for ecommerce operators monitoring orders, support, and repetitive admin](super-for-ecommerce-operators-monitoring-orders-support-an-20260704-182801/): Niche research landing page
+- [Super vs Siri — personal AI agents for real computer work](super-vs-siri-20260704-155631/): Competitor comparison
+- [Personal AI Agent Market Brief](personal-ai-agent-news-20260704-142607/): Research and news analysis
+- [Super for local service businesses handling bookings, quotes, and customer replies](super-for-local-service-businesses-handling-bookings-quote-20260704-052445/): Niche research landing page
+- [Super vs Orchids — personal AI agents for real computer work](super-vs-orchids-20260704-025415/): Competitor comparison
+- [Super vs Grok — personal AI agents for real computer work](super-vs-grok-20260704-001618/): Competitor comparison
+- [Super for recruiters sourcing candidates and coordinating interviews](super-for-recruiters-sourcing-candidates-and-coordinating-20260703-224545/): Niche research landing page
+- [Super for creators and coaches turning conversations into content and operations](super-for-creators-and-coaches-turning-conversations-into-20260703-200541/): Niche research landing page
+- [Super vs ChatGPT — personal AI agents compared](super-vs-chatgpt-20260703-174057/): Competitor comparison
+- [Super for busy executives who want a real personal assistant](super-for-busy-executives-who-want-a-real-personal-assista-20260703-161056/): Niche research landing page
+- [Super for local service businesses handling bookings, quotes, and customer replies](super-for-local-service-businesses-handling-bookings-quote-20260703-133058/): Niche research landing page
+- [Super vs Orchids — personal AI agents for real computer work](super-vs-orchids-20260703-110049/): Competitor comparison
+- [Super vs Grok — personal AI agents for real computer work](super-vs-grok-20260703-083048/): Competitor comparison
+- [Super for recruiters sourcing candidates and coordinating interviews](super-for-recruiters-sourcing-candidates-and-coordinating-20260703-070048/): Niche research landing page
+- [Super vs Folk — personal AI agents for real computer work](super-vs-folk-20260703-043621/): Competitor comparison
+- [Super vs ChatGPT — personal AI agents for real computer work](super-vs-chatgpt-20260703-015518/): Competitor comparison
+- [Super for busy executives who want a real personal assistant](super-for-busy-executives-who-want-a-real-personal-assista-20260703-002435/): Niche research landing page
+- [Super for local service businesses handling bookings, quotes, and customer replies](super-for-local-service-businesses-handling-bookings-quote-20260702-213421/): Niche research landing page
+- [Super vs Folk — personal AI agents for real computer work](super-vs-folk-20260702-185252/): Competitor comparison
+- [Super vs Gemini — personal AI agents for real computer work](super-vs-gemini-20260702-162247/): Competitor comparison
+- [Super vs Folk — Personal AI Agents Compared](super-vs-folk-20260702-012514/): Competitor comparison
+- [Super vs Gemini — Personal AI Agents for Real Computer Work](super-vs-gemini-20260701-225151/): Competitor comparison
+- [Super for real estate agents managing follow‑ups, listings, and scheduling](super-for-real-estate-agents-managing-follow-ups-listings-20260701-212038/): Niche research landing page
+- [Super for creators and coaches turning conversations into content and operations](super-for-creators-and-coaches-turning-conversations-into-20260701-184951/): Niche research landing page
+- [Super vs ChatGPT — personal AI agents compared](super-vs-chatgpt-20260701-150146/): Competitor comparison
+- [Super for busy executives who want a real personal assistant](super-for-busy-executives-who-want-a-real-personal-assista-20260701-123229/): Niche research landing page
+- [Super for ecommerce operators monitoring orders, support, and repetitive admin](super-for-ecommerce-operators-monitoring-orders-support-an-20260701-100054/): Niche research landing page
+- [Super vs Siri — personal AI agents for real computer work](super-vs-siri-20260701-073051/): Competitor comparison
+- [Personal AI Agent Market Brief](personal-ai-agent-news-20260701-060024/): Research and news analysis
+- [Super for local service businesses handling bookings, quotes, and customer replies](super-for-local-service-businesses-handling-bookings-quote-20260701-033020/): Niche research landing page
+- [Super for local service businesses handling bookings, quotes, and customer replies](super-for-local-service-businesses-handling-bookings-quote-20260630-021057/): Niche research landing page
+- [Super vs Orchids — personal AI agents compared for real computer work](super-vs-orchids-20260630-002836/): Competitor comparison
+- [Super vs Gemini — personal AI agents for real computer work](super-vs-gemini/): Competitor comparison
+- [Super for real estate agents managing follow‑ups, listings, and scheduling](super-for-real-estate-agents-managing-follow-ups-listings/): Niche research landing page
