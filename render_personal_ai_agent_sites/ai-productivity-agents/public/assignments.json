@@ -2,6 +2,29 @@
   {
     "assigned_domain": "toy.new",
     "assigned_slot": "ai-productivity-agents",
+    "assigned_url": "https://toy.new/3d-gradient-descent-momentum-loss-surface-lab-20260710-075706/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/text-message-ai-assistant/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "optimization_simulator",
+    "content_kind_label": "Optimization Simulator",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://toy.new/3d-gradient-descent-momentum-loss-surface-lab-20260710-075706/",
+    "receipt_created_at": "2026-07-10T07:57:06.128+00:00",
+    "receipt_status": "success",
+    "slug": "3d-gradient-descent-momentum-loss-surface-lab-20260710-075706",
+    "source_path": "sms_published_sites/3d-gradient-descent-momentum-loss-surface-lab-20260710-075706",
+    "target_slot": "ai-productivity-agents",
+    "title": "3D Gradient Descent Lab: Learning Rate, Momentum, Saddles, and Loss Surfaces"
+  },
+  {
+    "assigned_domain": "toy.new",
+    "assigned_slot": "ai-productivity-agents",
     "assigned_url": "https://toy.new/3d-embedding-space-explorer-why-similar-meanings-cluster-20260710-062734/",
     "backlinks": [
       "https://getsupers.com/",
