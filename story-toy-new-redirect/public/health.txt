@@ -1,0 +1,1 @@
+story.toy.new redirect service
