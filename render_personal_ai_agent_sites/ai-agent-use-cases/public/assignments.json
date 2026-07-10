@@ -2,6 +2,29 @@
   {
     "assigned_domain": "agentslayer.com",
     "assigned_slot": "ai-agent-use-cases",
+    "assigned_url": "https://agentslayer.com/3d-agent-planning-tool-calling-lab-20260710-070204/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/text-message-ai-assistant/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "animated_architecture_explainer",
+    "content_kind_label": "Animated Architecture Explainer",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://agentslayer.com/3d-agent-planning-tool-calling-lab-20260710-070204/",
+    "receipt_created_at": "2026-07-10T07:02:04.847+00:00",
+    "receipt_status": "success",
+    "slug": "3d-agent-planning-tool-calling-lab-20260710-070204",
+    "source_path": "sms_published_sites/3d-agent-planning-tool-calling-lab-20260710-070204",
+    "target_slot": "ai-agent-use-cases",
+    "title": "3D Agent Planning Lab: From Tool Calls to Verified Outcomes"
+  },
+  {
+    "assigned_domain": "agentslayer.com",
+    "assigned_slot": "ai-agent-use-cases",
     "assigned_url": "https://agentslayer.com/how-to-add-household-purchase-approval-to-an-ai-shopping-agent-20260710-060406/",
     "backlinks": [
       "https://getsupers.com/",
