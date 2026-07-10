@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Super vs Siri — Personal AI Agents Compared</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+<div class="ambient-grid"></div>
+<div class="paper-noise"></div>
+<div class="page">
+  <nav class="nav shell">
+    <div class="brand"><img src="https://storage.googleapis.com/cheatlayer/landing/icon-transparent-512.png" alt="Super" /></div>
+    <div class="nav-links">
+      <a href="#comparison">Comparison</a>
+      <a href="#guide">Field guide</a>
+      <a href="#sources">Sources</a>
+    </div>
+    <a class="btn btn-black nav-cta" href="https://app.getsupers.com/general?login=1&open_login=1">Try Super</a>
+  </nav>
+
+  <header class="hero shell">
+    <div class="hero-inner">
+      <h1>Super vs Siri — two assistants, very different ideas of work</h1>
+      <p class="hero-sub">Siri is a voice‑first assistant embedded across Apple devices. Super is built for people who want a personal AI agent that can operate computers, repeat workflows, and reuse a computer-use cache so ongoing work gets more efficient over time.</p>
+      <div class="hero-actions">
+        <a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Start with Super</a>
+        <a class="btn btn-white" href="#comparison">See the comparison</a>
+      </div>
+      <div class="media-frame">
+        <video src="https://storage.googleapis.com/cheatlayer/landing/hero-0607-2-3.mp4" autoplay muted loop playsinline></video>
+      </div>
+    </div>
+  </header>
+
+  <section id="comparison" class="chapter shell">
+    <h2>A fair comparison</h2>
+    <div class="compare-grid">
+      <div class="compare-card">
+        <h3>Siri</h3>
+        <p>Siri shines at hands‑free tasks, device control, reminders, and quick answers inside Apple’s ecosystem. Recent reporting shows Apple is expanding Siri’s AI capabilities selectively by device and region, with regulatory constraints affecting rollout in the EU. Siri remains voice‑first and system‑embedded.</p>
+      </div>
+      <div class="compare-card highlight">
+        <h3>Super</h3>
+        <p>Super focuses on durable computer work: opening browsers, navigating interfaces, authenticating, filling forms, and repeating the same flows reliably. The key difference is a reusable computer-use cache, which means repeated executions don’t start from scratch every time.</p>
+      </div>
+      <div class="compare-card">
+        <h3>Market context</h3>
+        <p>Across the landscape, ChatGPT, Gemini, and Grok are all moving toward agents. Google has made computer use a first‑class capability in Gemini models, while Apple emphasizes tight OS integration. Folk and Orchids appear as niche or experimental approaches within the broader agent market.</p>
+      </div>
+    </div>
+  </section>
+
+  <article id="guide" class="long-form-guide shell">
+    <h2>Buyer field guide: choosing between Super and Siri</h2>
+    <p class="byline">By the Super editorial team · Research synthesized from public reporting and technical documentation.</p>
+
+    <h3>Market context</h3>
+    <p>Personal AI agents are no longer just chatbots. In 2026, major platforms are racing to let assistants take actions on real computers. Google has publicly pushed computer use inside Gemini, underscoring how valuable browser and desktop control has become for agents. At the same time, Apple continues to evolve Siri carefully, balancing on‑device integration, privacy expectations, and regulatory pressure, particularly in the EU. This has resulted in staggered availability and device‑specific features.</p>
+    <p>For buyers, this creates a split. Voice‑first assistants like Siri are excellent for ambient help: quick commands, dictation, and device settings. But many workflows—finance ops, research ops, account reconciliation, repeated data pulls—still live in messy web interfaces. That gap is why dedicated computer‑use agents exist at all. Super positions itself squarely in that gap, while products like ChatGPT, Gemini, and Grok provide broader conversational or real‑time strengths. Folk and Orchids sit as smaller or more specialized tools within this evolving market.</p>
+
+    <h3>How to evaluate and use this workflow</h3>
+    <h4>How to define a real test task</h4>
+    <p>Start by choosing a task you actually repeat weekly, not a demo. Examples include logging into a vendor dashboard, exporting a CSV, or checking pricing across several sites. The task should involve authentication, navigation, and multiple steps so you can see whether an agent truly operates the computer or just answers questions about it.</p>
+
+    <h4>How to run the task in Siri</h4>
+    <p>Attempt the same task with Siri using voice or text. Note where Siri hands off to manual interaction or responds with guidance instead of action. This isn’t a failure—it reflects Siri’s design as an assistant that triggers system features rather than operating arbitrary web interfaces.</p>
+
+    <h4>How to run the task in Super</h4>
+    <p>Give Super the same instructions and observe whether it opens the browser, navigates the UI, and completes the steps end to end. Pay attention to how much clarification it needs and whether it can recover from small UI changes without restarting the entire process.</p>
+
+    <h4>How to repeat the task deliberately</h4>
+    <p>Run the identical task again a day later. This is where Super’s computer-use cache matters. Instead of re‑learning the interface, the agent can reuse prior interaction patterns, which is especially valuable for ongoing operational work.</p>
+
+    <h4>How to judge fit, not hype</h4>
+    <p>Evaluate based on reliability and time saved, not novelty. If your work is mostly voice commands and device control, Siri may remain sufficient. If your work lives in browsers and legacy dashboards, repeated execution is where Super tends to pull ahead.</p>
+
+    <h3>Implementation checklist</h3>
+    <ul>
+      <li>Document one real workflow in writing, including logins, clicks, and outputs, so you can test assistants against the same standard instead of relying on memory.</li>
+      <li>Verify security scope before connecting accounts. Computer‑use agents expand the attack surface, so ensure permissions are explicit and revocable.</li>
+      <li>Schedule a repeat run within the same week to evaluate whether setup effort compounds or disappears over time.</li>
+      <li>Track failure recovery: note whether the agent restarts entirely or can resume mid‑flow after a minor error.</li>
+      <li>Separate conversational quality from execution quality. A friendly response does not equal a completed task.</li>
+      <li>Revisit the evaluation quarterly, as Siri, ChatGPT, Gemini, and Grok are all evolving quickly.</li>
+    </ul>
+
+    <h3>Risks and limits</h3>
+    <p><strong>Regulatory and availability limits:</strong> Reporting shows Siri’s newest AI features may be delayed or restricted in certain regions. If your team spans geographies, capability gaps can appear unexpectedly.</p>
+    <p><strong>Security exposure:</strong> Research has highlighted vulnerabilities in some open‑source agents. Any tool that operates a browser must be designed and sandboxed carefully to avoid credential leakage or injection attacks.</p>
+    <p><strong>UI brittleness:</strong> Computer‑use agents depend on interfaces that change. While caching helps, no agent is immune to major redesigns.</p>
+    <p><strong>Expectation mismatch:</strong> Users often expect voice assistants to act like full operators. Siri and Super are built for different jobs, and frustration comes from using one as the other.</p>
+
+    <h3>FAQ</h3>
+    <p><strong>Is Siri an AI agent?</strong> Siri incorporates AI and is evolving, but it remains primarily a voice‑first assistant embedded in Apple’s ecosystem. It is optimized for commands and system actions rather than arbitrary browser automation.</p>
+    <p><strong>Does Super replace Siri?</strong> For most users, no. Siri remains useful for quick, ambient tasks. Super is complementary when you need sustained computer work done repeatedly.</p>
+    <p><strong>How does Super compare to ChatGPT or Gemini?</strong> ChatGPT and Gemini are broad assistants with growing agent features. Super narrows the focus to durable computer‑use workflows and cache reuse, trading breadth for operational depth.</p>
+    <p><strong>What about Grok?</strong> Grok emphasizes real‑time and social context. It is part of the same agent conversation but optimized for different use cases than routine operational automation.</p>
+    <p><strong>Where do Folk and Orchids fit?</strong> Folk and Orchids appear as niche or experimental tools within the agent market, useful as context but not primary substitutes for Siri or Super.</p>
+    <p><strong>Who should choose Super?</strong> Choose Super if your work involves logging into tools, navigating UIs, and repeating the same steps weekly. That is where a reusable computer‑use cache changes the economics of automation.</p>
+
+    <h3 id="sources">Sources</h3>
+    <p>Engadget, qz.com, Memeburn, Google DeepMind blog, MIT News, SC Media, and related reporting cited above.</p>
+  </article>
+
+  <footer class="cta-band shell">
+    <h2>Ready to try a different kind of assistant?</h2>
+    <a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Try Super</a>
+  </footer>
+</div>
+
+<script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+<script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="./app.js"></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to evaluate Super vs Siri for repeated computer-use workflows",
+  "description": "A practical, step-by-step method for comparing a voice-first assistant with a computer-use agent.",
+  "totalTime": "PT45M",
+  "tool": [{"@type":"HowToTool","name":"Web browser"}],
+  "step": [
+    {"@type":"HowToStep","position":1,"name":"Define a real task","text":"Choose a workflow you repeat weekly that involves logging in, navigating a web interface, and producing an output so the comparison reflects real work, not a demo.","url":"#guide"},
+    {"@type":"HowToStep","position":2,"name":"Test with Siri","text":"Attempt the task using Siri and observe where it hands off to manual steps, reflecting its voice-first design.","url":"#guide"},
+    {"@type":"HowToStep","position":3,"name":"Test with Super","text":"Run the same task in Super and confirm whether the agent operates the browser end to end without manual intervention.","url":"#guide"},
+    {"@type":"HowToStep","position":4,"name":"Repeat the task","text":"Repeat the identical workflow to evaluate whether prior runs reduce effort through reuse rather than starting over.","url":"#guide"},
+    {"@type":"HowToStep","position":5,"name":"Judge fit","text":"Decide based on reliability and time saved, matching the tool to your actual work style.","url":"#guide"}
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{"@type":"Question","name":"Is Siri an AI agent?","acceptedAnswer":{"@type":"Answer","text":"Siri uses AI but remains primarily a voice-first assistant optimized for device control."}}]
+}
+</script>
+
+
+
+
+
+
+
+<!-- super-agent-page-refresh:start -->
+<section class="super-refresh super-refresh-workflow-focus" style="--refresh-accent: #0a7f5a; --refresh-wash: #e9f7f2;" data-refresh-variant="workflow-focus">
+  <div class="super-refresh__shell">
+    <div class="super-refresh__kicker">Updated market field guide</div>
+    <div class="super-refresh__hero">
+      <div>
+        <h2>Which AI can actually do the work?</h2>
+        <p>You’re frustrated by limitations.</p>
+      </div>
+      <figure class="super-refresh__image">
+        <img src="https://picsum.photos/seed/automated%20workflow%20diagram/1400/900" alt="Stress-test visuals." loading="lazy" />
+      </figure>
+    </div>
+    <article class="super-refresh__article long-form-guide">
+      <aside class="super-refresh__field-note">
+        <h3>Page-specific field note</h3>
+        <p><strong>How to apply this here:</strong> Push until something breaks.</p>
+        <p><strong>Checklist focus:</strong> Note breaking points.</p>
+        <p><strong>Risk guardrail:</strong> Edge cases matter most.</p>
+      </aside>
+<article>
+<p>Choosing between Super and Siri in 2026 isn’t really about which assistant sounds smarter in conversation. It’s about whether you want an AI that <em>acts</em> on the real web and apps, or one that remains primarily a voice interface layered on top of an operating system. This comparison breaks down where each excels, where each fails, and how recent advances in agentic AI and computer control change the decision.</p>
+
+<h2>Market context</h2>
+<p>Agentic AI shifted dramatically over the last year. Google introduced computer-use capabilities in Gemini 3.5 Flash, letting models see screens and click interfaces, but also highlighted new security risks when agents can control browsers and apps at scale [blog.google](https://blog.google). Apple, meanwhile, is rolling out a redesigned Siri AI experience tied closely to iOS hardware, with advanced features limited to newer iPhone models [engadget.com](https://www.engadget.com). These changes underline a broader divide in the market.</p>
+<p>Siri remains a system assistant. It is optimized for voice commands, device control, reminders, messages, and lightweight app intents inside Apple’s ecosystem. Even with its next‑gen AI engine, Siri struggles with multi-step workflows, cross-app automation, and web-native tasks that require logging into services or navigating unfamiliar interfaces. Multiple analysts note that enterprise-grade automation handoffs remain a weak point for Siri-style assistants [streamlinefeed.co.ke](https://streamlinefeed.co.ke).</p>
+<p>Super was built for the opposite problem: end-to-end task completion. Super operates her own cloud apps and browsers, uses a computer-use cache to replay reliable workflows at $0 cost, and doesn’t require users to wire up brittle integrations for everyday tasks. The computer-use cache matters because it turns one successful automation into a reusable asset, allowing agents to act consistently without per-click costs or human babysitting. This design aligns with what researchers describe as durable, tool-centric agents rather than chat-first assistants [anthropic.com](https://www.anthropic.com).</p>
+<p>For buyers comparing Super vs Siri, the question becomes less about intelligence and more about control surfaces: voice-first OS control versus cloud-based computer control.</p>
+
+<h2>Buyer guide: who each assistant is really for</h2>
+<p><strong>Choose Siri if</strong> your needs are mostly personal and device-bound: setting reminders, dictating messages, controlling HomeKit devices, navigating in CarPlay, and asking quick questions hands-free. Siri’s tight OS integration and offline-friendly behaviors are valuable, especially for users deep in Apple hardware.</p>
+<p><strong>Choose Super if</strong> you want an AI that can log into websites, order services, build or edit web assets, run research across sources, and execute workflows repeatedly without reconfiguration. Super’s wallet-based pricing, no-subscription model, and ability to automate her own apps make her suited to real computer work rather than voice shortcuts [getsupers.com](https://getsupers.com).</p>
+
+<h2>Decision matrix: Super vs Siri at a glance</h2>
+<p><strong>Automation depth:</strong> Super handles multi-step browser and app workflows; Siri is limited to predefined intents.<br>
+<strong>Computer control:</strong> Super uses full cloud browsers and a computer-use cache; Siri has no general computer-use layer.<br>
+<strong>Ecosystem lock-in:</strong> Siri is Apple-only; Super is device-agnostic across SMS, desktop, mobile, and wearables.<br>
+<strong>Pricing model:</strong> Siri is bundled with hardware; Super is pay-as-you-go with $0 computer-use automations.<br>
+<strong>Best use case:</strong> Siri for personal device control, Super for getting work done end to end.</p>
+
+<h2>How to decide between Super and Siri</h2>
+<p>Start by listing three tasks you actually want automated. If they involve navigating websites, filling forms, placing orders, or repeating the same workflow weekly, test Super. If they involve hands-free commands while driving, quick timers, or sending messages, Siri will feel more natural. The fastest way to decide is to pilot one real task rather than comparing feature lists.</p>
+
+<h2>How to get started with Super for computer-based tasks</h2>
+<ol>
+<li><strong>Define a repeatable task.</strong> Pick something concrete like ordering the same supplies or compiling a daily report.</li>
+<li><strong>Let Super complete it once.</strong> The successful run trains the computer-use cache.</li>
+<li><strong>Replay or schedule.</strong> Future runs execute at $0 without retraining.</li>
+<li><strong>Add integrations only if needed.</strong> Use Gmail, Notion, or Slack access selectively.</li>
+</ol>
+
+<h2>Implementation checklist</h2>
+<ul>
+<li>Confirm whether your task requires browser interaction or OS voice control.</li>
+<li>Check hardware eligibility for new Siri AI features on your iPhone [engadget.com](https://www.engadget.com).</li>
+<li>For Super, identify tasks that benefit from caching and repetition.</li>
+<li>Review security boundaries when granting any agent app access [searchenginejournal.com](https://www.searchenginejournal.com).</li>
+</ul>
+
+<h2>Risks and limits</h2>
+<p>Granting computer control to any AI introduces risk. Security researchers have already shown that malicious agents can automate attacks when given unchecked access [bleepingcomputer.com](https://www.bleepingcomputer.com). Super mitigates cost and reliability issues through its computer-use cache, but users should still scope permissions carefully. Siri’s risk profile is narrower, but so is its capability surface.</p>
+
+<h2>FAQ</h2>
+<p><strong>Can Siri automate websites?</strong><br>
+No. Siri cannot generally log into websites or complete arbitrary web workflows.</p>
+<p><strong>Does Super replace voice assistants?</strong><br>
+Super focuses on execution, not voice-first interaction, though she can be used via SMS and other conversational interfaces.</p>
+<p><strong>Is computer-use safe?</strong><br>
+It can be, if access is scoped and monitored, as recommended by agent design research [mit.edu](https://news.mit.edu).</p>
+
+<h2>Sources</h2>
+<p>Primary reporting and research from Google, Engadget, MIT News, Anthropic, Search Engine Journal, and Super’s own technical documentation informed this comparison.</p>
+</article>
+    </article>
+  </div>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Which AI can actually do the work?", "dateModified": "2026-07-06T10:47:18.723405+00:00", "author": {"@type": "Organization", "name": "Super"}, "publisher": {"@type": "Organization", "name": "Super"}, "mainEntityOfPage": "https://app.getsupers.com/sites/super-vs-siri-20260706-040310/", "citation": ["https://blog.google", "https://www.engadget.com", "https://www.searchenginejournal.com", "https://www.bleepingcomputer.com", "https://news.mit.edu", "https://www.anthropic.com/engineering/building-effective-agents"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "Which AI can actually do the work?", "step": [{"@type": "HowToStep", "name": "Audit your tasks", "text": "List tasks you want automated and note whether they require browser navigation or simple voice commands."}, {"@type": "HowToStep", "name": "Test one workflow", "text": "Run a real task in Super or Siri to see where friction appears."}, {"@type": "HowToStep", "name": "Scale what works", "text": "Double down on the assistant that saves measurable time after one week."}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is Super better than Siri for work?", "acceptedAnswer": {"@type": "Answer", "text": "For tasks that require browsers, logins, or multi-step workflows, Super is significantly more capable than Siri."}}, {"@type": "Question", "name": "Does Siri have computer-use features?", "acceptedAnswer": {"@type": "Answer", "text": "No, Siri operates through OS-level intents and does not control general-purpose computers."}}, {"@type": "Question", "name": "What makes Super different from other agents?", "acceptedAnswer": {"@type": "Answer", "text": "Super’s computer-use cache allows reliable, repeatable automation without per-action costs."}}]}</script>
+</section>
+<!-- super-agent-page-refresh:end -->
+
+</body>
+</html>

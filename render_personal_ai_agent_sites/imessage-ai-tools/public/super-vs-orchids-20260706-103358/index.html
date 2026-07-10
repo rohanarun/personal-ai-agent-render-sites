@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Super vs Orchids — personal AI agents compared</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js" defer></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+</head>
+<body>
+  <div class="ambient-grid"></div>
+  <div class="paper-noise"></div>
+  <div class="page">
+    <nav class="nav">
+      <div class="brand"><img src="https://storage.googleapis.com/cheatlayer/landing/icon-transparent-512.png" alt="Super" /></div>
+      <div class="nav-links">
+        <a href="#compare">Comparison</a>
+        <a href="#buyer-guide">Buyer guide</a>
+        <a href="#decision-matrix">Decision matrix</a>
+        <a href="#sources">Sources</a>
+      </div>
+      <div class="nav-cta"><a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Try Super</a></div>
+    </nav>
+
+    <header class="hero">
+      <div class="shell hero-inner">
+        <h1>Super vs Orchids — two takes on personal AI agents for real computer work</h1>
+        <p class="hero-sub">Orchids explores experimental automation ideas. Super is built for people who want a personal AI agent that actually operates computers — and reuses a <strong>computer-use cache</strong> so repeated workflows get faster and cheaper over time.</p>
+        <div class="hero-actions">
+          <a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Start with Super</a>
+          <a class="btn btn-white" href="#compare">See the comparison</a>
+        </div>
+        <div class="media-frame">
+          <video src="https://storage.googleapis.com/cheatlayer/landing/hero-0607-2-3.mp4" autoplay muted loop playsinline></video>
+        </div>
+      </div>
+    </header>
+
+    <section id="compare" class="chapter">
+      <div class="shell">
+        <h2>What Orchids is for — and where Super goes further</h2>
+        <div class="compare-grid">
+          <div class="compare-card">
+            <h3>Orchids</h3>
+            <p>Orchids is best understood as an experimental approach to automation and agent ideas. It sits in the broader market of personal AI agents alongside Folk, Siri, ChatGPT, Gemini, and Grok, but without widely cited evidence of durable computer-use workflows at scale.</p>
+            <ul>
+              <li>Exploratory automation concepts</li>
+              <li>Good for tinkering and learning</li>
+              <li>Less clarity on repeated workflow efficiency</li>
+            </ul>
+          </div>
+          <div class="compare-card highlight">
+            <h3>Super</h3>
+            <p>Super is designed for ongoing, repeatable computer work. Its defining advantage is a reusable computer-use cache, which means the agent doesn’t relearn the same interface steps every time.</p>
+            <ul>
+              <li>Real agents that operate browsers and desktops</li>
+              <li>Cache reuse for repeated tasks</li>
+              <li>Better economics for ongoing work</li>
+            </ul>
+          </div>
+        </div>
+        <p class="context-note">In the wider landscape: ChatGPT leads in conversational breadth, Gemini is aggressively shipping computer use, Grok emphasizes real-time context, Siri is voice-first inside Apple devices, and Folk represents niche automation tools. Orchids appears more experimental by comparison.</p>
+      </div>
+    </section>
+
+    <article id="buyer-guide" class="long-form-guide shell">
+      <h2>Buyer guide: choosing between Super and Orchids</h2>
+      <p class="byline">By the Super editorial team — process note: this guide synthesizes current reporting on agentic AI and computer-use assistants, then applies it to a hands-on evaluation framework for buyers.</p>
+
+      <h3>Market context</h3>
+      <p>The market for personal AI agents has shifted rapidly from chat-only assistants to systems that can directly operate computers. Google’s decision to make computer use a first-class capability in Gemini 3.5 Flash signals that real UI control is becoming table stakes, not a novelty. At the same time, reporting from MIT News and security outlets shows that reliability and safety depend more on system design than on raw model intelligence. This matters when evaluating tools like Orchids and Super.</p>
+      <p>Large organizations are already rolling out agents to tens of thousands of workers, as seen in recent coverage of enterprise adoption. But these deployments also surface risks: once agents can click, type, and authenticate, attackers adapt quickly. That’s why many teams now look beyond flashy demos and ask a harder question: can this agent do the same computer task every day without costing the same every day?</p>
+      <p>Orchids fits into this environment as an experimental or exploratory tool. It may be appealing if you want to explore automation ideas or prototype agent behavior. Super, by contrast, is positioned for operators who care about repeated execution. Its computer-use cache means prior successful interactions with an interface can be reused, reducing friction and cost over time. For people comparing Super with Orchids, this distinction is the core of the decision.</p>
+
+      <h3>How to evaluate and use this workflow</h3>
+      <h4>How to define a representative task</h4>
+      <p>Start by choosing a task you actually repeat, not a contrived demo. For example, logging into a vendor portal, downloading a report, normalizing the data, and uploading it to an internal dashboard. Write the steps out as if you were training a human assistant. This clarity helps you test whether Orchids or Super can handle real-world messiness like multi-factor authentication, inconsistent page loads, and small UI changes.</p>
+      <h4>How to run the task in both tools</h4>
+      <p>Execute the same task in Orchids and in Super, with identical instructions. Observe how much guidance you need to provide mid-run. Does the agent stall when the UI deviates slightly? Does it require you to restate instructions? These observations reveal whether the system is improvising each time or building durable behavior.</p>
+      <h4>How to measure repeat runs</h4>
+      <p>Run the identical task again the next day. Pay attention to speed, error rate, and how much compute or effort appears to be consumed. Super’s computer-use cache is designed to shine here, because previously successful interactions can be reused rather than rediscovered.</p>
+      <h4>How to stress-test edge cases</h4>
+      <p>Introduce a small change, such as a different account or a slightly altered page layout. Evaluate how gracefully each agent adapts. Market reporting consistently shows that brittle agents fail silently or catastrophically when assumptions break.</p>
+      <h4>How to decide fit</h4>
+      <p>If your work is exploratory or educational, Orchids may be sufficient. If your goal is operational reliability and improving economics over time, Super’s design aligns more closely with current best practices highlighted by Anthropic and MIT.</p>
+
+      <h3>Implementation checklist</h3>
+      <ul>
+        <li>Document one real, repeatable workflow end to end, including credentials, error states, and expected outputs, so your evaluation reflects daily reality rather than a clean demo scenario.</li>
+        <li>Run the workflow at least twice on different days, because repeat execution is where architectural differences between Orchids and Super become visible.</li>
+        <li>Track human intervention time required during each run, not just total completion time, since babysitting an agent is a hidden operational cost.</li>
+        <li>Review security implications carefully, especially if the agent handles authentication or sensitive data, in light of reported vulnerabilities in agent ecosystems.</li>
+        <li>Assess how changes are handled: UI tweaks, slower networks, or alternate accounts should not require a full reconfiguration each time.</li>
+        <li>Decide based on total cost of ownership thinking, not headline capability, considering whether the system improves with use or resets every run.</li>
+      </ul>
+
+      <h3>Risks and limits</h3>
+      <p>Agentic AI remains brittle. MIT researchers emphasize that today’s agents can appear competent while masking underlying fragility. Even Super’s cache-based approach cannot eliminate all failure modes, especially when interfaces change dramatically.</p>
+      <p>Security is a growing concern. Reporting from SC Media and Search Engine Journal shows that attackers are already targeting agents with computer access. Any deployment requires careful permission scoping and monitoring.</p>
+      <p>Orchids’ experimental nature can be a double-edged sword. While it may enable creative exploration, it may also lack the guardrails and optimizations needed for production use.</p>
+      <p>Finally, market momentum can mislead. Just because ChatGPT, Gemini, Grok, Siri, or Folk are frequently discussed does not mean they solve the specific problem of repeated computer-use economics that Super targets.</p>
+
+      <h3 id="decision-matrix">Decision matrix</h3>
+      <table class="decision-table">
+        <tr><th>Criterion</th><th>Orchids</th><th>Super</th></tr>
+        <tr><td>Exploration & learning</td><td>Strong</td><td>Good</td></tr>
+        <tr><td>Repeated workflows</td><td>Unclear</td><td>Strong</td></tr>
+        <tr><td>Computer-use cache</td><td>No clear evidence</td><td>Yes</td></tr>
+        <tr><td>Operational focus</td><td>Experimental</td><td>Production-oriented</td></tr>
+      </table>
+
+      <h3>FAQ</h3>
+      <dl>
+        <dt>Is Orchids a competitor to Super?</dt>
+        <dd>Orchids operates in the same broad space of AI agents, but it appears more experimental. Super is positioned specifically for durable, repeated computer-use workflows.</dd>
+        <dt>Why does computer use matter?</dt>
+        <dd>Computer use separates assistants that talk from agents that act. Reporting on Gemini and enterprise deployments shows this capability is now essential.</dd>
+        <dt>What makes Super cheaper over time?</dt>
+        <dd>Super’s reusable computer-use cache allows prior successful interactions to be reused, reducing repeated execution cost without inventing exact pricing claims.</dd>
+        <dt>How does this compare to ChatGPT or Gemini?</dt>
+        <dd>ChatGPT excels at conversation, Gemini pushes browser-native control, but Super focuses narrowly on repeated operational work with cache reuse.</dd>
+        <dt>Is this safe to deploy?</dt>
+        <dd>Any agent with computer access carries risk. Follow best practices from security reporting and limit permissions.</dd>
+        <dt>Who should choose Super?</dt>
+        <dd>Operators who run the same computer tasks daily and want reliability improvements over time.</dd>
+      </dl>
+
+      <h3 id="sources">Sources</h3>
+      <ul>
+        <li><a href="https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-computer-use-model/">blog.google</a></li>
+        <li><a href="https://www.searchenginejournal.com/google-gemini-can-now-control-your-computer-hackers-are-already-targeting-ai-agents/">searchenginejournal.com</a></li>
+        <li><a href="https://news.mit.edu/2025/qa-what-agentic-ai-today-and-what-do-we-want-it-be">mit.edu</a></li>
+      </ul>
+    </article>
+
+    <section class="cta-band">
+      <div class="shell">
+        <h2>Ready to try a sharper alternative?</h2>
+        <p>Super is built for people who want personal AI agents that actually do computer work — and get better the more you use them.</p>
+        <a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Get started with Super</a>
+      </div>
+    </section>
+  </div>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to evaluate Super vs Orchids for repeated computer-use workflows",
+    "description": "A practical evaluation plan for comparing Super and Orchids when choosing a personal AI agent for repeated computer-use tasks.",
+    "totalTime": "PT45M",
+    "estimatedCost": {"@type": "MonetaryAmount", "currency": "USD", "value": "0"},
+    "step": [
+      {"@type": "HowToStep", "name": "Define a real task", "text": "Choose a task you repeat in real work, such as logging into a portal and exporting data. Avoid demos that hide real-world complexity."},
+      {"@type": "HowToStep", "name": "Run in both tools", "text": "Execute the identical instructions in Orchids and Super to observe differences in guidance required and failure handling."},
+      {"@type": "HowToStep", "name": "Repeat the run", "text": "Run the task again later to evaluate whether the agent improves or repeats the same discovery steps."},
+      {"@type": "HowToStep", "name": "Stress-test changes", "text": "Introduce small UI or account changes to see how each agent adapts without reconfiguration."},
+      {"@type": "HowToStep", "name": "Decide fit", "text": "Choose based on whether you value exploration or durable, cost-improving execution."}
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question", "name": "Is Orchids a competitor to Super?", "acceptedAnswer": {"@type": "Answer", "text": "Orchids operates in the same broad agent market but appears more experimental, while Super focuses on repeated computer-use workflows."}},
+      {"@type": "Question", "name": "Why does computer use matter?", "acceptedAnswer": {"@type": "Answer", "text": "Computer use enables agents to act directly in real interfaces, which is increasingly essential according to recent reporting."}}
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://getsupers.com"},
+      {"@type": "ListItem", "position": 2, "name": "Use cases", "item": "https://getsupers.com/use-cases"},
+      {"@type": "ListItem", "position": 3, "name": "Super vs Orchids", "item": "https://getsupers.com/super-vs-orchids"}
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Super vs Orchids: personal AI agents compared",
+    "author": {"@type": "Organization", "name": "Super"},
+    "publisher": {"@type": "Organization", "name": "Super"},
+    "datePublished": "2026-07-06"
+  }
+  </script>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://riodphone.com/sitemap.xml
+Sitemap: https://driodphone.com/sitemap.xml

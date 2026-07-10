@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Super vs ChatGPT — personal AI agents compared</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+<div class="ambient-grid"></div>
+<div class="paper-noise"></div>
+<div class="page">
+  <nav class="nav shell">
+    <div class="brand"><img src="https://storage.googleapis.com/cheatlayer/landing/icon-transparent-512.png" alt="Super" /></div>
+    <div class="nav-links">
+      <a href="#comparison">Comparison</a>
+      <a href="#buyer-guide">Buyer guide</a>
+      <a href="#decision-matrix">Decision matrix</a>
+      <a href="#sources">Sources</a>
+    </div>
+    <a class="btn btn-black nav-cta" href="https://app.getsupers.com/general?login=1&open_login=1">Try Super</a>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-inner shell">
+      <h1>Super vs ChatGPT — personal AI agents for real computer work</h1>
+      <p class="hero-sub">ChatGPT is a world‑class conversational assistant. Super is built for people who want a personal AI agent that actually operates a computer — and reuses a <strong>computer-use cache</strong> so repeated workflows get faster and cheaper.</p>
+      <div class="hero-actions">
+        <a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Start with Super</a>
+        <a class="btn btn-white" href="#buyer-guide">Read the Buyer guide</a>
+      </div>
+      <div class="media-frame">
+        <video src="https://storage.googleapis.com/cheatlayer/landing/hero-0607-2-3.mp4" autoplay muted loop playsinline></video>
+      </div>
+    </div>
+  </header>
+
+  <section id="comparison" class="chapter">
+    <div class="shell">
+      <h2>What each product is best for</h2>
+      <div class="compare-grid">
+        <div class="compare-card">
+          <h3>ChatGPT</h3>
+          <p>ChatGPT excels at writing, research, summarisation, planning, and lightweight automation. Scheduled tasks and agent features show momentum, but repeated, stateful computer work can be inconsistent for long‑running operations.</p>
+        </div>
+        <div class="compare-card highlight">
+          <h3>Super</h3>
+          <p>Super is focused on durable computer‑use workflows. Its defining advantage is reuse of a computer‑use cache, so repeated browser and desktop actions improve over time instead of costing the same every run.</p>
+        </div>
+      </div>
+      <p class="context">Market context: Gemini has pushed computer use into mainstream APIs, Grok emphasizes real‑time context, Siri remains voice‑first, and niche tools like Folk and Orchids sit within the broader automation market. Super stays narrow and sharp on repeated computer work.</p>
+    </div>
+  </section>
+
+  <section id="buyer-guide" class="chapter">
+    <div class="shell">
+      <h2>Buyer guide</h2>
+      <article class="long-form-guide">
+        <p class="byline">By the Super editorial team • Research‑driven field guide • Updated July 2026</p>
+
+        <h3>Market context</h3>
+        <p>Personal AI agents are moving beyond chat. Enterprises are rolling out agents at scale, while consumer tools race to add computer control. At the same time, researchers and practitioners warn that agentic systems are powerful but brittle: reliability depends more on system design than raw model intelligence. News coverage highlights both the promise — such as large workforces receiving agents — and the costs, including higher energy use for agentic runs compared with simple chat. This creates a practical buying question: when does an agent actually save time and money?</p>
+        <p>ChatGPT’s strength is breadth and accessibility. It shines for ad‑hoc questions, creative work, and one‑off automations. But as workflows repeat — logging into sites, navigating dashboards, exporting reports — the lack of durable state can mean paying the same execution cost every time. Super’s bet is that many professionals repeat the same computer work weekly or daily, and that caching those actions changes the economics.</p>
+
+        <h3>How to evaluate and use this workflow</h3>
+        <h4>How to map a repeated task</h4>
+        <p>Start by listing a task you repeat at least weekly, such as pulling metrics from a web dashboard or reconciling invoices in a browser app. Write the steps as if teaching a new hire. This clarity reveals whether the task benefits from durable computer control rather than conversational help.</p>
+        <h4>How to test ChatGPT fairly</h4>
+        <p>Run the task in ChatGPT using its agent or scheduled task features. Time the first run and a second identical run. Note where the agent hesitates, re‑asks for context, or re‑navigates steps it already performed. Capture failure points honestly.</p>
+        <h4>How to test Super with cache reuse</h4>
+        <p>Run the same task in Super. On the first run, expect similar effort to any agent. On subsequent runs, observe how cached computer actions reduce repeated navigation. This is where savings compound for ongoing work.</p>
+        <h4>How to measure reliability</h4>
+        <p>Count how many manual interventions you needed. Agents that chain many tools amplify small errors. Fewer interventions over multiple runs is a strong signal for operational use.</p>
+        <h4>How to decide deployment scope</h4>
+        <p>Use ChatGPT for exploratory, creative, or irregular work. Use Super for operational workflows that repeat and touch real interfaces. Many teams use both.</p>
+
+        <h3>Implementation checklist</h3>
+        <ul>
+          <li><strong>Define repetition clearly:</strong> Only cache‑friendly tasks benefit from Super’s approach. Confirm the task repeats with minimal variation so cached computer steps remain valid.</li>
+          <li><strong>Set guardrails:</strong> Limit agent permissions to the minimum required. This reduces risk when operating real browsers and aligns with security best practices.</li>
+          <li><strong>Track second‑run gains:</strong> Measure time and intervention on run two and three, not just the first execution. This is where differences emerge.</li>
+          <li><strong>Plan fallbacks:</strong> Keep manual overrides or scripts ready for edge cases. No agent is perfect, especially as interfaces change.</li>
+          <li><strong>Educate stakeholders:</strong> Explain that agents are not magic. They trade flexibility for efficiency; setting expectations avoids disappointment.</li>
+          <li><strong>Review energy and cost signals:</strong> Agentic runs can be more resource‑intensive. Cache reuse can mitigate this for repeated work.</li>
+        </ul>
+
+        <h3>Risks and limits</h3>
+        <p><strong>Interface drift:</strong> When websites change layouts, cached steps may need refresh. Super reduces repeated cost, not maintenance entirely.</p>
+        <p><strong>Security surface:</strong> Computer‑use agents expand attack surface. Careful scoping and monitoring are essential, as highlighted by security reporting.</p>
+        <p><strong>Over‑automation:</strong> Not every task should be automated. Creative or ambiguous work often fits ChatGPT better.</p>
+        <p><strong>Energy use:</strong> Agentic systems can consume more energy than chatbots; efficiency gains matter at scale.</p>
+
+        <h3>Decision matrix</h3>
+        <table class="decision">
+          <tr><th>Use case</th><th>ChatGPT</th><th>Super</th></tr>
+          <tr><td>One‑off research</td><td>Excellent</td><td>Good</td></tr>
+          <tr><td>Creative writing</td><td>Excellent</td><td>Limited</td></tr>
+          <tr><td>Repeated browser workflow</td><td>Okay</td><td>Excellent</td></tr>
+          <tr><td>Operational reporting</td><td>Okay</td><td>Excellent</td></tr>
+        </table>
+
+        <h3>FAQ</h3>
+        <p><strong>Is ChatGPT becoming an agent?</strong> Yes. Coverage shows steady movement toward agents and scheduled tasks. The question is consistency over repeated runs.</p>
+        <p><strong>Is Super cheaper?</strong> For repeated computer‑use workflows, cache reuse can lower effective cost over time without quoting exact prices.</p>
+        <p><strong>Can I use both?</strong> Absolutely. Many teams pair ChatGPT for ideation with Super for execution.</p>
+        <p><strong>How does this compare to Gemini or Grok?</strong> Gemini pushes browser‑native control, Grok emphasizes real‑time context. Super stays focused on durable repetition.</p>
+        <p><strong>What about Siri?</strong> Siri remains voice‑first and system‑level; it is not designed for complex, repeatable browser workflows.</p>
+        <p><strong>Where do Folk and Orchids fit?</strong> They represent niche automation approaches within the broader market context rather than direct replacements.</p>
+
+        <h3 id="sources">Sources</h3>
+        <ul>
+          <li><a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxPdmotdWlXYzdiUUVaeXZQaDJkcVB5bzlfcWROWldtd2JjZXdoeEVVR0U4X3ZyZjR2cElfVXh1dXlhZG84YXlseWRDRmtlY2E2RWZ4Vno5RGp6LTRBbU04bXVDYWprOEJXaVJ1bG9jeFdMSFpmX216N1l6LXQwRW9SYk1uQk4">Memeburn on Gemini computer use</a></li>
+          <li><a href="https://news.google.com/rss/articles/CBMif0FVX3lxTE1sVHJoaUVFV0ZBU1dQZ3ZodTFJYmxxQnlLZjdLd3BIVXlEWGM4ZUNmU1VRV1JBV3VwVk5fMkZ2Qjk2VFRHRG8yYXRzblJnZnlwZ243VU5JZEZza3IzYWtDQzEyNnBteURvejU5UDl1SjdzUV85cGpEdWEwNVlENkE">Android Authority on ChatGPT automation</a></li>
+          <li><a href="https://news.google.com/rss/articles/CBMidkFVX3lxTE5RM1ZBZHlsbkR4dlJscXJLMkhFUzN1S280eXBsV1hCXzdCOTBraWZ1cUt1SUhqXzBUbThPSnBQdWpKTTI2aXdxQTdHbk9SM1d2NGluUXZ0cWktNzdWeS1xZHRQcVhDcWs5M2R4YXdUTGVvMThCRXc">MIT News on agentic AI</a></li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="shell">
+      <h2>Ready to try durable computer‑use agents?</h2>
+      <a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Try Super</a>
+    </div>
+  </section>
+</div>
+
+<script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+<script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="./app.js"></script>
+
+<!-- Article JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Super vs ChatGPT — personal AI agents compared",
+  "author": {"@type": "Organization", "name": "Super"},
+  "about": "Personal AI agents and computer-use assistants"
+}
+</script>
+
+<!-- HowTo JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to evaluate Super vs ChatGPT for repeated computer-use workflows",
+  "description": "A practical process to compare ChatGPT and Super for repeated browser and desktop tasks.",
+  "step": [
+    {"@type": "HowToStep", "name": "Map the repeated task", "text": "Document the exact browser or desktop steps for a task you repeat weekly, such as exporting a report."},
+    {"@type": "HowToStep", "name": "Run the task in ChatGPT", "text": "Execute the workflow using ChatGPT’s agent features and record time and interventions."},
+    {"@type": "HowToStep", "name": "Run the task in Super", "text": "Execute the same workflow in Super and allow the system to build a computer-use cache."},
+    {"@type": "HowToStep", "name": "Compare second runs", "text": "Repeat the task and compare speed, cost signals, and reliability on subsequent runs."},
+    {"@type": "HowToStep", "name": "Decide scope", "text": "Choose ChatGPT for ad-hoc work and Super for durable, repeated computer-use workflows."}
+  ]
+}
+</script>
+
+<!-- FAQPage JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Is ChatGPT an AI agent?", "acceptedAnswer": {"@type": "Answer", "text": "ChatGPT includes agent-like features, but consistency over repeated computer work varies."}},
+    {"@type": "Question", "name": "What makes Super different?", "acceptedAnswer": {"@type": "Answer", "text": "Super focuses on operating computers with a reusable computer-use cache."}}
+  ]
+}
+</script>
+
+<!-- BreadcrumbList JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://getsupers.com"},
+    {"@type": "ListItem", "position": 2, "name": "Use cases", "item": "https://getsupers.com/use-cases"},
+    {"@type": "ListItem", "position": 3, "name": "Super vs ChatGPT", "item": "https://getsupers.com/super-vs-chatgpt"}
+  ]
+}
+</script>
+</body>
+</html>

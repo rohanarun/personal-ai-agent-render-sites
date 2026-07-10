@@ -347,6 +347,29 @@
   {
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/personal-agents-are-moving-secrets-out-of-model-context-20260709-230633/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/text-message-ai-assistant/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "blog",
+    "content_kind_label": "Research and news analysis",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://salesbase.ai/personal-agents-are-moving-secrets-out-of-model-context-20260709-230633/",
+    "receipt_created_at": "2026-07-09T23:06:33.304+00:00",
+    "receipt_status": "success",
+    "slug": "personal-agents-are-moving-secrets-out-of-model-context-20260709-230633",
+    "source_path": "sms_published_sites/personal-agents-are-moving-secrets-out-of-model-context-20260709-230633",
+    "target_slot": "super-agent-research",
+    "title": "Personal Agents Are Moving Secrets Out of Model Context"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/browser-agent-memory-redaction-vs-data-loss-prevention-20260709-224639/",
     "backlinks": [
       "https://getsupers.com/",
@@ -366,6 +389,51 @@
     "source_path": "sms_published_sites/browser-agent-memory-redaction-vs-data-loss-prevention-20260709-224639",
     "target_slot": "ai-agent-comparisons",
     "title": "Browser Agent Memory Redaction vs Data Loss Prevention"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/super-vs-chatgpt-20260706-140407/",
+    "cheatlayer_url": "https://cheatlayer.com/atlas/tj003cw9.html",
+    "content_kind": "competitor_comparison",
+    "content_kind_label": "Competitor comparison",
+    "github_url": "https://github.com/rohanarun/super-agent-news-super-vs-chatgpt-20260706-140531",
+    "live_url": "https://app.getsupers.com/sites/super-vs-chatgpt-20260706-140407/",
+    "receipt_created_at": "2026-07-06T14:05:44.801027+00:00",
+    "receipt_status": "success",
+    "slug": "super-vs-chatgpt-20260706-140407",
+    "source_path": "sms_published_sites/super-vs-chatgpt-20260706-140407",
+    "title": "Super vs ChatGPT \u2014 choosing a personal AI agent for real computer work"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/personal-ai-agent-news-20260706-091328/",
+    "cheatlayer_url": "https://cheatlayer.com/atlas/zrpe2boe.html",
+    "content_kind": "blog",
+    "content_kind_label": "Research and news analysis",
+    "github_url": "https://github.com/rohanarun/super-agent-news-personal-ai-agent-news-20260706-091440",
+    "live_url": "https://app.getsupers.com/sites/personal-ai-agent-news-20260706-091328/",
+    "receipt_created_at": "2026-07-06T09:14:53.863429+00:00",
+    "receipt_status": "success",
+    "slug": "personal-ai-agent-news-20260706-091328",
+    "source_path": "sms_published_sites/personal-ai-agent-news-20260706-091328",
+    "title": "Personal AI Agent Market Brief"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/super-for-creators-and-coaches-turning-conversations-into-20260706-002209/",
+    "cheatlayer_url": "https://cheatlayer.com/atlas/j64dlazw.html",
+    "content_kind": "niche_landing",
+    "content_kind_label": "Niche research landing page",
+    "github_url": "https://github.com/rohanarun/super-agent-news-super-for-creators-and-coaches-turning-conversat-20260706-002406",
+    "live_url": "https://app.getsupers.com/sites/super-for-creators-and-coaches-turning-conversations-into-20260706-002209/",
+    "receipt_created_at": "2026-07-06T00:24:19.632796+00:00",
+    "receipt_status": "success",
+    "slug": "super-for-creators-and-coaches-turning-conversations-into-20260706-002209",
+    "source_path": "sms_published_sites/super-for-creators-and-coaches-turning-conversations-into-20260706-002209",
+    "title": "Super for creators and coaches turning conversations into content and operations"
   },
   {
     "assigned_domain": "lists.new",
@@ -430,6 +498,21 @@
   {
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/super-for-busy-executives-who-want-a-real-personal-assista-20260704-205839/",
+    "cheatlayer_url": "https://cheatlayer.com/atlas/48jzy970.html",
+    "content_kind": "niche_landing",
+    "content_kind_label": "Niche research landing page",
+    "github_url": "https://github.com/rohanarun/super-agent-news-super-for-busy-executives-who-want-a-real-person-20260704-205910",
+    "live_url": "https://app.getsupers.com/sites/super-for-busy-executives-who-want-a-real-personal-assista-20260704-205839/",
+    "receipt_created_at": "2026-07-04T20:59:24.673796+00:00",
+    "receipt_status": "success",
+    "slug": "super-for-busy-executives-who-want-a-real-personal-assista-20260704-205839",
+    "source_path": "sms_published_sites/super-for-busy-executives-who-want-a-real-personal-assista-20260704-205839",
+    "title": "Super for busy executives who want a real personal assistant"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/super-for-creators-and-coaches-turning-conversations-into-20260704-183806/",
     "cheatlayer_url": "https://cheatlayer.com/atlas/6k3rbv0d.html",
     "content_kind": "niche_landing",
@@ -471,6 +554,21 @@
     "slug": "super-for-busy-executives-who-want-a-real-personal-assista-20260704-143600",
     "source_path": "sms_published_sites/super-for-busy-executives-who-want-a-real-personal-assista-20260704-143600",
     "title": "Super for busy executives who want a real personal assistant"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/super-for-creators-and-coaches-turning-conversations-into-20260704-054446/",
+    "cheatlayer_url": "https://cheatlayer.com/atlas/8kzra9gw.html",
+    "content_kind": "niche_landing",
+    "content_kind_label": "Niche research landing page",
+    "github_url": "https://github.com/rohanarun/super-agent-news-super-for-creators-and-coaches-turning-conversat-20260704-054522",
+    "live_url": "https://app.getsupers.com/sites/super-for-creators-and-coaches-turning-conversations-into-20260704-054446/",
+    "receipt_created_at": "2026-07-04T05:45:36.544044+00:00",
+    "receipt_status": "success",
+    "slug": "super-for-creators-and-coaches-turning-conversations-into-20260704-054446",
+    "source_path": "sms_published_sites/super-for-creators-and-coaches-turning-conversations-into-20260704-054446",
+    "title": "Super for creators and coaches turning conversations into content and operations"
   },
   {
     "assigned_domain": "lists.new",
@@ -535,6 +633,21 @@
   {
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/super-for-recruiters-sourcing-candidates-and-coordinating-20260703-224545/",
+    "cheatlayer_url": "https://cheatlayer.com/atlas/izsm34bx.html",
+    "content_kind": "niche_landing",
+    "content_kind_label": "Niche research landing page",
+    "github_url": "https://github.com/rohanarun/super-agent-news-super-for-recruiters-sourcing-candidates-and-coo-20260703-224718",
+    "live_url": "https://app.getsupers.com/sites/super-for-recruiters-sourcing-candidates-and-coordinating-20260703-224545/",
+    "receipt_created_at": "2026-07-03T22:47:32.626652+00:00",
+    "receipt_status": "success",
+    "slug": "super-for-recruiters-sourcing-candidates-and-coordinating-20260703-224545",
+    "source_path": "sms_published_sites/super-for-recruiters-sourcing-candidates-and-coordinating-20260703-224545",
+    "title": "Super for recruiters sourcing candidates and coordinating interviews"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/super-vs-folk-20260703-201546/",
     "cheatlayer_url": "https://cheatlayer.com/atlas/1g1l3zdv.html",
     "content_kind": "competitor_comparison",
@@ -576,6 +689,21 @@
     "slug": "super-for-real-estate-agents-managing-follow-ups-listings-20260703-162054",
     "source_path": "sms_published_sites/super-for-real-estate-agents-managing-follow-ups-listings-20260703-162054",
     "title": "Super for real estate agents managing follow\u2011ups, listings, and scheduling"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/super-for-creators-and-coaches-turning-conversations-into-20260703-135057/",
+    "cheatlayer_url": "https://cheatlayer.com/atlas/wic7ls5r.html",
+    "content_kind": "niche_landing",
+    "content_kind_label": "Niche research landing page",
+    "github_url": "https://github.com/rohanarun/super-agent-news-super-for-creators-and-coaches-turning-conversat-20260703-135125",
+    "live_url": "https://app.getsupers.com/sites/super-for-creators-and-coaches-turning-conversations-into-20260703-135057/",
+    "receipt_created_at": "2026-07-03T13:51:38.793352+00:00",
+    "receipt_status": "success",
+    "slug": "super-for-creators-and-coaches-turning-conversations-into-20260703-135057",
+    "source_path": "sms_published_sites/super-for-creators-and-coaches-turning-conversations-into-20260703-135057",
+    "title": "Super for creators and coaches turning conversations into content and operations"
   },
   {
     "assigned_domain": "lists.new",
@@ -640,6 +768,21 @@
   {
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/super-for-recruiters-sourcing-candidates-and-coordinating-20260703-070048/",
+    "cheatlayer_url": "https://cheatlayer.com/atlas/amc99x09.html",
+    "content_kind": "niche_landing",
+    "content_kind_label": "Niche research landing page",
+    "github_url": "https://github.com/rohanarun/super-agent-news-super-for-recruiters-sourcing-candidates-and-coo-20260703-070128",
+    "live_url": "https://app.getsupers.com/sites/super-for-recruiters-sourcing-candidates-and-coordinating-20260703-070048/",
+    "receipt_created_at": "2026-07-03T07:01:41.177568+00:00",
+    "receipt_status": "success",
+    "slug": "super-for-recruiters-sourcing-candidates-and-coordinating-20260703-070048",
+    "source_path": "sms_published_sites/super-for-recruiters-sourcing-candidates-and-coordinating-20260703-070048",
+    "title": "Super for recruiters sourcing candidates and coordinating interviews"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/super-vs-orchids-20260703-044622/",
     "cheatlayer_url": "https://cheatlayer.com/atlas/c96csqae.html",
     "content_kind": "competitor_comparison",
@@ -681,6 +824,21 @@
     "slug": "super-for-real-estate-agents-managing-follow-ups-listings-20260703-003419",
     "source_path": "sms_published_sites/super-for-real-estate-agents-managing-follow-ups-listings-20260703-003419",
     "title": "Super for real estate agents managing follow-ups, listings, and scheduling"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/super-vs-folk-20260702-221325/",
+    "cheatlayer_url": "https://cheatlayer.com/atlas/6ppn0q7i.html",
+    "content_kind": "competitor_comparison",
+    "content_kind_label": "Competitor comparison",
+    "github_url": "https://github.com/rohanarun/super-agent-news-super-vs-folk-20260702-221404",
+    "live_url": "https://app.getsupers.com/sites/super-vs-folk-20260702-221325/",
+    "receipt_created_at": "2026-07-02T22:14:17.917273+00:00",
+    "receipt_status": "success",
+    "slug": "super-vs-folk-20260702-221325",
+    "source_path": "sms_published_sites/super-vs-folk-20260702-221325",
+    "title": "Super vs Folk \u2014 personal AI agents for real computer work"
   },
   {
     "assigned_domain": "lists.new",
@@ -745,6 +903,21 @@
   {
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/super-vs-folk-20260702-012514/",
+    "cheatlayer_url": "https://cheatlayer.com/atlas/lwc16dp3.html",
+    "content_kind": "competitor_comparison",
+    "content_kind_label": "Competitor comparison",
+    "github_url": "https://github.com/rohanarun/super-agent-news-super-vs-folk-20260702-012546",
+    "live_url": "https://app.getsupers.com/sites/super-vs-folk-20260702-012514/",
+    "receipt_created_at": "2026-07-02T01:25:59.277239+00:00",
+    "receipt_status": "success",
+    "slug": "super-vs-folk-20260702-012514",
+    "source_path": "sms_published_sites/super-vs-folk-20260702-012514",
+    "title": "Super vs Folk \u2014 Personal AI Agents Compared"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/super-vs-grok-20260701-230202/",
     "cheatlayer_url": "https://cheatlayer.com/atlas/qp4dx1y1.html",
     "content_kind": "competitor_comparison",
@@ -786,6 +959,21 @@
     "slug": "super-vs-folk-20260701-185954",
     "source_path": "sms_published_sites/super-vs-folk-20260701-185954",
     "title": "Super vs Folk \u2014 personal AI agents compared"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/super-vs-grok-20260701-163211/",
+    "cheatlayer_url": "https://cheatlayer.com/atlas/zg1x80d4.html",
+    "content_kind": "competitor_comparison",
+    "content_kind_label": "Competitor comparison",
+    "github_url": "https://github.com/rohanarun/super-agent-news-super-vs-grok-20260701-163243",
+    "live_url": "https://app.getsupers.com/sites/super-vs-grok-20260701-163211/",
+    "receipt_created_at": "2026-07-01T16:32:57.063681+00:00",
+    "receipt_status": "success",
+    "slug": "super-vs-grok-20260701-163211",
+    "source_path": "sms_published_sites/super-vs-grok-20260701-163211",
+    "title": "Super vs Grok \u2014 personal AI agents for real computer work"
   },
   {
     "assigned_domain": "lists.new",
@@ -850,6 +1038,21 @@
   {
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/super-vs-siri-20260701-073051/",
+    "cheatlayer_url": "https://cheatlayer.com/atlas/lqbw09cn.html",
+    "content_kind": "competitor_comparison",
+    "content_kind_label": "Competitor comparison",
+    "github_url": "https://github.com/rohanarun/super-agent-news-super-vs-siri-20260701-073126",
+    "live_url": "https://app.getsupers.com/sites/super-vs-siri-20260701-073051/",
+    "receipt_created_at": "2026-07-01T07:31:40.364342+00:00",
+    "receipt_status": "success",
+    "slug": "super-vs-siri-20260701-073051",
+    "source_path": "sms_published_sites/super-vs-siri-20260701-073051",
+    "title": "Super vs Siri \u2014 personal AI agents for real computer work"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/super-for-busy-executives-who-want-a-real-personal-assista-20260701-061026/",
     "cheatlayer_url": "https://cheatlayer.com/atlas/t2ojvkiq.html",
     "content_kind": "niche_landing",
@@ -891,6 +1094,21 @@
     "slug": "super-for-ecommerce-operators-monitoring-orders-support-an-20260630-022100",
     "source_path": "sms_published_sites/super-for-ecommerce-operators-monitoring-orders-support-an-20260630-022100",
     "title": "Super for ecommerce operators monitoring orders, support, and repetitive admin"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/super-vs-chatgpt-20260630-005956/",
+    "cheatlayer_url": "https://cheatlayer.com/atlas/ad3bn7r0.html",
+    "content_kind": "competitor_comparison",
+    "content_kind_label": "Competitor comparison",
+    "github_url": "https://github.com/rohanarun/super-agent-news-super-vs-chatgpt-20260630-010026",
+    "live_url": "https://app.getsupers.com/sites/super-vs-chatgpt-20260630-005956/",
+    "receipt_created_at": "2026-06-30T01:00:41.022420+00:00",
+    "receipt_status": "success",
+    "slug": "super-vs-chatgpt-20260630-005956",
+    "source_path": "sms_published_sites/super-vs-chatgpt-20260630-005956",
+    "title": "Super vs ChatGPT \u2014 personal AI agents compared for real computer work"
   },
   {
     "assigned_domain": "lists.new",

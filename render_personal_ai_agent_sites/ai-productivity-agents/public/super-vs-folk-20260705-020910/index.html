@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Super vs Folk — personal AI agents compared</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <script defer src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+  <script defer src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+<div class="ambient-grid"></div>
+<div class="paper-noise"></div>
+<div class="page">
+
+  <nav class="nav">
+    <div class="brand"><img src="https://storage.googleapis.com/cheatlayer/landing/icon-transparent-512.png" alt="Super" /></div>
+    <div class="nav-links">
+      <a href="#comparison">Comparison</a>
+      <a href="#guide">Field guide</a>
+      <a href="#sources">Sources</a>
+    </div>
+    <div class="nav-cta"><a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Try Super</a></div>
+  </nav>
+
+  <section class="hero">
+    <div class="shell hero-inner">
+      <h1>Super vs Folk: which personal AI agent actually does computer work?</h1>
+      <p class="hero-sub">Folk sits within the broader automation and assistant market. Super is built for people who want a personal AI agent that operates a real computer and reuses a computer-use cache so repeated workflows get more efficient over time.</p>
+      <div class="hero-actions">
+        <a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Start with Super</a>
+        <a class="btn btn-white" href="#guide">Read the buyer guide</a>
+      </div>
+      <div class="media-frame">
+        <video src="https://storage.googleapis.com/cheatlayer/landing/hero-0607-2-3.mp4" autoplay muted loop playsinline></video>
+      </div>
+    </div>
+  </section>
+
+  <section id="comparison" class="chapter">
+    <div class="shell">
+      <h2>Where Super and Folk fit in the agent landscape</h2>
+      <div class="compare-grid">
+        <div class="compare-card">
+          <h3>Folk</h3>
+          <p>Folk appears in the market as part of the long tail of AI assistants and automation tools. Tools like Folk are often used for scoped workflows, lightweight assistance, or as components in a broader productivity stack. They typically emphasize specific use cases rather than durable computer control.</p>
+        </div>
+        <div class="compare-card highlight">
+          <h3>Super</h3>
+          <p>Super is positioned as a personal AI agent that operates an actual computer environment. Its defining difference is a reusable computer-use cache, designed so repeated browser and desktop workflows don’t start from scratch every time.</p>
+        </div>
+        <div class="compare-card">
+          <h3>Market context</h3>
+          <p>The wider field includes Orchids, Siri, ChatGPT, Gemini, and Grok. Some are voice-first (Siri), some are general conversational systems evolving toward agents (ChatGPT, Grok), and some aggressively push browser-native computer use (Gemini).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <article id="guide" class="long-form-guide chapter">
+    <div class="shell">
+      <header>
+        <h2>Super vs Folk buyer field guide</h2>
+        <p class="byline">By the Super editorial team · Research synthesis and workflow testing, July 2026</p>
+      </header>
+
+      <section>
+        <h3>Market context</h3>
+        <p>The personal AI agent market in 2026 is defined less by novelty and more by reliability. Large organizations are rolling out agents to entire workforces, as seen in reports of Cisco deploying personal AI agents at scale. At the same time, leaders across the industry have acknowledged that agentic progress has been slower and harder than early hype suggested. This gap matters directly to buyers comparing Super and Folk.</p>
+        <p>Folk fits into a category of assistants and automation tools that can help with defined tasks but often rely on fresh execution each time. In contrast, a growing class of tools — including Super and emerging computer-use capabilities in Gemini — focuses on persistent environments where agents can navigate websites, handle authentication, and repeat multi-step workflows. Research and reporting from MIT News and security outlets underline that these systems are powerful but brittle, making design choices like caching, permissioning, and scope control decisive rather than cosmetic.</p>
+      </section>
+
+      <section>
+        <h3>How to evaluate and use this workflow</h3>
+        <h4>How to map one real task before comparing tools</h4>
+        <p>Start by selecting a single, concrete workflow you already perform weekly. For someone comparing Super and Folk, this might be reconciling CRM data through a web dashboard, pulling reports from a vendor portal, or updating listings across multiple sites. Write down the exact steps you take today, including logins, navigation clicks, and copy-paste actions. This specificity matters because agent success diverges sharply once authentication and UI variability appear.</p>
+        <h4>How to test computer operation instead of chat output</h4>
+        <p>When running a trial, focus on whether the agent can actually operate the computer interface rather than describing what should be done. Watch for mouse movement, form filling, error recovery, and confirmation prompts. Super’s value proposition centers on this direct operation layer, while many assistants like Folk may stop at instruction or partial automation.</p>
+        <h4>How to observe cache behavior across repetitions</h4>
+        <p>Repeat the same workflow multiple times across days. Note whether the agent remembers navigation paths, page structure, or previous decisions. Super’s computer-use cache is designed to make the second and third run smoother, whereas tools without durable state often incur the same cost and friction each time.</p>
+        <h4>How to validate safety and permissions</h4>
+        <p>Explicitly test permission boundaries. Attempt a step that should require confirmation, such as submitting a form or downloading data. Research from SC Media and The Hacker News shows that poorly scoped agents can expose injection risks. A usable agent should feel constrained, not reckless.</p>
+        <h4>How to score fit against your real workload</h4>
+        <p>After testing, score each tool against criteria that matter to you: time saved after repetition, clarity of actions taken, and confidence leaving the agent unattended for short periods. This grounded scoring often reveals that the best conversational assistant is not always the best operational agent.</p>
+      </section>
+
+      <section>
+        <h3>Implementation checklist</h3>
+        <ul>
+          <li>Document one end-to-end workflow with screenshots and notes so you can objectively judge whether an agent truly operates the computer or merely suggests steps.</li>
+          <li>Run the same workflow at least three times to surface whether any form of memory or caching meaningfully reduces friction on later executions.</li>
+          <li>Confirm which actions require explicit approval and whether those controls are consistent across sessions and devices.</li>
+          <li>Test error handling by deliberately changing page state or interrupting a run to see how gracefully the agent recovers.</li>
+          <li>Limit initial permissions to the smallest possible scope and expand only after observing stable behavior.</li>
+          <li>Capture qualitative notes from each run rather than relying only on time saved; trust and predictability matter as much as speed.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>Risks and limits</h3>
+        <p><strong>Security exposure:</strong> Reports throughout 2026 document shell injection and prompt injection risks across many agent systems. Any tool that operates a computer must be treated as potentially sensitive infrastructure, not a toy.</p>
+        <p><strong>Brittle interfaces:</strong> Web UI changes can break workflows overnight. Agents that rely on persistent caches may need occasional retraining or supervision when interfaces shift.</p>
+        <p><strong>Over-automation temptation:</strong> It is easy to automate too much too early. Without clear checkpoints, an agent can propagate small errors across systems faster than a human would.</p>
+        <p><strong>Expectation mismatch:</strong> Some buyers expect human-level autonomy. Current agents, including Super, still benefit from human framing and review, especially for high-stakes tasks.</p>
+      </section>
+
+      <section>
+        <h3>FAQ</h3>
+        <p><strong>Is Folk a bad product?</strong> No. Folk fits a category of assistants that can be useful for scoped automation or guidance. The question is whether it matches your need for persistent computer operation.</p>
+        <p><strong>Why does computer-use matter so much?</strong> Once an agent can operate a browser or desktop, it can handle real systems that lack APIs. This is why companies like Google and OpenAI are investing heavily in this layer.</p>
+        <p><strong>What makes Super different from ChatGPT or Gemini?</strong> ChatGPT and Gemini are broad systems evolving toward agents. Super is focused narrowly on durable computer-use workflows and cache reuse rather than general conversation.</p>
+        <p><strong>How does Super compare to Siri or Grok?</strong> Siri remains voice-first and device-embedded. Grok emphasizes real-time context and conversation. Neither is primarily designed for long-running desktop workflows.</p>
+        <p><strong>Is a computer-use cache risky?</strong> Any stored state must be designed carefully. The benefit is efficiency; the risk is stale assumptions. Good tooling makes cache behavior visible and correctable.</p>
+        <p><strong>Who should choose Super over Folk?</strong> If your work involves repeating the same computer-based tasks weekly or daily, and you want those runs to get smoother over time, Super is likely the sharper fit.</p>
+      </section>
+
+      <section id="sources">
+        <h3>Sources</h3>
+        <ul>
+          <li><a href="https://news.google.com/rss/articles/CBMidEFVX3lxTFBGbHYxUE9Zbmd5WVNGTUJabVZNMnJxVzhYeTZvcVRxNWNNcm5yQWtjSzQ0S0YzZjRtLW5qNUl5Mmc4LWdBeW1EMkxvQzRqekFlYVY0OFJpVHhwaHZCZTlhN0VBa0lIQ3BibXJSdHlkeFc4R2h3">Blockchain Council on agent architectures</a></li>
+          <li><a href="https://news.google.com/rss/articles/CBMiywFBVV95cUxQMGtRZUllbXdTTHpwYktZTU1fQmRyVzFDdXAwczJVdXJhS01wc0FlbFR2Uzk1LS1LYkZDdnJyWjFyRUcwT3BHTHVKVGhIVS1iT0htUTRqeEctVHZSSHNycUxLSXFwOWJOU05FcmQxaWtNV3IzdWszbXZFMkNmV01wT08wSjVXZVlONjRBNlBsS3QyNHpUdC1kMi1obkZZdWZvZEJvMjYtdVZiVi1oWHFjdG1LTDRFNDFOeTdhWGlyaVp5aFlBLW1oVkoxSQ">TradingView on agent development pace</a></li>
+          <li><a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxNZldxR0dNaHFoMF9uazVJZlk3Q3RrVW1tMHdnYWROdUV2OGFZbWNqLTdZV2IwMkRic19CaV9tb2VGYzRiRWVZRlFDOTl3NjRTWW5kbVAtMGsxS2YyTUlodkpmNlExOFhlT1BHbWk2M1l3NTRCRW1LaG40VVRScGV1bEZlUWhYMmVRNE1DUllGODJQS1gzWDIxM2dZOE8yQzg">MSN on enterprise agent adoption</a></li>
+        </ul>
+      </section>
+    </div>
+  </article>
+
+  
+
+<!-- super-agent-page-refresh:start -->
+<section class="super-refresh super-refresh-operator-minimal" style="--refresh-accent: #2563eb; --refresh-wash: #f1f5f9;" data-refresh-variant="operator-minimal">
+  <div class="super-refresh__shell">
+    <div class="super-refresh__kicker">Updated market field guide</div>
+    <div class="super-refresh__hero">
+      <div>
+        <h2>Final decision framework</h2>
+        <p>Making the call between Super and Folk</p>
+      </div>
+      <figure class="super-refresh__image">
+        <img src="https://picsum.photos/seed/AI%20agent%20controlling%20desktop%20interface/1400/900" alt="Decision matrix" loading="lazy" />
+      </figure>
+    </div>
+    <article class="super-refresh__article long-form-guide">
+      <aside class="super-refresh__field-note">
+        <h3>Page-specific field note</h3>
+        <p><strong>How to apply this here:</strong> Score each tool against your top 5 needs.</p>
+        <p><strong>Checklist focus:</strong> Revisit after 30 days.</p>
+        <p><strong>Risk guardrail:</strong> Choosing based on hype.</p>
+      </aside>
+<article><p>Personal AI agents crossed a threshold in 2026: they stopped being just chat interfaces and started operating computers. Google’s rollout of computer use in Gemini 3.5 Flash made that shift mainstream, while products like Folk and Super pushed the idea further by wrapping autonomy, memory, and workflow context around it. If you’re comparing Super vs Folk, the real question isn’t model quality—it’s how much real work you want an agent to do on your behalf, and how safely.</p>
+
+<h2>Market context</h2>
+<p>Agentic AI is now defined less by conversation and more by execution. Google DeepMind frames this as “computer use”—models that see a screen, move a cursor, and take actions in software environments [blog.google](https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-computer-use-model/). Gemini 3.5 Flash brought this capability into Google’s ecosystem, but recent reporting also highlights new attack surfaces when agents control browsers and desktops [searchenginejournal.com](https://www.searchenginejournal.com/google-gemini-can-now-control-your-computer-hackers-are-already-targeting-ai-agents/). MIT researchers argue that the next competitive edge is not raw autonomy, but bounded, well-instrumented agents that can be audited and corrected [mit.edu](https://news.mit.edu/2026/qa-what-is-agentic-ai-today).
+</p>
+<p>Folk positions itself as a personal agent living in iMessage or Telegram, with a dedicated cloud computer per user. It emphasizes persistence (memory, scheduled tasks, proactive alerts) and claims a strong privacy stance with no training on user data. Super, by contrast, comes from the enterprise search and workflow world: it focuses on connecting internal knowledge, SaaS tools, and repeatable work patterns at lower cost than traditional enterprise AI stacks [super.work](https://super.work/compare/alternative-to-glean). Both rely on modern foundation models, but their design center is different.</p>
+
+<h2>Where Super and Folk diverge in practice</h2>
+<p>Folk’s biggest differentiator is that it behaves like a long-running personal operator. You can ask it to watch flights, book tables, or send morning briefings without re-prompting. This is enabled by its always-on environment and what many builders now call a <strong>computer-use cache</strong>: a persistent execution context that remembers state between tasks. Gemini’s computer use, by comparison, is still largely session-based unless developers add their own scaffolding [ai.google.dev](https://ai.google.dev/gemini-api/docs/computer-use).</p>
+<p>Super’s advantage shows up when work spans many documents and systems. Its agent is optimized for retrieval, synthesis, and workflow automation across company tools, aligning with Anthropic’s guidance that effective agents depend on high-quality tools and constraints rather than unlimited freedom [anthropic.com](https://www.anthropic.com/engineering/building-effective-agents). Instead of a single personal cloud computer, Super orchestrates tasks across APIs and knowledge sources, reducing the risk of brittle UI automation.</p>
+
+<h2>How to choose between Super and Folk for real computer work</h2>
+<p>The choice comes down to scope and control. If you want a personal AI that lives in your texts, runs scheduled tasks, and directly manipulates websites for you, Folk feels closer to a digital concierge. If you need an agent to search, reason, and automate work across business systems—with clearer guardrails—Super is often the better fit. In both cases, pay attention to how state is stored. A robust <strong>computer-use cache</strong> can save time, but it also requires clear reset and audit mechanisms.</p>
+
+<h2>Implementation checklist</h2>
+<ul>
+<li>Define the tasks you expect the agent to run without supervision.</li>
+<li>Map which actions require UI-level computer use versus API-level automation.</li>
+<li>Confirm how persistent memory and computer-use cache data can be inspected or cleared.</li>
+<li>Set approval steps for high-risk actions like purchases or deletions.</li>
+<li>Review pricing relative to actual task volume, not message count.</li>
+</ul>
+
+<h2>Risks and limits</h2>
+<p>Computer-controlling agents introduce new security risks. As Search Engine Journal notes, attackers are already probing agent workflows for prompt injection and UI spoofing vectors [searchenginejournal.com](https://www.searchenginejournal.com/google-gemini-can-now-control-your-computer-hackers-are-already-targeting-ai-agents/). Folk’s always-on model magnifies both convenience and blast radius if misconfigured. Super’s tighter integration model can limit autonomy but may reduce exposure. Neither approach eliminates the need for human oversight.</p>
+
+<h2>FAQ</h2>
+<p><strong>Does Folk use Gemini models?</strong> Folk primarily uses models from OpenAI and Anthropic, with support for bringing your own API keys, including Gemini via OpenRouter [getfolk.app](https://www.getfolk.app/alternative/gemini).</p>
+<p><strong>Is Super a personal assistant like Folk?</strong> Super is closer to a work agent: it focuses on search, synthesis, and workflow automation across tools rather than acting as a messaging-native concierge.</p>
+<p><strong>Are computer-use agents reliable enough in 2026?</strong> They are improving rapidly, but MIT and Anthropic both emphasize constrained autonomy and strong tooling as best practice [mit.edu](https://news.mit.edu/2026/qa-what-is-agentic-ai-today), [anthropic.com](https://www.anthropic.com/engineering/writing-tools-for-agents).</p>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-computer-use-model/">Introducing the Gemini Computer Use model</a></li>
+<li><a href="https://ai.google.dev/gemini-api/docs/computer-use">Gemini API: Computer Use</a></li>
+<li><a href="https://news.mit.edu/2026/qa-what-is-agentic-ai-today">MIT News on agentic AI</a></li>
+<li><a href="https://www.searchenginejournal.com/google-gemini-can-now-control-your-computer-hackers-are-already-targeting-ai-agents/">Security risks of computer-controlling agents</a></li>
+<li><a href="https://www.anthropic.com/engineering/building-effective-agents">Anthropic: Building effective agents</a></li>
+<li><a href="https://super.work/compare/alternative-to-glean">Super positioning vs enterprise AI search</a></li>
+</ul></article>
+    </article>
+  </div>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Final decision framework", "dateModified": "2026-07-05T23:06:32.606842+00:00", "author": {"@type": "Organization", "name": "Super"}, "publisher": {"@type": "Organization", "name": "Super"}, "mainEntityOfPage": "https://app.getsupers.com/sites/super-vs-folk-20260705-020910/", "citation": ["https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-computer-use-model/", "https://ai.google.dev/gemini-api/docs/computer-use", "https://news.mit.edu/2026/qa-what-is-agentic-ai-today", "https://www.searchenginejournal.com/google-gemini-can-now-control-your-computer-hackers-are-already-targeting-ai-agents/", "https://www.anthropic.com/engineering/building-effective-agents", "https://super.work/compare/alternative-to-glean"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "Final decision framework", "step": [{"@type": "HowToStep", "name": "List your target tasks", "text": "Write down which actions you want the agent to perform autonomously versus on-demand."}, {"@type": "HowToStep", "name": "Audit integrations", "text": "Check which apps require UI automation and which expose APIs."}, {"@type": "HowToStep", "name": "Set guardrails", "text": "Add approvals for irreversible actions and review memory settings."}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What does computer use mean for an AI agent?", "acceptedAnswer": {"@type": "Answer", "text": "It means the agent can observe and interact with software interfaces—clicking, typing, and navigating—rather than only returning text."}}, {"@type": "Question", "name": "Is persistent memory safe?", "acceptedAnswer": {"@type": "Answer", "text": "It’s useful, but only if users can inspect, edit, and reset what the agent remembers."}}, {"@type": "Question", "name": "Which is better for teams?", "acceptedAnswer": {"@type": "Answer", "text": "Super generally fits team workflows better, while Folk is optimized for individual users."}}]}</script>
+</section>
+<!-- super-agent-page-refresh:end -->
+
+<section class="cta-band">
+    <div class="shell">
+      <h2>Try Super for repeated computer workflows</h2>
+      <a class="btn btn-black" href="https://app.getsupers.com/general?login=1&open_login=1">Get started with Super</a>
+    </div>
+  </section>
+
+</div>
+
+<!-- Article JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Super vs Folk — personal AI agents compared",
+  "author": { "@type": "Organization", "name": "Super" },
+  "datePublished": "2026-07-05",
+  "mainEntityOfPage": true
+}
+</script>
+
+<!-- FAQPage JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Is Folk a bad product?","acceptedAnswer":{"@type":"Answer","text":"No. Folk serves scoped assistant and automation use cases. The decision depends on whether you need durable computer operation."}},
+    {"@type":"Question","name":"Why does computer-use matter?","acceptedAnswer":{"@type":"Answer","text":"Computer-use lets agents operate real systems without APIs, which is increasingly valuable."}}
+  ]
+}
+</script>
+
+<!-- HowTo JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to evaluate a personal AI agent for computer workflows",
+  "step": [
+    {"@type":"HowToStep","text":"Map one real workflow."},
+    {"@type":"HowToStep","text":"Test direct computer operation."},
+    {"@type":"HowToStep","text":"Repeat runs to observe caching."},
+    {"@type":"HowToStep","text":"Validate permissions and safety."},
+    {"@type":"HowToStep","text":"Score fit against real work."}
+  ]
+}
+</script>
+
+</body>
+</html>
