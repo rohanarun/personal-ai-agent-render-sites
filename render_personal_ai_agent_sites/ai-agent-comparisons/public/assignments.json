@@ -2,6 +2,28 @@
   {
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/3d-classification-boundary-generalization-lab-20260710-085105/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "classification_sandbox",
+    "content_kind_label": "Classification Sandbox",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://lists.new/3d-classification-boundary-generalization-lab-20260710-085105/",
+    "receipt_created_at": "2026-07-10T08:51:05.140+00:00",
+    "receipt_status": "success",
+    "slug": "3d-classification-boundary-generalization-lab-20260710-085105",
+    "source_path": "sms_published_sites/3d-classification-boundary-generalization-lab-20260710-085105",
+    "target_slot": "ai-agent-comparisons",
+    "title": "3D Classification Boundary Lab: Generalization and Overfitting"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/3d-rag-retrieval-reranking-evaluation-lab-20260710-073804/",
     "backlinks": [
       "https://getsupers.com/",
