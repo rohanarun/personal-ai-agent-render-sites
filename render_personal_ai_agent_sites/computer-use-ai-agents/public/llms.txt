@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [3D BPE Tokenization Lab: Watch Text Become Model Input](3d-bpe-tokenization-merge-lab-20260710-064906/): Interactive Simulator
 - [AI Agent Browser Postcondition Monitoring Software](ai-agent-browser-postcondition-monitoring-software-20260710-051434/): Niche research landing page
 - [How to Verify a Browser Postcondition Before Replaying an AI Agent Action](how-to-verify-a-browser-postcondition-before-replaying-an-ai-agent-action-20260710-050404/): Use case
 - [Recovery Receipts Are Becoming the New Personal AI Agent Trust Signal](recovery-receipts-are-becoming-the-new-personal-ai-agent-trust-signal-20260710-041205/): Research and news analysis
