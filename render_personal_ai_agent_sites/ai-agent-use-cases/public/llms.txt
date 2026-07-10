@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [How to Add Household Purchase Approval to an AI Shopping Agent](how-to-add-household-purchase-approval-to-an-ai-shopping-agent-20260710-060406/): Use case
 - [How to Resume a Personal AI Agent After a Partial Tool Failure](how-to-resume-a-personal-ai-agent-after-a-partial-tool-failure-20260710-040609/): Use case
 - [How to Make AI Agent Quarantine Remediation Replay-Safe](how-to-make-ai-agent-quarantine-remediation-replay-safe-20260710-034003/): Use case
 - [How to Wire Data Observability Incidents into AI Agent Quarantine](how-to-wire-data-observability-incidents-into-ai-agent-quarantine-20260710-031538/): Use case
