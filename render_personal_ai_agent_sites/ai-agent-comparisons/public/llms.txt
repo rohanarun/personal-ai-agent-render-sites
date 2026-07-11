@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Nested Cross-Validation Lab: Selection Bias and Honest Evaluation](nested-cross-validation-selection-bias-lab-20260711-220038/): Nested Cross-Validation Lab
 - [EMA Weights Lab: Stability, Lag, and Evaluation](ema-weight-averaging-stability-lab-20260711-215011/): EMA Weight Averaging Lab
 - [Knowledge Distillation Lab: Temperature, Soft Targets, and Student Capacity](knowledge-distillation-soft-targets-lab-20260711-202507/): Knowledge Distillation Lab
 - [BatchNorm Lab: Training Batches vs Running Statistics](batchnorm-train-eval-running-statistics-lab-20260711-012613/): BatchNorm Running Statistics Lab
