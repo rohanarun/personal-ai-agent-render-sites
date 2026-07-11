@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://lists.new/knowledge-distillation-soft-targets-lab-20260711-202507/</loc>
+    <lastmod>2026-07-11</lastmod>
+  </url>
+  <url>
     <loc>https://lists.new/batchnorm-train-eval-running-statistics-lab-20260711-012613/</loc>
     <lastmod>2026-07-11</lastmod>
   </url>

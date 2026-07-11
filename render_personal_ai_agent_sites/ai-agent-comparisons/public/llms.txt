@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Knowledge Distillation Lab: Temperature, Soft Targets, and Student Capacity](knowledge-distillation-soft-targets-lab-20260711-202507/): Knowledge Distillation Lab
 - [BatchNorm Lab: Training Batches vs Running Statistics](batchnorm-train-eval-running-statistics-lab-20260711-012613/): BatchNorm Running Statistics Lab
 - [AdamW Lab: Decoupled Weight Decay vs L2](adamw-decoupled-weight-decay-lab-20260710-235510/): AdamW Weight Decay Lab
 - [3D Direct Preference Optimization Lab: DPO, Beta, and Policy Drift](3d-direct-preference-optimization-dpo-lab-20260710-115045/): Direct Preference Optimization Lab
