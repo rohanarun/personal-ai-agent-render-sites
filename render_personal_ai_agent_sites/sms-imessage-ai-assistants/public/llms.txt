@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Label Smoothing Lab: Targets, Gradients, and Confidence](label-smoothing-target-distribution-lab-20260711-205236/): Label Smoothing Lab
 - [Learning Rate Schedule Lab: Warmup, Cosine, and Linear Decay](learning-rate-warmup-cosine-schedule-lab-20260711-000047/): Learning Rate Schedule Lab
 - [3D RoPE Lab: Rotary Position Embeddings and Context Scaling](3d-rope-rotary-position-embedding-lab-20260710-114105/): Rotary Position Embedding Lab
 - [3D AI Tool Calling Contract Lab: JSON Schema and Validation](3d-tool-calling-schema-contract-lab-20260710-110436/): Tool Calling Contract Lab

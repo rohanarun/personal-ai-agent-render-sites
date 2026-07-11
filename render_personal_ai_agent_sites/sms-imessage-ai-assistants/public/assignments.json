@@ -2,6 +2,18 @@
   {
     "assigned_domain": "driodphone.com",
     "assigned_slot": "sms-imessage-ai-assistants",
+    "assigned_url": "https://driodphone.com/label-smoothing-target-distribution-lab-20260711-205236/",
+    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "cheatlayer_url": "", "content_kind": "label_smoothing_lab", "content_kind_label": "Label Smoothing Lab", "direct_generated": true, "github_url": "",
+    "live_url": "https://driodphone.com/label-smoothing-target-distribution-lab-20260711-205236/",
+    "receipt_created_at": "2026-07-11T20:52:36.525+00:00", "receipt_status": "success",
+    "slug": "label-smoothing-target-distribution-lab-20260711-205236",
+    "source_path": "sms_published_sites/label-smoothing-target-distribution-lab-20260711-205236",
+    "target_slot": "sms-imessage-ai-assistants", "title": "Label Smoothing Lab: Targets, Gradients, and Confidence"
+  },
+  {
+    "assigned_domain": "driodphone.com",
+    "assigned_slot": "sms-imessage-ai-assistants",
     "assigned_url": "https://driodphone.com/learning-rate-warmup-cosine-schedule-lab-20260711-000047/",
     "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
     "cheatlayer_url": "",
