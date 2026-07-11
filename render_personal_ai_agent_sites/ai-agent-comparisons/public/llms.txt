@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [EMA Weights Lab: Stability, Lag, and Evaluation](ema-weight-averaging-stability-lab-20260711-215011/): EMA Weight Averaging Lab
 - [Knowledge Distillation Lab: Temperature, Soft Targets, and Student Capacity](knowledge-distillation-soft-targets-lab-20260711-202507/): Knowledge Distillation Lab
 - [BatchNorm Lab: Training Batches vs Running Statistics](batchnorm-train-eval-running-statistics-lab-20260711-012613/): BatchNorm Running Statistics Lab
 - [AdamW Lab: Decoupled Weight Decay vs L2](adamw-decoupled-weight-decay-lab-20260710-235510/): AdamW Weight Decay Lab
