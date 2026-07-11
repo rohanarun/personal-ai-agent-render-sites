@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Mixup Lab: Interpolation, Soft Labels, and Decision Boundaries](mixup-interpolation-decision-boundary-lab-20260711-210237/): Mixup Augmentation Lab
 - [Activation Checkpointing Lab: Trade Memory for Compute](activation-checkpointing-memory-compute-lab-20260710-233010/): Activation Checkpointing Lab
 - [3D Decoding Search Lab: Beam Search, Greedy, and Nucleus Sampling](3d-beam-search-nucleus-decoding-lab-20260710-115536/): Decoding Search Lab
 - [3D Contrastive Learning Lab: InfoNCE, Temperature, and Hard Negatives](3d-contrastive-learning-infonce-lab-20260710-113037/): Contrastive Learning Lab
