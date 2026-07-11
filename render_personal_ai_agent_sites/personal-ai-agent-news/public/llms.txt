@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Gradient Clipping Lab: Norm, Stability, and Direction](gradient-clipping-norm-direction-lab-20260711-225707/): Gradient Clipping Lab
 - [Curriculum Learning Lab: Easy-to-Hard Sampling and Competence](curriculum-learning-easy-hard-sampling-lab-20260711-213638/): Curriculum Learning Lab
 - [Gradient Accumulation Lab: Microbatches and Effective Batch Size](gradient-accumulation-effective-batch-lab-20260710-235015/): Gradient Accumulation Lab
 - [3D Temporal-Difference Learning Lab: Q-Learning and Exploration](3d-temporal-difference-q-learning-lab-20260710-111735/): Reinforcement Learning Lab
