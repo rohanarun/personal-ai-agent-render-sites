@@ -2,6 +2,24 @@
   {
     "assigned_domain": "droidph.one",
     "assigned_slot": "imessage-ai-tools",
+    "assigned_url": "https://droidph.one/early-stopping-validation-gap-lab-20260711-000540/",
+    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "cheatlayer_url": "",
+    "content_kind": "early_stopping_lab",
+    "content_kind_label": "Early Stopping Lab",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://droidph.one/early-stopping-validation-gap-lab-20260711-000540/",
+    "receipt_created_at": "2026-07-11T00:05:40.763+00:00",
+    "receipt_status": "success",
+    "slug": "early-stopping-validation-gap-lab-20260711-000540",
+    "source_path": "sms_published_sites/early-stopping-validation-gap-lab-20260711-000540",
+    "target_slot": "imessage-ai-tools",
+    "title": "Early Stopping Lab: Validation Loss, Patience, and Overfitting"
+  },
+  {
+    "assigned_domain": "droidph.one",
+    "assigned_slot": "imessage-ai-tools",
     "assigned_url": "https://droidph.one/3d-neural-network-pruning-sparsity-lab-20260710-120005/",
     "backlinks": [
       "https://getsupers.com/",
