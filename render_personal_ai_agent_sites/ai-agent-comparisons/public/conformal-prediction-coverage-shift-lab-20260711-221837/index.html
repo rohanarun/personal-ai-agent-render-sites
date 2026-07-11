@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Conformal Prediction Lab: Coverage, Set Size, and Shift</title>
+  <meta name="description" content="Interactive split-conformal prediction lab for finite-sample coverage, calibration residuals, interval width, and distribution shift.">
+  <link rel="canonical" href="https://lists.new/conformal-prediction-coverage-shift-lab-20260711-221837/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#141613;--paper:#f7f7f2;--lime:#c8ff4d;--cyan:#4ee0d0;--red:#ff5d51;--blue:#243bc4;--line:#b8bbb0;--muted:#63675f;--panel:#1c201d}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:Geist,Arial,sans-serif;letter-spacing:0;overflow-x:hidden}
+    a{color:inherit}
+    button,input{font:inherit}
+    button{cursor:pointer}
+    nav{position:fixed;z-index:20;top:14px;left:3vw;right:3vw;min-height:52px;display:flex;align-items:center;justify-content:space-between;padding:8px 10px 8px 17px;background:#f7f7f2ed;border:1px solid var(--ink);backdrop-filter:blur(12px)}
+    .brand{font-weight:700;display:flex;align-items:center;gap:12px}.brand i{width:12px;height:12px;background:var(--blue);display:inline-block}
+    nav .links{display:flex;align-items:center;gap:8px}
+    .btn,button{border:1px solid currentColor;border-radius:0;padding:11px 15px;background:transparent;color:inherit;text-decoration:none;font-weight:600}
+    .primary{background:var(--ink);color:#fff;border-color:var(--ink)}
+    header{min-height:74vh;padding:132px 6vw 72px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border-bottom:1px solid var(--ink)}
+    header h1{font-size:clamp(3rem,6.4vw,6.5rem);line-height:.93;max-width:1120px;margin:0 auto 30px;font-weight:600}
+    .inline-window{display:inline-block;width:1.45em;height:.58em;vertical-align:.08em;margin:0 .08em;background:linear-gradient(90deg,var(--cyan) 0 65%,var(--red) 65%);border:1px solid var(--ink)}
+    header p{max-width:760px;font-size:clamp(1.05rem,1.55vw,1.32rem);line-height:1.55;color:#41453e;margin:0 auto 30px}
+    .lab{display:grid;grid-template-columns:minmax(0,8fr) minmax(330px,4fr);background:var(--panel);color:#fff;min-height:760px;scroll-margin-top:80px}
+    .stage{padding:34px;min-width:0;display:flex;flex-direction:column}
+    .stage-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:20px}
+    .stage-head h2{font-size:clamp(1.7rem,3vw,3.3rem);line-height:1;margin:0}.protocol{color:var(--cyan);font-size:13px;text-align:right}
+    .canvas-wrap{position:relative;flex:1;min-height:530px;border:1px solid #60665e;background:#111411;overflow:hidden}
+    canvas{display:block;width:100%;height:100%}
+    .legend{position:absolute;left:14px;bottom:14px;display:flex;gap:14px;padding:8px 10px;background:#111411dc;border:1px solid #60665e;font-size:12px}.dot{width:9px;height:9px;display:inline-block;margin-right:5px}.inside{background:var(--lime)}.miss{background:var(--red)}.band{background:var(--cyan)}
+    aside{padding:30px;background:#252a26;border-left:1px solid #60665e}
+    aside h2{font-size:25px;margin:0 0 6px}.hint{color:#b8beb6;line-height:1.5;margin:0 0 22px}
+    .seg{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin:16px 0 24px}.seg button{color:#fff;border-color:#7c847b}.seg button.active{background:var(--lime);color:var(--ink);border-color:var(--lime)}
+    .field{margin:20px 0}.field label{display:flex;justify-content:space-between;gap:18px;font-size:13px}.field output{color:var(--lime);font-variant-numeric:tabular-nums}.field small{display:block;color:#969e95;margin-top:5px;line-height:1.4}
+    input[type=range]{width:100%;margin-top:9px;accent-color:var(--lime)}
+    .actions{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin:26px 0}.actions button{color:#fff;border-color:#7c847b;padding:11px 7px}.actions .primary{background:var(--lime);color:var(--ink);border-color:var(--lime)}
+    .status{min-height:46px;color:#c7cec5;font-size:13px;line-height:1.5;padding-top:10px;border-top:1px solid #565d55}
+    .metrics{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--ink);background:#fff}
+    .metric{padding:28px 24px;border-right:1px solid var(--ink);min-width:0}.metric:last-child{border-right:0}.metric span{display:block;font-size:12px;color:var(--muted);margin-bottom:10px}.metric strong{font-size:clamp(1.8rem,3.4vw,3.8rem);font-weight:600;font-variant-numeric:tabular-nums}.metric p{color:var(--muted);line-height:1.45;margin:7px 0 0;font-size:13px}
+    .explain{padding:150px 6vw}.explain h2{font-size:clamp(2.8rem,6vw,6.2rem);line-height:.95;max-width:1120px;margin:0 0 80px}
+    .bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-flow:dense;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+    .bento article{grid-column:span 4;min-height:310px;padding:34px 28px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .bento h3{font-size:27px;margin:0 0 20px}.bento p{line-height:1.65;color:#565b53}.formula{font-family:ui-monospace,SFMono-Regular,monospace;background:#e9ebe4;padding:14px;margin-top:25px;overflow-wrap:anywhere}
+    .shift{padding:140px 6vw;background:#dce9e7}.shift-grid{display:grid;grid-template-columns:4fr 7fr;gap:8vw;align-items:start}.shift h2{font-size:clamp(2.6rem,5vw,5.2rem);line-height:.98;margin:0;position:sticky;top:110px}.accordions{border-top:1px solid var(--ink)}.accordions article{display:grid;grid-template-columns:70px 1fr;gap:22px;padding:35px 0;border-bottom:1px solid var(--ink)}.accordions b{font-size:44px;color:var(--blue)}.accordions h3{font-size:26px;margin:0 0 10px}.accordions p{line-height:1.65;color:#454d49;margin:0}
+    .marquee{overflow:hidden;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:20px 0;background:var(--lime)}.marquee-track{white-space:nowrap;font-size:clamp(1.4rem,3vw,3rem);font-weight:600;animation:marquee 24s linear infinite}@keyframes marquee{to{transform:translateX(-50%)}}
+    .sources{padding:120px 6vw}.sources h2{font-size:clamp(2.4rem,5vw,5rem);margin:0 0 50px}.source-list{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}.source-list a{padding:28px;min-height:170px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);text-decoration:none}.source-list a:hover{background:#fff}.source-list strong{font-size:20px;display:block;margin-bottom:15px}.source-list span{color:var(--muted);line-height:1.5}
+    footer{padding:120px 6vw 35px;background:var(--ink);color:#fff}footer h2{font-size:clamp(3rem,7vw,7.2rem);line-height:.9;max-width:1160px;margin:0 0 50px}footer .footer-links{display:flex;gap:9px;flex-wrap:wrap}footer small{display:block;color:#aeb2aa;margin-top:100px}
+    @media(max-width:900px){nav .brand span{display:none}.lab{grid-template-columns:1fr}.stage{padding:24px 18px}.canvas-wrap{min-height:500px}aside{border-left:0;border-top:1px solid #60665e}.metrics{grid-template-columns:1fr 1fr}.metric:nth-child(2){border-right:0}.metric:nth-child(-n+2){border-bottom:1px solid var(--ink)}.shift-grid{grid-template-columns:1fr}.shift h2{position:static}.source-list{grid-template-columns:1fr}.source-list a{min-height:0}.bento{grid-template-columns:1fr}.bento article{grid-column:span 1}.explain,.shift{padding-top:110px;padding-bottom:110px}}
+    @media(max-width:540px){nav{left:10px;right:10px}.links .btn:first-child{display:none}header{min-height:70vh;padding:112px 20px 58px}header h1{font-size:clamp(2.45rem,11.4vw,3.2rem)}.stage-head{align-items:start;flex-direction:column}.protocol{text-align:left}.canvas-wrap{min-height:430px}.metrics{grid-template-columns:1fr 1fr}.metric{padding:22px 17px}.actions{grid-template-columns:1fr}.explain,.shift,.sources,footer{padding-left:20px;padding-right:20px}.accordions article{grid-template-columns:45px 1fr}.accordions b{font-size:30px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.marquee-track{animation:none}}
+  </style>
+</head>
+<body>
+  <nav aria-label="Primary"><div class="brand"><i></i><span>CONFORMAL / LAB</span></div><div class="links"><a class="btn" href="#theory">Concept</a><a class="btn primary" href="#lab">Open lab</a></div></nav>
+  <header>
+    <h1>Build an interval <span class="inline-window" aria-hidden="true"></span> that earns its coverage.</h1>
+    <p>Conformal prediction turns calibration residuals into prediction sets with a finite-sample coverage guarantee. Calibrate the radius, change the error rate, then introduce deployment shift and watch the guarantee lose its footing.</p>
+    <a class="btn primary" href="#lab">Calibrate a prediction set</a>
+  </header>
+
+  <main>
+    <section class="lab" id="lab">
+      <div class="stage">
+        <div class="stage-head"><h2>Coverage on unseen points</h2><div class="protocol" id="protocol">Split conformal · exchangeable test data</div></div>
+        <div class="canvas-wrap"><canvas id="chart" width="1100" height="620" aria-label="Prediction intervals and observed outcomes"></canvas><div class="legend"><span><i class="dot band"></i>interval</span><span><i class="dot inside"></i>covered</span><span><i class="dot miss"></i>miss</span></div></div>
+      </div>
+      <aside>
+        <h2>Calibration controls</h2>
+        <p class="hint">The calibration set chooses a residual quantile. The test labels remain hidden until coverage is measured.</p>
+        <div class="seg" aria-label="Interval method"><button class="active" data-method="global">Global radius</button><button data-method="scaled">Local scale</button></div>
+        <div class="field"><label for="error">Target error <output id="errorOut">10%</output></label><input id="error" type="range" min="2" max="30" value="10"><small>Nominal coverage is one minus this value.</small></div>
+        <div class="field"><label for="calSize">Calibration examples <output id="calOut">100</output></label><input id="calSize" type="range" min="20" max="400" step="20" value="100"><small>Larger sets make the selected quantile less jumpy.</small></div>
+        <div class="field"><label for="shift">Deployment shift <output id="shiftOut">0.00</output></label><input id="shift" type="range" min="0" max="100" value="0"><small>Raises test noise without changing calibration data.</small></div>
+        <div class="field"><label for="samples">Test examples <output id="samplesOut">60</output></label><input id="samples" type="range" min="20" max="120" step="10" value="60"></div>
+        <div class="actions"><button id="reset">Reset</button><button id="play">Play</button><button class="primary" id="sample">New test</button></div>
+        <div class="status" id="status" aria-live="polite">Calibrated on 100 examples. Test outcomes are ready.</div>
+      </aside>
+    </section>
+    <section class="metrics" aria-label="Evaluation metrics">
+      <article class="metric"><span>Empirical coverage</span><strong id="coverageMetric">—</strong><p>Fraction of test outcomes inside their intervals.</p></article>
+      <article class="metric"><span>Nominal target</span><strong id="targetMetric">90%</strong><p>The promised marginal coverage under exchangeability.</p></article>
+      <article class="metric"><span>Mean interval width</span><strong id="widthMetric">—</strong><p>Narrower is more useful, if coverage survives.</p></article>
+      <article class="metric"><span>Calibration quantile</span><strong id="quantileMetric">—</strong><p>The finite-sample residual order statistic.</p></article>
+    </section>
+
+    <section class="explain" id="theory">
+      <h2>One held-out set converts errors into uncertainty.</h2>
+      <div class="bento">
+        <article><h3>Score calibration points</h3><p>Fit the model without the calibration set. Then measure a nonconformity score for every calibration example, such as the absolute residual.</p><div class="formula">sᵢ = |yᵢ − ŷᵢ|</div></article>
+        <article><h3>Choose a finite-sample quantile</h3><p>Use the ceiling-adjusted order statistic. The extra one in the rank is what turns a familiar quantile into a finite-sample guarantee.</p><div class="formula">k = ceil((n + 1)(1 − α))</div></article>
+        <article><h3>Wrap the next prediction</h3><p>For a new point, add and subtract the calibrated radius. Under exchangeability, the outcome lands inside with probability at least one minus alpha.</p><div class="formula">C(x) = [ŷ(x) − q, ŷ(x) + q]</div></article>
+      </div>
+    </section>
+
+    <section class="shift">
+      <div class="shift-grid">
+        <h2>The guarantee is precise about what it assumes.</h2>
+        <div class="accordions">
+          <article><b>↔</b><div><h3>Coverage is marginal</h3><p>Ninety percent coverage over the population does not mean every subgroup or every individual point receives a 90% conditional guarantee. Audit cohorts separately when harm is uneven.</p></div></article>
+          <article><b>≋</b><div><h3>Exchangeability connects calibration and test</h3><p>The ordering argument relies on calibration and future scores behaving like interchangeable draws. Covariate, label, or concept shift can break that symmetry.</p></div></article>
+          <article><b>⌁</b><div><h3>Efficiency still matters</h3><p>A set that always contains every answer has excellent coverage and no value. Compare width or set size at the same target coverage, then monitor both after deployment.</p></div></article>
+        </div>
+      </div>
+    </section>
+    <div class="marquee" aria-hidden="true"><div class="marquee-track">CALIBRATE · COVER · MEASURE WIDTH · CHECK SHIFT · CALIBRATE · COVER · MEASURE WIDTH · CHECK SHIFT · </div></div>
+
+    <section class="sources">
+      <h2>Primary reading</h2>
+      <div class="source-list">
+        <a href="https://jmlr.org/papers/v9/shafer08a.html"><strong>A Tutorial on Conformal Prediction</strong><span>Shafer and Vovk · JMLR 2008</span></a>
+        <a href="https://arxiv.org/abs/2107.07511"><strong>A Gentle Introduction to Conformal Prediction</strong><span>Angelopoulos and Bates · 2021</span></a>
+        <a href="https://proceedings.neurips.cc/paper/2019/hash/09fb05dd477d4ae6479985ca56c5a12d-Abstract.html"><strong>Conformalized Quantile Regression</strong><span>Romano, Patterson, and Candès · NeurIPS 2019</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <h2>Measure uncertainty before an agent acts on it.</h2>
+    <div class="footer-links"><a class="btn" href="https://getsupers.com/">Explore Super</a><a class="btn" href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a><a class="btn" href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">Build with an AI agent</a></div>
+    <small>Interactive educational lab · Conformal prediction coverage is assumption-dependent.</small>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script>
+    (() => {
+      const $ = id => document.getElementById(id);
+      const canvas = $('chart');
+      const ctx = canvas.getContext('2d');
+      const controls = { error: $('error'), calSize: $('calSize'), shift: $('shift'), samples: $('samples') };
+      let method = 'global';
+      let seed = 41837;
+      let timer = null;
+      let calibration = [];
+      let tests = [];
+
+      function random() {
+        seed = (seed * 1664525 + 1013904223) >>> 0;
+        return seed / 4294967296;
+      }
+      function normal() {
+        const u = Math.max(random(), 1e-9);
+        return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * random());
+      }
+      function truth(x) { return 0.58 * Math.sin(x * 1.34) + 0.12 * x; }
+      function prediction(x) { return truth(x) + 0.09 * Math.sin(x * 2.8 + 0.7); }
+      function localScale(x) { return 0.14 + 0.07 * Math.abs(x) / 3 + 0.035 * (1 + Math.sin(x * 1.8)); }
+      function quantile(values, alpha) {
+        const sorted = values.slice().sort((a, b) => a - b);
+        const rank = Math.min(sorted.length, Math.ceil((sorted.length + 1) * (1 - alpha)));
+        return sorted[Math.max(0, rank - 1)];
+      }
+      function buildCalibration() {
+        const n = Number(controls.calSize.value);
+        calibration = [];
+        for (let i = 0; i < n; i++) {
+          const x = -3 + 6 * random();
+          const y = truth(x) + localScale(x) * normal();
+          const residual = Math.abs(y - prediction(x));
+          calibration.push({ x, y, residual, scaled: residual / localScale(x) });
+        }
+      }
+      function buildTests() {
+        const n = Number(controls.samples.value);
+        const shift = Number(controls.shift.value) / 100;
+        tests = [];
+        for (let i = 0; i < n; i++) {
+          const x = -3 + 6 * (i + .5) / n;
+          const scale = localScale(x) * (1 + 1.8 * shift);
+          const bias = shift * .18 * Math.sign(x || 1);
+          const y = truth(x) + bias + scale * normal();
+          tests.push({ x, y });
+        }
+      }
+      function evaluate() {
+        const alpha = Number(controls.error.value) / 100;
+        const scores = calibration.map(d => method === 'scaled' ? d.scaled : d.residual);
+        const q = quantile(scores, alpha);
+        let covered = 0;
+        let totalWidth = 0;
+        tests.forEach(d => {
+          const radius = method === 'scaled' ? q * localScale(d.x) : q;
+          d.pred = prediction(d.x);
+          d.low = d.pred - radius;
+          d.high = d.pred + radius;
+          d.covered = d.y >= d.low && d.y <= d.high;
+          covered += d.covered ? 1 : 0;
+          totalWidth += 2 * radius;
+        });
+        const coverage = tests.length ? covered / tests.length : 0;
+        $('coverageMetric').textContent = Math.round(coverage * 100) + '%';
+        $('coverageMetric').style.color = coverage + .015 >= 1 - alpha ? 'var(--blue)' : 'var(--red)';
+        $('targetMetric').textContent = Math.round((1 - alpha) * 100) + '%';
+        $('widthMetric').textContent = (totalWidth / tests.length).toFixed(2);
+        $('quantileMetric').textContent = q.toFixed(2);
+        $('protocol').textContent = method === 'scaled' ? 'Locally scaled split conformal' : 'Global split conformal';
+        const misses = tests.length - covered;
+        const shift = Number(controls.shift.value);
+        $('status').textContent = `${covered} of ${tests.length} outcomes covered; ${misses} missed.${shift ? ' Deployment shift is active.' : ' Calibration and test remain exchangeable.'}`;
+        draw(q);
+      }
+      function draw(q) {
+        const w = canvas.width, h = canvas.height;
+        const pad = { l: 72, r: 30, t: 42, b: 62 };
+        const xMap = x => pad.l + (x + 3) / 6 * (w - pad.l - pad.r);
+        const yMin = -1.55, yMax = 1.55;
+        const yMap = y => pad.t + (yMax - y) / (yMax - yMin) * (h - pad.t - pad.b);
+        ctx.clearRect(0, 0, w, h);
+        ctx.fillStyle = '#111411'; ctx.fillRect(0, 0, w, h);
+        ctx.strokeStyle = '#343a34'; ctx.lineWidth = 1;
+        for (let i = 0; i <= 6; i++) { const x = pad.l + i / 6 * (w - pad.l - pad.r); ctx.beginPath(); ctx.moveTo(x, pad.t); ctx.lineTo(x, h - pad.b); ctx.stroke(); }
+        for (let i = 0; i <= 4; i++) { const y = pad.t + i / 4 * (h - pad.t - pad.b); ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(w - pad.r, y); ctx.stroke(); }
+        ctx.strokeStyle = '#4ee0d0'; ctx.lineWidth = 3; ctx.beginPath();
+        for (let i = 0; i <= 160; i++) { const x = -3 + 6 * i / 160; const px = xMap(x), py = yMap(prediction(x)); i ? ctx.lineTo(px, py) : ctx.moveTo(px, py); } ctx.stroke();
+        const stride = Math.max(1, Math.ceil(tests.length / 70));
+        tests.forEach((d, i) => {
+          if (i % stride) return;
+          const x = xMap(d.x), lo = yMap(d.low), hi = yMap(d.high), yy = yMap(d.y);
+          ctx.strokeStyle = 'rgba(78,224,208,.47)'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(x, lo); ctx.lineTo(x, hi); ctx.stroke();
+          ctx.fillStyle = d.covered ? '#c8ff4d' : '#ff5d51'; ctx.beginPath(); ctx.arc(x, yy, d.covered ? 5 : 7, 0, Math.PI * 2); ctx.fill();
+          if (!d.covered) { ctx.strokeStyle = '#ff5d51'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(x, yy, 11, 0, Math.PI * 2); ctx.stroke(); }
+        });
+        ctx.fillStyle = '#aab1a8'; ctx.font = '18px Geist, sans-serif'; ctx.fillText('input x', w - 92, h - 20); ctx.save(); ctx.translate(24, 128); ctx.rotate(-Math.PI / 2); ctx.fillText('outcome y', 0, 0); ctx.restore();
+        ctx.fillStyle = '#e9eee7'; ctx.font = '17px Geist, sans-serif'; ctx.fillText(`q = ${q.toFixed(3)} · intervals from calibration residuals`, pad.l, 27);
+      }
+      function refresh(recalibrate) {
+        $('errorOut').textContent = controls.error.value + '%';
+        $('calOut').textContent = controls.calSize.value;
+        $('shiftOut').textContent = (Number(controls.shift.value) / 100).toFixed(2);
+        $('samplesOut').textContent = controls.samples.value;
+        if (recalibrate) buildCalibration();
+        buildTests(); evaluate();
+      }
+      document.querySelectorAll('[data-method]').forEach(button => button.addEventListener('click', () => {
+        document.querySelectorAll('[data-method]').forEach(b => b.classList.remove('active'));
+        button.classList.add('active'); method = button.dataset.method; evaluate();
+      }));
+      controls.error.addEventListener('input', () => refresh(false));
+      controls.calSize.addEventListener('input', () => refresh(true));
+      controls.shift.addEventListener('input', () => refresh(false));
+      controls.samples.addEventListener('input', () => refresh(false));
+      $('sample').addEventListener('click', () => refresh(false));
+      $('reset').addEventListener('click', () => {
+        if (timer) { clearInterval(timer); timer = null; $('play').textContent = 'Play'; }
+        seed = 41837; method = 'global';
+        Object.assign(controls.error, { value: 10 }); Object.assign(controls.calSize, { value: 100 }); Object.assign(controls.shift, { value: 0 }); Object.assign(controls.samples, { value: 60 });
+        document.querySelectorAll('[data-method]').forEach(b => b.classList.toggle('active', b.dataset.method === 'global')); refresh(true);
+      });
+      $('play').addEventListener('click', () => {
+        if (timer) { clearInterval(timer); timer = null; $('play').textContent = 'Play'; return; }
+        $('play').textContent = 'Pause';
+        timer = setInterval(() => { controls.shift.value = (Number(controls.shift.value) + 10) % 110; refresh(false); }, 850);
+      });
+      window.addEventListener('resize', () => evaluate());
+      refresh(true);
+      if (window.gsap && window.ScrollTrigger && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.from('.bento article', { opacity: .15, scale: .86, stagger: .12, scrollTrigger: { trigger: '.bento', start: 'top 82%', end: 'center 55%', scrub: true } });
+        gsap.from('.accordions article', { opacity: .15, y: 70, stagger: .13, scrollTrigger: { trigger: '.accordions', start: 'top 85%', end: 'center 52%', scrub: true } });
+      }
+    })();
+  </script>
+</body>
+</html>
