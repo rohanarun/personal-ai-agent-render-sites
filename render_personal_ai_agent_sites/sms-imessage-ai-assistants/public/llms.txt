@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Learning Rate Schedule Lab: Warmup, Cosine, and Linear Decay](learning-rate-warmup-cosine-schedule-lab-20260711-000047/): Learning Rate Schedule Lab
 - [3D RoPE Lab: Rotary Position Embeddings and Context Scaling](3d-rope-rotary-position-embedding-lab-20260710-114105/): Rotary Position Embedding Lab
 - [3D AI Tool Calling Contract Lab: JSON Schema and Validation](3d-tool-calling-schema-contract-lab-20260710-110436/): Tool Calling Contract Lab
 - [3D Agent Memory Clustering Lab: K-Means and Retrieval](3d-agent-memory-clustering-retrieval-lab-20260710-090805/): Memory Clustering Lab
