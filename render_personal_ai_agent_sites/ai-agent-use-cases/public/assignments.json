@@ -1,11 +1,77 @@
 [
-  {"assigned_domain":"agentslayer.com","assigned_slot":"ai-agent-use-cases","assigned_url":"https://agentslayer.com/scheduled-sampling-exposure-bias-lab-20260711-223907/","backlinks":["https://getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"cheatlayer_url":"","content_kind":"scheduled_sampling_lab","content_kind_label":"Exposure Bias Lab","direct_generated":true,"github_url":"","live_url":"https://agentslayer.com/scheduled-sampling-exposure-bias-lab-20260711-223907/","receipt_created_at":"2026-07-11T22:39:07.257+00:00","receipt_status":"success","slug":"scheduled-sampling-exposure-bias-lab-20260711-223907","source_path":"sms_published_sites/scheduled-sampling-exposure-bias-lab-20260711-223907","target_slot":"ai-agent-use-cases","title":"Exposure Bias Lab: Teacher Forcing vs Self-Fed Inference"},
-  {"assigned_domain":"agentslayer.com","assigned_slot":"ai-agent-use-cases","assigned_url":"https://agentslayer.com/mixup-interpolation-decision-boundary-lab-20260711-210237/","backlinks":["https://getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"cheatlayer_url":"","content_kind":"mixup_augmentation_lab","content_kind_label":"Mixup Augmentation Lab","direct_generated":true,"github_url":"","live_url":"https://agentslayer.com/mixup-interpolation-decision-boundary-lab-20260711-210237/","receipt_created_at":"2026-07-11T21:02:37.365+00:00","receipt_status":"success","slug":"mixup-interpolation-decision-boundary-lab-20260711-210237","source_path":"sms_published_sites/mixup-interpolation-decision-boundary-lab-20260711-210237","target_slot":"ai-agent-use-cases","title":"Mixup Lab: Interpolation, Soft Labels, and Decision Boundaries"},
+  {
+    "assigned_domain": "agentslayer.com",
+    "assigned_slot": "ai-agent-use-cases",
+    "assigned_url": "https://agentslayer.com/sequence-parallelism-activation-sharding-lab-20260712-011832/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/"
+    ],
+    "content_kind": "sequence_parallelism_lab",
+    "content_kind_label": "Sequence Parallelism Lab",
+    "direct_generated": true,
+    "live_url": "https://agentslayer.com/sequence-parallelism-activation-sharding-lab-20260712-011832/",
+    "receipt_created_at": "2026-07-12T01:18:32.748+00:00",
+    "receipt_status": "success",
+    "slug": "sequence-parallelism-activation-sharding-lab-20260712-011832",
+    "source_path": "sms_published_sites/sequence-parallelism-activation-sharding-lab-20260712-011832",
+    "target_slot": "ai-agent-use-cases",
+    "title": "Sequence Parallelism Lab: Shard Activations Across Tokens"
+  },
+  {
+    "assigned_domain": "agentslayer.com",
+    "assigned_slot": "ai-agent-use-cases",
+    "assigned_url": "https://agentslayer.com/scheduled-sampling-exposure-bias-lab-20260711-223907/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "scheduled_sampling_lab",
+    "content_kind_label": "Exposure Bias Lab",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://agentslayer.com/scheduled-sampling-exposure-bias-lab-20260711-223907/",
+    "receipt_created_at": "2026-07-11T22:39:07.257+00:00",
+    "receipt_status": "success",
+    "slug": "scheduled-sampling-exposure-bias-lab-20260711-223907",
+    "source_path": "sms_published_sites/scheduled-sampling-exposure-bias-lab-20260711-223907",
+    "target_slot": "ai-agent-use-cases",
+    "title": "Exposure Bias Lab: Teacher Forcing vs Self-Fed Inference"
+  },
+  {
+    "assigned_domain": "agentslayer.com",
+    "assigned_slot": "ai-agent-use-cases",
+    "assigned_url": "https://agentslayer.com/mixup-interpolation-decision-boundary-lab-20260711-210237/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "mixup_augmentation_lab",
+    "content_kind_label": "Mixup Augmentation Lab",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://agentslayer.com/mixup-interpolation-decision-boundary-lab-20260711-210237/",
+    "receipt_created_at": "2026-07-11T21:02:37.365+00:00",
+    "receipt_status": "success",
+    "slug": "mixup-interpolation-decision-boundary-lab-20260711-210237",
+    "source_path": "sms_published_sites/mixup-interpolation-decision-boundary-lab-20260711-210237",
+    "target_slot": "ai-agent-use-cases",
+    "title": "Mixup Lab: Interpolation, Soft Labels, and Decision Boundaries"
+  },
   {
     "assigned_domain": "agentslayer.com",
     "assigned_slot": "ai-agent-use-cases",
     "assigned_url": "https://agentslayer.com/activation-checkpointing-memory-compute-lab-20260710-233010/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "cheatlayer_url": "",
     "content_kind": "activation_checkpointing_lab",
     "content_kind_label": "Activation Checkpointing Lab",
