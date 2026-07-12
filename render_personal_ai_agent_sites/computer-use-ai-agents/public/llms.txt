@@ -78,3 +78,4 @@ A focused directory of Super personal AI agent market research, news analysis, c
 - [Super for local service businesses handling bookings, quotes, and customer replies](super-for-local-service-businesses-handling-bookings-quote-20260629-234828/): Niche research landing page
 - [Super vs Folk — personal AI agents for real computer work](super-vs-folk/): Competitor comparison
 - [Super for local service businesses handling bookings, quotes, and customer replies](super-for-local-service-businesses-handling-bookings-quote/): Niche research landing page
+- [Speculative Decoding Verification Lab: Draft Tokens and Throughput](speculative-decoding-verification-lab-20260712-041545/): Speculative decoding lab

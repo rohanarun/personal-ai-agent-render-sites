@@ -1184,4 +1184,24 @@
     "source_path": "sms_published_sites/super-for-local-service-businesses-handling-bookings-quote",
     "title": "Super for local service businesses handling bookings, quotes, and customer replies"
   }
+  ,{
+    "assigned_domain": "parsercheat.com",
+    "assigned_slot": "computer-use-ai-agents",
+    "assigned_url": "https://parsercheat.com/speculative-decoding-verification-lab-20260712-041545/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/"
+    ],
+    "content_kind": "speculative_decoding_lab",
+    "content_kind_label": "Speculative Decoding Verification Lab",
+    "direct_generated": true,
+    "live_url": "https://parsercheat.com/speculative-decoding-verification-lab-20260712-041545/",
+    "receipt_created_at": "2026-07-12T04:15:45-07:00",
+    "receipt_status": "success",
+    "slug": "speculative-decoding-verification-lab-20260712-041545",
+    "source_path": "sms_published_sites/speculative-decoding-verification-lab-20260712-041545",
+    "target_slot": "computer-use-ai-agents",
+    "title": "Speculative Decoding Verification Lab: Draft Tokens and Throughput"
+  }
 ]
