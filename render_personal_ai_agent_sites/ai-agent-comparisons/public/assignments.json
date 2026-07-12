@@ -1,13 +1,119 @@
 [
-  {"assigned_domain":"lists.new","assigned_slot":"ai-agent-comparisons","assigned_url":"https://lists.new/pipeline-parallelism-microbatch-bubble-lab-20260711-233737/","backlinks":["https://getsupers.com/","https://app.getsupers.com/use-cases/computer-use-cache/","https://app.getsupers.com/use-cases/ai-agent-build-websites/"],"cheatlayer_url":"","content_kind":"pipeline_parallelism_lab","content_kind_label":"Pipeline Parallelism Lab","direct_generated":true,"github_url":"","live_url":"https://lists.new/pipeline-parallelism-microbatch-bubble-lab-20260711-233737/","receipt_created_at":"2026-07-11T23:37:37.110+00:00","receipt_status":"success","slug":"pipeline-parallelism-microbatch-bubble-lab-20260711-233737","source_path":"sms_published_sites/pipeline-parallelism-microbatch-bubble-lab-20260711-233737","target_slot":"ai-agent-comparisons","title":"Pipeline Parallelism Lab: Microbatches, Bubbles, and Throughput"},
-  {"assigned_domain":"lists.new","assigned_slot":"ai-agent-comparisons","assigned_url":"https://lists.new/conformal-prediction-coverage-shift-lab-20260711-221837/","backlinks":["https://getsupers.com/","https://app.getsupers.com/use-cases/computer-use-cache/","https://app.getsupers.com/use-cases/ai-agent-build-websites/"],"cheatlayer_url":"","content_kind":"conformal_prediction_lab","content_kind_label":"Conformal Prediction Lab","direct_generated":true,"github_url":"","live_url":"https://lists.new/conformal-prediction-coverage-shift-lab-20260711-221837/","receipt_created_at":"2026-07-11T22:18:37.686+00:00","receipt_status":"success","slug":"conformal-prediction-coverage-shift-lab-20260711-221837","source_path":"sms_published_sites/conformal-prediction-coverage-shift-lab-20260711-221837","target_slot":"ai-agent-comparisons","title":"Conformal Prediction Lab: Coverage, Set Size, and Shift"},
-  {"assigned_domain":"lists.new","assigned_slot":"ai-agent-comparisons","assigned_url":"https://lists.new/nested-cross-validation-selection-bias-lab-20260711-220038/","backlinks":["https://getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"cheatlayer_url":"","content_kind":"nested_cross_validation_lab","content_kind_label":"Nested Cross-Validation Lab","direct_generated":true,"github_url":"","live_url":"https://lists.new/nested-cross-validation-selection-bias-lab-20260711-220038/","receipt_created_at":"2026-07-11T22:00:38.863+00:00","receipt_status":"success","slug":"nested-cross-validation-selection-bias-lab-20260711-220038","source_path":"sms_published_sites/nested-cross-validation-selection-bias-lab-20260711-220038","target_slot":"ai-agent-comparisons","title":"Nested Cross-Validation Lab: Selection Bias and Honest Evaluation"},
-  {"assigned_domain":"lists.new","assigned_slot":"ai-agent-comparisons","assigned_url":"https://lists.new/ema-weight-averaging-stability-lab-20260711-215011/","backlinks":["https://getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"cheatlayer_url":"","content_kind":"ema_weight_averaging_lab","content_kind_label":"EMA Weight Averaging Lab","direct_generated":true,"github_url":"","live_url":"https://lists.new/ema-weight-averaging-stability-lab-20260711-215011/","receipt_created_at":"2026-07-11T21:50:11.983+00:00","receipt_status":"success","slug":"ema-weight-averaging-stability-lab-20260711-215011","source_path":"sms_published_sites/ema-weight-averaging-stability-lab-20260711-215011","target_slot":"ai-agent-comparisons","title":"EMA Weights Lab: Stability, Lag, and Evaluation"},
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/gradient-noise-scale-batch-efficiency-lab-20260712-012834/",
+    "backlinks": [
+      "https://getsupers.com/"
+    ],
+    "content_kind": "gradient_noise_scale_lab",
+    "content_kind_label": "Gradient Noise Scale Lab",
+    "direct_generated": true,
+    "live_url": "https://lists.new/gradient-noise-scale-batch-efficiency-lab-20260712-012834/",
+    "receipt_created_at": "2026-07-12T01:28:34.388+00:00",
+    "receipt_status": "success",
+    "slug": "gradient-noise-scale-batch-efficiency-lab-20260712-012834",
+    "source_path": "sms_published_sites/gradient-noise-scale-batch-efficiency-lab-20260712-012834",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Gradient Noise Scale Lab: Batch Size and Training Efficiency"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/pipeline-parallelism-microbatch-bubble-lab-20260711-233737/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "pipeline_parallelism_lab",
+    "content_kind_label": "Pipeline Parallelism Lab",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://lists.new/pipeline-parallelism-microbatch-bubble-lab-20260711-233737/",
+    "receipt_created_at": "2026-07-11T23:37:37.110+00:00",
+    "receipt_status": "success",
+    "slug": "pipeline-parallelism-microbatch-bubble-lab-20260711-233737",
+    "source_path": "sms_published_sites/pipeline-parallelism-microbatch-bubble-lab-20260711-233737",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Pipeline Parallelism Lab: Microbatches, Bubbles, and Throughput"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/conformal-prediction-coverage-shift-lab-20260711-221837/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "conformal_prediction_lab",
+    "content_kind_label": "Conformal Prediction Lab",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://lists.new/conformal-prediction-coverage-shift-lab-20260711-221837/",
+    "receipt_created_at": "2026-07-11T22:18:37.686+00:00",
+    "receipt_status": "success",
+    "slug": "conformal-prediction-coverage-shift-lab-20260711-221837",
+    "source_path": "sms_published_sites/conformal-prediction-coverage-shift-lab-20260711-221837",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Conformal Prediction Lab: Coverage, Set Size, and Shift"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/nested-cross-validation-selection-bias-lab-20260711-220038/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "nested_cross_validation_lab",
+    "content_kind_label": "Nested Cross-Validation Lab",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://lists.new/nested-cross-validation-selection-bias-lab-20260711-220038/",
+    "receipt_created_at": "2026-07-11T22:00:38.863+00:00",
+    "receipt_status": "success",
+    "slug": "nested-cross-validation-selection-bias-lab-20260711-220038",
+    "source_path": "sms_published_sites/nested-cross-validation-selection-bias-lab-20260711-220038",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Nested Cross-Validation Lab: Selection Bias and Honest Evaluation"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/ema-weight-averaging-stability-lab-20260711-215011/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "ema_weight_averaging_lab",
+    "content_kind_label": "EMA Weight Averaging Lab",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://lists.new/ema-weight-averaging-stability-lab-20260711-215011/",
+    "receipt_created_at": "2026-07-11T21:50:11.983+00:00",
+    "receipt_status": "success",
+    "slug": "ema-weight-averaging-stability-lab-20260711-215011",
+    "source_path": "sms_published_sites/ema-weight-averaging-stability-lab-20260711-215011",
+    "target_slot": "ai-agent-comparisons",
+    "title": "EMA Weights Lab: Stability, Lag, and Evaluation"
+  },
   {
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/knowledge-distillation-soft-targets-lab-20260711-202507/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "cheatlayer_url": "",
     "content_kind": "knowledge_distillation_lab",
     "content_kind_label": "Knowledge Distillation Lab",
@@ -25,7 +131,11 @@
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/batchnorm-train-eval-running-statistics-lab-20260711-012613/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "cheatlayer_url": "",
     "content_kind": "batchnorm_running_statistics_lab",
     "content_kind_label": "BatchNorm Running Statistics Lab",
@@ -43,7 +153,11 @@
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/adamw-decoupled-weight-decay-lab-20260710-235510/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "cheatlayer_url": "",
     "content_kind": "adamw_weight_decay_lab",
     "content_kind_label": "AdamW Weight Decay Lab",

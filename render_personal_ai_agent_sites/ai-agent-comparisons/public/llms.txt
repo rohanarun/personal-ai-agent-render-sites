@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Gradient Noise Scale Lab](gradient-noise-scale-batch-efficiency-lab-20260712-012834/): Gradient Noise Scale Lab
 - [Pipeline Parallelism Lab: Microbatches, Bubbles, and Throughput](pipeline-parallelism-microbatch-bubble-lab-20260711-233737/): Pipeline Parallelism Lab
 - [Conformal Prediction Lab: Coverage, Set Size, and Shift](conformal-prediction-coverage-shift-lab-20260711-221837/): Conformal Prediction Lab
 - [Nested Cross-Validation Lab: Selection Bias and Honest Evaluation](nested-cross-validation-selection-bias-lab-20260711-220038/): Nested Cross-Validation Lab
