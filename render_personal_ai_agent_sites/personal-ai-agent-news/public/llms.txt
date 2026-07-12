@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Tensor Parallelism Lab: Matrix Shards and Collective Communication](tensor-parallelism-matrix-sharding-lab-20260712-004239/): Tensor Parallelism Lab
 - [Gradient Clipping Lab: Norm, Stability, and Direction](gradient-clipping-norm-direction-lab-20260711-225707/): Gradient Clipping Lab
 - [Curriculum Learning Lab: Easy-to-Hard Sampling and Competence](curriculum-learning-easy-hard-sampling-lab-20260711-213638/): Curriculum Learning Lab
 - [Gradient Accumulation Lab: Microbatches and Effective Batch Size](gradient-accumulation-effective-batch-lab-20260710-235015/): Gradient Accumulation Lab
