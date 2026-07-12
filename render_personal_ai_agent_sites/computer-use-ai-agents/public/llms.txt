@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [ZeRO and FSDP Lab: Shard Model States Across Devices](zero-fsdp-state-sharding-memory-lab-20260712-010107/): ZeRO and FSDP Memory Lab
 - [FlashAttention Lab: Tiling, IO, and Exact Attention](flashattention-io-aware-tiling-lab-20260711-230831/): FlashAttention IO Lab
 - [Monte Carlo Dropout Lab: Predictive Uncertainty and Abstention](monte-carlo-dropout-uncertainty-abstention-lab-20260711-204241/): MC Dropout Uncertainty Lab
 - [3D Browser Agent Postcondition Lab: Verify Every Action](3d-browser-agent-postcondition-lab-20260710-105811/): Browser Postcondition Lab
