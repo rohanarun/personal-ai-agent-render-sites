@@ -1,12 +1,97 @@
 [
-  {"assigned_domain":"kalshhunter.com","assigned_slot":"personal-ai-agent-news","assigned_url":"https://kalshhunter.com/tensor-parallelism-matrix-sharding-lab-20260712-004239/","backlinks":["https://getsupers.com/","https://app.getsupers.com/use-cases/computer-use-cache/","https://app.getsupers.com/use-cases/ai-agent-build-websites/"],"cheatlayer_url":"","content_kind":"tensor_parallelism_lab","content_kind_label":"Tensor Parallelism Lab","direct_generated":true,"github_url":"","live_url":"https://kalshhunter.com/tensor-parallelism-matrix-sharding-lab-20260712-004239/","receipt_created_at":"2026-07-12T00:42:39.514+00:00","receipt_status":"success","slug":"tensor-parallelism-matrix-sharding-lab-20260712-004239","source_path":"sms_published_sites/tensor-parallelism-matrix-sharding-lab-20260712-004239","target_slot":"personal-ai-agent-news","title":"Tensor Parallelism Lab: Matrix Shards and Collective Communication"},
-  {"assigned_domain":"kalshhunter.com","assigned_slot":"personal-ai-agent-news","assigned_url":"https://kalshhunter.com/gradient-clipping-norm-direction-lab-20260711-225707/","backlinks":["https://getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"cheatlayer_url":"","content_kind":"gradient_clipping_lab","content_kind_label":"Gradient Clipping Lab","direct_generated":true,"github_url":"","live_url":"https://kalshhunter.com/gradient-clipping-norm-direction-lab-20260711-225707/","receipt_created_at":"2026-07-11T22:57:07.876+00:00","receipt_status":"success","slug":"gradient-clipping-norm-direction-lab-20260711-225707","source_path":"sms_published_sites/gradient-clipping-norm-direction-lab-20260711-225707","target_slot":"personal-ai-agent-news","title":"Gradient Clipping Lab: Norm, Stability, and Direction"},
-  {"assigned_domain":"kalshhunter.com","assigned_slot":"personal-ai-agent-news","assigned_url":"https://kalshhunter.com/curriculum-learning-easy-hard-sampling-lab-20260711-213638/","backlinks":["https://getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"cheatlayer_url":"","content_kind":"curriculum_learning_lab","content_kind_label":"Curriculum Learning Lab","direct_generated":true,"github_url":"","live_url":"https://kalshhunter.com/curriculum-learning-easy-hard-sampling-lab-20260711-213638/","receipt_created_at":"2026-07-11T21:36:38.763+00:00","receipt_status":"success","slug":"curriculum-learning-easy-hard-sampling-lab-20260711-213638","source_path":"sms_published_sites/curriculum-learning-easy-hard-sampling-lab-20260711-213638","target_slot":"personal-ai-agent-news","title":"Curriculum Learning Lab: Easy-to-Hard Sampling and Competence"},
+  {
+    "assigned_domain": "kalshhunter.com",
+    "assigned_slot": "personal-ai-agent-news",
+    "assigned_url": "https://kalshhunter.com/compute-optimal-scaling-laws-lab-20260712-015341/",
+    "backlinks": [
+      "https://getsupers.com/"
+    ],
+    "content_kind": "compute_optimal_scaling_lab",
+    "content_kind_label": "Compute-Optimal Scaling Lab",
+    "direct_generated": true,
+    "live_url": "https://kalshhunter.com/compute-optimal-scaling-laws-lab-20260712-015341/",
+    "receipt_created_at": "2026-07-12T02:14:42.918+00:00",
+    "receipt_status": "success",
+    "slug": "compute-optimal-scaling-laws-lab-20260712-015341",
+    "source_path": "sms_published_sites/compute-optimal-scaling-laws-lab-20260712-015341",
+    "target_slot": "personal-ai-agent-news",
+    "title": "Compute-Optimal Scaling Laws Lab: Parameters, Data, and FLOPs"
+  },
+  {
+    "assigned_domain": "kalshhunter.com",
+    "assigned_slot": "personal-ai-agent-news",
+    "assigned_url": "https://kalshhunter.com/tensor-parallelism-matrix-sharding-lab-20260712-004239/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "tensor_parallelism_lab",
+    "content_kind_label": "Tensor Parallelism Lab",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://kalshhunter.com/tensor-parallelism-matrix-sharding-lab-20260712-004239/",
+    "receipt_created_at": "2026-07-12T00:42:39.514+00:00",
+    "receipt_status": "success",
+    "slug": "tensor-parallelism-matrix-sharding-lab-20260712-004239",
+    "source_path": "sms_published_sites/tensor-parallelism-matrix-sharding-lab-20260712-004239",
+    "target_slot": "personal-ai-agent-news",
+    "title": "Tensor Parallelism Lab: Matrix Shards and Collective Communication"
+  },
+  {
+    "assigned_domain": "kalshhunter.com",
+    "assigned_slot": "personal-ai-agent-news",
+    "assigned_url": "https://kalshhunter.com/gradient-clipping-norm-direction-lab-20260711-225707/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "gradient_clipping_lab",
+    "content_kind_label": "Gradient Clipping Lab",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://kalshhunter.com/gradient-clipping-norm-direction-lab-20260711-225707/",
+    "receipt_created_at": "2026-07-11T22:57:07.876+00:00",
+    "receipt_status": "success",
+    "slug": "gradient-clipping-norm-direction-lab-20260711-225707",
+    "source_path": "sms_published_sites/gradient-clipping-norm-direction-lab-20260711-225707",
+    "target_slot": "personal-ai-agent-news",
+    "title": "Gradient Clipping Lab: Norm, Stability, and Direction"
+  },
+  {
+    "assigned_domain": "kalshhunter.com",
+    "assigned_slot": "personal-ai-agent-news",
+    "assigned_url": "https://kalshhunter.com/curriculum-learning-easy-hard-sampling-lab-20260711-213638/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "curriculum_learning_lab",
+    "content_kind_label": "Curriculum Learning Lab",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://kalshhunter.com/curriculum-learning-easy-hard-sampling-lab-20260711-213638/",
+    "receipt_created_at": "2026-07-11T21:36:38.763+00:00",
+    "receipt_status": "success",
+    "slug": "curriculum-learning-easy-hard-sampling-lab-20260711-213638",
+    "source_path": "sms_published_sites/curriculum-learning-easy-hard-sampling-lab-20260711-213638",
+    "target_slot": "personal-ai-agent-news",
+    "title": "Curriculum Learning Lab: Easy-to-Hard Sampling and Competence"
+  },
   {
     "assigned_domain": "kalshhunter.com",
     "assigned_slot": "personal-ai-agent-news",
     "assigned_url": "https://kalshhunter.com/gradient-accumulation-effective-batch-lab-20260710-235015/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "cheatlayer_url": "",
     "content_kind": "gradient_accumulation_lab",
     "content_kind_label": "Gradient Accumulation Lab",

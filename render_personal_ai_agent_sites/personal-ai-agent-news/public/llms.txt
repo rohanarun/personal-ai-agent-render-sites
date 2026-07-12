@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Compute-Optimal Scaling Laws Lab](compute-optimal-scaling-laws-lab-20260712-015341/): Compute-Optimal Scaling Lab
 - [Tensor Parallelism Lab: Matrix Shards and Collective Communication](tensor-parallelism-matrix-sharding-lab-20260712-004239/): Tensor Parallelism Lab
 - [Gradient Clipping Lab: Norm, Stability, and Direction](gradient-clipping-norm-direction-lab-20260711-225707/): Gradient Clipping Lab
 - [Curriculum Learning Lab: Easy-to-Hard Sampling and Competence](curriculum-learning-easy-hard-sampling-lab-20260711-213638/): Curriculum Learning Lab
