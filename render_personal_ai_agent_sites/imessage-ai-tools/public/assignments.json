@@ -1,10 +1,55 @@
 [
-  {"assigned_domain":"droidph.one","assigned_slot":"imessage-ai-tools","assigned_url":"https://droidph.one/focal-loss-class-imbalance-hard-examples-lab-20260711-212636/","backlinks":["https://getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"cheatlayer_url":"","content_kind":"focal_loss_lab","content_kind_label":"Focal Loss Lab","direct_generated":true,"github_url":"","live_url":"https://droidph.one/focal-loss-class-imbalance-hard-examples-lab-20260711-212636/","receipt_created_at":"2026-07-11T21:26:36.794+00:00","receipt_status":"success","slug":"focal-loss-class-imbalance-hard-examples-lab-20260711-212636","source_path":"sms_published_sites/focal-loss-class-imbalance-hard-examples-lab-20260711-212636","target_slot":"imessage-ai-tools","title":"Focal Loss Lab: Class Imbalance and Hard Examples"},
+  {
+    "assigned_domain": "droidph.one",
+    "assigned_slot": "imessage-ai-tools",
+    "assigned_url": "https://droidph.one/ring-allreduce-bandwidth-lab-20260711-235437/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/"
+    ],
+    "content_kind": "ring_allreduce_lab",
+    "content_kind_label": "Ring All-Reduce Lab",
+    "direct_generated": true,
+    "live_url": "https://droidph.one/ring-allreduce-bandwidth-lab-20260711-235437/",
+    "receipt_created_at": "2026-07-12T00:07:36.843+00:00",
+    "receipt_status": "success",
+    "slug": "ring-allreduce-bandwidth-lab-20260711-235437",
+    "source_path": "sms_published_sites/ring-allreduce-bandwidth-lab-20260711-235437",
+    "target_slot": "imessage-ai-tools",
+    "title": "Ring All-Reduce Lab: Bandwidth, Latency, and Scaling"
+  },
+  {
+    "assigned_domain": "droidph.one",
+    "assigned_slot": "imessage-ai-tools",
+    "assigned_url": "https://droidph.one/focal-loss-class-imbalance-hard-examples-lab-20260711-212636/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "focal_loss_lab",
+    "content_kind_label": "Focal Loss Lab",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://droidph.one/focal-loss-class-imbalance-hard-examples-lab-20260711-212636/",
+    "receipt_created_at": "2026-07-11T21:26:36.794+00:00",
+    "receipt_status": "success",
+    "slug": "focal-loss-class-imbalance-hard-examples-lab-20260711-212636",
+    "source_path": "sms_published_sites/focal-loss-class-imbalance-hard-examples-lab-20260711-212636",
+    "target_slot": "imessage-ai-tools",
+    "title": "Focal Loss Lab: Class Imbalance and Hard Examples"
+  },
   {
     "assigned_domain": "droidph.one",
     "assigned_slot": "imessage-ai-tools",
     "assigned_url": "https://droidph.one/early-stopping-validation-gap-lab-20260711-000540/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "cheatlayer_url": "",
     "content_kind": "early_stopping_lab",
     "content_kind_label": "Early Stopping Lab",
