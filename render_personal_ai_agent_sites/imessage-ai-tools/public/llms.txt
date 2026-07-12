@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Adafactor Lab: Factored Second Moments](adafactor-factored-moment-memory-lab-20260711-200000/): Adafactor Memory Lab
 - [Ring All-Reduce Lab: Bandwidth, Latency, and Scaling](ring-allreduce-bandwidth-lab-20260711-235437/): Ring All-Reduce Lab
 - [Focal Loss Lab: Class Imbalance and Hard Examples](focal-loss-class-imbalance-hard-examples-lab-20260711-212636/): Focal Loss Lab
 - [Early Stopping Lab: Validation Loss, Patience, and Overfitting](early-stopping-validation-gap-lab-20260711-000540/): Early Stopping Lab
