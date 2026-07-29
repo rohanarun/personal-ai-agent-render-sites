@@ -73,10 +73,16 @@ function browserUser(profile: BrowserProfile): XUser {
   };
 }
 
-function browserPost(post: BrowserPost, fallbackAuthorId: string): XPost {
+function browserPost(
+  post: BrowserPost,
+  fallbackAuthorId: string,
+  fallbackUsername: string,
+): XPost {
+  const isFallbackAuthor =
+    post.authorUsername?.toLowerCase() === fallbackUsername.toLowerCase();
   const authorId =
     post.authorId ??
-    (post.authorUsername
+    (post.authorUsername && !isFallbackAuthor
       ? `browser:${post.authorUsername.toLowerCase()}`
       : fallbackAuthorId);
 
@@ -122,16 +128,21 @@ export async function POST(request: Request) {
   await ensureSchema(database);
   const capturedAt = payload.capturedAt ?? new Date().toISOString();
   const profile = browserUser(payload.profile);
-  await upsertProfile(database, profile, "browser", capturedAt);
+  const profileId = await upsertProfile(
+    database,
+    profile,
+    "browser",
+    capturedAt,
+  );
 
   let postsStored = 0;
   for (const post of [...(payload.posts ?? []), ...(payload.comments ?? [])]) {
-    const normalized = browserPost(post, profile.id);
+    const normalized = browserPost(post, profileId, profile.username);
     if (
-      normalized.author_id !== profile.id &&
+      normalized.author_id !== profileId &&
       post.authorUsername
     ) {
-      await upsertProfile(
+      normalized.author_id = await upsertProfile(
         database,
         {
           id: normalized.author_id ?? `browser:${post.authorUsername.toLowerCase()}`,
@@ -142,21 +153,27 @@ export async function POST(request: Request) {
         capturedAt,
       );
     }
-    await upsertPost(database, normalized, profile.id, "browser", capturedAt);
+    await upsertPost(database, normalized, profileId, "browser", capturedAt);
     postsStored += 1;
   }
 
   let followersStored = 0;
   for (const follower of payload.visibleFollowers ?? []) {
     const user = browserUser(follower);
-    await upsertProfile(database, user, "browser", capturedAt);
-    await upsertFollowerEdge(database, profile.id, user.id, "browser", capturedAt);
+    const followerId = await upsertProfile(database, user, "browser", capturedAt);
+    await upsertFollowerEdge(
+      database,
+      profileId,
+      followerId,
+      "browser",
+      capturedAt,
+    );
     followersStored += 1;
   }
 
   await recordEvidence(database, {
     entityType: "profile",
-    entityId: profile.id,
+    entityId: profileId,
     field: "browser_capture",
     value: {
       postsStored,
@@ -169,7 +186,7 @@ export async function POST(request: Request) {
 
   return Response.json({
     status: "accepted",
-    profileId: profile.id,
+    profileId,
     postsStored,
     followersStored,
     capturedAt,

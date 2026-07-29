@@ -151,13 +151,21 @@ export async function upsertProfile(
   capturedAt = new Date().toISOString(),
 ) {
   const metrics = user.public_metrics ?? {};
+  const existingProfiles = await db<{ id: string }[]>`
+    SELECT id
+    FROM profiles
+    WHERE LOWER(username) = LOWER(${user.username})
+    LIMIT 1
+  `;
+  const profileId = existingProfiles[0]?.id ?? user.id;
+
   await db`
     INSERT INTO profiles (
       id, username, name, description, location, url, profile_image_url,
       verified, protected, followers_count, following_count, post_count,
       listed_count, created_at, first_seen_at, last_seen_at, source, raw_json
     ) VALUES (
-      ${user.id}, ${user.username}, ${user.name}, ${user.description ?? null},
+      ${profileId}, ${user.username}, ${user.name}, ${user.description ?? null},
       ${user.location ?? null}, ${user.url ?? null},
       ${user.profile_image_url ?? null}, ${Boolean(user.verified)},
       ${Boolean(user.protected)}, ${metrics.followers_count ?? 0},
@@ -190,11 +198,13 @@ export async function upsertProfile(
       id, profile_id, followers_count, following_count, post_count,
       listed_count, captured_at, source
     ) VALUES (
-      ${crypto.randomUUID()}, ${user.id}, ${metrics.followers_count ?? 0},
+      ${crypto.randomUUID()}, ${profileId}, ${metrics.followers_count ?? 0},
       ${metrics.following_count ?? 0}, ${metrics.tweet_count ?? 0},
       ${metrics.listed_count ?? 0}, ${capturedAt}, ${source}
     )
   `;
+
+  return profileId;
 }
 
 export async function upsertFollowerEdge(

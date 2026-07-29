@@ -111,7 +111,7 @@ export async function POST(request: Request) {
       const user = lookup.data;
       if (!user) continue;
       counts.profilesSeen += 1;
-      await upsertProfile(database, user, "x_api");
+      const profileId = await upsertProfile(database, user, "x_api");
 
       const followerCount = user.public_metrics?.followers_count ?? 0;
       if (followerCount < options.minFollowers) continue;
@@ -122,8 +122,8 @@ export async function POST(request: Request) {
         for (let page = 0; page < options.maxPagesPerCollection; page += 1) {
           const response = await client.getFollowers(user.id, token);
           for (const follower of response.data ?? []) {
-            await upsertProfile(database, follower, "x_api");
-            await upsertFollowerEdge(database, user.id, follower.id, "x_api");
+            const followerId = await upsertProfile(database, follower, "x_api");
+            await upsertFollowerEdge(database, profileId, followerId, "x_api");
             counts.followerEdgesSeen += 1;
             if (
               (follower.public_metrics?.followers_count ?? 0) >=
@@ -143,7 +143,7 @@ export async function POST(request: Request) {
         for (let page = 0; page < options.maxPagesPerCollection; page += 1) {
           const response = await client.getPosts(user.id, token);
           for (const post of response.data ?? []) {
-            await upsertPost(database, post, user.id, "x_api");
+            await upsertPost(database, post, profileId, "x_api");
             counts.postsSeen += 1;
 
             if (options.includeConversations && post.conversation_id) {
@@ -152,12 +152,26 @@ export async function POST(request: Request) {
               );
               const includedUsers =
                 ((conversation.includes?.users as XUser[] | undefined) ?? []);
+              const canonicalAuthorIds = new Map<string, string>();
               for (const author of includedUsers) {
-                await upsertProfile(database, author, "x_api");
+                canonicalAuthorIds.set(
+                  author.id,
+                  await upsertProfile(database, author, "x_api"),
+                );
               }
               for (const reply of conversation.data ?? []) {
                 if (reply.id === post.id) continue;
-                await upsertPost(database, reply, user.id, "x_api");
+                const canonicalAuthorId = reply.author_id
+                  ? canonicalAuthorIds.get(reply.author_id)
+                  : undefined;
+                await upsertPost(
+                  database,
+                  canonicalAuthorId
+                    ? { ...reply, author_id: canonicalAuthorId }
+                    : reply,
+                  profileId,
+                  "x_api",
+                );
                 counts.commentsSeen += 1;
               }
             }
@@ -168,22 +182,26 @@ export async function POST(request: Request) {
                 client.getRepostedBy(post.id),
               ]);
               for (const liker of liking.data ?? []) {
-                await upsertProfile(database, liker, "x_api");
+                const likerId = await upsertProfile(database, liker, "x_api");
                 await recordEvidence(database, {
                   entityType: "post",
                   entityId: post.id,
                   field: "liking_user_id",
-                  value: liker.id,
+                  value: likerId,
                   sourceUrl: `https://x.com/i/web/status/${post.id}/likes`,
                 });
               }
               for (const reposter of reposting.data ?? []) {
-                await upsertProfile(database, reposter, "x_api");
+                const reposterId = await upsertProfile(
+                  database,
+                  reposter,
+                  "x_api",
+                );
                 await recordEvidence(database, {
                   entityType: "post",
                   entityId: post.id,
                   field: "reposting_user_id",
-                  value: reposter.id,
+                  value: reposterId,
                   sourceUrl: `https://x.com/i/web/status/${post.id}/retweets`,
                 });
               }
