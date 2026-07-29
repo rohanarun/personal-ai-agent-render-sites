@@ -1,0 +1,130 @@
+{
+  "capturedAt": "2026-07-28T21:20:00-04:00",
+  "sourceUrl": "https://x.com/XDevelopers",
+  "provenance": "browser",
+  "profile": {
+    "id": "2244994945",
+    "username": "XDevelopers",
+    "name": "Developers",
+    "description": "The voice of the X Dev team and your official source for updates, news, and events, related to the X API.",
+    "location": "127.0.0.1",
+    "website": "https://docs.x.com",
+    "joined": "2013-12",
+    "verified": true,
+    "protected": false,
+    "followingCount": 762,
+    "followersCount": 694900,
+    "followersDisplay": "694.9K",
+    "postCount": 4310,
+    "countPrecision": "abbreviated"
+  },
+  "posts": [
+    {
+      "id": "2019881223666233717",
+      "authorUsername": "XDevelopers",
+      "createdAt": "2026-02-06T16:09:00-05:00",
+      "text": "Officially launching X API Pay-Per-Use. The core of X developers are indie builders, early stage products, startups, and hobbyists. It is time to open up the X API ecosystem and instill a new wave of next generation X apps.",
+      "replies": 782,
+      "reposts": 1388,
+      "likes": 5560,
+      "bookmarks": 2808,
+      "impressions": 2520302
+    },
+    {
+      "id": "2019881225587167406",
+      "authorUsername": "XDevelopers",
+      "createdAt": "2026-02-06",
+      "text": "Important notes on public utility access, legacy free users, and pay-per-use migration.",
+      "replies": 46,
+      "reposts": 35,
+      "likes": 258,
+      "bookmarks": 55,
+      "impressions": 78836
+    },
+    {
+      "id": "2019881226874552564",
+      "authorUsername": "XDevelopers",
+      "createdAt": "2026-02-06",
+      "text": "A redesigned developer experience with a new console, playground, XDK, and MCP.",
+      "replies": 6,
+      "reposts": 22,
+      "likes": 183,
+      "bookmarks": 13,
+      "impressions": 44805
+    },
+    {
+      "id": "2019881228099547607",
+      "authorUsername": "XDevelopers",
+      "createdAt": "2026-02-06",
+      "text": "Another major announcement for pay-per-use is coming soon.",
+      "replies": 17,
+      "reposts": 16,
+      "likes": 199,
+      "bookmarks": 9,
+      "impressions": 39970
+    }
+  ],
+  "comments": [
+    {
+      "id": "2020055297969340900",
+      "authorUsername": "immasiddx",
+      "text": "The free API used to read 500k posts a month; now the comparison is $25 for 5,000 posts.",
+      "replies": 11,
+      "reposts": 2,
+      "likes": 119,
+      "bookmarks": 4,
+      "impressions": 7195
+    },
+    {
+      "id": "2020005845514465461",
+      "authorUsername": "goingonchain",
+      "text": "A reply sharing the new pricing.",
+      "replies": 12,
+      "reposts": 6,
+      "likes": 95,
+      "bookmarks": 32,
+      "impressions": 19102
+    },
+    {
+      "id": "2019912388011782460",
+      "authorUsername": "daniel_nguyenx",
+      "text": "A reply questioning whether developers can trust the platform again.",
+      "replies": 10,
+      "reposts": 1,
+      "likes": 116,
+      "bookmarks": 1,
+      "impressions": 10476
+    },
+    {
+      "id": "2019994514509922589",
+      "authorUsername": "podzied",
+      "text": "A reply comparing the return of pay-per-use to reconnecting after a long absence.",
+      "replies": 14,
+      "reposts": 15,
+      "likes": 260,
+      "bookmarks": 8,
+      "impressions": 17958
+    }
+  ],
+  "visibleFollowers": [
+    {"username": "yogeshsh2135", "name": "yogeshh sharma", "verified": true},
+    {"username": "DrCodes_", "name": "Dr Codes", "verified": true},
+    {"username": "oimatrixioYT", "name": "oimatrixio", "verified": true},
+    {"username": "omarmousa072", "name": "Omar Mousa", "verified": true},
+    {"username": "x_rotty", "name": "Rotty X", "verified": true},
+    {"username": "SenditHighor", "name": "Send it Highor", "verified": true},
+    {"username": "SLxai26", "name": "SL", "verified": true},
+    {"username": "yakumohitomi", "name": "yakumo", "verified": true},
+    {"username": "ZeroTrustGhost", "name": "ztg", "verified": true},
+    {"username": "reed_devault", "name": "RJ DeVault", "verified": true},
+    {"username": "YonkoResearch", "name": "Yonko", "verified": true},
+    {"username": "AlphaJSG", "name": "JSG", "verified": true},
+    {"username": "stevanlohja", "name": "stev", "verified": true},
+    {"username": "MGMITRU", "name": "X", "verified": true, "protected": true},
+    {"username": "berkural95", "name": "Berk URAL", "verified": true},
+    {"username": "ItsLilScar", "name": "Lil Scar", "verified": true},
+    {"username": "sofymellow", "name": "sofy", "verified": true},
+    {"username": "jonathan_mir12", "name": "Jonathan Miranda", "verified": true},
+    {"username": "eric_n_ramirez", "name": "Eric N. Ramirez", "verified": true}
+  ]
+}

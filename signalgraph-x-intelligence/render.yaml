@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: signalgraph-x-intelligence
+    runtime: node
+    plan: free
+    region: virginia
+    rootDir: signalgraph-x-intelligence
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/dashboard
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: 22.16.0
+      - key: X_API_BASE_URL
+        value: https://api.x.com/2
+      - key: DATABASE_URL
+        fromDatabase:
+          name: signalgraph-db
+          property: connectionString
+
+databases:
+  - name: signalgraph-db
+    plan: free
+    region: virginia
+    databaseName: signalgraph
+    user: signalgraph
