@@ -74,9 +74,15 @@ function browserUser(profile: BrowserProfile): XUser {
 }
 
 function browserPost(post: BrowserPost, fallbackAuthorId: string): XPost {
+  const authorId =
+    post.authorId ??
+    (post.authorUsername
+      ? `browser:${post.authorUsername.toLowerCase()}`
+      : fallbackAuthorId);
+
   return {
     id: post.id,
-    author_id: post.authorId ?? fallbackAuthorId,
+    author_id: authorId,
     conversation_id: post.conversationId,
     in_reply_to_user_id: post.inReplyToUserId,
     created_at: post.createdAt,
