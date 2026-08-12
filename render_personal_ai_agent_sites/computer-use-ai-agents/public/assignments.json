@@ -1204,4 +1204,24 @@
     "target_slot": "computer-use-ai-agents",
     "title": "Speculative Decoding Verification Lab: Draft Tokens and Throughput"
   }
+  ,{
+    "assigned_domain": "parsercheat.com",
+    "assigned_slot": "computer-use-ai-agents",
+    "assigned_url": "https://parsercheat.com/sparse-autoencoder-feature-dictionary-lab-20260812-125328/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/"
+    ],
+    "content_kind": "sparse_autoencoder_feature_lab",
+    "content_kind_label": "Sparse Autoencoder Feature Lab",
+    "direct_generated": true,
+    "live_url": "https://parsercheat.com/sparse-autoencoder-feature-dictionary-lab-20260812-125328/",
+    "receipt_created_at": "2026-08-12T12:53:28.394+00:00",
+    "receipt_status": "success",
+    "slug": "sparse-autoencoder-feature-dictionary-lab-20260812-125328",
+    "source_path": "sms_published_sites/sparse-autoencoder-feature-dictionary-lab-20260812-125328",
+    "target_slot": "computer-use-ai-agents",
+    "title": "Sparse Autoencoder Feature Lab: From Neurons to Features"
+  }
 ]

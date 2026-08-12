@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sparse Autoencoder Feature Lab: From Neurons to Features</title>
+  <meta name="description" content="An interactive sparse autoencoder lab for exploring polysemantic neurons, overcomplete feature dictionaries, sparsity, reconstruction fidelity, and feature collisions.">
+  <link rel="canonical" href="https://parsercheat.com/sparse-autoencoder-feature-dictionary-lab-20260812-125328/">
+  <meta property="og:title" content="Sparse Autoencoder Feature Lab">
+  <meta property="og:description" content="Turn mixed neuron activations into a sparse, inspectable feature dictionary.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://parsercheat.com/sparse-autoencoder-feature-dictionary-lab-20260812-125328/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #f4f1e8;
+      --ink: #101414;
+      --muted: #606968;
+      --line: #aeb4ae;
+      --aqua: #72dfe2;
+      --coral: #ff725f;
+      --lime: #d8ff43;
+      --yellow: #ffd45b;
+      --blue: #3a68ff;
+      --panel: #e4e7df;
+      --radius: 6px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; max-width: 100%; overflow-x: hidden; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Outfit", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      letter-spacing: 0;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-underline-offset: 4px; }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    svg { display: block; max-width: 100%; }
+    .shell { width: min(1240px, calc(100% - 40px)); margin: 0 auto; }
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 0 max(20px, calc((100vw - 1240px) / 2));
+      background: rgba(244, 241, 232, .95);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .brand-mark {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      transform: rotate(-8deg);
+    }
+    .brand-mark i { background: var(--ink); }
+    .nav-links { display: flex; align-items: center; gap: 22px; }
+    .nav-links a { font-size: 14px; font-weight: 600; text-decoration: none; }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 42px;
+      padding: 0 15px;
+      color: white;
+      background: var(--ink);
+      border: 1px solid var(--ink);
+      border-radius: var(--radius);
+    }
+    .hero {
+      min-height: 650px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(320px, .55fr);
+      align-items: center;
+      gap: 42px;
+      padding: 78px 0 72px;
+      border-bottom: 1px solid var(--line);
+    }
+    .hero-copy { position: relative; z-index: 2; }
+    .eyebrow {
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    h1 {
+      max-width: 1160px;
+      margin: 0;
+      font-size: 78px;
+      line-height: .94;
+      font-weight: 700;
+    }
+    .hero p {
+      max-width: 760px;
+      margin: 28px 0 0;
+      color: var(--muted);
+      font-size: 20px;
+      line-height: 1.55;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 32px;
+    }
+    .command {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 0 18px;
+      border: 1px solid var(--ink);
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--ink);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .command.primary { background: var(--lime); }
+    .hero-visual {
+      position: relative;
+      min-height: 430px;
+      margin-right: -7vw;
+      border-left: 1px solid var(--ink);
+      overflow: hidden;
+      background: var(--ink);
+      color: white;
+    }
+    .signal-label {
+      position: absolute;
+      left: 28px;
+      top: 24px;
+      z-index: 2;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .signal-stack {
+      position: absolute;
+      inset: 76px 26px 28px;
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      align-items: end;
+      gap: 7px;
+    }
+    .signal {
+      position: relative;
+      min-width: 0;
+      border: 1px solid rgba(255,255,255,.35);
+      transition: transform .5s ease, background .5s ease;
+    }
+    .signal:nth-child(1) { height: 34%; background: var(--aqua); }
+    .signal:nth-child(2) { height: 73%; background: var(--coral); }
+    .signal:nth-child(3) { height: 48%; background: var(--yellow); }
+    .signal:nth-child(4) { height: 91%; background: var(--blue); }
+    .signal:nth-child(5) { height: 57%; background: var(--lime); }
+    .signal:nth-child(6) { height: 82%; background: var(--aqua); }
+    .signal:nth-child(7) { height: 42%; background: var(--coral); }
+    .signal span {
+      position: absolute;
+      left: 50%;
+      bottom: 10px;
+      transform: translateX(-50%) rotate(-90deg);
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .hero-visual:hover .signal:nth-child(odd) { transform: translateY(-14px); }
+    .hero-visual:hover .signal:nth-child(even) { transform: translateY(10px); }
+    .lab-band {
+      background: var(--ink);
+      color: white;
+      border-bottom: 1px solid #4b5553;
+    }
+    .lab-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 30px;
+      padding: 52px 0 28px;
+    }
+    .lab-heading h2 {
+      max-width: 820px;
+      margin: 0;
+      font-size: 52px;
+      line-height: 1.02;
+    }
+    .lab-heading p {
+      max-width: 390px;
+      margin: 0;
+      color: #b8c1bf;
+      line-height: 1.55;
+    }
+    .lab {
+      display: grid;
+      grid-template-columns: minmax(0, 1.75fr) minmax(300px, .75fr);
+      border-top: 1px solid #4b5553;
+      border-left: 1px solid #4b5553;
+    }
+    .visual-stage {
+      min-width: 0;
+      padding: 24px;
+      border-right: 1px solid #4b5553;
+      border-bottom: 1px solid #4b5553;
+    }
+    .stage-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      min-height: 42px;
+      margin-bottom: 12px;
+    }
+    .stage-toolbar strong { font-size: 14px; text-transform: uppercase; }
+    .stage-toolbar span { color: #aab4b2; font-size: 13px; text-align: right; }
+    #saeMap {
+      width: 100%;
+      min-height: 510px;
+      background: #151b1a;
+      border: 1px solid #44504e;
+    }
+    .controls {
+      min-width: 0;
+      padding: 24px;
+      color: var(--ink);
+      background: var(--panel);
+      border-bottom: 1px solid var(--line);
+    }
+    .controls h3 { margin: 0 0 18px; font-size: 26px; }
+    .field {
+      padding: 17px 0;
+      border-top: 1px solid var(--line);
+    }
+    .field > label, .field-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    output {
+      min-width: 64px;
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+      text-align: right;
+    }
+    input[type="range"] { width: 100%; accent-color: var(--ink); }
+    .segments {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5px;
+    }
+    .segments.examples { grid-template-columns: repeat(2, 1fr); }
+    .segments button {
+      min-height: 42px;
+      padding: 8px;
+      border: 1px solid var(--ink);
+      border-radius: 3px;
+      background: transparent;
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .segments button.active { background: var(--ink); color: white; }
+    .check {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0;
+      font-weight: 600;
+    }
+    .check input { width: 18px; height: 18px; accent-color: var(--ink); }
+    .lab-actions { display: grid; grid-template-columns: 1fr 1.5fr; gap: 8px; margin-top: 18px; }
+    .lab-actions button {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid var(--ink);
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--ink);
+      font-weight: 700;
+    }
+    .lab-actions .play { background: var(--lime); }
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-left: 1px solid #4b5553;
+    }
+    .metric {
+      min-height: 160px;
+      padding: 24px;
+      border-right: 1px solid #4b5553;
+      border-bottom: 1px solid #4b5553;
+    }
+    .metric span { display: block; color: #9eaaa7; font-size: 13px; text-transform: uppercase; }
+    .metric strong {
+      display: block;
+      margin-top: 20px;
+      font-size: 42px;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+    .metric small { display: block; margin-top: 10px; color: #aeb8b6; line-height: 1.4; }
+    .model-note {
+      margin: 0;
+      padding: 18px 0 58px;
+      color: #9eaaa7;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .feature-band {
+      padding: 110px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .feature-intro {
+      display: grid;
+      grid-template-columns: minmax(250px, .7fr) minmax(0, 1.3fr);
+      gap: 54px;
+      align-items: start;
+    }
+    .feature-intro h2 {
+      position: sticky;
+      top: 108px;
+      margin: 0;
+      font-size: 54px;
+      line-height: 1.04;
+    }
+    .feature-copy { margin: 0 0 28px; color: var(--muted); font-size: 18px; line-height: 1.6; }
+    .feature-list { border-top: 1px solid var(--line); }
+    .feature-row {
+      display: grid;
+      grid-template-columns: 56px 1fr 110px;
+      align-items: center;
+      gap: 18px;
+      min-height: 112px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .feature-index {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--ink);
+      border-radius: 50%;
+      font-weight: 700;
+    }
+    .feature-row h3 { margin: 0 0 6px; font-size: 22px; }
+    .feature-row p { margin: 0; color: var(--muted); line-height: 1.45; }
+    .feature-meter { height: 12px; background: #ccd1ca; overflow: hidden; }
+    .feature-meter i { display: block; height: 100%; background: var(--coral); transform-origin: left; }
+    .explain {
+      padding: 120px 0;
+      background: #dfe3dc;
+      border-bottom: 1px solid var(--line);
+    }
+    .explain h2 { max-width: 1020px; margin: 0 0 50px; font-size: 64px; line-height: 1.02; }
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-flow: dense;
+      border-top: 1px solid var(--ink);
+      border-left: 1px solid var(--ink);
+    }
+    .bento article {
+      min-height: 260px;
+      padding: 28px;
+      border-right: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      overflow: hidden;
+      transition: background .35s ease, color .35s ease;
+    }
+    .bento article:nth-child(1) { grid-column: span 7; background: var(--aqua); }
+    .bento article:nth-child(2) { grid-column: span 5; background: var(--ink); color: white; }
+    .bento article:nth-child(n+3) { grid-column: span 4; }
+    .bento article:hover { background: var(--coral); color: var(--ink); }
+    .bento h3 { margin: 0 0 22px; font-size: 27px; line-height: 1.1; }
+    .bento p { margin: 0; line-height: 1.6; }
+    .accordion-band {
+      padding: 110px 0;
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+    }
+    .accordion-band h2 { margin: 0 0 42px; font-size: 54px; }
+    .accordions { display: flex; min-height: 380px; border: 1px solid var(--ink); }
+    .accordion {
+      flex: 1 1 0;
+      min-width: 0;
+      padding: 24px;
+      border: 0;
+      border-right: 1px solid var(--ink);
+      background: transparent;
+      color: var(--ink);
+      text-align: left;
+      transition: flex .55s ease, background .35s ease;
+      overflow: hidden;
+    }
+    .accordion:last-child { border-right: 0; }
+    .accordion:hover, .accordion:focus-visible, .accordion.active { flex: 2.2 1 0; background: var(--yellow); }
+    .accordion b { display: block; font-size: 26px; line-height: 1.05; }
+    .accordion-copy { display: block; width: min(380px, 100%); margin: 28px 0 0; line-height: 1.55; opacity: .15; transition: opacity .35s ease; }
+    .accordion:hover .accordion-copy, .accordion:focus-visible .accordion-copy, .accordion.active .accordion-copy { opacity: 1; }
+    .sources {
+      padding: 110px 0;
+      color: white;
+      background: var(--ink);
+    }
+    .sources-grid {
+      display: grid;
+      grid-template-columns: .7fr 1.3fr;
+      gap: 60px;
+    }
+    .sources h2 { margin: 0; font-size: 54px; }
+    .source-list { border-top: 1px solid #58615f; }
+    .source-list a {
+      display: block;
+      padding: 22px 42px 22px 0;
+      border-bottom: 1px solid #58615f;
+      color: white;
+      line-height: 1.45;
+      overflow-wrap: anywhere;
+      position: relative;
+    }
+    .source-list a::after { content: "open"; position: absolute; right: 0; color: var(--lime); font-size: 13px; }
+    footer {
+      padding: 92px 0 42px;
+      background: var(--lime);
+    }
+    footer h2 { max-width: 960px; margin: 0; font-size: 64px; line-height: 1.02; }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px 28px;
+      margin-top: 42px;
+      padding-top: 24px;
+      border-top: 1px solid var(--ink);
+    }
+    .footer-links a { font-weight: 700; }
+    .footer-note { margin: 46px 0 0; font-size: 13px; }
+    .lucide { width: 18px; height: 18px; stroke-width: 2; }
+    @media (max-width: 980px) {
+      h1 { font-size: 64px; }
+      .hero { grid-template-columns: 1fr; padding-top: 64px; }
+      .hero-visual { min-height: 330px; margin-right: 0; border: 1px solid var(--ink); }
+      .lab { grid-template-columns: 1fr; }
+      .visual-stage { border-right: 0; }
+      .metrics { grid-template-columns: 1fr 1fr; }
+      .feature-intro, .sources-grid { grid-template-columns: 1fr; }
+      .feature-intro h2 { position: static; }
+      .accordions { min-height: 440px; }
+    }
+    @media (max-width: 720px) {
+      .shell { width: min(100% - 24px, 1240px); }
+      .nav { padding: 0 12px; }
+      .nav-links > a:not(.nav-cta) { display: none; }
+      .brand span { font-size: 14px; }
+      h1 { font-size: 44px; line-height: .98; }
+      .hero { min-height: 720px; gap: 30px; padding: 50px 0; }
+      .hero p { font-size: 17px; }
+      .hero-actions { display: grid; grid-template-columns: 1fr; }
+      .hero-visual { min-height: 300px; }
+      .signal-stack { inset: 70px 16px 20px; gap: 4px; }
+      .lab-heading { align-items: start; flex-direction: column; padding-top: 42px; }
+      .lab-heading h2, .feature-intro h2, .accordion-band h2, .sources h2 { font-size: 38px; }
+      .visual-stage, .controls { padding: 16px; }
+      #saeMap { min-height: 430px; }
+      .stage-toolbar { align-items: flex-start; flex-direction: column; }
+      .stage-toolbar span { text-align: left; }
+      .metrics { grid-template-columns: 1fr 1fr; }
+      .metric { min-height: 138px; padding: 18px; }
+      .metric strong { font-size: 32px; }
+      .feature-band, .explain, .accordion-band, .sources { padding: 78px 0; }
+      .explain h2, footer h2 { font-size: 42px; }
+      .bento { grid-template-columns: 1fr; }
+      .bento article:nth-child(n) { grid-column: span 1; min-height: 220px; }
+      .accordions { display: grid; min-height: 0; }
+      .accordion { min-height: 120px; border-right: 0; border-bottom: 1px solid var(--ink); }
+      .accordion:last-child { border-bottom: 0; }
+      .accordion-copy { opacity: 1; }
+      .feature-row { grid-template-columns: 46px minmax(0, 1fr); }
+      .feature-meter { grid-column: 2; width: 100%; }
+    }
+    @media (max-width: 430px) {
+      .metrics { grid-template-columns: 1fr; }
+      .segments { grid-template-columns: 1fr; }
+      .segments.examples { grid-template-columns: 1fr 1fr; }
+      .lab-actions { grid-template-columns: 1fr; }
+      #saeMap { min-height: 390px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="Primary navigation">
+    <a class="brand" href="#top">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+      <span>SPARSE FEATURE LAB</span>
+    </a>
+    <div class="nav-links">
+      <a href="#concept">Concept</a>
+      <a href="#sources">Sources</a>
+      <a class="nav-cta" href="#lab">Open lab <i data-lucide="arrow-down" aria-hidden="true"></i></a>
+    </div>
+  </nav>
+
+  <main id="top">
+    <header class="hero shell">
+      <div class="hero-copy">
+        <p class="eyebrow">Turn mixed neurons into inspectable features</p>
+        <h1>Sparse Autoencoder Feature Lab</h1>
+        <p>A sparse autoencoder learns more candidate features than the layer has neurons, then activates only a few at a time. Tune the tradeoff between reconstruction and sparsity to see why interpretable features are useful, and why they are not a complete explanation of a model.</p>
+        <div class="hero-actions">
+          <a class="command primary" href="#lab"><i data-lucide="sliders-horizontal" aria-hidden="true"></i> Explore the encoder</a>
+          <a class="command" href="#concept"><i data-lucide="book-open" aria-hidden="true"></i> Read the model</a>
+        </div>
+      </div>
+      <div class="hero-visual" role="img" aria-label="Stylized mixed neuron activation bars">
+        <span class="signal-label">One neuron, several possible meanings</span>
+        <div class="signal-stack" aria-hidden="true">
+          <div class="signal"><span>bridge</span></div>
+          <div class="signal"><span>code</span></div>
+          <div class="signal"><span>cells</span></div>
+          <div class="signal"><span>transit</span></div>
+          <div class="signal"><span>errors</span></div>
+          <div class="signal"><span>finance</span></div>
+          <div class="signal"><span>sports</span></div>
+        </div>
+      </div>
+    </header>
+
+    <section class="lab-band" id="lab">
+      <div class="shell">
+        <div class="lab-heading">
+          <h2>Encode, sparsify, reconstruct.</h2>
+          <p>Pick an input concept, widen the learned dictionary, and increase sparsity pressure. The map updates from dense neuron activity to a compact set of candidate features.</p>
+        </div>
+        <div class="lab">
+          <div class="visual-stage">
+            <div class="stage-toolbar">
+              <strong>Activation flow</strong>
+              <span id="stepText" aria-live="polite">Input activations are mixed across neurons.</span>
+            </div>
+            <svg id="saeMap" viewBox="0 0 1100 610" role="img" aria-labelledby="mapTitle mapDesc">
+              <title id="mapTitle">Sparse autoencoder activation and reconstruction map</title>
+              <desc id="mapDesc">A visual map from mixed neuron activations through sparse learned features to reconstructed neuron activations.</desc>
+            </svg>
+          </div>
+          <aside class="controls" aria-label="Sparse autoencoder controls">
+            <h3>Experiment controls</h3>
+            <div class="field">
+              <div class="field-head"><span>Input example</span></div>
+              <div class="segments examples" id="examples">
+                <button type="button" class="active" data-example="bridge">Bridge commute</button>
+                <button type="button" data-example="code">Code failure</button>
+                <button type="button" data-example="biology">Cell biology</button>
+                <button type="button" data-example="mixed">Mixed context</button>
+              </div>
+            </div>
+            <div class="field">
+              <div class="field-head"><span>Dictionary width</span><output id="widthOut">16 features</output></div>
+              <div class="segments" id="widthModes">
+                <button type="button" data-width="8">1x</button>
+                <button type="button" class="active" data-width="16">2x</button>
+                <button type="button" data-width="32">4x</button>
+              </div>
+            </div>
+            <div class="field">
+              <div class="field-head"><label for="activeTarget">Active feature budget</label><output id="activeOut" for="activeTarget">4</output></div>
+              <input id="activeTarget" type="range" min="1" max="8" step="1" value="4">
+            </div>
+            <div class="field">
+              <div class="field-head"><label for="sparsity">Sparsity pressure</label><output id="sparsityOut" for="sparsity">55%</output></div>
+              <input id="sparsity" type="range" min="0" max="100" step="1" value="55">
+            </div>
+            <div class="field">
+              <div class="field-head"><label for="interference">Neuron interference</label><output id="interferenceOut" for="interference">35%</output></div>
+              <input id="interference" type="range" min="0" max="100" step="1" value="35">
+            </div>
+            <div class="field">
+              <label class="check"><input id="showResidual" type="checkbox" checked> Show reconstruction residual</label>
+            </div>
+            <div class="lab-actions">
+              <button type="button" id="reset" title="Reset experiment"><i data-lucide="rotate-ccw" aria-hidden="true"></i> Reset</button>
+              <button type="button" class="play" id="play" title="Play encoding sequence"><i data-lucide="play" aria-hidden="true"></i> Play encoding</button>
+            </div>
+          </aside>
+        </div>
+        <div class="metrics" aria-live="polite">
+          <div class="metric"><span>Active features</span><strong id="metricActive">0 / 16</strong><small>Nonzero latents after thresholding</small></div>
+          <div class="metric"><span>Reconstruction fidelity</span><strong id="metricFidelity">0%</strong><small>Similarity to the toy input activation</small></div>
+          <div class="metric"><span>Feature collisions</span><strong id="metricCollision">0</strong><small>Modeled active directions with competing labels</small></div>
+          <div class="metric"><span>Residual energy</span><strong id="metricResidual">0%</strong><small>Input signal left unexplained</small></div>
+        </div>
+        <p class="model-note">This is a transparent teaching model with a fixed synthetic activation basis. Its metrics explain SAE tradeoffs; they are not measurements from a production language model.</p>
+      </div>
+    </section>
+
+    <section class="feature-band" id="concept">
+      <div class="shell feature-intro">
+        <h2>The live dictionary</h2>
+        <div>
+          <p class="feature-copy">The strongest learned directions for the selected input appear below. Wider dictionaries can split a broad direction into narrower candidates; stronger sparsity keeps fewer candidates active.</p>
+          <div class="feature-list" id="featureList"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="explain">
+      <div class="shell">
+        <h2 class="word-reveal">A feature dictionary is a useful lens, not a transparent copy of the model.</h2>
+        <div class="bento">
+          <article>
+            <h3>Polysemantic neurons mix unrelated concepts.</h3>
+            <p>A single neuron can respond in several distinct contexts. Reading that neuron as one human concept can therefore hide the distributed geometry that produced its activation.</p>
+          </article>
+          <article>
+            <h3>The SAE learns an overcomplete basis.</h3>
+            <p>The feature layer can be wider than the model layer. This gives dictionary learning more candidate directions for separating concepts that shared the same neuron space.</p>
+          </article>
+          <article>
+            <h3>Sparsity makes examples inspectable.</h3>
+            <p>A penalty or top-k rule encourages only a small number of latent features to fire for each activation vector.</p>
+          </article>
+          <article>
+            <h3>Reconstruction keeps the lens honest.</h3>
+            <p>If the decoder cannot reproduce the original activation, the sparse explanation has discarded signal. Low loss is necessary, but it does not prove semantic faithfulness.</p>
+          </article>
+          <article>
+            <h3>Interventions test causal relevance.</h3>
+            <p>Correlated activation is only a clue. Suppressing or amplifying a feature and measuring downstream behavior is stronger evidence that the feature matters.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="accordion-band">
+      <div class="shell">
+        <h2>Interpret an SAE without overclaiming.</h2>
+        <div class="accordions">
+          <button class="accordion active" type="button">
+            <b>Check reconstruction</b>
+            <span class="accordion-copy">Track loss and residual structure. A clean label attached to a poor reconstruction is not a faithful decomposition.</span>
+          </button>
+          <button class="accordion" type="button">
+            <b>Inspect activation examples</b>
+            <span class="accordion-copy">Look for both precision and recall: what activates the feature, and which expected examples fail to activate it?</span>
+          </button>
+          <button class="accordion" type="button">
+            <b>Test interventions</b>
+            <span class="accordion-copy">Change the feature activation and observe downstream logits or behavior. Association alone does not establish mechanism.</span>
+          </button>
+          <button class="accordion" type="button">
+            <b>Compare dictionaries</b>
+            <span class="accordion-copy">Features can split, merge, or disappear as width, sparsity, training data, layer, and random seed change.</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="sources" id="sources">
+      <div class="shell sources-grid">
+        <h2>Primary reading</h2>
+        <div class="source-list">
+          <a href="https://transformer-circuits.pub/2023/monosemantic-features/index.html" target="_blank" rel="noopener noreferrer">Towards Monosemanticity: Decomposing Language Models With Dictionary Learning</a>
+          <a href="https://arxiv.org/abs/2309.08600" target="_blank" rel="noopener noreferrer">Sparse Autoencoders Find Highly Interpretable Features in Language Models</a>
+          <a href="https://transformer-circuits.pub/2024/scaling-monosemanticity/index.html" target="_blank" rel="noopener noreferrer">Scaling Monosemanticity: Extracting Interpretable Features from Claude 3 Sonnet</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">
+      <h2>Use internal signals as evidence, then verify the action outside the model.</h2>
+      <div class="footer-links">
+        <a href="https://getsupers.com/">Meet Super</a>
+        <a href="https://app.getsupers.com/use-cases/computer-use-cache/">Explore computer-use cache</a>
+        <a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">Build websites with an AI agent</a>
+      </div>
+      <p class="footer-note">Interactive educational lab. No model API is called; all calculations run locally in this page.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjs@13.2.2/lib/browser/math.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+  <script>
+    (function () {
+      "use strict";
+
+      var featureNames = [
+        "bridges", "public transit", "source code", "software errors",
+        "cell biology", "microscopy", "banking", "team sports",
+        "landmark geometry", "commute planning", "syntax patterns", "debug traces",
+        "membrane transport", "lab observations", "financial institutions", "scorekeeping",
+        "suspension structures", "rail transfers", "typed languages", "exception handling",
+        "cellular anatomy", "imaging assays", "credit systems", "competitive play",
+        "coastal landmarks", "travel schedules", "parser branches", "stack traces",
+        "ion channels", "specimen analysis", "account balances", "match results"
+      ];
+      var examples = {
+        bridge: {
+          label: "The Golden Gate Bridge carries commuters across the bay.",
+          semantic: [1.0, .88, .05, .03, .02, .03, .02, .05]
+        },
+        code: {
+          label: "A Python stack trace points to a failed parser branch.",
+          semantic: [.03, .02, 1.0, .94, .02, .02, .04, .03]
+        },
+        biology: {
+          label: "A membrane channel moves ions across a living cell.",
+          semantic: [.03, .02, .02, .03, 1.0, .82, .02, .02]
+        },
+        mixed: {
+          label: "The bank app crashed while showing the stadium score.",
+          semantic: [.04, .05, .62, .76, .02, .02, .92, .71]
+        }
+      };
+      var state = {
+        example: "bridge",
+        width: 16,
+        activeTarget: 4,
+        sparsity: 55,
+        interference: 35,
+        showResidual: true,
+        playing: false,
+        stage: 0
+      };
+      var palette = ["#72dfe2", "#ff725f", "#ffd45b", "#3a68ff", "#d8ff43", "#ae85ff", "#ff9a3d", "#4dd28a"];
+      var svg = d3.select("#saeMap");
+      var width = 1100;
+      var height = 610;
+      var stageNames = [
+        "Input activations are mixed across neurons.",
+        "The encoder scores learned feature directions.",
+        "Sparsity keeps only the strongest candidate features.",
+        "The decoder reconstructs the original activation."
+      ];
+      var playTimer = null;
+
+      function baseMatrix(interference) {
+        var mix = interference / 100;
+        var rows = 10;
+        var cols = 8;
+        var matrix = [];
+        for (var r = 0; r < rows; r += 1) {
+          var row = [];
+          for (var c = 0; c < cols; c += 1) {
+            var primary = r % cols === c ? 1 : 0;
+            var secondary = ((r * 3 + c * 5) % 11) / 10;
+            var signed = ((r + c) % 3 === 0 ? -1 : 1) * secondary;
+            row.push(primary * (1 - .22 * mix) + signed * .42 * mix);
+          }
+          matrix.push(row);
+        }
+        return matrix;
+      }
+
+      function norm(vector) {
+        return Math.sqrt(vector.reduce(function (sum, value) { return sum + value * value; }, 0)) || 1;
+      }
+
+      function normalize(vector) {
+        var length = norm(vector);
+        return vector.map(function (value) { return value / length; });
+      }
+
+      function dictionary(matrix, dictWidth) {
+        var result = [];
+        for (var i = 0; i < dictWidth; i += 1) {
+          var base = i % 8;
+          var generation = Math.floor(i / 8);
+          var vector = matrix.map(function (row, rowIndex) {
+            var perturbation = generation === 0 ? 0 : Math.sin((i + 1) * (rowIndex + 2)) * (.09 + generation * .035);
+            return row[base] + perturbation;
+          });
+          result.push({
+            id: i,
+            base: base,
+            name: featureNames[Math.min(i, featureNames.length - 1)] || ("feature " + (i + 1)),
+            direction: normalize(vector)
+          });
+        }
+        return result;
+      }
+
+      function compute() {
+        state.activeTarget = Number(document.querySelector("#activeTarget").value);
+        state.sparsity = Number(document.querySelector("#sparsity").value);
+        state.interference = Number(document.querySelector("#interference").value);
+        state.showResidual = document.querySelector("#showResidual").checked;
+
+        var matrix = baseMatrix(state.interference);
+        var semantic = examples[state.example].semantic;
+        var multiplied = math.multiply(matrix, semantic);
+        var input = multiplied && typeof multiplied.toArray === "function" ? multiplied.toArray() : multiplied;
+        var dict = dictionary(matrix, state.width);
+        var rawScores = dict.map(function (feature) {
+          return Math.max(0, math.dot(input, feature.direction));
+        });
+        var sorted = rawScores.map(function (score, index) { return { score: score, index: index }; })
+          .sort(function (a, b) { return b.score - a.score; });
+        var maxScore = sorted.length ? sorted[0].score : 1;
+        var pressureThreshold = maxScore * (.08 + state.sparsity / 100 * .64);
+        var allowed = sorted.slice(0, state.activeTarget).map(function (item) { return item.index; });
+        var latent = rawScores.map(function (score, index) {
+          return allowed.indexOf(index) >= 0 && score >= pressureThreshold ? score : 0;
+        });
+        var reconstruction = new Array(input.length).fill(0);
+        dict.forEach(function (feature, index) {
+          if (!latent[index]) return;
+          var duplicateCount = Math.ceil(state.width / 8);
+          var coefficient = latent[index] / duplicateCount;
+          feature.direction.forEach(function (value, neuron) {
+            reconstruction[neuron] += value * coefficient;
+          });
+        });
+        var residual = input.map(function (value, index) { return value - reconstruction[index]; });
+        var relativeError = Math.min(1, norm(residual) / norm(input));
+        var fidelity = Math.max(0, Math.round((1 - relativeError) * 100));
+        var active = latent.filter(function (value) { return value > 0; }).length;
+        var collisions = dict.reduce(function (count, feature, index) {
+          if (!latent[index]) return count;
+          var alignments = matrix[0].map(function (_, semanticIndex) {
+            var column = matrix.map(function (row) { return row[semanticIndex]; });
+            return Math.abs(math.dot(normalize(column), feature.direction));
+          }).sort(function (a, b) { return b - a; });
+          var ambiguityThreshold = .52 + (100 - state.interference) / 100 * .2;
+          return count + (alignments[1] > alignments[0] * ambiguityThreshold ? 1 : 0);
+        }, 0);
+        var modeledCollisions = Math.max(0, Math.round(active * state.interference / 100 * .6 - Math.log2(state.width / 8)));
+        collisions = Math.max(collisions, Math.min(active, modeledCollisions));
+
+        var result = {
+          matrix: matrix,
+          input: input,
+          dictionary: dict,
+          latent: latent,
+          reconstruction: reconstruction,
+          residual: residual,
+          fidelity: fidelity,
+          active: active,
+          collisions: collisions,
+          residualEnergy: Math.round(relativeError * 100)
+        };
+        updateOutputs(result);
+        renderMap(result);
+        renderFeatures(result);
+        return result;
+      }
+
+      function updateOutputs(result) {
+        document.querySelector("#widthOut").textContent = state.width + " features";
+        document.querySelector("#activeOut").textContent = state.activeTarget;
+        document.querySelector("#sparsityOut").textContent = state.sparsity + "%";
+        document.querySelector("#interferenceOut").textContent = state.interference + "%";
+        document.querySelector("#metricActive").textContent = result.active + " / " + state.width;
+        document.querySelector("#metricFidelity").textContent = result.fidelity + "%";
+        document.querySelector("#metricCollision").textContent = result.collisions;
+        document.querySelector("#metricResidual").textContent = result.residualEnergy + "%";
+        document.querySelector("#stepText").textContent = stageNames[state.stage];
+      }
+
+      function renderMap(result) {
+        if (window.innerWidth < 600) {
+          renderMobileMap(result);
+          return;
+        }
+        svg.attr("viewBox", "0 0 1100 610");
+        var maxInput = d3.max(result.input.map(Math.abs)) || 1;
+        var maxLatent = d3.max(result.latent) || 1;
+        var neuronY = d3.scalePoint().domain(d3.range(result.input.length)).range([105, 535]).padding(.4);
+        var activeFeatures = result.dictionary.map(function (feature, index) {
+          return {
+            id: feature.id,
+            base: feature.base,
+            name: feature.name,
+            direction: feature.direction,
+            value: result.latent[index]
+          };
+        }).filter(function (feature) { return feature.value > 0; }).slice(0, 8);
+        var featureY = d3.scalePoint().domain(d3.range(Math.max(activeFeatures.length, 1))).range([125, 515]).padding(.5);
+
+        svg.selectAll("*").remove();
+        svg.append("rect").attr("width", width).attr("height", height).attr("fill", "#151b1a");
+
+        var headings = [
+          { x: 70, title: "MIXED NEURONS", caption: "model activation" },
+          { x: 430, title: "SPARSE FEATURES", caption: "learned dictionary" },
+          { x: 820, title: "RECONSTRUCTION", caption: "decoded activation" }
+        ];
+        var headingGroup = svg.append("g");
+        headings.forEach(function (heading) {
+          headingGroup.append("text").attr("x", heading.x).attr("y", 42).attr("fill", "#ffffff").attr("font-size", 18).attr("font-weight", 700).text(heading.title);
+          headingGroup.append("text").attr("x", heading.x).attr("y", 65).attr("fill", "#8f9b98").attr("font-size", 12).text(heading.caption);
+        });
+
+        var neuronGroup = svg.append("g").attr("class", "neuron-layer");
+        result.input.forEach(function (value, index) {
+          var y = neuronY(index);
+          neuronGroup.append("rect")
+            .attr("x", 70).attr("y", y - 13).attr("width", 180).attr("height", 26)
+            .attr("fill", "#26302e").attr("stroke", "#52605d");
+          neuronGroup.append("rect")
+            .attr("x", 70).attr("y", y - 13).attr("width", Math.abs(value) / maxInput * 180).attr("height", 26)
+            .attr("fill", value >= 0 ? palette[index % palette.length] : "#ae85ff");
+          neuronGroup.append("text").attr("x", 58).attr("y", y + 4).attr("text-anchor", "end").attr("fill", "#aeb8b6").attr("font-size", 12).text("N" + (index + 1));
+        });
+
+        var linkGroup = svg.append("g").attr("class", "encode-links");
+        activeFeatures.forEach(function (feature, featureIndex) {
+          result.input.forEach(function (value, neuronIndex) {
+            var strength = Math.abs(feature.direction[neuronIndex]) * feature.value / maxLatent;
+            if (strength < .12) return;
+            linkGroup.append("path")
+              .attr("d", "M250," + neuronY(neuronIndex) + " C330," + neuronY(neuronIndex) + " 345," + featureY(featureIndex) + " 420," + featureY(featureIndex))
+              .attr("fill", "none")
+              .attr("stroke", palette[feature.base % palette.length])
+              .attr("stroke-width", 1 + strength * 3)
+              .attr("opacity", .12 + strength * .55);
+          });
+        });
+
+        var featureGroup = svg.append("g").attr("class", "feature-layer");
+        if (!activeFeatures.length) {
+          featureGroup.append("text").attr("x", 520).attr("y", 310).attr("text-anchor", "middle").attr("fill", "#ff725f").attr("font-size", 18).text("No feature survives the current threshold");
+        }
+        activeFeatures.forEach(function (feature, index) {
+          var y = featureY(index);
+          featureGroup.append("circle")
+            .attr("cx", 520).attr("cy", y).attr("r", 15 + feature.value / maxLatent * 15)
+            .attr("fill", palette[feature.base % palette.length])
+            .attr("stroke", "#ffffff").attr("stroke-width", 1);
+          featureGroup.append("text")
+            .attr("x", 565).attr("y", y + 5).attr("fill", "#ffffff").attr("font-size", 13)
+            .text(feature.name);
+        });
+
+        var decodeLinks = svg.append("g").attr("class", "decode-links");
+        activeFeatures.forEach(function (feature, featureIndex) {
+          result.reconstruction.forEach(function (_, neuronIndex) {
+            var strength = Math.abs(feature.direction[neuronIndex]) * feature.value / maxLatent;
+            if (strength < .12) return;
+            decodeLinks.append("path")
+              .attr("d", "M610," + featureY(featureIndex) + " C700," + featureY(featureIndex) + " 720," + neuronY(neuronIndex) + " 810," + neuronY(neuronIndex))
+              .attr("fill", "none")
+              .attr("stroke", palette[feature.base % palette.length])
+              .attr("stroke-width", 1 + strength * 3)
+              .attr("opacity", .12 + strength * .55);
+          });
+        });
+
+        var reconstructionGroup = svg.append("g").attr("class", "reconstruction-layer");
+        result.reconstruction.forEach(function (value, index) {
+          var y = neuronY(index);
+          reconstructionGroup.append("rect")
+            .attr("x", 820).attr("y", y - 13).attr("width", 180).attr("height", 26)
+            .attr("fill", "#26302e").attr("stroke", "#52605d");
+          reconstructionGroup.append("rect")
+            .attr("x", 820).attr("y", y - 13).attr("width", Math.min(180, Math.abs(value) / maxInput * 180)).attr("height", 26)
+            .attr("fill", palette[index % palette.length]);
+          if (state.showResidual) {
+            var residualWidth = Math.min(72, Math.abs(result.residual[index]) / maxInput * 72);
+            reconstructionGroup.append("rect")
+              .attr("x", 1010).attr("y", y - 13).attr("width", residualWidth).attr("height", 26)
+              .attr("fill", "#ff725f").attr("opacity", .9);
+          }
+        });
+        if (state.showResidual) {
+          svg.append("text").attr("x", 1010).attr("y", 88).attr("fill", "#ff927f").attr("font-size", 11).text("RESIDUAL");
+        }
+
+        var stages = [".neuron-layer", ".encode-links", ".feature-layer", ".decode-links", ".reconstruction-layer"];
+        stages.forEach(function (selector, index) {
+          var visible = state.stage === 0 ? index === 0 : state.stage === 1 ? index <= 2 : state.stage === 2 ? index <= 2 : true;
+          svg.select(selector).attr("opacity", visible ? 1 : .12);
+        });
+      }
+
+      function renderMobileMap(result) {
+        var mobileWidth = 650;
+        var mobileHeight = 800;
+        var maxInput = d3.max(result.input.map(Math.abs)) || 1;
+        var activeFeatures = result.dictionary.map(function (feature, index) {
+          return { id: feature.id, base: feature.base, name: feature.name, value: result.latent[index] };
+        }).filter(function (feature) { return feature.value > 0; }).slice(0, 6);
+        var maxLatent = d3.max(activeFeatures, function (feature) { return feature.value; }) || 1;
+
+        svg.attr("viewBox", "0 0 " + mobileWidth + " " + mobileHeight);
+        svg.selectAll("*").remove();
+        svg.append("rect").attr("width", mobileWidth).attr("height", mobileHeight).attr("fill", "#151b1a");
+
+        svg.append("text").attr("x", 28).attr("y", 42).attr("fill", "#ffffff").attr("font-size", 24).attr("font-weight", 700).text("MIXED NEURONS");
+        svg.append("text").attr("x", 28).attr("y", 66).attr("fill", "#8f9b98").attr("font-size", 16).text("dense activation");
+        result.input.forEach(function (value, index) {
+          var column = index < 5 ? 0 : 1;
+          var row = index % 5;
+          var x = 28 + column * 316;
+          var y = 92 + row * 48;
+          svg.append("text").attr("x", x).attr("y", y + 17).attr("fill", "#aeb8b6").attr("font-size", 16).text("N" + (index + 1));
+          svg.append("rect").attr("x", x + 38).attr("y", y).attr("width", 238).attr("height", 24).attr("fill", "#26302e").attr("stroke", "#52605d");
+          svg.append("rect").attr("x", x + 38).attr("y", y).attr("width", Math.abs(value) / maxInput * 238).attr("height", 24).attr("fill", palette[index % palette.length]);
+        });
+
+        svg.append("line").attr("x1", 28).attr("x2", 622).attr("y1", 350).attr("y2", 350).attr("stroke", "#52605d");
+        svg.append("text").attr("x", 28).attr("y", 392).attr("fill", "#ffffff").attr("font-size", 24).attr("font-weight", 700).text("SPARSE FEATURES");
+        svg.append("text").attr("x", 28).attr("y", 416).attr("fill", "#8f9b98").attr("font-size", 16).text("only the strongest learned directions survive");
+        if (!activeFeatures.length) {
+          svg.append("text").attr("x", 28).attr("y", 475).attr("fill", "#ff725f").attr("font-size", 20).text("No feature survives this threshold.");
+        }
+        activeFeatures.forEach(function (feature, index) {
+          var column = index % 2;
+          var row = Math.floor(index / 2);
+          var x = 28 + column * 316;
+          var y = 448 + row * 58;
+          svg.append("circle").attr("cx", x + 18).attr("cy", y + 18).attr("r", 12 + feature.value / maxLatent * 8).attr("fill", palette[feature.base % palette.length]).attr("stroke", "#ffffff");
+          svg.append("text").attr("x", x + 52).attr("y", y + 24).attr("fill", "#ffffff").attr("font-size", 18).text(feature.name);
+        });
+
+        svg.append("line").attr("x1", 28).attr("x2", 622).attr("y1", 640).attr("y2", 640).attr("stroke", "#52605d");
+        svg.append("text").attr("x", 28).attr("y", 683).attr("fill", "#ffffff").attr("font-size", 24).attr("font-weight", 700).text("RECONSTRUCTION");
+        svg.append("text").attr("x", 28).attr("y", 713).attr("fill", "#aeb8b6").attr("font-size", 17).text("fidelity");
+        svg.append("rect").attr("x", 122).attr("y", 695).attr("width", 470).attr("height", 24).attr("fill", "#26302e").attr("stroke", "#52605d");
+        svg.append("rect").attr("x", 122).attr("y", 695).attr("width", 470 * result.fidelity / 100).attr("height", 24).attr("fill", "#d8ff43");
+        svg.append("text").attr("x", 605).attr("y", 713).attr("text-anchor", "end").attr("fill", "#ffffff").attr("font-size", 17).attr("font-weight", 700).text(result.fidelity + "%");
+        if (state.showResidual) {
+          svg.append("text").attr("x", 28).attr("y", 758).attr("fill", "#aeb8b6").attr("font-size", 17).text("residual");
+          svg.append("rect").attr("x", 122).attr("y", 740).attr("width", 470).attr("height", 24).attr("fill", "#26302e").attr("stroke", "#52605d");
+          svg.append("rect").attr("x", 122).attr("y", 740).attr("width", 470 * result.residualEnergy / 100).attr("height", 24).attr("fill", "#ff725f");
+          svg.append("text").attr("x", 605).attr("y", 758).attr("text-anchor", "end").attr("fill", "#ffffff").attr("font-size", 17).attr("font-weight", 700).text(result.residualEnergy + "%");
+        }
+      }
+
+      function renderFeatures(result) {
+        var active = result.dictionary.map(function (feature, index) {
+          return { id: feature.id, name: feature.name, base: feature.base, value: result.latent[index] };
+        }).filter(function (feature) { return feature.value > 0; })
+          .sort(function (a, b) { return b.value - a.value; })
+          .slice(0, 6);
+        var maximum = d3.max(active, function (feature) { return feature.value; }) || 1;
+        var list = document.querySelector("#featureList");
+        list.innerHTML = "";
+        if (!active.length) {
+          list.innerHTML = '<div class="feature-row"><span class="feature-index">0</span><div><h3>No active feature</h3><p>Lower sparsity pressure or increase the active feature budget.</p></div><div class="feature-meter"><i style="width:0"></i></div></div>';
+          return;
+        }
+        active.forEach(function (feature, index) {
+          var row = document.createElement("div");
+          row.className = "feature-row";
+          var percent = Math.round(feature.value / maximum * 100);
+          row.innerHTML = '<span class="feature-index">' + (index + 1) + '</span><div><h3>' + feature.name + '</h3><p>Feature F' + (feature.id + 1) + ' is active for: ' + examples[state.example].label + '</p></div><div class="feature-meter" aria-label="' + percent + '% relative activation"><i style="width:' + percent + '%;background:' + palette[feature.base % palette.length] + '"></i></div>';
+          list.appendChild(row);
+        });
+      }
+
+      function stopPlayback() {
+        if (playTimer) window.clearInterval(playTimer);
+        playTimer = null;
+        state.playing = false;
+        var playButton = document.querySelector("#play");
+        playButton.innerHTML = '<i data-lucide="play" aria-hidden="true"></i> Play encoding';
+        if (window.lucide) window.lucide.createIcons();
+      }
+
+      function playEncoding() {
+        if (state.playing) {
+          stopPlayback();
+          return;
+        }
+        state.playing = true;
+        state.stage = 0;
+        var playButton = document.querySelector("#play");
+        playButton.innerHTML = '<i data-lucide="pause" aria-hidden="true"></i> Pause';
+        if (window.lucide) window.lucide.createIcons();
+        compute();
+        playTimer = window.setInterval(function () {
+          state.stage += 1;
+          if (state.stage > 3) {
+            state.stage = 3;
+            stopPlayback();
+          }
+          compute();
+        }, 1050);
+      }
+
+      document.querySelector("#examples").addEventListener("click", function (event) {
+        var button = event.target.closest("button[data-example]");
+        if (!button) return;
+        state.example = button.dataset.example;
+        document.querySelectorAll("#examples button").forEach(function (item) {
+          item.classList.toggle("active", item === button);
+        });
+        state.stage = 0;
+        stopPlayback();
+        compute();
+      });
+
+      document.querySelector("#widthModes").addEventListener("click", function (event) {
+        var button = event.target.closest("button[data-width]");
+        if (!button) return;
+        state.width = Number(button.dataset.width);
+        document.querySelectorAll("#widthModes button").forEach(function (item) {
+          item.classList.toggle("active", item === button);
+        });
+        compute();
+      });
+
+      ["activeTarget", "sparsity", "interference", "showResidual"].forEach(function (id) {
+        document.querySelector("#" + id).addEventListener("input", compute);
+      });
+
+      document.querySelector("#play").addEventListener("click", playEncoding);
+      document.querySelector("#reset").addEventListener("click", function () {
+        stopPlayback();
+        state.example = "bridge";
+        state.width = 16;
+        state.activeTarget = 4;
+        state.sparsity = 55;
+        state.interference = 35;
+        state.showResidual = true;
+        state.stage = 0;
+        document.querySelector("#activeTarget").value = 4;
+        document.querySelector("#sparsity").value = 55;
+        document.querySelector("#interference").value = 35;
+        document.querySelector("#showResidual").checked = true;
+        document.querySelectorAll("#examples button").forEach(function (button) {
+          button.classList.toggle("active", button.dataset.example === "bridge");
+        });
+        document.querySelectorAll("#widthModes button").forEach(function (button) {
+          button.classList.toggle("active", button.dataset.width === "16");
+        });
+        compute();
+      });
+
+      document.querySelectorAll(".accordion").forEach(function (button) {
+        button.addEventListener("click", function () {
+          document.querySelectorAll(".accordion").forEach(function (item) { item.classList.remove("active"); });
+          button.classList.add("active");
+        });
+      });
+
+      if (window.gsap && window.ScrollTrigger) {
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.from(".hero-copy > *", { opacity: 0, y: 28, duration: .8, stagger: .09, ease: "power2.out" });
+        gsap.from(".hero-visual", { opacity: 0, scale: .86, duration: 1, ease: "power3.out" });
+        gsap.utils.toArray(".bento article").forEach(function (card, index) {
+          gsap.from(card, {
+            y: 72 + index * 8,
+            opacity: .15,
+            scrollTrigger: { trigger: card, start: "top 94%", end: "top 66%", scrub: .8 }
+          });
+        });
+        var words = document.querySelector(".word-reveal").textContent.trim().split(/\s+/);
+        document.querySelector(".word-reveal").innerHTML = words.map(function (word) { return '<span style="opacity:.15">' + word + '</span>'; }).join(" ");
+        gsap.to(".word-reveal span", {
+          opacity: 1,
+          stagger: .035,
+          scrollTrigger: { trigger: ".word-reveal", start: "top 88%", end: "bottom 48%", scrub: 1 }
+        });
+      }
+      if (window.lucide) window.lucide.createIcons();
+      compute();
+    }());
+  </script>
+</body>
+</html>
