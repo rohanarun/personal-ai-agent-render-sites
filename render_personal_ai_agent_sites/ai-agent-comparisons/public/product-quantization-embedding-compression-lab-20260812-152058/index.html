@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="An interactive Product Quantization lab for training subspace codebooks, encoding embeddings, and measuring compression, distortion, and nearest-neighbor recall.">
+  <meta property="og:title" content="Product Quantization Lab: Compress Embeddings, Preserve Neighbors">
+  <meta property="og:description" content="Split vectors, train codebooks, inspect PQ codes, and compare exact search with asymmetric distance computation.">
+  <title>Product Quantization Lab: Compress Embeddings, Preserve Neighbors</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <style>
+    @font-face { font-family: "Geist"; src: url("https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/Geist-Variable.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+  <style>
+    :root {
+      --ink: #111316;
+      --paper: #f5f4ee;
+      --white: #fffef9;
+      --mint: #75d9b6;
+      --yellow: #f3dc56;
+      --coral: #ee765f;
+      --blue: #2c5fbb;
+      --violet: #6f5ea8;
+      --muted: #625f58;
+      --line: #b9b6ac;
+      --panel: #e8e5da;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; overflow-x: hidden; color: var(--ink); background: var(--paper); font-family: "Geist", Arial, sans-serif; letter-spacing: 0; }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a { color: inherit; }
+    main { width: 100%; max-width: 100%; overflow-x: hidden; }
+    .icon { width: 18px; height: 18px; stroke-width: 2; }
+    .wrap { width: min(1240px, calc(100% - 40px)); margin: 0 auto; }
+    nav { position: fixed; z-index: 50; top: 16px; left: 50%; width: min(1240px, calc(100% - 32px)); min-height: 58px; padding: 8px 9px 8px 14px; transform: translateX(-50%); display: flex; align-items: center; justify-content: space-between; gap: 20px; color: var(--white); background: var(--ink); border: 1px solid #383a3d; border-radius: 6px; box-shadow: 7px 7px 0 rgba(17,19,22,.13); }
+    .brand { display: inline-flex; align-items: center; gap: 10px; color: var(--white); font-weight: 800; text-decoration: none; white-space: nowrap; }
+    .brand-mark { width: 36px; height: 36px; display: grid; place-items: center; color: var(--ink); background: var(--mint); border-radius: 4px; }
+    .nav-links { display: flex; align-items: center; gap: 22px; }
+    .nav-links > a { color: #d1d2d4; text-decoration: none; }
+    .nav-links > a:hover, .nav-links > a:focus-visible { color: var(--white); }
+    .nav-links .nav-cta { min-height: 40px; padding: 0 15px; display: inline-flex; align-items: center; gap: 7px; color: var(--ink); background: var(--yellow); border-radius: 4px; font-weight: 800; }
+    .hero { min-height: 100svh; padding: 116px 0 72px; border-bottom: 1px solid var(--ink); }
+    .hero-grid { min-height: 720px; display: grid; grid-template-columns: 7fr 5fr; gap: 44px; align-items: stretch; }
+    .hero-copy { padding: 58px 0 34px; display: flex; flex-direction: column; justify-content: center; }
+    .kicker { margin: 0 0 23px; color: var(--blue); font-size: 13px; font-weight: 850; text-transform: uppercase; }
+    h1 { max-width: 760px; margin: 0; font-size: clamp(3.4rem, 4.5vw, 4rem); line-height: .91; font-weight: 850; }
+    .hero-copy > p:not(.kicker) { max-width: 660px; margin: 29px 0 0; color: #484640; font-size: 19px; line-height: 1.6; }
+    .hero-actions { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 10px; }
+    .btn { min-height: 46px; padding: 0 16px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; color: var(--ink); background: transparent; border: 1px solid var(--ink); border-radius: 4px; font-weight: 800; text-decoration: none; }
+    .btn.primary { color: var(--white); background: var(--ink); }
+    .btn.yellow { color: var(--ink); background: var(--yellow); }
+    .hero-equation { margin-top: 31px; padding: 18px 20px; color: var(--white); background: var(--ink); border-left: 8px solid var(--mint); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; line-height: 1.55; }
+    .hero-equation strong { color: var(--mint); }
+    .lab-shell { min-width: 0; display: grid; grid-template-rows: auto minmax(430px, 1fr) auto auto; align-self: stretch; color: var(--white); background: #1a1d22; border-left: 1px solid var(--ink); border-right: 1px solid var(--ink); }
+    .lab-toolbar { padding: 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-bottom: 1px solid #4a4d52; }
+    .preset-group, .segment-group { display: flex; flex-wrap: wrap; gap: 6px; }
+    .preset-group button, .segment-group button { min-height: 37px; padding: 0 11px; color: var(--white); background: #292d33; border: 1px solid #555960; border-radius: 3px; font-weight: 720; }
+    .preset-group button[aria-pressed="true"], .segment-group button[aria-pressed="true"] { color: var(--ink); background: var(--yellow); border-color: var(--yellow); }
+    .stage-state { color: #babcc0; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; white-space: nowrap; }
+    .codec-view { min-height: 430px; position: relative; overflow: hidden; background: linear-gradient(#252a30 1px, transparent 1px), linear-gradient(90deg, #252a30 1px, transparent 1px), #191c21; background-size: 32px 32px; }
+    #codecMap { width: 100%; height: 100%; min-height: 430px; display: block; }
+    .map-legend { position: absolute; top: 14px; left: 14px; z-index: 3; display: flex; flex-wrap: wrap; gap: 7px; pointer-events: none; }
+    .map-legend span { padding: 6px 8px; display: inline-flex; align-items: center; gap: 6px; color: #dedfe1; background: rgba(17,19,22,.9); border: 1px solid #4a4d52; font-size: 11px; }
+    .map-legend i { width: 9px; height: 9px; display: block; border-radius: 50%; background: var(--coral); }
+    .map-legend span:nth-child(2) i { border-radius: 1px; background: var(--mint); }
+    .map-legend span:nth-child(3) i { background: var(--yellow); }
+    .inspector { position: absolute; right: 14px; bottom: 14px; z-index: 3; width: min(292px, calc(100% - 28px)); padding: 14px; color: var(--ink); background: rgba(255,254,249,.96); border: 1px solid var(--ink); }
+    .inspector small { color: var(--blue); font-weight: 850; text-transform: uppercase; }
+    .inspector strong { margin-top: 6px; display: block; font-size: 15px; }
+    .inspector p { margin: 7px 0 0; color: #555149; font-size: 12px; line-height: 1.48; }
+    .lab-controls { padding: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; color: var(--ink); background: var(--panel); border-top: 1px solid var(--ink); }
+    .control-label { margin-bottom: 7px; display: flex; justify-content: space-between; gap: 12px; color: #4f4b44; font-size: 12px; font-weight: 800; }
+    .control output { color: var(--blue); }
+    input[type="range"] { width: 100%; accent-color: var(--blue); }
+    .segment-group.light button { flex: 1; color: var(--ink); background: var(--white); border-color: var(--line); }
+    .segment-group.light button[aria-pressed="true"] { color: var(--white); background: var(--blue); border-color: var(--blue); }
+    .lab-actions { padding: 13px 16px 17px; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 15px; color: var(--ink); background: var(--panel); }
+    .stage-copy { margin: 0; color: #56524a; font-size: 12px; line-height: 1.45; }
+    .action-row { display: flex; gap: 7px; }
+    .icon-btn { width: 42px; height: 42px; display: grid; place-items: center; color: var(--ink); background: var(--white); border: 1px solid var(--ink); border-radius: 4px; }
+    .icon-btn:hover, .icon-btn:focus-visible { background: var(--mint); }
+    .icon-btn.primary { background: var(--yellow); }
+    .metric-band { padding: 58px 0 78px; }
+    .metric-head { display: grid; grid-template-columns: 7fr 5fr; gap: 42px; align-items: end; }
+    .metric-head h2, .section-head h2, .mechanism-title h2, .sources-grid h2, .cta h2 { margin: 0; font-size: clamp(2.7rem, 5vw, 5.5rem); line-height: .96; }
+    .metric-head p, .section-head p, .mechanism-title p, .sources-grid > div > p { margin: 0; color: var(--muted); font-size: 17px; line-height: 1.62; }
+    .metrics { margin-top: 35px; display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--ink); }
+    .metric { min-height: 135px; padding: 20px; border-right: 1px solid var(--ink); }
+    .metric:last-child { border-right: 0; }
+    .metric small { color: var(--muted); font-weight: 800; }
+    .metric strong { margin-top: 9px; display: block; font-size: 31px; }
+    .metric span { margin-top: 7px; display: block; color: var(--muted); font-size: 12px; }
+    .rank-compare { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--ink); border-top: 0; }
+    .rank-col + .rank-col { border-left: 1px solid var(--ink); }
+    .rank-col h3 { margin: 0; padding: 14px 18px; color: var(--white); background: var(--ink); font-size: 15px; }
+    .rank-col:last-child h3 { color: var(--ink); background: var(--mint); }
+    .rank-list { min-height: 246px; padding: 0; margin: 0; list-style: none; }
+    .rank-item { min-height: 61px; padding: 10px 14px; display: grid; grid-template-columns: 28px 1fr auto; align-items: center; gap: 10px; border-bottom: 1px solid var(--line); }
+    .rank-item:last-child { border-bottom: 0; }
+    .rank-num { width: 27px; height: 27px; display: grid; place-items: center; color: var(--white); background: var(--ink); border-radius: 50%; font-weight: 850; }
+    .rank-item strong { display: block; font-size: 13px; }
+    .rank-item small { margin-top: 3px; display: block; color: var(--muted); }
+    .rank-distance { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+    .marquee { overflow: hidden; color: var(--white); background: var(--blue); border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
+    .marquee-track { width: max-content; padding: 18px 0; display: flex; animation: travel 28s linear infinite; }
+    .marquee-track span { padding: 0 27px; font-weight: 800; }
+    .marquee-track span::after { content: "/"; margin-left: 54px; color: var(--yellow); }
+    @keyframes travel { to { transform: translateX(-50%); } }
+    .interest { padding: 140px 0; }
+    .section-head { display: grid; grid-template-columns: 7fr 5fr; gap: 46px; align-items: end; }
+    .bento { margin-top: 58px; display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-flow: dense; border-top: 1px solid var(--ink); border-left: 1px solid var(--ink); }
+    .bento article { min-height: 270px; padding: 30px; overflow: hidden; border-right: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
+    .bento article:nth-child(1) { grid-column: span 7; }
+    .bento article:nth-child(2) { grid-column: span 5; color: var(--white); background: var(--blue); }
+    .bento article:nth-child(n+3) { grid-column: span 4; }
+    .bento article:nth-child(4) { background: var(--mint); }
+    .bento article:nth-child(5) { background: var(--coral); }
+    .bento h3 { max-width: 550px; margin: 0; font-size: clamp(1.8rem, 3vw, 3.3rem); line-height: 1.02; }
+    .bento p { max-width: 570px; margin: 20px 0 0; line-height: 1.64; }
+    .code-strip { margin-top: 30px; display: flex; gap: 8px; }
+    .code-strip i { width: 50px; height: 58px; display: grid; place-items: center; background: var(--yellow); border: 1px solid var(--ink); font-style: normal; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-weight: 850; transition: transform .55s ease; }
+    .bento article:hover .code-strip i { transform: translateY(-6px); }
+    .mechanism { padding: 140px 0; color: var(--white); background: #1a211f; }
+    .mechanism-grid { display: grid; grid-template-columns: 4fr 8fr; gap: 80px; align-items: start; }
+    .mechanism-title { align-self: start; }
+    .mechanism-title p { margin-top: 25px; color: #bac9c3; }
+    .stack { min-height: 1120px; position: relative; }
+    .stack-card { min-height: 280px; padding: 34px; position: sticky; border: 1px solid #65726d; background: #212b27; box-shadow: 0 18px 35px rgba(0,0,0,.25); }
+    .stack-card:nth-child(1) { top: 105px; }
+    .stack-card:nth-child(2) { top: 130px; background: #273731; }
+    .stack-card:nth-child(3) { top: 155px; background: #30463d; }
+    .stack-card:nth-child(4) { top: 180px; color: var(--ink); background: var(--yellow); border-color: var(--ink); }
+    .stack-card strong { color: var(--mint); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; }
+    .stack-card:nth-child(4) strong { color: var(--blue); }
+    .stack-card h3 { max-width: 720px; margin: 16px 0; font-size: clamp(2rem, 4vw, 4rem); line-height: 1; }
+    .stack-card p { max-width: 670px; margin: 0; color: #c3cec9; font-size: 17px; line-height: 1.65; }
+    .stack-card:nth-child(4) p { color: #4b473d; }
+    .tradeoffs { padding: 130px 0; }
+    .accordion-row { min-height: 430px; margin-top: 54px; display: flex; border: 1px solid var(--ink); }
+    .accordion { flex: 1 1 0; min-width: 0; padding: 26px; display: flex; flex-direction: column; justify-content: space-between; gap: 30px; overflow: hidden; text-align: left; background: var(--white); border: 0; border-right: 1px solid var(--ink); transition: flex .55s ease, background .35s ease; }
+    .accordion:last-child { border-right: 0; }
+    .accordion:hover, .accordion.active { flex: 2.25 1 0; background: var(--yellow); }
+    .accordion strong { font-size: 22px; }
+    .accordion-copy { width: 330px; max-width: 100%; margin: 0; display: block; color: var(--muted); line-height: 1.58; opacity: .45; transition: opacity .35s ease; }
+    .accordion:hover .accordion-copy, .accordion.active .accordion-copy { opacity: 1; }
+    .interpretation { padding: 130px 0; background: #e4e9e6; }
+    .interpret-grid { display: grid; grid-template-columns: 7fr 5fr; gap: 70px; align-items: center; }
+    .carousel { min-height: 370px; position: relative; border: 1px solid var(--ink); background: var(--white); }
+    .claim { min-height: 370px; padding: 43px 43px 78px; display: none; flex-direction: column; justify-content: space-between; }
+    .claim.active { display: flex; }
+    .claim blockquote { margin: 0; font-size: clamp(2.1rem, 4.1vw, 4.2rem); line-height: 1.02; font-weight: 820; }
+    .claim p { max-width: 640px; margin: 24px 0 0; color: var(--muted); line-height: 1.62; }
+    .claim small { color: var(--blue); font-weight: 850; }
+    .carousel-nav { position: absolute; right: 14px; bottom: 14px; display: flex; gap: 6px; }
+    .interpret-copy h2 { margin: 0; font-size: clamp(2.7rem, 5vw, 5.3rem); line-height: .96; }
+    .interpret-copy p { color: var(--muted); font-size: 18px; line-height: 1.65; }
+    .checklist { margin: 30px 0 0; padding: 0; list-style: none; }
+    .checklist li { padding: 14px 0; display: flex; gap: 12px; border-top: 1px solid var(--line); }
+    .checklist i { color: var(--blue); flex: 0 0 auto; }
+    .sources { padding: 130px 0; background: #e7e2d7; }
+    .sources-grid { display: grid; grid-template-columns: 5fr 7fr; gap: 70px; }
+    .sources-grid > div > p { margin-top: 22px; }
+    .source-list { border-top: 1px solid var(--ink); }
+    .source-link { min-height: 104px; padding: 18px 4px; display: flex; align-items: center; justify-content: space-between; gap: 20px; border-bottom: 1px solid var(--ink); text-decoration: none; }
+    .source-link strong, .source-link small { display: block; }
+    .source-link strong { font-size: 17px; }
+    .source-link small { margin-top: 6px; color: var(--muted); }
+    .source-link:hover strong { text-decoration: underline; }
+    .cta { margin-top: 110px; padding: 56px; color: var(--white); background: var(--ink); }
+    .cta-links { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 9px; }
+    .cta-links .btn { color: var(--white); border-color: #777a7d; }
+    .cta-links .btn.yellow { color: var(--ink); border-color: var(--yellow); }
+    footer { padding: 34px max(20px, calc((100vw - 1240px) / 2)); display: flex; justify-content: space-between; gap: 30px; color: var(--muted); border-top: 1px solid var(--line); }
+    @media (max-width: 960px) {
+      .hero-grid, .metric-head, .section-head, .mechanism-grid, .interpret-grid, .sources-grid { grid-template-columns: 1fr; }
+      .hero-copy { padding-top: 28px; }
+      .lab-shell { min-height: 760px; }
+      .metrics { grid-template-columns: 1fr 1fr; }
+      .metric:nth-child(2) { border-right: 0; }
+      .metric:nth-child(-n+2) { border-bottom: 1px solid var(--ink); }
+      .rank-compare { grid-template-columns: 1fr; }
+      .rank-col + .rank-col { border-left: 0; border-top: 1px solid var(--ink); }
+      .bento article:nth-child(1), .bento article:nth-child(2) { grid-column: span 12; }
+      .bento article:nth-child(n+3) { grid-column: span 4; }
+      .stack { min-height: 0; display: grid; gap: 18px; }
+      .stack-card { position: static; }
+      .accordion-row { min-height: 0; display: grid; grid-template-columns: 1fr 1fr; }
+      .accordion { min-height: 280px; border-bottom: 1px solid var(--ink); }
+      .accordion:nth-child(2) { border-right: 0; }
+    }
+    @media (max-width: 640px) {
+      .wrap { width: min(100% - 24px, 1240px); }
+      nav { width: calc(100% - 20px); left: 10px; transform: none; }
+      .brand > span:last-child, .nav-links > a:not(.nav-cta) { display: none; }
+      .hero { padding-top: 100px; }
+      .hero-grid { gap: 32px; }
+      h1 { font-size: clamp(2.55rem, 11vw, 2.85rem); }
+      .lab-toolbar { align-items: flex-start; flex-direction: column; }
+      .stage-state { white-space: normal; }
+      .codec-view { min-height: 570px; display: flex; flex-direction: column; }
+      #codecMap { min-height: 450px; flex: 0 0 450px; }
+      .inspector { width: 100%; position: static; border-right: 0; border-left: 0; border-bottom: 0; }
+      .lab-controls { grid-template-columns: 1fr; }
+      .lab-actions { grid-template-columns: 1fr; }
+      .action-row { justify-content: stretch; }
+      .action-row button { flex: 1; }
+      .metric-band, .interest, .mechanism, .tradeoffs, .interpretation, .sources { padding: 90px 0; }
+      .bento { grid-template-columns: 1fr; }
+      .bento article:nth-child(n) { grid-column: span 1; min-height: 240px; }
+      .accordion-row { grid-template-columns: 1fr; }
+      .accordion { min-height: 230px; border-right: 0; }
+      .interpret-grid { gap: 42px; }
+      .claim { padding: 30px 24px 78px; }
+      .source-link { align-items: flex-start; }
+      .cta { margin-top: 70px; padding: 31px 22px; }
+      footer { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition-duration: .001ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <nav aria-label="Primary navigation">
+    <a class="brand" href="#top"><span class="brand-mark"><i data-lucide="boxes" class="icon"></i></span><span>PQ Codec Lab</span></a>
+    <div class="nav-links"><a href="#results">Results</a><a href="#mechanism">Mechanism</a><a class="nav-cta" href="#lab">Open lab <i data-lucide="arrow-down" class="icon"></i></a></div>
+  </nav>
+
+  <main id="top">
+    <section class="hero" id="lab">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="kicker">Interactive embedding compression laboratory</p>
+          <h1>Shrink vectors. Keep the neighbors.</h1>
+          <p>Product Quantization splits a vector into subspaces, learns a small codebook in each one, and stores centroid IDs instead of every float. The result is compact, fast, and approximate.</p>
+          <div class="hero-equation"><strong>ADC(q, code)</strong> = sum over subspaces of distance(query slice, selected centroid)</div>
+          <div class="hero-actions"><a class="btn primary" href="#results"><i data-lucide="scan-search" class="icon"></i> Compare neighbors</a><a class="btn" href="#mechanism"><i data-lucide="workflow" class="icon"></i> Trace the codec</a></div>
+        </div>
+
+        <div class="lab-shell">
+          <div class="lab-toolbar">
+            <div class="preset-group" role="group" aria-label="Embedding scenario">
+              <button type="button" data-preset="semantic" aria-pressed="true">Semantic search</button>
+              <button type="button" data-preset="catalog" aria-pressed="false">Product catalog</button>
+              <button type="button" data-preset="support" aria-pressed="false">Support tickets</button>
+            </div>
+            <span class="stage-state" id="stageState">Original vectors</span>
+          </div>
+          <div class="codec-view">
+            <div class="map-legend" aria-hidden="true"><span><i></i>original</span><span><i></i>reconstruction</span><span><i></i>top neighbor</span></div>
+            <svg id="codecMap" role="img" aria-labelledby="codecTitle codecDesc"></svg>
+            <aside class="inspector" aria-live="polite"><small>vector inspector</small><strong id="inspectTitle">Select a vector</strong><p id="inspectCopy">Click a point to inspect its subspace code, exact distance, ADC estimate, and reconstruction error.</p></aside>
+          </div>
+          <div class="lab-controls">
+            <div class="control"><span class="control-label"><label for="codewords">Centroids per subspace</label><output id="codewordsOut">4</output></span><input id="codewords" type="range" min="2" max="8" value="4" step="1"></div>
+            <div class="control"><span class="control-label"><label for="iterations">K-means iterations</label><output id="iterationsOut">6</output></span><input id="iterations" type="range" min="1" max="12" value="6" step="1"></div>
+            <div class="control"><span class="control-label">Subspaces</span><div class="segment-group light" role="group" aria-label="Number of subspaces"><button type="button" data-subspaces="1" aria-pressed="false">1</button><button type="button" data-subspaces="2" aria-pressed="false">2</button><button type="button" data-subspaces="4" aria-pressed="true">4</button></div></div>
+            <div class="control"><span class="control-label">Neighbor distance</span><div class="segment-group light" role="group" aria-label="Neighbor distance"><button type="button" data-distance="exact" aria-pressed="false">Exact</button><button type="button" data-distance="adc" aria-pressed="true">PQ ADC</button></div></div>
+          </div>
+          <div class="lab-actions"><p class="stage-copy" id="stageCopy">The database begins as eight-dimensional float vectors. Step forward to split, train, encode, and search.</p><div class="action-row"><button type="button" class="icon-btn" id="resetBtn" aria-label="Reset pipeline" title="Reset pipeline"><i data-lucide="rotate-ccw" class="icon"></i></button><button type="button" class="icon-btn primary" id="stepBtn" aria-label="Advance pipeline stage" title="Advance pipeline stage"><i data-lucide="step-forward" class="icon"></i></button><button type="button" class="icon-btn primary" id="playBtn" aria-label="Play pipeline" title="Play pipeline"><i data-lucide="play" class="icon"></i></button></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="metric-band" id="results">
+      <div class="wrap">
+        <div class="metric-head"><h2>Compression buys capacity with approximation.</h2><p>Every result below is recomputed from the visible teaching vectors. The vector-only compression estimate excludes codebooks, IDs, and index metadata.</p></div>
+        <div class="metrics">
+          <div class="metric"><small>Vector compression</small><strong id="compression">0x</strong><span id="bytesLabel">32 B to 0 B</span></div>
+          <div class="metric"><small>Reconstruction MSE</small><strong id="mse">0.000</strong><span>Lower preserves vectors better</span></div>
+          <div class="metric"><small>Recall at 4</small><strong id="recall">0%</strong><span>ADC overlap with exact top four</span></div>
+          <div class="metric"><small>ADC table</small><strong id="tableSize">0</strong><span>Query-centroid distances</span></div>
+        </div>
+        <div class="rank-compare">
+          <div class="rank-col"><h3>Exact L2 neighbors</h3><ol class="rank-list" id="exactList"></ol></div>
+          <div class="rank-col"><h3>Product-quantized ADC neighbors</h3><ol class="rank-list" id="adcList"></ol></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true"><div class="marquee-track"><span>split dimensions</span><span>train codebooks</span><span>store centroid IDs</span><span>build distance tables</span><span>sum lookups</span><span>measure recall</span><span>split dimensions</span><span>train codebooks</span><span>store centroid IDs</span><span>build distance tables</span><span>sum lookups</span><span>measure recall</span></div></div>
+
+    <section class="interest">
+      <div class="wrap">
+        <div class="section-head"><h2>A code is a tuple of local choices.</h2><p>PQ is not scalar rounding. Each sub-vector is replaced by the ID of its nearest learned centroid, and those IDs jointly approximate the full vector.</p></div>
+        <div class="bento">
+          <article><h3>One high-dimensional problem becomes several smaller clustering problems.</h3><p>An eight-dimensional vector with four subspaces becomes four independent two-dimensional slices. Each slice selects one centroid from its own codebook.</p><div class="code-strip" aria-hidden="true"><i>2</i><i>0</i><i>3</i><i>1</i></div></article>
+          <article><h3>The query can stay exact.</h3><p>Asymmetric Distance Computation compares each exact query slice with every centroid once, then scores database codes by table lookup. It avoids quantizing the query.</p></article>
+          <article><h3>More subspaces spend more code bits.</h3><p>Increasing the number of subspaces usually reduces reconstruction error because each centroid models fewer dimensions, but every extra centroid ID lengthens the code.</p></article>
+          <article><h3>Larger codebooks improve fit.</h3><p>More centroids can reduce distortion, provided the training set is large and representative enough to learn them reliably.</p></article>
+          <article><h3>Recall, not MSE alone, decides search quality.</h3><p>A small reconstruction error can still swap close neighbors. Tune the codec against retrieval metrics on held-out queries.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="mechanism" id="mechanism">
+      <div class="wrap mechanism-grid">
+        <div class="mechanism-title"><h2>The search path is a stack of approximations.</h2><p>Scroll through the exact state transitions. The browser lab uses deterministic k-means so every slider change can be replayed and inspected.</p></div>
+        <div class="stack">
+          <article class="stack-card"><strong>Split</strong><h3>Partition each vector into equal subspaces.</h3><p>The embedding dimension must be divisible by the number of subquantizers. Dimension order matters because correlated features can make one split much harder to quantize than another.</p></article>
+          <article class="stack-card"><strong>Train</strong><h3>Learn one centroid table per subspace.</h3><p>K-means minimizes squared reconstruction error within each slice. Production codebooks need representative training vectors; a tiny or shifted sample creates brittle assignments.</p></article>
+          <article class="stack-card"><strong>Encode</strong><h3>Replace every slice with a centroid ID.</h3><p>The concatenated IDs are the PQ code. Reconstructing a vector means concatenating the selected centroids, but ADC can search without materializing that reconstruction.</p></article>
+          <article class="stack-card"><strong>Search</strong><h3>Precompute query-to-centroid distances and sum lookups.</h3><p>For each database code, read one value from each subspace table and add them. The ranking is fast and compact, but only approximate, so measure neighbor recall.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="tradeoffs">
+      <div class="wrap">
+        <div class="section-head"><h2>Four decisions shape the operating point.</h2><p>Expand each slice to see what a production experiment should hold constant while testing the compression-recall frontier.</p></div>
+        <div class="accordion-row">
+          <button type="button" class="accordion active"><strong>Subspace count</strong><span class="accordion-copy">Compare equal total code sizes when possible. More subspaces are not free because every subquantizer contributes bits and lookup work.</span></button>
+          <button type="button" class="accordion"><strong>Codebook size</strong><span class="accordion-copy">A codebook with K centroids consumes log2(K) bits per subspace. Include training stability and codebook memory in the evaluation.</span></button>
+          <button type="button" class="accordion"><strong>Feature rotation</strong><span class="accordion-copy">Optimized PQ learns a rotation so variance is distributed more evenly across subspaces before independent quantization.</span></button>
+          <button type="button" class="accordion"><strong>Index structure</strong><span class="accordion-copy">IVF-PQ first probes selected coarse cells, then applies PQ distances inside them. Probe count adds another recall-latency control.</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="interpretation">
+      <div class="wrap interpret-grid">
+        <div class="carousel">
+          <article class="claim active"><div><blockquote>Compression ratio is not a retrieval metric.</blockquote><p>A smaller code is only useful when the nearest neighbors needed by the downstream task remain discoverable at an acceptable latency.</p></div><small>Interpretation 1 of 3</small></article>
+          <article class="claim"><div><blockquote>The codebook is part of the model.</blockquote><p>Changing the embedding distribution without retraining or validating the quantizer can move vectors across centroid boundaries and degrade recall.</p></div><small>Interpretation 2 of 3</small></article>
+          <article class="claim"><div><blockquote>ADC keeps one side precise.</blockquote><p>Leaving the query uncompressed removes one source of error and lets a single lookup table score many compact database codes.</p></div><small>Interpretation 3 of 3</small></article>
+          <div class="carousel-nav"><button type="button" class="icon-btn" id="claimPrev" aria-label="Previous interpretation" title="Previous interpretation"><i data-lucide="arrow-left" class="icon"></i></button><button type="button" class="icon-btn" id="claimNext" aria-label="Next interpretation" title="Next interpretation"><i data-lucide="arrow-right" class="icon"></i></button></div>
+        </div>
+        <div class="interpret-copy"><h2>A practical PQ evaluation checklist.</h2><p>Benchmark the same vectors and queries with exact search, then vary one codec choice at a time.</p><ul class="checklist"><li><i data-lucide="check" class="icon"></i><span>Report vector bytes, codebook overhead, index metadata, latency, and recall together.</span></li><li><i data-lucide="check" class="icon"></i><span>Train codebooks on a representative split and evaluate on held-out queries.</span></li><li><i data-lucide="check" class="icon"></i><span>Normalize vectors before L2 search when cosine similarity is the intended metric.</span></li><li><i data-lucide="check" class="icon"></i><span>Revalidate after changing the embedding model, feature order, or corpus mix.</span></li></ul></div>
+      </div>
+    </section>
+
+    <section class="sources">
+      <div class="wrap sources-grid">
+        <div><h2>Primary research and implementation references.</h2><p>The original PQ formulation, optimized space decomposition, fast ADC work, and Faiss index documentation ground the mechanics shown in the lab.</p></div>
+        <div class="source-list">
+          <a class="source-link" href="https://inria.hal.science/inria-00514462/document"><span><strong>Product Quantization for Nearest Neighbor Search</strong><small>Jegou, Douze, and Schmid, IEEE TPAMI 2011</small></span><i data-lucide="arrow-up-right" class="icon"></i></a>
+          <a class="source-link" href="https://openaccess.thecvf.com/content_cvpr_2013/html/Ge_Optimized_Product_Quantization_2013_CVPR_paper.html"><span><strong>Optimized Product Quantization for Approximate Nearest Neighbor Search</strong><small>Ge, He, Ke, and Sun, CVPR 2013</small></span><i data-lucide="arrow-up-right" class="icon"></i></a>
+          <a class="source-link" href="https://arxiv.org/abs/1812.09162"><span><strong>Quicker ADC: Unlocking the Hidden Potential of Product Quantization with SIMD</strong><small>Andre et al., IEEE TPAMI 2020</small></span><i data-lucide="arrow-up-right" class="icon"></i></a>
+          <a class="source-link" href="https://github.com/facebookresearch/faiss/wiki/Faiss-indexes"><span><strong>Faiss Indexes and Product Quantization Codes</strong><small>Official Faiss implementation documentation</small></span><i data-lucide="arrow-up-right" class="icon"></i></a>
+        </div>
+      </div>
+      <div class="wrap cta"><h2>Give agents a retrieval layer that fits the workload.</h2><div class="cta-links"><a class="btn yellow" href="https://getsupers.com/">Explore Super</a><a class="btn" href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">Website-building agents</a><a class="btn" href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a></div></div>
+    </section>
+  </main>
+
+  <footer><span>Product Quantization Codec Lab</span><span>Deterministic teaching vectors, not production benchmarks. Built with <a href="https://getsupers.com/">Super</a>.</span></footer>
+
+  <script>
+    (() => {
+      const palette = ["#ee765f", "#75d9b6", "#f3dc56", "#6f5ea8"];
+      const presets = {
+        semantic: {
+          query: [.94,.86,.18,.12,.24,.18,.08,.12],
+          groups: [
+            {name:"retrieval latency", base:[.91,.82,.20,.10,.22,.16,.09,.12], items:["Cache embedding queries","Batch vector requests","Tune ANN latency","Profile retrieval hops"]},
+            {name:"answer grounding", base:[.62,.54,.78,.69,.18,.14,.22,.11], items:["Verify cited evidence","Score answer support","Trace source spans","Audit grounded output"]},
+            {name:"index quality", base:[.38,.42,.22,.19,.88,.76,.18,.14], items:["Measure recall at k","Inspect hard negatives","Compare index builds","Sample missed neighbors"]},
+            {name:"serving cost", base:[.18,.22,.12,.16,.34,.30,.89,.78], items:["Estimate memory cost","Track index footprint","Measure query spend","Plan shard capacity"]}
+          ]
+        },
+        catalog: {
+          query: [.72,.65,.53,.45,.15,.20,.12,.16],
+          groups: [
+            {name:"portable audio", base:[.90,.83,.24,.16,.12,.18,.10,.15], items:["Compact ANC headphones","Foldable travel headset","Lightweight over-ear audio","Pocket wireless earbuds"]},
+            {name:"battery", base:[.54,.48,.82,.74,.18,.22,.12,.14], items:["Long battery headset","Fast-charge headphones","Extended flight listening","Replaceable battery audio"]},
+            {name:"call quality", base:[.30,.34,.20,.24,.90,.79,.14,.12], items:["Clear terminal calls","Beamforming microphone","Wind-resistant headset","Office call headphones"]},
+            {name:"repairability", base:[.14,.18,.16,.20,.30,.28,.88,.81], items:["Replaceable ear pads","Repairable headband","Spare cable support","Long warranty headset"]}
+          ]
+        },
+        support: {
+          query: [.90,.84,.20,.16,.18,.13,.12,.14],
+          groups: [
+            {name:"login access", base:[.92,.85,.19,.13,.17,.12,.10,.12], items:["Cannot sign in","Reset link expired","Account locked","Two-factor login loop"]},
+            {name:"billing", base:[.52,.44,.88,.78,.14,.17,.16,.12], items:["Duplicate charge","Refund not received","Invoice mismatch","Plan renewed early"]},
+            {name:"sync failures", base:[.28,.31,.18,.20,.91,.82,.14,.16], items:["Data not syncing","Changes disappeared","Offline edits missing","Device state stale"]},
+            {name:"performance", base:[.17,.21,.15,.18,.31,.29,.90,.80], items:["App loads slowly","Search times out","High memory use","Export stalls"]}
+          ]
+        }
+      };
+      const state = {preset:"semantic", m:4, k:4, iterations:6, distance:"adc", stage:0, inspected:null, playing:false, timer:0, claim:0};
+      const stageNames = ["Original vectors", "Split into subspaces", "Train codebooks", "Encode centroid IDs", "Search with ADC"];
+      const stageCopies = [
+        "The database begins as eight-dimensional float vectors. Step forward to split, train, encode, and search.",
+        "Each vector is divided into equal contiguous slices. Every subspace will learn its own centroid table.",
+        "Deterministic k-means fits the selected number of centroids independently inside every subspace.",
+        "Each sub-vector is replaced by its nearest centroid ID. The tuple of IDs is the stored PQ code.",
+        "The exact query builds one distance table per subspace; database scores are sums of centroid lookups."
+      ];
+      const svg = d3.select("#codecMap");
+      const sqDist = (a, b) => a.reduce((sum, value, index) => sum + (value - b[index]) ** 2, 0);
+      const dataset = () => {
+        const preset = presets[state.preset];
+        return preset.groups.flatMap((group, groupIndex) => group.items.map((name, itemIndex) => ({
+          name,
+          group:group.name,
+          color:palette[groupIndex],
+          vector:group.base.map((value, dim) => Math.max(.02, Math.min(.98, value + Math.sin((groupIndex + 2) * 17 + (itemIndex + 1) * 11 + (dim + 1) * 7) * .055)))
+        })));
+      };
+      const train = () => {
+        const docs = dataset();
+        const width = 8 / state.m;
+        const codebooks = [];
+        for (let part = 0; part < state.m; part += 1) {
+          const slices = docs.map(doc => doc.vector.slice(part * width, (part + 1) * width));
+          let centroids = Array.from({length:state.k}, (_, index) => slices[(index * 3 + part * 2) % slices.length].slice());
+          for (let iteration = 0; iteration < state.iterations; iteration += 1) {
+            const buckets = Array.from({length:state.k}, () => []);
+            slices.forEach(slice => {
+              let best = 0;
+              for (let c = 1; c < centroids.length; c += 1) if (sqDist(slice, centroids[c]) < sqDist(slice, centroids[best])) best = c;
+              buckets[best].push(slice);
+            });
+            centroids = centroids.map((centroid, index) => buckets[index].length ? centroid.map((_, dim) => buckets[index].reduce((sum, slice) => sum + slice[dim], 0) / buckets[index].length) : centroid);
+          }
+          codebooks.push(centroids);
+        }
+        const encoded = docs.map(doc => {
+          const code = [];
+          const reconstruction = [];
+          for (let part = 0; part < state.m; part += 1) {
+            const slice = doc.vector.slice(part * width, (part + 1) * width);
+            let best = 0;
+            for (let c = 1; c < codebooks[part].length; c += 1) if (sqDist(slice, codebooks[part][c]) < sqDist(slice, codebooks[part][best])) best = c;
+            code.push(best);
+            reconstruction.push(...codebooks[part][best]);
+          }
+          return {...doc, code, reconstruction};
+        });
+        return {docs:encoded, codebooks, width};
+      };
+      const scores = model => {
+        const query = presets[state.preset].query;
+        const exact = model.docs.map((doc, index) => ({index, distance:sqDist(query, doc.vector)})).sort((a,b) => a.distance - b.distance);
+        const tables = model.codebooks.map((centroids, part) => {
+          const slice = query.slice(part * model.width, (part + 1) * model.width);
+          return centroids.map(centroid => sqDist(slice, centroid));
+        });
+        const adc = model.docs.map((doc, index) => ({index, distance:doc.code.reduce((sum, code, part) => sum + tables[part][code], 0)})).sort((a,b) => a.distance - b.distance);
+        return {exact, adc, tables};
+      };
+      const rankMarkup = (ranking, model) => ranking.slice(0,4).map((item, rank) => `<li class="rank-item"><span class="rank-num">${rank + 1}</span><span><strong>${model.docs[item.index].name}</strong><small>${model.docs[item.index].group}</small></span><span class="rank-distance">${item.distance.toFixed(3)}</span></li>`).join("");
+      const renderMetrics = (model, ranking) => {
+        const codeBytes = Math.max(1, Math.ceil(state.m * Math.log2(state.k) / 8));
+        const exactBytes = 8 * 4;
+        const mse = model.docs.reduce((sum, doc) => sum + sqDist(doc.vector, doc.reconstruction) / 8, 0) / model.docs.length;
+        const exactTop = new Set(ranking.exact.slice(0,4).map(item => item.index));
+        const overlap = ranking.adc.slice(0,4).filter(item => exactTop.has(item.index)).length;
+        document.getElementById("compression").textContent = `${(exactBytes / codeBytes).toFixed(1)}x`;
+        document.getElementById("bytesLabel").textContent = `${exactBytes} B to ${codeBytes} B per vector`;
+        document.getElementById("mse").textContent = mse.toFixed(4);
+        document.getElementById("recall").textContent = `${Math.round(overlap / 4 * 100)}%`;
+        document.getElementById("tableSize").textContent = `${state.m * state.k}`;
+        document.getElementById("exactList").innerHTML = rankMarkup(ranking.exact, model);
+        document.getElementById("adcList").innerHTML = rankMarkup(ranking.adc, model);
+      };
+      const renderMap = (model, ranking) => {
+        const viewW = 650, viewH = 470, pad = 58;
+        svg.attr("viewBox", `0 0 ${viewW} ${viewH}`);
+        svg.selectAll("*").remove();
+        svg.append("title").attr("id", "codecTitle").text("Product Quantization vector map");
+        svg.append("desc").attr("id", "codecDesc").text("Original teaching vectors are circles, product-quantized reconstructions are squares, and lines show reconstruction movement.");
+        const allX = model.docs.flatMap(doc => [doc.vector[0], doc.reconstruction[0], presets[state.preset].query[0]]);
+        const allY = model.docs.flatMap(doc => [doc.vector[1], doc.reconstruction[1], presets[state.preset].query[1]]);
+        const x = d3.scaleLinear().domain(d3.extent(allX)).nice().range([pad, viewW - pad]);
+        const y = d3.scaleLinear().domain(d3.extent(allY)).nice().range([viewH - pad, pad]);
+        const activeOrder = state.distance === "exact" ? ranking.exact : ranking.adc;
+        const top = new Set(activeOrder.slice(0,4).map(item => item.index));
+        if (state.stage >= 3) svg.selectAll("line.reconstruction").data(model.docs).join("line").attr("class", "reconstruction").attr("x1", doc => x(doc.vector[0])).attr("y1", doc => y(doc.vector[1])).attr("x2", doc => x(doc.reconstruction[0])).attr("y2", doc => y(doc.reconstruction[1])).attr("stroke", "#80858c").attr("stroke-width", 1.5).attr("stroke-dasharray", "4 4");
+        if (state.stage >= 2) svg.selectAll("circle.centroid").data(model.codebooks[0]).join("circle").attr("class", "centroid").attr("cx", centroid => x(centroid[0])).attr("cy", centroid => y(centroid[1])).attr("r", 8).attr("fill", "none").attr("stroke", "#f3dc56").attr("stroke-width", 2).attr("stroke-dasharray", "2 2");
+        const groups = svg.selectAll("g.vector").data(model.docs).join("g").attr("class", "vector").attr("role", "button").attr("tabindex", 0).attr("aria-label", (doc, index) => `${doc.name}, ${doc.group}, code ${doc.code.join(" ")}`).attr("transform", doc => `translate(${x(doc.vector[0])},${y(doc.vector[1])})`).on("click keydown", (event, doc) => { if (event.type === "click" || event.key === "Enter" || event.key === " ") { event.preventDefault(); state.inspected = model.docs.indexOf(doc); renderInspector(model, ranking); renderMap(model, ranking); } });
+        groups.append("circle").attr("r", (doc,index) => top.has(index) ? 18 : 14).attr("fill", doc => doc.color).attr("stroke", (doc,index) => state.inspected === index ? "#fffef9" : top.has(index) ? "#f3dc56" : "#111316").attr("stroke-width", (doc,index) => state.inspected === index ? 4 : top.has(index) ? 3 : 1.5);
+        groups.append("text").attr("text-anchor", "middle").attr("dy", 4).attr("fill", "#111316").attr("font-family", "Geist").attr("font-size", 11).attr("font-weight", 850).text((doc,index) => index + 1);
+        if (state.stage >= 3) svg.selectAll("rect.quantized").data(model.docs).join("rect").attr("class", "quantized").attr("x", doc => x(doc.reconstruction[0]) - 5).attr("y", doc => y(doc.reconstruction[1]) - 5).attr("width", 10).attr("height", 10).attr("fill", "#75d9b6").attr("stroke", "#fffef9");
+        const query = presets[state.preset].query;
+        svg.append("path").attr("d", d3.symbol().type(d3.symbolStar).size(120)()).attr("transform", `translate(${x(query[0])},${y(query[1])})`).attr("fill", "#f3dc56").attr("stroke", "#111316").attr("stroke-width", 2).attr("pointer-events", "none");
+        svg.append("text").attr("x", x(query[0]) + 11).attr("y", y(query[1]) - 11).attr("fill", "#fffef9").attr("font-family", "Geist").attr("font-size", 11).attr("font-weight", 800).attr("pointer-events", "none").text("query");
+      };
+      const renderInspector = (model, ranking) => {
+        const title = document.getElementById("inspectTitle");
+        const copy = document.getElementById("inspectCopy");
+        if (state.inspected === null) { title.textContent = "Select a vector"; copy.textContent = "Click a point to inspect its subspace code, exact distance, ADC estimate, and reconstruction error."; return; }
+        const doc = model.docs[state.inspected];
+        const exact = ranking.exact.find(item => item.index === state.inspected).distance;
+        const adc = ranking.adc.find(item => item.index === state.inspected).distance;
+        title.textContent = doc.name;
+        copy.textContent = `Code [${doc.code.join(", ")}]. Exact ${exact.toFixed(3)}. ADC ${adc.toFixed(3)}. Reconstruction error ${(sqDist(doc.vector, doc.reconstruction) / 8).toFixed(4)}.`;
+      };
+      const render = () => {
+        const model = train();
+        const ranking = scores(model);
+        renderMap(model, ranking);
+        renderMetrics(model, ranking);
+        renderInspector(model, ranking);
+        document.getElementById("codewordsOut").textContent = state.k;
+        document.getElementById("iterationsOut").textContent = state.iterations;
+        document.getElementById("stageState").textContent = stageNames[state.stage];
+        document.getElementById("stageCopy").textContent = stageCopies[state.stage];
+      };
+      const stop = () => { state.playing = false; window.clearInterval(state.timer); const button = document.getElementById("playBtn"); button.innerHTML = '<i data-lucide="play" class="icon"></i>'; button.setAttribute("aria-label", "Play pipeline"); button.setAttribute("title", "Play pipeline"); if (window.lucide) lucide.createIcons(); };
+      const advance = () => { state.stage = (state.stage + 1) % stageNames.length; render(); if (state.stage === stageNames.length - 1 && state.playing) stop(); };
+      document.querySelectorAll("[data-preset]").forEach(button => button.addEventListener("click", () => { stop(); state.preset = button.dataset.preset; state.stage = 0; state.inspected = null; document.querySelectorAll("[data-preset]").forEach(item => item.setAttribute("aria-pressed", item === button)); render(); }));
+      document.querySelectorAll("[data-subspaces]").forEach(button => button.addEventListener("click", () => { stop(); state.m = Number(button.dataset.subspaces); state.stage = 0; state.inspected = null; document.querySelectorAll("[data-subspaces]").forEach(item => item.setAttribute("aria-pressed", item === button)); render(); }));
+      document.querySelectorAll("[data-distance]").forEach(button => button.addEventListener("click", () => { state.distance = button.dataset.distance; document.querySelectorAll("[data-distance]").forEach(item => item.setAttribute("aria-pressed", item === button)); render(); }));
+      document.getElementById("codewords").addEventListener("input", event => { stop(); state.k = Number(event.target.value); state.stage = 0; state.inspected = null; render(); });
+      document.getElementById("iterations").addEventListener("input", event => { stop(); state.iterations = Number(event.target.value); state.stage = 0; render(); });
+      document.getElementById("stepBtn").addEventListener("click", () => { stop(); advance(); });
+      document.getElementById("resetBtn").addEventListener("click", () => { stop(); state.stage = 0; state.inspected = null; render(); });
+      document.getElementById("playBtn").addEventListener("click", () => { if (state.playing) { stop(); return; } if (state.stage === stageNames.length - 1) state.stage = 0; state.playing = true; const button = document.getElementById("playBtn"); button.innerHTML = '<i data-lucide="pause" class="icon"></i>'; button.setAttribute("aria-label", "Pause pipeline"); button.setAttribute("title", "Pause pipeline"); lucide.createIcons(); render(); state.timer = window.setInterval(advance, 850); });
+      document.querySelectorAll(".accordion").forEach(button => button.addEventListener("click", () => { document.querySelectorAll(".accordion").forEach(item => item.classList.remove("active")); button.classList.add("active"); }));
+      const showClaim = index => { const claims = [...document.querySelectorAll(".claim")]; state.claim = (index + claims.length) % claims.length; claims.forEach((claim, claimIndex) => claim.classList.toggle("active", claimIndex === state.claim)); };
+      document.getElementById("claimPrev").addEventListener("click", () => showClaim(state.claim - 1));
+      document.getElementById("claimNext").addEventListener("click", () => showClaim(state.claim + 1));
+      window.addEventListener("resize", () => render());
+      if (window.lucide) lucide.createIcons();
+      if (window.gsap && window.ScrollTrigger) {
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.matchMedia().add("(min-width: 961px)", () => {
+          ScrollTrigger.create({trigger:".mechanism-grid", start:"top 104px", end:"bottom bottom", pin:".mechanism-title", pinSpacing:false});
+          gsap.utils.toArray(".stack-card").forEach((card, index) => gsap.fromTo(card, {y:80, scale:.96}, {y:0, scale:1, ease:"none", scrollTrigger:{trigger:card, start:"top 90%", end:"top 45%", scrub:true}, delay:index * .03}));
+        });
+      }
+      render();
+    })();
+  </script>
+</body>
+</html>

@@ -2,6 +2,28 @@
   {
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/product-quantization-embedding-compression-lab-20260812-152058/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "product_quantization_lab",
+    "content_kind_label": "Product Quantization Lab",
+    "direct_generated": true,
+    "github_commit": "5167d43684a028b38b8ef290391a16f2e2e627a0",
+    "github_url": "https://github.com/rohanarun/super-agent-news-product-quantization-embedding-compression-lab-20260812-152058",
+    "live_url": "https://lists.new/product-quantization-embedding-compression-lab-20260812-152058/",
+    "receipt_created_at": "2026-08-12T15:20:58.613Z",
+    "receipt_status": "success",
+    "slug": "product-quantization-embedding-compression-lab-20260812-152058",
+    "source_path": "sms_published_sites/product-quantization-embedding-compression-lab-20260812-152058",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Product Quantization Lab: Compress Embeddings, Preserve Neighbors"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/maximum-marginal-relevance-reranking-lab-20260812-145828/",
     "backlinks": [
       "https://getsupers.com/",

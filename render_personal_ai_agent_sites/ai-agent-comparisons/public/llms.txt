@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Product Quantization Lab: Compress Embeddings, Preserve Neighbors](product-quantization-embedding-compression-lab-20260812-152058/): Interactive PQ codec lab for subspace codebooks, asymmetric distance, compression, distortion, and recall.
 - [Maximum Marginal Relevance Lab: Rerank for Diversity](maximum-marginal-relevance-reranking-lab-20260812-145828/): Interactive MMR reranking lab for balancing relevance, redundancy, and aspect coverage.
 - [Gradient Noise Scale Lab](gradient-noise-scale-batch-efficiency-lab-20260712-012834/): Gradient Noise Scale Lab
 - [Pipeline Parallelism Lab: Microbatches, Bubbles, and Throughput](pipeline-parallelism-microbatch-bubble-lab-20260711-233737/): Pipeline Parallelism Lab
