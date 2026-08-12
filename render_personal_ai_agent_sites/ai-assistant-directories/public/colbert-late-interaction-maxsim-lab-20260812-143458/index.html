@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore ColBERT late interaction by comparing mean-pooled retrieval with token-level MaxSim ranking in an interactive D3 lab.">
+  <meta property="og:title" content="ColBERT Late Interaction Lab: Match Every Query Token">
+  <meta property="og:description" content="Inspect token similarities, MaxSim paths, document rankings, and the tradeoff between one-vector retrieval and late interaction.">
+  <title>ColBERT Late Interaction Lab: Match Every Query Token</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+  <style>
+    :root { --ink:#151515; --paper:#f4f1e8; --white:#fffefa; --yellow:#f2dc3f; --cyan:#68cfcb; --red:#ee6958; --green:#356b5a; --muted:#69665f; --line:#c8c4b9; --panel:#e8e4d9; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin:0; overflow-x:hidden; background:var(--paper); color:var(--ink); font-family:"Outfit",Arial,sans-serif; letter-spacing:0; }
+    button,input { font:inherit; }
+    button,a { -webkit-tap-highlight-color:transparent; }
+    a { color:inherit; }
+    .icon { width:19px; height:19px; stroke-width:2; }
+    nav { position:fixed; z-index:30; top:18px; left:50%; transform:translateX(-50%); width:min(1180px,calc(100% - 32px)); min-height:58px; padding:8px 10px 8px 14px; display:flex; align-items:center; justify-content:space-between; gap:20px; background:var(--ink); color:var(--white); border:1px solid #30302e; border-radius:6px; box-shadow:8px 8px 0 rgba(21,21,21,.12); }
+    .brand { display:inline-flex; align-items:center; gap:10px; text-decoration:none; font-weight:750; white-space:nowrap; }
+    .brand-mark { width:34px; height:34px; display:grid; place-items:center; background:var(--yellow); color:var(--ink); border-radius:4px; }
+    .nav-links { display:flex; align-items:center; gap:24px; }
+    .nav-links>a { text-decoration:none; color:#d6d3cc; }
+    .nav-links>a:hover,.nav-links>a:focus-visible { color:var(--white); }
+    .nav-cta { min-height:40px; padding:0 15px; display:inline-flex; align-items:center; gap:8px; background:var(--yellow); color:var(--ink)!important; font-weight:750; border-radius:4px; }
+    main { width:100%; max-width:100%; overflow-x:hidden; }
+    .wrap { width:min(1180px,calc(100% - 40px)); margin:0 auto; }
+    .hero { min-height:850px; padding:150px 0 90px; display:grid; align-items:center; border-bottom:1px solid var(--ink); text-align:center; }
+    .eyebrow { margin:0 0 22px; color:var(--green); font-size:15px; font-weight:750; text-transform:uppercase; }
+    h1,h2,h3,p { margin-top:0; }
+    h1 { max-width:1160px; margin:0 auto 25px; font-size:clamp(3rem,6vw,6.4rem); line-height:.95; font-weight:800; letter-spacing:0; }
+    .hero-copy { max-width:790px; margin:0 auto; color:#514f49; font-size:clamp(18px,1.7vw,22px); line-height:1.5; }
+    .hero-actions { margin-top:30px; display:flex; justify-content:center; flex-wrap:wrap; gap:10px; }
+    .btn { min-height:50px; padding:0 20px; display:inline-flex; align-items:center; justify-content:center; gap:9px; border:1px solid var(--ink); border-radius:4px; text-decoration:none; font-weight:750; background:transparent; transition:transform .2s ease,box-shadow .2s ease; }
+    .btn.primary { background:var(--ink); color:var(--white); }
+    .btn:hover,.btn:focus-visible { transform:translate(-2px,-2px); box-shadow:4px 4px 0 var(--cyan); outline:none; }
+    .hero-match { max-width:940px; margin:50px auto 0; padding:24px; position:relative; display:grid; grid-template-columns:1fr auto 1fr; gap:22px; align-items:center; border:1px solid var(--ink); background:var(--white); box-shadow:10px 10px 0 var(--yellow); text-align:left; overflow:hidden; }
+    .inline-token { display:inline-flex; min-height:46px; padding:0 13px; align-items:center; border:1px solid var(--ink); border-radius:24px; background:var(--cyan); font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-weight:700; vertical-align:middle; }
+    .match-side small { display:block; margin-bottom:9px; color:var(--muted); }
+    .token-line { display:flex; flex-wrap:wrap; gap:7px; }
+    .token { padding:8px 10px; border:1px solid var(--ink); border-radius:4px; background:var(--paper); font-family:ui-monospace,SFMono-Regular,Menlo,monospace; }
+    .token.hit { background:var(--yellow); }
+    .match-arrow { width:50px; height:50px; display:grid; place-items:center; border-radius:50%; background:var(--ink); color:var(--white); }
+
+    .lab-band { padding:120px 0; background:var(--white); border-bottom:1px solid var(--ink); }
+    .lab-head,.section-head { display:grid; grid-template-columns:1fr .78fr; gap:55px; align-items:end; margin-bottom:34px; }
+    .lab-head h2,.section-head h2 { margin-bottom:0; font-size:clamp(2.3rem,4.6vw,4.9rem); line-height:1; }
+    .lab-head p,.section-head p { margin-bottom:0; color:var(--muted); font-size:18px; line-height:1.55; }
+    .preset-row { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:14px; }
+    .seg-btn,.mode-btn,.icon-btn,.action-btn,.document-btn,.carousel-btn,.accordion { border:1px solid var(--ink); border-radius:4px; background:transparent; color:var(--ink); cursor:pointer; }
+    .seg-btn { min-height:42px; padding:0 14px; font-weight:650; }
+    .seg-btn[aria-pressed="true"],.mode-btn[aria-pressed="true"] { background:var(--ink); color:var(--white); }
+    .workbench { border:1px solid var(--ink); background:var(--paper); }
+    .bench-grid { display:grid; grid-template-columns:minmax(0,1.35fr) minmax(310px,.65fr); }
+    .matrix-stage { min-width:0; border-right:1px solid var(--ink); }
+    .stage-toolbar { min-height:70px; padding:13px 18px; display:flex; align-items:center; justify-content:space-between; gap:18px; background:var(--ink); color:var(--white); border-bottom:1px solid var(--ink); }
+    .query-display { width:100%; min-width:0; display:flex; align-items:center; flex-wrap:wrap; gap:7px; }
+    .query-display small { width:100%; color:#aaa79f; }
+    #queryChips { max-width:100%; display:flex; flex-wrap:wrap; gap:5px; }
+    .query-chip { padding:7px 9px; border:1px solid #5b5953; border-radius:4px; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; }
+    .query-chip.active { color:var(--ink); background:var(--yellow); border-color:var(--yellow); }
+    .stage-status { white-space:nowrap; color:var(--cyan); font-size:13px; }
+    .matrix-scroll { min-height:520px; padding:20px; overflow:auto; }
+    #similarityMatrix { display:block; width:100%; min-width:720px; min-height:480px; }
+    .matrix-legend { padding:0 22px 20px; display:flex; flex-wrap:wrap; gap:16px; color:var(--muted); font-size:13px; }
+    .matrix-legend span { display:inline-flex; align-items:center; gap:7px; }
+    .matrix-legend i { width:14px; height:14px; border:1px solid var(--ink); }
+    .legend-low { background:var(--panel); }
+    .legend-mid { background:var(--cyan); }
+    .legend-high { background:var(--yellow); }
+    .controls { padding:22px; background:var(--white); }
+    .controls-head { margin-bottom:18px; display:flex; align-items:center; justify-content:space-between; gap:14px; }
+    .controls-head h3 { margin:0; font-size:24px; }
+    .icon-btn { width:42px; height:42px; display:inline-grid; place-items:center; }
+    .icon-btn:hover,.icon-btn:focus-visible { background:var(--cyan); outline:2px solid transparent; }
+    .control { padding:18px 0; border-top:1px solid var(--line); }
+    .control-label { margin-bottom:11px; display:flex; align-items:center; justify-content:space-between; gap:12px; font-weight:650; }
+    .control-label output { color:var(--green); }
+    .mode-grid { display:grid; grid-template-columns:1fr 1fr; gap:7px; }
+    .mode-btn { min-height:45px; padding:0 8px; }
+    input[type="range"] { width:100%; accent-color:var(--ink); }
+    .toggle-row { display:flex; align-items:center; justify-content:space-between; gap:14px; }
+    .toggle { width:52px; height:28px; position:relative; border:1px solid var(--ink); border-radius:16px; background:var(--panel); cursor:pointer; }
+    .toggle::after { content:""; width:20px; height:20px; position:absolute; left:3px; top:3px; border-radius:50%; background:var(--ink); transition:transform .2s ease; }
+    .toggle[aria-pressed="true"] { background:var(--yellow); }
+    .toggle[aria-pressed="true"]::after { transform:translateX(24px); }
+    .actions { display:grid; grid-template-columns:1fr 1fr; gap:7px; margin-top:18px; }
+    .action-btn { min-height:48px; padding:0 10px; display:inline-flex; align-items:center; justify-content:center; gap:8px; font-weight:750; }
+    .action-btn.primary { background:var(--yellow); }
+    .action-btn.secondary { background:var(--ink); color:var(--white); }
+    .inspector { margin-top:18px; padding:16px; background:var(--ink); color:var(--white); border-radius:4px; }
+    .inspector small { color:#aaa79f; }
+    .inspector strong { display:block; margin:5px 0; color:var(--yellow); font-size:21px; overflow-wrap:anywhere; }
+    .inspector p { margin:0; color:#c6c3bb; line-height:1.45; }
+    .documents { padding:14px; display:grid; grid-template-columns:repeat(3,1fr); gap:8px; border-top:1px solid var(--ink); background:var(--ink); }
+    .document-btn { min-height:170px; padding:16px; display:grid; align-content:start; gap:10px; text-align:left; color:var(--white); border-color:#595751; transition:transform .2s ease,background .2s ease; }
+    .document-btn:hover,.document-btn:focus-visible { transform:translateY(-3px); background:#2c2c29; outline:2px solid var(--cyan); }
+    .document-btn[aria-pressed="true"] { border-color:var(--yellow); background:#262624; }
+    .document-rank { display:flex; justify-content:space-between; gap:10px; color:var(--yellow); font-weight:700; }
+    .document-btn p { margin:0; color:#cbc8c0; line-height:1.45; }
+    .score-pair { display:flex; flex-wrap:wrap; gap:6px; }
+    .score-pair span { padding:4px 7px; border:1px solid #55534d; border-radius:3px; color:#aaa79f; font-size:12px; }
+    .metric-row { display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid var(--ink); }
+    .metric { min-height:110px; padding:18px; border-right:1px solid var(--ink); }
+    .metric:last-child { border-right:0; }
+    .metric small { display:block; color:var(--muted); }
+    .metric strong { display:block; margin-top:8px; font-size:27px; }
+
+    .compare-band { padding:150px 0; border-bottom:1px solid var(--ink); }
+    .bento { display:grid; grid-template-columns:repeat(12,1fr); grid-auto-flow:dense; gap:10px; }
+    .compare-card { min-height:280px; padding:30px; border:1px solid var(--ink); border-radius:6px; overflow:hidden; background:var(--white); }
+    .compare-card:nth-child(1),.compare-card:nth-child(4) { grid-column:span 8; }
+    .compare-card:nth-child(2),.compare-card:nth-child(3) { grid-column:span 4; }
+    .compare-card.dark { background:var(--ink); color:var(--white); }
+    .compare-card.cyan { background:var(--cyan); }
+    .compare-card.yellow { background:var(--yellow); }
+    .compare-card h3 { max-width:700px; font-size:clamp(1.7rem,3vw,3rem); line-height:1.05; }
+    .compare-card p { max-width:730px; margin-bottom:0; font-size:17px; line-height:1.55; }
+    .pool-visual { margin-top:26px; display:grid; grid-template-columns:repeat(5,1fr); gap:8px; }
+    .pool-visual span { min-height:82px; display:grid; place-items:center; border:1px solid #55534e; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; }
+    .pool-visual span:last-child { background:var(--red); color:var(--ink); border-color:var(--red); }
+    .maxsim-path { margin-top:22px; display:grid; gap:8px; }
+    .path-row { display:grid; grid-template-columns:120px 1fr 60px; align-items:center; gap:10px; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:13px; }
+    .path-row i { height:18px; display:block; background:var(--yellow); border:1px solid var(--ink); }
+    .path-row .w86 { width:86%; }
+    .path-row .w92 { width:92%; }
+    .path-row .w78 { width:78%; }
+    .carousel-claim { display:none; max-width:650px; font-size:24px!important; line-height:1.3!important; }
+    .carousel-claim.active { display:block; }
+    .carousel-controls { margin-top:28px; display:flex; gap:7px; }
+    .carousel-btn { width:44px; height:44px; display:grid; place-items:center; }
+    .carousel-btn:hover,.carousel-btn:focus-visible { background:var(--white); outline:2px solid transparent; }
+
+    .method-band { padding:150px 0; background:var(--ink); color:var(--white); }
+    .method-grid { display:grid; grid-template-columns:.72fr 1.28fr; gap:70px; align-items:start; }
+    .method-title { position:sticky; top:120px; }
+    .method-title h2 { font-size:clamp(2.4rem,5vw,5.3rem); line-height:.98; }
+    .method-title p { color:#aaa79f; font-size:18px; line-height:1.55; }
+    .method-stack { display:grid; gap:20px; }
+    .method-card { min-height:300px; padding:32px; position:sticky; top:120px; border:1px solid #5c5a54; border-radius:6px; background:#20201f; }
+    .method-card:nth-child(2) { top:150px; background:#292927; }
+    .method-card:nth-child(3) { top:180px; background:#33322f; }
+    .method-card strong { color:var(--yellow); font-size:56px; }
+    .method-card h3 { margin:18px 0 14px; font-size:30px; }
+    .method-card p { color:#c5c2b9; font-size:17px; line-height:1.55; }
+
+    .accordion-band { padding:140px 0; border-bottom:1px solid var(--ink); }
+    .accordion-head { max-width:890px; margin-bottom:40px; }
+    .accordion-head h2 { font-size:clamp(2.3rem,4.6vw,4.8rem); line-height:1; }
+    .accordions { min-height:360px; display:flex; gap:8px; }
+    .accordion { flex:1; min-width:0; padding:24px; display:flex; flex-direction:column; justify-content:flex-end; align-items:flex-start; text-align:left; overflow:hidden; transition:flex .5s ease,background .3s ease; }
+    .accordion.active { flex:3.2; background:var(--yellow); }
+    .accordion-code { margin-bottom:auto; color:var(--green); font-family:ui-monospace,SFMono-Regular,Menlo,monospace; }
+    .accordion-title { margin-bottom:10px; font-size:24px; font-weight:750; }
+    .accordion-copy { max-width:560px; color:var(--muted); line-height:1.5; opacity:0; transform:translateY(12px); transition:.3s ease; }
+    .accordion.active .accordion-copy { opacity:1; transform:none; }
+
+    .sources-band { padding:130px 0 60px; background:var(--white); }
+    .sources-grid { display:grid; grid-template-columns:.8fr 1.2fr; gap:70px; }
+    .sources-grid h2 { font-size:clamp(2.3rem,4vw,4rem); }
+    .source-list { border-top:1px solid var(--ink); }
+    .source-link { padding:20px 4px; display:grid; grid-template-columns:1fr auto; gap:18px; align-items:center; border-bottom:1px solid var(--ink); text-decoration:none; }
+    .source-link:hover strong,.source-link:focus-visible strong { color:var(--green); }
+    .source-link small { display:block; margin-top:4px; color:var(--muted); }
+    .cta-band { margin-top:110px; padding:70px; display:grid; grid-template-columns:1fr auto; gap:50px; align-items:center; background:var(--cyan); border:1px solid var(--ink); border-radius:6px; }
+    .cta-band h2 { max-width:760px; margin:0; font-size:clamp(2.2rem,4vw,4.7rem); line-height:1; }
+    .cta-links { display:grid; gap:8px; }
+    footer { padding:28px max(20px,calc((100% - 1180px)/2)); display:flex; justify-content:space-between; gap:24px; background:var(--ink); color:#bdbab2; }
+    footer a { color:var(--white); }
+
+    @media(max-width:900px) {
+      .hero { min-height:auto; padding-top:130px; }
+      .lab-head,.section-head,.method-grid,.sources-grid,.cta-band { grid-template-columns:1fr; }
+      .hero-match { grid-template-columns:1fr; }
+      .match-arrow { transform:rotate(90deg); justify-self:center; }
+      .bench-grid { grid-template-columns:1fr; }
+      .matrix-stage { border-right:0; border-bottom:1px solid var(--ink); }
+      .documents { grid-template-columns:1fr; }
+      .compare-card:nth-child(n) { grid-column:span 12; }
+      .method-title { position:static; }
+      .method-card { position:relative; top:auto!important; }
+      .cta-band { padding:42px; }
+    }
+    @media(max-width:620px) {
+      .wrap { width:min(100% - 24px,1180px); }
+      nav { top:10px; width:calc(100% - 20px); }
+      .brand>span:last-child,.nav-links>a:not(.nav-cta) { display:none; }
+      .nav-links { gap:8px; }
+      .hero { padding:115px 0 80px; }
+      h1 { font-size:52px; }
+      .hero-actions { display:grid; }
+      .hero-match { padding:18px; box-shadow:7px 7px 0 var(--yellow); }
+      .lab-band,.compare-band,.method-band,.accordion-band,.sources-band { padding-top:90px; padding-bottom:90px; }
+      .lab-head,.section-head { gap:20px; }
+      .preset-row { display:grid; grid-template-columns:1fr; }
+      .stage-toolbar { align-items:flex-start; flex-direction:column; }
+      .metric-row { grid-template-columns:1fr 1fr; }
+      .metric:nth-child(2) { border-right:0; }
+      .metric:nth-child(-n+2) { border-bottom:1px solid var(--ink); }
+      .compare-card { min-height:250px; padding:24px; }
+      .pool-visual { grid-template-columns:repeat(3,1fr); }
+      .accordions { min-height:560px; flex-direction:column; }
+      .accordion,.accordion.active { flex:1; }
+      .accordion-copy { opacity:1; transform:none; }
+      .cta-band { margin-top:80px; padding:30px 22px; }
+      footer { flex-direction:column; }
+    }
+    @media(prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; animation:none!important; transition-duration:.001ms!important; } }
+  </style>
+</head>
+<body>
+  <nav aria-label="Primary navigation"><a class="brand" href="#top"><span class="brand-mark"><i data-lucide="scan-line" class="icon"></i></span><span>Late Interaction Lab</span></a><div class="nav-links"><a href="#compare">Compare</a><a href="#method">Method</a><a class="nav-cta" href="#lab">Open lab <i data-lucide="arrow-down" class="icon"></i></a></div></nav>
+  <main id="top">
+    <header class="hero"><div class="wrap"><p class="eyebrow">A token-level retrieval experiment</p><h1>One vector can hide the exact match.</h1><p class="hero-copy">ColBERT stores contextual vectors for document tokens, then lets every query token find its own best match at search time. The late interaction is a small operation with a very different information bottleneck.</p><div class="hero-actions"><a class="btn primary" href="#lab"><i data-lucide="grid-3x3" class="icon"></i> Inspect MaxSim</a><a class="btn" href="#method"><i data-lucide="workflow" class="icon"></i> Follow the pipeline</a></div><div class="hero-match" role="img" aria-label="A query token matching a semantically related document token"><div class="match-side"><small>query tokens</small><div class="token-line"><span class="token">wireless</span><span class="token hit">battery</span><span class="token">life</span></div></div><div class="match-arrow"><i data-lucide="arrow-right" class="icon"></i></div><div class="match-side"><small>document tokens</small><div class="token-line"><span class="token">Bluetooth</span><span class="token">40</span><span class="token hit">charge</span><span class="token">hours</span></div></div></div></div></header>
+
+    <section class="lab-band" id="lab"><div class="wrap"><div class="lab-head"><h2>See every query token choose its best document token.</h2><p>The vectors are transparent teaching vectors, not benchmark measurements. Their cosine similarities isolate mean pooling and ColBERT's MaxSim scoring without hiding the computation behind a model API.</p></div><div class="preset-row" role="group" aria-label="Retrieval query preset"><button type="button" class="seg-btn" data-preset="audio" aria-pressed="true">Product search</button><button type="button" class="seg-btn" data-preset="code" aria-pressed="false">Code question</button><button type="button" class="seg-btn" data-preset="returns" aria-pressed="false">Policy lookup</button></div><div class="workbench"><div class="bench-grid"><div class="matrix-stage"><div class="stage-toolbar"><div class="query-display"><small>query</small><div id="queryChips"></div></div><span class="stage-status" id="stageStatus">all query tokens</span></div><div class="matrix-scroll"><svg id="similarityMatrix" role="img" aria-labelledby="matrixTitle matrixDesc"></svg></div><div class="matrix-legend"><span><i class="legend-low"></i> weak similarity</span><span><i class="legend-mid"></i> related</span><span><i class="legend-high"></i> row maximum</span></div></div><aside class="controls" aria-label="Retrieval controls"><div class="controls-head"><h3>Retriever</h3><button type="button" class="icon-btn" id="resetBtn" aria-label="Reset retriever" title="Reset retriever"><i data-lucide="rotate-ccw" class="icon"></i></button></div><div class="control"><div class="control-label"><span>Ranking method</span><output id="modeValue">Late interaction</output></div><div class="mode-grid"><button type="button" class="mode-btn" data-mode="late" aria-pressed="true">Late interaction</button><button type="button" class="mode-btn" data-mode="pooled" aria-pressed="false">Single vector</button></div></div><div class="control"><div class="control-label"><label for="rareWeight">Rare-token emphasis</label><output id="rareValue">1.00x</output></div><input id="rareWeight" type="range" min="50" max="200" value="100"></div><div class="control"><div class="toggle-row"><span>Ignore stopwords</span><button type="button" class="toggle" id="stopToggle" aria-label="Ignore stopwords" aria-pressed="true"></button></div></div><div class="actions"><button type="button" class="action-btn secondary" id="prevBtn"><i data-lucide="arrow-left" class="icon"></i> Previous</button><button type="button" class="action-btn primary" id="nextBtn">Next token <i data-lucide="arrow-right" class="icon"></i></button></div><div class="actions"><button type="button" class="action-btn" id="playBtn"><i data-lucide="play" class="icon"></i><span>Play MaxSim</span></button><button type="button" class="action-btn" id="rerankBtn"><i data-lucide="list-ordered" class="icon"></i> Rerank</button></div><div class="inspector"><small>selected cell</small><strong id="cellTitle">Select a token pair</strong><p id="cellCopy">Click any heatmap cell to inspect its cosine similarity and whether it contributes to MaxSim.</p></div></aside></div><div class="documents" id="documentList"></div><div class="metric-row"><div class="metric"><small>selected document score</small><strong id="scoreMetric">--</strong></div><div class="metric"><small>mean-pooled score</small><strong id="pooledMetric">--</strong></div><div class="metric"><small>query token maxima</small><strong id="maximaMetric">--</strong></div><div class="metric"><small>winner margin</small><strong id="marginMetric">--</strong></div></div></div></div></section>
+
+    <section class="compare-band" id="compare"><div class="wrap"><div class="section-head"><h2>Pooling compresses early. Late interaction waits.</h2><p>Neither representation is universally superior. The question is where the system can afford to keep token-level evidence and when that detail changes ranking quality.</p></div><div class="bento"><article class="compare-card dark"><h3>Single-vector retrieval averages the sequence before search.</h3><p>The index is compact and dot products are efficient, but one document vector must preserve every potentially useful token relationship.</p><div class="pool-visual"><span>wireless</span><span>battery</span><span>life</span><span>hours</span><span>mean</span></div></article><article class="compare-card yellow"><h3>MaxSim keeps separate evidence.</h3><p>Each query token contributes its largest similarity against any document token. The document score is the sum of those maxima.</p></article><article class="compare-card cyan"><h3>Fine-grained matching costs storage.</h3><p>Documents retain multiple vectors instead of one. ColBERT systems use compression and retrieval engineering to make that tradeoff practical.</p></article><article class="compare-card"><h3>Score decomposition remains inspectable.</h3><div class="maxsim-path"><div class="path-row"><span>wireless</span><i class="w86"></i><b>0.86</b></div><div class="path-row"><span>battery</span><i class="w92"></i><b>0.92</b></div><div class="path-row"><span>life</span><i class="w78"></i><b>0.78</b></div></div></article><article class="compare-card yellow"><h3>Interpret rankings carefully.</h3><p class="carousel-claim active">Late interaction can preserve a decisive rare-token match that mean pooling dilutes.</p><p class="carousel-claim">Token-level similarity is still learned representation, not proof that the document answers the query correctly.</p><p class="carousel-claim">A practical system may retrieve coarsely first, then apply late interaction to a smaller candidate set.</p><div class="carousel-controls"><button type="button" class="carousel-btn" id="claimPrev" aria-label="Previous interpretation" title="Previous interpretation"><i data-lucide="arrow-left" class="icon"></i></button><button type="button" class="carousel-btn" id="claimNext" aria-label="Next interpretation" title="Next interpretation"><i data-lucide="arrow-right" class="icon"></i></button></div></article></div></div></section>
+
+    <section class="method-band" id="method"><div class="wrap method-grid"><div class="method-title"><h2>The late-interaction retrieval path.</h2><p>ColBERT moves most language-model work to offline encoding, then performs a lightweight token similarity operation at search time.</p></div><div class="method-stack"><article class="method-card"><strong>1</strong><h3>Encode query and document tokens contextually.</h3><p>A transformer produces one contextual embedding per token. Documents are encoded ahead of time; the incoming query is encoded at search time.</p></article><article class="method-card"><strong>2</strong><h3>Find a maximum for every query token.</h3><p>For each query embedding, compute similarities to document-token embeddings and retain the largest value. This is the MaxSim operation shown in the matrix.</p></article><article class="method-card"><strong>3</strong><h3>Sum maxima and rank candidates.</h3><p>The document score is the sum of per-query-token maxima. Retrieval systems then rank documents, often with compressed indexes and multi-stage search.</p></article></div></div></section>
+
+    <section class="accordion-band"><div class="wrap"><div class="accordion-head"><h2>Use the representation that fits the retrieval stage.</h2></div><div class="accordions"><button type="button" class="accordion active"><span class="accordion-code">one vector</span><span class="accordion-title">Fast broad retrieval</span><span class="accordion-copy">A compact single vector is attractive when memory and first-stage recall over a very large corpus dominate the design.</span></button><button type="button" class="accordion"><span class="accordion-code">many vectors</span><span class="accordion-title">Fine-grained matching</span><span class="accordion-copy">Late interaction helps when exact token-level concepts, rare terms, and semantic alignments can change which candidate deserves the top rank.</span></button><button type="button" class="accordion"><span class="accordion-code">two stages</span><span class="accordion-title">Hybrid retrieval</span><span class="accordion-copy">A broad retriever can generate candidates before a late-interaction model applies a more detailed score to the smaller set.</span></button></div></div></section>
+
+    <section class="sources-band"><div class="wrap"><div class="sources-grid"><div><h2>Primary retrieval research.</h2><p>Read the original ColBERT work, its compressed successor, and the engine that accelerates late-interaction search.</p></div><div class="source-list"><a class="source-link" href="https://arxiv.org/abs/2004.12832" target="_blank" rel="noopener"><span><strong>ColBERT: Efficient and Effective Passage Search</strong><small>Khattab and Zaharia, SIGIR 2020</small></span><i data-lucide="external-link" class="icon"></i></a><a class="source-link" href="https://aclanthology.org/2022.naacl-main.272/" target="_blank" rel="noopener"><span><strong>ColBERTv2: Effective and Efficient Retrieval via Lightweight Late Interaction</strong><small>Santhanam et al., NAACL 2022</small></span><i data-lucide="external-link" class="icon"></i></a><a class="source-link" href="https://arxiv.org/abs/2205.09707" target="_blank" rel="noopener"><span><strong>PLAID: An Efficient Engine for Late Interaction Retrieval</strong><small>Santhanam et al., CIKM 2022</small></span><i data-lucide="external-link" class="icon"></i></a><a class="source-link" href="https://openreview.net/forum?id=wCu6T5xFjeJ" target="_blank" rel="noopener"><span><strong>BEIR: A Heterogeneous Benchmark for Zero-shot Evaluation</strong><small>Thakur et al., NeurIPS Datasets and Benchmarks 2021</small></span><i data-lucide="external-link" class="icon"></i></a></div></div><div class="cta-band"><h2>Turn better retrieval into an agent that can use the result.</h2><div class="cta-links"><a class="btn primary" href="https://getsupers.com/">Explore Super</a><a class="btn" href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">Website-building agents</a><a class="btn" href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a></div></div></div></section>
+  </main>
+  <footer><span>ColBERT Late Interaction Lab</span><span>Built as an educational companion to <a href="https://getsupers.com/">Super</a>.</span></footer>
+
+  <script>
+    (()=>{
+      const presets={
+        audio:{query:"wireless headphones long battery life",docs:["Bluetooth over-ear headphones last 40 hours per charge","USB-C speaker with room-filling sound and 12-hour battery","Wired studio headphones with a replaceable cable"]},
+        code:{query:"python append list time complexity",docs:["Appending to a Python list is amortized constant time O(1)","Python tuple concatenation creates a new sequence","Sorting a list takes O(n log n) time"]},
+        returns:{query:"return opened electronics policy",docs:["Opened electronics may be returned within 14 days with a receipt","Unopened furniture can be returned within 30 days","The electronics warranty covers manufacturing defects for one year"]}
+      };
+      const stopwords=new Set(["a","an","and","be","can","for","in","is","of","per","the","to","with","within"]);
+      const concepts=[
+        ["wireless","bluetooth","wi-fi"],["headphones","earbuds","over-ear","studio"],["battery","charge","runtime","hours","last"],["long","40","extended"],
+        ["python","py"],["append","appending","adding"],["list","sequence","array"],["time","complexity","constant","amortized","o(1)"],["sort","sorting","o(n","log"],
+        ["return","returned","refund"],["opened","unsealed"],["electronics","devices"],["policy","rule"],["14","days","receipt"],["warranty","defects","year"],
+        ["speaker","sound","room-filling"],["wired","cable"],["tuple","concatenation"],["furniture","unopened"]
+      ];
+      const state={preset:"audio",mode:"late",rareWeight:1,ignoreStops:true,selectedDoc:0,activeQuery:-1,playing:false,claim:0,selectedCell:null};
+      function tokenize(text){return text.toLowerCase().replace(/[^a-z0-9()\-]+/g," ").trim().split(/\s+/).filter(Boolean);}
+      function normalize(vec){const mag=Math.sqrt(vec.reduce((s,v)=>s+v*v,0))||1;return vec.map(v=>v/mag);}
+      function tokenVector(token){
+        const vec=new Array(24).fill(0); let matched=false;
+        concepts.forEach((group,index)=>{if(group.includes(token)){vec[index]=1;matched=true;}});
+        for(let i=0;i<token.length;i++){const bucket=concepts.length+(token.charCodeAt(i)+i*7)%(24-concepts.length);vec[bucket]+=.08;}
+        if(!matched) vec[(token.length*3)%concepts.length]+=.15;
+        return normalize(vec);
+      }
+      function cosine(a,b){return a.reduce((sum,v,i)=>sum+v*b[i],0);}
+      function meanVector(tokens){const vectors=tokens.map(tokenVector),mean=new Array(24).fill(0);vectors.forEach(v=>v.forEach((x,i)=>mean[i]+=x/vectors.length));return normalize(mean);}
+      function activeTokens(tokens){return state.ignoreStops?tokens.filter(token=>!stopwords.has(token)):tokens;}
+      function tokenWeight(token){const rare=token.length>=7||/\d|\(|\)/.test(token);return rare?state.rareWeight:1;}
+      function documentData(){
+        const preset=presets[state.preset],query=activeTokens(tokenize(preset.query)),qVecs=query.map(tokenVector);
+        return preset.docs.map((text,index)=>{
+          const tokens=activeTokens(tokenize(text)),dVecs=tokens.map(tokenVector);
+          const matrix=qVecs.map(q=>dVecs.map(d=>cosine(q,d)));
+          const maxima=matrix.map((row,qIndex)=>{let value=-1,docIndex=0;row.forEach((score,i)=>{if(score>value){value=score;docIndex=i;}});return{query:query[qIndex],value,docIndex,docToken:tokens[docIndex],weight:tokenWeight(query[qIndex])};});
+          const late=maxima.reduce((sum,item)=>sum+item.value*item.weight,0)/maxima.reduce((sum,item)=>sum+item.weight,0);
+          const pooled=cosine(meanVector(query),meanVector(tokens));
+          return{index,text,tokens,query,matrix,maxima,late,pooled};
+        });
+      }
+      function ranked(docs){return docs.slice().sort((a,b)=>(state.mode==="late"?b.late-a.late:b.pooled-a.pooled));}
+      function colorFor(value,isMax){if(isMax)return"#f2dc3f";if(value>.58)return"#68cfcb";if(value>.22)return"#c7ddd8";return"#e8e4d9";}
+      function renderQuery(doc){const holder=document.getElementById("queryChips");holder.innerHTML="";doc.query.forEach((token,index)=>{const span=document.createElement("span");span.className=`query-chip ${index===state.activeQuery?"active":""}`;span.textContent=token;holder.appendChild(span);});document.getElementById("stageStatus").textContent=state.activeQuery<0?"all query tokens":`matching ${doc.query[state.activeQuery]}`;}
+      function renderMatrix(doc){
+        const cell=54,left=125,top=92,width=Math.max(720,left+doc.tokens.length*cell+30),height=Math.max(480,top+doc.query.length*cell+50);
+        const svg=d3.select("#similarityMatrix").attr("viewBox",`0 0 ${width} ${height}`);svg.selectAll("*").remove();svg.append("title").attr("id","matrixTitle").text("Query-token to document-token similarity matrix");svg.append("desc").attr("id","matrixDesc").text("Rows are query tokens, columns are document tokens, and yellow cells mark the maximum similarity contributing to the ColBERT score.");
+        svg.selectAll("text.doc-label").data(doc.tokens).join("text").attr("class","doc-label").attr("x",(_,i)=>left+i*cell+cell/2).attr("y",top-12).attr("text-anchor","end").attr("transform",(_,i)=>`rotate(-42,${left+i*cell+cell/2},${top-12})`).attr("font-family","Outfit").attr("font-size",12).text(d=>d.length>12?d.slice(0,11)+"...":d);
+        svg.selectAll("text.query-label").data(doc.query).join("text").attr("class","query-label").attr("x",left-12).attr("y",(_,i)=>top+i*cell+cell/2+4).attr("text-anchor","end").attr("font-family","Outfit").attr("font-size",13).attr("font-weight",(_,i)=>i===state.activeQuery?800:600).attr("fill",(_,i)=>i===state.activeQuery?"#356b5a":"#151515").text(d=>d);
+        const cells=doc.matrix.flatMap((row,q)=>row.map((value,d)=>({q,d,value,isMax:doc.maxima[q].docIndex===d,query:doc.query[q],token:doc.tokens[d]})));
+        const groups=svg.selectAll("g.cell").data(cells).join("g").attr("class","cell").attr("role","button").attr("tabindex",0).attr("aria-label",item=>`${item.query} to ${item.token}, similarity ${item.value.toFixed(2)}${item.isMax?", row maximum":""}`).attr("transform",item=>`translate(${left+item.d*cell},${top+item.q*cell})`).on("click keydown",(event,item)=>{if(event.type==="click"||event.key==="Enter"||event.key===" "){event.preventDefault();state.selectedCell=item;renderInspector();renderMatrix(doc);}});
+        groups.append("rect").attr("width",cell-4).attr("height",cell-4).attr("rx",3).attr("fill",item=>colorFor(item.value,item.isMax)).attr("stroke",item=>state.selectedCell&&state.selectedCell.q===item.q&&state.selectedCell.d===item.d?"#151515":item.isMax?"#151515":"#aaa69d").attr("stroke-width",item=>state.selectedCell&&state.selectedCell.q===item.q&&state.selectedCell.d===item.d?3:1);
+        groups.append("text").attr("x",(cell-4)/2).attr("y",(cell-4)/2+4).attr("text-anchor","middle").attr("font-family","ui-monospace").attr("font-size",12).attr("font-weight",item=>item.isMax?800:500).text(item=>item.value.toFixed(2));
+        groups.append("title").text(item=>`${item.query} / ${item.token}: ${item.value.toFixed(3)}${item.isMax?" (MaxSim contribution)":""}`);
+      }
+      function renderInspector(){const title=document.getElementById("cellTitle"),copy=document.getElementById("cellCopy");if(!state.selectedCell){title.textContent="Select a token pair";copy.textContent="Click any heatmap cell to inspect its cosine similarity and whether it contributes to MaxSim.";return;}const item=state.selectedCell;title.textContent=`${item.query} -> ${item.token}`;copy.textContent=`Cosine similarity ${item.value.toFixed(3)}. ${item.isMax?"This is the maximum in its query-token row, so it contributes to the late-interaction score.":"A stronger document-token match exists in this row, so this cell does not contribute."}`;}
+      function renderDocuments(docs){const order=ranked(docs),holder=document.getElementById("documentList");holder.innerHTML="";order.forEach((doc,rank)=>{const button=document.createElement("button");button.type="button";button.className="document-btn";button.setAttribute("aria-pressed",String(doc.index===state.selectedDoc));button.setAttribute("aria-label",`Rank ${rank+1}, document ${doc.index+1}, ${doc.text}`);const head=document.createElement("div");head.className="document-rank";head.innerHTML=`<span>Rank ${rank+1}</span><span>${(state.mode==="late"?doc.late:doc.pooled).toFixed(3)}</span>`;const text=document.createElement("p");text.textContent=doc.text;const pair=document.createElement("div");pair.className="score-pair";pair.innerHTML=`<span>MaxSim ${doc.late.toFixed(3)}</span><span>Pooled ${doc.pooled.toFixed(3)}</span>`;button.append(head,text,pair);button.addEventListener("click",()=>{stop();state.selectedDoc=doc.index;state.activeQuery=-1;state.selectedCell=null;render();});holder.appendChild(button);});}
+      function renderMetrics(docs,doc){const order=ranked(docs),score=state.mode==="late"?doc.late:doc.pooled,margin=(state.mode==="late"?order[0].late-order[1].late:order[0].pooled-order[1].pooled);document.getElementById("scoreMetric").textContent=score.toFixed(3);document.getElementById("pooledMetric").textContent=doc.pooled.toFixed(3);document.getElementById("maximaMetric").textContent=doc.maxima.length;document.getElementById("marginMetric").textContent=margin.toFixed(3);}
+      function render(){const docs=documentData(),doc=docs.find(item=>item.index===state.selectedDoc)||docs[0];document.getElementById("modeValue").textContent=state.mode==="late"?"Late interaction":"Single vector";document.getElementById("rareValue").textContent=state.rareWeight.toFixed(2)+"x";document.querySelectorAll("[data-preset]").forEach(button=>button.setAttribute("aria-pressed",String(button.dataset.preset===state.preset)));document.querySelectorAll("[data-mode]").forEach(button=>button.setAttribute("aria-pressed",String(button.dataset.mode===state.mode)));document.getElementById("stopToggle").setAttribute("aria-pressed",String(state.ignoreStops));document.getElementById("prevBtn").disabled=state.activeQuery<=-1;document.getElementById("nextBtn").disabled=state.activeQuery>=doc.query.length-1;renderQuery(doc);renderMatrix(doc);renderInspector();renderDocuments(docs);renderMetrics(docs,doc);}
+      function stop(){state.playing=false;window.clearInterval(window.matchTimer);document.querySelector("#playBtn span").textContent="Play MaxSim";}
+      function next(){const doc=documentData().find(item=>item.index===state.selectedDoc);state.activeQuery=Math.min(doc.query.length-1,state.activeQuery+1);state.selectedCell=null;render();}
+      function play(){if(state.playing){stop();return;}state.activeQuery=-1;state.playing=true;document.querySelector("#playBtn span").textContent="Pause";window.matchTimer=window.setInterval(()=>{const doc=documentData().find(item=>item.index===state.selectedDoc);if(state.activeQuery>=doc.query.length-1){stop();render();return;}state.activeQuery++;const max=doc.maxima[state.activeQuery];state.selectedCell={q:state.activeQuery,d:max.docIndex,value:max.value,isMax:true,query:max.query,token:max.docToken};render();},620);}
+      function reset(){stop();Object.assign(state,{mode:"late",rareWeight:1,ignoreStops:true,selectedDoc:0,activeQuery:-1,selectedCell:null});document.getElementById("rareWeight").value="100";render();}
+      document.querySelectorAll("[data-preset]").forEach(button=>button.addEventListener("click",()=>{stop();state.preset=button.dataset.preset;state.selectedDoc=0;state.activeQuery=-1;state.selectedCell=null;render();}));
+      document.querySelectorAll("[data-mode]").forEach(button=>button.addEventListener("click",()=>{stop();state.mode=button.dataset.mode;render();}));
+      document.getElementById("rareWeight").addEventListener("input",event=>{state.rareWeight=Number(event.target.value)/100;render();});
+      document.getElementById("stopToggle").addEventListener("click",()=>{stop();state.ignoreStops=!state.ignoreStops;state.activeQuery=-1;state.selectedCell=null;render();});
+      document.getElementById("prevBtn").addEventListener("click",()=>{stop();state.activeQuery=Math.max(-1,state.activeQuery-1);state.selectedCell=null;render();});
+      document.getElementById("nextBtn").addEventListener("click",()=>{stop();next();});
+      document.getElementById("playBtn").addEventListener("click",play);document.getElementById("rerankBtn").addEventListener("click",()=>{const docs=documentData(),winner=ranked(docs)[0];state.selectedDoc=winner.index;state.selectedCell=null;render();});document.getElementById("resetBtn").addEventListener("click",reset);
+      function showClaim(index){const claims=document.querySelectorAll(".carousel-claim");state.claim=(index+claims.length)%claims.length;claims.forEach((claim,i)=>claim.classList.toggle("active",i===state.claim));}
+      document.getElementById("claimPrev").addEventListener("click",()=>showClaim(state.claim-1));document.getElementById("claimNext").addEventListener("click",()=>showClaim(state.claim+1));document.querySelectorAll(".accordion").forEach(button=>button.addEventListener("click",()=>{document.querySelectorAll(".accordion").forEach(item=>item.classList.remove("active"));button.classList.add("active");}));
+      let resizeFrame=0;window.addEventListener("resize",()=>{window.cancelAnimationFrame(resizeFrame);resizeFrame=window.requestAnimationFrame(render);});
+      if(window.gsap&&window.ScrollTrigger&&!window.matchMedia("(prefers-reduced-motion: reduce)").matches){gsap.registerPlugin(ScrollTrigger);gsap.from(".hero-match",{scale:.84,opacity:.2,duration:1.1,ease:"power3.out"});gsap.utils.toArray(".compare-card").forEach(card=>gsap.fromTo(card,{scale:.88,opacity:.2,y:50},{scale:1,opacity:1,y:0,ease:"none",scrollTrigger:{trigger:card,start:"top 90%",end:"top 45%",scrub:true}}));gsap.utils.toArray(".method-card").forEach((card,index)=>gsap.from(card,{y:80,opacity:0,duration:.7,delay:index*.08,scrollTrigger:{trigger:card,start:"top 82%"}}));}
+      render();if(window.lucide)lucide.createIcons();
+    })();
+  </script>
+</body>
+</html>
