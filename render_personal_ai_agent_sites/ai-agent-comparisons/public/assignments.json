@@ -2,6 +2,28 @@
   {
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/double-descent-interpolation-risk-lab-20260812-193859/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "double_descent_interpolation_risk_lab",
+    "content_kind_label": "Double Descent Risk Lab",
+    "direct_generated": true,
+    "github_commit": "f353629125f21c4af452e7aca73db62a58ed50bc",
+    "github_url": "https://github.com/rohanarun/super-agent-news-double-descent-interpolation-risk-lab-20260812-193859",
+    "live_url": "https://lists.new/double-descent-interpolation-risk-lab-20260812-193859/",
+    "receipt_created_at": "2026-08-12T19:38:59.143Z",
+    "receipt_status": "success",
+    "slug": "double-descent-interpolation-risk-lab-20260812-193859",
+    "source_path": "sms_published_sites/double-descent-interpolation-risk-lab-20260812-193859",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Double Descent Lab: Cross the Interpolation Threshold"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/lottery-ticket-sparse-subnetwork-pruning-lab-20260812-192029/",
     "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
     "content_kind": "lottery_ticket_sparse_subnetwork_pruning_lab",
