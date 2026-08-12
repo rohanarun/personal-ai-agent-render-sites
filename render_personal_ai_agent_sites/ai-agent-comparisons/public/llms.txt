@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Contrastive Decoding Lab: Expert Minus Amateur](contrastive-decoding-expert-amateur-lab-20260812-180128/): Interactive expert-versus-amateur token scoring lab with plausibility filtering, repetition tests, obvious-answer failure analysis, and serving-cost review.
 - [Logit Lens Lab: Watch a Prediction Form](logit-lens-layerwise-prediction-trajectory-lab-20260812-172158/): Interactive layerwise prediction lab for direct and tuned lenses, candidate-token trajectories, readout uncertainty, and causal-interpretation boundaries.
 - [LLM-as-a-Judge Bias Lab: Swap, Score, Calibrate](llm-as-a-judge-bias-stress-test-lab-20260812-164928/): Interactive pairwise evaluator lab for position bias, verbosity bias, repeated ballots, paired-order calibration, and human-review escalation.
 - [Centered Kernel Alignment Lab: Compare Representations, Not Coordinates](centered-kernel-alignment-representation-similarity-lab-20260812-161328/): Interactive neural-representation lab for rotation invariance, Gram alignment, coordinate baselines, neighborhood overlap, noise, and sample correspondence.

@@ -2,6 +2,24 @@
   {
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/contrastive-decoding-expert-amateur-lab-20260812-180128/",
+    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "content_kind": "contrastive_decoding_expert_amateur_lab",
+    "content_kind_label": "Contrastive Decoding Lab",
+    "direct_generated": true,
+    "github_commit": "0234bb44a5f9ba3f1753cea484f3e9ab78342956",
+    "github_url": "https://github.com/rohanarun/super-agent-news-contrastive-decoding-expert-amateur-lab-20260812-180128",
+    "live_url": "https://lists.new/contrastive-decoding-expert-amateur-lab-20260812-180128/",
+    "receipt_created_at": "2026-08-12T18:01:28.946Z",
+    "receipt_status": "success",
+    "slug": "contrastive-decoding-expert-amateur-lab-20260812-180128",
+    "source_path": "sms_published_sites/contrastive-decoding-expert-amateur-lab-20260812-180128",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Contrastive Decoding Lab: Expert Minus Amateur"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/logit-lens-layerwise-prediction-trajectory-lab-20260812-172158/",
     "backlinks": [
       "https://getsupers.com/",
