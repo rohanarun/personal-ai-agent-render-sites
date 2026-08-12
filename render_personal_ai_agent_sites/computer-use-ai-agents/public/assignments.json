@@ -1244,4 +1244,26 @@
     "target_slot": "computer-use-ai-agents",
     "title": "Locally Typical Sampling Lab: Decode Near the Entropy"
   }
+  ,{
+    "assigned_domain": "parsercheat.com",
+    "assigned_slot": "computer-use-ai-agents",
+    "assigned_url": "https://parsercheat.com/schema-constrained-json-decoding-lab-20260812-141628/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "schema_constrained_json_decoding_lab",
+    "content_kind_label": "Schema-Constrained JSON Decoding Lab",
+    "direct_generated": true,
+    "github_commit": "ee56581aad89f84e4716b65534f5f22d49e73ed8",
+    "github_url": "https://github.com/rohanarun/super-agent-news-schema-constrained-json-decoding-lab-20260812-141628",
+    "live_url": "https://parsercheat.com/schema-constrained-json-decoding-lab-20260812-141628/",
+    "receipt_created_at": "2026-08-12T14:16:28.492+00:00",
+    "receipt_status": "success",
+    "slug": "schema-constrained-json-decoding-lab-20260812-141628",
+    "source_path": "sms_published_sites/schema-constrained-json-decoding-lab-20260812-141628",
+    "target_slot": "computer-use-ai-agents",
+    "title": "Schema-Constrained Decoding Lab: Mask Invalid Tokens"
+  }
 ]
