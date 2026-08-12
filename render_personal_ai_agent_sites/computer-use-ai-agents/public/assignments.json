@@ -1266,4 +1266,26 @@
     "target_slot": "computer-use-ai-agents",
     "title": "Schema-Constrained Decoding Lab: Mask Invalid Tokens"
   }
+  ,{
+    "assigned_domain": "parsercheat.com",
+    "assigned_slot": "computer-use-ai-agents",
+    "assigned_url": "https://parsercheat.com/indirect-prompt-injection-taint-tracker-lab-20260812-173758/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/"
+    ],
+    "content_kind": "indirect_prompt_injection_taint_tracker_lab",
+    "content_kind_label": "Prompt Injection Taint Tracker Lab",
+    "direct_generated": true,
+    "github_commit": "a0aadade21897abda0bb4c97ba479d99d59401e9",
+    "github_url": "https://github.com/rohanarun/super-agent-news-indirect-prompt-injection-taint-tracker-lab-20260812-173758",
+    "live_url": "https://parsercheat.com/indirect-prompt-injection-taint-tracker-lab-20260812-173758/",
+    "receipt_created_at": "2026-08-12T17:37:58.882Z",
+    "receipt_status": "success",
+    "slug": "indirect-prompt-injection-taint-tracker-lab-20260812-173758",
+    "source_path": "sms_published_sites/indirect-prompt-injection-taint-tracker-lab-20260812-173758",
+    "target_slot": "computer-use-ai-agents",
+    "title": "Prompt Injection Taint Lab: Trace the Hidden Instruction"
+  }
 ]

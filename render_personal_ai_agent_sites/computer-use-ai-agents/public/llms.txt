@@ -82,3 +82,4 @@ A focused directory of Super personal AI agent market research, news analysis, c
 - [Sparse Autoencoder Feature Lab: From Neurons to Features](sparse-autoencoder-feature-dictionary-lab-20260812-125328/): Sparse autoencoder feature lab
 - [Locally Typical Sampling Lab: Decode Near the Entropy](locally-typical-sampling-decoder-lab-20260812-135658/): Locally typical sampling decoder lab
 - [Schema-Constrained Decoding Lab: Mask Invalid Tokens](schema-constrained-json-decoding-lab-20260812-141628/): Schema-constrained JSON decoding lab
+- [Prompt Injection Taint Lab: Trace the Hidden Instruction](indirect-prompt-injection-taint-tracker-lab-20260812-173758/): Interactive browser-agent security lab for tracing indirect prompt injection through retrieval, planning, memory, policy, and tool sinks.
