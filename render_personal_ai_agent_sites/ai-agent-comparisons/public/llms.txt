@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Lottery Ticket Lab: Find a Trainable Sparse Network](lottery-ticket-sparse-subnetwork-pruning-lab-20260812-192029/): Interactive pruning lab for sparse trainability and random-mask controls.
 - [Grokking Lab: When Memorization Becomes Generalization](grokking-delayed-generalization-lab-20260812-190959/): Interactive delayed-generalization lab for fitting, memorization, compression, and training horizon.
 - [Neural Tangent Kernel Lab: When Features Stop Moving](neural-tangent-kernel-feature-drift-lab-20260812-185258/): Interactive finite-width training lab for width, update size, feature drift, tangent-kernel change, and frozen-kernel prediction gaps.
 - [Induction Head Lab: Build the In-Context Copy Circuit](induction-head-in-context-copy-circuit-lab-20260812-184229/): Interactive mechanistic-interpretability lab for previous-token heads, induction attention, ablation, activation patching, distractors, and in-context copying.
