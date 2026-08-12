@@ -1,27 +1,4 @@
 [
-  {
-    "assigned_domain": "openagent.studio",
-    "assigned_slot": "ai-assistant-directories",
-    "assigned_url": "https://openagent.studio/colbert-late-interaction-maxsim-lab-20260812-143458/",
-    "backlinks": [
-      "https://getsupers.com/",
-      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
-      "https://app.getsupers.com/use-cases/computer-use-cache/"
-    ],
-    "cheatlayer_url": "",
-    "content_kind": "colbert_late_interaction_lab",
-    "content_kind_label": "ColBERT Late Interaction Lab",
-    "direct_generated": true,
-    "github_commit": "4a021f6718a6186109fd14ad55648edd775d7171",
-    "github_url": "https://github.com/rohanarun/super-agent-news-colbert-late-interaction-maxsim-lab-20260812-143458",
-    "live_url": "https://openagent.studio/colbert-late-interaction-maxsim-lab-20260812-143458/",
-    "receipt_created_at": "2026-08-12T14:34:58.540+00:00",
-    "receipt_status": "success",
-    "slug": "colbert-late-interaction-maxsim-lab-20260812-143458",
-    "source_path": "sms_published_sites/colbert-late-interaction-maxsim-lab-20260812-143458",
-    "target_slot": "ai-assistant-directories",
-    "title": "ColBERT Late Interaction Lab: Match Every Query Token"
-  },
   {"assigned_domain":"openagent.studio","assigned_slot":"ai-assistant-directories","assigned_url":"https://openagent.studio/mixture-of-experts-routing-capacity-lab-20260711-232736/","backlinks":["https://getsupers.com/","https://app.getsupers.com/use-cases/computer-use-cache/","https://app.getsupers.com/use-cases/ai-agent-build-websites/"],"cheatlayer_url":"","content_kind":"mixture_of_experts_routing_lab","content_kind_label":"Mixture-of-Experts Routing Lab","direct_generated":true,"github_url":"","live_url":"https://openagent.studio/mixture-of-experts-routing-capacity-lab-20260711-232736/","receipt_created_at":"2026-07-11T23:27:36.817+00:00","receipt_status":"success","slug":"mixture-of-experts-routing-capacity-lab-20260711-232736","source_path":"sms_published_sites/mixture-of-experts-routing-capacity-lab-20260711-232736","target_slot":"ai-assistant-directories","title":"Mixture-of-Experts Routing Lab: Top-k, Capacity, and Balance"},
   {
     "assigned_domain": "openagent.studio",

@@ -2,6 +2,29 @@
   {
     "assigned_domain": "agentslayer.com",
     "assigned_slot": "ai-agent-use-cases",
+    "assigned_url": "https://agentslayer.com/colbert-late-interaction-maxsim-lab-20260812-143458/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "colbert_late_interaction_lab",
+    "content_kind_label": "ColBERT Late Interaction Lab",
+    "direct_generated": true,
+    "github_commit": "35580b856c315e6169a9f5b90a99201ae66798b8",
+    "github_url": "https://github.com/rohanarun/super-agent-news-colbert-late-interaction-maxsim-lab-20260812-143458",
+    "live_url": "https://agentslayer.com/colbert-late-interaction-maxsim-lab-20260812-143458/",
+    "receipt_created_at": "2026-08-12T14:34:58.540+00:00",
+    "receipt_status": "success",
+    "slug": "colbert-late-interaction-maxsim-lab-20260812-143458",
+    "source_path": "sms_published_sites/colbert-late-interaction-maxsim-lab-20260812-143458",
+    "target_slot": "ai-agent-use-cases",
+    "title": "ColBERT Late Interaction Lab: Match Every Query Token"
+  },
+  {
+    "assigned_domain": "agentslayer.com",
+    "assigned_slot": "ai-agent-use-cases",
     "assigned_url": "https://agentslayer.com/sequence-parallelism-activation-sharding-lab-20260712-011832/",
     "backlinks": [
       "https://getsupers.com/",

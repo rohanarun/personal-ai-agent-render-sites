@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [ColBERT Late Interaction Lab: Match Every Query Token](colbert-late-interaction-maxsim-lab-20260812-143458/): ColBERT Late Interaction Lab
 - [Sequence Parallelism Lab: Shard Activations Across Tokens](sequence-parallelism-activation-sharding-lab-20260712-011832/): Sequence Parallelism Lab
 - [Exposure Bias Lab: Teacher Forcing vs Self-Fed Inference](scheduled-sampling-exposure-bias-lab-20260711-223907/): Exposure Bias Lab
 - [Mixup Lab: Interpolation, Soft Labels, and Decision Boundaries](mixup-interpolation-decision-boundary-lab-20260711-210237/): Mixup Augmentation Lab
