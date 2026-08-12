@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Induction Head Lab: Build the In-Context Copy Circuit](induction-head-in-context-copy-circuit-lab-20260812-184229/): Interactive mechanistic-interpretability lab for previous-token heads, induction attention, ablation, activation patching, distractors, and in-context copying.
 - [Machine Unlearning Lab: Prove the Model Forgot](machine-unlearning-deletion-verification-lab-20260812-182628/): Interactive deletion-verification lab for retraining, fine-tuning, gradient ascent, SISA, retained utility, membership leakage, and compute cost.
 - [Mamba Selective Scan Lab: Decide What the State Remembers](mamba-selective-state-space-scan-lab-20260812-181458/): Interactive selective state-space lab for token-dependent write gates, recurrent retention, fixed-SSM and attention comparisons, linear sequence scaling, and memory evaluation.
 - [Contrastive Decoding Lab: Expert Minus Amateur](contrastive-decoding-expert-amateur-lab-20260812-180128/): Interactive expert-versus-amateur token scoring lab with plausibility filtering, repetition tests, obvious-answer failure analysis, and serving-cost review.
