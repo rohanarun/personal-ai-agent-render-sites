@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="An interactive Maximum Marginal Relevance lab for balancing relevance and diversity when reranking retrieval results for RAG and search.">
+  <meta property="og:title" content="Maximum Marginal Relevance Lab: Rerank for Diversity">
+  <meta property="og:description" content="Select chunks one at a time, inspect redundancy penalties, and compare relevance-only retrieval with MMR.">
+  <title>Maximum Marginal Relevance Lab: Rerank for Diversity</title>
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700,900&amp;display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+  <style>
+    :root {
+      --ink: #121212;
+      --paper: #f6f5ef;
+      --white: #fffefa;
+      --yellow: #f4df4f;
+      --cyan: #65d4d2;
+      --coral: #f07866;
+      --green: #2d6a57;
+      --muted: #66635c;
+      --line: #b9b5aa;
+      --panel: #e9e6db;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; overflow-x: hidden; background: var(--paper); color: var(--ink); font-family: "Satoshi", Arial, sans-serif; letter-spacing: 0; }
+    button, input { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { cursor: pointer; }
+    a { color: inherit; }
+    .icon { width: 18px; height: 18px; stroke-width: 2; }
+    .wrap { width: min(1220px, calc(100% - 40px)); margin: 0 auto; }
+    nav { position: fixed; z-index: 40; top: 16px; left: 50%; width: min(1220px, calc(100% - 32px)); min-height: 58px; transform: translateX(-50%); display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 8px 9px 8px 15px; color: var(--white); background: var(--ink); border: 1px solid #343434; border-radius: 6px; box-shadow: 7px 7px 0 rgba(18,18,18,.12); }
+    .brand { display: inline-flex; align-items: center; gap: 10px; color: var(--white); font-weight: 800; text-decoration: none; white-space: nowrap; }
+    .brand-mark { width: 34px; height: 34px; display: grid; place-items: center; color: var(--ink); background: var(--yellow); border-radius: 4px; }
+    .nav-links { display: flex; align-items: center; gap: 22px; }
+    .nav-links > a { color: #d6d4cf; text-decoration: none; }
+    .nav-links > a:hover, .nav-links > a:focus-visible { color: var(--white); }
+    .nav-links .nav-cta { min-height: 40px; padding: 0 15px; display: inline-flex; align-items: center; gap: 7px; color: var(--ink); background: var(--yellow); border-radius: 4px; font-weight: 800; }
+    main { width: 100%; max-width: 100%; overflow-x: hidden; }
+    .hero { min-height: 100svh; padding: 118px 0 68px; border-bottom: 1px solid var(--ink); }
+    .hero-grid { min-height: 690px; display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; gap: 46px; }
+    .hero-copy { padding: 48px 0 28px; display: flex; flex-direction: column; justify-content: center; }
+    .kicker { margin: 0 0 22px; color: var(--green); font-size: 13px; font-weight: 900; text-transform: uppercase; }
+    h1 { max-width: min(760px, 100%); margin: 0; font-size: clamp(3.2rem, 5vw, 4.35rem); line-height: .91; font-weight: 900; overflow-wrap: normal; }
+    .inline-map { width: 112px; height: .72em; margin: 0 8px; display: inline-grid; grid-template-columns: repeat(5, 1fr); align-items: end; gap: 4px; vertical-align: .05em; }
+    .inline-map i { display: block; background: var(--coral); border: 1px solid var(--ink); }
+    .inline-map i:nth-child(1) { height: 35%; }
+    .inline-map i:nth-child(2) { height: 82%; background: var(--yellow); }
+    .inline-map i:nth-child(3) { height: 56%; background: var(--cyan); }
+    .inline-map i:nth-child(4) { height: 94%; }
+    .inline-map i:nth-child(5) { height: 44%; background: var(--yellow); }
+    .hero-copy > p:not(.kicker) { max-width: 630px; margin: 28px 0 0; color: #484640; font-size: 19px; line-height: 1.6; }
+    .formula { margin-top: 30px; padding: 18px; color: var(--white); background: var(--ink); border-left: 8px solid var(--yellow); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; line-height: 1.55; }
+    .formula strong { color: var(--yellow); }
+    .hero-actions { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 10px; }
+    .btn { min-height: 46px; padding: 0 16px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; color: var(--ink); background: transparent; border: 1px solid var(--ink); border-radius: 4px; font-weight: 800; text-decoration: none; }
+    .btn.primary { color: var(--white); background: var(--ink); }
+    .btn.yellow { color: var(--ink); background: var(--yellow); }
+    .lab-shell { min-width: 0; display: grid; grid-template-rows: auto minmax(480px, 1fr) auto; background: var(--white); border-left: 1px solid var(--ink); border-right: 1px solid var(--ink); }
+    .lab-toolbar { padding: 16px; display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 12px; color: var(--white); background: var(--ink); border-bottom: 1px solid var(--ink); }
+    .preset-group { display: flex; gap: 6px; flex-wrap: wrap; }
+    .preset-group button, .mode-group button { min-height: 38px; padding: 0 12px; color: var(--white); background: #252525; border: 1px solid #55534e; border-radius: 3px; font-weight: 700; }
+    .preset-group button[aria-pressed="true"], .mode-group button[aria-pressed="true"] { color: var(--ink); background: var(--yellow); border-color: var(--yellow); }
+    .toolbar-state { color: #bbb8b0; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; white-space: nowrap; }
+    .scatter-wrap { min-height: 480px; position: relative; overflow: hidden; background: linear-gradient(#f8f7f2 1px, transparent 1px), linear-gradient(90deg, #f8f7f2 1px, transparent 1px), var(--white); background-size: 32px 32px; }
+    #scatter { width: 100%; height: 100%; min-height: 480px; display: block; }
+    .legend { position: absolute; top: 14px; left: 14px; z-index: 2; display: flex; flex-wrap: wrap; gap: 8px; pointer-events: none; }
+    .legend span { padding: 6px 8px; display: inline-flex; align-items: center; gap: 6px; background: rgba(255,254,250,.92); border: 1px solid var(--line); font-size: 11px; }
+    .legend i { width: 9px; height: 9px; display: block; border-radius: 50%; background: var(--coral); }
+    .legend span:nth-child(2) i { background: var(--cyan); }
+    .legend span:nth-child(3) i { background: var(--yellow); border: 1px solid var(--ink); }
+    .inspector { position: absolute; right: 14px; bottom: 14px; z-index: 3; width: min(310px, calc(100% - 28px)); padding: 14px; color: var(--white); background: rgba(18,18,18,.94); border: 1px solid #424242; }
+    .inspector small { color: #b9b6ae; text-transform: uppercase; font-weight: 800; }
+    .inspector strong { margin-top: 6px; display: block; font-size: 16px; }
+    .inspector p { margin: 7px 0 0; color: #d4d1c9; font-size: 13px; line-height: 1.45; }
+    .lab-controls { padding: 17px; display: grid; grid-template-columns: minmax(170px, 1fr) minmax(150px, .8fr) auto; align-items: center; gap: 17px; background: var(--panel); border-top: 1px solid var(--ink); }
+    .control label, .control-label { margin-bottom: 7px; display: flex; justify-content: space-between; gap: 12px; color: #4f4c46; font-size: 12px; font-weight: 800; }
+    .control output { color: var(--green); }
+    input[type="range"] { width: 100%; accent-color: var(--green); }
+    .mode-group { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+    .mode-group button { color: var(--ink); background: var(--white); border-color: var(--line); }
+    .action-row { display: flex; gap: 7px; justify-content: flex-end; }
+    .icon-btn { width: 42px; height: 42px; display: grid; place-items: center; color: var(--ink); background: var(--white); border: 1px solid var(--ink); border-radius: 4px; }
+    .icon-btn:hover, .icon-btn:focus-visible { background: var(--cyan); }
+    .icon-btn.primary { background: var(--yellow); }
+    .icon-btn:disabled { opacity: .38; cursor: not-allowed; }
+    .rank-band { padding: 54px 0 72px; }
+    .rank-head { display: grid; grid-template-columns: 7fr 5fr; gap: 40px; align-items: end; }
+    .rank-head h2, .section-head h2, .method-title h2, .sources-grid h2, .cta-band h2 { margin: 0; font-size: clamp(2.6rem, 5vw, 5.5rem); line-height: .96; }
+    .rank-head p, .section-head p, .method-title p, .sources-grid > div > p { margin: 0; color: var(--muted); font-size: 17px; line-height: 1.6; }
+    .ranking-grid { margin-top: 35px; display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--ink); }
+    .ranking-col { min-width: 0; }
+    .ranking-col + .ranking-col { border-left: 1px solid var(--ink); }
+    .ranking-col h3 { margin: 0; padding: 15px 18px; color: var(--white); background: var(--ink); font-size: 16px; }
+    .ranking-col.mmr h3 { color: var(--ink); background: var(--yellow); }
+    .rank-list { min-height: 360px; padding: 0; margin: 0; list-style: none; }
+    .rank-item { min-height: 90px; padding: 14px 16px; display: grid; grid-template-columns: 34px 1fr auto; align-items: center; gap: 12px; border-bottom: 1px solid var(--line); }
+    .rank-item:last-child { border-bottom: 0; }
+    .rank-number { width: 30px; height: 30px; display: grid; place-items: center; color: var(--white); background: var(--ink); border-radius: 50%; font-weight: 900; }
+    .rank-item strong { display: block; font-size: 14px; line-height: 1.25; }
+    .rank-item small { margin-top: 5px; display: block; color: var(--muted); }
+    .rank-score { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; }
+    .metric-row { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--ink); border-top: 0; }
+    .metric { min-height: 125px; padding: 18px; border-right: 1px solid var(--ink); }
+    .metric:last-child { border-right: 0; }
+    .metric small { color: var(--muted); font-weight: 800; }
+    .metric strong { margin-top: 9px; display: block; font-size: 30px; }
+    .metric span { margin-top: 6px; display: block; color: var(--muted); font-size: 12px; }
+    .marquee { overflow: hidden; color: var(--white); background: var(--ink); border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
+    .marquee-track { width: max-content; padding: 18px 0; display: flex; animation: travel 28s linear infinite; }
+    .marquee-track span { padding: 0 26px; font-size: 15px; font-weight: 800; }
+    .marquee-track span::after { content: "/"; margin-left: 52px; color: var(--yellow); }
+    @keyframes travel { to { transform: translateX(-50%); } }
+    .interest { padding: 140px 0; }
+    .section-head { display: grid; grid-template-columns: 7fr 5fr; align-items: end; gap: 46px; }
+    .bento { margin-top: 56px; display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-flow: dense; border-top: 1px solid var(--ink); border-left: 1px solid var(--ink); }
+    .bento article { min-height: 270px; padding: 30px; position: relative; overflow: hidden; border-right: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
+    .bento article:nth-child(1) { grid-column: span 7; }
+    .bento article:nth-child(2) { grid-column: span 5; background: var(--cyan); }
+    .bento article:nth-child(n+3) { grid-column: span 4; }
+    .bento article:nth-child(4) { color: var(--white); background: var(--ink); }
+    .bento article:nth-child(5) { background: var(--coral); }
+    .bento h3 { max-width: 520px; margin: 0; font-size: clamp(1.7rem, 3vw, 3.2rem); line-height: 1.02; }
+    .bento p { max-width: 560px; margin: 20px 0 0; line-height: 1.62; }
+    .mini-lines { width: 100%; margin-top: 30px; display: grid; gap: 8px; transition: transform .7s ease; }
+    .bento article:hover .mini-lines { transform: scale(1.04); }
+    .mini-lines i { height: 16px; display: block; border: 1px solid var(--ink); background: var(--yellow); }
+    .mini-lines i:nth-child(2) { width: 78%; background: var(--cyan); }
+    .mini-lines i:nth-child(3) { width: 45%; background: var(--coral); }
+    .method { padding: 140px 0; color: var(--white); background: #18231f; }
+    .method-grid { display: grid; grid-template-columns: 4fr 8fr; gap: 80px; }
+    .method-title { align-self: start; position: sticky; top: 110px; }
+    .method-title p { margin-top: 24px; color: #b9c9c1; }
+    .method-steps { display: grid; gap: 70px; }
+    .method-step { min-height: 270px; padding: 34px 0; border-top: 1px solid #5c7167; }
+    .method-step strong { color: var(--yellow); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; }
+    .method-step h3 { max-width: 760px; margin: 14px 0; font-size: clamp(2rem, 4vw, 4rem); line-height: 1; }
+    .method-step p { max-width: 690px; color: #b9c9c1; font-size: 17px; line-height: 1.68; }
+    .scrub-line { margin: 120px auto 0; max-width: 1080px; font-size: clamp(2.2rem, 4.8vw, 5.2rem); line-height: 1.08; }
+    .scrub-word { opacity: .16; }
+    .interpretation { padding: 130px 0; }
+    .interpret-grid { display: grid; grid-template-columns: 5fr 7fr; gap: 70px; align-items: center; }
+    .carousel { min-height: 360px; position: relative; border: 1px solid var(--ink); background: var(--white); }
+    .claim { min-height: 360px; padding: 42px; display: none; flex-direction: column; justify-content: space-between; }
+    .claim.active { display: flex; }
+    .claim blockquote { margin: 0; font-size: clamp(2rem, 4vw, 4.2rem); line-height: 1.03; font-weight: 800; }
+    .claim p { max-width: 620px; margin: 24px 0 0; color: var(--muted); line-height: 1.6; }
+    .claim small { color: var(--green); font-weight: 900; }
+    .carousel-nav { position: absolute; right: 14px; bottom: 14px; display: flex; gap: 6px; }
+    .interpret-copy h2 { margin: 0; font-size: clamp(2.7rem, 5vw, 5.4rem); line-height: .96; }
+    .interpret-copy p { color: var(--muted); font-size: 18px; line-height: 1.65; }
+    .checklist { margin-top: 30px; padding: 0; list-style: none; }
+    .checklist li { padding: 15px 0; display: flex; gap: 12px; border-top: 1px solid var(--line); }
+    .checklist i { color: var(--green); flex: 0 0 auto; }
+    .sources { padding: 130px 0; background: #e3e8e5; }
+    .sources-grid { display: grid; grid-template-columns: 5fr 7fr; gap: 70px; }
+    .sources-grid > div > p { margin-top: 22px; }
+    .source-list { border-top: 1px solid var(--ink); }
+    .source-link { min-height: 104px; padding: 18px 4px; display: flex; align-items: center; justify-content: space-between; gap: 20px; border-bottom: 1px solid var(--ink); text-decoration: none; }
+    .source-link strong, .source-link small { display: block; }
+    .source-link strong { font-size: 17px; }
+    .source-link small { margin-top: 6px; color: var(--muted); }
+    .source-link:hover strong { text-decoration: underline; }
+    .cta-band { margin-top: 110px; padding: 54px; color: var(--white); background: var(--ink); }
+    .cta-links { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 9px; }
+    .cta-links .btn { color: var(--white); border-color: #77736b; }
+    .cta-links .btn.yellow { color: var(--ink); border-color: var(--yellow); }
+    footer { padding: 34px max(20px, calc((100vw - 1220px) / 2)); display: flex; justify-content: space-between; gap: 30px; color: var(--muted); border-top: 1px solid var(--line); }
+    @media (max-width: 960px) {
+      .hero-grid, .rank-head, .section-head, .method-grid, .interpret-grid, .sources-grid { grid-template-columns: 1fr; }
+      .hero-copy { padding-top: 28px; }
+      .lab-shell { min-height: 720px; }
+      .method-title { position: static; }
+      .ranking-grid { grid-template-columns: 1fr; }
+      .ranking-col + .ranking-col { border-left: 0; border-top: 1px solid var(--ink); }
+      .lab-controls { grid-template-columns: 1fr 1fr; }
+      .action-row { grid-column: span 2; justify-content: stretch; }
+      .action-row button { flex: 1; }
+      .bento article:nth-child(1), .bento article:nth-child(2) { grid-column: span 12; }
+      .bento article:nth-child(n+3) { grid-column: span 4; }
+    }
+    @media (max-width: 640px) {
+      .wrap { width: min(100% - 24px, 1220px); }
+      nav { width: calc(100% - 20px); left: 10px; transform: none; }
+      .brand > span:last-child, .nav-links > a:not(.nav-cta) { display: none; }
+      .hero { padding-top: 100px; }
+      .hero-grid { gap: 30px; }
+      h1 { font-size: clamp(2.8rem, 12vw, 3.3rem); }
+      .inline-map { width: 74px; margin: 0 4px; }
+      .lab-shell { min-height: 760px; }
+      .lab-toolbar { grid-template-columns: 1fr; }
+      .toolbar-state { white-space: normal; }
+      .scatter-wrap, #scatter { min-height: 450px; }
+      .lab-controls { grid-template-columns: 1fr; }
+      .action-row { grid-column: auto; }
+      .rank-band, .interest, .method, .interpretation, .sources { padding: 90px 0; }
+      .metric-row { grid-template-columns: 1fr 1fr; }
+      .metric:nth-child(2) { border-right: 0; }
+      .metric:nth-child(-n+2) { border-bottom: 1px solid var(--ink); }
+      .bento { grid-template-columns: 1fr; }
+      .bento article:nth-child(n) { grid-column: span 1; min-height: 240px; }
+      .method-grid { gap: 50px; }
+      .method-steps { gap: 35px; }
+      .scrub-line { margin-top: 80px; }
+      .claim { padding: 28px 24px 78px; }
+      .source-link { align-items: flex-start; }
+      .cta-band { margin-top: 70px; padding: 30px 22px; }
+      footer { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition-duration: .001ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <nav aria-label="Primary navigation">
+    <a class="brand" href="#top"><span class="brand-mark"><i data-lucide="shuffle" class="icon"></i></span><span>MMR Reranking Lab</span></a>
+    <div class="nav-links"><a href="#compare">Compare</a><a href="#method">Method</a><a class="nav-cta" href="#lab">Open lab <i data-lucide="arrow-down" class="icon"></i></a></div>
+  </nav>
+  <main id="top">
+    <section class="hero" id="lab">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="kicker">Interactive retrieval diversity laboratory</p>
+          <h1>Relevant <span class="inline-map" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span> is not the same as useful.</h1>
+          <p>Maximum Marginal Relevance reranks a candidate pool one item at a time. Each next chunk must answer the query while adding something the selected context does not already repeat.</p>
+          <div class="formula"><strong>MMR(d)</strong> = lambda * relevance(q, d) - (1 - lambda) * max similarity(d, selected)</div>
+          <div class="hero-actions"><a class="btn primary" href="#compare"><i data-lucide="list-ordered" class="icon"></i> Compare rankings</a><a class="btn" href="#method"><i data-lucide="route" class="icon"></i> Follow each pick</a></div>
+        </div>
+        <div class="lab-shell">
+          <div class="lab-toolbar">
+            <div class="preset-group" role="group" aria-label="Query scenario">
+              <button type="button" data-preset="research" aria-pressed="true">RAG evaluation</button>
+              <button type="button" data-preset="shopping" aria-pressed="false">Product search</button>
+              <button type="button" data-preset="policy" aria-pressed="false">Policy lookup</button>
+            </div>
+            <span class="toolbar-state" id="toolbarState">0 of 4 selected</span>
+          </div>
+          <div class="scatter-wrap">
+            <div class="legend" aria-hidden="true"><span><i></i>candidate</span><span><i></i>selected</span><span><i></i>next pick</span></div>
+            <svg id="scatter" role="img" aria-labelledby="scatterTitle scatterDesc"></svg>
+            <aside class="inspector" aria-live="polite"><small>candidate inspector</small><strong id="inspectTitle">Select a point</strong><p id="inspectCopy">Click a candidate to inspect its query relevance, redundancy penalty, and current MMR score.</p></aside>
+          </div>
+          <div class="lab-controls">
+            <div class="control"><span class="control-label"><label for="lambda">Relevance weight lambda</label><output id="lambdaOut">0.60</output></span><input id="lambda" type="range" min="0" max="100" value="60"></div>
+            <div class="control"><span class="control-label">Redundancy measure</span><div class="mode-group" role="group" aria-label="Redundancy measure"><button type="button" data-mode="cosine" aria-pressed="true">Cosine</button><button type="button" data-mode="aspect" aria-pressed="false">Aspect</button></div></div>
+            <div class="action-row"><button type="button" class="icon-btn" id="undoBtn" aria-label="Undo last selection" title="Undo last selection" disabled><i data-lucide="undo-2" class="icon"></i></button><button type="button" class="icon-btn" id="resetBtn" aria-label="Reset lab" title="Reset lab"><i data-lucide="rotate-ccw" class="icon"></i></button><button type="button" class="icon-btn primary" id="nextBtn" aria-label="Select next MMR result" title="Select next MMR result"><i data-lucide="step-forward" class="icon"></i></button><button type="button" class="icon-btn primary" id="playBtn" aria-label="Play all MMR selections" title="Play all MMR selections"><i data-lucide="play" class="icon"></i></button></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="rank-band" id="compare">
+      <div class="wrap">
+        <div class="rank-head"><h2>The highest scores can all be echoes.</h2><p>Relevance-only ranking has no memory of earlier results. MMR recomputes a redundancy penalty after every pick, so the order depends on what is already in the context.</p></div>
+        <div class="ranking-grid">
+          <div class="ranking-col"><h3>Top-k by relevance only</h3><ol class="rank-list" id="baselineList"></ol></div>
+          <div class="ranking-col mmr"><h3>Greedy MMR order</h3><ol class="rank-list" id="mmrList"></ol></div>
+        </div>
+        <div class="metric-row">
+          <div class="metric"><small>Mean relevance</small><strong id="meanRel">0.00</strong><span id="relDelta">MMR result set</span></div>
+          <div class="metric"><small>Pairwise redundancy</small><strong id="redundancy">0.00</strong><span id="redundancyDelta">Lower repeats less</span></div>
+          <div class="metric"><small>Aspect coverage</small><strong id="coverage">0 / 0</strong><span>Unique candidate intents</span></div>
+          <div class="metric"><small>Selection step</small><strong id="selectionStep">0 / 4</strong><span>Greedy picks completed</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true"><div class="marquee-track"><span>retrieve broadly</span><span>penalize repetition</span><span>recompute every step</span><span>inspect lost relevance</span><span>measure aspect coverage</span><span>retrieve broadly</span><span>penalize repetition</span><span>recompute every step</span><span>inspect lost relevance</span><span>measure aspect coverage</span></div></div>
+
+    <section class="interest">
+      <div class="wrap">
+        <div class="section-head"><h2>Diversity is conditional on the context you already chose.</h2><p>MMR is a greedy reranker, not a diversity oracle. It needs a useful candidate pool, comparable score scales, and an evaluation target that rewards coverage instead of novelty for its own sake.</p></div>
+        <div class="bento">
+          <article><h3>Relevance establishes the candidate pool.</h3><p>MMR usually reranks documents retrieved by another system. If an important aspect never enters the pool, the diversity term cannot invent it.</p><div class="mini-lines"><i></i><i></i><i></i></div></article>
+          <article><h3>Lambda changes the product behavior.</h3><p>At lambda 1, the order is relevance-only. As lambda falls, similarity to selected items matters more. Extremely low values can reward novelty that is barely useful.</p></article>
+          <article><h3>The first pick is always relevance-first.</h3><p>Before anything is selected, the redundancy term is zero. The highest-relevance candidate wins the opening step under the standard formulation.</p></article>
+          <article><h3>Score scales must be compatible.</h3><p>Cosine relevance and redundancy may have different distributions. Normalize, calibrate, and tune lambda on held-out retrieval tasks rather than copying a default.</p></article>
+          <article><h3>Near-duplicate chunks expose the value.</h3><p>Overlapping windows can dominate top-k while adding few new facts. MMR can free context space for another aspect, but deduplication upstream may be cheaper.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="method" id="method">
+      <div class="wrap method-grid">
+        <div class="method-title"><h2>One greedy decision at a time.</h2><p>The score is recalculated for every unselected candidate after each addition. That changing selected set is the defining state of the algorithm.</p></div>
+        <div class="method-steps">
+          <article class="method-step"><strong>Candidate pool</strong><h3>Start with query-relevant documents.</h3><p>A retriever supplies more candidates than the final context can hold. Preserve raw relevance scores and embeddings or another document-similarity representation.</p></article>
+          <article class="method-step"><strong>Marginal score</strong><h3>Subtract the strongest redundancy.</h3><p>For each remaining document, find its maximum similarity to any selected document. One near-copy is enough to create the full penalty in the standard MMR objective.</p></article>
+          <article class="method-step"><strong>Greedy update</strong><h3>Add the best score, then recompute.</h3><p>The chosen document joins the selected set. Every remaining redundancy term can now change, so MMR is a sequential selection process rather than one static sort.</p></article>
+          <article class="method-step"><strong>Evaluation</strong><h3>Measure utility and coverage together.</h3><p>Track relevance, answer quality, citation support, unique aspects, and token cost. Lower similarity is not automatically better if the new chunks do not help the downstream task.</p></article>
+        </div>
+      </div>
+      <p class="scrub-line" id="scrubLine">A diversified context should cover more of the question without spending its token budget on loosely related novelty.</p>
+    </section>
+
+    <section class="interpretation">
+      <div class="wrap interpret-grid">
+        <div class="carousel" aria-live="polite">
+          <article class="claim active"><div><blockquote>MMR changes order, not truth.</blockquote><p>The reranker works on similarity signals. A diverse chunk can still be wrong, stale, or unsupported.</p></div><small>Interpretation 1 of 3</small></article>
+          <article class="claim"><div><blockquote>Low redundancy is not the same as high coverage.</blockquote><p>Embedding distance can separate wording without proving that a new user intent or fact is represented.</p></div><small>Interpretation 2 of 3</small></article>
+          <article class="claim"><div><blockquote>Evaluate the final answer path.</blockquote><p>A ranking metric is useful only if the selected context improves grounded task outcomes under the real token budget.</p></div><small>Interpretation 3 of 3</small></article>
+          <div class="carousel-nav"><button type="button" class="icon-btn" id="claimPrev" aria-label="Previous interpretation" title="Previous interpretation"><i data-lucide="arrow-left" class="icon"></i></button><button type="button" class="icon-btn" id="claimNext" aria-label="Next interpretation" title="Next interpretation"><i data-lucide="arrow-right" class="icon"></i></button></div>
+        </div>
+        <div class="interpret-copy"><h2>A production checklist for diverse retrieval.</h2><p>Tune on representative queries and retain the relevance-only baseline. The goal is not a visually scattered embedding map; it is better use of limited context.</p><ul class="checklist"><li><i data-lucide="check" class="icon"></i><span>Log raw relevance, redundancy, lambda, candidate-pool size, and selection order.</span></li><li><i data-lucide="check" class="icon"></i><span>Compare exact deduplication, clustering, MMR, and learned reranking at equal latency.</span></li><li><i data-lucide="check" class="icon"></i><span>Evaluate downstream answer completeness and citation support, not diversity alone.</span></li><li><i data-lucide="check" class="icon"></i><span>Monitor score distributions when the embedding model, corpus, or chunking policy changes.</span></li></ul></div>
+      </div>
+    </section>
+
+    <section class="sources">
+      <div class="wrap">
+        <div class="sources-grid">
+          <div><h2>Primary research on diversified retrieval.</h2><p>The original MMR formulation and subsequent diversification work make the relevance-novelty tradeoff, greedy process, and evaluation problem explicit.</p></div>
+          <div class="source-list">
+            <a class="source-link" href="https://www.cs.cmu.edu/~jgc/publication/The_Use_MMR_Diversity_Based_LTMIR_1998.pdf" target="_blank" rel="noopener noreferrer"><span><strong>The Use of MMR, Diversity-Based Reranking for Reordering Documents and Producing Summaries</strong><small>Carbonell and Goldstein, SIGIR 1998</small></span><i data-lucide="external-link" class="icon"></i></a>
+            <a class="source-link" href="https://arxiv.org/abs/1105.4255" target="_blank" rel="noopener noreferrer"><span><strong>Efficient Diversification of Web Search Results</strong><small>Gollapudi and Sharma, 2009 / arXiv version</small></span><i data-lucide="external-link" class="icon"></i></a>
+            <a class="source-link" href="https://research.google/pubs/diversification-aware-learning-to-rank-using-distributed-representation/" target="_blank" rel="noopener noreferrer"><span><strong>Diversification-Aware Learning to Rank Using Distributed Representation</strong><small>Yan et al., The Web Conference 2021</small></span><i data-lucide="external-link" class="icon"></i></a>
+            <a class="source-link" href="https://ojs.aaai.org/index.php/AAAI/article/view/21282" target="_blank" rel="noopener noreferrer"><span><strong>Optimize What You Evaluate With: Search Result Diversification Based on Metric Optimization</strong><small>Yu, AAAI 2022</small></span><i data-lucide="external-link" class="icon"></i></a>
+          </div>
+        </div>
+        <div class="cta-band"><h2>Give an agent context that adds up instead of repeating itself.</h2><div class="cta-links"><a class="btn yellow" href="https://getsupers.com/">Explore Super</a><a class="btn" href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">Website-building agents</a><a class="btn" href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a></div></div>
+      </div>
+    </section>
+  </main>
+  <footer><span>Maximum Marginal Relevance Lab</span><span>Transparent teaching vectors, not benchmark results. Built with <a href="https://getsupers.com/">Super</a>.</span></footer>
+
+  <script>
+    (() => {
+      const presets = {
+        research: {
+          query: "evaluate RAG retrieval quality",
+          docs: [
+            {title:"Measure recall at k on labeled questions", aspect:"retrieval recall", rel:.97, x:.82, y:.22, emb:[.94,.18,.08,.02]},
+            {title:"Recall benchmark protocol and annotations", aspect:"retrieval recall", rel:.95, x:.74, y:.29, emb:[.91,.22,.06,.03]},
+            {title:"Compare nDCG and recall across query sets", aspect:"retrieval recall", rel:.92, x:.65, y:.18, emb:[.88,.29,.11,.02]},
+            {title:"Audit answer faithfulness against evidence", aspect:"grounded answers", rel:.89, x:.22, y:.77, emb:[.31,.91,.12,.06]},
+            {title:"Sample failures by intent and corpus slice", aspect:"error analysis", rel:.86, x:-.36, y:.73, emb:[.17,.24,.94,.08]},
+            {title:"Track latency and index cost under load", aspect:"serving systems", rel:.78, x:-.77, y:.18, emb:[.08,.13,.20,.95]},
+            {title:"Tune embedding batches during ingestion", aspect:"serving systems", rel:.71, x:-.69, y:-.34, emb:[.07,.09,.17,.92]},
+            {title:"Reuse the same recall report template", aspect:"retrieval recall", rel:.90, x:.88, y:.13, emb:[.96,.15,.04,.01]}
+          ]
+        },
+        shopping: {
+          query: "portable noise cancelling headphones",
+          docs: [
+            {title:"Compact ANC headphones for frequent flights", aspect:"noise cancelling", rel:.98, x:.78, y:.24, emb:[.96,.19,.05,.03]},
+            {title:"Flight test of compact ANC headphones", aspect:"noise cancelling", rel:.96, x:.86, y:.17, emb:[.94,.23,.05,.02]},
+            {title:"Portable ANC models ranked by cabin noise", aspect:"noise cancelling", rel:.93, x:.68, y:.31, emb:[.91,.29,.08,.03]},
+            {title:"Folded size and carrying-case measurements", aspect:"portability", rel:.88, x:.17, y:.78, emb:[.29,.94,.10,.04]},
+            {title:"Battery life with ANC enabled", aspect:"battery", rel:.87, x:-.40, y:.72, emb:[.16,.18,.95,.07]},
+            {title:"Microphone quality in crowded terminals", aspect:"calls", rel:.80, x:-.78, y:.14, emb:[.09,.14,.16,.94]},
+            {title:"Replacement pads and repairability", aspect:"durability", rel:.73, x:-.61, y:-.42, emb:[.10,.24,.34,.82]},
+            {title:"Another compact ANC flight comparison", aspect:"noise cancelling", rel:.91, x:.91, y:.10, emb:[.97,.15,.03,.02]}
+          ]
+        },
+        policy: {
+          query: "remote work expense reimbursement rules",
+          docs: [
+            {title:"Eligible home-office expenses and limits", aspect:"eligibility", rel:.98, x:.81, y:.24, emb:[.96,.18,.06,.02]},
+            {title:"Home-office eligibility rules by role", aspect:"eligibility", rel:.95, x:.73, y:.31, emb:[.93,.22,.07,.03]},
+            {title:"Which remote expenses qualify", aspect:"eligibility", rel:.93, x:.88, y:.13, emb:[.95,.16,.05,.02]},
+            {title:"Receipt submission and approval workflow", aspect:"process", rel:.89, x:.22, y:.78, emb:[.27,.95,.08,.04]},
+            {title:"Deadlines and payroll reimbursement dates", aspect:"timing", rel:.85, x:-.39, y:.72, emb:[.15,.22,.95,.06]},
+            {title:"Tax treatment by employee location", aspect:"tax", rel:.82, x:-.77, y:.17, emb:[.08,.14,.20,.96]},
+            {title:"Manager escalation for disputed expenses", aspect:"appeals", rel:.74, x:-.63, y:-.39, emb:[.10,.28,.33,.81]},
+            {title:"Remote expense eligibility quick guide", aspect:"eligibility", rel:.91, x:.91, y:.08, emb:[.97,.14,.03,.01]}
+          ]
+        }
+      };
+      const state = {preset:"research", lambda:.60, mode:"cosine", selected:[], inspected:null, playing:false, claim:0, timer:0, targetK:4};
+      const svg = d3.select("#scatter");
+      const cosine = (a, b) => {
+        const dot = a.reduce((sum, value, index) => sum + value * b[index], 0);
+        const an = Math.sqrt(a.reduce((sum, value) => sum + value * value, 0));
+        const bn = Math.sqrt(b.reduce((sum, value) => sum + value * value, 0));
+        return dot / (an * bn);
+      };
+      const docs = () => presets[state.preset].docs;
+      const redundancy = (doc, selectedDocs) => {
+        if (!selectedDocs.length) return 0;
+        if (state.mode === "aspect") return selectedDocs.some(item => item.aspect === doc.aspect) ? 1 : 0;
+        return Math.max(...selectedDocs.map(item => cosine(doc.emb, item.emb)));
+      };
+      const candidateScore = (doc, selectedIndexes) => {
+        const selectedDocs = selectedIndexes.map(index => docs()[index]);
+        const red = redundancy(doc, selectedDocs);
+        return {red, score:state.lambda * doc.rel - (1 - state.lambda) * red};
+      };
+      const nextIndex = selectedIndexes => {
+        const options = docs().map((doc, index) => ({index, ...candidateScore(doc, selectedIndexes)})).filter(item => !selectedIndexes.includes(item.index));
+        options.sort((a, b) => b.score - a.score || docs()[b.index].rel - docs()[a.index].rel);
+        return options[0] ? options[0].index : -1;
+      };
+      const fullOrder = () => {
+        const order = [];
+        while (order.length < Math.min(state.targetK, docs().length)) order.push(nextIndex(order));
+        return order;
+      };
+      const averagePairwise = indexes => {
+        if (indexes.length < 2) return 0;
+        let sum = 0, count = 0;
+        for (let i = 0; i < indexes.length; i += 1) for (let j = i + 1; j < indexes.length; j += 1) { sum += cosine(docs()[indexes[i]].emb, docs()[indexes[j]].emb); count += 1; }
+        return sum / count;
+      };
+      const renderScatter = () => {
+        const viewW = 760, viewH = 500, pad = 62;
+        svg.attr("viewBox", `0 0 ${viewW} ${viewH}`);
+        svg.selectAll("*").remove();
+        svg.append("title").attr("id", "scatterTitle").text("MMR candidate embedding map");
+        svg.append("desc").attr("id", "scatterDesc").text("Candidates are positioned by transparent teaching coordinates. Selected candidates are cyan and the current next MMR choice is yellow.");
+        const x = d3.scaleLinear().domain([-1, 1]).range([pad, viewW - pad]);
+        const y = d3.scaleLinear().domain([-1, 1]).range([viewH - pad, pad]);
+        const selectedDocs = state.selected.map(index => docs()[index]);
+        const next = state.selected.length < state.targetK ? nextIndex(state.selected) : -1;
+        const selectedPath = state.selected.map(index => [x(docs()[index].x), y(docs()[index].y)]);
+        if (selectedPath.length > 1) svg.append("path").datum(selectedPath).attr("d", d3.line()).attr("fill", "none").attr("stroke", "#2d6a57").attr("stroke-width", 3).attr("stroke-dasharray", "7 6");
+        const groups = svg.selectAll("g.candidate").data(docs()).join("g").attr("class", "candidate").attr("role", "button").attr("tabindex", 0).attr("aria-label", (doc, index) => `${doc.title}, relevance ${doc.rel.toFixed(2)}, aspect ${doc.aspect}`).attr("transform", doc => `translate(${x(doc.x)},${y(doc.y)})`).on("click keydown", (event, doc) => { if (event.type === "click" || event.key === "Enter" || event.key === " ") { event.preventDefault(); state.inspected = docs().indexOf(doc); renderInspector(); renderScatter(); } });
+        groups.append("circle").attr("r", (doc, index) => state.selected.includes(index) ? 25 : index === next ? 23 : 19).attr("fill", (doc, index) => state.selected.includes(index) ? "#65d4d2" : index === next ? "#f4df4f" : "#f07866").attr("stroke", (doc, index) => state.inspected === index ? "#121212" : "#5b574f").attr("stroke-width", (doc, index) => state.inspected === index ? 4 : 1.5);
+        groups.append("text").attr("text-anchor", "middle").attr("dy", 4).attr("font-family", "Satoshi").attr("font-size", 12).attr("font-weight", 900).text((doc, index) => state.selected.includes(index) ? state.selected.indexOf(index) + 1 : index + 1);
+        groups.append("title").text((doc, index) => { const current = candidateScore(doc, state.selected); return `${doc.title}\nrelevance ${doc.rel.toFixed(2)}\nredundancy ${current.red.toFixed(2)}\nMMR ${current.score.toFixed(3)}`; });
+        if (selectedDocs.length) {
+          svg.append("text").attr("x", 22).attr("y", viewH - 20).attr("font-family", "ui-monospace").attr("font-size", 12).attr("fill", "#66635c").text(`selected aspects: ${new Set(selectedDocs.map(item => item.aspect)).size}`);
+        }
+      };
+      const renderInspector = () => {
+        const title = document.getElementById("inspectTitle"), copy = document.getElementById("inspectCopy");
+        if (state.inspected === null) { title.textContent = "Select a point"; copy.textContent = "Click a candidate to inspect its query relevance, redundancy penalty, and current MMR score."; return; }
+        const doc = docs()[state.inspected], current = candidateScore(doc, state.selected);
+        title.textContent = doc.title;
+        copy.textContent = `Relevance ${doc.rel.toFixed(2)}. Current redundancy ${current.red.toFixed(2)}. MMR score ${current.score.toFixed(3)}. Aspect: ${doc.aspect}.`;
+      };
+      const rankMarkup = (indexes, useMmr) => indexes.map((index, rank) => {
+        const doc = docs()[index];
+        const before = indexes.slice(0, rank);
+        const score = useMmr ? candidateScoreForOrder(doc, before) : doc.rel;
+        return `<li class="rank-item"><span class="rank-number">${rank + 1}</span><span><strong>${doc.title}</strong><small>${doc.aspect}</small></span><span class="rank-score">${score.toFixed(3)}</span></li>`;
+      }).join("");
+      const candidateScoreForOrder = (doc, selectedIndexes) => {
+        const selectedDocs = selectedIndexes.map(index => docs()[index]);
+        return state.lambda * doc.rel - (1 - state.lambda) * redundancy(doc, selectedDocs);
+      };
+      const renderRankings = () => {
+        const baseline = docs().map((doc, index) => ({index, rel:doc.rel})).sort((a, b) => b.rel - a.rel).slice(0, state.targetK).map(item => item.index);
+        const mmr = fullOrder();
+        document.getElementById("baselineList").innerHTML = rankMarkup(baseline, false);
+        document.getElementById("mmrList").innerHTML = rankMarkup(mmr, true);
+        const mean = mmr.reduce((sum, index) => sum + docs()[index].rel, 0) / mmr.length;
+        const baseMean = baseline.reduce((sum, index) => sum + docs()[index].rel, 0) / baseline.length;
+        const red = averagePairwise(mmr), baseRed = averagePairwise(baseline);
+        document.getElementById("meanRel").textContent = mean.toFixed(2);
+        document.getElementById("relDelta").textContent = `${(mean - baseMean >= 0 ? "+" : "") + (mean - baseMean).toFixed(2)} vs relevance-only`;
+        document.getElementById("redundancy").textContent = red.toFixed(2);
+        document.getElementById("redundancyDelta").textContent = `${(red - baseRed >= 0 ? "+" : "") + (red - baseRed).toFixed(2)} vs relevance-only`;
+        document.getElementById("coverage").textContent = `${new Set(mmr.map(index => docs()[index].aspect)).size} / ${new Set(docs().map(doc => doc.aspect)).size}`;
+        document.getElementById("selectionStep").textContent = `${state.selected.length} / ${state.targetK}`;
+      };
+      const renderControls = () => {
+        document.getElementById("lambdaOut").textContent = state.lambda.toFixed(2);
+        document.getElementById("toolbarState").textContent = `${state.selected.length} of ${state.targetK} selected`;
+        document.querySelectorAll("[data-preset]").forEach(button => button.setAttribute("aria-pressed", String(button.dataset.preset === state.preset)));
+        document.querySelectorAll("[data-mode]").forEach(button => button.setAttribute("aria-pressed", String(button.dataset.mode === state.mode)));
+        document.getElementById("undoBtn").disabled = !state.selected.length;
+        document.getElementById("nextBtn").disabled = state.selected.length >= state.targetK;
+        document.getElementById("playBtn").disabled = state.selected.length >= state.targetK;
+      };
+      const render = () => { renderScatter(); renderInspector(); renderRankings(); renderControls(); };
+      const stop = () => { state.playing = false; window.clearInterval(state.timer); document.getElementById("playBtn").innerHTML = '<i data-lucide="play" class="icon"></i>'; document.getElementById("playBtn").setAttribute("aria-label", "Play all MMR selections"); document.getElementById("playBtn").setAttribute("title", "Play all MMR selections"); if (window.lucide) lucide.createIcons(); };
+      const selectNext = () => { if (state.selected.length >= state.targetK) return; const index = nextIndex(state.selected); state.selected.push(index); state.inspected = index; render(); if (state.selected.length >= state.targetK) stop(); };
+      const reset = () => { stop(); state.selected = []; state.inspected = null; render(); };
+      document.querySelectorAll("[data-preset]").forEach(button => button.addEventListener("click", () => { state.preset = button.dataset.preset; reset(); }));
+      document.querySelectorAll("[data-mode]").forEach(button => button.addEventListener("click", () => { state.mode = button.dataset.mode; reset(); }));
+      document.getElementById("lambda").addEventListener("input", event => { state.lambda = Number(event.target.value) / 100; reset(); });
+      document.getElementById("nextBtn").addEventListener("click", selectNext);
+      document.getElementById("undoBtn").addEventListener("click", () => { stop(); state.selected.pop(); state.inspected = state.selected.length ? state.selected[state.selected.length - 1] : null; render(); });
+      document.getElementById("resetBtn").addEventListener("click", reset);
+      document.getElementById("playBtn").addEventListener("click", () => {
+        if (state.playing) { stop(); return; }
+        state.playing = true;
+        document.getElementById("playBtn").innerHTML = '<i data-lucide="pause" class="icon"></i>';
+        document.getElementById("playBtn").setAttribute("aria-label", "Pause MMR selections");
+        document.getElementById("playBtn").setAttribute("title", "Pause MMR selections");
+        if (window.lucide) lucide.createIcons();
+        selectNext();
+        state.timer = window.setInterval(selectNext, 820);
+      });
+      const showClaim = index => { const claims = document.querySelectorAll(".claim"); state.claim = (index + claims.length) % claims.length; claims.forEach((claim, i) => claim.classList.toggle("active", i === state.claim)); };
+      document.getElementById("claimPrev").addEventListener("click", () => showClaim(state.claim - 1));
+      document.getElementById("claimNext").addEventListener("click", () => showClaim(state.claim + 1));
+      let resizeFrame = 0;
+      window.addEventListener("resize", () => { window.cancelAnimationFrame(resizeFrame); resizeFrame = window.requestAnimationFrame(renderScatter); });
+      const scrub = document.getElementById("scrubLine");
+      scrub.innerHTML = scrub.textContent.trim().split(/\s+/).map(word => `<span class="scrub-word">${word}</span>`).join(" ");
+      if (window.gsap && window.ScrollTrigger && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.from(".lab-shell", {scale:.87, opacity:.18, duration:1, ease:"power3.out"});
+        gsap.utils.toArray(".bento article").forEach(card => gsap.fromTo(card, {scale:.86, opacity:.2}, {scale:1, opacity:1, ease:"none", scrollTrigger:{trigger:card, start:"top 90%", end:"top 52%", scrub:true}}));
+        gsap.to(".scrub-word", {opacity:1, stagger:.06, ease:"none", scrollTrigger:{trigger:"#scrubLine", start:"top 82%", end:"bottom 48%", scrub:true}});
+      }
+      render();
+      if (window.lucide) lucide.createIcons();
+    })();
+  </script>
+</body>
+</html>

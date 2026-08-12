@@ -2,6 +2,28 @@
   {
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/maximum-marginal-relevance-reranking-lab-20260812-145828/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "maximum_marginal_relevance_lab",
+    "content_kind_label": "MMR Reranking Lab",
+    "direct_generated": true,
+    "github_commit": "18c6fd158c5e6c5545551316f4248157462f8dae",
+    "github_url": "https://github.com/rohanarun/super-agent-news-maximum-marginal-relevance-reranking-lab-20260812-145828",
+    "live_url": "https://lists.new/maximum-marginal-relevance-reranking-lab-20260812-145828/",
+    "receipt_created_at": "2026-08-12T14:58:28.556Z",
+    "receipt_status": "success",
+    "slug": "maximum-marginal-relevance-reranking-lab-20260812-145828",
+    "source_path": "sms_published_sites/maximum-marginal-relevance-reranking-lab-20260812-145828",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Maximum Marginal Relevance Lab: Rerank for Diversity"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/gradient-noise-scale-batch-efficiency-lab-20260712-012834/",
     "backlinks": [
       "https://getsupers.com/"
