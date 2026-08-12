@@ -85,3 +85,4 @@ A focused directory of Super personal AI agent market research, news analysis, c
 - [Super vs Siri — personal AI agents for real computer work](super-vs-siri-20260630-004934/): Competitor comparison
 - [Super vs Grok — personal AI agents for real computer work](super-vs-grok/): Competitor comparison
 - [Super for recruiters sourcing candidates and coordinating interviews](super-for-recruiters-sourcing-candidates-and-coordinating/): Niche research landing page
+- [Activation Patching Lab: Trace a Model's Causal Path](activation-patching-causal-trace-lab-20260812-132858/): Activation patching causal trace lab

@@ -1460,4 +1460,24 @@
     "source_path": "sms_published_sites/super-for-recruiters-sourcing-candidates-and-coordinating",
     "title": "Super for recruiters sourcing candidates and coordinating interviews"
   }
+  ,{
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/activation-patching-causal-trace-lab-20260812-132858/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "activation_patching_causal_trace_lab",
+    "content_kind_label": "Activation Patching Causal Trace Lab",
+    "direct_generated": true,
+    "live_url": "https://lists.new/activation-patching-causal-trace-lab-20260812-132858/",
+    "receipt_created_at": "2026-08-12T13:28:58.338+00:00",
+    "receipt_status": "success",
+    "slug": "activation-patching-causal-trace-lab-20260812-132858",
+    "source_path": "sms_published_sites/activation-patching-causal-trace-lab-20260812-132858",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Activation Patching Lab: Trace a Model's Causal Path"
+  }
 ]

@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111411">
+  <meta name="description" content="An interactive activation-patching lab for tracing where a transformer's clean behavior can be causally restored inside a corrupted run.">
+  <meta property="og:title" content="Activation Patching Lab: Trace a Model's Causal Path">
+  <meta property="og:description" content="Run clean, corrupted, and patched inferences; sweep layers and token positions; and learn what activation patching can and cannot establish.">
+  <title>Activation Patching Lab: Trace a Model's Causal Path</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #111411;
+      --paper: #f4f2eb;
+      --white: #fffefa;
+      --lime: #d8ff58;
+      --coral: #ff765d;
+      --blue: #78a9ff;
+      --cyan: #71e6d1;
+      --violet: #a88cff;
+      --muted: #666a63;
+      --line: #c8c8be;
+      --shadow: 0 18px 50px rgba(17, 20, 17, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Outfit", Arial, sans-serif;
+      letter-spacing: 0;
+      overflow-x: hidden;
+    }
+    button, input { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a { color: inherit; }
+    main { width: 100%; max-width: 100%; overflow-x: hidden; }
+    .wrap { width: min(1240px, calc(100% - 40px)); margin: 0 auto; }
+    .icon { width: 19px; height: 19px; stroke-width: 1.9; flex: 0 0 auto; }
+
+    .nav {
+      position: fixed;
+      z-index: 50;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1180px, calc(100% - 32px));
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 9px 10px 9px 20px;
+      color: var(--white);
+      background: rgba(17, 20, 17, 0.94);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 8px;
+      box-shadow: 0 12px 40px rgba(17, 20, 17, 0.2);
+      backdrop-filter: blur(14px);
+    }
+    .brand { display: flex; align-items: center; gap: 11px; font-weight: 700; text-decoration: none; white-space: nowrap; }
+    .brand-mark { width: 29px; height: 29px; display: grid; place-items: center; background: var(--lime); color: var(--ink); border-radius: 5px; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links > a { color: #d9ddd5; font-size: 15px; font-weight: 500; text-decoration: none; }
+    .nav-links > a:hover { color: var(--white); }
+    .nav-cta {
+      min-height: 40px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 14px;
+      background: var(--lime);
+      color: var(--ink) !important;
+      border-radius: 5px;
+      font-weight: 700 !important;
+    }
+
+    .hero {
+      min-height: 92vh;
+      padding: 148px 0 72px;
+      display: grid;
+      align-items: center;
+      background: var(--ink);
+      color: var(--white);
+      border-bottom: 1px solid #262b26;
+    }
+    .hero-inner { text-align: center; }
+    .kicker { margin: 0 0 24px; color: var(--lime); font-weight: 600; font-size: 16px; }
+    h1 {
+      max-width: 1120px;
+      margin: 0 auto;
+      font-size: 76px;
+      line-height: 0.98;
+      font-weight: 600;
+      letter-spacing: 0;
+      text-wrap: balance;
+    }
+    .inline-visual {
+      width: 128px;
+      height: 54px;
+      margin: 0 10px;
+      display: inline-grid;
+      grid-template-columns: repeat(4, 1fr);
+      align-items: center;
+      gap: 6px;
+      padding: 0 12px;
+      vertical-align: 12px;
+      background: var(--lime);
+      border-radius: 27px;
+      overflow: hidden;
+    }
+    .inline-visual i { height: 9px; background: var(--ink); border-radius: 2px; }
+    .inline-visual i:nth-child(2) { height: 30px; background: var(--coral); }
+    .inline-visual i:nth-child(3) { height: 20px; background: var(--blue); }
+    .inline-visual i:nth-child(4) { height: 38px; }
+    .hero-copy { max-width: 760px; margin: 30px auto 0; color: #c8cec5; font-size: 21px; line-height: 1.55; }
+    .hero-actions { display: flex; justify-content: center; gap: 12px; margin-top: 34px; }
+    .btn {
+      min-height: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 0 20px;
+      border: 1px solid #565d54;
+      border-radius: 6px;
+      color: var(--white);
+      background: transparent;
+      text-decoration: none;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn.primary { background: var(--lime); color: var(--ink); border-color: var(--lime); }
+    .btn:hover { transform: translateY(-2px); }
+    .hero-strip {
+      max-width: 1040px;
+      margin: 68px auto 0;
+      display: grid;
+      grid-template-columns: 1fr 44px 1fr 44px 1fr;
+      align-items: center;
+      text-align: left;
+    }
+    .run-chip { min-height: 84px; padding: 17px 18px; border: 1px solid #343a34; background: #191d19; border-radius: 6px; }
+    .run-chip strong { display: block; margin-bottom: 5px; color: var(--white); font-size: 17px; }
+    .run-chip span { color: #aeb5ac; font-size: 14px; line-height: 1.35; }
+    .run-chip.patch { border-color: var(--lime); }
+    .run-chip.patch strong { color: var(--lime); }
+    .flow-arrow { display: grid; place-items: center; color: #6f776e; }
+
+    .lab-band { padding: 112px 0 128px; background: var(--white); }
+    .lab-heading { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(320px, 1.2fr); gap: 64px; align-items: end; margin-bottom: 42px; }
+    .lab-heading h2, .chapter h2, .sources h2, .final h2 { margin: 0; font-size: 48px; line-height: 1.05; font-weight: 600; }
+    .lab-heading p { margin: 0; color: var(--muted); font-size: 19px; line-height: 1.6; }
+
+    .scenario-row { display: flex; gap: 8px; margin-bottom: 16px; overflow-x: auto; scrollbar-width: thin; padding-bottom: 3px; }
+    .seg-btn, .tool-btn, .mode-btn {
+      min-height: 42px;
+      border: 1px solid var(--line);
+      background: var(--white);
+      color: var(--ink);
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .seg-btn { padding: 0 15px; white-space: nowrap; }
+    .seg-btn[aria-pressed="true"], .mode-btn[aria-pressed="true"] { background: var(--ink); color: var(--white); border-color: var(--ink); }
+
+    .workbench {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 330px;
+      min-height: 720px;
+      border: 1px solid var(--ink);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: #f8f7f2;
+    }
+    .stage { min-width: 0; display: flex; flex-direction: column; border-right: 1px solid var(--ink); }
+    .stage-top { padding: 22px 24px 18px; border-bottom: 1px solid var(--line); background: var(--white); }
+    .prompt-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .prompt-box { min-width: 0; padding: 14px; background: #eef0e8; border-radius: 5px; }
+    .prompt-box.corrupt { background: #fff0eb; }
+    .prompt-box small { display: flex; align-items: center; gap: 7px; color: var(--muted); font-size: 12px; text-transform: uppercase; font-weight: 700; }
+    .prompt-box p { margin: 8px 0 0; font-size: 17px; font-weight: 500; overflow-wrap: anywhere; }
+    .outcomes { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 14px; border: 1px solid var(--line); border-radius: 5px; overflow: hidden; }
+    .outcome { padding: 13px 14px; background: var(--white); border-right: 1px solid var(--line); }
+    .outcome:last-child { border-right: 0; }
+    .outcome span { display: block; color: var(--muted); font-size: 12px; font-weight: 600; }
+    .outcome strong { display: block; margin-top: 4px; font-size: 21px; }
+    .outcome.patch strong { color: #316542; }
+
+    .chart-shell { position: relative; min-height: 465px; flex: 1; padding: 16px 18px 8px 10px; }
+    #heatmap { width: 100%; height: 100%; min-height: 430px; display: block; }
+    .cell { cursor: crosshair; }
+    .cell:focus { outline: 3px solid var(--ink); outline-offset: -3px; }
+    .tooltip {
+      position: absolute;
+      z-index: 4;
+      max-width: 235px;
+      padding: 10px 12px;
+      background: var(--ink);
+      color: var(--white);
+      font-size: 13px;
+      line-height: 1.4;
+      border-radius: 4px;
+      pointer-events: none;
+      opacity: 0;
+      box-shadow: 0 8px 24px rgba(17,20,17,.25);
+    }
+    .heat-legend { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0 18px 18px; color: var(--muted); font-size: 12px; }
+    .legend-scale { display: grid; grid-template-columns: repeat(6, 20px); height: 12px; }
+    .legend-scale i:nth-child(1) { background: #e8e9e2; }
+    .legend-scale i:nth-child(2) { background: #d5eadc; }
+    .legend-scale i:nth-child(3) { background: #a8dec5; }
+    .legend-scale i:nth-child(4) { background: #71c9b0; }
+    .legend-scale i:nth-child(5) { background: #ffc26c; }
+    .legend-scale i:nth-child(6) { background: #ff765d; }
+
+    .controls { padding: 22px; background: var(--paper); }
+    .controls-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
+    .controls h3 { margin: 0; font-size: 22px; }
+    .tool-btn { width: 42px; padding: 0; display: grid; place-items: center; }
+    .tool-btn:hover { background: var(--ink); color: var(--white); }
+    .control-group { padding: 18px 0; border-top: 1px solid var(--line); }
+    .control-group:first-of-type { border-top: 0; }
+    .control-label { display: flex; justify-content: space-between; gap: 14px; align-items: baseline; margin-bottom: 9px; font-size: 14px; font-weight: 600; }
+    .control-label output { color: #316542; font-variant-numeric: tabular-nums; }
+    input[type="range"] { width: 100%; accent-color: var(--ink); cursor: pointer; }
+    .mode-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+    .mode-btn { min-width: 0; padding: 0 8px; font-size: 13px; }
+    .stepper { display: grid; grid-template-columns: 42px 1fr 42px; gap: 7px; }
+    .step-value { min-height: 42px; display: grid; place-items: center; background: var(--white); border: 1px solid var(--line); border-radius: 5px; font-weight: 700; }
+    .timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-top: 12px; }
+    .timeline i { height: 5px; background: #d5d6ce; border-radius: 2px; }
+    .timeline i.active { background: var(--coral); }
+    .control-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 17px; }
+    .action-btn { min-height: 46px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 0; border-radius: 5px; cursor: pointer; font-weight: 700; }
+    .action-btn.play { background: var(--ink); color: var(--white); }
+    .action-btn.scan { background: var(--lime); color: var(--ink); }
+    .selection {
+      margin-top: 18px;
+      padding: 15px;
+      background: var(--ink);
+      color: var(--white);
+      border-radius: 6px;
+    }
+    .selection small { color: #aeb5ac; }
+    .selection strong { display: block; margin: 5px 0 8px; color: var(--lime); font-size: 18px; }
+    .selection p { margin: 0; color: #d2d7cf; font-size: 13px; line-height: 1.45; }
+
+    .metric-strip { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--ink); border-top: 0; }
+    .metric { min-width: 0; padding: 22px; background: var(--white); border-right: 1px solid var(--ink); }
+    .metric:last-child { border-right: 0; }
+    .metric span { display: block; min-height: 34px; color: var(--muted); font-size: 13px; line-height: 1.3; }
+    .metric strong { display: block; margin-top: 4px; font-size: 29px; font-variant-numeric: tabular-nums; }
+
+    .chapter { padding: 144px 0; background: var(--paper); }
+    .chapter-layout { display: grid; grid-template-columns: minmax(240px, 0.75fr) minmax(0, 1.25fr); gap: 100px; }
+    .chapter-title { align-self: start; }
+    .chapter-title p { max-width: 390px; color: var(--muted); font-size: 18px; line-height: 1.6; }
+    .steps { display: grid; gap: 0; border-top: 1px solid var(--ink); }
+    .step-row { min-height: 210px; display: grid; grid-template-columns: 88px 1fr; gap: 18px; align-content: center; border-bottom: 1px solid var(--ink); }
+    .step-index { width: 54px; height: 54px; display: grid; place-items: center; border-radius: 50%; background: var(--ink); color: var(--white); font-size: 18px; font-weight: 700; }
+    .step-row:nth-child(2) .step-index { background: var(--coral); color: var(--ink); }
+    .step-row:nth-child(3) .step-index { background: var(--lime); color: var(--ink); }
+    .step-copy h3 { margin: 0 0 9px; font-size: 28px; }
+    .step-copy p { margin: 0; color: var(--muted); font-size: 17px; line-height: 1.6; }
+
+    .evidence { padding: 136px 0; background: var(--ink); color: var(--white); }
+    .evidence-head { max-width: 790px; margin-bottom: 54px; }
+    .evidence-head h2 { margin: 0; font-size: 52px; line-height: 1.04; font-weight: 600; }
+    .evidence-head p { color: #b9c0b7; font-size: 19px; line-height: 1.6; }
+    .bento { display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-flow: dense; gap: 12px; }
+    .evidence-card { min-height: 260px; padding: 28px; border: 1px solid #3b413b; border-radius: 7px; overflow: hidden; transition: transform .5s ease, background .5s ease; }
+    .evidence-card:hover { transform: translateY(-5px); }
+    .evidence-card h3 { margin: 0 0 12px; font-size: 28px; }
+    .evidence-card p { margin: 0; color: #c2c8c0; line-height: 1.65; }
+    .evidence-card strong { display: block; margin-top: 28px; font-size: 52px; font-weight: 600; }
+    .evidence-card:nth-child(1) { grid-column: span 7; background: #1b281f; }
+    .evidence-card:nth-child(2) { grid-column: span 5; background: #2a201d; }
+    .evidence-card:nth-child(3) { grid-column: span 5; background: #1e2330; }
+    .evidence-card:nth-child(4) { grid-column: span 7; background: #26212e; }
+    .mini-matrix { display: grid; grid-template-columns: repeat(9, 1fr); gap: 5px; margin-top: 26px; }
+    .mini-matrix i { height: 25px; background: #405347; border-radius: 2px; }
+    .mini-matrix i:nth-child(4n) { background: var(--cyan); }
+    .mini-matrix i:nth-child(7n) { background: var(--coral); }
+    .quote-viewport { min-height: 112px; position: relative; }
+    .caution { display: none; color: var(--white); font-size: 23px; line-height: 1.35; }
+    .caution.active { display: block; }
+    .quote-controls { display: flex; gap: 8px; margin-top: 24px; }
+    .quote-controls button { width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid #596059; color: var(--white); background: transparent; border-radius: 5px; cursor: pointer; }
+    .quote-controls button:hover { color: var(--ink); background: var(--lime); border-color: var(--lime); }
+
+    .accordion-band { padding: 132px 0; background: #e5e4dc; }
+    .accordion-head { display: flex; justify-content: space-between; gap: 40px; align-items: end; margin-bottom: 42px; }
+    .accordion-head h2 { max-width: 720px; margin: 0; font-size: 50px; line-height: 1.05; }
+    .accordion-head p { max-width: 370px; margin: 0; color: var(--muted); line-height: 1.55; }
+    .accordions { min-height: 360px; display: flex; border: 1px solid var(--ink); overflow: hidden; }
+    .accordion {
+      flex: 1 1 0;
+      min-width: 100px;
+      padding: 28px;
+      border: 0;
+      border-right: 1px solid var(--ink);
+      background: var(--white);
+      color: var(--ink);
+      text-align: left;
+      cursor: pointer;
+      transition: flex .55s ease, background .3s ease;
+      overflow: hidden;
+    }
+    .accordion:last-child { border-right: 0; }
+    .accordion.active { flex: 3 1 0; background: var(--lime); }
+    .accordion-number { font-weight: 700; }
+    .accord-title { display: block; margin: 96px 0 12px; font-size: 27px; font-weight: 700; white-space: nowrap; }
+    .accord-copy { display: block; width: auto; max-width: none; margin: 0; opacity: 0; color: #31372f; line-height: 1.55; transition: opacity .25s ease; }
+    .accordion.active .accord-copy { opacity: 1; transition-delay: .2s; }
+
+    .sources { padding: 132px 0; background: var(--white); }
+    .source-list { margin-top: 48px; border-top: 1px solid var(--ink); }
+    .source-link {
+      min-height: 108px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 24px;
+      border-bottom: 1px solid var(--ink);
+      text-decoration: none;
+    }
+    .source-link:hover { background: var(--paper); }
+    .source-link strong { display: block; font-size: 22px; }
+    .source-link span { display: block; margin-top: 5px; color: var(--muted); }
+    .source-link .icon { width: 24px; height: 24px; }
+
+    .final { padding: 128px 0 42px; background: var(--coral); color: var(--ink); }
+    .final h2 { max-width: 920px; font-size: 64px; }
+    .final p { max-width: 690px; margin: 24px 0 32px; font-size: 20px; line-height: 1.55; }
+    .final-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .final .btn { color: var(--ink); border-color: var(--ink); }
+    .final .btn.primary { background: var(--ink); color: var(--white); border-color: var(--ink); }
+    .footer { margin-top: 92px; padding-top: 24px; display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid rgba(17,20,17,.55); font-size: 14px; }
+    .footer-links { display: flex; gap: 20px; }
+
+    @media (max-width: 980px) {
+      h1 { font-size: 58px; }
+      .inline-visual { width: 100px; height: 44px; vertical-align: 9px; }
+      .workbench { grid-template-columns: 1fr; }
+      .stage { border-right: 0; border-bottom: 1px solid var(--ink); }
+      .controls { display: grid; grid-template-columns: 1fr 1fr; gap: 0 22px; }
+      .controls-head, .selection, .control-actions { grid-column: 1 / -1; }
+      .control-group:nth-of-type(odd) { padding-right: 10px; }
+      .chapter-layout { gap: 54px; }
+      .evidence-card:nth-child(n) { grid-column: span 6; }
+      .accordion { padding: 22px; }
+      .accord-title { font-size: 22px; }
+    }
+
+    @media (max-width: 700px) {
+      .wrap { width: min(100% - 24px, 1240px); }
+      .nav { top: 10px; width: calc(100% - 20px); min-height: 52px; padding-left: 12px; }
+      .brand span:last-child, .nav-links > a:not(.nav-cta) { display: none; }
+      .nav-links { gap: 8px; }
+      .nav-cta { min-height: 36px; padding: 0 11px; font-size: 13px; }
+      .hero { min-height: 760px; padding: 116px 0 58px; }
+      h1 { font-size: 37px; line-height: 1.04; }
+      .inline-visual { width: 74px; height: 34px; margin: 0 4px; padding: 0 8px; gap: 4px; vertical-align: 7px; }
+      .inline-visual i { height: 7px; }
+      .inline-visual i:nth-child(2) { height: 22px; }
+      .inline-visual i:nth-child(3) { height: 15px; }
+      .inline-visual i:nth-child(4) { height: 27px; }
+      .hero-copy { font-size: 17px; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn { width: 100%; }
+      .hero-strip { display: none; }
+      .flow-arrow { transform: rotate(90deg); height: 22px; }
+      .scenario-row { flex-wrap: wrap; overflow-x: visible; }
+      .scenario-row .seg-btn { flex: 1 1 112px; }
+      .lab-band, .chapter, .evidence, .accordion-band, .sources { padding: 88px 0; }
+      .lab-band { padding-top: 42px; }
+      .lab-heading, .chapter-layout { grid-template-columns: 1fr; gap: 24px; }
+      .lab-heading h2, .chapter h2, .sources h2 { font-size: 37px; }
+      .workbench { min-height: 0; }
+      .stage-top { padding: 16px 12px; }
+      .prompt-pair { grid-template-columns: 1fr; }
+      .outcomes { grid-template-columns: 1fr; }
+      .outcome { border-right: 0; border-bottom: 1px solid var(--line); }
+      .outcome:last-child { border-bottom: 0; }
+      .chart-shell { min-height: 410px; padding: 12px 4px 6px; overflow-x: auto; }
+      #heatmap { min-width: 620px; min-height: 380px; }
+      .heat-legend { justify-content: flex-start; padding-left: 12px; overflow-x: auto; }
+      .controls { display: block; padding: 18px; }
+      .metric-strip { grid-template-columns: 1fr 1fr; }
+      .metric { border-bottom: 1px solid var(--ink); }
+      .metric:nth-child(2) { border-right: 0; }
+      .metric:nth-child(3), .metric:nth-child(4) { border-bottom: 0; }
+      .chapter-title { position: static !important; }
+      .step-row { min-height: 180px; grid-template-columns: 60px 1fr; }
+      .step-copy h3 { font-size: 23px; }
+      .evidence-head h2 { font-size: 40px; }
+      .evidence-card:nth-child(n) { grid-column: 1 / -1; min-height: 230px; }
+      .accordion-head { display: block; }
+      .accordion-head h2 { font-size: 38px; }
+      .accordion-head p { margin-top: 18px; }
+      .accordions { min-height: auto; display: block; border-bottom: 0; }
+      .accordion { width: 100%; min-height: 92px; border-right: 0; border-bottom: 1px solid var(--ink); }
+      .accordion.active { min-height: 250px; }
+      .accord-title { margin: 24px 0 10px; white-space: normal; }
+      .source-link { min-height: 132px; }
+      .source-link strong { font-size: 19px; }
+      .final { padding: 92px 0 30px; }
+      .final h2 { font-size: 44px; }
+      .footer { margin-top: 64px; flex-direction: column; }
+      .footer-links { flex-wrap: wrap; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="Primary navigation">
+    <a class="brand" href="#top">
+      <span class="brand-mark"><i data-lucide="scan-search" class="icon"></i></span>
+      <span>Causal Trace Lab</span>
+    </a>
+    <div class="nav-links">
+      <a href="#method">Method</a>
+      <a href="#evidence">Limits</a>
+      <a class="nav-cta" href="#lab">Open lab <i data-lucide="arrow-down" class="icon"></i></a>
+    </div>
+  </nav>
+
+  <main id="top">
+    <header class="hero">
+      <div class="hero-inner wrap">
+        <p class="kicker">A hands-on mechanistic interpretability experiment</p>
+        <h1>Patch one activation. <span class="inline-visual" aria-hidden="true"><i></i><i></i><i></i><i></i></span> See what the model recovers.</h1>
+        <p class="hero-copy">Activation patching swaps a hidden state from a clean run into a corrupted run. If the original behavior returns, that location is causally implicated in the behavior under this intervention.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#lab"><i data-lucide="flask-conical" class="icon"></i> Run the experiment</a>
+          <a class="btn" href="#method"><i data-lucide="book-open" class="icon"></i> Learn the protocol</a>
+        </div>
+        <div class="hero-strip" role="group" aria-label="Activation patching sequence">
+          <div class="run-chip"><strong>1. Clean run</strong><span>Cache the hidden states that produce the target answer.</span></div>
+          <div class="flow-arrow"><i data-lucide="arrow-right" class="icon"></i></div>
+          <div class="run-chip"><strong>2. Corrupted run</strong><span>Change the causal feature and observe the broken behavior.</span></div>
+          <div class="flow-arrow"><i data-lucide="arrow-right" class="icon"></i></div>
+          <div class="run-chip patch"><strong>3. Patched run</strong><span>Restore one clean state and measure output recovery.</span></div>
+        </div>
+      </div>
+    </header>
+
+    <section class="lab-band" id="lab">
+      <div class="wrap">
+        <div class="lab-heading">
+          <h2>Find the causal handoff.</h2>
+          <p>Each heatmap cell represents a synthetic intervention at one token position and transformer layer. Click a cell, change the patch width, or run the sweep to see how localization depends on the experiment.</p>
+        </div>
+
+        <div class="scenario-row" role="group" aria-label="Experiment scenario">
+          <button type="button" class="seg-btn" data-scenario="capital" aria-pressed="true">Factual recall</button>
+          <button type="button" class="seg-btn" data-scenario="ioi" aria-pressed="false">Indirect object</button>
+          <button type="button" class="seg-btn" data-scenario="sentiment" aria-pressed="false">Sentiment</button>
+        </div>
+
+        <div class="workbench">
+          <div class="stage">
+            <div class="stage-top">
+              <div class="prompt-pair">
+                <div class="prompt-box">
+                  <small><i data-lucide="circle-check" class="icon"></i> Clean input</small>
+                  <p id="cleanPrompt">The Eiffel Tower is in</p>
+                </div>
+                <div class="prompt-box corrupt">
+                  <small><i data-lucide="circle-x" class="icon"></i> Corrupted input</small>
+                  <p id="corruptPrompt">The Colosseum is in</p>
+                </div>
+              </div>
+              <div class="outcomes" aria-live="polite">
+                <div class="outcome"><span>Clean target</span><strong id="cleanOutcome">Paris 92%</strong></div>
+                <div class="outcome"><span>Corrupted target</span><strong id="corruptOutcome">Paris 18%</strong></div>
+                <div class="outcome patch"><span>After patch</span><strong id="patchOutcome">Paris 61%</strong></div>
+              </div>
+            </div>
+            <div class="chart-shell" id="chartShell">
+              <svg id="heatmap" role="img" aria-labelledby="heatTitle heatDesc"></svg>
+              <div class="tooltip" id="tooltip" role="status"></div>
+            </div>
+            <div class="heat-legend" role="group" aria-label="Heatmap legend">
+              <span>little recovery</span><span class="legend-scale" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span><span>strong recovery</span>
+            </div>
+          </div>
+
+          <aside class="controls" aria-label="Experiment controls">
+            <div class="controls-head">
+              <h3>Intervention</h3>
+              <button type="button" class="tool-btn" id="resetBtn" title="Reset experiment" aria-label="Reset experiment"><i data-lucide="rotate-ccw" class="icon"></i></button>
+            </div>
+
+            <div class="control-group">
+              <div class="control-label"><label for="corruption">Corruption strength</label><output id="corruptionValue">72%</output></div>
+              <input id="corruption" type="range" min="20" max="95" value="72">
+            </div>
+
+            <div class="control-group">
+              <div class="control-label"><span>Activation site</span><output id="siteValue">Residual</output></div>
+              <div class="mode-grid" id="siteModes">
+                <button type="button" class="mode-btn" data-site="residual" aria-pressed="true">Residual</button>
+                <button type="button" class="mode-btn" data-site="attention" aria-pressed="false">Attention</button>
+                <button type="button" class="mode-btn" data-site="mlp" aria-pressed="false">MLP</button>
+                <button type="button" class="mode-btn" data-site="head" aria-pressed="false">Head output</button>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <div class="control-label"><span>Patch window</span><output id="windowValue">1 token</output></div>
+              <div class="stepper">
+                <button type="button" class="tool-btn" id="windowMinus" title="Narrow patch window" aria-label="Narrow patch window"><i data-lucide="minus" class="icon"></i></button>
+                <div class="step-value" id="windowDisplay">1</div>
+                <button type="button" class="tool-btn" id="windowPlus" title="Widen patch window" aria-label="Widen patch window"><i data-lucide="plus" class="icon"></i></button>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <div class="control-label"><label for="phase">Experiment phase</label><output id="phaseValue">Patch</output></div>
+              <input id="phase" type="range" min="0" max="3" value="3" step="1">
+              <div class="timeline" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+            </div>
+
+            <div class="control-actions">
+              <button type="button" class="action-btn play" id="playBtn"><i data-lucide="play" class="icon"></i><span>Play protocol</span></button>
+              <button type="button" class="action-btn scan" id="scanBtn"><i data-lucide="scan-line" class="icon"></i><span>Sweep cells</span></button>
+            </div>
+
+            <div class="selection">
+              <small>Selected intervention</small>
+              <strong id="selectionTitle">Layer 7 at Eiffel</strong>
+              <p id="selectionCopy">Patching this residual-stream state restores 58% of the behavior lost to corruption.</p>
+            </div>
+          </aside>
+        </div>
+
+        <div class="metric-strip" aria-live="polite">
+          <div class="metric"><span>Clean target probability</span><strong id="cleanMetric">92%</strong></div>
+          <div class="metric"><span>Corrupted target probability</span><strong id="corruptMetric">18%</strong></div>
+          <div class="metric"><span>Patched target probability</span><strong id="patchMetric">61%</strong></div>
+          <div class="metric"><span>Normalized restoration</span><strong id="restoreMetric">58%</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" id="method">
+      <div class="wrap chapter-layout">
+        <div class="chapter-title">
+          <h2>The three-run protocol</h2>
+          <p>Localization comes from an intervention, not from reading a representation in isolation. The comparison needs a clean baseline, a meaningful corruption, and a declared output metric.</p>
+        </div>
+        <div class="steps">
+          <article class="step-row">
+            <div class="step-index">01</div>
+            <div class="step-copy"><h3>Cache a successful computation.</h3><p>Run the clean prompt and save activations at each candidate location. The clean output defines the behavior you want to recover.</p></div>
+          </article>
+          <article class="step-row">
+            <div class="step-index">02</div>
+            <div class="step-copy"><h3>Break the relevant feature.</h3><p>Change the input so the model's target behavior degrades. A weak or off-target corruption gives an uninformative denominator.</p></div>
+          </article>
+          <article class="step-row">
+            <div class="step-index">03</div>
+            <div class="step-copy"><h3>Restore one state and measure recovery.</h3><p>Insert a cached clean activation into the corrupted forward pass. Repeat across locations to build a causal-response map.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="evidence" id="evidence">
+      <div class="wrap">
+        <div class="evidence-head">
+          <h2>A bright cell is evidence, not a complete explanation.</h2>
+          <p>Activation patching can identify places where a clean state is sufficient to restore output behavior in a specific setup. Interpretation still depends on corruption choice, metric, granularity, and interactions among components.</p>
+        </div>
+        <div class="bento">
+          <article class="evidence-card">
+            <h3>Localization is conditional.</h3>
+            <p>The result describes this prompt family, intervention, component type, and score. Change those choices and the map can move.</p>
+            <div class="mini-matrix" aria-hidden="true"></div>
+          </article>
+          <article class="evidence-card">
+            <h3>Cost scales with the sweep.</h3>
+            <p>Exact patching needs another forward pass for each tested location. A 12-layer, 8-token sweep means 96 patched runs, plus baselines.</p>
+            <strong id="runCount">98 runs</strong>
+          </article>
+          <article class="evidence-card">
+            <h3>Restoration is not necessity.</h3>
+            <p>A patch showing sufficiency does not prove the component is uniquely necessary; redundant or interacting pathways may exist.</p>
+          </article>
+          <article class="evidence-card">
+            <h3>Read the claim carefully.</h3>
+            <div class="quote-viewport" id="quoteViewport">
+              <p class="caution active">"This state restores the measured behavior" is supported.</p>
+              <p class="caution">"This cell contains the whole concept" is usually too strong.</p>
+              <p class="caution">"The heatmap is invariant to corruption and metric" needs separate tests.</p>
+            </div>
+            <div class="quote-controls">
+              <button type="button" id="quotePrev" title="Previous interpretation" aria-label="Previous interpretation"><i data-lucide="arrow-left" class="icon"></i></button>
+              <button type="button" id="quoteNext" title="Next interpretation" aria-label="Next interpretation"><i data-lucide="arrow-right" class="icon"></i></button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="accordion-band">
+      <div class="wrap">
+        <div class="accordion-head">
+          <h2>Choose the intervention that matches your question.</h2>
+          <p>The site of the patch changes the unit of explanation. Broader patches can recover more behavior while localizing less precisely.</p>
+        </div>
+        <div class="accordions" role="group" aria-label="Intervention comparison">
+          <button type="button" class="accordion active" data-accordion="residual">
+            <span class="accordion-number">R</span>
+            <span class="accord-title">Residual stream</span>
+            <span class="accord-copy">Patches the combined information flowing between blocks. It is a useful first sweep for locating layers and positions, but it does not isolate the contributing submodule.</span>
+          </button>
+          <button type="button" class="accordion" data-accordion="attention">
+            <span class="accordion-number">A</span>
+            <span class="accord-title">Attention output</span>
+            <span class="accord-copy">Tests whether information moved by attention at a location is sufficient for recovery. Follow-up head-level patches can make this more precise.</span>
+          </button>
+          <button type="button" class="accordion" data-accordion="mlp">
+            <span class="accordion-number">M</span>
+            <span class="accord-title">MLP output</span>
+            <span class="accord-copy">Tests the contribution of transformed features written by the feed-forward sublayer, often revealing a different layer profile from attention.</span>
+          </button>
+          <button type="button" class="accordion" data-accordion="head">
+            <span class="accordion-number">H</span>
+            <span class="accord-title">Head output</span>
+            <span class="accord-copy">Offers finer component localization but expands the search space. A positive head patch remains conditional on the rest of the corrupted computation.</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="sources" id="sources">
+      <div class="wrap">
+        <h2>Read the primary work.</h2>
+        <div class="source-list">
+          <a class="source-link" href="https://arxiv.org/abs/2309.16042" target="_blank" rel="noopener">
+            <span><strong>Towards Best Practices of Activation Patching in Language Models</strong><span>Zhang and Nanda, 2023 - metrics, corruption choices, and methodological sensitivity</span></span>
+            <i data-lucide="external-link" class="icon"></i>
+          </a>
+          <a class="source-link" href="https://arxiv.org/abs/2211.00593" target="_blank" rel="noopener">
+            <span><strong>Interpretability in the Wild: A Circuit for Indirect Object Identification</strong><span>Wang et al., 2022 - causal interventions in an end-to-end GPT-2 small circuit</span></span>
+            <i data-lucide="external-link" class="icon"></i>
+          </a>
+          <a class="source-link" href="https://aclanthology.org/2021.acl-long.144/" target="_blank" rel="noopener">
+            <span><strong>Causal Analysis of Syntactic Agreement Mechanisms</strong><span>Finlayson et al., ACL 2021 - causal mediation in pretrained language models</span></span>
+            <i data-lucide="external-link" class="icon"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="final">
+      <div class="wrap">
+        <h2>Use causal traces to form better questions, then test the whole system.</h2>
+        <p>This lab uses a transparent synthetic response surface to teach the intervention protocol. Real model claims require real forward passes, held-out prompts, multiple corruption methods, and behavioral evaluation.</p>
+        <div class="final-actions">
+          <a class="btn primary" href="https://getsupers.com/"><i data-lucide="sparkles" class="icon"></i> Explore Super</a>
+          <a class="btn" href="https://app.getsupers.com/use-cases/ai-agent-build-websites/"><i data-lucide="panels-top-left" class="icon"></i> Build with an AI agent</a>
+          <a class="btn" href="https://app.getsupers.com/use-cases/computer-use-cache/"><i data-lucide="database" class="icon"></i> Explore computer-use cache</a>
+        </div>
+        <footer class="footer">
+          <span>Activation Patching Causal Trace Lab</span>
+          <div class="footer-links"><a href="#lab">Replay lab</a><a href="#sources">Sources</a><a href="https://getsupers.com/">Super</a></div>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+  <script>
+    (() => {
+      "use strict";
+
+      const scenarios = {
+        capital: {
+          label: "factual recall",
+          clean: "The Eiffel Tower is in",
+          corrupt: "The Colosseum is in",
+          tokens: ["The", "Eiffel", "Tower", "is", "in", "->"],
+          answer: "Paris",
+          cleanP: 0.92,
+          corruptBase: 0.18,
+          centerLayer: 7,
+          centerToken: 1.6,
+          spreadL: 2.05,
+          spreadT: 1.05
+        },
+        ioi: {
+          label: "indirect object",
+          clean: "Alice and Bob met. Alice gave the book to",
+          corrupt: "Alice and Carol met. Alice gave the book to",
+          tokens: ["Alice", "and", "Bob", "met", "Alice", "gave", "book", "to"],
+          answer: "Bob",
+          cleanP: 0.86,
+          corruptBase: 0.12,
+          centerLayer: 8,
+          centerToken: 6.1,
+          spreadL: 1.75,
+          spreadT: 1.35
+        },
+        sentiment: {
+          label: "sentiment",
+          clean: "The film was surprisingly wonderful. Review:",
+          corrupt: "The film was surprisingly terrible. Review:",
+          tokens: ["The", "film", "was", "surprisingly", "wonderful", ".", "Review", ":"],
+          answer: "Positive",
+          cleanP: 0.89,
+          corruptBase: 0.09,
+          centerLayer: 5,
+          centerToken: 4.2,
+          spreadL: 2.4,
+          spreadT: 0.9
+        }
+      };
+
+      const state = {
+        scenario: "capital",
+        site: "residual",
+        corruption: 72,
+        window: 1,
+        layer: 7,
+        token: 1,
+        phase: 3,
+        playing: false,
+        scanning: false,
+        quote: 0
+      };
+
+      const phaseNames = ["Clean", "Corrupt", "Sweep", "Patch"];
+      const siteLabels = { residual: "Residual", attention: "Attention", mlp: "MLP", head: "Head output" };
+      const siteProfiles = {
+        residual: { layerShift: 0, tokenShift: 0, amplitude: 1 },
+        attention: { layerShift: 1, tokenShift: 1.25, amplitude: 0.84 },
+        mlp: { layerShift: -1.5, tokenShift: 0, amplitude: 0.77 },
+        head: { layerShift: 1.8, tokenShift: 1.6, amplitude: 0.7 }
+      };
+
+      const svg = d3.select("#heatmap");
+      const tooltip = document.getElementById("tooltip");
+      const shell = document.getElementById("chartShell");
+      const miniMatrix = document.querySelector(".mini-matrix");
+      for (let i = 0; i < 36; i += 1) miniMatrix.appendChild(document.createElement("i"));
+
+      function clamp(value, min, max) { return Math.max(min, Math.min(max, value)); }
+      function sigmoid(value) { return 1 / (1 + Math.exp(-value)); }
+
+      function recoveryAt(layer, token) {
+        const scenario = scenarios[state.scenario];
+        const profile = siteProfiles[state.site];
+        const cx = scenario.centerToken + profile.tokenShift;
+        const cy = scenario.centerLayer + profile.layerShift;
+        const dx = (token - cx) / scenario.spreadT;
+        const dy = (layer - cy) / scenario.spreadL;
+        const core = Math.exp(-0.5 * (dx * dx + dy * dy));
+        const relayCenter = state.scenario === "ioi" ? 2.2 : scenario.tokens.length - 1.25;
+        const relay = Math.exp(-0.5 * (Math.pow((token - relayCenter) / 1.15, 2) + Math.pow((layer - (cy + 2.1)) / 1.45, 2)));
+        const texture = 0.035 * (Math.sin((layer + 1) * 1.7 + token * 2.1) + 1);
+        const base = (core * 0.78 + relay * 0.27 + texture) * profile.amplitude;
+        const windowBoost = 1 + (state.window - 1) * 0.08;
+        return clamp(base * windowBoost, 0, 0.96);
+      }
+
+      function currentMetrics() {
+        const scenario = scenarios[state.scenario];
+        const corruptionScale = state.corruption / 72;
+        const corruptP = clamp(scenario.cleanP - (scenario.cleanP - scenario.corruptBase) * corruptionScale, 0.02, scenario.cleanP - 0.03);
+        const recovery = recoveryAt(state.layer, state.token);
+        const patchedP = corruptP + (scenario.cleanP - corruptP) * recovery;
+        return { cleanP: scenario.cleanP, corruptP, patchedP, recovery };
+      }
+
+      function formatPct(value) { return Math.round(value * 100) + "%"; }
+
+      function renderHeatmap() {
+        const scenario = scenarios[state.scenario];
+        const layers = d3.range(12);
+        const tokens = d3.range(scenario.tokens.length);
+        const data = layers.flatMap(layer => tokens.map(token => ({ layer, token, value: recoveryAt(layer, token) })));
+        const width = Math.max(620, shell.clientWidth - 30);
+        const height = Math.max(410, shell.clientHeight - 30);
+        const margin = { top: 28, right: 18, bottom: 78, left: 70 };
+        const innerW = width - margin.left - margin.right;
+        const innerH = height - margin.top - margin.bottom;
+        const x = d3.scaleBand().domain(tokens).range([0, innerW]).padding(0.1);
+        const y = d3.scaleBand().domain(layers.slice().reverse()).range([0, innerH]).padding(0.1);
+        const color = d3.scaleLinear().domain([0, .16, .35, .58, .78, 1]).range(["#e8e9e2", "#d5eadc", "#a8dec5", "#71c9b0", "#ffc26c", "#ff765d"]).clamp(true);
+
+        svg.attr("viewBox", `0 0 ${width} ${height}`);
+        svg.selectAll("*").remove();
+        svg.append("title").attr("id", "heatTitle").text("Activation patching recovery heatmap");
+        svg.append("desc").attr("id", "heatDesc").text("Rows are transformer layers and columns are token positions. Warmer cells indicate more normalized restoration after patching.");
+        const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+
+        g.append("g")
+          .attr("transform", `translate(0,${innerH})`)
+          .call(d3.axisBottom(x).tickFormat(i => scenario.tokens[i]))
+          .call(group => group.select(".domain").remove())
+          .call(group => group.selectAll("line").remove())
+          .call(group => group.selectAll("text").attr("font-family", "Outfit").attr("font-size", 12).attr("fill", "#4f544e").attr("transform", "rotate(-27)").attr("text-anchor", "end").attr("dx", "-.35em").attr("dy", ".45em"));
+
+        g.append("g")
+          .call(d3.axisLeft(y).tickFormat(d => "Layer " + d))
+          .call(group => group.select(".domain").remove())
+          .call(group => group.selectAll("line").remove())
+          .call(group => group.selectAll("text").attr("font-family", "Outfit").attr("font-size", 12).attr("fill", "#4f544e"));
+
+        const cells = g.selectAll("rect.cell")
+          .data(data)
+          .join("rect")
+          .attr("class", "cell")
+          .attr("role", "button")
+          .attr("tabindex", 0)
+          .attr("aria-label", d => `Patch layer ${d.layer} at token ${scenario.tokens[d.token]}, ${formatPct(d.value)} restoration`)
+          .attr("x", d => x(d.token))
+          .attr("y", d => y(d.layer))
+          .attr("width", x.bandwidth())
+          .attr("height", y.bandwidth())
+          .attr("rx", 3)
+          .attr("fill", d => color(d.value))
+          .attr("stroke", d => d.layer === state.layer && d.token === state.token ? "#111411" : "#ffffff")
+          .attr("stroke-width", d => d.layer === state.layer && d.token === state.token ? 3 : 1)
+          .on("mouseenter focus", (event, d) => showTooltip(event, d))
+          .on("mousemove", (event, d) => showTooltip(event, d))
+          .on("mouseleave blur", hideTooltip)
+          .on("click", (_, d) => selectCell(d.layer, d.token))
+          .on("keydown", (event, d) => {
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              selectCell(d.layer, d.token);
+            }
+          });
+
+        cells.append("title").text(d => `Layer ${d.layer}, ${scenario.tokens[d.token]}: ${formatPct(d.value)} restoration`);
+
+        const selectedX = x(state.token);
+        const selectedY = y(state.layer);
+        g.append("path")
+          .attr("d", `M${selectedX + x.bandwidth() / 2},${selectedY - 7} l-6,-8 h12 z`)
+          .attr("fill", "#111411")
+          .attr("pointer-events", "none");
+      }
+
+      function showTooltip(event, datum) {
+        const scenario = scenarios[state.scenario];
+        const bounds = shell.getBoundingClientRect();
+        tooltip.innerHTML = `<strong>Layer ${datum.layer} at ${scenario.tokens[datum.token]}</strong><br>${formatPct(datum.value)} normalized restoration with a ${state.window}-token ${siteLabels[state.site].toLowerCase()} patch.`;
+        const left = clamp(event.clientX - bounds.left + 12, 8, bounds.width - 245);
+        const top = clamp(event.clientY - bounds.top - 72, 8, bounds.height - 86);
+        tooltip.style.left = left + "px";
+        tooltip.style.top = top + "px";
+        tooltip.style.opacity = "1";
+      }
+
+      function hideTooltip() { tooltip.style.opacity = "0"; }
+
+      function selectCell(layer, token) {
+        state.layer = layer;
+        state.token = token;
+        state.phase = 3;
+        document.getElementById("phase").value = "3";
+        render();
+      }
+
+      function renderMetrics() {
+        const scenario = scenarios[state.scenario];
+        const metrics = currentMetrics();
+        const phaseProbability = state.phase === 0 ? metrics.cleanP : state.phase < 3 ? metrics.corruptP : metrics.patchedP;
+        document.getElementById("cleanPrompt").textContent = scenario.clean;
+        document.getElementById("corruptPrompt").textContent = scenario.corrupt;
+        document.getElementById("cleanOutcome").textContent = `${scenario.answer} ${formatPct(metrics.cleanP)}`;
+        document.getElementById("corruptOutcome").textContent = `${scenario.answer} ${formatPct(metrics.corruptP)}`;
+        document.getElementById("patchOutcome").textContent = `${scenario.answer} ${formatPct(phaseProbability)}`;
+        document.getElementById("cleanMetric").textContent = formatPct(metrics.cleanP);
+        document.getElementById("corruptMetric").textContent = formatPct(metrics.corruptP);
+        document.getElementById("patchMetric").textContent = formatPct(metrics.patchedP);
+        document.getElementById("restoreMetric").textContent = formatPct(metrics.recovery);
+        document.getElementById("selectionTitle").textContent = `Layer ${state.layer} at ${scenario.tokens[state.token]}`;
+        document.getElementById("selectionCopy").textContent = `Patching this ${siteLabels[state.site].toLowerCase()} state restores ${formatPct(metrics.recovery)} of the behavior lost to corruption.`;
+        document.getElementById("corruptionValue").textContent = state.corruption + "%";
+        document.getElementById("siteValue").textContent = siteLabels[state.site];
+        document.getElementById("windowValue").textContent = state.window + (state.window === 1 ? " token" : " tokens");
+        document.getElementById("windowDisplay").textContent = String(state.window);
+        document.getElementById("phaseValue").textContent = phaseNames[state.phase];
+        document.querySelectorAll(".timeline i").forEach((item, index) => item.classList.toggle("active", index <= state.phase));
+        const runs = 2 + 12 * scenario.tokens.length * (state.site === "head" ? 12 : 1);
+        document.getElementById("runCount").textContent = runs.toLocaleString() + " runs";
+      }
+
+      function render() {
+        document.querySelectorAll("[data-scenario]").forEach(button => button.setAttribute("aria-pressed", String(button.dataset.scenario === state.scenario)));
+        document.querySelectorAll("[data-site]").forEach(button => button.setAttribute("aria-pressed", String(button.dataset.site === state.site)));
+        document.querySelectorAll("[data-accordion]").forEach(button => button.classList.toggle("active", button.dataset.accordion === state.site));
+        renderHeatmap();
+        renderMetrics();
+        if (window.lucide) lucide.createIcons();
+      }
+
+      function stopTimers() {
+        state.playing = false;
+        state.scanning = false;
+        window.clearInterval(window.protocolTimer);
+        window.clearInterval(window.scanTimer);
+        document.querySelector("#playBtn span").textContent = "Play protocol";
+        document.querySelector("#scanBtn span").textContent = "Sweep cells";
+      }
+
+      function playProtocol() {
+        if (state.playing) { stopTimers(); return; }
+        stopTimers();
+        state.playing = true;
+        state.phase = 0;
+        document.querySelector("#playBtn span").textContent = "Pause protocol";
+        render();
+        window.protocolTimer = window.setInterval(() => {
+          state.phase += 1;
+          if (state.phase > 3) {
+            stopTimers();
+            state.phase = 3;
+          }
+          document.getElementById("phase").value = String(state.phase);
+          render();
+        }, 850);
+      }
+
+      function scanCells() {
+        if (state.scanning) { stopTimers(); return; }
+        stopTimers();
+        state.scanning = true;
+        document.querySelector("#scanBtn span").textContent = "Stop sweep";
+        const scenario = scenarios[state.scenario];
+        const cells = d3.range(12).flatMap(layer => d3.range(scenario.tokens.length).map(token => ({ layer, token, value: recoveryAt(layer, token) }))).sort((a, b) => b.value - a.value);
+        let index = 0;
+        window.scanTimer = window.setInterval(() => {
+          const cell = cells[index % Math.min(cells.length, 18)];
+          state.layer = cell.layer;
+          state.token = cell.token;
+          state.phase = 3;
+          render();
+          index += 1;
+          if (index >= Math.min(cells.length, 18)) stopTimers();
+        }, 230);
+      }
+
+      document.querySelectorAll("[data-scenario]").forEach(button => button.addEventListener("click", () => {
+        stopTimers();
+        state.scenario = button.dataset.scenario;
+        const scenario = scenarios[state.scenario];
+        state.layer = Math.round(scenario.centerLayer);
+        state.token = clamp(Math.round(scenario.centerToken), 0, scenario.tokens.length - 1);
+        render();
+      }));
+
+      document.querySelectorAll("[data-site]").forEach(button => button.addEventListener("click", () => {
+        state.site = button.dataset.site;
+        render();
+      }));
+
+      document.querySelectorAll("[data-accordion]").forEach(button => button.addEventListener("click", () => {
+        state.site = button.dataset.accordion;
+        render();
+      }));
+
+      document.getElementById("corruption").addEventListener("input", event => {
+        state.corruption = Number(event.target.value);
+        renderMetrics();
+      });
+      document.getElementById("phase").addEventListener("input", event => {
+        stopTimers();
+        state.phase = Number(event.target.value);
+        renderMetrics();
+      });
+      document.getElementById("windowMinus").addEventListener("click", () => { state.window = clamp(state.window - 2, 1, 5); render(); });
+      document.getElementById("windowPlus").addEventListener("click", () => { state.window = clamp(state.window + 2, 1, 5); render(); });
+      document.getElementById("playBtn").addEventListener("click", playProtocol);
+      document.getElementById("scanBtn").addEventListener("click", scanCells);
+      document.getElementById("resetBtn").addEventListener("click", () => {
+        stopTimers();
+        Object.assign(state, { scenario: "capital", site: "residual", corruption: 72, window: 1, layer: 7, token: 1, phase: 3 });
+        document.getElementById("corruption").value = "72";
+        document.getElementById("phase").value = "3";
+        render();
+      });
+
+      function showQuote(index) {
+        const quotes = document.querySelectorAll(".caution");
+        state.quote = (index + quotes.length) % quotes.length;
+        quotes.forEach((quote, i) => quote.classList.toggle("active", i === state.quote));
+      }
+      document.getElementById("quotePrev").addEventListener("click", () => showQuote(state.quote - 1));
+      document.getElementById("quoteNext").addEventListener("click", () => showQuote(state.quote + 1));
+
+      let resizeFrame = 0;
+      window.addEventListener("resize", () => {
+        window.cancelAnimationFrame(resizeFrame);
+        resizeFrame = window.requestAnimationFrame(renderHeatmap);
+      });
+
+      if (window.gsap && window.ScrollTrigger && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.from(".hero-strip .run-chip", { y: 30, opacity: 0, stagger: .12, duration: .7, delay: .3, ease: "power2.out" });
+        document.querySelectorAll(".step-row").forEach(row => {
+          gsap.fromTo(row, { opacity: .18 }, { opacity: 1, scrollTrigger: { trigger: row, start: "top 80%", end: "center 55%", scrub: true } });
+        });
+        gsap.fromTo(".chapter-title", { opacity: .4 }, { opacity: 1, scrollTrigger: { trigger: ".chapter-layout", start: "top 28%", end: "bottom 70%", scrub: true } });
+        document.querySelectorAll(".evidence-card").forEach(card => {
+          gsap.fromTo(card, { scale: .86, opacity: .35 }, { scale: 1, opacity: 1, scrollTrigger: { trigger: card, start: "top 92%", end: "top 62%", scrub: true } });
+        });
+      }
+
+      render();
+    })();
+  </script>
+</body>
+</html>
