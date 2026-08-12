@@ -2,6 +2,22 @@
   {
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/influence-functions-training-data-attribution-lab-20260812-195959/",
+    "content_kind": "influence_functions_training_data_attribution_lab",
+    "content_kind_label": "Influence Functions Lab",
+    "direct_generated": true,
+    "github_commit": "6a11129a3f7af5d0b0e3398f5193373cd81dcaf2",
+    "github_url": "https://github.com/rohanarun/super-agent-news-influence-functions-training-data-attribution-lab-20260812-195959",
+    "live_url": "https://lists.new/influence-functions-training-data-attribution-lab-20260812-195959/",
+    "receipt_status": "success",
+    "slug": "influence-functions-training-data-attribution-lab-20260812-195959",
+    "source_path": "sms_published_sites/influence-functions-training-data-attribution-lab-20260812-195959",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Influence Functions Lab: Trace a Prediction Back to Training Data"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/sharpness-aware-minimization-flat-minima-lab-20260812-194929/",
     "content_kind": "sharpness_aware_minimization_lab",
     "content_kind_label": "SAM Flat Minima Lab",
