@@ -1224,4 +1224,24 @@
     "target_slot": "computer-use-ai-agents",
     "title": "Sparse Autoencoder Feature Lab: From Neurons to Features"
   }
+  ,{
+    "assigned_domain": "parsercheat.com",
+    "assigned_slot": "computer-use-ai-agents",
+    "assigned_url": "https://parsercheat.com/locally-typical-sampling-decoder-lab-20260812-135658/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/"
+    ],
+    "content_kind": "locally_typical_sampling_decoder_lab",
+    "content_kind_label": "Locally Typical Sampling Decoder Lab",
+    "direct_generated": true,
+    "live_url": "https://parsercheat.com/locally-typical-sampling-decoder-lab-20260812-135658/",
+    "receipt_created_at": "2026-08-12T13:56:58.393+00:00",
+    "receipt_status": "success",
+    "slug": "locally-typical-sampling-decoder-lab-20260812-135658",
+    "source_path": "sms_published_sites/locally-typical-sampling-decoder-lab-20260812-135658",
+    "target_slot": "computer-use-ai-agents",
+    "title": "Locally Typical Sampling Lab: Decode Near the Entropy"
+  }
 ]

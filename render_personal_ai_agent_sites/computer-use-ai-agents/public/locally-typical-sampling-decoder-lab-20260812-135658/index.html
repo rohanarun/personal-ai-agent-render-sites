@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#151515">
+  <meta name="description" content="An interactive locally typical sampling lab comparing information content, entropy, nucleus sampling, and top-k decoding token by token.">
+  <meta property="og:title" content="Locally Typical Sampling Lab: Decode Near the Entropy">
+  <meta property="og:description" content="Change temperature and probability mass, inspect token surprisal, compare retained sets, and play a transparent synthetic decoding sequence.">
+  <title>Locally Typical Sampling Lab: Decode Near the Entropy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #151515;
+      --paper: #f4f0e7;
+      --white: #fffdf8;
+      --yellow: #f5dc3c;
+      --cyan: #56d8d1;
+      --red: #ff614d;
+      --blue: #4f79ff;
+      --green: #46ad72;
+      --muted: #69665f;
+      --line: #beb9ad;
+      --shadow: 0 22px 52px rgba(21, 21, 21, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Geist", Arial, sans-serif;
+      letter-spacing: 0;
+    }
+    main { width: 100%; max-width: 100%; overflow-x: hidden; }
+    button, input { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a { color: inherit; }
+    .wrap { width: min(1240px, calc(100% - 40px)); margin: 0 auto; }
+    .icon { width: 19px; height: 19px; flex: 0 0 auto; stroke-width: 1.9; }
+
+    nav {
+      position: fixed;
+      z-index: 40;
+      top: 18px;
+      left: 50%;
+      width: min(1180px, calc(100% - 32px));
+      min-height: 58px;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 9px 10px 9px 18px;
+      border: 1px solid #3b3b3b;
+      border-radius: 8px;
+      background: rgba(21, 21, 21, .96);
+      color: var(--white);
+      box-shadow: 0 14px 32px rgba(21,21,21,.2);
+      backdrop-filter: blur(12px);
+    }
+    .brand { display: inline-flex; align-items: center; gap: 10px; color: var(--white); text-decoration: none; font-weight: 700; }
+    .brand-mark { width: 30px; height: 30px; display: grid; place-items: center; border-radius: 5px; background: var(--yellow); color: var(--ink); }
+    .nav-links { display: flex; align-items: center; gap: 22px; }
+    .nav-links > a { color: #d4d0c8; font-size: 14px; text-decoration: none; }
+    .nav-links > a:hover { color: var(--white); }
+    .nav-cta { min-height: 40px; display: inline-flex; align-items: center; gap: 8px; padding: 0 14px; border-radius: 5px; background: var(--yellow); color: var(--ink) !important; font-weight: 700; }
+
+    .hero {
+      min-height: 91vh;
+      padding: 132px 0 62px;
+      display: grid;
+      align-items: center;
+      background: var(--paper);
+      border-bottom: 1px solid var(--ink);
+    }
+    .hero-layout { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(360px, .85fr); gap: 76px; align-items: center; }
+    .eyebrow { margin: 0 0 22px; color: #395d59; font-size: 15px; font-weight: 700; }
+    h1 { max-width: 1040px; margin: 0; font-size: 72px; line-height: .98; font-weight: 600; text-wrap: balance; }
+    .hero-copy { max-width: 720px; margin: 28px 0 0; color: var(--muted); font-size: 20px; line-height: 1.6; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+    .btn { min-height: 49px; display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 0 19px; border: 1px solid var(--ink); border-radius: 5px; color: var(--ink); background: transparent; text-decoration: none; font-weight: 650; cursor: pointer; }
+    .btn.primary { background: var(--ink); color: var(--white); }
+    .btn:hover { transform: translateY(-2px); }
+
+    .prob-tape { position: relative; min-height: 520px; display: flex; align-items: center; justify-content: center; }
+    .tape-axis { position: absolute; left: 8%; right: 8%; top: 50%; height: 2px; background: var(--ink); }
+    .tape-axis::after { content: "surprisal ->"; position: absolute; right: 0; top: 12px; color: var(--muted); font-size: 12px; }
+    .entropy-post { position: absolute; left: 49%; top: 13%; bottom: 13%; width: 3px; background: var(--red); }
+    .entropy-post span { position: absolute; top: -28px; left: 50%; transform: translateX(-50%); padding: 5px 8px; background: var(--red); color: var(--ink); font-size: 12px; font-weight: 700; white-space: nowrap; }
+    .tape-token { position: absolute; width: 92px; min-height: 72px; padding: 10px 8px; display: grid; place-items: center; text-align: center; border: 1px solid var(--ink); border-radius: 6px; background: var(--white); box-shadow: 5px 5px 0 var(--ink); font-weight: 650; }
+    .tape-token small { display: block; color: var(--muted); font-size: 11px; font-weight: 500; }
+    .tape-token.too-easy { left: 4%; top: 31%; background: var(--cyan); }
+    .tape-token.typical { left: 38%; top: 58%; background: var(--yellow); transform: scale(1.12); }
+    .tape-token.near { left: 61%; top: 25%; background: var(--white); }
+    .tape-token.tail { right: 1%; top: 60%; background: #f1b0a7; }
+    .tape-note { position: absolute; left: 13%; bottom: 6%; max-width: 300px; color: var(--muted); font-size: 14px; line-height: 1.5; }
+
+    .lab-band { padding: 108px 0 130px; background: var(--white); }
+    .lab-head { display: grid; grid-template-columns: .9fr 1.1fr; gap: 70px; align-items: end; margin-bottom: 38px; }
+    .lab-head h2, .method h2, .sources h2, .cta h2 { margin: 0; font-size: 48px; line-height: 1.04; font-weight: 600; }
+    .lab-head p { margin: 0; color: var(--muted); font-size: 18px; line-height: 1.6; }
+
+    .preset-row { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+    .seg-btn, .mode-btn, .icon-btn {
+      min-height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      background: var(--white);
+      color: var(--ink);
+      font-weight: 650;
+      cursor: pointer;
+    }
+    .seg-btn { padding: 0 15px; }
+    .seg-btn[aria-pressed="true"], .mode-btn[aria-pressed="true"] { border-color: var(--ink); background: var(--ink); color: var(--white); }
+
+    .workbench { border: 1px solid var(--ink); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); background: #f7f4ed; }
+    .bench-top { display: grid; grid-template-columns: minmax(0, 1fr) 328px; min-height: 680px; }
+    .stage { min-width: 0; display: flex; flex-direction: column; border-right: 1px solid var(--ink); }
+    .prompt-line { padding: 20px 22px; border-bottom: 1px solid var(--line); background: var(--white); }
+    .prompt-line small { display: block; color: var(--muted); font-size: 12px; font-weight: 700; text-transform: uppercase; }
+    .prompt-line p { margin: 8px 0 0; font-size: 19px; font-weight: 550; }
+    .prompt-line mark { padding: 1px 4px; background: var(--yellow); color: var(--ink); }
+    .chart-wrap { position: relative; flex: 1; min-height: 440px; padding: 12px 14px 4px 4px; }
+    #typicalChart { width: 100%; height: 100%; min-height: 420px; display: block; }
+    .tooltip { position: absolute; z-index: 5; max-width: 230px; padding: 10px 12px; border-radius: 4px; background: var(--ink); color: var(--white); font-size: 13px; line-height: 1.4; opacity: 0; pointer-events: none; box-shadow: 0 8px 24px rgba(21,21,21,.22); }
+    .chart-legend { display: flex; justify-content: center; flex-wrap: wrap; gap: 18px; padding: 0 16px 18px; color: var(--muted); font-size: 12px; }
+    .chart-legend span { display: inline-flex; align-items: center; gap: 6px; }
+    .chart-legend i { width: 12px; height: 12px; border: 1px solid var(--ink); border-radius: 50%; background: var(--yellow); }
+    .chart-legend span:nth-child(2) i { background: #d9d5cb; }
+    .chart-legend span:nth-child(3) i { width: 3px; border: 0; border-radius: 0; background: var(--red); }
+
+    .controls { padding: 22px; background: var(--paper); }
+    .controls-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 17px; }
+    .controls-head h3 { margin: 0; font-size: 22px; }
+    .icon-btn { width: 42px; padding: 0; display: grid; place-items: center; }
+    .icon-btn:hover { background: var(--ink); color: var(--white); border-color: var(--ink); }
+    .control { padding: 17px 0; border-top: 1px solid var(--line); }
+    .control:first-of-type { border-top: 0; }
+    .control-label { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; margin-bottom: 8px; font-size: 14px; font-weight: 650; }
+    .control-label output { color: #315b56; font-variant-numeric: tabular-nums; }
+    input[type="range"] { width: 100%; accent-color: var(--ink); cursor: pointer; }
+    .mode-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    .mode-btn { padding: 0 7px; font-size: 13px; }
+    .mode-btn.wide { grid-column: 1 / -1; }
+    .stepper { display: grid; grid-template-columns: 42px 1fr 42px; gap: 6px; }
+    .step-value { min-height: 42px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 5px; background: var(--white); font-weight: 700; }
+    .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 16px; }
+    .action-btn { min-height: 46px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 0; border-radius: 5px; color: var(--ink); background: var(--yellow); font-weight: 700; cursor: pointer; }
+    .action-btn.secondary { background: var(--ink); color: var(--white); }
+    .selected-readout { margin-top: 17px; padding: 14px; border-radius: 6px; background: var(--ink); color: var(--white); }
+    .selected-readout small { color: #b9b5ad; }
+    .selected-readout strong { display: block; margin: 5px 0 7px; color: var(--yellow); font-size: 18px; overflow-wrap: anywhere; }
+    .selected-readout p { margin: 0; color: #d8d4cb; font-size: 13px; line-height: 1.45; }
+
+    .sequence { display: grid; grid-template-columns: 180px minmax(0, 1fr) 160px; align-items: stretch; border-top: 1px solid var(--ink); background: var(--ink); color: var(--white); }
+    .sequence-label { padding: 20px; border-right: 1px solid #444; }
+    .sequence-label small { display: block; color: #aaa69e; }
+    .sequence-label strong { display: block; margin-top: 5px; }
+    .sequence-tokens { min-width: 0; padding: 20px; display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+    .generated-token { padding: 7px 9px; border: 1px solid #5a5a58; border-radius: 4px; background: #292927; }
+    .generated-token:last-child { background: var(--yellow); color: var(--ink); border-color: var(--yellow); }
+    .sequence-stat { padding: 20px; display: grid; place-items: center; text-align: center; border-left: 1px solid #444; }
+    .sequence-stat strong { display: block; color: var(--yellow); font-size: 26px; }
+    .sequence-stat small { color: #aaa69e; }
+
+    .metrics { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--ink); border-top: 0; }
+    .metric { min-width: 0; padding: 21px; border-right: 1px solid var(--ink); background: var(--white); }
+    .metric:last-child { border-right: 0; }
+    .metric span { display: block; min-height: 34px; color: var(--muted); font-size: 13px; line-height: 1.3; }
+    .metric strong { display: block; margin-top: 4px; font-size: 28px; font-variant-numeric: tabular-nums; }
+
+    .method { padding: 142px 0; background: var(--paper); }
+    .method-layout { display: grid; grid-template-columns: minmax(260px, .72fr) minmax(0, 1.28fr); gap: 92px; }
+    .method-copy { align-self: start; }
+    .method-copy p { color: var(--muted); font-size: 18px; line-height: 1.6; }
+    .formula { margin-top: 26px; padding: 18px; border: 1px solid var(--ink); border-radius: 6px; background: var(--yellow); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; line-height: 1.55; }
+    .stack { min-height: 720px; position: relative; }
+    .stack-card { position: sticky; top: 110px; min-height: 220px; margin-bottom: 100px; padding: 28px; border: 1px solid var(--ink); border-radius: 7px; background: var(--white); box-shadow: 9px 9px 0 var(--ink); }
+    .stack-card:nth-child(2) { top: 132px; background: var(--cyan); }
+    .stack-card:nth-child(3) { top: 154px; background: var(--yellow); }
+    .stack-card h3 { margin: 0 0 12px; font-size: 28px; }
+    .stack-card p { margin: 0; color: #47453f; font-size: 17px; line-height: 1.6; }
+    .stack-card .mini { display: flex; gap: 8px; margin-top: 25px; }
+    .stack-card .mini i { width: 44px; height: 32px; border: 1px solid var(--ink); background: #dbd7cd; }
+    .stack-card .mini i.on { background: var(--red); }
+
+    .compare { padding: 132px 0; background: var(--ink); color: var(--white); }
+    .compare-head { max-width: 850px; margin-bottom: 45px; }
+    .compare-head h2 { margin: 0; font-size: 52px; line-height: 1.04; font-weight: 600; }
+    .compare-head p { color: #bdb9b1; font-size: 18px; line-height: 1.6; }
+    .bento { display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-flow: dense; gap: 10px; }
+    .compare-card { min-height: 255px; padding: 27px; border: 1px solid #464646; border-radius: 7px; overflow: hidden; }
+    .compare-card:nth-child(1) { grid-column: span 8; background: #282317; }
+    .compare-card:nth-child(2) { grid-column: span 4; background: #182827; }
+    .compare-card:nth-child(3) { grid-column: span 4; background: #22283a; }
+    .compare-card:nth-child(4) { grid-column: span 8; background: #30201e; }
+    .compare-card h3 { margin: 0 0 11px; font-size: 27px; }
+    .compare-card p { margin: 0; color: #cac6bd; line-height: 1.65; }
+    .compare-card strong { display: block; margin-top: 27px; color: var(--yellow); font-size: 44px; }
+    .carousel { min-height: 112px; }
+    .claim { display: none; color: var(--white); font-size: 23px; line-height: 1.4; }
+    .claim.active { display: block; }
+    .carousel-controls { display: flex; gap: 7px; margin-top: 22px; }
+    .carousel-controls button { width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid #686868; border-radius: 5px; background: transparent; color: var(--white); cursor: pointer; }
+    .carousel-controls button:hover { background: var(--yellow); color: var(--ink); border-color: var(--yellow); }
+
+    .accordion-band { padding: 126px 0; background: #dfdbd0; }
+    .accordion-head { display: flex; justify-content: space-between; gap: 42px; align-items: end; margin-bottom: 38px; }
+    .accordion-head h2 { max-width: 760px; margin: 0; font-size: 49px; line-height: 1.05; }
+    .accordion-head p { max-width: 360px; margin: 0; color: var(--muted); line-height: 1.55; }
+    .accordions { min-height: 340px; display: flex; border: 1px solid var(--ink); overflow: hidden; }
+    .accordion { flex: 1 1 0; min-width: 110px; padding: 26px; border: 0; border-right: 1px solid var(--ink); background: var(--white); color: var(--ink); text-align: left; cursor: pointer; overflow: hidden; transition: flex .5s ease, background .3s ease; }
+    .accordion:last-child { border-right: 0; }
+    .accordion.active { flex: 2.8 1 0; background: var(--yellow); }
+    .accordion-code { font-weight: 700; }
+    .accordion-title { display: block; margin: 80px 0 12px; font-size: 26px; font-weight: 700; white-space: nowrap; }
+    .accordion-copy { display: block; width: auto; opacity: 0; color: #3d3b35; line-height: 1.55; }
+    .accordion.active .accordion-copy { opacity: 1; transition: opacity .25s ease .18s; }
+
+    .sources { padding: 130px 0; background: var(--white); }
+    .source-list { margin-top: 45px; border-top: 1px solid var(--ink); }
+    .source-link { min-height: 110px; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 20px; border-bottom: 1px solid var(--ink); text-decoration: none; }
+    .source-link:hover { background: var(--paper); }
+    .source-link strong { display: block; font-size: 21px; }
+    .source-link span { display: block; margin-top: 5px; color: var(--muted); }
+    .source-link .icon { width: 24px; height: 24px; }
+
+    .cta { padding: 126px 0 40px; background: var(--yellow); }
+    .cta h2 { max-width: 950px; font-size: 63px; }
+    .cta p { max-width: 700px; margin: 24px 0 32px; font-size: 19px; line-height: 1.6; }
+    .cta-actions { display: flex; flex-wrap: wrap; gap: 9px; }
+    .cta .btn.primary { background: var(--ink); color: var(--white); }
+    footer { margin-top: 88px; padding-top: 23px; display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid rgba(21,21,21,.55); font-size: 14px; }
+    .footer-links { display: flex; gap: 18px; flex-wrap: wrap; }
+
+    @media (max-width: 980px) {
+      .hero-layout { grid-template-columns: 1fr; gap: 20px; }
+      h1 { font-size: 61px; }
+      .prob-tape { min-height: 360px; }
+      .bench-top { grid-template-columns: 1fr; }
+      .stage { border-right: 0; border-bottom: 1px solid var(--ink); }
+      .controls { display: grid; grid-template-columns: 1fr 1fr; gap: 0 22px; }
+      .controls-head, .actions, .selected-readout { grid-column: 1 / -1; }
+      .method-layout { gap: 52px; }
+      .accordion { padding: 20px; }
+      .accordion-title { font-size: 21px; }
+    }
+
+    @media (max-width: 700px) {
+      .wrap { width: min(100% - 24px, 1240px); }
+      nav { top: 10px; width: calc(100% - 20px); min-height: 52px; padding-left: 12px; }
+      .brand > span:last-child, .nav-links > a:not(.nav-cta) { display: none; }
+      .nav-links { gap: 7px; }
+      .nav-cta { min-height: 36px; padding: 0 11px; font-size: 13px; }
+      .hero { min-height: 760px; padding: 110px 0 38px; }
+      .hero-layout { display: block; }
+      h1 { font-size: 42px; line-height: 1.02; }
+      .hero-copy { font-size: 17px; line-height: 1.52; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn { width: 100%; }
+      .prob-tape { min-height: 230px; margin-top: 30px; }
+      .entropy-post { top: 3%; bottom: 3%; }
+      .tape-token { width: 72px; min-height: 58px; padding: 7px 4px; font-size: 12px; box-shadow: 3px 3px 0 var(--ink); }
+      .tape-token.too-easy { left: 0; top: 20%; }
+      .tape-token.typical { left: 34%; top: 58%; }
+      .tape-token.near { left: 58%; top: 18%; }
+      .tape-token.tail { right: 0; top: 58%; }
+      .tape-note { display: none; }
+      .lab-band, .method, .compare, .accordion-band, .sources { padding: 86px 0; }
+      .lab-band { padding-top: 42px; }
+      .lab-head, .method-layout { grid-template-columns: 1fr; gap: 22px; }
+      .lab-head h2, .method h2, .sources h2 { font-size: 37px; }
+      .chart-wrap { min-height: 410px; overflow-x: auto; padding-left: 2px; }
+      #typicalChart { min-width: 650px; min-height: 380px; }
+      .controls { display: block; padding: 18px; }
+      .sequence { grid-template-columns: 1fr; }
+      .sequence-label, .sequence-stat { border: 0; }
+      .sequence-label { border-bottom: 1px solid #444; }
+      .sequence-stat { border-top: 1px solid #444; }
+      .metrics { grid-template-columns: 1fr 1fr; }
+      .metric { border-bottom: 1px solid var(--ink); }
+      .metric:nth-child(2) { border-right: 0; }
+      .metric:nth-child(3), .metric:nth-child(4) { border-bottom: 0; }
+      .method-copy { position: static !important; }
+      .stack { min-height: auto; }
+      .stack-card, .stack-card:nth-child(2), .stack-card:nth-child(3) { position: relative; top: auto; min-height: 220px; margin-bottom: 18px; }
+      .compare-head h2 { font-size: 40px; }
+      .compare-card:nth-child(n) { grid-column: 1 / -1; min-height: 225px; }
+      .accordion-head { display: block; }
+      .accordion-head h2 { font-size: 38px; }
+      .accordion-head p { margin-top: 17px; }
+      .accordions { min-height: auto; display: block; border-bottom: 0; }
+      .accordion { width: 100%; min-height: 88px; border-right: 0; border-bottom: 1px solid var(--ink); }
+      .accordion.active { min-height: 238px; }
+      .accordion-title { margin: 22px 0 10px; white-space: normal; }
+      .source-link { min-height: 134px; }
+      .source-link strong { font-size: 18px; }
+      .cta { padding: 90px 0 30px; }
+      .cta h2 { font-size: 43px; }
+      footer { margin-top: 62px; flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <nav aria-label="Primary navigation">
+    <a class="brand" href="#top"><span class="brand-mark"><i data-lucide="binary" class="icon"></i></span><span>Typical Decoder Lab</span></a>
+    <div class="nav-links"><a href="#method">Method</a><a href="#compare">Compare</a><a class="nav-cta" href="#lab">Open decoder <i data-lucide="arrow-down" class="icon"></i></a></div>
+  </nav>
+
+  <main id="top">
+    <header class="hero">
+      <div class="wrap hero-layout">
+        <div>
+          <p class="eyebrow">An information-theoretic decoding experiment</p>
+          <h1>Decode near expected surprise.</h1>
+          <p class="hero-copy">The best next token is not always the most probable one. Locally typical sampling keeps tokens whose information content is close to the model's expected information at this step.</p>
+          <div class="hero-actions"><a class="btn primary" href="#lab"><i data-lucide="sliders-horizontal" class="icon"></i> Tune the decoder</a><a class="btn" href="#method"><i data-lucide="book-open" class="icon"></i> See the rule</a></div>
+        </div>
+        <div class="prob-tape" role="img" aria-label="Illustration of token surprisal around conditional entropy">
+          <div class="tape-axis"></div><div class="entropy-post"><span>entropy H</span></div>
+          <div class="tape-token too-easy">the<small>too expected</small></div>
+          <div class="tape-token typical">quietly<small>near H</small></div>
+          <div class="tape-token near">through<small>near H</small></div>
+          <div class="tape-token tail">xylophone<small>too surprising</small></div>
+          <p class="tape-note">Typicality ranks distance from expected surprisal, then retains enough probability mass to sample.</p>
+        </div>
+      </div>
+    </header>
+
+    <section class="lab-band" id="lab">
+      <div class="wrap">
+        <div class="lab-head"><h2>Decode around the expected surprise.</h2><p>This transparent synthetic distribution is not a production model benchmark. It isolates the exact selection rule so probability, surprisal, entropy, and retained mass remain inspectable.</p></div>
+        <div class="preset-row" role="group" aria-label="Prompt preset">
+          <button type="button" class="seg-btn" data-preset="story" aria-pressed="true">Story</button>
+          <button type="button" class="seg-btn" data-preset="code" aria-pressed="false">Code</button>
+          <button type="button" class="seg-btn" data-preset="facts" aria-pressed="false">Factual answer</button>
+        </div>
+
+        <div class="workbench">
+          <div class="bench-top">
+            <div class="stage">
+              <div class="prompt-line"><small>Current context</small><p id="promptText">The lantern flickered as Mira stepped <mark>into</mark></p></div>
+              <div class="chart-wrap" id="chartWrap"><svg id="typicalChart" role="img" aria-labelledby="chartTitle chartDesc"></svg><div class="tooltip" id="tooltip" role="status"></div></div>
+              <div class="chart-legend"><span><i></i> retained</span><span><i></i> filtered</span><span><i></i> conditional entropy</span></div>
+            </div>
+
+            <aside class="controls" aria-label="Decoder controls">
+              <div class="controls-head"><h3>Decoder</h3><button type="button" class="icon-btn" id="resetBtn" aria-label="Reset decoder" title="Reset decoder"><i data-lucide="rotate-ccw" class="icon"></i></button></div>
+              <div class="control">
+                <div class="control-label"><span>Selection rule</span><output id="modeValue">Typical</output></div>
+                <div class="mode-grid">
+                  <button type="button" class="mode-btn wide" data-mode="typical" aria-pressed="true">Locally typical</button>
+                  <button type="button" class="mode-btn" data-mode="nucleus" aria-pressed="false">Top-p</button>
+                  <button type="button" class="mode-btn" data-mode="topk" aria-pressed="false">Top-k</button>
+                </div>
+              </div>
+              <div class="control"><div class="control-label"><label for="mass">Retained probability mass</label><output id="massValue">0.80</output></div><input id="mass" type="range" min="50" max="99" value="80"></div>
+              <div class="control"><div class="control-label"><label for="temperature">Temperature</label><output id="tempValue">1.00</output></div><input id="temperature" type="range" min="50" max="160" value="100"></div>
+              <div class="control">
+                <div class="control-label"><span>Top-k size</span><output id="kValue">4 tokens</output></div>
+                <div class="stepper"><button type="button" class="icon-btn" id="kMinus" aria-label="Decrease top-k" title="Decrease top-k"><i data-lucide="minus" class="icon"></i></button><div class="step-value" id="kDisplay">4</div><button type="button" class="icon-btn" id="kPlus" aria-label="Increase top-k" title="Increase top-k"><i data-lucide="plus" class="icon"></i></button></div>
+              </div>
+              <div class="actions"><button type="button" class="action-btn secondary" id="sampleBtn"><i data-lucide="dices" class="icon"></i><span>Sample once</span></button><button type="button" class="action-btn" id="playBtn"><i data-lucide="play" class="icon"></i><span>Play 8 steps</span></button></div>
+              <div class="selected-readout"><small>Selected token</small><strong id="selectedToken">quietly</strong><p id="selectedCopy">6.2% probability, 4.01 bits of surprisal, and 0.12 bits from entropy. Retained by locally typical sampling.</p></div>
+            </aside>
+          </div>
+
+          <div class="sequence"><div class="sequence-label"><small>Generated continuation</small><strong id="sequenceMode">Locally typical</strong></div><div class="sequence-tokens" id="sequenceTokens"><span class="generated-token">waiting</span></div><div class="sequence-stat"><div><strong id="sequenceTypicality">--</strong><small>mean distance from H</small></div></div></div>
+        </div>
+
+        <div class="metrics" aria-live="polite"><div class="metric"><span>Conditional entropy</span><strong id="entropyMetric">3.82 bits</strong></div><div class="metric"><span>Retained tokens</span><strong id="countMetric">6 / 12</strong></div><div class="metric"><span>Actual retained mass</span><strong id="massMetric">82%</strong></div><div class="metric"><span>Mean typicality distance</span><strong id="distanceMetric">0.41 bits</strong></div></div>
+      </div>
+    </section>
+
+    <section class="method" id="method">
+      <div class="wrap method-layout">
+        <div class="method-copy"><h2>The rule in three calculations.</h2><p>Typical sampling changes the ranking criterion. It does not rank tokens by probability alone: it ranks their absolute distance from the distribution's expected information content.</p><div class="formula">I(x) = -log2 p(x)<br>H(p) = sum p(x) I(x)<br>typicality(x) = |I(x) - H(p)|</div></div>
+        <div class="stack">
+          <article class="stack-card"><h3>Convert probability to information.</h3><p>A common token carries less surprisal. A rare token carries more. The horizontal chart position is exactly negative log probability in bits.</p><div class="mini" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div></article>
+          <article class="stack-card"><h3>Compute expected information.</h3><p>Conditional entropy is the probability-weighted average surprisal for this next-token distribution. It moves when temperature reshapes the distribution.</p><div class="mini" aria-hidden="true"><i></i><i class="on"></i><i class="on"></i><i></i><i></i></div></article>
+          <article class="stack-card"><h3>Fill the set by typicality.</h3><p>Sort tokens by distance from entropy and add them until their cumulative probability reaches the configured mass. Renormalize only over that retained set, then sample.</p><div class="mini" aria-hidden="true"><i></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="compare" id="compare">
+      <div class="wrap"><div class="compare-head"><h2>Same probabilities, different ideas of a credible token.</h2><p>Top-k imposes a fixed count. Nucleus sampling follows cumulative probability. Locally typical sampling follows information content relative to entropy.</p></div>
+        <div class="bento">
+          <article class="compare-card"><h3>Locally typical</h3><p>Can filter the single most probable token when it is much less surprising than the distribution expects. The retained set need not be a probability prefix.</p><strong id="typicalCompare">6 tokens</strong></article>
+          <article class="compare-card"><h3>Top-p nucleus</h3><p>Sorts by probability and keeps the smallest prefix whose cumulative mass reaches p.</p><strong id="nucleusCompare">5 tokens</strong></article>
+          <article class="compare-card"><h3>Top-k</h3><p>Keeps a fixed number regardless of whether the distribution is sharp or flat.</p><strong id="topkCompare">4 tokens</strong></article>
+          <article class="compare-card"><h3>Interpret the output carefully.</h3><div class="carousel"><p class="claim active">A smaller typicality distance means information content is closer to the model's expectation.</p><p class="claim">Typical sampling is a decoding rule, not proof that a sampled token is factually correct.</p><p class="claim">Temperature changes both token probabilities and the entropy target, so it can move both dots and the red line.</p></div><div class="carousel-controls"><button type="button" id="claimPrev" aria-label="Previous interpretation" title="Previous interpretation"><i data-lucide="arrow-left" class="icon"></i></button><button type="button" id="claimNext" aria-label="Next interpretation" title="Next interpretation"><i data-lucide="arrow-right" class="icon"></i></button></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="accordion-band"><div class="wrap"><div class="accordion-head"><h2>Match the sampler to the failure mode you are studying.</h2><p>No truncation rule guarantees quality. Compare distributions, tasks, and human judgments instead of treating a single parameter as universal.</p></div>
+      <div class="accordions" role="group" aria-label="Sampling rule details">
+        <button type="button" class="accordion active" data-accordion="typical"><span class="accordion-code">I-H</span><span class="accordion-title">Locally typical</span><span class="accordion-copy">Useful when you want token information content near the model's local expectation. It can exclude tokens from both the overly predictable head and the unreliable tail.</span></button>
+        <button type="button" class="accordion" data-accordion="nucleus"><span class="accordion-code">sum p</span><span class="accordion-title">Nucleus</span><span class="accordion-copy">Useful when you want an adaptive probability prefix. Its set grows when probability is diffuse and shrinks when one token dominates.</span></button>
+        <button type="button" class="accordion" data-accordion="topk"><span class="accordion-code">rank p</span><span class="accordion-title">Top-k</span><span class="accordion-copy">Useful as a simple fixed-size truncation baseline. The same k can behave very differently across sharp and flat distributions.</span></button>
+      </div>
+    </div></section>
+
+    <section class="sources" id="sources"><div class="wrap"><h2>Read the primary work.</h2><div class="source-list">
+      <a class="source-link" href="https://aclanthology.org/2023.tacl-1.7/" target="_blank" rel="noopener"><span><strong>Locally Typical Sampling</strong><span>Meister, Pimentel, Wiher, and Cotterell - TACL 2023</span></span><i data-lucide="external-link" class="icon"></i></a>
+      <a class="source-link" href="https://arxiv.org/abs/1904.09751" target="_blank" rel="noopener"><span><strong>The Curious Case of Neural Text Degeneration</strong><span>Holtzman et al. - nucleus sampling and degeneration</span></span><i data-lucide="external-link" class="icon"></i></a>
+      <a class="source-link" href="https://aclanthology.org/2022.acl-short.5/" target="_blank" rel="noopener"><span><strong>On the Probability-Quality Paradox in Language Generation</strong><span>Meister et al. - an information-theoretic account</span></span><i data-lucide="external-link" class="icon"></i></a>
+      <a class="source-link" href="https://aclanthology.org/2022.findings-emnlp.249/" target="_blank" rel="noopener"><span><strong>Truncation Sampling as Language Model Desmoothing</strong><span>Hewitt, Manning, and Liang - entropy-dependent truncation</span></span><i data-lucide="external-link" class="icon"></i></a>
+    </div></div></section>
+
+    <section class="cta"><div class="wrap"><h2>Inspect the distribution before choosing the decoder.</h2><p>Use this lab to understand the selection mechanics, then evaluate real generations with task-specific quality, safety, factuality, and diversity measurements.</p><div class="cta-actions"><a class="btn primary" href="https://getsupers.com/"><i data-lucide="sparkles" class="icon"></i> Explore Super</a><a class="btn" href="https://app.getsupers.com/use-cases/computer-use-cache/"><i data-lucide="database" class="icon"></i> Computer-use cache</a><a class="btn" href="https://app.getsupers.com/use-cases/ai-agent-build-websites/"><i data-lucide="panels-top-left" class="icon"></i> Build with an AI agent</a></div><footer><span>Locally Typical Sampling Decoder Lab</span><div class="footer-links"><a href="#lab">Replay lab</a><a href="#sources">Sources</a><a href="https://getsupers.com/">Super</a></div></footer></div></section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+  <script>
+    (() => {
+      "use strict";
+
+      const presets = {
+        story: {
+          prompt: "The lantern flickered as Mira stepped <mark>into</mark>",
+          tokens: ["the", "a", "quietly", "through", "darkness", "room", "night", "forward", "xylophone", "suddenly", "garden", "silence"],
+          logits: [3.75, 3.2, 2.72, 2.55, 2.28, 2.12, 1.96, 1.72, -0.55, 1.48, 1.2, .9]
+        },
+        code: {
+          prompt: "for (const item of queue) { <mark>await</mark>",
+          tokens: ["process", "handle", "item", "queue", "Promise", "if", "try", "continue", "console", "yield", "worker", "return"],
+          logits: [3.9, 3.05, 2.75, 2.25, 2.08, 1.88, 1.7, 1.42, 1.18, .95, .65, .4]
+        },
+        facts: {
+          prompt: "The chemical symbol for gold is <mark>Au</mark>, and silver is",
+          tokens: ["Ag", "silver", "Au", "Fe", "Cu", "gold", "Pt", "Sn", "Pb", "Al", "Na", "Hg"],
+          logits: [5.1, 2.42, 1.92, 1.55, 1.3, 1.05, .9, .7, .5, .3, .05, -.25]
+        }
+      };
+
+      const state = { preset: "story", mode: "typical", mass: .8, temperature: 1, k: 4, selected: "quietly", sampleIndex: 0, playing: false, claim: 0 };
+      const modeLabels = { typical: "Locally typical", nucleus: "Top-p nucleus", topk: "Top-k" };
+      const svg = d3.select("#typicalChart");
+      const chartWrap = document.getElementById("chartWrap");
+      const tooltip = document.getElementById("tooltip");
+
+      function clamp(value, min, max) { return Math.max(min, Math.min(max, value)); }
+      function log2(value) { return Math.log(value) / Math.log(2); }
+
+      function distribution() {
+        const preset = presets[state.preset];
+        const scaled = preset.logits.map(logit => logit / state.temperature);
+        const maxLogit = Math.max(...scaled);
+        const exps = scaled.map(logit => Math.exp(logit - maxLogit));
+        const sum = exps.reduce((a, b) => a + b, 0);
+        const probs = exps.map(value => value / sum);
+        const entropy = probs.reduce((total, p) => total - p * log2(p), 0);
+        return preset.tokens.map((token, index) => ({ token, p: probs[index], surprisal: -log2(probs[index]), distance: Math.abs(-log2(probs[index]) - entropy), index })).map(item => ({ ...item, entropy }));
+      }
+
+      function retainedFor(mode, data) {
+        let ordered;
+        if (mode === "typical") ordered = data.slice().sort((a, b) => a.distance - b.distance || b.p - a.p);
+        else ordered = data.slice().sort((a, b) => b.p - a.p);
+        if (mode === "topk") return new Set(ordered.slice(0, state.k).map(item => item.token));
+        const retained = new Set();
+        let cumulative = 0;
+        for (const item of ordered) {
+          retained.add(item.token);
+          cumulative += item.p;
+          if (cumulative >= state.mass) break;
+        }
+        return retained;
+      }
+
+      function metricsFor(mode, data) {
+        const retained = retainedFor(mode, data);
+        const items = data.filter(item => retained.has(item.token));
+        const mass = items.reduce((sum, item) => sum + item.p, 0);
+        const meanDistance = items.reduce((sum, item) => sum + item.distance * item.p, 0) / Math.max(mass, .0001);
+        return { retained, items, mass, meanDistance };
+      }
+
+      function renderChart() {
+        const data = distribution();
+        const active = metricsFor(state.mode, data);
+        const width = Math.max(650, chartWrap.clientWidth - 20);
+        const height = Math.max(410, chartWrap.clientHeight - 24);
+        const margin = { top: 30, right: 28, bottom: 78, left: 62 };
+        const innerW = width - margin.left - margin.right;
+        const innerH = height - margin.top - margin.bottom;
+        const maxS = d3.max(data, d => d.surprisal) + .35;
+        const maxP = d3.max(data, d => d.p) * 1.18;
+        const x = d3.scaleLinear().domain([0, maxS]).range([0, innerW]);
+        const y = d3.scaleLinear().domain([0, maxP]).nice().range([innerH, 0]);
+        const radius = d3.scaleSqrt().domain([0, d3.max(data, d => d.p)]).range([7, 24]);
+        svg.attr("viewBox", `0 0 ${width} ${height}`);
+        svg.selectAll("*").remove();
+        svg.append("title").attr("id", "chartTitle").text("Token probability versus surprisal");
+        svg.append("desc").attr("id", "chartDesc").text("Each token is plotted by surprisal and probability. Retained tokens are yellow, and a red vertical line marks conditional entropy.");
+        const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+
+        g.append("g").attr("transform", `translate(0,${innerH})`).call(d3.axisBottom(x).ticks(6).tickFormat(value => value + "b")).call(group => group.select(".domain").attr("stroke", "#151515")).call(group => group.selectAll("text").attr("font-family", "Geist").attr("font-size", 12));
+        g.append("g").call(d3.axisLeft(y).ticks(5).tickFormat(d3.format(".0%"))).call(group => group.select(".domain").attr("stroke", "#151515")).call(group => group.selectAll("text").attr("font-family", "Geist").attr("font-size", 12));
+        g.append("text").attr("x", innerW / 2).attr("y", innerH + 58).attr("text-anchor", "middle").attr("font-family", "Geist").attr("font-size", 13).attr("fill", "#69665f").text("token surprisal -log2 p(x)");
+        g.append("text").attr("transform", "rotate(-90)").attr("x", -innerH / 2).attr("y", -45).attr("text-anchor", "middle").attr("font-family", "Geist").attr("font-size", 13).attr("fill", "#69665f").text("probability");
+        g.append("line").attr("x1", x(data[0].entropy)).attr("x2", x(data[0].entropy)).attr("y1", 0).attr("y2", innerH).attr("stroke", "#ff614d").attr("stroke-width", 3).attr("stroke-dasharray", "7 5");
+        g.append("text").attr("x", x(data[0].entropy)).attr("y", -10).attr("text-anchor", "middle").attr("font-family", "Geist").attr("font-size", 12).attr("font-weight", 700).attr("fill", "#b43527").text(`H = ${data[0].entropy.toFixed(2)} bits`);
+
+        const dots = g.selectAll("g.dot").data(data, d => d.token).join("g").attr("class", "dot").attr("transform", d => `translate(${x(d.surprisal)},${y(d.p)})`).attr("tabindex", 0).attr("role", "button").attr("aria-label", d => `${d.token}, ${(d.p * 100).toFixed(1)} percent probability, ${d.surprisal.toFixed(2)} bits surprisal, ${active.retained.has(d.token) ? "retained" : "filtered"}`)
+          .on("mouseenter focus", (event, d) => showTooltip(event, d, active.retained.has(d.token))).on("mousemove", (event, d) => showTooltip(event, d, active.retained.has(d.token))).on("mouseleave blur", hideTooltip).on("click", (_, d) => { state.selected = d.token; renderReadout(); renderChart(); }).on("keydown", (event, d) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); state.selected = d.token; renderReadout(); renderChart(); } });
+        dots.append("circle").attr("r", d => radius(d.p)).attr("fill", d => active.retained.has(d.token) ? "#f5dc3c" : "#d9d5cb").attr("stroke", d => d.token === state.selected ? "#151515" : "#77736b").attr("stroke-width", d => d.token === state.selected ? 4 : 1.5);
+        dots.append("text").attr("y", d => -radius(d.p) - 7).attr("text-anchor", "middle").attr("font-family", "Geist").attr("font-size", 12).attr("font-weight", 650).attr("fill", "#151515").text(d => d.token);
+        dots.append("title").text(d => `${d.token}: ${(d.p * 100).toFixed(1)}%, ${d.surprisal.toFixed(2)} bits, distance ${d.distance.toFixed(2)} bits`);
+      }
+
+      function showTooltip(event, item, retained) {
+        const bounds = chartWrap.getBoundingClientRect();
+        tooltip.innerHTML = `<strong>${item.token}</strong><br>${(item.p * 100).toFixed(1)}% probability<br>${item.surprisal.toFixed(2)} bits surprisal<br>${item.distance.toFixed(2)} bits from H<br>${retained ? "retained" : "filtered"}`;
+        tooltip.style.left = clamp(event.clientX - bounds.left + 12, 8, bounds.width - 238) + "px";
+        tooltip.style.top = clamp(event.clientY - bounds.top - 88, 8, bounds.height - 112) + "px";
+        tooltip.style.opacity = "1";
+      }
+      function hideTooltip() { tooltip.style.opacity = "0"; }
+
+      function renderReadout() {
+        const data = distribution();
+        const active = metricsFor(state.mode, data);
+        const item = data.find(candidate => candidate.token === state.selected) || data[0];
+        if (!data.some(candidate => candidate.token === state.selected)) state.selected = data[0].token;
+        document.getElementById("selectedToken").textContent = item.token;
+        document.getElementById("selectedCopy").textContent = `${(item.p * 100).toFixed(1)}% probability, ${item.surprisal.toFixed(2)} bits of surprisal, and ${item.distance.toFixed(2)} bits from entropy. ${active.retained.has(item.token) ? "Retained" : "Filtered"} by ${modeLabels[state.mode].toLowerCase()}.`;
+      }
+
+      function renderMetrics() {
+        const data = distribution();
+        const active = metricsFor(state.mode, data);
+        document.getElementById("promptText").innerHTML = presets[state.preset].prompt;
+        document.getElementById("modeValue").textContent = modeLabels[state.mode].replace(" nucleus", "");
+        document.getElementById("massValue").textContent = state.mass.toFixed(2);
+        document.getElementById("tempValue").textContent = state.temperature.toFixed(2);
+        document.getElementById("kValue").textContent = state.k + (state.k === 1 ? " token" : " tokens");
+        document.getElementById("kDisplay").textContent = String(state.k);
+        document.getElementById("entropyMetric").textContent = data[0].entropy.toFixed(2) + " bits";
+        document.getElementById("countMetric").textContent = `${active.items.length} / ${data.length}`;
+        document.getElementById("massMetric").textContent = Math.round(active.mass * 100) + "%";
+        document.getElementById("distanceMetric").textContent = active.meanDistance.toFixed(2) + " bits";
+        document.getElementById("typicalCompare").textContent = metricsFor("typical", data).items.length + " tokens";
+        document.getElementById("nucleusCompare").textContent = metricsFor("nucleus", data).items.length + " tokens";
+        document.getElementById("topkCompare").textContent = metricsFor("topk", data).items.length + " tokens";
+        document.getElementById("sequenceMode").textContent = modeLabels[state.mode];
+      }
+
+      function render() {
+        document.querySelectorAll("[data-preset]").forEach(button => button.setAttribute("aria-pressed", String(button.dataset.preset === state.preset)));
+        document.querySelectorAll("[data-mode]").forEach(button => button.setAttribute("aria-pressed", String(button.dataset.mode === state.mode)));
+        document.querySelectorAll("[data-accordion]").forEach(button => button.classList.toggle("active", button.dataset.accordion === state.mode));
+        renderChart(); renderMetrics(); renderReadout();
+        if (window.lucide) lucide.createIcons();
+      }
+
+      function randomUnit(seed) {
+        let x = Math.sin(seed * 12.9898 + 78.233) * 43758.5453;
+        return x - Math.floor(x);
+      }
+
+      function sampleToken(step) {
+        const data = distribution();
+        const active = metricsFor(state.mode, data);
+        const items = active.items;
+        const total = items.reduce((sum, item) => sum + item.p, 0);
+        let target = randomUnit((state.sampleIndex + 1) * 31 + step * 17 + state.preset.length * 7 + state.mode.length * 11) * total;
+        for (const item of items) { target -= item.p; if (target <= 0) return item; }
+        return items[items.length - 1];
+      }
+
+      function addSample() {
+        const item = sampleToken(0);
+        state.sampleIndex += 1;
+        state.selected = item.token;
+        const holder = document.getElementById("sequenceTokens");
+        if (holder.textContent.trim() === "waiting") holder.innerHTML = "";
+        const chip = document.createElement("span"); chip.className = "generated-token"; chip.textContent = item.token; holder.appendChild(chip);
+        const chips = holder.querySelectorAll(".generated-token"); if (chips.length > 8) chips[0].remove();
+        const distances = [...holder.querySelectorAll(".generated-token")].map((_, index) => sampleToken(index).distance);
+        document.getElementById("sequenceTypicality").textContent = (distances.reduce((a, b) => a + b, 0) / distances.length).toFixed(2) + "b";
+        render();
+      }
+
+      function stopPlayback() {
+        state.playing = false; window.clearInterval(window.decodeTimer); document.querySelector("#playBtn span").textContent = "Play 8 steps";
+      }
+
+      function playSequence() {
+        if (state.playing) { stopPlayback(); return; }
+        stopPlayback(); state.playing = true; document.getElementById("sequenceTokens").innerHTML = ""; document.querySelector("#playBtn span").textContent = "Pause";
+        let step = 0;
+        addSample(); step += 1;
+        window.decodeTimer = window.setInterval(() => { addSample(); step += 1; if (step >= 8) stopPlayback(); }, 430);
+      }
+
+      document.querySelectorAll("[data-preset]").forEach(button => button.addEventListener("click", () => { stopPlayback(); state.preset = button.dataset.preset; state.selected = presets[state.preset].tokens[2]; document.getElementById("sequenceTokens").innerHTML = '<span class="generated-token">waiting</span>'; document.getElementById("sequenceTypicality").textContent = "--"; render(); }));
+      document.querySelectorAll("[data-mode]").forEach(button => button.addEventListener("click", () => { state.mode = button.dataset.mode; render(); }));
+      document.querySelectorAll("[data-accordion]").forEach(button => button.addEventListener("click", () => { state.mode = button.dataset.accordion; render(); }));
+      document.getElementById("mass").addEventListener("input", event => { state.mass = Number(event.target.value) / 100; render(); });
+      document.getElementById("temperature").addEventListener("input", event => { state.temperature = Number(event.target.value) / 100; render(); });
+      document.getElementById("kMinus").addEventListener("click", () => { state.k = clamp(state.k - 1, 1, 10); render(); });
+      document.getElementById("kPlus").addEventListener("click", () => { state.k = clamp(state.k + 1, 1, 10); render(); });
+      document.getElementById("sampleBtn").addEventListener("click", addSample);
+      document.getElementById("playBtn").addEventListener("click", playSequence);
+      document.getElementById("resetBtn").addEventListener("click", () => { stopPlayback(); Object.assign(state, { preset: "story", mode: "typical", mass: .8, temperature: 1, k: 4, selected: "quietly", sampleIndex: 0 }); document.getElementById("mass").value = "80"; document.getElementById("temperature").value = "100"; document.getElementById("sequenceTokens").innerHTML = '<span class="generated-token">waiting</span>'; document.getElementById("sequenceTypicality").textContent = "--"; render(); });
+
+      function showClaim(index) { const claims = document.querySelectorAll(".claim"); state.claim = (index + claims.length) % claims.length; claims.forEach((claim, i) => claim.classList.toggle("active", i === state.claim)); }
+      document.getElementById("claimPrev").addEventListener("click", () => showClaim(state.claim - 1));
+      document.getElementById("claimNext").addEventListener("click", () => showClaim(state.claim + 1));
+
+      let resizeFrame = 0;
+      window.addEventListener("resize", () => { window.cancelAnimationFrame(resizeFrame); resizeFrame = window.requestAnimationFrame(renderChart); });
+      if (window.gsap && window.ScrollTrigger && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.from(".tape-token", { y: 28, opacity: 0, stagger: .12, duration: .7, ease: "power2.out" });
+        document.querySelectorAll(".compare-card").forEach(card => gsap.fromTo(card, { scale: .88, opacity: .28 }, { scale: 1, opacity: 1, scrollTrigger: { trigger: card, start: "top 92%", end: "top 64%", scrub: true } }));
+      }
+      render();
+    })();
+  </script>
+</body>
+</html>
