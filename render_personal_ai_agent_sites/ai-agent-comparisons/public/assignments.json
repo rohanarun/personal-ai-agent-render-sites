@@ -2,6 +2,28 @@
   {
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/logit-lens-layerwise-prediction-trajectory-lab-20260812-172158/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "logit_lens_trajectory_lab",
+    "content_kind_label": "Logit Lens Trajectory Lab",
+    "direct_generated": true,
+    "github_commit": "a851c26ac2482f8c3828f34215f1250eddc57c82",
+    "github_url": "https://github.com/rohanarun/super-agent-news-logit-lens-layerwise-prediction-trajectory-lab-20260812-172158",
+    "live_url": "https://lists.new/logit-lens-layerwise-prediction-trajectory-lab-20260812-172158/",
+    "receipt_created_at": "2026-08-12T17:21:58.852Z",
+    "receipt_status": "success",
+    "slug": "logit-lens-layerwise-prediction-trajectory-lab-20260812-172158",
+    "source_path": "sms_published_sites/logit-lens-layerwise-prediction-trajectory-lab-20260812-172158",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Logit Lens Lab: Watch a Prediction Form"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/llm-as-a-judge-bias-stress-test-lab-20260812-164928/",
     "backlinks": [
       "https://getsupers.com/",
