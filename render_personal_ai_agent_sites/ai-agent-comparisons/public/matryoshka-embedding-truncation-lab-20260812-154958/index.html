@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An interactive Matryoshka embedding lab for dimension truncation, prefix normalization, storage, compute, and nearest-neighbor recall.">
+  <meta property="og:title" content="Matryoshka Embedding Lab: One Vector, Many Budgets">
+  <meta property="og:description" content="Shorten one embedding prefix and measure what happens to storage, ranking, and recall.">
+  <link rel="canonical" href="https://lists.new/matryoshka-embedding-truncation-lab-20260812-154958/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <title>Matryoshka Embedding Lab: One Vector, Many Budgets</title>
+  <style>
+    :root {
+      --ink: #11120f;
+      --paper: #f4f1e8;
+      --white: #fffef9;
+      --acid: #c9f24a;
+      --coral: #ff705d;
+      --blue: #3457d5;
+      --yellow: #f4c64f;
+      --mint: #6dd6bd;
+      --muted: #6e7068;
+      --line: #b8b9ad;
+      --dark-line: #383a34;
+      --panel: #e8e6dc;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Outfit", Arial, sans-serif;
+      letter-spacing: 0;
+    }
+    button, input, select { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button:focus-visible, a:focus-visible, select:focus-visible, input:focus-visible {
+      outline: 3px solid var(--blue);
+      outline-offset: 3px;
+    }
+    a { color: inherit; }
+    main { width: 100%; max-width: 100%; overflow-x: hidden; }
+    .wrap { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .nav {
+      position: fixed;
+      z-index: 30;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1180px, calc(100% - 32px));
+      min-height: 56px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 16px;
+      padding: 8px 10px 8px 18px;
+      border: 1px solid var(--dark-line);
+      border-radius: 6px;
+      background: rgba(244, 241, 232, 0.96);
+      backdrop-filter: blur(12px);
+    }
+    .brand { font-weight: 700; text-decoration: none; font-size: 15px; }
+    .nav-center { display: flex; gap: 24px; font-size: 14px; }
+    .nav-center a { text-decoration: none; }
+    .nav-end { justify-self: end; }
+    .button, button {
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 10px 15px;
+      border: 1px solid var(--ink);
+      border-radius: 4px;
+      background: var(--ink);
+      color: var(--white);
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+    }
+    .button:hover, button:hover { transform: translateY(-2px); }
+    .button.acid { background: var(--acid); color: var(--ink); }
+    .button.ghost, button.ghost { background: transparent; color: var(--ink); }
+    .icon-button { width: 42px; padding: 0; flex: 0 0 42px; }
+    .button svg, button svg { width: 18px; height: 18px; stroke-width: 2; }
+
+    .hero {
+      min-height: 890px;
+      position: relative;
+      display: grid;
+      align-items: center;
+      padding: 150px 0 86px;
+      border-bottom: 1px solid var(--ink);
+      background: var(--paper);
+    }
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: minmax(0, 9fr) minmax(280px, 3fr);
+      align-items: center;
+      gap: 40px;
+    }
+    .hero h1 {
+      max-width: 1120px;
+      margin: 0;
+      font-size: clamp(3rem, 5.2vw, 5.5rem);
+      line-height: 0.94;
+      font-weight: 600;
+    }
+    .hero h1 .nest {
+      display: inline-flex;
+      width: clamp(92px, 11vw, 162px);
+      height: 0.68em;
+      vertical-align: 0.03em;
+      margin: 0 0.08em;
+      overflow: hidden;
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+      background: var(--ink);
+    }
+    .hero h1 .nest i { flex: 1; border-right: 1px solid var(--paper); }
+    .hero h1 .nest i:nth-child(1) { background: var(--acid); }
+    .hero h1 .nest i:nth-child(2) { background: var(--coral); }
+    .hero h1 .nest i:nth-child(3) { background: var(--blue); }
+    .hero h1 .nest i:nth-child(4) { background: var(--yellow); border-right: 0; }
+    .hero-copy {
+      max-width: 720px;
+      margin: 30px 0 0;
+      color: #44473f;
+      font-size: clamp(1.05rem, 1.55vw, 1.32rem);
+      line-height: 1.55;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+    .hero-visual {
+      position: relative;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .vector-shell {
+      position: relative;
+      width: min(100%, 410px);
+      aspect-ratio: 4 / 5;
+      border: 1px solid var(--ink);
+      background: var(--white);
+      box-shadow: 20px 20px 0 var(--blue);
+      transform: rotate(2.5deg);
+      overflow: hidden;
+    }
+    .vector-shell::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 25% 25%;
+      opacity: 0.38;
+    }
+    .vector-head {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+      border-bottom: 1px solid var(--ink);
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .nested-rings {
+      position: absolute;
+      inset: 84px 34px 34px;
+      display: grid;
+      place-items: center;
+    }
+    .nested-rings span {
+      position: absolute;
+      display: grid;
+      place-items: center;
+      border: 2px solid var(--ink);
+      background: var(--white);
+      font-weight: 700;
+    }
+    .nested-rings span:nth-child(1) { width: 82%; height: 82%; background: var(--yellow); }
+    .nested-rings span:nth-child(2) { width: 62%; height: 62%; background: var(--coral); }
+    .nested-rings span:nth-child(3) { width: 42%; height: 42%; background: var(--blue); color: var(--white); }
+    .nested-rings span:nth-child(4) { width: 22%; height: 22%; background: var(--acid); color: var(--ink); }
+    .hero-note {
+      position: absolute;
+      right: -28px;
+      bottom: 34px;
+      z-index: 4;
+      width: 188px;
+      padding: 17px;
+      border: 1px solid var(--ink);
+      background: var(--acid);
+      font-size: 14px;
+      line-height: 1.35;
+      transform: rotate(-4deg);
+    }
+    .marquee {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      overflow: hidden;
+      border-top: 1px solid var(--ink);
+      background: var(--ink);
+      color: var(--white);
+    }
+    .marquee-track {
+      width: max-content;
+      display: flex;
+      animation: marquee 26s linear infinite;
+    }
+    .marquee-track span {
+      display: inline-flex;
+      align-items: center;
+      gap: 24px;
+      padding: 15px 22px;
+      white-space: nowrap;
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+    .marquee-track b { color: var(--acid); }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    .lab { padding: 132px 0 0; background: var(--white); }
+    .chapter-head {
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      gap: 60px;
+      align-items: end;
+      margin-bottom: 54px;
+    }
+    .chapter-head h2 {
+      margin: 0;
+      font-size: clamp(2.7rem, 5vw, 5.4rem);
+      line-height: 0.98;
+      font-weight: 600;
+    }
+    .chapter-head p { max-width: 610px; margin: 0; color: var(--muted); font-size: 18px; line-height: 1.6; }
+    .toolbar {
+      display: grid;
+      grid-template-columns: 1.25fr 1.35fr 1.8fr 1.25fr 1.4fr;
+      border: 1px solid var(--ink);
+      border-bottom: 0;
+      background: var(--paper);
+    }
+    .control {
+      min-width: 0;
+      padding: 18px;
+      border-right: 1px solid var(--ink);
+    }
+    .control:last-child { border-right: 0; }
+    .control label, .control .control-label {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .control output { color: var(--blue); }
+    select {
+      width: 100%;
+      height: 42px;
+      padding: 0 10px;
+      border: 1px solid var(--ink);
+      border-radius: 3px;
+      background: var(--white);
+      color: var(--ink);
+    }
+    input[type="range"] { width: 100%; accent-color: var(--blue); }
+    .segments { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+    .segments button { min-height: 42px; padding: 8px; background: transparent; color: var(--ink); }
+    .segments button.active { background: var(--blue); color: var(--white); }
+    .switch-row { display: flex; align-items: center; justify-content: space-between; gap: 14px; min-height: 42px; }
+    .switch {
+      position: relative;
+      width: 50px;
+      height: 28px;
+      flex: 0 0 50px;
+    }
+    .switch input { position: absolute; opacity: 0; }
+    .switch span {
+      position: absolute;
+      inset: 0;
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+      background: var(--panel);
+      cursor: pointer;
+    }
+    .switch span::after {
+      content: "";
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--ink);
+      transition: transform 180ms ease;
+    }
+    .switch input:checked + span { background: var(--acid); }
+    .switch input:checked + span::after { transform: translateX(22px); }
+    .lab-grid {
+      min-height: 760px;
+      display: grid;
+      grid-template-columns: minmax(0, 8fr) minmax(320px, 4fr);
+      border: 1px solid var(--ink);
+    }
+    .visual-panel {
+      min-width: 0;
+      padding: 24px;
+      border-right: 1px solid var(--ink);
+      background: #151712;
+      color: var(--white);
+    }
+    .visual-head { display: flex; justify-content: space-between; gap: 20px; align-items: start; margin-bottom: 18px; }
+    .visual-head h3 { margin: 0 0 6px; font-size: 25px; }
+    .visual-head p { max-width: 610px; margin: 0; color: #b9bcae; line-height: 1.45; font-size: 14px; }
+    .mode-chip { flex: 0 0 auto; padding: 7px 9px; border: 1px solid #5f6259; color: var(--acid); font-size: 12px; }
+    #matrix {
+      display: block;
+      width: 100%;
+      height: auto;
+      min-height: 0;
+      aspect-ratio: 900 / 620;
+      overflow: visible;
+    }
+    .rank-panel { display: flex; flex-direction: column; min-width: 0; background: var(--paper); }
+    .query-box { padding: 24px; border-bottom: 1px solid var(--ink); background: var(--yellow); }
+    .query-box small, .rank-head small, .inspector small { display: block; margin-bottom: 7px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+    .query-box strong { display: block; font-size: 21px; line-height: 1.25; }
+    .rank-head { display: flex; justify-content: space-between; gap: 14px; align-items: end; padding: 20px 22px 12px; }
+    .rank-head h3 { margin: 0; font-size: 22px; }
+    .rank-head span { color: var(--muted); font-size: 12px; text-align: right; }
+    .ranking { flex: 1; margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+    .ranking button {
+      width: 100%;
+      min-height: 66px;
+      display: grid;
+      grid-template-columns: 32px minmax(0, 1fr) 54px;
+      gap: 12px;
+      align-items: center;
+      padding: 11px 20px;
+      border: 0;
+      border-bottom: 1px solid var(--line);
+      border-radius: 0;
+      background: transparent;
+      color: var(--ink);
+      text-align: left;
+    }
+    .ranking button:hover, .ranking button.active { transform: none; background: var(--white); }
+    .ranking .rank { font-size: 20px; font-weight: 700; color: var(--blue); }
+    .ranking .doc-label { min-width: 0; overflow-wrap: anywhere; font-weight: 600; }
+    .ranking .score { text-align: right; font-variant-numeric: tabular-nums; font-size: 13px; }
+    .inspector { min-height: 142px; padding: 19px 22px; border-top: 1px solid var(--ink); background: var(--coral); }
+    .inspector strong { display: block; margin-bottom: 9px; font-size: 19px; }
+    .inspector-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .inspector-grid span { font-size: 12px; }
+    .inspector-grid b { display: block; margin-top: 3px; font-size: 17px; }
+    .playbar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 18px;
+      border: 1px solid var(--ink);
+      border-top: 0;
+      background: var(--paper);
+    }
+    .playbar .status { flex: 1; min-width: 0; color: var(--muted); font-size: 14px; }
+    .playbar .status b { color: var(--ink); }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-inline: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+    }
+    .metric { min-height: 164px; padding: 25px; border-right: 1px solid var(--ink); background: var(--white); }
+    .metric:last-child { border-right: 0; }
+    .metric:nth-child(2) { background: var(--acid); }
+    .metric:nth-child(3) { background: var(--blue); color: var(--white); }
+    .metric small { display: block; min-height: 34px; font-size: 12px; font-weight: 700; text-transform: uppercase; }
+    .metric strong { display: block; margin: 6px 0 9px; font-size: clamp(2rem, 3vw, 3.15rem); line-height: 1; font-variant-numeric: tabular-nums; }
+    .metric p { margin: 0; color: inherit; opacity: 0.72; font-size: 13px; line-height: 1.4; }
+
+    .concepts { padding: 168px 0; background: var(--paper); }
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: repeat(2, minmax(250px, auto));
+      grid-auto-flow: dense;
+      border-top: 1px solid var(--ink);
+      border-left: 1px solid var(--ink);
+    }
+    .bento article {
+      position: relative;
+      overflow: hidden;
+      padding: 34px;
+      border-right: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      background: var(--white);
+    }
+    .bento article:nth-child(1) { grid-column: span 7; }
+    .bento article:nth-child(2) { grid-column: span 5; background: var(--yellow); }
+    .bento article:nth-child(3), .bento article:nth-child(4), .bento article:nth-child(5) { grid-column: span 4; }
+    .bento article:nth-child(4) { background: var(--ink); color: var(--white); }
+    .bento article:nth-child(5) { background: var(--mint); }
+    .bento h3 { max-width: 590px; margin: 0 0 18px; font-size: clamp(1.8rem, 3vw, 3.2rem); line-height: 1; }
+    .bento p { max-width: 610px; margin: 0; color: inherit; opacity: 0.72; font-size: 16px; line-height: 1.6; }
+    .formula {
+      display: inline-block;
+      margin-top: 28px;
+      padding: 10px 12px;
+      border: 1px solid currentColor;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 13px;
+    }
+    .dimension-stack { display: flex; align-items: end; gap: 6px; height: 110px; margin-top: 25px; }
+    .dimension-stack i { flex: 1; border: 1px solid var(--ink); background: var(--coral); }
+    .dimension-stack i:nth-child(1) { height: 30%; background: var(--acid); }
+    .dimension-stack i:nth-child(2) { height: 48%; background: var(--yellow); }
+    .dimension-stack i:nth-child(3) { height: 70%; background: var(--coral); }
+    .dimension-stack i:nth-child(4) { height: 100%; background: var(--blue); }
+
+    .mechanism { padding: 150px 0; background: #171914; color: var(--white); }
+    .mechanism-grid { display: grid; grid-template-columns: 5fr 7fr; gap: 90px; }
+    .mechanism-title { align-self: start; }
+    .mechanism-title h2 { max-width: 470px; margin: 0; font-size: clamp(3rem, 5vw, 5.7rem); line-height: 0.96; }
+    .mechanism-title p { max-width: 430px; margin: 24px 0 0; color: #b4b7aa; font-size: 18px; line-height: 1.6; }
+    .mechanism-list { display: grid; gap: 72px; }
+    .mechanism-card {
+      min-height: 430px;
+      display: grid;
+      align-content: space-between;
+      padding: 42px;
+      border: 1px solid #5a5d53;
+      border-radius: 5px;
+      background: #20231d;
+      transform-origin: center bottom;
+    }
+    .mechanism-card:nth-child(2) { background: var(--blue); }
+    .mechanism-card:nth-child(3) { background: var(--coral); color: var(--ink); }
+    .mechanism-card .num { width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid currentColor; border-radius: 50%; font-weight: 700; }
+    .mechanism-card h3 { max-width: 610px; margin: 70px 0 16px; font-size: clamp(2.1rem, 4vw, 4.2rem); line-height: 1; }
+    .mechanism-card p { max-width: 650px; margin: 0; color: inherit; opacity: 0.76; font-size: 17px; line-height: 1.55; }
+    .mini-prefix { display: flex; gap: 5px; margin-top: 34px; }
+    .mini-prefix i { width: 24px; height: 55px; border: 1px solid currentColor; background: currentColor; opacity: 0.22; }
+    .mini-prefix i:nth-child(-n+4) { opacity: 1; background: var(--acid); }
+
+    .perspectives { padding: 162px 0; background: var(--white); }
+    .carousel {
+      display: grid;
+      grid-template-columns: 4fr 8fr;
+      min-height: 470px;
+      border: 1px solid var(--ink);
+    }
+    .carousel-portrait {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      background: var(--yellow);
+      border-right: 1px solid var(--ink);
+    }
+    .portrait-rings { position: relative; width: 260px; height: 260px; }
+    .portrait-rings span { position: absolute; inset: 0; border: 3px solid var(--ink); border-radius: 50%; }
+    .portrait-rings span:nth-child(2) { inset: 34px; background: var(--coral); }
+    .portrait-rings span:nth-child(3) { inset: 73px; background: var(--blue); }
+    .portrait-rings span:nth-child(4) { inset: 110px; background: var(--acid); }
+    .carousel-copy { display: flex; flex-direction: column; justify-content: space-between; padding: 48px; background: var(--paper); }
+    .carousel-copy blockquote { max-width: 720px; margin: 0; font-size: clamp(2rem, 3.7vw, 4rem); line-height: 1.08; }
+    .carousel-foot { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-top: 40px; }
+    .carousel-foot p { max-width: 570px; margin: 0; color: var(--muted); line-height: 1.55; }
+    .carousel-actions { display: flex; gap: 7px; }
+
+    .accordion-section { padding: 0 0 160px; background: var(--white); }
+    .accordions { min-height: 390px; display: flex; border: 1px solid var(--ink); overflow: hidden; }
+    .accordion {
+      min-width: 88px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: space-between;
+      padding: 26px;
+      border: 0;
+      border-right: 1px solid var(--ink);
+      border-radius: 0;
+      background: var(--paper);
+      color: var(--ink);
+      text-align: left;
+      transition: flex 420ms ease, background 220ms ease;
+    }
+    .accordion:last-child { border-right: 0; }
+    .accordion:hover { transform: none; }
+    .accordion.active { flex: 4; background: var(--acid); }
+    .accordion:nth-child(2).active { background: var(--yellow); }
+    .accordion:nth-child(3).active { background: var(--coral); }
+    .accordion-title { font-size: clamp(1.3rem, 2vw, 2rem); font-weight: 700; }
+    .accordion-copy { max-width: 560px; opacity: 0; visibility: hidden; line-height: 1.6; transition: opacity 220ms ease; }
+    .accordion.active .accordion-copy { opacity: 0.76; visibility: visible; }
+
+    .sources { padding: 150px 0; border-top: 1px solid var(--ink); background: var(--paper); }
+    .source-grid { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--ink); border-left: 1px solid var(--ink); }
+    .source {
+      min-height: 190px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 30px;
+      padding: 28px;
+      border-right: 1px solid var(--ink);
+      border-bottom: 1px solid var(--ink);
+      background: var(--white);
+      text-decoration: none;
+      transition: background 180ms ease;
+    }
+    .source:hover { background: var(--acid); }
+    .source strong { max-width: 500px; font-size: 22px; line-height: 1.15; }
+    .source span { color: var(--muted); font-size: 14px; }
+    .checklist { display: grid; grid-template-columns: repeat(4, 1fr); margin: 70px 0 0; padding: 0; border-top: 1px solid var(--ink); list-style: none; }
+    .check { padding: 24px 18px; border-bottom: 1px solid var(--ink); }
+    .check i { width: 26px; height: 26px; display: grid; place-items: center; margin-bottom: 18px; border-radius: 50%; background: var(--blue); color: var(--white); font-style: normal; }
+    .check p { margin: 0; color: var(--muted); line-height: 1.5; }
+
+    .footer { padding: 130px 0 34px; background: var(--acid); color: var(--ink); }
+    .footer h2 { max-width: 1050px; margin: 0; font-size: clamp(3.1rem, 7vw, 7.5rem); line-height: 0.9; font-weight: 600; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 38px; }
+    .footer-base { display: flex; justify-content: space-between; gap: 24px; margin-top: 110px; padding-top: 24px; border-top: 1px solid var(--ink); font-size: 14px; }
+
+    @media (max-width: 980px) {
+      .nav { grid-template-columns: 1fr auto; }
+      .nav-center { display: none; }
+      .hero { min-height: auto; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-visual { min-height: 460px; }
+      .vector-shell { max-width: 360px; }
+      .toolbar { grid-template-columns: repeat(2, 1fr); }
+      .control { border-bottom: 1px solid var(--ink); }
+      .control:nth-child(2n) { border-right: 0; }
+      .control:last-child { grid-column: 1 / -1; border-bottom: 0; }
+      .lab-grid { grid-template-columns: 1fr; }
+      .visual-panel { border-right: 0; border-bottom: 1px solid var(--ink); }
+      .metrics { grid-template-columns: repeat(2, 1fr); }
+      .metric:nth-child(2) { border-right: 0; }
+      .mechanism-grid { grid-template-columns: 1fr; }
+      .mechanism-title { position: static !important; }
+      .carousel { grid-template-columns: 1fr; }
+      .carousel-portrait { min-height: 330px; border-right: 0; border-bottom: 1px solid var(--ink); }
+      .checklist { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 680px) {
+      .wrap { width: min(100% - 24px, 1180px); }
+      .nav { top: 10px; width: calc(100% - 20px); min-height: 52px; padding-left: 13px; }
+      .brand { font-size: 13px; }
+      .nav-end .button { width: 42px; padding: 0; font-size: 0; }
+      .hero { padding: 118px 0 70px; }
+      .hero h1 { max-width: 100%; font-size: clamp(3rem, 14vw, 4.4rem); line-height: 0.94; }
+      .hero-copy { font-size: 17px; }
+      .hero-actions .button { flex: 1 1 150px; }
+      .hero-visual { min-height: 400px; }
+      .vector-shell { width: calc(100% - 36px); max-width: 330px; box-shadow: 12px 12px 0 var(--blue); }
+      .hero-note { right: -4px; bottom: 18px; width: 166px; }
+      .lab { padding-top: 105px; }
+      .chapter-head { grid-template-columns: 1fr; gap: 24px; }
+      .chapter-head h2 { font-size: 3rem; }
+      .toolbar { grid-template-columns: 1fr; }
+      .control, .control:nth-child(2n) { border-right: 0; border-bottom: 1px solid var(--ink); }
+      .control:last-child { grid-column: auto; border-bottom: 0; }
+      .visual-panel { padding: 16px 10px; }
+      .visual-head { padding-inline: 4px; }
+      .mode-chip { display: none; }
+      #matrix { min-height: 0; aspect-ratio: 520 / 620; }
+      .ranking button { grid-template-columns: 28px minmax(0, 1fr) 48px; padding-inline: 15px; }
+      .inspector-grid { grid-template-columns: repeat(3, 1fr); }
+      .playbar { flex-wrap: wrap; }
+      .playbar .status { flex-basis: 100%; }
+      .metrics { grid-template-columns: 1fr; }
+      .metric { min-height: 138px; border-right: 0; border-bottom: 1px solid var(--ink); }
+      .metric:last-child { border-bottom: 0; }
+      .concepts, .mechanism, .perspectives, .sources { padding-block: 110px; }
+      .bento { grid-template-columns: 1fr; grid-template-rows: auto; }
+      .bento article, .bento article:nth-child(1), .bento article:nth-child(2), .bento article:nth-child(3), .bento article:nth-child(4), .bento article:nth-child(5) { grid-column: 1; min-height: 240px; padding: 28px; }
+      .mechanism-grid { gap: 52px; }
+      .mechanism-card { min-height: 390px; padding: 28px; }
+      .carousel-copy { padding: 30px 24px; }
+      .carousel-foot { align-items: start; flex-direction: column; }
+      .accordions { min-height: 0; flex-direction: column; }
+      .accordion { min-width: 0; min-height: 86px; border-right: 0; border-bottom: 1px solid var(--ink); }
+      .accordion:last-child { border-bottom: 0; }
+      .accordion.active { min-height: 260px; }
+      .source-grid { grid-template-columns: 1fr; }
+      .source { min-height: 165px; }
+      .checklist { grid-template-columns: 1fr; }
+      .footer { padding-top: 95px; }
+      .footer h2 { font-size: 3.55rem; }
+      .footer-links .button { width: 100%; }
+      .footer-base { flex-direction: column; margin-top: 70px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="Primary navigation">
+    <a class="brand" href="#top">MATRYOSHKA / EMBEDDINGS</a>
+    <div class="nav-center">
+      <a href="#lab">Laboratory</a>
+      <a href="#mechanism">Mechanism</a>
+      <a href="#sources">Sources</a>
+    </div>
+    <div class="nav-end">
+      <a class="button acid" href="#lab" title="Open the embedding laboratory"><span>Open lab</span><i data-lucide="arrow-down" aria-hidden="true"></i></a>
+    </div>
+  </nav>
+
+  <main id="top">
+    <header class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy-block">
+          <h1>One <span class="nest" aria-hidden="true"><i></i><i></i><i></i><i></i></span> embedding. Many budgets.</h1>
+          <p class="hero-copy">Matryoshka Representation Learning puts broadly useful information near the beginning of an embedding. Shorten the prefix, normalize it, and the same vector can serve smaller indexes before you pay for every dimension.</p>
+          <div class="hero-actions">
+            <a class="button acid" href="#lab"><i data-lucide="sliders-horizontal" aria-hidden="true"></i>Change the budget</a>
+            <a class="button ghost" href="#mechanism"><i data-lucide="layers-3" aria-hidden="true"></i>Trace the nesting</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="vector-shell">
+            <div class="vector-head"><span>Full vector</span><span>Prefix-ready</span></div>
+            <div class="nested-rings"><span>16D</span><span>8D</span><span>4D</span><span>2D</span></div>
+          </div>
+          <div class="hero-note"><strong>Same coordinates.</strong><br>Different stopping points.</div>
+        </div>
+      </div>
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <span><b>2D</b> coarse signal · <b>4D</b> compact ranker · <b>8D</b> richer neighbors · <b>16D</b> full vector · normalize after truncation · measure recall · size the index ·</span>
+          <span><b>2D</b> coarse signal · <b>4D</b> compact ranker · <b>8D</b> richer neighbors · <b>16D</b> full vector · normalize after truncation · measure recall · size the index ·</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="lab" id="lab">
+      <div class="wrap">
+        <div class="chapter-head">
+          <h2>Cut dimensions. Keep score.</h2>
+          <p>The full-width ranking defines the reference neighbors. Every shorter prefix is scored from the visible teaching vectors, so overlap, storage, and compute move together.</p>
+        </div>
+
+        <div class="toolbar" role="group" aria-label="Embedding controls">
+          <div class="control">
+            <label for="scenario"><span>Retrieval set</span></label>
+            <select id="scenario">
+              <option value="agent">Agent memory</option>
+              <option value="support">Support knowledge</option>
+              <option value="catalog">Product matching</option>
+            </select>
+          </div>
+          <div class="control">
+            <span class="control-label"><span>Information order</span></span>
+            <div class="segments" id="modelMode">
+              <button type="button" class="active" data-model="nested">Nested</button>
+              <button type="button" data-model="flat">Flat</button>
+            </div>
+          </div>
+          <div class="control">
+            <div class="control-label"><label for="dimensions">Prefix dimensions</label><output id="dimensionsOut">4 / 16</output></div>
+            <input id="dimensions" type="range" min="2" max="16" step="2" value="4">
+          </div>
+          <div class="control">
+            <label for="precision"><span>Stored precision</span></label>
+            <select id="precision">
+              <option value="4">FP32 · 4 bytes</option>
+              <option value="2" selected>FP16 · 2 bytes</option>
+              <option value="1">INT8 · 1 byte</option>
+            </select>
+          </div>
+          <div class="control">
+            <span class="control-label"><span>Normalize prefix</span></span>
+            <div class="switch-row"><span id="normalizeLabel">Cosine score</span><label class="switch" title="Normalize each shortened prefix"><input id="normalize" type="checkbox" checked><span></span></label></div>
+          </div>
+        </div>
+
+        <div class="lab-grid">
+          <div class="visual-panel">
+            <div class="visual-head">
+              <div><h3>Dimension map and recall curve</h3><p>Cells beyond the cut remain stored only in the full reference. The lower chart recomputes top-four overlap at every even prefix width.</p></div>
+              <div class="mode-chip" id="modeChip">Nested order · cosine</div>
+            </div>
+            <svg id="matrix" viewBox="0 0 900 620" role="img" aria-labelledby="matrixTitle matrixDesc">
+              <title id="matrixTitle">Embedding dimension matrix and recall curve</title>
+              <desc id="matrixDesc">Query and candidate vectors with the active prefix highlighted, plus recall at each prefix width for nested and flat information order.</desc>
+            </svg>
+          </div>
+          <aside class="rank-panel" aria-label="Current nearest-neighbor ranking">
+            <div class="query-box"><small>Query</small><strong id="queryText">Find the invoice total I saved last week.</strong></div>
+            <div class="rank-head"><div><small>Top neighbors</small><h3 id="rankingTitle">Nested · 4D</h3></div><span>score from<br>active prefix</span></div>
+            <ol class="ranking" id="ranking"></ol>
+            <div class="inspector" id="inspector">
+              <small>Candidate inspection</small>
+              <strong id="inspectTitle">Select a ranked result</strong>
+              <div class="inspector-grid">
+                <span>Current score<b id="inspectScore">—</b></span>
+                <span>Full score<b id="inspectFull">—</b></span>
+                <span>Rank shift<b id="inspectShift">—</b></span>
+              </div>
+            </div>
+          </aside>
+        </div>
+        <div class="playbar">
+          <div class="status" id="status"><b>4 dimensions active.</b> Twelve trailing coordinates are excluded from scoring.</div>
+          <button type="button" class="icon-button ghost" id="step" title="Advance to the next prefix width"><i data-lucide="step-forward" aria-hidden="true"></i><span class="visually-hidden">Next prefix width</span></button>
+          <button type="button" id="play" title="Play all prefix widths"><i data-lucide="play" aria-hidden="true"></i><span>Play prefixes</span></button>
+          <button type="button" class="icon-button ghost" id="reset" title="Reset the laboratory"><i data-lucide="rotate-ccw" aria-hidden="true"></i><span class="visually-hidden">Reset laboratory</span></button>
+        </div>
+
+        <div class="metrics" role="group" aria-label="Computed embedding metrics">
+          <article class="metric"><small>Top-4 neighbor recall</small><strong id="recallMetric">100%</strong><p>Overlap with the normalized full-width top four.</p></article>
+          <article class="metric"><small>Vector storage · one million</small><strong id="storageMetric">7.6 MB</strong><p>Raw vector payload before IDs or index structures.</p></article>
+          <article class="metric"><small>Dot-product work</small><strong id="computeMetric">25%</strong><p>Multiply-add dimensions relative to the 16D reference.</p></article>
+          <article class="metric"><small>Top result retained</small><strong id="topMetric">Yes</strong><p>Whether the full-width nearest neighbor remains first.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="concepts" id="concepts">
+      <div class="wrap">
+        <div class="chapter-head">
+          <h2>Truncation is a training property.</h2>
+          <p>Any vector can be shortened. The useful question is whether the model learned prefixes that remain meaningful under the task and metric you will deploy.</p>
+        </div>
+        <div class="bento">
+          <article>
+            <h3>Nested objectives supervise several prefix widths.</h3>
+            <p>Matryoshka training applies task losses at multiple dimensionalities. Early coordinates must support a coarse but useful representation while later coordinates add capacity.</p>
+            <span class="formula">loss = L(2D) + L(4D) + L(8D) + L(16D)</span>
+          </article>
+          <article>
+            <h3>One artifact, several serving tiers.</h3>
+            <p>Store or transmit only the prefix a device, reranker, or index can afford. The full embedding stays compatible with richer tiers.</p>
+            <div class="dimension-stack" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          </article>
+          <article>
+            <h3>Renormalize the cut.</h3>
+            <p>Cosine retrieval depends on unit-length vectors. Truncating coordinates changes the norm, so normalize each prefix before cosine search.</p>
+          </article>
+          <article>
+            <h3>Compression is not free accuracy.</h3>
+            <p>Prefix quality varies by model, dataset, language, and task. Measure recall and downstream outcomes against a full-width reference.</p>
+          </article>
+          <article>
+            <h3>Index overhead still exists.</h3>
+            <p>The storage metric here isolates raw vectors. IDs, graph edges, inverted lists, metadata, alignment, and quantization scales add bytes.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="mechanism" id="mechanism">
+      <div class="wrap mechanism-grid">
+        <aside class="mechanism-title" aria-label="Matryoshka mechanism overview">
+          <h2>How the nesting earns its name.</h2>
+          <p>Every larger representation contains the smaller one as an exact prefix. The model learns to make each selected stopping point useful.</p>
+        </aside>
+        <div class="mechanism-list">
+          <article class="mechanism-card">
+            <span class="num">1</span>
+            <div><h3>Train several widths together.</h3><p>The encoder emits one full vector. Losses applied to selected prefixes push general information toward early coordinates instead of letting usefulness land anywhere.</p><div class="mini-prefix" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+          </article>
+          <article class="mechanism-card">
+            <span class="num">2</span>
+            <div><h3>Choose a prefix at deployment.</h3><p>A compact tier uses the first m coordinates; a richer tier uses more. No projection matrix or second encoder is required when the chosen dimensions were trained as valid prefixes.</p><div class="mini-prefix" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+          </article>
+          <article class="mechanism-card">
+            <span class="num">3</span>
+            <div><h3>Evaluate the actual retrieval path.</h3><p>Normalize, index, query, and rerank exactly as production will. A compact prefix can save memory and arithmetic while still changing which evidence an agent receives.</p><div class="mini-prefix" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="perspectives">
+      <div class="wrap">
+        <div class="chapter-head"><h2>Read the tradeoff from the workload.</h2><p>The same prefix can be excellent for a coarse candidate pass and insufficient for the final decision. The role of the embedding matters.</p></div>
+        <div class="carousel">
+          <div class="carousel-portrait" aria-hidden="true"><div class="portrait-rings"><span></span><span></span><span></span><span></span></div></div>
+          <div class="carousel-copy">
+            <blockquote id="quote">“Use compact prefixes to retrieve broadly, then spend full dimensions where ranking mistakes cost more.”</blockquote>
+            <div class="carousel-foot">
+              <p id="quoteDetail">A two-stage system can let a small embedding create the candidate set and reserve the full representation or a cross-encoder for final ordering.</p>
+              <div class="carousel-actions">
+                <button type="button" class="icon-button ghost" id="quotePrev" title="Previous interpretation"><i data-lucide="arrow-left" aria-hidden="true"></i><span class="visually-hidden">Previous interpretation</span></button>
+                <button type="button" class="icon-button" id="quoteNext" title="Next interpretation"><i data-lucide="arrow-right" aria-hidden="true"></i><span class="visually-hidden">Next interpretation</span></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="accordion-section">
+      <div class="wrap">
+        <div class="accordions" role="group" aria-label="Deployment decisions">
+          <button type="button" class="accordion active" data-accordion="0"><span class="accordion-title">Choose widths from evidence</span><span class="accordion-copy">Benchmark a short list of candidate dimensions on held-out queries. Pick the smallest width that satisfies the downstream quality threshold, not the smallest width that looks impressive in isolation.</span></button>
+          <button type="button" class="accordion" data-accordion="1"><span class="accordion-title">Separate payload from index cost</span><span class="accordion-copy">Raw vector bytes scale directly with dimensions and precision. Graph links, IDs, posting lists, metadata, and allocator overhead follow different rules and must be measured separately.</span></button>
+          <button type="button" class="accordion" data-accordion="2"><span class="accordion-title">Keep model and prefix identity</span><span class="accordion-copy">Cache keys and index metadata should record the embedding model, revision, prefix width, normalization policy, and precision. Vectors with incompatible identities should never share a similarity space.</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="sources" id="sources">
+      <div class="wrap">
+        <div class="chapter-head"><h2>Primary reading and implementation references.</h2><p>The lab uses deterministic teaching vectors to expose the mechanism. These sources define the training idea, practical loss, evaluation context, and a production model that uses nested dimensions.</p></div>
+        <div class="source-grid">
+          <a class="source" href="https://arxiv.org/abs/2205.13147" target="_blank" rel="noopener"><strong>Matryoshka Representation Learning</strong><span>Kusupati et al. · the original nested-representation objective and adaptive-capacity results</span></a>
+          <a class="source" href="https://www.sbert.net/docs/package_reference/sentence_transformer/losses.html#matryoshkaloss" target="_blank" rel="noopener"><strong>Sentence Transformers MatryoshkaLoss</strong><span>Official implementation reference for supervising multiple embedding dimensions</span></a>
+          <a class="source" href="https://arxiv.org/abs/2210.07316" target="_blank" rel="noopener"><strong>MTEB: Massive Text Embedding Benchmark</strong><span>Muennighoff et al. · task-diverse evaluation context for text embeddings</span></a>
+          <a class="source" href="https://arxiv.org/abs/2402.01613" target="_blank" rel="noopener"><strong>Nomic Embed: Training a Reproducible Long Context Text Embedder</strong><span>Nussbaum et al. · a reproducible text embedding model using Matryoshka learning</span></a>
+        </div>
+        <ul class="checklist" aria-label="Matryoshka embedding deployment checklist">
+          <li class="check"><i>✓</i><p>Evaluate each intended prefix on held-out production-like queries.</p></li>
+          <li class="check"><i>✓</i><p>Normalize truncated vectors when the similarity metric expects it.</p></li>
+          <li class="check"><i>✓</i><p>Include index structures and metadata in memory measurements.</p></li>
+          <li class="check"><i>✓</i><p>Version model, width, precision, and normalization as one identity.</p></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <h2>Give every agent the retrieval budget it can afford.</h2>
+      <div class="footer-links">
+        <a class="button" href="https://getsupers.com/">Explore Super<i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+        <a class="button ghost" href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI website agents<i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+        <a class="button ghost" href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache<i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+      </div>
+      <div class="footer-base"><strong>Matryoshka Embedding Truncation Lab</strong><span>Deterministic teaching vectors · no model API calls</span></div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+  <script>
+    (() => {
+      "use strict";
+
+      const FULL_DIMS = 16;
+      const PREFIXES = [2, 4, 6, 8, 10, 12, 14, 16];
+      const FLAT_ORDER = [8, 9, 10, 11, 12, 13, 14, 15, 4, 5, 6, 7, 0, 1, 2, 3];
+      const colors = { acid: "#c9f24a", coral: "#ff705d", blue: "#5677ff", yellow: "#f4c64f", mint: "#6dd6bd", white: "#fffef9", line: "#4a4e43", muted: "#9da093", dark: "#151712" };
+
+      const scenarios = {
+        agent: {
+          query: "Find the invoice total I saved last week.",
+          targetCluster: 0,
+          queryDetail: 1,
+          docs: [
+            ["Invoice 1042 · total and due date", 0, 1], ["Receipt from the cloud database renewal", 0, 2], ["Quarterly expense summary", 0, 0], ["Vendor payment confirmation", 0, 3],
+            ["Browser plan for renewing a domain", 1, 1], ["Steps for checking an account balance", 1, 2], ["Tool trace from a calendar update", 1, 0], ["Workflow for downloading a report", 1, 3],
+            ["Preference: concise weekly summaries", 2, 1], ["Contact profile for the finance lead", 2, 2], ["Timezone and notification settings", 2, 0], ["Favorite format for project notes", 2, 3],
+            ["Prompt-injection quarantine policy", 3, 1], ["Credential access approval rule", 3, 2], ["Untrusted webpage handling checklist", 3, 0], ["Audit record retention policy", 3, 3]
+          ]
+        },
+        support: {
+          query: "My checked bag did not arrive. What happens next?",
+          targetCluster: 1,
+          queryDetail: 2,
+          docs: [
+            ["Cancel a flight within 24 hours", 0, 1], ["Refund timing by payment method", 0, 2], ["Voucher eligibility after cancellation", 0, 0], ["Change a nonrefundable ticket", 0, 3],
+            ["Report delayed checked baggage", 1, 2], ["Track a missing bag by file number", 1, 1], ["Reimbursement for essential purchases", 1, 3], ["Baggage delivery after recovery", 1, 0],
+            ["Choose or change a seat", 2, 1], ["Extra-legroom seat rules", 2, 2], ["Traveling with an infant", 2, 0], ["Accessibility seating requests", 2, 3],
+            ["Airport check-in cutoff times", 3, 1], ["Accepted identity documents", 3, 2], ["Mobile boarding pass troubleshooting", 3, 0], ["International connection guidance", 3, 3]
+          ]
+        },
+        catalog: {
+          query: "Portable headphones with long battery life for flights.",
+          targetCluster: 2,
+          queryDetail: 1,
+          docs: [
+            ["Compact studio headphones with a cable", 0, 1], ["Open-back reference headphones", 0, 2], ["USB microphone monitoring headset", 0, 0], ["DJ headphones with swivel cups", 0, 3],
+            ["Pocket Bluetooth speaker", 1, 1], ["Waterproof outdoor speaker", 1, 2], ["Smart speaker for home audio", 1, 0], ["Portable conference speakerphone", 1, 3],
+            ["Foldable noise-canceling travel headphones", 2, 1], ["Wireless headphones with 60-hour battery", 2, 2], ["Lightweight over-ear commuter headphones", 2, 0], ["Airplane adapter headphone bundle", 2, 3],
+            ["True wireless running earbuds", 3, 1], ["Sleep earbuds with a charging case", 3, 2], ["In-ear monitors for musicians", 3, 0], ["Noise-isolating wired earbuds", 3, 3]
+          ]
+        }
+      };
+
+      const state = { scenario: "agent", model: "nested", dims: 4, precision: 2, normalize: true, selected: null, playing: false, timer: null, quote: 0 };
+      const $ = (selector) => document.querySelector(selector);
+      const $$ = (selector) => [...document.querySelectorAll(selector)];
+
+      function hashUnit(text, index) {
+        let h = 2166136261;
+        const input = `${text}:${index}`;
+        for (let i = 0; i < input.length; i += 1) {
+          h ^= input.charCodeAt(i);
+          h = Math.imul(h, 16777619);
+        }
+        return ((h >>> 0) % 2001) / 1000 - 1;
+      }
+
+      function canonicalVector(label, cluster, detail, query = false) {
+        const angle = cluster * Math.PI / 2;
+        const vector = new Array(FULL_DIMS).fill(0);
+        vector[0] = 1.8 * Math.cos(angle) + (query ? 0.03 : hashUnit(label, 0) * 0.06);
+        vector[1] = 1.8 * Math.sin(angle) + (query ? -0.02 : hashUnit(label, 1) * 0.06);
+        vector[2] = 0.82 * Math.cos((detail + 1) * 0.88) + Math.cos(angle) * 0.16;
+        vector[3] = 0.82 * Math.sin((detail + 1) * 0.88) + Math.sin(angle) * 0.16;
+        vector[4] = 0.68 * Math.cos(angle * 2 + 0.15);
+        vector[5] = 0.68 * Math.sin(angle * 2 + 0.15);
+        vector[6] = (detail - 1.5) * 0.28;
+        vector[7] = ((cluster + detail) % 3 - 1) * 0.34;
+        for (let d = 8; d < FULL_DIMS; d += 1) vector[d] = hashUnit(label, d) * (query ? 0.28 : 0.52);
+        return vector;
+      }
+
+      function orderedVector(vector, model) {
+        return model === "nested" ? [...vector] : FLAT_ORDER.map((index) => vector[index]);
+      }
+
+      function norm(vector) { return Math.sqrt(vector.reduce((sum, value) => sum + value * value, 0)); }
+      function scoreVectors(a, b, dims, normalize) {
+        const aa = a.slice(0, dims);
+        const bb = b.slice(0, dims);
+        const dot = aa.reduce((sum, value, index) => sum + value * bb[index], 0);
+        if (!normalize) return dot;
+        return dot / Math.max(1e-9, norm(aa) * norm(bb));
+      }
+
+      function dataFor(model = state.model, dims = state.dims, normalize = state.normalize) {
+        const scenario = scenarios[state.scenario];
+        const queryCanonical = canonicalVector(scenario.query, scenario.targetCluster, scenario.queryDetail, true);
+        const query = orderedVector(queryCanonical, model);
+        const docs = scenario.docs.map(([label, cluster, detail], id) => {
+          const canonical = canonicalVector(label, cluster, detail);
+          return { id, label, cluster, detail, canonical, vector: orderedVector(canonical, model) };
+        });
+        const ranking = docs.map((doc) => ({ ...doc, score: scoreVectors(query, doc.vector, dims, normalize) })).sort((a, b) => b.score - a.score || a.id - b.id);
+        const fullQuery = orderedVector(queryCanonical, "nested");
+        const fullRanking = docs.map((doc) => ({ ...doc, fullScore: scoreVectors(fullQuery, doc.canonical, FULL_DIMS, true) })).sort((a, b) => b.fullScore - a.fullScore || a.id - b.id);
+        const fullById = new Map(fullRanking.map((doc, index) => [doc.id, { rank: index + 1, score: doc.fullScore }]));
+        const reference = new Set(fullRanking.slice(0, 4).map((doc) => doc.id));
+        const recall = ranking.slice(0, 4).filter((doc) => reference.has(doc.id)).length / 4;
+        return { scenario, query, docs, ranking, fullRanking, fullById, recall };
+      }
+
+      function formatScore(value) { return state.normalize ? value.toFixed(3) : value.toFixed(2); }
+      function storageLabel(bytes) {
+        const total = 1000000 * state.dims * bytes;
+        if (total >= 1000000000) return `${(total / 1000000000).toFixed(2)} GB`;
+        return `${(total / 1048576).toFixed(1)} MB`;
+      }
+
+      function valueColor(value) {
+        const t = Math.min(1, Math.abs(value) / 1.8);
+        return value >= 0 ? d3.interpolateRgb("#30342b", colors.acid)(t) : d3.interpolateRgb("#30342b", colors.coral)(t);
+      }
+
+      function recallSeries(model) {
+        return PREFIXES.map((dims) => ({ dims, recall: dataFor(model, dims, true).recall }));
+      }
+
+      function renderMatrix(data) {
+        const svg = d3.select("#matrix");
+        svg.selectAll("*").remove();
+        const mobile = window.innerWidth <= 680;
+        const width = mobile ? 520 : 900;
+        const matrixTop = 58;
+        const matrixBottom = 335;
+        const chartTop = 430;
+        const chartBottom = 576;
+        const left = mobile ? 120 : 158;
+        const right = mobile ? 505 : 870;
+        const labelSize = mobile ? 16 : 11;
+        const axisSize = mobile ? 13 : 10;
+        svg.attr("viewBox", `0 0 ${width} 620`);
+        const shown = [
+          { label: "QUERY", vector: data.query, query: true },
+          ...data.ranking.slice(0, mobile ? 4 : 5).map((doc, index) => ({ label: `#${index + 1} ${doc.label}`, vector: doc.vector, id: doc.id }))
+        ];
+        const x = d3.scaleBand().domain(d3.range(FULL_DIMS)).range([left, right]).padding(0.08);
+        const y = d3.scaleBand().domain(d3.range(shown.length)).range([matrixTop, matrixBottom]).padding(0.16);
+
+        svg.append("text").attr("x", left).attr("y", 24).attr("fill", colors.white).attr("font-size", mobile ? 17 : 14).attr("font-weight", 700).text("ACTIVE PREFIX");
+        svg.append("text").attr("x", right).attr("y", 24).attr("fill", colors.muted).attr("font-size", mobile ? 13 : 12).attr("text-anchor", "end").text(`${state.dims} of ${FULL_DIMS} dimensions scored`);
+
+        svg.append("g").selectAll("text").data(d3.range(FULL_DIMS)).join("text")
+          .attr("x", (d) => x(d) + x.bandwidth() / 2).attr("y", 46).attr("fill", (d) => d < state.dims ? colors.white : colors.muted)
+          .attr("font-size", axisSize).attr("text-anchor", "middle").text((d) => d + 1);
+
+        const rows = svg.append("g").selectAll("g.row").data(shown).join("g").attr("class", "row");
+        rows.append("text").attr("x", left - 12).attr("y", (_, index) => y(index) + y.bandwidth() / 2 + 4)
+          .attr("fill", (d) => d.query ? colors.yellow : colors.white).attr("font-size", labelSize).attr("text-anchor", "end")
+          .text((d) => d.label.length > (mobile ? 14 : 22) ? `${d.label.slice(0, mobile ? 12 : 20)}…` : d.label);
+        rows.each(function drawCells(row, rowIndex) {
+          d3.select(this).selectAll("rect.cell").data(row.vector.map((value, dimension) => ({ value, dimension }))).join("rect")
+            .attr("class", "cell").attr("x", (d) => x(d.dimension)).attr("y", y(rowIndex)).attr("width", x.bandwidth()).attr("height", y.bandwidth())
+            .attr("rx", 1).attr("fill", (d) => d.dimension < state.dims ? valueColor(d.value) : "#24271f")
+            .attr("stroke", (d) => d.dimension === state.dims - 1 ? colors.yellow : colors.line).attr("stroke-width", (d) => d.dimension === state.dims - 1 ? 2 : 0.6)
+            .append("title").text((d) => `Dimension ${d.dimension + 1}: ${d.value.toFixed(3)}${d.dimension < state.dims ? " · active" : " · excluded"}`);
+        });
+        const cutX = x(state.dims - 1) + x.bandwidth() + 5;
+        svg.append("line").attr("x1", cutX).attr("x2", cutX).attr("y1", 42).attr("y2", matrixBottom + 5).attr("stroke", colors.yellow).attr("stroke-width", 2).attr("stroke-dasharray", "4 5");
+
+        svg.append("text").attr("x", left).attr("y", 394).attr("fill", colors.white).attr("font-size", mobile ? 16 : 14).attr("font-weight", 700).text(mobile ? "TOP-4 RECALL" : "TOP-4 RECALL BY PREFIX WIDTH");
+        svg.append("text").attr("x", right).attr("y", 394).attr("fill", colors.muted).attr("font-size", mobile ? 12 : 11).attr("text-anchor", "end").text(mobile ? "FULL WIDTH = REFERENCE" : "full-width cosine ranking = reference");
+        const cx = d3.scaleLinear().domain([2, 16]).range([left, right]);
+        const cy = d3.scaleLinear().domain([0, 1]).range([chartBottom, chartTop]);
+        const grid = svg.append("g");
+        [0, 0.25, 0.5, 0.75, 1].forEach((tick) => {
+          grid.append("line").attr("x1", left).attr("x2", right).attr("y1", cy(tick)).attr("y2", cy(tick)).attr("stroke", colors.line).attr("stroke-width", 0.7);
+          grid.append("text").attr("x", left - 10).attr("y", cy(tick) + 4).attr("fill", colors.muted).attr("font-size", axisSize).attr("text-anchor", "end").text(`${tick * 100}%`);
+        });
+        PREFIXES.forEach((dims) => svg.append("text").attr("x", cx(dims)).attr("y", chartBottom + 23).attr("fill", colors.muted).attr("font-size", axisSize).attr("text-anchor", "middle").text(`${dims}D`));
+        const line = d3.line().x((d) => cx(d.dims)).y((d) => cy(d.recall)).curve(d3.curveMonotoneX);
+        [["nested", colors.acid], ["flat", colors.coral]].forEach(([model, color]) => {
+          const series = recallSeries(model);
+          svg.append("path").datum(series).attr("fill", "none").attr("stroke", color).attr("stroke-width", model === state.model ? 4 : 2).attr("opacity", model === state.model ? 1 : 0.55).attr("d", line);
+          svg.append("g").selectAll(`circle.${model}`).data(series).join("circle").attr("cx", (d) => cx(d.dims)).attr("cy", (d) => cy(d.recall)).attr("r", (d) => d.dims === state.dims ? 7 : 4).attr("fill", color).attr("stroke", colors.dark).attr("stroke-width", 2);
+        });
+        svg.append("g").attr("transform", `translate(${left}, 410)`).call((legend) => {
+          legend.append("circle").attr("r", 5).attr("fill", colors.acid);
+          legend.append("text").attr("x", 11).attr("y", 4).attr("fill", colors.white).attr("font-size", 11).text("nested information");
+          legend.append("circle").attr("cx", 137).attr("r", 5).attr("fill", colors.coral);
+          legend.append("text").attr("x", 148).attr("y", 4).attr("fill", colors.white).attr("font-size", 11).text("flat information");
+        });
+      }
+
+      function renderRanking(data) {
+        const list = $("#ranking");
+        list.replaceChildren();
+        data.ranking.slice(0, 6).forEach((doc, index) => {
+          const item = document.createElement("li");
+          const button = document.createElement("button");
+          button.type = "button";
+          button.dataset.id = String(doc.id);
+          button.classList.toggle("active", state.selected === doc.id);
+          const rank = document.createElement("span");
+          rank.className = "rank";
+          rank.textContent = String(index + 1).padStart(2, "0");
+          const label = document.createElement("span");
+          label.className = "doc-label";
+          label.textContent = doc.label;
+          const score = document.createElement("span");
+          score.className = "score";
+          score.textContent = formatScore(doc.score);
+          button.append(rank, label, score);
+          button.addEventListener("click", () => { state.selected = doc.id; render(); });
+          item.append(button);
+          list.append(item);
+        });
+      }
+
+      function renderInspector(data) {
+        if (state.selected === null || !data.ranking.some((doc) => doc.id === state.selected)) state.selected = data.ranking[0].id;
+        const currentRank = data.ranking.findIndex((doc) => doc.id === state.selected) + 1;
+        const doc = data.ranking[currentRank - 1];
+        const full = data.fullById.get(doc.id);
+        $("#inspectTitle").textContent = doc.label;
+        $("#inspectScore").textContent = formatScore(doc.score);
+        $("#inspectFull").textContent = full.score.toFixed(3);
+        const shift = full.rank - currentRank;
+        $("#inspectShift").textContent = shift === 0 ? "none" : `${shift > 0 ? "+" : ""}${shift}`;
+      }
+
+      function render() {
+        const data = dataFor();
+        $("#queryText").textContent = data.scenario.query;
+        $("#rankingTitle").textContent = `${state.model === "nested" ? "Nested" : "Flat"} · ${state.dims}D`;
+        $("#dimensionsOut").textContent = `${state.dims} / ${FULL_DIMS}`;
+        $("#modeChip").textContent = `${state.model === "nested" ? "Nested" : "Flat"} order · ${state.normalize ? "cosine" : "raw dot"}`;
+        $("#normalizeLabel").textContent = state.normalize ? "Cosine score" : "Raw dot score";
+        $("#recallMetric").textContent = `${Math.round(data.recall * 100)}%`;
+        $("#storageMetric").textContent = storageLabel(state.precision);
+        $("#computeMetric").textContent = `${Math.round(state.dims / FULL_DIMS * 100)}%`;
+        $("#topMetric").textContent = data.ranking[0].id === data.fullRanking[0].id ? "Yes" : "No";
+        $("#status").innerHTML = `<b>${state.dims} dimensions active.</b> ${FULL_DIMS - state.dims} trailing coordinates are excluded from scoring.`;
+        $$("#modelMode button").forEach((button) => button.classList.toggle("active", button.dataset.model === state.model));
+        renderMatrix(data);
+        renderInspector(data);
+        renderRanking(data);
+        if (window.lucide) window.lucide.createIcons();
+      }
+
+      function stopPlayback() {
+        if (state.timer) window.clearInterval(state.timer);
+        state.timer = null;
+        state.playing = false;
+        $("#play").innerHTML = '<i data-lucide="play" aria-hidden="true"></i><span>Play prefixes</span>';
+        if (window.lucide) window.lucide.createIcons();
+      }
+
+      function setDims(value) {
+        state.dims = value;
+        $("#dimensions").value = String(value);
+        render();
+      }
+
+      $("#scenario").addEventListener("change", (event) => { stopPlayback(); state.scenario = event.target.value; state.selected = null; render(); });
+      $("#modelMode").addEventListener("click", (event) => {
+        const button = event.target.closest("button[data-model]");
+        if (!button) return;
+        stopPlayback();
+        state.model = button.dataset.model;
+        state.selected = null;
+        render();
+      });
+      $("#dimensions").addEventListener("input", (event) => { stopPlayback(); setDims(Number(event.target.value)); });
+      $("#precision").addEventListener("change", (event) => { state.precision = Number(event.target.value); render(); });
+      $("#normalize").addEventListener("change", (event) => { stopPlayback(); state.normalize = event.target.checked; state.selected = null; render(); });
+      $("#step").addEventListener("click", () => { stopPlayback(); const index = PREFIXES.indexOf(state.dims); setDims(PREFIXES[(index + 1) % PREFIXES.length]); });
+      $("#play").addEventListener("click", () => {
+        if (state.playing) { stopPlayback(); return; }
+        state.playing = true;
+        setDims(2);
+        $("#play").innerHTML = '<i data-lucide="pause" aria-hidden="true"></i><span>Pause</span>';
+        if (window.lucide) window.lucide.createIcons();
+        let index = 0;
+        state.timer = window.setInterval(() => {
+          index += 1;
+          if (index >= PREFIXES.length) { stopPlayback(); return; }
+          setDims(PREFIXES[index]);
+        }, 760);
+      });
+      $("#reset").addEventListener("click", () => {
+        stopPlayback();
+        Object.assign(state, { scenario: "agent", model: "nested", dims: 4, precision: 2, normalize: true, selected: null });
+        $("#scenario").value = "agent";
+        $("#precision").value = "2";
+        $("#normalize").checked = true;
+        $("#dimensions").value = "4";
+        render();
+      });
+
+      const quotes = [
+        ["“Use compact prefixes to retrieve broadly, then spend full dimensions where ranking mistakes cost more.”", "A two-stage system can let a small embedding create the candidate set and reserve the full representation or a cross-encoder for final ordering."],
+        ["“The smallest useful prefix is a measured operating point, not a universal property of the model.”", "Language, domain, query length, corpus density, and the cost of a miss all influence the right dimensional budget."],
+        ["“A shorter vector changes more than storage: it changes what evidence reaches the agent.”", "Retrieval evaluation should include downstream groundedness, task completion, and failure analysis, not only vector-level similarity." ]
+      ];
+      function renderQuote() {
+        $("#quote").textContent = quotes[state.quote][0];
+        $("#quoteDetail").textContent = quotes[state.quote][1];
+      }
+      $("#quotePrev").addEventListener("click", () => { state.quote = (state.quote + quotes.length - 1) % quotes.length; renderQuote(); });
+      $("#quoteNext").addEventListener("click", () => { state.quote = (state.quote + 1) % quotes.length; renderQuote(); });
+
+      $$(".accordion").forEach((button) => button.addEventListener("click", () => {
+        $$(".accordion").forEach((item) => item.classList.toggle("active", item === button));
+      }));
+
+      if (window.gsap && window.ScrollTrigger && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        window.gsap.registerPlugin(window.ScrollTrigger);
+        if (window.innerWidth > 980) {
+          window.ScrollTrigger.create({ trigger: ".mechanism-grid", start: "top 100px", end: "bottom bottom", pin: ".mechanism-title", pinSpacing: false });
+        }
+        window.gsap.utils.toArray(".mechanism-card").forEach((card) => {
+          window.gsap.fromTo(card, { scale: 0.86, opacity: 0.38 }, { scale: 1, opacity: 1, ease: "none", scrollTrigger: { trigger: card, start: "top 88%", end: "top 34%", scrub: true } });
+          window.gsap.to(card, { opacity: 0.28, ease: "none", scrollTrigger: { trigger: card, start: "bottom 52%", end: "bottom 12%", scrub: true } });
+        });
+        window.gsap.from(".vector-shell", { x: 90, rotate: 9, opacity: 0, duration: 1.05, ease: "power3.out" });
+      }
+
+      render();
+      renderQuote();
+      let resizeTimer;
+      window.addEventListener("resize", () => {
+        window.clearTimeout(resizeTimer);
+        resizeTimer = window.setTimeout(render, 120);
+      });
+    })();
+  </script>
+</body>
+</html>
