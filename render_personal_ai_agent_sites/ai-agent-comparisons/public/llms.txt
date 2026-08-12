@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Neural Collapse Lab](neural-collapse-simplex-feature-geometry-lab-20260812-200959/): Interactive terminal feature-geometry lab.
 - [Influence Functions Lab](influence-functions-training-data-attribution-lab-20260812-195959/): Interactive training-data attribution lab.
 - [SAM Lab](sharpness-aware-minimization-flat-minima-lab-20260812-194929/): Interactive sharpness-aware optimizer lab.
 - [Double Descent Lab](double-descent-interpolation-risk-lab-20260812-193859/): Interactive interpolation-risk simulator.

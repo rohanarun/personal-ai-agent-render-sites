@@ -2,6 +2,22 @@
   {
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/neural-collapse-simplex-feature-geometry-lab-20260812-200959/",
+    "content_kind": "neural_collapse_simplex_feature_geometry_lab",
+    "content_kind_label": "Neural Collapse Lab",
+    "direct_generated": true,
+    "github_commit": "46fc574bfc2a5a29bc025b0650e58e2366b13592",
+    "github_url": "https://github.com/rohanarun/super-agent-news-neural-collapse-simplex-feature-geometry-lab-20260812-200959",
+    "live_url": "https://lists.new/neural-collapse-simplex-feature-geometry-lab-20260812-200959/",
+    "receipt_status": "success",
+    "slug": "neural-collapse-simplex-feature-geometry-lab-20260812-200959",
+    "source_path": "sms_published_sites/neural-collapse-simplex-feature-geometry-lab-20260812-200959",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Neural Collapse Lab: Watch Class Geometry Simplify"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/influence-functions-training-data-attribution-lab-20260812-195959/",
     "content_kind": "influence_functions_training_data_attribution_lab",
     "content_kind_label": "Influence Functions Lab",
