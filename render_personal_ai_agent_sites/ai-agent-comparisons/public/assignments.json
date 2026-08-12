@@ -2,6 +2,28 @@
   {
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/centered-kernel-alignment-representation-similarity-lab-20260812-161328/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "centered_kernel_alignment_lab",
+    "content_kind_label": "CKA Representation Lab",
+    "direct_generated": true,
+    "github_commit": "ec7db0d810d11db15a023c76cfadc31b697edbc3",
+    "github_url": "https://github.com/rohanarun/super-agent-news-centered-kernel-alignment-representation-similarity-lab-20260812-161328",
+    "live_url": "https://lists.new/centered-kernel-alignment-representation-similarity-lab-20260812-161328/",
+    "receipt_created_at": "2026-08-12T16:13:28.708Z",
+    "receipt_status": "success",
+    "slug": "centered-kernel-alignment-representation-similarity-lab-20260812-161328",
+    "source_path": "sms_published_sites/centered-kernel-alignment-representation-similarity-lab-20260812-161328",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Centered Kernel Alignment Lab: Compare Representations, Not Coordinates"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/matryoshka-embedding-truncation-lab-20260812-154958/",
     "backlinks": [
       "https://getsupers.com/",

@@ -3,6 +3,7 @@
 A focused directory of Super personal AI agent market research, news analysis, comparisons, and use cases.
 
 ## Pages
+- [Centered Kernel Alignment Lab: Compare Representations, Not Coordinates](centered-kernel-alignment-representation-similarity-lab-20260812-161328/): Interactive neural-representation lab for rotation invariance, Gram alignment, coordinate baselines, neighborhood overlap, noise, and sample correspondence.
 - [Matryoshka Embedding Lab: One Vector, Many Budgets](matryoshka-embedding-truncation-lab-20260812-154958/): Interactive nested embedding lab for prefix dimensions, normalization, retrieval recall, raw storage, and dot-product work.
 - [Product Quantization Lab: Compress Embeddings, Preserve Neighbors](product-quantization-embedding-compression-lab-20260812-152058/): Interactive PQ codec lab for subspace codebooks, asymmetric distance, compression, distortion, and recall.
 - [Maximum Marginal Relevance Lab: Rerank for Diversity](maximum-marginal-relevance-reranking-lab-20260812-145828/): Interactive MMR reranking lab for balancing relevance, redundancy, and aspect coverage.
