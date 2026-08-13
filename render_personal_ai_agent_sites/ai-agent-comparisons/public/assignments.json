@@ -2525,5 +2525,27 @@
     "source_path": "sms_published_sites/normalizing-flow-invertible-density-jacobian-lab-20260813-102858",
     "target_slot": "ai-agent-comparisons",
     "title": "Density Flow Lab: Invertible Maps and Exact Likelihood"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/influence-functions-training-data-attribution-lab-20260813-104428/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "influence_functions_training_data_attribution_lab",
+    "content_kind_label": "Influence Functions Training Data Attribution Lab",
+    "direct_generated": true,
+    "github_commit": "88c8531f10128ad302cc35303f81595432c04be3",
+    "github_url": "https://github.com/rohanarun/super-agent-news-influence-functions-training-data-attribution-lab-20260813-104428",
+    "live_url": "https://lists.new/influence-functions-training-data-attribution-lab-20260813-104428/",
+    "receipt_created_at": "2026-08-13T10:44:28.635+00:00",
+    "receipt_status": "success",
+    "slug": "influence-functions-training-data-attribution-lab-20260813-104428",
+    "source_path": "sms_published_sites/influence-functions-training-data-attribution-lab-20260813-104428",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Influence Lab: Which Training Points Shaped This Prediction?"
   }
 ]
