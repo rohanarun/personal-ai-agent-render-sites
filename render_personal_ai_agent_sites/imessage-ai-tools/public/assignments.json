@@ -1391,5 +1391,6 @@
     "source_path": "personal-ai-agent-news/sprt-agent-tool-rollout-decision-lab-20260813-170044",
     "target_slot": "imessage-ai-tools",
     "title": "Evidence Stream: SPRT for Agent Tool Rollouts"
-  }
+  },
+  {"assigned_domain":"droidph.one","assigned_slot":"imessage-ai-tools","assigned_url":"https://droidph.one/vector-clock-multi-agent-causality-lab-20260813-180714/","backlinks":["https://getsupers.com/","https://app.getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"content_kind":"vector_clock_multi_agent_causality_lab","content_kind_label":"Vector Clock Multi-Agent Causality Lab","direct_generated":true,"github_commit":"2cc058d05512d404dc2bdde125e98fc94fc1d837","github_url":"https://github.com/rohanarun/super-agent-news-vector-clock-multi-agent-causality-lab-20260813-180714","live_url":"https://droidph.one/vector-clock-multi-agent-causality-lab-20260813-180714/","receipt_created_at":"2026-08-13T18:07:14.214+00:00","receipt_status":"success","slug":"vector-clock-multi-agent-causality-lab-20260813-180714","source_path":"imessage-ai-tools/vector-clock-multi-agent-causality-lab-20260813-180714","target_slot":"imessage-ai-tools","title":"Vector Clock Lab: Trace Causality Across AI Agents"}
 ]
