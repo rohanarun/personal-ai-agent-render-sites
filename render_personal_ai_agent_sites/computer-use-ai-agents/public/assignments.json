@@ -1287,5 +1287,23 @@
     "source_path": "sms_published_sites/indirect-prompt-injection-taint-tracker-lab-20260812-173758",
     "target_slot": "computer-use-ai-agents",
     "title": "Prompt Injection Taint Lab: Trace the Hidden Instruction"
+  },
+  {
+    "assigned_domain": "parsercheat.com",
+    "assigned_slot": "computer-use-ai-agents",
+    "assigned_url": "https://parsercheat.com/off-policy-evaluation-doubly-robust-agent-policy-lab-20260813-074028/",
+    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/computer-use-cache/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/"],
+    "content_kind": "off_policy_evaluation_doubly_robust_agent_policy_lab",
+    "content_kind_label": "Off Policy Evaluation Doubly Robust Agent Policy Lab",
+    "direct_generated": true,
+    "github_commit": "d3eb96541ccfcdc8d8c2d6ebd7dce63933b8b319",
+    "github_url": "https://github.com/rohanarun/super-agent-news-off-policy-evaluation-doubly-robust-agent-policy-lab-20260813-074028",
+    "live_url": "https://parsercheat.com/off-policy-evaluation-doubly-robust-agent-policy-lab-20260813-074028/",
+    "receipt_created_at": "2026-08-13T07:40:28.234+00:00",
+    "receipt_status": "success",
+    "slug": "off-policy-evaluation-doubly-robust-agent-policy-lab-20260813-074028",
+    "source_path": "sms_published_sites/off-policy-evaluation-doubly-robust-agent-policy-lab-20260813-074028",
+    "target_slot": "computer-use-ai-agents",
+    "title": "Off-Policy Evaluation Lab: Test an Agent Before Deployment"
   }
 ]
