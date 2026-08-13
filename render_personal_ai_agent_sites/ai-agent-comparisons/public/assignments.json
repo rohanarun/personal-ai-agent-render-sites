@@ -2193,5 +2193,23 @@
     "source_path": "sms_published_sites/denoising-score-matching-langevin-diffusion-lab-20260813-080828",
     "target_slot": "ai-agent-comparisons",
     "title": "Score Matching Lab: Learn the Direction Back to Data"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/classifier-free-guidance-fidelity-diversity-lab-20260813-081858/",
+    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "content_kind": "classifier_free_guidance_fidelity_diversity_lab",
+    "content_kind_label": "Classifier-Free Guidance Fidelity Diversity Lab",
+    "direct_generated": true,
+    "github_commit": "d13e60e013ef8af555f08f8c619d314867a0b3f3",
+    "github_url": "https://github.com/rohanarun/super-agent-news-classifier-free-guidance-fidelity-diversity-lab-20260813-081858",
+    "live_url": "https://lists.new/classifier-free-guidance-fidelity-diversity-lab-20260813-081858/",
+    "receipt_created_at": "2026-08-13T08:18:58.195+00:00",
+    "receipt_status": "success",
+    "slug": "classifier-free-guidance-fidelity-diversity-lab-20260813-081858",
+    "source_path": "sms_published_sites/classifier-free-guidance-fidelity-diversity-lab-20260813-081858",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Classifier-Free Guidance Lab: Fidelity, Diversity, and Saturation"
   }
 ]
