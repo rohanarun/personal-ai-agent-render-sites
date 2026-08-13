@@ -1377,5 +1377,23 @@
     "source_path": "sms_published_sites/mixture-of-experts-router-capacity-load-balance-lab-20260813-100828",
     "target_slot": "computer-use-ai-agents",
     "title": "Expert Router Lab: Capacity, Balance, and Token Drops"
+  },
+  {
+    "assigned_domain": "parsercheat.com",
+    "assigned_slot": "computer-use-ai-agents",
+    "assigned_url": "https://parsercheat.com/lsh-vector-retrieval-hash-bucket-lab-20260813-105458/",
+    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "content_kind": "lsh_vector_retrieval_hash_bucket_lab",
+    "content_kind_label": "LSH Vector Retrieval Hash Bucket Lab",
+    "direct_generated": true,
+    "github_commit": "f5bf255eb0e22d5f71ec99e3c1f11d69b834c928",
+    "github_url": "https://github.com/rohanarun/super-agent-news-lsh-vector-retrieval-hash-bucket-lab-20260813-105458",
+    "live_url": "https://parsercheat.com/lsh-vector-retrieval-hash-bucket-lab-20260813-105458/",
+    "receipt_created_at": "2026-08-13T10:54:58.671+00:00",
+    "receipt_status": "success",
+    "slug": "lsh-vector-retrieval-hash-bucket-lab-20260813-105458",
+    "source_path": "sms_published_sites/lsh-vector-retrieval-hash-bucket-lab-20260813-105458",
+    "target_slot": "computer-use-ai-agents",
+    "title": "Vector Hash Lab: Approximate Nearest Neighbors With LSH"
   }
 ]
