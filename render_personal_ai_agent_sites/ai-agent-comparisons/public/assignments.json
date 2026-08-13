@@ -2175,5 +2175,23 @@
     "source_path": "sms_published_sites/deep-equilibrium-fixed-point-implicit-gradient-lab-20260813-075258",
     "target_slot": "ai-agent-comparisons",
     "title": "Deep Equilibrium Lab: Solve the Layer, Do Not Stack It"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/denoising-score-matching-langevin-diffusion-lab-20260813-080828/",
+    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "content_kind": "denoising_score_matching_langevin_diffusion_lab",
+    "content_kind_label": "Denoising Score Matching Langevin Diffusion Lab",
+    "direct_generated": true,
+    "github_commit": "4dfa67d4d9dd32fffe5e4e7d3adeafdecacffd5c",
+    "github_url": "https://github.com/rohanarun/super-agent-news-denoising-score-matching-langevin-diffusion-lab-20260813-080828",
+    "live_url": "https://lists.new/denoising-score-matching-langevin-diffusion-lab-20260813-080828/",
+    "receipt_created_at": "2026-08-13T08:08:28.217+00:00",
+    "receipt_status": "success",
+    "slug": "denoising-score-matching-langevin-diffusion-lab-20260813-080828",
+    "source_path": "sms_published_sites/denoising-score-matching-langevin-diffusion-lab-20260813-080828",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Score Matching Lab: Learn the Direction Back to Data"
   }
 ]
