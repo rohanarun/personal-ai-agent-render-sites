@@ -2157,5 +2157,23 @@
     "source_path": "sms_published_sites/neural-ode-continuous-depth-adjoint-solver-lab-20260813-072028",
     "target_slot": "ai-agent-comparisons",
     "title": "Neural ODE Lab: Learn a Continuous-Depth Flow"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/deep-equilibrium-fixed-point-implicit-gradient-lab-20260813-075258/",
+    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "content_kind": "deep_equilibrium_fixed_point_implicit_gradient_lab",
+    "content_kind_label": "Deep Equilibrium Fixed Point Implicit Gradient Lab",
+    "direct_generated": true,
+    "github_commit": "259244a4374bc031416feb3dbcd4545728f7567a",
+    "github_url": "https://github.com/rohanarun/super-agent-news-deep-equilibrium-fixed-point-implicit-gradient-lab-20260813-075258",
+    "live_url": "https://lists.new/deep-equilibrium-fixed-point-implicit-gradient-lab-20260813-075258/",
+    "receipt_created_at": "2026-08-13T07:52:58.176+00:00",
+    "receipt_status": "success",
+    "slug": "deep-equilibrium-fixed-point-implicit-gradient-lab-20260813-075258",
+    "source_path": "sms_published_sites/deep-equilibrium-fixed-point-implicit-gradient-lab-20260813-075258",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Deep Equilibrium Lab: Solve the Layer, Do Not Stack It"
   }
 ]
