@@ -1845,5 +1845,22 @@
     "source_path": "sms_published_sites/weight-space-model-merging-mode-connectivity-lab-20260813-034627",
     "target_slot": "ai-agent-comparisons",
     "title": "Model Merge Lab: Navigate Weight-Space Connectivity"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/factual-knowledge-editing-locality-lab-20260813-035657/",
+    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "content_kind": "factual_knowledge_editing_locality_lab",
+    "content_kind_label": "Factual Knowledge Editing Locality Lab",
+    "direct_generated": true,
+    "github_url": "https://github.com/rohanarun/super-agent-news-factual-knowledge-editing-locality-lab-20260813-035657",
+    "live_url": "https://lists.new/factual-knowledge-editing-locality-lab-20260813-035657/",
+    "receipt_created_at": "2026-08-13T03:56:57.616+00:00",
+    "receipt_status": "success",
+    "slug": "factual-knowledge-editing-locality-lab-20260813-035657",
+    "source_path": "sms_published_sites/factual-knowledge-editing-locality-lab-20260813-035657",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Knowledge Editing Lab: Rewrite a Fact Without Breaking Its Neighbors"
   }
 ]
