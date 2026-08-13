@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="An interactive consistent-hashing lab for routing AI agent sessions across memory shards with minimal remapping.">
+  <title>Hash Ring Lab: Route Agent Memory with Minimal Remapping</title>
+  <style>
+    :root{--paper:#f4f3ed;--ink:#141716;--muted:#616762;--line:#c9cbc3;--acid:#d8ff45;--coral:#ff6b4a;--cyan:#2bc4c7;--violet:#7667ff;--white:#fff;--dark:#171c1a;--radius:6px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Geist,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:0}button,input{font:inherit}button,a{touch-action:manipulation}a{color:inherit}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--violet);outline-offset:3px}
+    .nav{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px clamp(18px,4vw,54px);border-bottom:1px solid rgba(20,23,22,.25);background:rgba(244,243,237,.94);backdrop-filter:blur(14px)}
+    .brand{display:flex;align-items:center;gap:11px;font-weight:800;text-decoration:none}.brand-mark{width:27px;height:27px;border-radius:50%;background:conic-gradient(var(--coral) 0 25%,var(--acid) 25% 52%,var(--cyan) 52% 76%,var(--violet) 76%);border:2px solid var(--ink)}
+    .nav-links{display:flex;align-items:center;gap:18px;font-size:14px;font-weight:700}.nav-links a{text-decoration:none}.nav-cta{background:var(--ink);color:var(--white);padding:10px 14px;border-radius:4px}
+    main{overflow-x:hidden;width:100%;max-width:100%}.hero{padding:clamp(74px,9vw,128px) clamp(18px,5vw,72px) 72px;border-bottom:1px solid var(--line);text-align:center;background:linear-gradient(180deg,#fff 0,var(--paper) 70%)}
+    .eyebrow{margin:0 0 18px;font-size:13px;font-weight:850;text-transform:uppercase;letter-spacing:.12em;color:#3c443f}.hero h1{max-width:1120px;margin:0 auto;font-size:clamp(3rem,7vw,6.6rem);line-height:.92;letter-spacing:0;font-weight:900}.hero p{max-width:720px;margin:28px auto 0;font-size:clamp(17px,2vw,22px);line-height:1.55;color:var(--muted)}
+    .jump{display:inline-flex;align-items:center;gap:10px;margin-top:30px;padding:14px 18px;border:2px solid var(--ink);border-radius:4px;background:var(--acid);font-weight:850;text-decoration:none;box-shadow:5px 5px 0 var(--ink)}
+    .workbench{display:grid;grid-template-columns:minmax(280px,4fr) minmax(0,8fr);min-height:720px;border-bottom:1px solid var(--line)}.controls{padding:34px clamp(18px,3vw,40px);border-right:1px solid var(--line);background:#ebeae3}.stage{min-width:0;padding:30px clamp(18px,3vw,42px) 54px;background:var(--white)}
+    .section-title{margin:0 0 8px;font-size:clamp(24px,3vw,38px);line-height:1.05}.section-copy{margin:0 0 28px;color:var(--muted);line-height:1.55}.control-group{padding:22px 0;border-top:1px solid #b8bbb2}.control-group:first-of-type{border-top:0}.control-head{display:flex;justify-content:space-between;gap:16px;align-items:baseline;margin-bottom:12px;font-size:14px;font-weight:780}.control-value{font-variant-numeric:tabular-nums;color:#4b514d}.range{width:100%;accent-color:var(--ink)}
+    .node-list{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.node-chip{min-height:43px;border:1px solid var(--ink);border-radius:4px;background:transparent;font-weight:850;cursor:pointer}.node-chip.active{background:var(--ink);color:#fff}.button-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.cmd{min-height:46px;border:1px solid var(--ink);border-radius:4px;background:#fff;color:var(--ink);font-weight:800;cursor:pointer;transition:transform .2s,box-shadow .2s}.cmd:hover{transform:translateY(-2px);box-shadow:3px 3px 0 var(--ink)}.cmd.primary{background:var(--acid)}.cmd.danger{background:var(--coral)}.cmd.dark{background:var(--ink);color:#fff}.cmd:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
+    .key-row{display:grid;grid-template-columns:1fr 46px;gap:8px}.key-input{width:100%;min-width:0;border:1px solid var(--ink);border-radius:4px;padding:12px;background:#fff}.icon-btn{border:1px solid var(--ink);border-radius:4px;background:var(--violet);color:#fff;font-weight:900;cursor:pointer}
+    .tabs{display:flex;gap:4px;overflow-x:auto;padding-bottom:12px;border-bottom:1px solid var(--line)}.tab{flex:0 0 auto;border:0;border-radius:3px;background:transparent;padding:10px 12px;color:var(--muted);font-weight:800;cursor:pointer}.tab.active{background:var(--ink);color:#fff}.view{display:none;padding-top:24px}.view.active{display:block}
+    .metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:24px}.metric{padding:18px;background:var(--paper);min-width:0}.metric span{display:block;font-size:12px;color:var(--muted);text-transform:uppercase;font-weight:800}.metric strong{display:block;margin-top:8px;font-size:clamp(22px,3vw,36px);font-variant-numeric:tabular-nums;white-space:nowrap}
+    .ring-shell{position:relative;min-height:460px;border:1px solid var(--line);border-radius:var(--radius);background:#f8f8f4;overflow:hidden}.ring-shell svg{display:block;width:100%;height:460px}.ring-center{position:absolute;left:50%;top:50%;width:190px;transform:translate(-50%,-50%);text-align:center;pointer-events:none}.ring-center strong{display:block;font-size:32px}.ring-center span{display:block;margin-top:6px;color:var(--muted);font-size:13px;line-height:1.4}
+    .legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px;color:var(--muted);font-size:13px}.legend span{display:flex;align-items:center;gap:7px}.swatch{width:10px;height:10px;border-radius:50%;background:var(--color)}
+    .route-callout{margin-top:18px;padding:17px 18px;border-left:5px solid var(--violet);background:#efefff;line-height:1.5}.route-callout strong{font-weight:900}
+    .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:var(--radius)}table{width:100%;border-collapse:collapse;min-width:660px}th,td{padding:13px 15px;border-bottom:1px solid var(--line);text-align:left;font-size:14px}th{position:sticky;top:0;background:var(--ink);color:#fff}tr:last-child td{border-bottom:0}.bar{width:100%;height:9px;background:#dedfd9;border-radius:10px;overflow:hidden}.bar i{display:block;height:100%;background:var(--color);border-radius:inherit}
+    .ledger{display:grid;gap:8px}.event{display:grid;grid-template-columns:100px 1fr auto;align-items:center;gap:14px;padding:14px;border:1px solid var(--line);background:#fafaf7;border-radius:4px}.event code{font-size:12px;color:var(--muted)}.event strong{font-size:14px}.event b{font-size:13px;color:var(--violet)}
+    .compare{display:grid;grid-template-columns:1fr 1fr;gap:14px}.compare-panel{border:1px solid var(--line);padding:24px;background:#fafaf7;border-radius:var(--radius)}.compare-panel h3{margin:0;font-size:20px}.big-stat{font-size:clamp(44px,7vw,78px);font-weight:900;line-height:1;margin:26px 0 8px}.compare-panel p{color:var(--muted);line-height:1.55}.formula{padding:13px;background:var(--ink);color:#fff;border-radius:3px;font:13px ui-monospace,SFMono-Regular,Menlo,monospace;overflow:auto}
+    .explain{padding:clamp(90px,12vw,150px) clamp(18px,6vw,90px);background:var(--dark);color:#fff}.explain-inner{max-width:1180px;margin:auto;display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(40px,8vw,120px)}.sticky-copy{align-self:start;position:sticky;top:100px}.sticky-copy h2{font-size:clamp(36px,5vw,66px);line-height:1;margin:0}.sticky-copy p{color:#bfc7c2;line-height:1.65}.steps{display:grid;gap:70px}.step{padding-top:24px;border-top:1px solid #49504c}.step strong{display:inline-flex;width:38px;height:38px;align-items:center;justify-content:center;background:var(--acid);color:var(--ink);border-radius:50%}.step h3{font-size:clamp(25px,3vw,38px);margin:22px 0 12px}.step p{color:#c7ceca;line-height:1.7;font-size:17px}
+    .sources{padding:clamp(80px,10vw,130px) clamp(18px,6vw,90px);background:#fff}.sources-inner{max-width:1180px;margin:auto}.sources h2{font-size:clamp(34px,5vw,60px);margin:0 0 36px}.source-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}.source{display:block;padding:26px;background:var(--paper);text-decoration:none;transition:background .2s}.source:hover{background:var(--acid)}.source small{color:var(--muted);font-weight:800}.source strong{display:block;margin-top:28px;font-size:20px;line-height:1.2}.source span{display:block;margin-top:12px;color:var(--muted);font-size:14px;line-height:1.5}
+    footer{padding:42px clamp(18px,6vw,90px);background:var(--acid);border-top:2px solid var(--ink)}.footer-inner{max-width:1180px;margin:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:30px}.footer-title{font-size:clamp(30px,5vw,58px);font-weight:900;max-width:650px;line-height:1}.footer-links{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:12px}.footer-links a{padding:11px 13px;border:1px solid var(--ink);border-radius:4px;background:#fff;font-weight:800;text-decoration:none}
+    @media(max-width:850px){.nav-links a:not(.nav-cta){display:none}.workbench{grid-template-columns:1fr}.controls{border-right:0;border-bottom:1px solid var(--line)}.metrics{grid-template-columns:1fr 1fr}.compare,.explain-inner,.source-grid{grid-template-columns:1fr}.sticky-copy{position:static}.footer-inner{align-items:flex-start;flex-direction:column}.footer-links{justify-content:flex-start}.ring-shell,.ring-shell svg{min-height:390px;height:390px}.ring-center{width:145px}.ring-center strong{font-size:25px}}
+    @media(max-width:480px){.hero{padding-top:62px}.hero h1{font-size:2.25rem}.tabs{display:grid;grid-template-columns:1fr 1fr;overflow:visible}.tab{width:100%;padding-inline:6px}.metrics{grid-template-columns:1fr 1fr}.metric{padding:14px}.metric strong{font-size:22px}.node-list{grid-template-columns:repeat(2,1fr)}.event{grid-template-columns:72px 1fr}.event b{grid-column:2}.button-grid{grid-template-columns:1fr}.stage{padding-inline:14px}.ring-shell,.ring-shell svg{min-height:340px;height:340px}.ring-center{width:112px}.ring-center strong{font-size:21px}.ring-center span{font-size:11px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="Primary navigation">
+    <a class="brand" href="https://getsupers.com/"><span class="brand-mark" aria-hidden="true"></span>Super Labs</a>
+    <div class="nav-links"><a href="#lab">Lab</a><a href="#method">Method</a><a href="#sources">Sources</a><a class="nav-cta" href="https://app.getsupers.com/">Open Super</a></div>
+  </nav>
+  <main>
+    <header class="hero">
+      <p class="eyebrow">Distributed routing for agent systems</p>
+      <h1>Move one shard. Not every agent memory.</h1>
+      <p>Consistent hashing maps sessions around a ring. Add or remove a memory node and only the neighboring interval moves, keeping caches warm and agents attached to their context.</p>
+      <a class="jump" href="#lab">Open the hash ring <span aria-hidden="true">↓</span></a>
+    </header>
+
+    <section class="workbench" id="lab" aria-label="Consistent hashing simulator">
+      <aside class="controls">
+        <h2 class="section-title">Shape the cluster</h2>
+        <p class="section-copy">Change the ring, then inspect exactly which sessions move.</p>
+        <div class="control-group">
+          <div class="control-head"><label for="vnodes">Virtual nodes per shard</label><span class="control-value" id="vnodesValue">5</span></div>
+          <input class="range" id="vnodes" type="range" min="1" max="10" value="5">
+        </div>
+        <div class="control-group">
+          <div class="control-head"><label for="keyCount">Agent sessions</label><span class="control-value" id="keyCountValue">120</span></div>
+          <input class="range" id="keyCount" type="range" min="24" max="240" step="12" value="120">
+        </div>
+        <div class="control-group">
+          <div class="control-head"><span>Active memory shards</span><span class="control-value" id="nodeCount">3 nodes</span></div>
+          <div class="node-list" id="nodeList"></div>
+        </div>
+        <div class="control-group button-grid">
+          <button class="cmd primary" id="addNode">Add shard</button>
+          <button class="cmd danger" id="removeNode">Remove busiest</button>
+          <button class="cmd" id="hotspot">Inject hotspot</button>
+          <button class="cmd dark" id="reset">Reset ring</button>
+        </div>
+        <div class="control-group">
+          <div class="control-head"><label for="routeKey">Trace one session</label><span class="control-value">successor lookup</span></div>
+          <div class="key-row"><input class="key-input" id="routeKey" value="agent-session-42" spellcheck="false"><button class="icon-btn" id="route" title="Route this session" aria-label="Route this session">→</button></div>
+        </div>
+      </aside>
+
+      <div class="stage">
+        <div class="tabs" role="tablist" aria-label="Lab views">
+          <button class="tab active" data-view="ring" role="tab" aria-selected="true">Hash ring</button>
+          <button class="tab" data-view="placement" role="tab" aria-selected="false">Placement</button>
+          <button class="tab" data-view="movement" role="tab" aria-selected="false">Movement</button>
+          <button class="tab" data-view="compare" role="tab" aria-selected="false">Compare</button>
+        </div>
+        <div class="view active" id="view-ring" role="tabpanel">
+          <div class="metrics">
+            <div class="metric"><span>Sessions</span><strong id="metricSessions">120</strong></div>
+            <div class="metric"><span>Moved</span><strong id="metricMoved">0</strong></div>
+            <div class="metric"><span>Balance</span><strong id="metricBalance">92%</strong></div>
+            <div class="metric"><span>Peak load</span><strong id="metricPeak">44</strong></div>
+          </div>
+          <div class="ring-shell">
+            <svg id="ringSvg" viewBox="0 0 760 460" role="img" aria-label="Consistent hashing ring showing virtual nodes and routed sessions"></svg>
+            <div class="ring-center"><strong id="centerLabel">3 shards</strong><span id="centerDetail">15 virtual positions<br>clockwise successor routing</span></div>
+          </div>
+          <div class="legend" id="legend"></div>
+          <div class="route-callout" id="routeCallout">Enter a session key to trace its hash clockwise to the first virtual node.</div>
+        </div>
+        <div class="view" id="view-placement" role="tabpanel">
+          <div class="table-wrap"><table><thead><tr><th>Shard</th><th>Virtual nodes</th><th>Sessions</th><th>Request load</th><th>Share</th></tr></thead><tbody id="placementBody"></tbody></table></div>
+        </div>
+        <div class="view" id="view-movement" role="tabpanel">
+          <div class="ledger" id="ledger"></div>
+        </div>
+        <div class="view" id="view-compare" role="tabpanel">
+          <div class="compare">
+            <article class="compare-panel"><h3>Consistent hashing</h3><div class="big-stat" id="ringMove">0%</div><p>Only keys in the intervals captured by changed virtual nodes are remapped.</p><div class="formula">owner(key) = first token clockwise from hash(key)</div></article>
+            <article class="compare-panel"><h3>Modulo hashing</h3><div class="big-stat" id="modMove">0%</div><p>Changing the node count changes the divisor, so most keys choose a different index.</p><div class="formula">owner(key) = hash(key) mod node_count</div></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="explain" id="method">
+      <div class="explain-inner">
+        <div class="sticky-copy"><h2>Why the ring holds.</h2><p>A distributed agent system needs stable ownership more than perfect symmetry. Virtual nodes spread each physical shard around the address space while successor lookup limits disruption.</p></div>
+        <div class="steps">
+          <article class="step"><strong>1</strong><h3>Hash shards into positions.</h3><p>Each memory shard receives several virtual tokens. More tokens generally smooth the distribution, because every physical shard owns multiple small intervals instead of one large arc.</p></article>
+          <article class="step"><strong>2</strong><h3>Route each session clockwise.</h3><p>A session key becomes a point on the same ring. Its owner is the first token encountered clockwise, so every key has one deterministic destination without a central routing table.</p></article>
+          <article class="step"><strong>3</strong><h3>Change one neighborhood.</h3><p>When a shard joins, it captures only the intervals immediately before its tokens. When it leaves, those intervals pass to the next tokens. The rest of the ring keeps its assignments.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="sources" id="sources">
+      <div class="sources-inner">
+        <h2>Primary sources</h2>
+        <div class="source-grid">
+          <a class="source" href="https://www.cs.princeton.edu/courses/archive/fall09/cos518/papers/chash.pdf"><small>ACM STOC · 1997</small><strong>Consistent Hashing and Random Trees</strong><span>Karger and colleagues introduce consistent hashing for distributed caching under changing membership.</span></a>
+          <a class="source" href="https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf"><small>ACM SOSP · 2007</small><strong>Dynamo: Amazon's Highly Available Key-value Store</strong><span>Dynamo uses consistent hashing and virtual nodes to partition data across a changing storage cluster.</span></a>
+          <a class="source" href="https://arxiv.org/pdf/1608.01350"><small>ACM STOC · 2017</small><strong>Consistent Hashing with Bounded Loads</strong><span>Mirrokni, Thorup, and Zadimoghaddam add load bounds while retaining low key movement.</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-title">Build agents that keep their memory when infrastructure changes.</div>
+      <div class="footer-links"><a href="https://getsupers.com/">Meet Super</a><a href="https://app.getsupers.com/">Launch app</a><a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">Website agent</a><a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a></div>
+    </div>
+  </footer>
+  <script src="vendor/gsap.min.js"></script>
+  <script src="vendor/ScrollTrigger.min.js"></script>
+  <script>
+    (() => {
+      const COLORS={A:'#ff6b4a',B:'#2bc4c7',C:'#7667ff',D:'#9ccf19',E:'#f0a735',F:'#df5cb7'};
+      const state={nodes:['A','B','C'],vnodes:5,keyCount:120,hot:false,previous:null,placement:new Map(),modPlacement:new Map(),moved:new Set(),events:[],traceKey:'agent-session-42',lastModMoved:0};
+      const $=id=>document.getElementById(id);
+      const hash=text=>{let h=2166136261;for(let i=0;i<text.length;i++){h^=text.charCodeAt(i);h=Math.imul(h,16777619)}h^=h>>>16;h=Math.imul(h,0x85ebca6b);h^=h>>>13;h=Math.imul(h,0xc2b2ae35);h^=h>>>16;return h>>>0};
+      const pct=n=>`${Math.round(n*100)}%`;
+      const keys=()=>Array.from({length:state.keyCount},(_,i)=>`agent-session-${i+1}`);
+      const tokens=()=>state.nodes.flatMap(node=>Array.from({length:state.vnodes},(_,i)=>({node,id:`${node}:${i}`,hash:hash(`${node}:virtual:${i}`)}))).sort((a,b)=>a.hash-b.hash);
+      function ownerFor(key,ring=tokens()){const h=hash(key);return (ring.find(t=>t.hash>=h)||ring[0]).node}
+      function moduloOwner(key,nodes=state.nodes){return nodes[hash(key)%nodes.length]}
+      function snapshot(){return{nodes:[...state.nodes],vnodes:state.vnodes,keyCount:state.keyCount,placement:new Map(state.placement),modPlacement:new Map(state.modPlacement)}}
+      function recompute(reason='Ring recomputed'){
+        const before=state.previous;
+        state.placement=new Map(keys().map(k=>[k,ownerFor(k)]));
+        state.modPlacement=new Map(keys().map(k=>[k,moduloOwner(k)]));
+        state.moved=new Set();
+        let modMoved=0;
+        if(before){for(const k of keys()){if(before.placement.get(k)!==state.placement.get(k))state.moved.add(k);if(before.modPlacement.get(k)!==state.modPlacement.get(k))modMoved++}}
+        state.lastModMoved=modMoved;
+        state.events.unshift({time:new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit',second:'2-digit'}),reason,moved:state.moved.size,modMoved});
+        state.events=state.events.slice(0,12);
+        render(modMoved);
+      }
+      function counts(){const out=Object.fromEntries(state.nodes.map(n=>[n,{sessions:0,load:0}]));for(const [k,n] of state.placement){out[n].sessions++;const index=Number(k.split('-').pop());out[n].load+=state.hot&&index<=8?15:1}return out}
+      function balanceScore(c){const values=Object.values(c).map(x=>x.sessions);const ideal=state.keyCount/state.nodes.length;const deviation=values.reduce((s,v)=>s+Math.abs(v-ideal),0)/(2*state.keyCount);return Math.max(0,1-deviation)}
+      function svgEl(name,attrs={}){const el=document.createElementNS('http://www.w3.org/2000/svg',name);for(const [k,v] of Object.entries(attrs))el.setAttribute(k,v);return el}
+      function point(hashValue,r){const a=(hashValue/4294967296)*Math.PI*2-Math.PI/2;return{x:380+Math.cos(a)*r,y:230+Math.sin(a)*r,a}}
+      function renderRing(){
+        const svg=$('ringSvg');svg.replaceChildren();
+        const bg=svgEl('circle',{cx:380,cy:230,r:170,fill:'none',stroke:'#d4d6cf','stroke-width':28});svg.append(bg);
+        const ring=svgEl('circle',{cx:380,cy:230,r:170,fill:'none',stroke:'#171c1a','stroke-width':2});svg.append(ring);
+        const tokenList=tokens();
+        const keyList=keys();const stride=Math.max(1,Math.floor(keyList.length/70));
+        keyList.filter((_,i)=>i%stride===0).forEach(k=>{const h=hash(k),p=point(h,145),node=state.placement.get(k);const dot=svgEl('circle',{cx:p.x,cy:p.y,r:state.moved.has(k)?4.5:2.5,fill:COLORS[node],opacity:state.moved.has(k)?1:.48,class:'key-dot'});svg.append(dot)});
+        tokenList.forEach(t=>{const p=point(t.hash,170);const g=svgEl('g',{class:'token-node'});const stem=svgEl('line',{x1:380+Math.cos(p.a)*156,y1:230+Math.sin(p.a)*156,x2:380+Math.cos(p.a)*185,y2:230+Math.sin(p.a)*185,stroke:COLORS[t.node],'stroke-width':3});const dot=svgEl('circle',{cx:p.x,cy:p.y,r:7,fill:COLORS[t.node],stroke:'#171c1a','stroke-width':1.5});g.append(stem,dot);svg.append(g)});
+        if(state.traceKey){const h=hash(state.traceKey),p=point(h,145),owner=ownerFor(state.traceKey),target=tokens().find(t=>t.node===owner&&t.hash>=h)||tokens().find(t=>t.node===owner);const end=point(target.hash,170);const path=svgEl('path',{d:`M ${p.x} ${p.y} Q 380 230 ${end.x} ${end.y}`,fill:'none',stroke:'#171c1a','stroke-width':2,'stroke-dasharray':'5 5',class:'trace-path'});const marker=svgEl('circle',{cx:p.x,cy:p.y,r:9,fill:'#d8ff45',stroke:'#171c1a','stroke-width':2,class:'trace-marker'});svg.append(path,marker)}
+        if(window.gsap){gsap.fromTo('.token-node',{scale:.3,transformOrigin:'center center',opacity:0},{scale:1,opacity:1,duration:.45,stagger:.015,ease:'back.out(2)'});gsap.fromTo('.trace-marker',{scale:.68,transformOrigin:'center center'},{scale:1.22,duration:.8,repeat:-1,yoyo:true,ease:'power2.inOut'});gsap.fromTo('.trace-path',{strokeDashoffset:40},{strokeDashoffset:0,duration:1.1,repeat:-1,ease:'none'})}
+      }
+      function render(modMoved=state.lastModMoved){
+        const c=counts();const peak=Math.max(...Object.values(c).map(x=>x.load));
+        $('metricSessions').textContent=state.keyCount;$('metricMoved').textContent=state.moved.size;$('metricBalance').textContent=pct(balanceScore(c));$('metricPeak').textContent=peak;
+        $('nodeCount').textContent=`${state.nodes.length} nodes`;$('centerLabel').textContent=`${state.nodes.length} shards`;$('centerDetail').innerHTML=`${state.nodes.length*state.vnodes} virtual positions<br>clockwise successor routing`;
+        $('vnodesValue').textContent=state.vnodes;$('keyCountValue').textContent=state.keyCount;
+        $('nodeList').innerHTML=['A','B','C','D','E','F'].map(n=>`<button class="node-chip ${state.nodes.includes(n)?'active':''}" data-node="${n}" ${state.nodes.includes(n)?'':'disabled'} style="${state.nodes.includes(n)?`border-color:${COLORS[n]}`:''}">Shard ${n}</button>`).join('');
+        $('legend').innerHTML=state.nodes.map(n=>`<span><i class="swatch" style="--color:${COLORS[n]}"></i>Shard ${n}: ${c[n].sessions} sessions</span>`).join('');
+        $('placementBody').innerHTML=state.nodes.map(n=>{const share=c[n].sessions/state.keyCount;return`<tr><td><strong style="color:${COLORS[n]}">Shard ${n}</strong></td><td>${state.vnodes}</td><td>${c[n].sessions}</td><td>${c[n].load}</td><td><div class="bar"><i style="--color:${COLORS[n]};width:${share*100}%"></i></div></td></tr>`}).join('');
+        $('ledger').innerHTML=state.events.length?state.events.map(e=>`<div class="event"><code>${e.time}</code><strong>${e.reason}</strong><b>${e.moved} ring / ${e.modMoved} modulo moved</b></div>`).join(''):'<p>No topology changes yet.</p>';
+        $('ringMove').textContent=pct(state.moved.size/state.keyCount);$('modMove').textContent=pct(modMoved/state.keyCount);
+        $('removeNode').disabled=state.nodes.length<=2;$('addNode').disabled=state.nodes.length>=6;
+        renderRing();
+        const owner=ownerFor(state.traceKey);$('routeCallout').innerHTML=`<strong>${state.traceKey}</strong> hashes to <strong>${hash(state.traceKey).toLocaleString()}</strong> and routes clockwise to <strong style="color:${COLORS[owner]}">Shard ${owner}</strong>.`;
+      }
+      function topologyChange(mutator,reason){state.previous=snapshot();mutator();recompute(reason)}
+      $('addNode').addEventListener('click',()=>topologyChange(()=>{state.nodes.push(['A','B','C','D','E','F'].find(n=>!state.nodes.includes(n)))},'A memory shard joined the ring'));
+      $('removeNode').addEventListener('click',()=>{const c=counts(),busy=state.nodes.reduce((a,b)=>c[a].sessions>c[b].sessions?a:b);topologyChange(()=>{state.nodes=state.nodes.filter(n=>n!==busy)},`Busiest shard ${busy} left the ring`)});
+      $('hotspot').addEventListener('click',()=>{state.hot=!state.hot;state.events.unshift({time:new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit',second:'2-digit'}),reason:state.hot?'Injected 15× traffic on eight sessions':'Cleared request hotspot',moved:0,modMoved:0});render()});
+      $('reset').addEventListener('click',()=>{state.nodes=['A','B','C'];state.vnodes=5;state.keyCount=120;state.hot=false;state.previous=null;state.events=[];$('vnodes').value=5;$('keyCount').value=120;recompute('Restored the three-shard baseline')});
+      $('vnodes').addEventListener('input',e=>{state.previous=snapshot();state.vnodes=Number(e.target.value);recompute(`Changed to ${state.vnodes} virtual nodes per shard`)});
+      $('keyCount').addEventListener('input',e=>{state.previous=snapshot();state.keyCount=Number(e.target.value);recompute(`Resized workload to ${state.keyCount} sessions`)});
+      function route(){state.traceKey=$('routeKey').value.trim()||'agent-session-42';render()}
+      $('route').addEventListener('click',route);$('routeKey').addEventListener('keydown',e=>{if(e.key==='Enter')route()});
+      document.querySelectorAll('.tab').forEach(tab=>tab.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(t=>{t.classList.toggle('active',t===tab);t.setAttribute('aria-selected',t===tab?'true':'false')});document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===`view-${tab.dataset.view}`));if(window.gsap)gsap.from(`#view-${tab.dataset.view}`,{opacity:0,y:12,duration:.35})}));
+      if(window.gsap&&window.ScrollTrigger){gsap.registerPlugin(ScrollTrigger);document.querySelectorAll('.step').forEach(step=>gsap.from(step,{opacity:.18,y:70,duration:1,scrollTrigger:{trigger:step,start:'top 82%',end:'top 48%',scrub:true}}));gsap.from('.source',{opacity:0,y:40,stagger:.12,duration:.8,scrollTrigger:{trigger:'.source-grid',start:'top 82%'}})}
+      recompute('Built the initial ring');
+    })();
+  </script>
+</body>
+</html>
