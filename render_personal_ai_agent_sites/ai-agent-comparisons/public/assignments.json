@@ -2319,5 +2319,23 @@
     "source_path": "sms_published_sites/dempster-shafer-evidence-fusion-conflict-lab-20260813-093558",
     "target_slot": "ai-agent-comparisons",
     "title": "Evidence Fusion Lab: Belief, Plausibility, and Conflict"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/stochastic-weight-averaging-swag-loss-valley-lab-20260813-094628/",
+    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "content_kind": "stochastic_weight_averaging_swag_loss_valley_lab",
+    "content_kind_label": "Stochastic Weight Averaging SWAG Loss Valley Lab",
+    "direct_generated": true,
+    "github_commit": "c6d65bf7a4af96cc1d683e9d18187ad7390c8be9",
+    "github_url": "https://github.com/rohanarun/super-agent-news-stochastic-weight-averaging-swag-loss-valley-lab-20260813-094628",
+    "live_url": "https://lists.new/stochastic-weight-averaging-swag-loss-valley-lab-20260813-094628/",
+    "receipt_created_at": "2026-08-13T09:46:28.468+00:00",
+    "receipt_status": "success",
+    "slug": "stochastic-weight-averaging-swag-loss-valley-lab-20260813-094628",
+    "source_path": "sms_published_sites/stochastic-weight-averaging-swag-loss-valley-lab-20260813-094628",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Weight Averaging Lab: Find the Center of the Loss Valley"
   }
 ]
