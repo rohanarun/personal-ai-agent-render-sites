@@ -73,7 +73,11 @@
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/lottery-ticket-sparse-subnetwork-pruning-lab-20260812-192029/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "lottery_ticket_sparse_subnetwork_pruning_lab",
     "content_kind_label": "Lottery Ticket Pruning Lab",
     "direct_generated": true,
@@ -91,7 +95,11 @@
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/grokking-delayed-generalization-lab-20260812-190959/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "grokking_delayed_generalization_lab",
     "content_kind_label": "Grokking Training Dynamics Lab",
     "direct_generated": true,
@@ -109,7 +117,11 @@
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/neural-tangent-kernel-feature-drift-lab-20260812-185258/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "neural_tangent_kernel_feature_drift_lab",
     "content_kind_label": "Neural Tangent Kernel Lab",
     "direct_generated": true,
@@ -127,7 +139,11 @@
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/induction-head-in-context-copy-circuit-lab-20260812-184229/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "induction_head_in_context_copy_circuit_lab",
     "content_kind_label": "Induction Head Circuit Lab",
     "direct_generated": true,
@@ -145,7 +161,11 @@
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/machine-unlearning-deletion-verification-lab-20260812-182628/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "machine_unlearning_deletion_verification_lab",
     "content_kind_label": "Machine Unlearning Lab",
     "direct_generated": true,
@@ -163,7 +183,11 @@
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/mamba-selective-state-space-scan-lab-20260812-181458/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "mamba_selective_state_space_scan_lab",
     "content_kind_label": "Mamba Selective Scan Lab",
     "direct_generated": true,
@@ -181,7 +205,11 @@
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/contrastive-decoding-expert-amateur-lab-20260812-180128/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "contrastive_decoding_expert_amateur_lab",
     "content_kind_label": "Contrastive Decoding Lab",
     "direct_generated": true,
@@ -1036,7 +1064,7 @@
     "receipt_status": "success",
     "slug": "super-vs-chatgpt-20260706-140407",
     "source_path": "sms_published_sites/super-vs-chatgpt-20260706-140407",
-    "title": "Super vs ChatGPT \u2014 choosing a personal AI agent for real computer work"
+    "title": "Super vs ChatGPT — choosing a personal AI agent for real computer work"
   },
   {
     "assigned_domain": "lists.new",
@@ -1096,7 +1124,7 @@
     "receipt_status": "success",
     "slug": "super-vs-orchids-20260705-021911",
     "source_path": "sms_published_sites/super-vs-orchids-20260705-021911",
-    "title": "Super vs Orchids \u2014 Personal AI Agents for Real Computer Work"
+    "title": "Super vs Orchids — Personal AI Agents for Real Computer Work"
   },
   {
     "assigned_domain": "lists.new",
@@ -1111,7 +1139,7 @@
     "receipt_status": "success",
     "slug": "super-vs-gemini-20260704-223836",
     "source_path": "sms_published_sites/super-vs-gemini-20260704-223836",
-    "title": "Super vs Gemini \u2014 personal AI agents for real computer work"
+    "title": "Super vs Gemini — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "lists.new",
@@ -1171,7 +1199,7 @@
     "receipt_status": "success",
     "slug": "super-vs-chatgpt-20260704-160635",
     "source_path": "sms_published_sites/super-vs-chatgpt-20260704-160635",
-    "title": "Super vs ChatGPT \u2014 personal AI agents for real computer work"
+    "title": "Super vs ChatGPT — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "lists.new",
@@ -1231,7 +1259,7 @@
     "receipt_status": "success",
     "slug": "super-vs-siri-20260704-030420",
     "source_path": "sms_published_sites/super-vs-siri-20260704-030420",
-    "title": "Super vs Siri \u2014 personal AI agents compared"
+    "title": "Super vs Siri — personal AI agents compared"
   },
   {
     "assigned_domain": "lists.new",
@@ -1291,7 +1319,7 @@
     "receipt_status": "success",
     "slug": "super-vs-folk-20260703-201546",
     "source_path": "sms_published_sites/super-vs-folk-20260703-201546",
-    "title": "Super vs Folk \u2014 Personal AI Agents Compared"
+    "title": "Super vs Folk — Personal AI Agents Compared"
   },
   {
     "assigned_domain": "lists.new",
@@ -1306,7 +1334,7 @@
     "receipt_status": "success",
     "slug": "super-vs-gemini-20260703-175126",
     "source_path": "sms_published_sites/super-vs-gemini-20260703-175126",
-    "title": "Super vs Gemini \u2014 personal AI agents for real computer work"
+    "title": "Super vs Gemini — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "lists.new",
@@ -1321,7 +1349,7 @@
     "receipt_status": "success",
     "slug": "super-for-real-estate-agents-managing-follow-ups-listings-20260703-162054",
     "source_path": "sms_published_sites/super-for-real-estate-agents-managing-follow-ups-listings-20260703-162054",
-    "title": "Super for real estate agents managing follow\u2011ups, listings, and scheduling"
+    "title": "Super for real estate agents managing follow‑ups, listings, and scheduling"
   },
   {
     "assigned_domain": "lists.new",
@@ -1366,7 +1394,7 @@
     "receipt_status": "success",
     "slug": "super-vs-siri-20260703-111048",
     "source_path": "sms_published_sites/super-vs-siri-20260703-111048",
-    "title": "Super vs Siri \u2014 personal AI agents for real computer work"
+    "title": "Super vs Siri — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "lists.new",
@@ -1426,7 +1454,7 @@
     "receipt_status": "success",
     "slug": "super-vs-orchids-20260703-044622",
     "source_path": "sms_published_sites/super-vs-orchids-20260703-044622",
-    "title": "Super vs Orchids \u2014 personal AI agents for real computer work"
+    "title": "Super vs Orchids — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "lists.new",
@@ -1441,7 +1469,7 @@
     "receipt_status": "success",
     "slug": "super-vs-gemini-20260703-020516",
     "source_path": "sms_published_sites/super-vs-gemini-20260703-020516",
-    "title": "Super vs Gemini \u2014 personal AI agents for real computer work"
+    "title": "Super vs Gemini — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "lists.new",
@@ -1471,7 +1499,7 @@
     "receipt_status": "success",
     "slug": "super-vs-folk-20260702-221325",
     "source_path": "sms_published_sites/super-vs-folk-20260702-221325",
-    "title": "Super vs Folk \u2014 personal AI agents for real computer work"
+    "title": "Super vs Folk — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "lists.new",
@@ -1501,7 +1529,7 @@
     "receipt_status": "success",
     "slug": "super-vs-siri-20260702-191253",
     "source_path": "sms_published_sites/super-vs-siri-20260702-191253",
-    "title": "Super vs Siri \u2014 personal AI agents for real computer work"
+    "title": "Super vs Siri — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "lists.new",
@@ -1516,7 +1544,7 @@
     "receipt_status": "success",
     "slug": "super-vs-grok-20260702-163249",
     "source_path": "sms_published_sites/super-vs-grok-20260702-163249",
-    "title": "Super vs Grok \u2014 Personal AI Agents for Real Computer Work"
+    "title": "Super vs Grok — Personal AI Agents for Real Computer Work"
   },
   {
     "assigned_domain": "lists.new",
@@ -1531,7 +1559,7 @@
     "receipt_status": "success",
     "slug": "super-vs-orchids-20260702-013523",
     "source_path": "sms_published_sites/super-vs-orchids-20260702-013523",
-    "title": "Super vs Orchids \u2014 Personal AI Agents Compared"
+    "title": "Super vs Orchids — Personal AI Agents Compared"
   },
   {
     "assigned_domain": "lists.new",
@@ -1546,7 +1574,7 @@
     "receipt_status": "success",
     "slug": "super-vs-folk-20260702-012514",
     "source_path": "sms_published_sites/super-vs-folk-20260702-012514",
-    "title": "Super vs Folk \u2014 Personal AI Agents Compared"
+    "title": "Super vs Folk — Personal AI Agents Compared"
   },
   {
     "assigned_domain": "lists.new",
@@ -1561,7 +1589,7 @@
     "receipt_status": "success",
     "slug": "super-vs-grok-20260701-230202",
     "source_path": "sms_published_sites/super-vs-grok-20260701-230202",
-    "title": "Super vs Grok \u2014 personal AI agents for real computer work"
+    "title": "Super vs Grok — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "lists.new",
@@ -1591,7 +1619,7 @@
     "receipt_status": "success",
     "slug": "super-vs-folk-20260701-185954",
     "source_path": "sms_published_sites/super-vs-folk-20260701-185954",
-    "title": "Super vs Folk \u2014 personal AI agents compared"
+    "title": "Super vs Folk — personal AI agents compared"
   },
   {
     "assigned_domain": "lists.new",
@@ -1606,7 +1634,7 @@
     "receipt_status": "success",
     "slug": "super-vs-grok-20260701-163211",
     "source_path": "sms_published_sites/super-vs-grok-20260701-163211",
-    "title": "Super vs Grok \u2014 personal AI agents for real computer work"
+    "title": "Super vs Grok — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "lists.new",
@@ -1621,7 +1649,7 @@
     "receipt_status": "success",
     "slug": "super-vs-gemini-20260701-162531",
     "source_path": "sms_published_sites/super-vs-gemini-20260701-162531",
-    "title": "Super vs Gemini \u2014 Personal AI Agents Compared"
+    "title": "Super vs Gemini — Personal AI Agents Compared"
   },
   {
     "assigned_domain": "lists.new",
@@ -1636,7 +1664,7 @@
     "receipt_status": "success",
     "slug": "super-for-real-estate-agents-managing-follow-ups-listings-20260701-123855",
     "source_path": "sms_published_sites/super-for-real-estate-agents-managing-follow-ups-listings-20260701-123855",
-    "title": "Super for real estate agents managing follow\u2011ups, listings, and scheduling"
+    "title": "Super for real estate agents managing follow‑ups, listings, and scheduling"
   },
   {
     "assigned_domain": "lists.new",
@@ -1666,7 +1694,7 @@
     "receipt_status": "success",
     "slug": "super-vs-chatgpt-20260701-074049",
     "source_path": "sms_published_sites/super-vs-chatgpt-20260701-074049",
-    "title": "Super vs ChatGPT \u2014 personal AI agents for real computer work"
+    "title": "Super vs ChatGPT — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "lists.new",
@@ -1681,7 +1709,7 @@
     "receipt_status": "success",
     "slug": "super-vs-siri-20260701-073051",
     "source_path": "sms_published_sites/super-vs-siri-20260701-073051",
-    "title": "Super vs Siri \u2014 personal AI agents for real computer work"
+    "title": "Super vs Siri — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "lists.new",
@@ -1741,7 +1769,7 @@
     "receipt_status": "success",
     "slug": "super-vs-chatgpt-20260630-005956",
     "source_path": "sms_published_sites/super-vs-chatgpt-20260630-005956",
-    "title": "Super vs ChatGPT \u2014 personal AI agents compared for real computer work"
+    "title": "Super vs ChatGPT — personal AI agents compared for real computer work"
   },
   {
     "assigned_domain": "lists.new",
@@ -1756,7 +1784,7 @@
     "receipt_status": "success",
     "slug": "super-vs-siri-20260630-004934",
     "source_path": "sms_published_sites/super-vs-siri-20260630-004934",
-    "title": "Super vs Siri \u2014 personal AI agents for real computer work"
+    "title": "Super vs Siri — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "lists.new",
@@ -1771,7 +1799,7 @@
     "receipt_status": "success",
     "slug": "super-vs-grok",
     "source_path": "sms_published_sites/super-vs-grok",
-    "title": "Super vs Grok \u2014 personal AI agents for real computer work"
+    "title": "Super vs Grok — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "lists.new",
@@ -1787,8 +1815,8 @@
     "slug": "super-for-recruiters-sourcing-candidates-and-coordinating",
     "source_path": "sms_published_sites/super-for-recruiters-sourcing-candidates-and-coordinating",
     "title": "Super for recruiters sourcing candidates and coordinating interviews"
-  }
-  ,{
+  },
+  {
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/activation-patching-causal-trace-lab-20260812-132858/",
@@ -1833,7 +1861,11 @@
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/weight-space-model-merging-mode-connectivity-lab-20260813-034627/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "weight_space_model_merging_mode_connectivity_lab",
     "content_kind_label": "Weight Space Model Merging Mode Connectivity Lab",
     "direct_generated": true,
@@ -1850,7 +1882,11 @@
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/factual-knowledge-editing-locality-lab-20260813-035657/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "factual_knowledge_editing_locality_lab",
     "content_kind_label": "Factual Knowledge Editing Locality Lab",
     "direct_generated": true,
@@ -1867,7 +1903,11 @@
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/deep-ensemble-uncertainty-diversity-lab-20260813-040657/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "deep_ensemble_uncertainty_diversity_lab",
     "content_kind_label": "Deep Ensemble Uncertainty Diversity Lab",
     "direct_generated": true,
@@ -1884,7 +1924,11 @@
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/activation-steering-representation-engineering-lab-20260813-041727/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "activation_steering_representation_engineering_lab",
     "content_kind_label": "Activation Steering Representation Engineering Lab",
     "direct_generated": true,
@@ -1901,7 +1945,11 @@
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/mixture-of-depths-token-routing-lab-20260813-042757/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "mixture_of_depths_token_routing_lab",
     "content_kind_label": "Mixture of Depths Token Routing Lab",
     "direct_generated": true,
@@ -1918,7 +1966,11 @@
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/process-supervision-reward-hacking-lab-20260813-043827/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "process_supervision_reward_hacking_lab",
     "content_kind_label": "Process Supervision Reward Hacking Lab",
     "direct_generated": true,
@@ -1935,7 +1987,11 @@
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/self-consistency-test-time-compute-lab-20260813-044857/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "self_consistency_test_time_compute_lab",
     "content_kind_label": "Self Consistency Test Time Compute Lab",
     "direct_generated": true,
@@ -1952,7 +2008,11 @@
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/semantic-entropy-hallucination-detection-lab-20260813-045927/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "semantic_entropy_hallucination_detection_lab",
     "content_kind_label": "Semantic Entropy Hallucination Detection Lab",
     "direct_generated": true,
@@ -1969,7 +2029,11 @@
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/lost-in-the-middle-long-context-retrieval-lab-20260813-050927/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "lost_in_the_middle_long_context_retrieval_lab",
     "content_kind_label": "Lost in the Middle Long Context Retrieval Lab",
     "direct_generated": true,
@@ -1986,7 +2050,11 @@
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/constitutional-ai-critique-revision-lab-20260813-051957/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "constitutional_ai_critique_revision_lab",
     "content_kind_label": "Constitutional AI Critique Revision Lab",
     "direct_generated": true,
@@ -2003,7 +2071,11 @@
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/reward-model-overoptimization-goodhart-lab-20260813-054057/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "reward_model_overoptimization_goodhart_lab",
     "content_kind_label": "Reward Model Overoptimization Goodhart Lab",
     "direct_generated": true,
@@ -2020,7 +2092,11 @@
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/benchmark-contamination-test-set-leakage-lab-20260813-055127/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "benchmark_contamination_test_set_leakage_lab",
     "content_kind_label": "Benchmark Contamination Test Set Leakage Lab",
     "direct_generated": true,
@@ -2037,7 +2113,11 @@
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/training-data-memorization-extraction-risk-lab-20260813-060127/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "training_data_memorization_extraction_risk_lab",
     "content_kind_label": "Training Data Memorization Extraction Risk Lab",
     "direct_generated": true,
@@ -2054,7 +2134,11 @@
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/mixture-of-experts-routing-load-balancing-lab-20260813-061328/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "mixture_of_experts_routing_load_balancing_lab",
     "content_kind_label": "Mixture Of Experts Routing Load Balancing Lab",
     "direct_generated": true,
@@ -2072,7 +2156,11 @@
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/alibi-linear-attention-bias-context-extrapolation-lab-20260813-062828/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "alibi_linear_attention_bias_context_extrapolation_lab",
     "content_kind_label": "Alibi Linear Attention Bias Context Extrapolation Lab",
     "direct_generated": true,
@@ -2090,7 +2178,11 @@
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/shampoo-matrix-preconditioning-optimizer-geometry-lab-20260813-063858/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "shampoo_matrix_preconditioning_optimizer_geometry_lab",
     "content_kind_label": "Shampoo Matrix Preconditioning Optimizer Geometry Lab",
     "direct_generated": true,
@@ -2108,7 +2200,11 @@
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/elastic-weight-consolidation-catastrophic-forgetting-lab-20260813-065328/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "elastic_weight_consolidation_catastrophic_forgetting_lab",
     "content_kind_label": "Elastic Weight Consolidation Catastrophic Forgetting Lab",
     "direct_generated": true,
@@ -2126,7 +2222,11 @@
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/mirror-descent-bregman-geometry-exponentiated-gradient-lab-20260813-070958/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "mirror_descent_bregman_geometry_exponentiated_gradient_lab",
     "content_kind_label": "Mirror Descent Bregman Geometry Exponentiated Gradient Lab",
     "direct_generated": true,
@@ -2144,7 +2244,11 @@
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/neural-ode-continuous-depth-adjoint-solver-lab-20260813-072028/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "neural_ode_continuous_depth_adjoint_solver_lab",
     "content_kind_label": "Neural ODE Continuous Depth Adjoint Solver Lab",
     "direct_generated": true,
@@ -2162,7 +2266,11 @@
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/deep-equilibrium-fixed-point-implicit-gradient-lab-20260813-075258/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "deep_equilibrium_fixed_point_implicit_gradient_lab",
     "content_kind_label": "Deep Equilibrium Fixed Point Implicit Gradient Lab",
     "direct_generated": true,
@@ -2180,7 +2288,11 @@
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/denoising-score-matching-langevin-diffusion-lab-20260813-080828/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "denoising_score_matching_langevin_diffusion_lab",
     "content_kind_label": "Denoising Score Matching Langevin Diffusion Lab",
     "direct_generated": true,
@@ -2198,7 +2310,11 @@
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/classifier-free-guidance-fidelity-diversity-lab-20260813-081858/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "classifier_free_guidance_fidelity_diversity_lab",
     "content_kind_label": "Classifier-Free Guidance Fidelity Diversity Lab",
     "direct_generated": true,
@@ -2216,7 +2332,11 @@
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/minimum-bayes-risk-decoding-expected-utility-lab-20260813-083858/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "minimum_bayes_risk_decoding_expected_utility_lab",
     "content_kind_label": "Minimum Bayes Risk Decoding Expected Utility Lab",
     "direct_generated": true,
@@ -2234,7 +2354,11 @@
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/data-shapley-training-example-valuation-lab-20260813-084928/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "data_shapley_training_example_valuation_lab",
     "content_kind_label": "Data Shapley Training Example Valuation Lab",
     "direct_generated": true,
@@ -2252,7 +2376,11 @@
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/neural-processes-function-distribution-conditioning-lab-20260813-085958/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "neural_processes_function_distribution_conditioning_lab",
     "content_kind_label": "Neural Processes Function Distribution Conditioning Lab",
     "direct_generated": true,
@@ -2270,7 +2398,11 @@
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/randomized-prior-functions-epistemic-uncertainty-lab-20260813-090958/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "randomized_prior_functions_epistemic_uncertainty_lab",
     "content_kind_label": "Randomized Prior Functions Epistemic Uncertainty Lab",
     "direct_generated": true,
@@ -2288,7 +2420,11 @@
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/pac-bayes-generalization-bound-lab-20260813-092028/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "pac_bayes_generalization_bound_lab",
     "content_kind_label": "PAC-Bayes Generalization Bound Lab",
     "direct_generated": true,
@@ -2306,7 +2442,11 @@
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/dempster-shafer-evidence-fusion-conflict-lab-20260813-093558/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "dempster_shafer_evidence_fusion_conflict_lab",
     "content_kind_label": "Dempster-Shafer Evidence Fusion Conflict Lab",
     "direct_generated": true,
@@ -2324,7 +2464,11 @@
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/stochastic-weight-averaging-swag-loss-valley-lab-20260813-094628/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "stochastic_weight_averaging_swag_loss_valley_lab",
     "content_kind_label": "Stochastic Weight Averaging SWAG Loss Valley Lab",
     "direct_generated": true,
@@ -2337,5 +2481,27 @@
     "source_path": "sms_published_sites/stochastic-weight-averaging-swag-loss-valley-lab-20260813-094628",
     "target_slot": "ai-agent-comparisons",
     "title": "Weight Averaging Lab: Find the Center of the Loss Valley"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/pcgrad-gradient-surgery-multitask-conflict-lab-20260813-095658/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "pcgrad_gradient_surgery_multitask_conflict_lab",
+    "content_kind_label": "PCGrad Gradient Surgery Multi-Task Conflict Lab",
+    "direct_generated": true,
+    "github_commit": "4ac22d1fcb819f91957776b25728a12aca7e1170",
+    "github_url": "https://github.com/rohanarun/super-agent-news-pcgrad-gradient-surgery-multitask-conflict-lab-20260813-095658",
+    "live_url": "https://lists.new/pcgrad-gradient-surgery-multitask-conflict-lab-20260813-095658/",
+    "receipt_created_at": "2026-08-13T09:56:58.460+00:00",
+    "receipt_status": "success",
+    "slug": "pcgrad-gradient-surgery-multitask-conflict-lab-20260813-095658",
+    "source_path": "sms_published_sites/pcgrad-gradient-surgery-multitask-conflict-lab-20260813-095658",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Gradient Surgery Lab: Stop Multi-Task Objectives From Fighting"
   }
 ]
