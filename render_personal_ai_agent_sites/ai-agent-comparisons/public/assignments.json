@@ -1930,5 +1930,22 @@
     "source_path": "sms_published_sites/process-supervision-reward-hacking-lab-20260813-043827",
     "target_slot": "ai-agent-comparisons",
     "title": "Process Supervision Lab: Catch Correct Answers With Broken Reasoning"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/self-consistency-test-time-compute-lab-20260813-044857/",
+    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "content_kind": "self_consistency_test_time_compute_lab",
+    "content_kind_label": "Self Consistency Test Time Compute Lab",
+    "direct_generated": true,
+    "github_url": "https://github.com/rohanarun/super-agent-news-self-consistency-test-time-compute-lab-20260813-044857",
+    "live_url": "https://lists.new/self-consistency-test-time-compute-lab-20260813-044857/",
+    "receipt_created_at": "2026-08-13T04:48:57.494+00:00",
+    "receipt_status": "success",
+    "slug": "self-consistency-test-time-compute-lab-20260813-044857",
+    "source_path": "sms_published_sites/self-consistency-test-time-compute-lab-20260813-044857",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Self-Consistency Lab: Spend Test-Time Compute on Diverse Reasoning"
   }
 ]
