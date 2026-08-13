@@ -1196,5 +1196,23 @@
     "source_path": "sms_published_sites/agent-tool-backpressure-retry-queue-lab-20260813-111528",
     "target_slot": "sms-imessage-ai-assistants",
     "title": "Backpressure Lab: Keep Agent Tool Calls Out of Overload Collapse"
+  },
+  {
+    "assigned_domain": "driodphone.com",
+    "assigned_slot": "sms-imessage-ai-assistants",
+    "assigned_url": "https://driodphone.com/bradley-terry-preference-reward-model-lab-20260813-140710/",
+    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "content_kind": "bradley_terry_preference_reward_model_lab",
+    "content_kind_label": "Bradley-Terry Preference Reward Model Lab",
+    "direct_generated": true,
+    "github_commit": "5e33fe139670b8858c37ff5e6f314ee022e3f23f",
+    "github_url": "https://github.com/rohanarun/super-agent-news-bradley-terry-preference-reward-model-lab-20260813-140710",
+    "live_url": "https://driodphone.com/bradley-terry-preference-reward-model-lab-20260813-140710/",
+    "receipt_created_at": "2026-08-13T14:06:30.624+00:00",
+    "receipt_status": "success",
+    "slug": "bradley-terry-preference-reward-model-lab-20260813-140710",
+    "source_path": "personal-ai-agent-news/bradley-terry-preference-reward-model-lab-20260813-140710",
+    "target_slot": "sms-imessage-ai-assistants",
+    "title": "Preference Arena: Bradley-Terry Reward Model Lab"
   }
 ]
