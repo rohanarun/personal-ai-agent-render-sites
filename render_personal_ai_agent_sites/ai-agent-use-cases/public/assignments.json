@@ -1428,5 +1428,6 @@
     "source_path": "personal-ai-agent-news/kalman-agent-tool-signal-fusion-lab-20260813-163944",
     "target_slot": "ai-agent-use-cases",
     "title": "Kalman Signal Lab: Fuse Noisy Agent Tool Telemetry"
-  }
+  },
+  {"assigned_domain":"agentslayer.com","assigned_slot":"ai-agent-use-cases","assigned_url":"https://agentslayer.com/token-bucket-agent-rate-limit-lab-20260813-174614/","backlinks":["https://getsupers.com/","https://app.getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"content_kind":"token_bucket_agent_rate_limit_lab","content_kind_label":"Token Bucket Agent Rate Limit Lab","direct_generated":true,"github_commit":"81a491e57916fce613208eca8138f8851e503c13","github_url":"https://github.com/rohanarun/super-agent-news-token-bucket-agent-rate-limit-lab-20260813-174614","live_url":"https://agentslayer.com/token-bucket-agent-rate-limit-lab-20260813-174614/","receipt_created_at":"2026-08-13T17:46:14.250+00:00","receipt_status":"success","slug":"token-bucket-agent-rate-limit-lab-20260813-174614","source_path":"ai-agent-use-cases/token-bucket-agent-rate-limit-lab-20260813-174614","target_slot":"ai-agent-use-cases","title":"Token Bucket Lab: Shape AI Agent Request Bursts"}
 ]
