@@ -1998,5 +1998,22 @@
     "source_path": "sms_published_sites/constitutional-ai-critique-revision-lab-20260813-051957",
     "target_slot": "ai-agent-comparisons",
     "title": "Constitutional AI Lab: Critique, Revise, Audit"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/reward-model-overoptimization-goodhart-lab-20260813-054057/",
+    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "content_kind": "reward_model_overoptimization_goodhart_lab",
+    "content_kind_label": "Reward Model Overoptimization Goodhart Lab",
+    "direct_generated": true,
+    "github_url": "https://github.com/rohanarun/super-agent-news-reward-model-overoptimization-goodhart-lab-20260813-054057",
+    "live_url": "https://lists.new/reward-model-overoptimization-goodhart-lab-20260813-054057/",
+    "receipt_created_at": "2026-08-13T05:40:57.900+00:00",
+    "receipt_status": "success",
+    "slug": "reward-model-overoptimization-goodhart-lab-20260813-054057",
+    "source_path": "sms_published_sites/reward-model-overoptimization-goodhart-lab-20260813-054057",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Reward Overoptimization Lab: When the Proxy Wins"
   }
 ]
