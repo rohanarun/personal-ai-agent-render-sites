@@ -1395,5 +1395,23 @@
     "source_path": "sms_published_sites/lsh-vector-retrieval-hash-bucket-lab-20260813-105458",
     "target_slot": "computer-use-ai-agents",
     "title": "Vector Hash Lab: Approximate Nearest Neighbors With LSH"
+  },
+  {
+    "assigned_domain": "parsercheat.com",
+    "assigned_slot": "computer-use-ai-agents",
+    "assigned_url": "https://parsercheat.com/personalized-pagerank-agent-memory-retrieval-lab-20260813-145113/",
+    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "content_kind": "personalized_pagerank_agent_memory_retrieval_lab",
+    "content_kind_label": "Personalized PageRank Agent Memory Retrieval Lab",
+    "direct_generated": true,
+    "github_commit": "156ad87fdd9b0affbcc784dd435feffb9f16363f",
+    "github_url": "https://github.com/rohanarun/super-agent-news-personalized-pagerank-agent-memory-retrieval-lab-20260813-145113",
+    "live_url": "https://parsercheat.com/personalized-pagerank-agent-memory-retrieval-lab-20260813-145113/",
+    "receipt_created_at": "2026-08-13T14:51:13.879+00:00",
+    "receipt_status": "success",
+    "slug": "personalized-pagerank-agent-memory-retrieval-lab-20260813-145113",
+    "source_path": "personal-ai-agent-news/personalized-pagerank-agent-memory-retrieval-lab-20260813-145113",
+    "target_slot": "computer-use-ai-agents",
+    "title": "Memory Walk Lab: Personalized PageRank for Agent Recall"
   }
 ]
