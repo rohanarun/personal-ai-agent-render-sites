@@ -1947,5 +1947,22 @@
     "source_path": "sms_published_sites/self-consistency-test-time-compute-lab-20260813-044857",
     "target_slot": "ai-agent-comparisons",
     "title": "Self-Consistency Lab: Spend Test-Time Compute on Diverse Reasoning"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/semantic-entropy-hallucination-detection-lab-20260813-045927/",
+    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "content_kind": "semantic_entropy_hallucination_detection_lab",
+    "content_kind_label": "Semantic Entropy Hallucination Detection Lab",
+    "direct_generated": true,
+    "github_url": "https://github.com/rohanarun/super-agent-news-semantic-entropy-hallucination-detection-lab-20260813-045927",
+    "live_url": "https://lists.new/semantic-entropy-hallucination-detection-lab-20260813-045927/",
+    "receipt_created_at": "2026-08-13T04:59:27.514+00:00",
+    "receipt_status": "success",
+    "slug": "semantic-entropy-hallucination-detection-lab-20260813-045927",
+    "source_path": "sms_published_sites/semantic-entropy-hallucination-detection-lab-20260813-045927",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Semantic Entropy Lab: Cluster Meanings, Not Just Words"
   }
 ]
