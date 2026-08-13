@@ -1828,5 +1828,22 @@
     "source_path": "sms_published_sites/feature-superposition-polysemantic-neurons-lab-20260813-033527",
     "target_slot": "ai-agent-comparisons",
     "title": "Feature Superposition Lab: When Neurons Share Dimensions"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/weight-space-model-merging-mode-connectivity-lab-20260813-034627/",
+    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "content_kind": "weight_space_model_merging_mode_connectivity_lab",
+    "content_kind_label": "Weight Space Model Merging Mode Connectivity Lab",
+    "direct_generated": true,
+    "github_url": "https://github.com/rohanarun/super-agent-news-weight-space-model-merging-mode-connectivity-lab-20260813-034627",
+    "live_url": "https://lists.new/weight-space-model-merging-mode-connectivity-lab-20260813-034627/",
+    "receipt_created_at": "2026-08-13T03:46:27.634+00:00",
+    "receipt_status": "success",
+    "slug": "weight-space-model-merging-mode-connectivity-lab-20260813-034627",
+    "source_path": "sms_published_sites/weight-space-model-merging-mode-connectivity-lab-20260813-034627",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Model Merge Lab: Navigate Weight-Space Connectivity"
   }
 ]
