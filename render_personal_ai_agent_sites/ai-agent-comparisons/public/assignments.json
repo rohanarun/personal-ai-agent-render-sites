@@ -2547,5 +2547,6 @@
     "source_path": "sms_published_sites/influence-functions-training-data-attribution-lab-20260813-104428",
     "target_slot": "ai-agent-comparisons",
     "title": "Influence Lab: Which Training Points Shaped This Prediction?"
-  }
+  },
+  {"assigned_domain":"lists.new","assigned_slot":"ai-agent-comparisons","assigned_url":"https://lists.new/bloom-filter-agent-cache-membership-lab-20260813-114658/","backlinks":["https://getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"content_kind":"bloom_filter_agent_cache_membership_lab","content_kind_label":"Bloom Filter Agent Cache Membership Lab","direct_generated":true,"github_commit":"06dc0940a681f405681cd9a5b091ca063c951996","github_url":"https://github.com/rohanarun/super-agent-news-bloom-filter-agent-cache-membership-lab-20260813-114658","live_url":"https://lists.new/bloom-filter-agent-cache-membership-lab-20260813-114658/","receipt_created_at":"2026-08-13T11:46:58.752+00:00","receipt_status":"success","slug":"bloom-filter-agent-cache-membership-lab-20260813-114658","source_path":"sms_published_sites/bloom-filter-agent-cache-membership-lab-20260813-114658","target_slot":"ai-agent-comparisons","title":"Bloom Filter Lab: Fast Membership Checks for Agent Caches"}
 ]
