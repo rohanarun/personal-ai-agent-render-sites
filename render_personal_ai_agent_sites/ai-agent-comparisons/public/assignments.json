@@ -1807,5 +1807,26 @@
     "source_path": "sms_published_sites/activation-patching-causal-trace-lab-20260812-132858",
     "target_slot": "ai-agent-comparisons",
     "title": "Activation Patching Lab: Trace a Model's Causal Path"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/feature-superposition-polysemantic-neurons-lab-20260813-033527/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "feature_superposition_polysemantic_neurons_lab",
+    "content_kind_label": "Feature Superposition Polysemantic Neurons Lab",
+    "direct_generated": true,
+    "github_url": "https://github.com/rohanarun/super-agent-news-feature-superposition-polysemantic-neurons-lab-20260813-033527",
+    "live_url": "https://lists.new/feature-superposition-polysemantic-neurons-lab-20260813-033527/",
+    "receipt_created_at": "2026-08-13T03:35:27.625+00:00",
+    "receipt_status": "success",
+    "slug": "feature-superposition-polysemantic-neurons-lab-20260813-033527",
+    "source_path": "sms_published_sites/feature-superposition-polysemantic-neurons-lab-20260813-033527",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Feature Superposition Lab: When Neurons Share Dimensions"
   }
 ]
