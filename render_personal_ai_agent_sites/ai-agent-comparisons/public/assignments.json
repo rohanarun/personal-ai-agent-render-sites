@@ -1964,5 +1964,22 @@
     "source_path": "sms_published_sites/semantic-entropy-hallucination-detection-lab-20260813-045927",
     "target_slot": "ai-agent-comparisons",
     "title": "Semantic Entropy Lab: Cluster Meanings, Not Just Words"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/lost-in-the-middle-long-context-retrieval-lab-20260813-050927/",
+    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "content_kind": "lost_in_the_middle_long_context_retrieval_lab",
+    "content_kind_label": "Lost in the Middle Long Context Retrieval Lab",
+    "direct_generated": true,
+    "github_url": "https://github.com/rohanarun/super-agent-news-lost-in-the-middle-long-context-retrieval-lab-20260813-050927",
+    "live_url": "https://lists.new/lost-in-the-middle-long-context-retrieval-lab-20260813-050927/",
+    "receipt_created_at": "2026-08-13T05:09:27.675+00:00",
+    "receipt_status": "success",
+    "slug": "lost-in-the-middle-long-context-retrieval-lab-20260813-050927",
+    "source_path": "sms_published_sites/lost-in-the-middle-long-context-retrieval-lab-20260813-050927",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Lost-in-the-Middle Lab: Find the Fact Inside a Long Context"
   }
 ]
