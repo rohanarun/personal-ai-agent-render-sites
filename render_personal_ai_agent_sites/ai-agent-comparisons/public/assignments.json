@@ -2211,5 +2211,23 @@
     "source_path": "sms_published_sites/classifier-free-guidance-fidelity-diversity-lab-20260813-081858",
     "target_slot": "ai-agent-comparisons",
     "title": "Classifier-Free Guidance Lab: Fidelity, Diversity, and Saturation"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/minimum-bayes-risk-decoding-expected-utility-lab-20260813-083858/",
+    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "content_kind": "minimum_bayes_risk_decoding_expected_utility_lab",
+    "content_kind_label": "Minimum Bayes Risk Decoding Expected Utility Lab",
+    "direct_generated": true,
+    "github_commit": "77ebb66e93107a3c70f245ba6d7090447b9a6097",
+    "github_url": "https://github.com/rohanarun/super-agent-news-minimum-bayes-risk-decoding-expected-utility-lab-20260813-083858",
+    "live_url": "https://lists.new/minimum-bayes-risk-decoding-expected-utility-lab-20260813-083858/",
+    "receipt_created_at": "2026-08-13T08:38:58.247+00:00",
+    "receipt_status": "success",
+    "slug": "minimum-bayes-risk-decoding-expected-utility-lab-20260813-083858",
+    "source_path": "sms_published_sites/minimum-bayes-risk-decoding-expected-utility-lab-20260813-083858",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Minimum Bayes Risk Decoding Lab: Choose Consensus, Not Just Probability"
   }
 ]
