@@ -1431,5 +1431,23 @@
     "source_path": "personal-ai-agent-news/contract-net-multi-agent-task-bidding-lab-20260813-154713",
     "target_slot": "computer-use-ai-agents",
     "title": "Contract Net Lab: Multi-Agent Task Bidding"
+  },
+  {
+    "assigned_domain": "parsercheat.com",
+    "assigned_slot": "computer-use-ai-agents",
+    "assigned_url": "https://parsercheat.com/pid-agent-concurrency-latency-control-lab-20260813-165014/",
+    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "content_kind": "pid_agent_concurrency_latency_control_lab",
+    "content_kind_label": "PID Agent Concurrency Latency Control Lab",
+    "direct_generated": true,
+    "github_commit": "e27e646097b64bad569dc040ecd791d78240c909",
+    "github_url": "https://github.com/rohanarun/super-agent-news-pid-agent-concurrency-latency-control-lab-20260813-165014",
+    "live_url": "https://parsercheat.com/pid-agent-concurrency-latency-control-lab-20260813-165014/",
+    "receipt_created_at": "2026-08-13T16:50:14.065+00:00",
+    "receipt_status": "success",
+    "slug": "pid-agent-concurrency-latency-control-lab-20260813-165014",
+    "source_path": "personal-ai-agent-news/pid-agent-concurrency-latency-control-lab-20260813-165014",
+    "target_slot": "computer-use-ai-agents",
+    "title": "PID Control Room: Tune Agent Concurrency Against Latency"
   }
 ]
