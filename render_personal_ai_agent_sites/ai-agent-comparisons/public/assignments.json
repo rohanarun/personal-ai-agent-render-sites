@@ -1879,5 +1879,22 @@
     "source_path": "sms_published_sites/deep-ensemble-uncertainty-diversity-lab-20260813-040657",
     "target_slot": "ai-agent-comparisons",
     "title": "Deep Ensemble Lab: Separate Confidence From Agreement"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/activation-steering-representation-engineering-lab-20260813-041727/",
+    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "content_kind": "activation_steering_representation_engineering_lab",
+    "content_kind_label": "Activation Steering Representation Engineering Lab",
+    "direct_generated": true,
+    "github_url": "https://github.com/rohanarun/super-agent-news-activation-steering-representation-engineering-lab-20260813-041727",
+    "live_url": "https://lists.new/activation-steering-representation-engineering-lab-20260813-041727/",
+    "receipt_created_at": "2026-08-13T04:17:27.665+00:00",
+    "receipt_status": "success",
+    "slug": "activation-steering-representation-engineering-lab-20260813-041727",
+    "source_path": "sms_published_sites/activation-steering-representation-engineering-lab-20260813-041727",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Activation Steering Lab: Move Behavior Inside a Language Model"
   }
 ]
