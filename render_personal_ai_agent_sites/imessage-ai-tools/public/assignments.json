@@ -1313,5 +1313,23 @@
     "source_path": "personal-ai-agent-news/kll-quantile-sketch-agent-latency-lab-20260813-135420",
     "target_slot": "imessage-ai-tools",
     "title": "KLL Latency Sketch Lab: Keep the Percentile, Lose the Payload"
+  },
+  {
+    "assigned_domain": "droidph.one",
+    "assigned_slot": "imessage-ai-tools",
+    "assigned_url": "https://droidph.one/sinkhorn-optimal-transport-agent-tool-routing-lab-20260813-152443/",
+    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "content_kind": "sinkhorn_optimal_transport_agent_tool_routing_lab",
+    "content_kind_label": "Sinkhorn Optimal Transport Agent Tool Routing Lab",
+    "direct_generated": true,
+    "github_commit": "1011e67a239c4a3a482c0ae661375a091c095249",
+    "github_url": "https://github.com/rohanarun/super-agent-news-sinkhorn-optimal-transport-agent-tool-routing-lab-20260813-152443",
+    "live_url": "https://droidph.one/sinkhorn-optimal-transport-agent-tool-routing-lab-20260813-152443/",
+    "receipt_created_at": "2026-08-13T15:24:43.946+00:00",
+    "receipt_status": "success",
+    "slug": "sinkhorn-optimal-transport-agent-tool-routing-lab-20260813-152443",
+    "source_path": "personal-ai-agent-news/sinkhorn-optimal-transport-agent-tool-routing-lab-20260813-152443",
+    "target_slot": "imessage-ai-tools",
+    "title": "Transport Lab: Balance Agent Work With Sinkhorn Routing"
   }
 ]
