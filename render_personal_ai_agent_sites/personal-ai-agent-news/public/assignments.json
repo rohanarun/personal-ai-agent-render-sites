@@ -8458,5 +8458,23 @@
     "source_path": "personal-ai-agent-news/viterbi-hidden-state-agent-trace-decoding-lab-20260813-151413",
     "target_slot": "personal-ai-agent-news",
     "title": "Trace Decoder: Viterbi Hidden-State Agent Lab"
+  },
+  {
+    "assigned_domain": "kalshhunter.com",
+    "assigned_slot": "personal-ai-agent-news",
+    "assigned_url": "https://kalshhunter.com/thompson-sampling-agent-tool-selection-lab-20260813-155744/",
+    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "content_kind": "thompson_sampling_agent_tool_selection_lab",
+    "content_kind_label": "Thompson Sampling Agent Tool Selection Lab",
+    "direct_generated": true,
+    "github_commit": "a8b2d180a42fc00df4a1695b2b8339870e93cb5d",
+    "github_url": "https://github.com/rohanarun/super-agent-news-thompson-sampling-agent-tool-selection-lab-20260813-155744",
+    "live_url": "https://kalshhunter.com/thompson-sampling-agent-tool-selection-lab-20260813-155744/",
+    "receipt_created_at": "2026-08-13T15:57:44.087+00:00",
+    "receipt_status": "success",
+    "slug": "thompson-sampling-agent-tool-selection-lab-20260813-155744",
+    "source_path": "personal-ai-agent-news/thompson-sampling-agent-tool-selection-lab-20260813-155744",
+    "target_slot": "personal-ai-agent-news",
+    "title": "Posterior Playground: Thompson Sampling for Agent Tools"
   }
 ]
