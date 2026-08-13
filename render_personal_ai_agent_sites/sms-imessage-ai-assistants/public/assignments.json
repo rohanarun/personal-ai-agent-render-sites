@@ -1232,5 +1232,23 @@
     "source_path": "personal-ai-agent-news/monte-carlo-tree-search-agent-tool-planning-lab-20260813-153644",
     "target_slot": "sms-imessage-ai-assistants",
     "title": "Search Tree Lab: Monte Carlo Planning for Agents"
+  },
+  {
+    "assigned_domain": "driodphone.com",
+    "assigned_slot": "sms-imessage-ai-assistants",
+    "assigned_url": "https://driodphone.com/minhash-agent-memory-near-duplicate-detection-lab-20260813-161844/",
+    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "content_kind": "minhash_agent_memory_near_duplicate_detection_lab",
+    "content_kind_label": "MinHash Agent Memory Near-Duplicate Detection Lab",
+    "direct_generated": true,
+    "github_commit": "84e4539129222751723c447dfd95f5e1036611d5",
+    "github_url": "https://github.com/rohanarun/super-agent-news-minhash-agent-memory-near-duplicate-detection-lab-20260813-161844",
+    "live_url": "https://driodphone.com/minhash-agent-memory-near-duplicate-detection-lab-20260813-161844/",
+    "receipt_created_at": "2026-08-13T16:18:44.012+00:00",
+    "receipt_status": "success",
+    "slug": "minhash-agent-memory-near-duplicate-detection-lab-20260813-161844",
+    "source_path": "personal-ai-agent-news/minhash-agent-memory-near-duplicate-detection-lab-20260813-161844",
+    "target_slot": "sms-imessage-ai-assistants",
+    "title": "MinHash Memory Lab: Detect Near-Duplicate Agent Context"
   }
 ]
