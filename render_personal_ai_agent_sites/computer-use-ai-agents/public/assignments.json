@@ -1413,5 +1413,23 @@
     "source_path": "personal-ai-agent-news/personalized-pagerank-agent-memory-retrieval-lab-20260813-145113",
     "target_slot": "computer-use-ai-agents",
     "title": "Memory Walk Lab: Personalized PageRank for Agent Recall"
+  },
+  {
+    "assigned_domain": "parsercheat.com",
+    "assigned_slot": "computer-use-ai-agents",
+    "assigned_url": "https://parsercheat.com/contract-net-multi-agent-task-bidding-lab-20260813-154713/",
+    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "content_kind": "contract_net_multi_agent_task_bidding_lab",
+    "content_kind_label": "Contract Net Multi-Agent Task Bidding Lab",
+    "direct_generated": true,
+    "github_commit": "001e20e6315f4d409d971bbe7808cbccffa5b883",
+    "github_url": "https://github.com/rohanarun/super-agent-news-contract-net-multi-agent-task-bidding-lab-20260813-154713",
+    "live_url": "https://parsercheat.com/contract-net-multi-agent-task-bidding-lab-20260813-154713/",
+    "receipt_created_at": "2026-08-13T15:47:13.993+00:00",
+    "receipt_status": "success",
+    "slug": "contract-net-multi-agent-task-bidding-lab-20260813-154713",
+    "source_path": "personal-ai-agent-news/contract-net-multi-agent-task-bidding-lab-20260813-154713",
+    "target_slot": "computer-use-ai-agents",
+    "title": "Contract Net Lab: Multi-Agent Task Bidding"
   }
 ]
