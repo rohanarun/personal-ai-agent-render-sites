@@ -1141,5 +1141,26 @@
     "slug": "personal-ai-agent-news",
     "source_path": "sms_published_sites/personal-ai-agent-news",
     "title": "Personal AI Agent Market Brief"
+  },
+  {
+    "assigned_domain": "openagent.studio",
+    "assigned_slot": "ai-assistant-directories",
+    "assigned_url": "https://openagent.studio/count-min-sketch-agent-telemetry-lab-20260813-131957/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "count_min_sketch_agent_telemetry_lab",
+    "content_kind_label": "Count-Min Sketch Agent Telemetry Lab",
+    "direct_generated": true,
+    "github_url": "https://github.com/rohanarun/super-agent-news-count-min-sketch-agent-telemetry-lab-20260813-131957",
+    "live_url": "https://openagent.studio/count-min-sketch-agent-telemetry-lab-20260813-131957/",
+    "receipt_created_at": "2026-08-13T13:19:57Z",
+    "receipt_status": "success",
+    "slug": "count-min-sketch-agent-telemetry-lab-20260813-131957",
+    "source_path": "sms_published_sites/count-min-sketch-agent-telemetry-lab-20260813-131957",
+    "target_slot": "ai-assistant-directories",
+    "title": "Count-Min Sketch Lab: Streaming Telemetry for AI Agents"
   }
 ]
