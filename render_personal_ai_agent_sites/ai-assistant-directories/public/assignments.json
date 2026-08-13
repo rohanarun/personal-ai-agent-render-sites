@@ -1,5 +1,26 @@
 [
-  {"assigned_domain":"openagent.studio","assigned_slot":"ai-assistant-directories","assigned_url":"https://openagent.studio/mixture-of-experts-routing-capacity-lab-20260711-232736/","backlinks":["https://getsupers.com/","https://app.getsupers.com/use-cases/computer-use-cache/","https://app.getsupers.com/use-cases/ai-agent-build-websites/"],"cheatlayer_url":"","content_kind":"mixture_of_experts_routing_lab","content_kind_label":"Mixture-of-Experts Routing Lab","direct_generated":true,"github_url":"","live_url":"https://openagent.studio/mixture-of-experts-routing-capacity-lab-20260711-232736/","receipt_created_at":"2026-07-11T23:27:36.817+00:00","receipt_status":"success","slug":"mixture-of-experts-routing-capacity-lab-20260711-232736","source_path":"sms_published_sites/mixture-of-experts-routing-capacity-lab-20260711-232736","target_slot":"ai-assistant-directories","title":"Mixture-of-Experts Routing Lab: Top-k, Capacity, and Balance"},
+  {
+    "assigned_domain": "openagent.studio",
+    "assigned_slot": "ai-assistant-directories",
+    "assigned_url": "https://openagent.studio/mixture-of-experts-routing-capacity-lab-20260711-232736/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "mixture_of_experts_routing_lab",
+    "content_kind_label": "Mixture-of-Experts Routing Lab",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://openagent.studio/mixture-of-experts-routing-capacity-lab-20260711-232736/",
+    "receipt_created_at": "2026-07-11T23:27:36.817+00:00",
+    "receipt_status": "success",
+    "slug": "mixture-of-experts-routing-capacity-lab-20260711-232736",
+    "source_path": "sms_published_sites/mixture-of-experts-routing-capacity-lab-20260711-232736",
+    "target_slot": "ai-assistant-directories",
+    "title": "Mixture-of-Experts Routing Lab: Top-k, Capacity, and Balance"
+  },
   {
     "assigned_domain": "openagent.studio",
     "assigned_slot": "ai-assistant-directories",
@@ -219,7 +240,7 @@
     "receipt_status": "success",
     "slug": "book-rides-with-ai",
     "source_path": "sms_published_sites/book-rides-with-ai",
-    "title": "Book rides with AI \u2014 compare, coordinate, and confirm trips with a personal agent"
+    "title": "Book rides with AI — compare, coordinate, and confirm trips with a personal agent"
   },
   {
     "assigned_domain": "openagent.studio",
@@ -234,7 +255,7 @@
     "receipt_status": "success",
     "slug": "super-vs-orchids-20260706-173705",
     "source_path": "sms_published_sites/super-vs-orchids-20260706-173705",
-    "title": "Super vs Orchids \u2014 personal AI agents for real computer work"
+    "title": "Super vs Orchids — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "openagent.studio",
@@ -264,7 +285,7 @@
     "receipt_status": "success",
     "slug": "super-vs-orchids-20260706-134500",
     "source_path": "sms_published_sites/super-vs-orchids-20260706-134500",
-    "title": "Super vs Orchids \u2014 Personal AI Agents Compared for Real Computer Work"
+    "title": "Super vs Orchids — Personal AI Agents Compared for Real Computer Work"
   },
   {
     "assigned_domain": "openagent.studio",
@@ -414,7 +435,7 @@
     "receipt_status": "success",
     "slug": "super-vs-siri-20260705-022920",
     "source_path": "sms_published_sites/super-vs-siri-20260705-022920",
-    "title": "Super vs Siri \u2014 Personal AI Agents for Real Computer Work"
+    "title": "Super vs Siri — Personal AI Agents for Real Computer Work"
   },
   {
     "assigned_domain": "openagent.studio",
@@ -444,7 +465,7 @@
     "receipt_status": "success",
     "slug": "super-vs-orchids-20260704-220836",
     "source_path": "sms_published_sites/super-vs-orchids-20260704-220836",
-    "title": "Super vs Orchids \u2014 personal AI agents for real computer work"
+    "title": "Super vs Orchids — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "openagent.studio",
@@ -459,7 +480,7 @@
     "receipt_status": "success",
     "slug": "super-vs-grok-20260704-193804",
     "source_path": "sms_published_sites/super-vs-grok-20260704-193804",
-    "title": "Super vs Grok \u2014 personal AI agents for real computer work"
+    "title": "Super vs Grok — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "openagent.studio",
@@ -504,7 +525,7 @@
     "receipt_status": "success",
     "slug": "super-vs-folk-20260704-153633",
     "source_path": "sms_published_sites/super-vs-folk-20260704-153633",
-    "title": "Super vs Folk \u2014 personal AI agents for real computer work"
+    "title": "Super vs Folk — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "openagent.studio",
@@ -519,7 +540,7 @@
     "receipt_status": "success",
     "slug": "super-vs-gemini-20260704-063547",
     "source_path": "sms_published_sites/super-vs-gemini-20260704-063547",
-    "title": "Super vs Gemini \u2014 personal AI agents for real computer work"
+    "title": "Super vs Gemini — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "openagent.studio",
@@ -549,7 +570,7 @@
     "receipt_status": "success",
     "slug": "super-vs-chatgpt-20260704-031418",
     "source_path": "sms_published_sites/super-vs-chatgpt-20260704-031418",
-    "title": "Super vs ChatGPT \u2014 Personal AI Agents Compared"
+    "title": "Super vs ChatGPT — Personal AI Agents Compared"
   },
   {
     "assigned_domain": "openagent.studio",
@@ -579,7 +600,7 @@
     "receipt_status": "success",
     "slug": "super-vs-chatgpt-20260703-235619",
     "source_path": "sms_published_sites/super-vs-chatgpt-20260703-235619",
-    "title": "Super vs ChatGPT \u2014 personal AI agents for real computer work"
+    "title": "Super vs ChatGPT — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "openagent.studio",
@@ -639,7 +660,7 @@
     "receipt_status": "success",
     "slug": "super-vs-orchids-20260703-172058",
     "source_path": "sms_published_sites/super-vs-orchids-20260703-172058",
-    "title": "Super vs Orchids \u2014 personal AI agents for real computer work"
+    "title": "Super vs Orchids — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "openagent.studio",
@@ -654,7 +675,7 @@
     "receipt_status": "success",
     "slug": "super-vs-grok-20260703-145054",
     "source_path": "sms_published_sites/super-vs-grok-20260703-145054",
-    "title": "Super vs Grok \u2014 personal AI agents for real computer work"
+    "title": "Super vs Grok — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "openagent.studio",
@@ -669,7 +690,7 @@
     "receipt_status": "success",
     "slug": "super-for-real-estate-agents-managing-follow-ups-listings-20260703-131054",
     "source_path": "sms_published_sites/super-for-real-estate-agents-managing-follow-ups-listings-20260703-131054",
-    "title": "Super for real estate agents managing follow\u2011ups, listings, and scheduling"
+    "title": "Super for real estate agents managing follow‑ups, listings, and scheduling"
   },
   {
     "assigned_domain": "openagent.studio",
@@ -684,7 +705,7 @@
     "receipt_status": "success",
     "slug": "super-vs-chatgpt-20260703-112049",
     "source_path": "sms_published_sites/super-vs-chatgpt-20260703-112049",
-    "title": "Super vs ChatGPT \u2014 personal AI agents for real computer work"
+    "title": "Super vs ChatGPT — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "openagent.studio",
@@ -714,7 +735,7 @@
     "receipt_status": "success",
     "slug": "super-vs-chatgpt-20260703-081055",
     "source_path": "sms_published_sites/super-vs-chatgpt-20260703-081055",
-    "title": "Super vs ChatGPT \u2014 Personal AI Agents for Real Computer Work"
+    "title": "Super vs ChatGPT — Personal AI Agents for Real Computer Work"
   },
   {
     "assigned_domain": "openagent.studio",
@@ -744,7 +765,7 @@
     "receipt_status": "success",
     "slug": "super-vs-folk-20260703-043621",
     "source_path": "sms_published_sites/super-vs-folk-20260703-043621",
-    "title": "Super vs Folk \u2014 personal AI agents for real computer work"
+    "title": "Super vs Folk — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "openagent.studio",
@@ -774,7 +795,7 @@
     "receipt_status": "success",
     "slug": "super-vs-orchids-20260703-013450",
     "source_path": "sms_published_sites/super-vs-orchids-20260703-013450",
-    "title": "Super vs Orchids \u2014 personal AI agents compared"
+    "title": "Super vs Orchids — personal AI agents compared"
   },
   {
     "assigned_domain": "openagent.studio",
@@ -789,7 +810,7 @@
     "receipt_status": "success",
     "slug": "super-vs-grok-20260702-230345",
     "source_path": "sms_published_sites/super-vs-grok-20260702-230345",
-    "title": "Super vs Grok \u2014 personal AI agents for real computer work"
+    "title": "Super vs Grok — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "openagent.studio",
@@ -804,7 +825,7 @@
     "receipt_status": "success",
     "slug": "super-for-real-estate-agents-managing-follow-ups-listings-20260702-211355",
     "source_path": "sms_published_sites/super-for-real-estate-agents-managing-follow-ups-listings-20260702-211355",
-    "title": "Super for real estate agents managing follow\u2011ups, listings, and scheduling"
+    "title": "Super for real estate agents managing follow‑ups, listings, and scheduling"
   },
   {
     "assigned_domain": "openagent.studio",
@@ -819,7 +840,7 @@
     "receipt_status": "success",
     "slug": "super-vs-chatgpt-20260702-192251",
     "source_path": "sms_published_sites/super-vs-chatgpt-20260702-192251",
-    "title": "Super vs ChatGPT \u2014 Personal AI Agents Compared"
+    "title": "Super vs ChatGPT — Personal AI Agents Compared"
   },
   {
     "assigned_domain": "openagent.studio",
@@ -849,7 +870,7 @@
     "receipt_status": "success",
     "slug": "super-vs-siri-20260702-160251",
     "source_path": "sms_published_sites/super-vs-siri-20260702-160251",
-    "title": "Super vs Siri \u2014 personal AI agents for real computer work"
+    "title": "Super vs Siri — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "openagent.studio",
@@ -879,7 +900,7 @@
     "receipt_status": "success",
     "slug": "super-vs-gemini-20260701-225151",
     "source_path": "sms_published_sites/super-vs-gemini-20260701-225151",
-    "title": "Super vs Gemini \u2014 Personal AI Agents for Real Computer Work"
+    "title": "Super vs Gemini — Personal AI Agents for Real Computer Work"
   },
   {
     "assigned_domain": "openagent.studio",
@@ -894,7 +915,7 @@
     "receipt_status": "success",
     "slug": "super-vs-siri-20260701-223206",
     "source_path": "sms_published_sites/super-vs-siri-20260701-223206",
-    "title": "Super vs Siri \u2014 personal AI agents for real computer work"
+    "title": "Super vs Siri — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "openagent.studio",
@@ -939,7 +960,7 @@
     "receipt_status": "success",
     "slug": "super-vs-orchids-20260701-144112",
     "source_path": "sms_published_sites/super-vs-orchids-20260701-144112",
-    "title": "Super vs Orchids \u2014 personal AI agents for real computer work"
+    "title": "Super vs Orchids — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "openagent.studio",
@@ -969,7 +990,7 @@
     "receipt_status": "success",
     "slug": "super-vs-grok-20260701-111056",
     "source_path": "sms_published_sites/super-vs-grok-20260701-111056",
-    "title": "Super vs Grok \u2014 personal AI agents for real computer work"
+    "title": "Super vs Grok — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "openagent.studio",
@@ -999,7 +1020,7 @@
     "receipt_status": "success",
     "slug": "super-vs-folk-20260701-071026",
     "source_path": "sms_published_sites/super-vs-folk-20260701-071026",
-    "title": "Super vs Folk \u2014 personal AI agents compared for real computer work"
+    "title": "Super vs Folk — personal AI agents compared for real computer work"
   },
   {
     "assigned_domain": "openagent.studio",
@@ -1029,7 +1050,7 @@
     "receipt_status": "success",
     "slug": "super-vs-gemini-20260701-044018",
     "source_path": "sms_published_sites/super-vs-gemini-20260701-044018",
-    "title": "Super vs Gemini \u2014 personal AI agents for real computer work"
+    "title": "Super vs Gemini — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "openagent.studio",
@@ -1059,7 +1080,7 @@
     "receipt_status": "success",
     "slug": "super-for-real-estate-agents-managing-follow-ups-listings-20260630-015027",
     "source_path": "sms_published_sites/super-for-real-estate-agents-managing-follow-ups-listings-20260630-015027",
-    "title": "Super for real estate agents managing follow\u2011ups, listings, and scheduling"
+    "title": "Super for real estate agents managing follow‑ups, listings, and scheduling"
   },
   {
     "assigned_domain": "openagent.studio",
@@ -1104,7 +1125,7 @@
     "receipt_status": "success",
     "slug": "super-vs-siri",
     "source_path": "sms_published_sites/super-vs-siri",
-    "title": "Super vs Siri \u2014 personal AI agents compared"
+    "title": "Super vs Siri — personal AI agents compared"
   },
   {
     "assigned_domain": "openagent.studio",
@@ -1120,5 +1141,27 @@
     "slug": "personal-ai-agent-news",
     "source_path": "sms_published_sites/personal-ai-agent-news",
     "title": "Personal AI Agent Market Brief"
+  },
+  {
+    "assigned_domain": "openagent.studio",
+    "assigned_slot": "ai-assistant-directories",
+    "assigned_url": "https://openagent.studio/normalizing-flow-invertible-density-jacobian-lab-20260813-102858/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "normalizing_flow_invertible_density_jacobian_lab",
+    "content_kind_label": "Normalizing Flow Invertible Density Jacobian Lab",
+    "direct_generated": true,
+    "github_commit": "99e10f83d8d74738b0ba1860151ae7b1ed383e9a",
+    "github_url": "https://github.com/rohanarun/super-agent-news-normalizing-flow-invertible-density-jacobian-lab-20260813-102858",
+    "live_url": "https://openagent.studio/normalizing-flow-invertible-density-jacobian-lab-20260813-102858/",
+    "receipt_created_at": "2026-08-13T10:28:58.604+00:00",
+    "receipt_status": "success",
+    "slug": "normalizing-flow-invertible-density-jacobian-lab-20260813-102858",
+    "source_path": "sms_published_sites/normalizing-flow-invertible-density-jacobian-lab-20260813-102858",
+    "target_slot": "ai-assistant-directories",
+    "title": "Density Flow Lab: Invertible Maps and Exact Likelihood"
   }
 ]
