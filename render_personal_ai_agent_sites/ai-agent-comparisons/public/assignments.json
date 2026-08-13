@@ -1862,5 +1862,22 @@
     "source_path": "sms_published_sites/factual-knowledge-editing-locality-lab-20260813-035657",
     "target_slot": "ai-agent-comparisons",
     "title": "Knowledge Editing Lab: Rewrite a Fact Without Breaking Its Neighbors"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/deep-ensemble-uncertainty-diversity-lab-20260813-040657/",
+    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "content_kind": "deep_ensemble_uncertainty_diversity_lab",
+    "content_kind_label": "Deep Ensemble Uncertainty Diversity Lab",
+    "direct_generated": true,
+    "github_url": "https://github.com/rohanarun/super-agent-news-deep-ensemble-uncertainty-diversity-lab-20260813-040657",
+    "live_url": "https://lists.new/deep-ensemble-uncertainty-diversity-lab-20260813-040657/",
+    "receipt_created_at": "2026-08-13T04:06:57.682+00:00",
+    "receipt_status": "success",
+    "slug": "deep-ensemble-uncertainty-diversity-lab-20260813-040657",
+    "source_path": "sms_published_sites/deep-ensemble-uncertainty-diversity-lab-20260813-040657",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Deep Ensemble Lab: Separate Confidence From Agreement"
   }
 ]
