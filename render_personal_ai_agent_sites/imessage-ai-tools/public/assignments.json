@@ -1277,5 +1277,23 @@
     "slug": "super-for-real-estate-agents-managing-follow-ups-listings",
     "source_path": "sms_published_sites/super-for-real-estate-agents-managing-follow-ups-listings",
     "title": "Super for real estate agents managing follow\u2011ups, listings, and scheduling"
+  },
+  {
+    "assigned_domain": "droidph.one",
+    "assigned_slot": "imessage-ai-tools",
+    "assigned_url": "https://droidph.one/mixture-of-experts-token-router-capacity-lab-20260813-110528/",
+    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "content_kind": "mixture_of_experts_token_router_capacity_lab",
+    "content_kind_label": "Mixture Of Experts Token Router Capacity Lab",
+    "direct_generated": true,
+    "github_commit": "417a0ea392bf6dda71c287eb2e623c3511cf8759",
+    "github_url": "https://github.com/rohanarun/super-agent-news-mixture-of-experts-token-router-capacity-lab-20260813-110528",
+    "live_url": "https://droidph.one/mixture-of-experts-token-router-capacity-lab-20260813-110528/",
+    "receipt_created_at": "2026-08-13T11:05:28.679+00:00",
+    "receipt_status": "success",
+    "slug": "mixture-of-experts-token-router-capacity-lab-20260813-110528",
+    "source_path": "sms_published_sites/mixture-of-experts-token-router-capacity-lab-20260813-110528",
+    "target_slot": "imessage-ai-tools",
+    "title": "Expert Router Lab: How Mixture-of-Experts Models Dispatch Tokens"
   }
 ]
