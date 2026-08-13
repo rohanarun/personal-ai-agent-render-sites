@@ -2103,5 +2103,23 @@
     "source_path": "sms_published_sites/shampoo-matrix-preconditioning-optimizer-geometry-lab-20260813-063858",
     "target_slot": "ai-agent-comparisons",
     "title": "Shampoo Optimizer Lab: Precondition Matrix Gradients"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/elastic-weight-consolidation-catastrophic-forgetting-lab-20260813-065328/",
+    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "content_kind": "elastic_weight_consolidation_catastrophic_forgetting_lab",
+    "content_kind_label": "Elastic Weight Consolidation Catastrophic Forgetting Lab",
+    "direct_generated": true,
+    "github_commit": "0831b163425c7ed9292852ff2601ef2f042cbc9c",
+    "github_url": "https://github.com/rohanarun/super-agent-news-elastic-weight-consolidation-catastrophic-forgetting-lab-20260813-065328",
+    "live_url": "https://lists.new/elastic-weight-consolidation-catastrophic-forgetting-lab-20260813-065328/",
+    "receipt_created_at": "2026-08-13T06:53:28.162+00:00",
+    "receipt_status": "success",
+    "slug": "elastic-weight-consolidation-catastrophic-forgetting-lab-20260813-065328",
+    "source_path": "sms_published_sites/elastic-weight-consolidation-catastrophic-forgetting-lab-20260813-065328",
+    "target_slot": "ai-agent-comparisons",
+    "title": "EWC Lab: Learn a New Task Without Erasing the Old One"
   }
 ]
