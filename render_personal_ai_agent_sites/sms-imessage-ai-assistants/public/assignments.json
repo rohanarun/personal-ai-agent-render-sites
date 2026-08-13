@@ -1178,5 +1178,23 @@
     "slug": "super-for-ecommerce-operators-monitoring-orders-support-an",
     "source_path": "sms_published_sites/super-for-ecommerce-operators-monitoring-orders-support-an",
     "title": "Super for ecommerce operators monitoring orders, support, and repetitive admin"
+  },
+  {
+    "assigned_domain": "driodphone.com",
+    "assigned_slot": "sms-imessage-ai-assistants",
+    "assigned_url": "https://driodphone.com/agent-tool-backpressure-retry-queue-lab-20260813-111528/",
+    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "content_kind": "agent_tool_backpressure_retry_queue_lab",
+    "content_kind_label": "Agent Tool Backpressure Retry Queue Lab",
+    "direct_generated": true,
+    "github_commit": "dac6393f8f20d8362b7b5a6e1d95d794e48be0f6",
+    "github_url": "https://github.com/rohanarun/super-agent-news-agent-tool-backpressure-retry-queue-lab-20260813-111528",
+    "live_url": "https://driodphone.com/agent-tool-backpressure-retry-queue-lab-20260813-111528/",
+    "receipt_created_at": "2026-08-13T11:15:28.720+00:00",
+    "receipt_status": "success",
+    "slug": "agent-tool-backpressure-retry-queue-lab-20260813-111528",
+    "source_path": "sms_published_sites/agent-tool-backpressure-retry-queue-lab-20260813-111528",
+    "target_slot": "sms-imessage-ai-assistants",
+    "title": "Backpressure Lab: Keep Agent Tool Calls Out of Overload Collapse"
   }
 ]
