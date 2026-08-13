@@ -2265,5 +2265,23 @@
     "source_path": "sms_published_sites/neural-processes-function-distribution-conditioning-lab-20260813-085958",
     "target_slot": "ai-agent-comparisons",
     "title": "Neural Processes Lab: Condition a Distribution Over Functions"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/randomized-prior-functions-epistemic-uncertainty-lab-20260813-090958/",
+    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "content_kind": "randomized_prior_functions_epistemic_uncertainty_lab",
+    "content_kind_label": "Randomized Prior Functions Epistemic Uncertainty Lab",
+    "direct_generated": true,
+    "github_commit": "3dabac02700db416a1345702df3e05eb5677ff88",
+    "github_url": "https://github.com/rohanarun/super-agent-news-randomized-prior-functions-epistemic-uncertainty-lab-20260813-090958",
+    "live_url": "https://lists.new/randomized-prior-functions-epistemic-uncertainty-lab-20260813-090958/",
+    "receipt_created_at": "2026-08-13T09:09:58.399+00:00",
+    "receipt_status": "success",
+    "slug": "randomized-prior-functions-epistemic-uncertainty-lab-20260813-090958",
+    "source_path": "sms_published_sites/randomized-prior-functions-epistemic-uncertainty-lab-20260813-090958",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Randomized Prior Functions Lab: Keep Uncertainty Beyond the Data"
   }
 ]
