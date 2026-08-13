@@ -1981,5 +1981,22 @@
     "source_path": "sms_published_sites/lost-in-the-middle-long-context-retrieval-lab-20260813-050927",
     "target_slot": "ai-agent-comparisons",
     "title": "Lost-in-the-Middle Lab: Find the Fact Inside a Long Context"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/constitutional-ai-critique-revision-lab-20260813-051957/",
+    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "content_kind": "constitutional_ai_critique_revision_lab",
+    "content_kind_label": "Constitutional AI Critique Revision Lab",
+    "direct_generated": true,
+    "github_url": "https://github.com/rohanarun/super-agent-news-constitutional-ai-critique-revision-lab-20260813-051957",
+    "live_url": "https://lists.new/constitutional-ai-critique-revision-lab-20260813-051957/",
+    "receipt_created_at": "2026-08-13T05:19:57.670+00:00",
+    "receipt_status": "success",
+    "slug": "constitutional-ai-critique-revision-lab-20260813-051957",
+    "source_path": "sms_published_sites/constitutional-ai-critique-revision-lab-20260813-051957",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Constitutional AI Lab: Critique, Revise, Audit"
   }
 ]
