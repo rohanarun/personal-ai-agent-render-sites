@@ -1,11 +1,57 @@
 [
-  {"assigned_domain":"parsercheat.com","assigned_slot":"computer-use-ai-agents","assigned_url":"https://parsercheat.com/zero-fsdp-state-sharding-memory-lab-20260712-010107/","backlinks":["https://getsupers.com/","https://app.getsupers.com/use-cases/computer-use-cache/","https://app.getsupers.com/use-cases/ai-agent-build-websites/"],"cheatlayer_url":"","content_kind":"zero_fsdp_memory_lab","content_kind_label":"ZeRO and FSDP Memory Lab","direct_generated":true,"github_url":"","live_url":"https://parsercheat.com/zero-fsdp-state-sharding-memory-lab-20260712-010107/","receipt_created_at":"2026-07-12T01:01:07.765+00:00","receipt_status":"success","slug":"zero-fsdp-state-sharding-memory-lab-20260712-010107","source_path":"sms_published_sites/zero-fsdp-state-sharding-memory-lab-20260712-010107","target_slot":"computer-use-ai-agents","title":"ZeRO and FSDP Lab: Shard Model States Across Devices"},
-  {"assigned_domain":"parsercheat.com","assigned_slot":"computer-use-ai-agents","assigned_url":"https://parsercheat.com/flashattention-io-aware-tiling-lab-20260711-230831/","backlinks":["https://getsupers.com/","https://app.getsupers.com/use-cases/computer-use-cache/","https://app.getsupers.com/use-cases/ai-agent-build-websites/"],"cheatlayer_url":"","content_kind":"flashattention_io_lab","content_kind_label":"FlashAttention IO Lab","direct_generated":true,"github_url":"","live_url":"https://parsercheat.com/flashattention-io-aware-tiling-lab-20260711-230831/","receipt_created_at":"2026-07-11T23:08:31.876+00:00","receipt_status":"success","slug":"flashattention-io-aware-tiling-lab-20260711-230831","source_path":"sms_published_sites/flashattention-io-aware-tiling-lab-20260711-230831","target_slot":"computer-use-ai-agents","title":"FlashAttention Lab: Tiling, IO, and Exact Attention"},
+  {
+    "assigned_domain": "parsercheat.com",
+    "assigned_slot": "computer-use-ai-agents",
+    "assigned_url": "https://parsercheat.com/zero-fsdp-state-sharding-memory-lab-20260712-010107/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "zero_fsdp_memory_lab",
+    "content_kind_label": "ZeRO and FSDP Memory Lab",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://parsercheat.com/zero-fsdp-state-sharding-memory-lab-20260712-010107/",
+    "receipt_created_at": "2026-07-12T01:01:07.765+00:00",
+    "receipt_status": "success",
+    "slug": "zero-fsdp-state-sharding-memory-lab-20260712-010107",
+    "source_path": "sms_published_sites/zero-fsdp-state-sharding-memory-lab-20260712-010107",
+    "target_slot": "computer-use-ai-agents",
+    "title": "ZeRO and FSDP Lab: Shard Model States Across Devices"
+  },
+  {
+    "assigned_domain": "parsercheat.com",
+    "assigned_slot": "computer-use-ai-agents",
+    "assigned_url": "https://parsercheat.com/flashattention-io-aware-tiling-lab-20260711-230831/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "flashattention_io_lab",
+    "content_kind_label": "FlashAttention IO Lab",
+    "direct_generated": true,
+    "github_url": "",
+    "live_url": "https://parsercheat.com/flashattention-io-aware-tiling-lab-20260711-230831/",
+    "receipt_created_at": "2026-07-11T23:08:31.876+00:00",
+    "receipt_status": "success",
+    "slug": "flashattention-io-aware-tiling-lab-20260711-230831",
+    "source_path": "sms_published_sites/flashattention-io-aware-tiling-lab-20260711-230831",
+    "target_slot": "computer-use-ai-agents",
+    "title": "FlashAttention Lab: Tiling, IO, and Exact Attention"
+  },
   {
     "assigned_domain": "parsercheat.com",
     "assigned_slot": "computer-use-ai-agents",
     "assigned_url": "https://parsercheat.com/monte-carlo-dropout-uncertainty-abstention-lab-20260711-204241/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/computer-use-cache/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/"
+    ],
     "cheatlayer_url": "",
     "content_kind": "mc_dropout_uncertainty_lab",
     "content_kind_label": "MC Dropout Uncertainty Lab",
@@ -297,7 +343,7 @@
     "receipt_status": "success",
     "slug": "super-vs-siri-20260706-174706",
     "source_path": "sms_published_sites/super-vs-siri-20260706-174706",
-    "title": "Super vs Siri \u2014 personal AI agents for real computer work"
+    "title": "Super vs Siri — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "parsercheat.com",
@@ -357,7 +403,7 @@
     "receipt_status": "success",
     "slug": "super-vs-grok-20260706-111500",
     "source_path": "sms_published_sites/super-vs-grok-20260706-111500",
-    "title": "Super vs Grok \u2014 personal AI agents for real computer work"
+    "title": "Super vs Grok — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "parsercheat.com",
@@ -372,7 +418,7 @@
     "receipt_status": "success",
     "slug": "super-vs-siri-20260706-104402",
     "source_path": "sms_published_sites/super-vs-siri-20260706-104402",
-    "title": "Super vs Siri \u2014 personal AI agents compared for real computer work"
+    "title": "Super vs Siri — personal AI agents compared for real computer work"
   },
   {
     "assigned_domain": "parsercheat.com",
@@ -402,7 +448,7 @@
     "receipt_status": "success",
     "slug": "super-vs-siri-20260706-072821",
     "source_path": "sms_published_sites/super-vs-siri-20260706-072821",
-    "title": "Super vs Siri \u2014 personal AI agents for real computer work"
+    "title": "Super vs Siri — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "parsercheat.com",
@@ -462,7 +508,7 @@
     "receipt_status": "success",
     "slug": "super-vs-siri-20260706-005209",
     "source_path": "sms_published_sites/super-vs-siri-20260706-005209",
-    "title": "Super vs Siri \u2014 Personal AI Agents Compared for Real Computer Work"
+    "title": "Super vs Siri — Personal AI Agents Compared for Real Computer Work"
   },
   {
     "assigned_domain": "parsercheat.com",
@@ -477,7 +523,7 @@
     "receipt_status": "success",
     "slug": "super-vs-grok-20260705-025915",
     "source_path": "sms_published_sites/super-vs-grok-20260705-025915",
-    "title": "Super vs Grok \u2014 personal AI agents compared for real computer work"
+    "title": "Super vs Grok — personal AI agents compared for real computer work"
   },
   {
     "assigned_domain": "parsercheat.com",
@@ -492,7 +538,7 @@
     "receipt_status": "success",
     "slug": "super-for-real-estate-agents-managing-follow-ups-listings-20260705-001911",
     "source_path": "sms_published_sites/super-for-real-estate-agents-managing-follow-ups-listings-20260705-001911",
-    "title": "Super for real estate agents managing follow\u2011ups, listings, and scheduling"
+    "title": "Super for real estate agents managing follow‑ups, listings, and scheduling"
   },
   {
     "assigned_domain": "parsercheat.com",
@@ -507,7 +553,7 @@
     "receipt_status": "success",
     "slug": "super-vs-grok-20260704-224835",
     "source_path": "sms_published_sites/super-vs-grok-20260704-224835",
-    "title": "Super vs Grok \u2014 Personal AI Agents for Real Computer Work"
+    "title": "Super vs Grok — Personal AI Agents for Real Computer Work"
   },
   {
     "assigned_domain": "parsercheat.com",
@@ -537,7 +583,7 @@
     "receipt_status": "success",
     "slug": "super-vs-chatgpt-20260704-191830",
     "source_path": "sms_published_sites/super-vs-chatgpt-20260704-191830",
-    "title": "Super vs ChatGPT \u2014 personal AI agents compared for real computer work"
+    "title": "Super vs ChatGPT — personal AI agents compared for real computer work"
   },
   {
     "assigned_domain": "parsercheat.com",
@@ -567,7 +613,7 @@
     "receipt_status": "success",
     "slug": "super-vs-siri-20260704-155631",
     "source_path": "sms_published_sites/super-vs-siri-20260704-155631",
-    "title": "Super vs Siri \u2014 personal AI agents for real computer work"
+    "title": "Super vs Siri — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "parsercheat.com",
@@ -597,7 +643,7 @@
     "receipt_status": "success",
     "slug": "super-vs-siri-20260704-061546",
     "source_path": "sms_published_sites/super-vs-siri-20260704-061546",
-    "title": "Super vs Siri \u2014 personal AI agents compared for real computer work"
+    "title": "Super vs Siri — personal AI agents compared for real computer work"
   },
   {
     "assigned_domain": "parsercheat.com",
@@ -657,7 +703,7 @@
     "receipt_status": "success",
     "slug": "super-vs-orchids-20260703-233618",
     "source_path": "sms_published_sites/super-vs-orchids-20260703-233618",
-    "title": "Super vs Orchids \u2014 Personal AI Agents Compared"
+    "title": "Super vs Orchids — Personal AI Agents Compared"
   },
   {
     "assigned_domain": "parsercheat.com",
@@ -672,7 +718,7 @@
     "receipt_status": "success",
     "slug": "super-vs-gemini-20260703-205613",
     "source_path": "sms_published_sites/super-vs-gemini-20260703-205613",
-    "title": "Super vs Gemini \u2014 personal AI agents for real computer work"
+    "title": "Super vs Gemini — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "parsercheat.com",
@@ -687,7 +733,7 @@
     "receipt_status": "success",
     "slug": "super-for-real-estate-agents-managing-follow-ups-listings-20260703-192848",
     "source_path": "sms_published_sites/super-for-real-estate-agents-managing-follow-ups-listings-20260703-192848",
-    "title": "Super for real estate agents managing follow\u2011ups, listings, and scheduling"
+    "title": "Super for real estate agents managing follow‑ups, listings, and scheduling"
   },
   {
     "assigned_domain": "parsercheat.com",
@@ -702,7 +748,7 @@
     "receipt_status": "success",
     "slug": "super-vs-chatgpt-20260703-174057",
     "source_path": "sms_published_sites/super-vs-chatgpt-20260703-174057",
-    "title": "Super vs ChatGPT \u2014 personal AI agents compared"
+    "title": "Super vs ChatGPT — personal AI agents compared"
   },
   {
     "assigned_domain": "parsercheat.com",
@@ -732,7 +778,7 @@
     "receipt_status": "success",
     "slug": "super-vs-chatgpt-20260703-143055",
     "source_path": "sms_published_sites/super-vs-chatgpt-20260703-143055",
-    "title": "Super vs ChatGPT \u2014 personal AI agents for real computer work"
+    "title": "Super vs ChatGPT — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "parsercheat.com",
@@ -792,7 +838,7 @@
     "receipt_status": "success",
     "slug": "super-vs-orchids-20260703-075049",
     "source_path": "sms_published_sites/super-vs-orchids-20260703-075049",
-    "title": "Super vs Orchids \u2014 personal AI agents for real computer work"
+    "title": "Super vs Orchids — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "parsercheat.com",
@@ -807,7 +853,7 @@
     "receipt_status": "success",
     "slug": "super-vs-grok-20260703-052625",
     "source_path": "sms_published_sites/super-vs-grok-20260703-052625",
-    "title": "Super vs Grok \u2014 personal AI agents for real computer work"
+    "title": "Super vs Grok — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "parsercheat.com",
@@ -822,7 +868,7 @@
     "receipt_status": "success",
     "slug": "super-for-real-estate-agents-managing-follow-ups-listings-20260703-034618",
     "source_path": "sms_published_sites/super-for-real-estate-agents-managing-follow-ups-listings-20260703-034618",
-    "title": "Super for real estate agents managing follow\u2011ups, listings, and scheduling"
+    "title": "Super for real estate agents managing follow‑ups, listings, and scheduling"
   },
   {
     "assigned_domain": "parsercheat.com",
@@ -837,7 +883,7 @@
     "receipt_status": "success",
     "slug": "super-vs-chatgpt-20260703-015518",
     "source_path": "sms_published_sites/super-vs-chatgpt-20260703-015518",
-    "title": "Super vs ChatGPT \u2014 personal AI agents for real computer work"
+    "title": "Super vs ChatGPT — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "parsercheat.com",
@@ -867,7 +913,7 @@
     "receipt_status": "success",
     "slug": "super-vs-chatgpt-20260702-224318",
     "source_path": "sms_published_sites/super-vs-chatgpt-20260702-224318",
-    "title": "Super vs ChatGPT \u2014 personal AI agents for real computer work"
+    "title": "Super vs ChatGPT — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "parsercheat.com",
@@ -927,7 +973,7 @@
     "receipt_status": "success",
     "slug": "super-vs-grok-20260702-021550",
     "source_path": "sms_published_sites/super-vs-grok-20260702-021550",
-    "title": "Super vs Grok \u2014 personal AI agents for real computer work"
+    "title": "Super vs Grok — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "parsercheat.com",
@@ -957,7 +1003,7 @@
     "receipt_status": "success",
     "slug": "super-vs-folk-20260701-221159",
     "source_path": "sms_published_sites/super-vs-folk-20260701-221159",
-    "title": "Super vs Folk \u2014 personal AI agents for real computer work"
+    "title": "Super vs Folk — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "parsercheat.com",
@@ -972,7 +1018,7 @@
     "receipt_status": "success",
     "slug": "super-for-real-estate-agents-managing-follow-ups-listings-20260701-212038",
     "source_path": "sms_published_sites/super-for-real-estate-agents-managing-follow-ups-listings-20260701-212038",
-    "title": "Super for real estate agents managing follow\u2011ups, listings, and scheduling"
+    "title": "Super for real estate agents managing follow‑ups, listings, and scheduling"
   },
   {
     "assigned_domain": "parsercheat.com",
@@ -987,7 +1033,7 @@
     "receipt_status": "success",
     "slug": "super-vs-gemini-20260701-193955",
     "source_path": "sms_published_sites/super-vs-gemini-20260701-193955",
-    "title": "Super vs Gemini \u2014 personal AI agents for real computer work"
+    "title": "Super vs Gemini — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "parsercheat.com",
@@ -1002,7 +1048,7 @@
     "receipt_status": "success",
     "slug": "super-for-real-estate-agents-managing-follow-ups-listings-20260701-180951",
     "source_path": "sms_published_sites/super-for-real-estate-agents-managing-follow-ups-listings-20260701-180951",
-    "title": "Super for real estate agents managing follow\u2011ups, listings, and scheduling"
+    "title": "Super for real estate agents managing follow‑ups, listings, and scheduling"
   },
   {
     "assigned_domain": "parsercheat.com",
@@ -1032,7 +1078,7 @@
     "receipt_status": "success",
     "slug": "super-vs-chatgpt-20260701-105055",
     "source_path": "sms_published_sites/super-vs-chatgpt-20260701-105055",
-    "title": "Super vs ChatGPT \u2014 Personal AI Agents for Real Computer Work"
+    "title": "Super vs ChatGPT — Personal AI Agents for Real Computer Work"
   },
   {
     "assigned_domain": "parsercheat.com",
@@ -1047,7 +1093,7 @@
     "receipt_status": "success",
     "slug": "super-vs-folk-20260701-102101",
     "source_path": "sms_published_sites/super-vs-folk-20260701-102101",
-    "title": "Super vs Folk \u2014 Personal AI Agents Compared"
+    "title": "Super vs Folk — Personal AI Agents Compared"
   },
   {
     "assigned_domain": "parsercheat.com",
@@ -1092,7 +1138,7 @@
     "receipt_status": "success",
     "slug": "super-vs-siri-20260701-042020",
     "source_path": "sms_published_sites/super-vs-siri-20260701-042020",
-    "title": "Super vs Siri \u2014 personal AI agents compared"
+    "title": "Super vs Siri — personal AI agents compared"
   },
   {
     "assigned_domain": "parsercheat.com",
@@ -1167,7 +1213,7 @@
     "receipt_status": "success",
     "slug": "super-vs-folk",
     "source_path": "sms_published_sites/super-vs-folk",
-    "title": "Super vs Folk \u2014 personal AI agents for real computer work"
+    "title": "Super vs Folk — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "parsercheat.com",
@@ -1183,8 +1229,8 @@
     "slug": "super-for-local-service-businesses-handling-bookings-quote",
     "source_path": "sms_published_sites/super-for-local-service-businesses-handling-bookings-quote",
     "title": "Super for local service businesses handling bookings, quotes, and customer replies"
-  }
-  ,{
+  },
+  {
     "assigned_domain": "parsercheat.com",
     "assigned_slot": "computer-use-ai-agents",
     "assigned_url": "https://parsercheat.com/speculative-decoding-verification-lab-20260712-041545/",
@@ -1203,8 +1249,8 @@
     "source_path": "sms_published_sites/speculative-decoding-verification-lab-20260712-041545",
     "target_slot": "computer-use-ai-agents",
     "title": "Speculative Decoding Verification Lab: Draft Tokens and Throughput"
-  }
-  ,{
+  },
+  {
     "assigned_domain": "parsercheat.com",
     "assigned_slot": "computer-use-ai-agents",
     "assigned_url": "https://parsercheat.com/sparse-autoencoder-feature-dictionary-lab-20260812-125328/",
@@ -1223,8 +1269,8 @@
     "source_path": "sms_published_sites/sparse-autoencoder-feature-dictionary-lab-20260812-125328",
     "target_slot": "computer-use-ai-agents",
     "title": "Sparse Autoencoder Feature Lab: From Neurons to Features"
-  }
-  ,{
+  },
+  {
     "assigned_domain": "parsercheat.com",
     "assigned_slot": "computer-use-ai-agents",
     "assigned_url": "https://parsercheat.com/locally-typical-sampling-decoder-lab-20260812-135658/",
@@ -1243,8 +1289,8 @@
     "source_path": "sms_published_sites/locally-typical-sampling-decoder-lab-20260812-135658",
     "target_slot": "computer-use-ai-agents",
     "title": "Locally Typical Sampling Lab: Decode Near the Entropy"
-  }
-  ,{
+  },
+  {
     "assigned_domain": "parsercheat.com",
     "assigned_slot": "computer-use-ai-agents",
     "assigned_url": "https://parsercheat.com/schema-constrained-json-decoding-lab-20260812-141628/",
@@ -1265,8 +1311,8 @@
     "source_path": "sms_published_sites/schema-constrained-json-decoding-lab-20260812-141628",
     "target_slot": "computer-use-ai-agents",
     "title": "Schema-Constrained Decoding Lab: Mask Invalid Tokens"
-  }
-  ,{
+  },
+  {
     "assigned_domain": "parsercheat.com",
     "assigned_slot": "computer-use-ai-agents",
     "assigned_url": "https://parsercheat.com/indirect-prompt-injection-taint-tracker-lab-20260812-173758/",
@@ -1292,7 +1338,11 @@
     "assigned_domain": "parsercheat.com",
     "assigned_slot": "computer-use-ai-agents",
     "assigned_url": "https://parsercheat.com/off-policy-evaluation-doubly-robust-agent-policy-lab-20260813-074028/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/computer-use-cache/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/"
+    ],
     "content_kind": "off_policy_evaluation_doubly_robust_agent_policy_lab",
     "content_kind_label": "Off Policy Evaluation Doubly Robust Agent Policy Lab",
     "direct_generated": true,
@@ -1305,5 +1355,27 @@
     "source_path": "sms_published_sites/off-policy-evaluation-doubly-robust-agent-policy-lab-20260813-074028",
     "target_slot": "computer-use-ai-agents",
     "title": "Off-Policy Evaluation Lab: Test an Agent Before Deployment"
+  },
+  {
+    "assigned_domain": "parsercheat.com",
+    "assigned_slot": "computer-use-ai-agents",
+    "assigned_url": "https://parsercheat.com/mixture-of-experts-router-capacity-load-balance-lab-20260813-100828/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "mixture_of_experts_router_capacity_load_balance_lab",
+    "content_kind_label": "Mixture of Experts Router Capacity Load Balance Lab",
+    "direct_generated": true,
+    "github_commit": "6b61249046e144fd26f270363ef8c9ded5f084dc",
+    "github_url": "https://github.com/rohanarun/super-agent-news-mixture-of-experts-router-capacity-load-balance-lab-20260813-100828",
+    "live_url": "https://parsercheat.com/mixture-of-experts-router-capacity-load-balance-lab-20260813-100828/",
+    "receipt_created_at": "2026-08-13T10:08:28.501+00:00",
+    "receipt_status": "success",
+    "slug": "mixture-of-experts-router-capacity-load-balance-lab-20260813-100828",
+    "source_path": "sms_published_sites/mixture-of-experts-router-capacity-load-balance-lab-20260813-100828",
+    "target_slot": "computer-use-ai-agents",
+    "title": "Expert Router Lab: Capacity, Balance, and Token Drops"
   }
 ]
