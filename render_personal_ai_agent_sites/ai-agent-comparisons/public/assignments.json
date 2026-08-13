@@ -1913,5 +1913,22 @@
     "source_path": "sms_published_sites/mixture-of-depths-token-routing-lab-20260813-042757",
     "target_slot": "ai-agent-comparisons",
     "title": "Mixture-of-Depths Lab: Route Compute to the Tokens That Need It"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/process-supervision-reward-hacking-lab-20260813-043827/",
+    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "content_kind": "process_supervision_reward_hacking_lab",
+    "content_kind_label": "Process Supervision Reward Hacking Lab",
+    "direct_generated": true,
+    "github_url": "https://github.com/rohanarun/super-agent-news-process-supervision-reward-hacking-lab-20260813-043827",
+    "live_url": "https://lists.new/process-supervision-reward-hacking-lab-20260813-043827/",
+    "receipt_created_at": "2026-08-13T04:38:27.572+00:00",
+    "receipt_status": "success",
+    "slug": "process-supervision-reward-hacking-lab-20260813-043827",
+    "source_path": "sms_published_sites/process-supervision-reward-hacking-lab-20260813-043827",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Process Supervision Lab: Catch Correct Answers With Broken Reasoning"
   }
 ]
