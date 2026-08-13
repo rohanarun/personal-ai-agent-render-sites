@@ -1141,27 +1141,5 @@
     "slug": "personal-ai-agent-news",
     "source_path": "sms_published_sites/personal-ai-agent-news",
     "title": "Personal AI Agent Market Brief"
-  },
-  {
-    "assigned_domain": "openagent.studio",
-    "assigned_slot": "ai-assistant-directories",
-    "assigned_url": "https://openagent.studio/normalizing-flow-invertible-density-jacobian-lab-20260813-102858/",
-    "backlinks": [
-      "https://getsupers.com/",
-      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
-      "https://app.getsupers.com/use-cases/computer-use-cache/"
-    ],
-    "content_kind": "normalizing_flow_invertible_density_jacobian_lab",
-    "content_kind_label": "Normalizing Flow Invertible Density Jacobian Lab",
-    "direct_generated": true,
-    "github_commit": "99e10f83d8d74738b0ba1860151ae7b1ed383e9a",
-    "github_url": "https://github.com/rohanarun/super-agent-news-normalizing-flow-invertible-density-jacobian-lab-20260813-102858",
-    "live_url": "https://openagent.studio/normalizing-flow-invertible-density-jacobian-lab-20260813-102858/",
-    "receipt_created_at": "2026-08-13T10:28:58.604+00:00",
-    "receipt_status": "success",
-    "slug": "normalizing-flow-invertible-density-jacobian-lab-20260813-102858",
-    "source_path": "sms_published_sites/normalizing-flow-invertible-density-jacobian-lab-20260813-102858",
-    "target_slot": "ai-assistant-directories",
-    "title": "Density Flow Lab: Invertible Maps and Exact Likelihood"
   }
 ]

@@ -2503,5 +2503,27 @@
     "source_path": "sms_published_sites/pcgrad-gradient-surgery-multitask-conflict-lab-20260813-095658",
     "target_slot": "ai-agent-comparisons",
     "title": "Gradient Surgery Lab: Stop Multi-Task Objectives From Fighting"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/normalizing-flow-invertible-density-jacobian-lab-20260813-102858/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "normalizing_flow_invertible_density_jacobian_lab",
+    "content_kind_label": "Normalizing Flow Invertible Density Jacobian Lab",
+    "direct_generated": true,
+    "github_commit": "560ad4d053fb60b5cefa9ad82651d43656700974",
+    "github_url": "https://github.com/rohanarun/super-agent-news-normalizing-flow-invertible-density-jacobian-lab-20260813-102858",
+    "live_url": "https://lists.new/normalizing-flow-invertible-density-jacobian-lab-20260813-102858/",
+    "receipt_created_at": "2026-08-13T10:28:58.604+00:00",
+    "receipt_status": "success",
+    "slug": "normalizing-flow-invertible-density-jacobian-lab-20260813-102858",
+    "source_path": "sms_published_sites/normalizing-flow-invertible-density-jacobian-lab-20260813-102858",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Density Flow Lab: Invertible Maps and Exact Likelihood"
   }
 ]
