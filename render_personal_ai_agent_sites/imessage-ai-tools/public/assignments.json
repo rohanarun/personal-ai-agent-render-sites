@@ -1295,5 +1295,23 @@
     "source_path": "sms_published_sites/mixture-of-experts-token-router-capacity-lab-20260813-110528",
     "target_slot": "imessage-ai-tools",
     "title": "Expert Router Lab: How Mixture-of-Experts Models Dispatch Tokens"
+  },
+  {
+    "assigned_domain": "droidph.one",
+    "assigned_slot": "imessage-ai-tools",
+    "assigned_url": "https://droidph.one/kll-quantile-sketch-agent-latency-lab-20260813-135420/",
+    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "content_kind": "kll_quantile_sketch_agent_latency_lab",
+    "content_kind_label": "KLL Quantile Sketch Agent Latency Lab",
+    "direct_generated": true,
+    "github_commit": "5111f29b97e91cf3e3fde0c01be8bdf39359c2f6",
+    "github_url": "https://github.com/rohanarun/super-agent-news-kll-quantile-sketch-agent-latency-lab-20260813-135420",
+    "live_url": "https://droidph.one/kll-quantile-sketch-agent-latency-lab-20260813-135420/",
+    "receipt_created_at": "2026-08-13T13:53:00.460+00:00",
+    "receipt_status": "success",
+    "slug": "kll-quantile-sketch-agent-latency-lab-20260813-135420",
+    "source_path": "personal-ai-agent-news/kll-quantile-sketch-agent-latency-lab-20260813-135420",
+    "target_slot": "imessage-ai-tools",
+    "title": "KLL Latency Sketch Lab: Keep the Percentile, Lose the Payload"
   }
 ]
