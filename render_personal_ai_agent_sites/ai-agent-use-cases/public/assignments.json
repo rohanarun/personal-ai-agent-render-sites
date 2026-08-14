@@ -1631,5 +1631,28 @@
     "source_path": "ai-agent-use-cases/pid-agent-worker-autoscaling-lab-20260814-023217",
     "target_slot": "ai-agent-use-cases",
     "title": "PID Autoscaling Lab: Control an AI Agent Worker Queue"
+  },
+  {
+    "assigned_domain": "agentslayer.com",
+    "assigned_slot": "ai-agent-use-cases",
+    "assigned_url": "https://agentslayer.com/max-flow-agent-pipeline-bottleneck-lab-20260814-032447/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "max_flow_agent_pipeline_bottleneck_lab",
+    "content_kind_label": "Max Flow Agent Pipeline Bottleneck Lab",
+    "direct_generated": true,
+    "github_commit": "abe6997158201a72279365c01869eceeaaa29aac",
+    "github_url": "https://github.com/rohanarun/super-agent-news-max-flow-agent-pipeline-bottleneck-lab-20260814-032447",
+    "live_url": "https://agentslayer.com/max-flow-agent-pipeline-bottleneck-lab-20260814-032447/",
+    "receipt_created_at": "2026-08-14T03:24:47.050+00:00",
+    "receipt_status": "success",
+    "slug": "max-flow-agent-pipeline-bottleneck-lab-20260814-032447",
+    "source_path": "ai-agent-use-cases/max-flow-agent-pipeline-bottleneck-lab-20260814-032447",
+    "target_slot": "ai-agent-use-cases",
+    "title": "Agent Flow Lab: Find the Bottleneck Before It Finds You"
   }
 ]
