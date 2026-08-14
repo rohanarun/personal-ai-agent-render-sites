@@ -1585,5 +1585,28 @@
     "source_path": "ai-agent-use-cases/bully-leader-election-agent-coordinator-lab-20260814-001344",
     "target_slot": "ai-agent-use-cases",
     "title": "Bully Election Lab: Choose an Agent Coordinator"
+  },
+  {
+    "assigned_domain": "agentslayer.com",
+    "assigned_slot": "ai-agent-use-cases",
+    "assigned_url": "https://agentslayer.com/population-stability-index-agent-input-drift-lab-20260814-011645/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "population_stability_index_agent_input_drift_lab",
+    "content_kind_label": "Population Stability Index Agent Input Drift Lab",
+    "direct_generated": true,
+    "github_commit": "b95b0320b43b1b3f173380369f1d80703843ebb1",
+    "github_url": "https://github.com/rohanarun/super-agent-news-population-stability-index-agent-input-drift-lab-20260814-011645",
+    "live_url": "https://agentslayer.com/population-stability-index-agent-input-drift-lab-20260814-011645/",
+    "receipt_created_at": "2026-08-14T01:16:45.124+00:00",
+    "receipt_status": "success",
+    "slug": "population-stability-index-agent-input-drift-lab-20260814-011645",
+    "source_path": "ai-agent-use-cases/population-stability-index-agent-input-drift-lab-20260814-011645",
+    "target_slot": "ai-agent-use-cases",
+    "title": "PSI Lab: Measure Agent Input Distribution Drift"
   }
 ]
