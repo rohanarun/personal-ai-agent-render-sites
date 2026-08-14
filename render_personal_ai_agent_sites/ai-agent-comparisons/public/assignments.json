@@ -2730,5 +2730,28 @@
     "source_path": "ai-agent-comparisons/rendezvous-hashing-agent-job-remapping-lab-20260814-003445",
     "target_slot": "ai-agent-comparisons",
     "title": "Rendezvous Hashing Lab: Stable Agent Job Assignment"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/hungarian-algorithm-multi-agent-task-assignment-lab-20260814-021117/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "hungarian_algorithm_multi_agent_task_assignment_lab",
+    "content_kind_label": "Hungarian Algorithm Multi Agent Task Assignment Lab",
+    "direct_generated": true,
+    "github_commit": "0c2bbf504a08c90ce749d8d6e279dc0b66cef74d",
+    "github_url": "https://github.com/rohanarun/super-agent-news-hungarian-algorithm-multi-agent-task-assignment-lab-20260814-021117",
+    "live_url": "https://lists.new/hungarian-algorithm-multi-agent-task-assignment-lab-20260814-021117/",
+    "receipt_created_at": "2026-08-14T02:11:17.215+00:00",
+    "receipt_status": "success",
+    "slug": "hungarian-algorithm-multi-agent-task-assignment-lab-20260814-021117",
+    "source_path": "ai-agent-comparisons/hungarian-algorithm-multi-agent-task-assignment-lab-20260814-021117",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Hungarian Assignment Lab: Match Agents to Tasks Globally"
   }
 ]
