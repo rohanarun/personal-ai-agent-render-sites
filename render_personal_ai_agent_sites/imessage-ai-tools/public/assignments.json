@@ -1529,5 +1529,28 @@
     "source_path": "imessage-ai-tools/t-digest-agent-latency-quantile-lab-20260814-022147",
     "target_slot": "imessage-ai-tools",
     "title": "Tail Latency Lab: t-Digest Quantiles for Agent Traces"
+  },
+  {
+    "assigned_domain": "droidph.one",
+    "assigned_slot": "imessage-ai-tools",
+    "assigned_url": "https://droidph.one/union-find-agent-identity-resolution-lab-20260814-034647/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "union_find_agent_identity_resolution_lab",
+    "content_kind_label": "Union Find Agent Identity Resolution Lab",
+    "direct_generated": true,
+    "github_commit": "db1bb8986d721c12b36822525c0402b4ab03b1f6",
+    "github_url": "https://github.com/rohanarun/super-agent-news-union-find-agent-identity-resolution-lab-20260814-034647",
+    "live_url": "https://droidph.one/union-find-agent-identity-resolution-lab-20260814-034647/",
+    "receipt_created_at": "2026-08-14T03:46:47.082+00:00",
+    "receipt_status": "success",
+    "slug": "union-find-agent-identity-resolution-lab-20260814-034647",
+    "source_path": "imessage-ai-tools/union-find-agent-identity-resolution-lab-20260814-034647",
+    "target_slot": "imessage-ai-tools",
+    "title": "Identity Forest Lab: Resolve Agent Users with Union-Find"
   }
 ]
