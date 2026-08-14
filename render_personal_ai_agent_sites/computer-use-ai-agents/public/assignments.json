@@ -1629,5 +1629,23 @@
     "source_path": "computer-use-ai-agents/maximum-mean-discrepancy-agent-embedding-drift-lab-20260814-012715",
     "target_slot": "computer-use-ai-agents",
     "title": "Kernel Drift Lab: Test Agent Embedding Shift"
+  },
+  {
+    "assigned_domain": "parsercheat.com",
+    "assigned_slot": "computer-use-ai-agents",
+    "assigned_url": "https://parsercheat.com/erlang-c-agent-worker-staffing-lab-20260814-025317/",
+    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "content_kind": "erlang_c_agent_worker_staffing_lab",
+    "content_kind_label": "Erlang C Agent Worker Staffing Lab",
+    "direct_generated": true,
+    "github_commit": "9292a07e5ddd120c7f97eeb850d4f5c8a1ccb869",
+    "github_url": "https://github.com/rohanarun/super-agent-news-erlang-c-agent-worker-staffing-lab-20260814-025317",
+    "live_url": "https://parsercheat.com/erlang-c-agent-worker-staffing-lab-20260814-025317/",
+    "receipt_created_at": "2026-08-14T02:53:17.051+00:00",
+    "receipt_status": "success",
+    "slug": "erlang-c-agent-worker-staffing-lab-20260814-025317",
+    "source_path": "computer-use-ai-agents/erlang-c-agent-worker-staffing-lab-20260814-025317",
+    "target_slot": "computer-use-ai-agents",
+    "title": "Erlang C Staffing Lab: Size an AI Agent Worker Pool"
   }
 ]
