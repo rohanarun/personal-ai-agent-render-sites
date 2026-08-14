@@ -1392,8 +1392,119 @@
     "target_slot": "imessage-ai-tools",
     "title": "Evidence Stream: SPRT for Agent Tool Rollouts"
   },
-  {"assigned_domain":"droidph.one","assigned_slot":"imessage-ai-tools","assigned_url":"https://droidph.one/vector-clock-multi-agent-causality-lab-20260813-180714/","backlinks":["https://getsupers.com/","https://app.getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"content_kind":"vector_clock_multi_agent_causality_lab","content_kind_label":"Vector Clock Multi-Agent Causality Lab","direct_generated":true,"github_commit":"2cc058d05512d404dc2bdde125e98fc94fc1d837","github_url":"https://github.com/rohanarun/super-agent-news-vector-clock-multi-agent-causality-lab-20260813-180714","live_url":"https://droidph.one/vector-clock-multi-agent-causality-lab-20260813-180714/","receipt_created_at":"2026-08-13T18:07:14.214+00:00","receipt_status":"success","slug":"vector-clock-multi-agent-causality-lab-20260813-180714","source_path":"imessage-ai-tools/vector-clock-multi-agent-causality-lab-20260813-180714","target_slot":"imessage-ai-tools","title":"Vector Clock Lab: Trace Causality Across AI Agents"},
-  {"assigned_domain":"droidph.one","assigned_slot":"imessage-ai-tools","assigned_url":"https://droidph.one/consistent-hashing-agent-memory-routing-lab-20260813-194614/","backlinks":["https://getsupers.com/","https://app.getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"content_kind":"consistent_hashing_agent_memory_routing_lab","content_kind_label":"Consistent Hashing Agent Memory Routing Lab","direct_generated":true,"github_commit":"a90ac645c9e2bdcafa30539b3bc382931a00ab27","github_url":"https://github.com/rohanarun/super-agent-news-consistent-hashing-agent-memory-routing-lab-20260813-194614","live_url":"https://droidph.one/consistent-hashing-agent-memory-routing-lab-20260813-194614/","receipt_created_at":"2026-08-13T19:46:14.471+00:00","receipt_status":"success","slug":"consistent-hashing-agent-memory-routing-lab-20260813-194614","source_path":"imessage-ai-tools/consistent-hashing-agent-memory-routing-lab-20260813-194614","target_slot":"imessage-ai-tools","title":"Hash Ring Lab: Route Agent Memory with Minimal Remapping"},
-  {"assigned_domain":"droidph.one","assigned_slot":"imessage-ai-tools","assigned_url":"https://droidph.one/bulkhead-isolation-agent-tool-worker-pool-lab-20260813-212844/","backlinks":["https://getsupers.com/","https://app.getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"content_kind":"bulkhead_isolation_agent_tool_worker_pool_lab","content_kind_label":"Bulkhead Isolation Agent Tool Worker Pool Lab","direct_generated":true,"github_commit":"ae7b4de9857123bdb11e1121283e079330625d1d","github_url":"https://github.com/rohanarun/super-agent-news-bulkhead-isolation-agent-tool-worker-pool-lab-20260813-212844","live_url":"https://droidph.one/bulkhead-isolation-agent-tool-worker-pool-lab-20260813-212844/","receipt_created_at":"2026-08-13T21:28:44.831+00:00","receipt_status":"success","slug":"bulkhead-isolation-agent-tool-worker-pool-lab-20260813-212844","source_path":"imessage-ai-tools/bulkhead-isolation-agent-tool-worker-pool-lab-20260813-212844","target_slot":"imessage-ai-tools","title":"Bulkhead Lab: Isolate AI Agent Tool Worker Pools"}
-  ,{"assigned_domain":"droidph.one","assigned_slot":"imessage-ai-tools","assigned_url":"https://droidph.one/singleflight-agent-tool-cache-stampede-lab-20260813-224144/","backlinks":["https://getsupers.com/","https://app.getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"content_kind":"singleflight_agent_tool_cache_stampede_lab","content_kind_label":"Singleflight Agent Tool Cache Stampede Lab","direct_generated":true,"github_commit":"e38a768faf41cafc394c6153539b278703a635ae","github_url":"https://github.com/rohanarun/super-agent-news-singleflight-agent-tool-cache-stampede-lab-20260813-224144","live_url":"https://droidph.one/singleflight-agent-tool-cache-stampede-lab-20260813-224144/","receipt_created_at":"2026-08-13T22:41:44.848+00:00","receipt_status":"success","slug":"singleflight-agent-tool-cache-stampede-lab-20260813-224144","source_path":"imessage-ai-tools/singleflight-agent-tool-cache-stampede-lab-20260813-224144","target_slot":"imessage-ai-tools","title":"Singleflight Lab: Collapse Agent Cache Stampedes"}
+  {
+    "assigned_domain": "droidph.one",
+    "assigned_slot": "imessage-ai-tools",
+    "assigned_url": "https://droidph.one/vector-clock-multi-agent-causality-lab-20260813-180714/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "vector_clock_multi_agent_causality_lab",
+    "content_kind_label": "Vector Clock Multi-Agent Causality Lab",
+    "direct_generated": true,
+    "github_commit": "2cc058d05512d404dc2bdde125e98fc94fc1d837",
+    "github_url": "https://github.com/rohanarun/super-agent-news-vector-clock-multi-agent-causality-lab-20260813-180714",
+    "live_url": "https://droidph.one/vector-clock-multi-agent-causality-lab-20260813-180714/",
+    "receipt_created_at": "2026-08-13T18:07:14.214+00:00",
+    "receipt_status": "success",
+    "slug": "vector-clock-multi-agent-causality-lab-20260813-180714",
+    "source_path": "imessage-ai-tools/vector-clock-multi-agent-causality-lab-20260813-180714",
+    "target_slot": "imessage-ai-tools",
+    "title": "Vector Clock Lab: Trace Causality Across AI Agents"
+  },
+  {
+    "assigned_domain": "droidph.one",
+    "assigned_slot": "imessage-ai-tools",
+    "assigned_url": "https://droidph.one/consistent-hashing-agent-memory-routing-lab-20260813-194614/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "consistent_hashing_agent_memory_routing_lab",
+    "content_kind_label": "Consistent Hashing Agent Memory Routing Lab",
+    "direct_generated": true,
+    "github_commit": "a90ac645c9e2bdcafa30539b3bc382931a00ab27",
+    "github_url": "https://github.com/rohanarun/super-agent-news-consistent-hashing-agent-memory-routing-lab-20260813-194614",
+    "live_url": "https://droidph.one/consistent-hashing-agent-memory-routing-lab-20260813-194614/",
+    "receipt_created_at": "2026-08-13T19:46:14.471+00:00",
+    "receipt_status": "success",
+    "slug": "consistent-hashing-agent-memory-routing-lab-20260813-194614",
+    "source_path": "imessage-ai-tools/consistent-hashing-agent-memory-routing-lab-20260813-194614",
+    "target_slot": "imessage-ai-tools",
+    "title": "Hash Ring Lab: Route Agent Memory with Minimal Remapping"
+  },
+  {
+    "assigned_domain": "droidph.one",
+    "assigned_slot": "imessage-ai-tools",
+    "assigned_url": "https://droidph.one/bulkhead-isolation-agent-tool-worker-pool-lab-20260813-212844/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "bulkhead_isolation_agent_tool_worker_pool_lab",
+    "content_kind_label": "Bulkhead Isolation Agent Tool Worker Pool Lab",
+    "direct_generated": true,
+    "github_commit": "ae7b4de9857123bdb11e1121283e079330625d1d",
+    "github_url": "https://github.com/rohanarun/super-agent-news-bulkhead-isolation-agent-tool-worker-pool-lab-20260813-212844",
+    "live_url": "https://droidph.one/bulkhead-isolation-agent-tool-worker-pool-lab-20260813-212844/",
+    "receipt_created_at": "2026-08-13T21:28:44.831+00:00",
+    "receipt_status": "success",
+    "slug": "bulkhead-isolation-agent-tool-worker-pool-lab-20260813-212844",
+    "source_path": "imessage-ai-tools/bulkhead-isolation-agent-tool-worker-pool-lab-20260813-212844",
+    "target_slot": "imessage-ai-tools",
+    "title": "Bulkhead Lab: Isolate AI Agent Tool Worker Pools"
+  },
+  {
+    "assigned_domain": "droidph.one",
+    "assigned_slot": "imessage-ai-tools",
+    "assigned_url": "https://droidph.one/singleflight-agent-tool-cache-stampede-lab-20260813-224144/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "singleflight_agent_tool_cache_stampede_lab",
+    "content_kind_label": "Singleflight Agent Tool Cache Stampede Lab",
+    "direct_generated": true,
+    "github_commit": "e38a768faf41cafc394c6153539b278703a635ae",
+    "github_url": "https://github.com/rohanarun/super-agent-news-singleflight-agent-tool-cache-stampede-lab-20260813-224144",
+    "live_url": "https://droidph.one/singleflight-agent-tool-cache-stampede-lab-20260813-224144/",
+    "receipt_created_at": "2026-08-13T22:41:44.848+00:00",
+    "receipt_status": "success",
+    "slug": "singleflight-agent-tool-cache-stampede-lab-20260813-224144",
+    "source_path": "imessage-ai-tools/singleflight-agent-tool-cache-stampede-lab-20260813-224144",
+    "target_slot": "imessage-ai-tools",
+    "title": "Singleflight Lab: Collapse Agent Cache Stampedes"
+  },
+  {
+    "assigned_domain": "droidph.one",
+    "assigned_slot": "imessage-ai-tools",
+    "assigned_url": "https://droidph.one/exponential-backoff-agent-retry-storm-lab-20260814-005545/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "exponential_backoff_agent_retry_storm_lab",
+    "content_kind_label": "Exponential Backoff Agent Retry Storm Lab",
+    "direct_generated": true,
+    "github_commit": "b5305e51652c89bc8e5e0220485f64224cfc6b70",
+    "github_url": "https://github.com/rohanarun/super-agent-news-exponential-backoff-agent-retry-storm-lab-20260814-005545",
+    "live_url": "https://droidph.one/exponential-backoff-agent-retry-storm-lab-20260814-005545/",
+    "receipt_created_at": "2026-08-14T00:55:45.123+00:00",
+    "receipt_status": "success",
+    "slug": "exponential-backoff-agent-retry-storm-lab-20260814-005545",
+    "source_path": "imessage-ai-tools/exponential-backoff-agent-retry-storm-lab-20260814-005545",
+    "target_slot": "imessage-ai-tools",
+    "title": "Exponential Backoff Lab: Stop Agent Retry Storms"
+  }
 ]
