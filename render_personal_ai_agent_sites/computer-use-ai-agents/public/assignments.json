@@ -1382,7 +1382,11 @@
     "assigned_domain": "parsercheat.com",
     "assigned_slot": "computer-use-ai-agents",
     "assigned_url": "https://parsercheat.com/lsh-vector-retrieval-hash-bucket-lab-20260813-105458/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "lsh_vector_retrieval_hash_bucket_lab",
     "content_kind_label": "LSH Vector Retrieval Hash Bucket Lab",
     "direct_generated": true,
@@ -1400,7 +1404,12 @@
     "assigned_domain": "parsercheat.com",
     "assigned_slot": "computer-use-ai-agents",
     "assigned_url": "https://parsercheat.com/personalized-pagerank-agent-memory-retrieval-lab-20260813-145113/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "personalized_pagerank_agent_memory_retrieval_lab",
     "content_kind_label": "Personalized PageRank Agent Memory Retrieval Lab",
     "direct_generated": true,
@@ -1418,7 +1427,12 @@
     "assigned_domain": "parsercheat.com",
     "assigned_slot": "computer-use-ai-agents",
     "assigned_url": "https://parsercheat.com/contract-net-multi-agent-task-bidding-lab-20260813-154713/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "contract_net_multi_agent_task_bidding_lab",
     "content_kind_label": "Contract Net Multi-Agent Task Bidding Lab",
     "direct_generated": true,
@@ -1436,7 +1450,12 @@
     "assigned_domain": "parsercheat.com",
     "assigned_slot": "computer-use-ai-agents",
     "assigned_url": "https://parsercheat.com/pid-agent-concurrency-latency-control-lab-20260813-165014/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "pid_agent_concurrency_latency_control_lab",
     "content_kind_label": "PID Agent Concurrency Latency Control Lab",
     "direct_generated": true,
@@ -1450,9 +1469,142 @@
     "target_slot": "computer-use-ai-agents",
     "title": "PID Control Room: Tune Agent Concurrency Against Latency"
   },
-  {"assigned_domain":"parsercheat.com","assigned_slot":"computer-use-ai-agents","assigned_url":"https://parsercheat.com/consistent-hashing-agent-worker-routing-lab-20260813-175644/","backlinks":["https://getsupers.com/","https://app.getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"content_kind":"consistent_hashing_agent_worker_routing_lab","content_kind_label":"Consistent Hashing Agent Worker Routing Lab","direct_generated":true,"github_commit":"a51060a7fdb1926271f038b3c7f9738ff87e304d","github_url":"https://github.com/rohanarun/super-agent-news-consistent-hashing-agent-worker-routing-lab-20260813-175644","live_url":"https://parsercheat.com/consistent-hashing-agent-worker-routing-lab-20260813-175644/","receipt_created_at":"2026-08-13T17:56:44.187+00:00","receipt_status":"success","slug":"consistent-hashing-agent-worker-routing-lab-20260813-175644","source_path":"computer-use-ai-agents/consistent-hashing-agent-worker-routing-lab-20260813-175644","target_slot":"computer-use-ai-agents","title":"Hash Ring Lab: Route Agent Sessions Across Workers"}
-  ,{"assigned_domain":"parsercheat.com","assigned_slot":"computer-use-ai-agents","assigned_url":"https://parsercheat.com/phi-accrual-agent-heartbeat-failure-detector-lab-20260813-191514/","backlinks":["https://getsupers.com/","https://app.getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"content_kind":"phi_accrual_agent_heartbeat_failure_detector_lab","content_kind_label":"Phi Accrual Agent Heartbeat Failure Detector Lab","direct_generated":true,"github_commit":"9e1eff2180115cf4b60a3e8bd76db17281cb29db","github_url":"https://github.com/rohanarun/super-agent-news-phi-accrual-agent-heartbeat-failure-detector-lab-20260813-191514","live_url":"https://parsercheat.com/phi-accrual-agent-heartbeat-failure-detector-lab-20260813-191514/","receipt_created_at":"2026-08-13T19:15:14.318+00:00","receipt_status":"success","slug":"phi-accrual-agent-heartbeat-failure-detector-lab-20260813-191514","source_path":"computer-use-ai-agents/phi-accrual-agent-heartbeat-failure-detector-lab-20260813-191514","target_slot":"computer-use-ai-agents","title":"Phi Detector Lab: Detect Failed AI Agent Workers"}
-  ,{"assigned_domain":"parsercheat.com","assigned_slot":"computer-use-ai-agents","assigned_url":"https://parsercheat.com/idempotency-key-agent-tool-retry-deduplication-lab-20260813-203844/","backlinks":["https://getsupers.com/","https://app.getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"content_kind":"idempotency_key_agent_tool_retry_deduplication_lab","content_kind_label":"Idempotency Key Agent Tool Retry Deduplication Lab","direct_generated":true,"github_commit":"df15f6d85a1388ae05e1dbebe9510309a6a63201","github_url":"https://github.com/rohanarun/super-agent-news-idempotency-key-agent-tool-retry-deduplication-lab-20260813-203844","live_url":"https://parsercheat.com/idempotency-key-agent-tool-retry-deduplication-lab-20260813-203844/","receipt_created_at":"2026-08-13T20:38:44.773+00:00","receipt_status":"success","slug":"idempotency-key-agent-tool-retry-deduplication-lab-20260813-203844","source_path":"computer-use-ai-agents/idempotency-key-agent-tool-retry-deduplication-lab-20260813-203844","target_slot":"computer-use-ai-agents","title":"Idempotency Lab: Make Agent Tool Retries Safe"}
-  ,{"assigned_domain":"parsercheat.com","assigned_slot":"computer-use-ai-agents","assigned_url":"https://parsercheat.com/circuit-breaker-agent-tool-failure-recovery-lab-20260813-205044/","backlinks":["https://getsupers.com/","https://app.getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"content_kind":"circuit_breaker_agent_tool_failure_recovery_lab","content_kind_label":"Circuit Breaker Agent Tool Failure Recovery Lab","direct_generated":true,"github_commit":"48dbbb3296fae57c43ee9edd6469b1b6ad1f5a1c","github_url":"https://github.com/rohanarun/super-agent-news-circuit-breaker-agent-tool-failure-recovery-lab-20260813-205044","live_url":"https://parsercheat.com/circuit-breaker-agent-tool-failure-recovery-lab-20260813-205044/","receipt_created_at":"2026-08-13T20:50:44.533+00:00","receipt_status":"success","slug":"circuit-breaker-agent-tool-failure-recovery-lab-20260813-205044","source_path":"computer-use-ai-agents/circuit-breaker-agent-tool-failure-recovery-lab-20260813-205044","target_slot":"computer-use-ai-agents","title":"Circuit Breaker Lab: Stop Agent Tool Failure Storms"}
-  ,{"assigned_domain":"parsercheat.com","assigned_slot":"computer-use-ai-agents","assigned_url":"https://parsercheat.com/transactional-outbox-agent-event-delivery-lab-20260813-221314/","backlinks":["https://getsupers.com/","https://app.getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"content_kind":"transactional_outbox_agent_event_delivery_lab","content_kind_label":"Transactional Outbox Agent Event Delivery Lab","direct_generated":true,"github_commit":"818b5e0d74a2a81d2c250a99f5eba3504e1604b8","github_url":"https://github.com/rohanarun/super-agent-news-transactional-outbox-agent-event-delivery-lab-20260813-221314","live_url":"https://parsercheat.com/transactional-outbox-agent-event-delivery-lab-20260813-221314/","receipt_created_at":"2026-08-13T22:13:14.897+00:00","receipt_status":"success","slug":"transactional-outbox-agent-event-delivery-lab-20260813-221314","source_path":"computer-use-ai-agents/transactional-outbox-agent-event-delivery-lab-20260813-221314","target_slot":"computer-use-ai-agents","title":"Outbox Lab: Deliver Agent Events After Crashes"}
+  {
+    "assigned_domain": "parsercheat.com",
+    "assigned_slot": "computer-use-ai-agents",
+    "assigned_url": "https://parsercheat.com/consistent-hashing-agent-worker-routing-lab-20260813-175644/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "consistent_hashing_agent_worker_routing_lab",
+    "content_kind_label": "Consistent Hashing Agent Worker Routing Lab",
+    "direct_generated": true,
+    "github_commit": "a51060a7fdb1926271f038b3c7f9738ff87e304d",
+    "github_url": "https://github.com/rohanarun/super-agent-news-consistent-hashing-agent-worker-routing-lab-20260813-175644",
+    "live_url": "https://parsercheat.com/consistent-hashing-agent-worker-routing-lab-20260813-175644/",
+    "receipt_created_at": "2026-08-13T17:56:44.187+00:00",
+    "receipt_status": "success",
+    "slug": "consistent-hashing-agent-worker-routing-lab-20260813-175644",
+    "source_path": "computer-use-ai-agents/consistent-hashing-agent-worker-routing-lab-20260813-175644",
+    "target_slot": "computer-use-ai-agents",
+    "title": "Hash Ring Lab: Route Agent Sessions Across Workers"
+  },
+  {
+    "assigned_domain": "parsercheat.com",
+    "assigned_slot": "computer-use-ai-agents",
+    "assigned_url": "https://parsercheat.com/phi-accrual-agent-heartbeat-failure-detector-lab-20260813-191514/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "phi_accrual_agent_heartbeat_failure_detector_lab",
+    "content_kind_label": "Phi Accrual Agent Heartbeat Failure Detector Lab",
+    "direct_generated": true,
+    "github_commit": "9e1eff2180115cf4b60a3e8bd76db17281cb29db",
+    "github_url": "https://github.com/rohanarun/super-agent-news-phi-accrual-agent-heartbeat-failure-detector-lab-20260813-191514",
+    "live_url": "https://parsercheat.com/phi-accrual-agent-heartbeat-failure-detector-lab-20260813-191514/",
+    "receipt_created_at": "2026-08-13T19:15:14.318+00:00",
+    "receipt_status": "success",
+    "slug": "phi-accrual-agent-heartbeat-failure-detector-lab-20260813-191514",
+    "source_path": "computer-use-ai-agents/phi-accrual-agent-heartbeat-failure-detector-lab-20260813-191514",
+    "target_slot": "computer-use-ai-agents",
+    "title": "Phi Detector Lab: Detect Failed AI Agent Workers"
+  },
+  {
+    "assigned_domain": "parsercheat.com",
+    "assigned_slot": "computer-use-ai-agents",
+    "assigned_url": "https://parsercheat.com/idempotency-key-agent-tool-retry-deduplication-lab-20260813-203844/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "idempotency_key_agent_tool_retry_deduplication_lab",
+    "content_kind_label": "Idempotency Key Agent Tool Retry Deduplication Lab",
+    "direct_generated": true,
+    "github_commit": "df15f6d85a1388ae05e1dbebe9510309a6a63201",
+    "github_url": "https://github.com/rohanarun/super-agent-news-idempotency-key-agent-tool-retry-deduplication-lab-20260813-203844",
+    "live_url": "https://parsercheat.com/idempotency-key-agent-tool-retry-deduplication-lab-20260813-203844/",
+    "receipt_created_at": "2026-08-13T20:38:44.773+00:00",
+    "receipt_status": "success",
+    "slug": "idempotency-key-agent-tool-retry-deduplication-lab-20260813-203844",
+    "source_path": "computer-use-ai-agents/idempotency-key-agent-tool-retry-deduplication-lab-20260813-203844",
+    "target_slot": "computer-use-ai-agents",
+    "title": "Idempotency Lab: Make Agent Tool Retries Safe"
+  },
+  {
+    "assigned_domain": "parsercheat.com",
+    "assigned_slot": "computer-use-ai-agents",
+    "assigned_url": "https://parsercheat.com/circuit-breaker-agent-tool-failure-recovery-lab-20260813-205044/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "circuit_breaker_agent_tool_failure_recovery_lab",
+    "content_kind_label": "Circuit Breaker Agent Tool Failure Recovery Lab",
+    "direct_generated": true,
+    "github_commit": "48dbbb3296fae57c43ee9edd6469b1b6ad1f5a1c",
+    "github_url": "https://github.com/rohanarun/super-agent-news-circuit-breaker-agent-tool-failure-recovery-lab-20260813-205044",
+    "live_url": "https://parsercheat.com/circuit-breaker-agent-tool-failure-recovery-lab-20260813-205044/",
+    "receipt_created_at": "2026-08-13T20:50:44.533+00:00",
+    "receipt_status": "success",
+    "slug": "circuit-breaker-agent-tool-failure-recovery-lab-20260813-205044",
+    "source_path": "computer-use-ai-agents/circuit-breaker-agent-tool-failure-recovery-lab-20260813-205044",
+    "target_slot": "computer-use-ai-agents",
+    "title": "Circuit Breaker Lab: Stop Agent Tool Failure Storms"
+  },
+  {
+    "assigned_domain": "parsercheat.com",
+    "assigned_slot": "computer-use-ai-agents",
+    "assigned_url": "https://parsercheat.com/transactional-outbox-agent-event-delivery-lab-20260813-221314/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "transactional_outbox_agent_event_delivery_lab",
+    "content_kind_label": "Transactional Outbox Agent Event Delivery Lab",
+    "direct_generated": true,
+    "github_commit": "818b5e0d74a2a81d2c250a99f5eba3504e1604b8",
+    "github_url": "https://github.com/rohanarun/super-agent-news-transactional-outbox-agent-event-delivery-lab-20260813-221314",
+    "live_url": "https://parsercheat.com/transactional-outbox-agent-event-delivery-lab-20260813-221314/",
+    "receipt_created_at": "2026-08-13T22:13:14.897+00:00",
+    "receipt_status": "success",
+    "slug": "transactional-outbox-agent-event-delivery-lab-20260813-221314",
+    "source_path": "computer-use-ai-agents/transactional-outbox-agent-event-delivery-lab-20260813-221314",
+    "target_slot": "computer-use-ai-agents",
+    "title": "Outbox Lab: Deliver Agent Events After Crashes"
+  },
+  {
+    "assigned_domain": "parsercheat.com",
+    "assigned_slot": "computer-use-ai-agents",
+    "assigned_url": "https://parsercheat.com/swim-agent-health-indirect-probe-lab-20260814-002414/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "swim_agent_health_indirect_probe_lab",
+    "content_kind_label": "SWIM Agent Health Indirect Probe Lab",
+    "direct_generated": true,
+    "github_commit": "166a47c457cf62256c4d104bfd9008f7c202a874",
+    "github_url": "https://github.com/rohanarun/super-agent-news-swim-agent-health-indirect-probe-lab-20260814-002414",
+    "live_url": "https://parsercheat.com/swim-agent-health-indirect-probe-lab-20260814-002414/",
+    "receipt_created_at": "2026-08-14T00:24:14.996+00:00",
+    "receipt_status": "success",
+    "slug": "swim-agent-health-indirect-probe-lab-20260814-002414",
+    "source_path": "computer-use-ai-agents/swim-agent-health-indirect-probe-lab-20260814-002414",
+    "target_slot": "computer-use-ai-agents",
+    "title": "SWIM Protocol Lab: Detect Unhealthy Agents"
+  }
 ]
