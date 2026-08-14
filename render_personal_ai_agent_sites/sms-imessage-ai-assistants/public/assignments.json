@@ -3,19 +3,33 @@
     "assigned_domain": "driodphone.com",
     "assigned_slot": "sms-imessage-ai-assistants",
     "assigned_url": "https://driodphone.com/label-smoothing-target-distribution-lab-20260711-205236/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
-    "cheatlayer_url": "", "content_kind": "label_smoothing_lab", "content_kind_label": "Label Smoothing Lab", "direct_generated": true, "github_url": "",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "cheatlayer_url": "",
+    "content_kind": "label_smoothing_lab",
+    "content_kind_label": "Label Smoothing Lab",
+    "direct_generated": true,
+    "github_url": "",
     "live_url": "https://driodphone.com/label-smoothing-target-distribution-lab-20260711-205236/",
-    "receipt_created_at": "2026-07-11T20:52:36.525+00:00", "receipt_status": "success",
+    "receipt_created_at": "2026-07-11T20:52:36.525+00:00",
+    "receipt_status": "success",
     "slug": "label-smoothing-target-distribution-lab-20260711-205236",
     "source_path": "sms_published_sites/label-smoothing-target-distribution-lab-20260711-205236",
-    "target_slot": "sms-imessage-ai-assistants", "title": "Label Smoothing Lab: Targets, Gradients, and Confidence"
+    "target_slot": "sms-imessage-ai-assistants",
+    "title": "Label Smoothing Lab: Targets, Gradients, and Confidence"
   },
   {
     "assigned_domain": "driodphone.com",
     "assigned_slot": "sms-imessage-ai-assistants",
     "assigned_url": "https://driodphone.com/learning-rate-warmup-cosine-schedule-lab-20260711-000047/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "cheatlayer_url": "",
     "content_kind": "learning_rate_schedule_lab",
     "content_kind_label": "Learning Rate Schedule Lab",
@@ -292,7 +306,7 @@
     "receipt_status": "success",
     "slug": "super-vs-gemini-20260706-180710",
     "source_path": "sms_published_sites/super-vs-gemini-20260706-180710",
-    "title": "Super vs Gemini \u2014 personal AI agents for real computer work"
+    "title": "Super vs Gemini — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "driodphone.com",
@@ -337,7 +351,7 @@
     "receipt_status": "success",
     "slug": "super-vs-gemini-20260706-141403",
     "source_path": "sms_published_sites/super-vs-gemini-20260706-141403",
-    "title": "Super vs Gemini \u2014 personal AI agents for real computer work"
+    "title": "Super vs Gemini — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "driodphone.com",
@@ -412,7 +426,7 @@
     "receipt_status": "success",
     "slug": "super-vs-folk-20260706-070823",
     "source_path": "sms_published_sites/super-vs-folk-20260706-070823",
-    "title": "Super vs Folk \u2014 personal AI agents for real computer work"
+    "title": "Super vs Folk — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "driodphone.com",
@@ -427,7 +441,7 @@
     "receipt_status": "success",
     "slug": "super-vs-chatgpt-20260706-041336",
     "source_path": "sms_published_sites/super-vs-chatgpt-20260706-041336",
-    "title": "Super vs ChatGPT \u2014 personal AI agents compared for real computer work"
+    "title": "Super vs ChatGPT — personal AI agents compared for real computer work"
   },
   {
     "assigned_domain": "driodphone.com",
@@ -472,7 +486,7 @@
     "receipt_status": "success",
     "slug": "super-vs-folk-20260706-003214",
     "source_path": "sms_published_sites/super-vs-folk-20260706-003214",
-    "title": "Super vs Folk \u2014 personal AI agents compared for real computer work"
+    "title": "Super vs Folk — personal AI agents compared for real computer work"
   },
   {
     "assigned_domain": "driodphone.com",
@@ -487,7 +501,7 @@
     "receipt_status": "success",
     "slug": "super-vs-chatgpt-20260705-023918",
     "source_path": "sms_published_sites/super-vs-chatgpt-20260705-023918",
-    "title": "Super vs ChatGPT \u2014 Choosing a Personal AI Agent for Real Computer Work"
+    "title": "Super vs ChatGPT — Choosing a Personal AI Agent for Real Computer Work"
   },
   {
     "assigned_domain": "driodphone.com",
@@ -502,7 +516,7 @@
     "receipt_status": "success",
     "slug": "personal-ai-agent-news-20260704-235840",
     "source_path": "sms_published_sites/personal-ai-agent-news-20260704-235840",
-    "title": "Personal AI Agent Market Brief \u2014 July 2026"
+    "title": "Personal AI Agent Market Brief — July 2026"
   },
   {
     "assigned_domain": "driodphone.com",
@@ -547,7 +561,7 @@
     "receipt_status": "success",
     "slug": "super-vs-orchids-20260704-185804",
     "source_path": "sms_published_sites/super-vs-orchids-20260704-185804",
-    "title": "Super vs Orchids \u2014 personal AI agents for real computer work"
+    "title": "Super vs Orchids — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "driodphone.com",
@@ -562,7 +576,7 @@
     "receipt_status": "success",
     "slug": "super-vs-grok-20260704-162733",
     "source_path": "sms_published_sites/super-vs-grok-20260704-162733",
-    "title": "Super vs Grok \u2014 personal AI agents for real computer work"
+    "title": "Super vs Grok — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "driodphone.com",
@@ -607,7 +621,7 @@
     "receipt_status": "success",
     "slug": "super-vs-folk-20260704-055445",
     "source_path": "sms_published_sites/super-vs-folk-20260704-055445",
-    "title": "Super vs Folk \u2014 personal AI agents for real computer work"
+    "title": "Super vs Folk — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "driodphone.com",
@@ -622,7 +636,7 @@
     "receipt_status": "success",
     "slug": "super-vs-gemini-20260704-032417",
     "source_path": "sms_published_sites/super-vs-gemini-20260704-032417",
-    "title": "Super vs Gemini \u2014 Personal AI Agents for Real Computer Work"
+    "title": "Super vs Gemini — Personal AI Agents for Real Computer Work"
   },
   {
     "assigned_domain": "driodphone.com",
@@ -682,7 +696,7 @@
     "receipt_status": "success",
     "slug": "super-vs-siri-20260703-203540",
     "source_path": "sms_published_sites/super-vs-siri-20260703-203540",
-    "title": "Super vs Siri \u2014 personal AI agents for real computer work"
+    "title": "Super vs Siri — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "driodphone.com",
@@ -742,7 +756,7 @@
     "receipt_status": "success",
     "slug": "super-vs-folk-20260703-140058",
     "source_path": "sms_published_sites/super-vs-folk-20260703-140058",
-    "title": "Super vs Folk \u2014 personal AI agents for real computer work"
+    "title": "Super vs Folk — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "driodphone.com",
@@ -757,7 +771,7 @@
     "receipt_status": "success",
     "slug": "super-vs-gemini-20260703-113049",
     "source_path": "sms_published_sites/super-vs-gemini-20260703-113049",
-    "title": "Super vs Gemini \u2014 personal AI agents for real computer work"
+    "title": "Super vs Gemini — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "driodphone.com",
@@ -817,7 +831,7 @@
     "receipt_status": "success",
     "slug": "super-vs-chatgpt-20260703-050620",
     "source_path": "sms_published_sites/super-vs-chatgpt-20260703-050620",
-    "title": "Super vs ChatGPT \u2014 Personal AI Agents Compared"
+    "title": "Super vs ChatGPT — Personal AI Agents Compared"
   },
   {
     "assigned_domain": "driodphone.com",
@@ -877,7 +891,7 @@
     "receipt_status": "success",
     "slug": "super-vs-orchids-20260702-222324",
     "source_path": "sms_published_sites/super-vs-orchids-20260702-222324",
-    "title": "Super vs Orchids \u2014 personal AI agents for real computer work"
+    "title": "Super vs Orchids — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "driodphone.com",
@@ -892,7 +906,7 @@
     "receipt_status": "success",
     "slug": "super-vs-gemini-20260702-193349",
     "source_path": "sms_published_sites/super-vs-gemini-20260702-193349",
-    "title": "Super vs Gemini \u2014 personal AI agents for real computer work"
+    "title": "Super vs Gemini — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "driodphone.com",
@@ -907,7 +921,7 @@
     "receipt_status": "success",
     "slug": "super-for-busy-executives-who-want-a-real-personal-assista-20260702-175253",
     "source_path": "sms_published_sites/super-for-busy-executives-who-want-a-real-personal-assista-20260702-175253",
-    "title": "A real personal assistant for busy executives \u2014 one that actually does the work"
+    "title": "A real personal assistant for busy executives — one that actually does the work"
   },
   {
     "assigned_domain": "driodphone.com",
@@ -922,7 +936,7 @@
     "receipt_status": "success",
     "slug": "super-vs-chatgpt-20260702-015551",
     "source_path": "sms_published_sites/super-vs-chatgpt-20260702-015551",
-    "title": "Super vs ChatGPT \u2014 personal AI agents for real computer work"
+    "title": "Super vs ChatGPT — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "driodphone.com",
@@ -937,7 +951,7 @@
     "receipt_status": "success",
     "slug": "super-vs-siri-20260702-014515",
     "source_path": "sms_published_sites/super-vs-siri-20260702-014515",
-    "title": "Super vs Siri \u2014 personal AI agents for real computer work"
+    "title": "Super vs Siri — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "driodphone.com",
@@ -982,7 +996,7 @@
     "receipt_status": "success",
     "slug": "super-vs-siri-20260701-192000",
     "source_path": "sms_published_sites/super-vs-siri-20260701-192000",
-    "title": "Super vs Siri \u2014 personal AI agents for real computer work"
+    "title": "Super vs Siri — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "driodphone.com",
@@ -1042,7 +1056,7 @@
     "receipt_status": "success",
     "slug": "super-vs-orchids-20260701-103055",
     "source_path": "sms_published_sites/super-vs-orchids-20260701-103055",
-    "title": "Super vs Orchids \u2014 Personal AI Agents Compared"
+    "title": "Super vs Orchids — Personal AI Agents Compared"
   },
   {
     "assigned_domain": "driodphone.com",
@@ -1057,7 +1071,7 @@
     "receipt_status": "success",
     "slug": "super-vs-grok-20260701-080050",
     "source_path": "sms_published_sites/super-vs-grok-20260701-080050",
-    "title": "Super vs Grok \u2014 Personal AI Agents for Real Computer Work"
+    "title": "Super vs Grok — Personal AI Agents for Real Computer Work"
   },
   {
     "assigned_domain": "driodphone.com",
@@ -1072,7 +1086,7 @@
     "receipt_status": "success",
     "slug": "super-vs-gemini-20260701-075050",
     "source_path": "sms_published_sites/super-vs-gemini-20260701-075050",
-    "title": "Super vs Gemini \u2014 personal AI agents for real computer work"
+    "title": "Super vs Gemini — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "driodphone.com",
@@ -1102,7 +1116,7 @@
     "receipt_status": "success",
     "slug": "super-vs-folk-20260701-040020",
     "source_path": "sms_published_sites/super-vs-folk-20260701-040020",
-    "title": "Super vs Folk \u2014 personal AI agents compared"
+    "title": "Super vs Folk — personal AI agents compared"
   },
   {
     "assigned_domain": "driodphone.com",
@@ -1117,7 +1131,7 @@
     "receipt_status": "success",
     "slug": "super-vs-folk-20260630-024130",
     "source_path": "sms_published_sites/super-vs-folk-20260630-024130",
-    "title": "Super vs Folk \u2014 personal AI agents for real computer work"
+    "title": "Super vs Folk — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "driodphone.com",
@@ -1147,7 +1161,7 @@
     "receipt_status": "success",
     "slug": "super-vs-gemini-20260630-011000",
     "source_path": "sms_published_sites/super-vs-gemini-20260630-011000",
-    "title": "Super vs Gemini \u2014 personal AI agents for real computer work"
+    "title": "Super vs Gemini — personal AI agents for real computer work"
   },
   {
     "assigned_domain": "driodphone.com",
@@ -1162,7 +1176,7 @@
     "receipt_status": "success",
     "slug": "super-for-real-estate-agents-managing-follow-ups-listings-20260629-232841",
     "source_path": "sms_published_sites/super-for-real-estate-agents-managing-follow-ups-listings-20260629-232841",
-    "title": "Super for real estate agents managing follow\u2011ups, listings, and scheduling"
+    "title": "Super for real estate agents managing follow‑ups, listings, and scheduling"
   },
   {
     "assigned_domain": "driodphone.com",
@@ -1183,7 +1197,11 @@
     "assigned_domain": "driodphone.com",
     "assigned_slot": "sms-imessage-ai-assistants",
     "assigned_url": "https://driodphone.com/agent-tool-backpressure-retry-queue-lab-20260813-111528/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "agent_tool_backpressure_retry_queue_lab",
     "content_kind_label": "Agent Tool Backpressure Retry Queue Lab",
     "direct_generated": true,
@@ -1201,7 +1219,12 @@
     "assigned_domain": "driodphone.com",
     "assigned_slot": "sms-imessage-ai-assistants",
     "assigned_url": "https://driodphone.com/bradley-terry-preference-reward-model-lab-20260813-140710/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "bradley_terry_preference_reward_model_lab",
     "content_kind_label": "Bradley-Terry Preference Reward Model Lab",
     "direct_generated": true,
@@ -1219,7 +1242,12 @@
     "assigned_domain": "driodphone.com",
     "assigned_slot": "sms-imessage-ai-assistants",
     "assigned_url": "https://driodphone.com/monte-carlo-tree-search-agent-tool-planning-lab-20260813-153644/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "monte_carlo_tree_search_agent_tool_planning_lab",
     "content_kind_label": "Monte Carlo Tree Search Agent Tool Planning Lab",
     "direct_generated": true,
@@ -1237,7 +1265,12 @@
     "assigned_domain": "driodphone.com",
     "assigned_slot": "sms-imessage-ai-assistants",
     "assigned_url": "https://driodphone.com/minhash-agent-memory-near-duplicate-detection-lab-20260813-161844/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "minhash_agent_memory_near_duplicate_detection_lab",
     "content_kind_label": "MinHash Agent Memory Near-Duplicate Detection Lab",
     "direct_generated": true,
@@ -1251,14 +1284,257 @@
     "target_slot": "sms-imessage-ai-assistants",
     "title": "MinHash Memory Lab: Detect Near-Duplicate Agent Context"
   },
-  {"assigned_domain":"driodphone.com","assigned_slot":"sms-imessage-ai-assistants","assigned_url":"https://driodphone.com/fencing-token-agent-lease-safety-lab-20260813-182244/","backlinks":["https://getsupers.com/","https://app.getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"content_kind":"fencing_token_agent_lease_safety_lab","content_kind_label":"Fencing Token Agent Lease Safety Lab","direct_generated":true,"github_commit":"14c2a73d0b95e9ceaf993a0095ecc1d517a2788f","github_url":"https://github.com/rohanarun/super-agent-news-fencing-token-agent-lease-safety-lab-20260813-182244","live_url":"https://driodphone.com/fencing-token-agent-lease-safety-lab-20260813-182244/","receipt_created_at":"2026-08-13T18:22:44.303+00:00","receipt_status":"success","slug":"fencing-token-agent-lease-safety-lab-20260813-182244","source_path":"sms-imessage-ai-assistants/fencing-token-agent-lease-safety-lab-20260813-182244","target_slot":"sms-imessage-ai-assistants","title":"Fencing Token Lab: Stop Stale AI Agent Writes"}
-  ,{"assigned_domain":"driodphone.com","assigned_slot":"sms-imessage-ai-assistants","assigned_url":"https://driodphone.com/crdt-observed-remove-agent-task-set-lab-20260813-192544/","backlinks":["https://getsupers.com/","https://app.getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"content_kind":"crdt_observed_remove_agent_task_set_lab","content_kind_label":"CRDT Observed Remove Agent Task Set Lab","direct_generated":true,"github_commit":"0ad3cb5a1d85d2471898106b31fdcdb9c1bdaf0f","github_url":"https://github.com/rohanarun/super-agent-news-crdt-observed-remove-agent-task-set-lab-20260813-192544","live_url":"https://driodphone.com/crdt-observed-remove-agent-task-set-lab-20260813-192544/","receipt_created_at":"2026-08-13T19:25:44.361+00:00","receipt_status":"success","slug":"crdt-observed-remove-agent-task-set-lab-20260813-192544","source_path":"sms-imessage-ai-assistants/crdt-observed-remove-agent-task-set-lab-20260813-192544","target_slot":"sms-imessage-ai-assistants","title":"CRDT Task Lab: Merge Concurrent Agent Work"}
-  ,{"assigned_domain":"driodphone.com","assigned_slot":"sms-imessage-ai-assistants","assigned_url":"https://driodphone.com/two-phase-commit-multi-agent-tool-transaction-lab-20260813-201744/","backlinks":["https://getsupers.com/","https://app.getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"content_kind":"two_phase_commit_multi_agent_tool_transaction_lab","content_kind_label":"Two-Phase Commit Multi-Agent Tool Transaction Lab","direct_generated":true,"github_commit":"e3b3b0432b2ce1144ea62a65dec6ce954fea051a","github_url":"https://github.com/rohanarun/super-agent-news-two-phase-commit-multi-agent-tool-transaction-lab-20260813-201744","live_url":"https://driodphone.com/two-phase-commit-multi-agent-tool-transaction-lab-20260813-201744/","receipt_created_at":"2026-08-13T20:17:44.519+00:00","receipt_status":"success","slug":"two-phase-commit-multi-agent-tool-transaction-lab-20260813-201744","source_path":"sms-imessage-ai-assistants/two-phase-commit-multi-agent-tool-transaction-lab-20260813-201744","target_slot":"sms-imessage-ai-assistants","title":"Two-Phase Commit Lab: Coordinate Atomic Agent Tool Actions"}
-  ,{"assigned_domain":"driodphone.com","assigned_slot":"sms-imessage-ai-assistants","assigned_url":"https://driodphone.com/aimd-adaptive-agent-tool-concurrency-control-lab-20260813-213914/","backlinks":["https://getsupers.com/","https://app.getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"content_kind":"aimd_adaptive_agent_tool_concurrency_control_lab","content_kind_label":"AIMD Adaptive Agent Tool Concurrency Control Lab","direct_generated":true,"github_commit":"04856808f85cbfdbe0cbd4ccdcada089cabe928b","github_url":"https://github.com/rohanarun/super-agent-news-aimd-adaptive-agent-tool-concurrency-control-lab-20260813-213914","live_url":"https://driodphone.com/aimd-adaptive-agent-tool-concurrency-control-lab-20260813-213914/","receipt_created_at":"2026-08-13T21:39:14.675+00:00","receipt_status":"success","slug":"aimd-adaptive-agent-tool-concurrency-control-lab-20260813-213914","source_path":"sms-imessage-ai-assistants/aimd-adaptive-agent-tool-concurrency-control-lab-20260813-213914","target_slot":"sms-imessage-ai-assistants","title":"AIMD Lab: Adapt Agent Tool Concurrency"}
-  ,{"assigned_domain":"driodphone.com","assigned_slot":"sms-imessage-ai-assistants","assigned_url":"https://driodphone.com/work-stealing-multi-agent-task-scheduler-lab-20260813-230244/","backlinks":["https://getsupers.com/","https://app.getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"content_kind":"work_stealing_multi_agent_task_scheduler_lab","content_kind_label":"Work Stealing Multi Agent Task Scheduler Lab","direct_generated":true,"github_commit":"e28bb9d4a125761378d55ce4a983c825d511d34c","github_url":"https://github.com/rohanarun/super-agent-news-work-stealing-multi-agent-task-scheduler-lab-20260813-230244","live_url":"https://driodphone.com/work-stealing-multi-agent-task-scheduler-lab-20260813-230244/","receipt_created_at":"2026-08-13T23:02:44.866+00:00","receipt_status":"success","slug":"work-stealing-multi-agent-task-scheduler-lab-20260813-230244","source_path":"sms-imessage-ai-assistants/work-stealing-multi-agent-task-scheduler-lab-20260813-230244","target_slot":"sms-imessage-ai-assistants","title":"Work-Stealing Lab: Balance Multi-Agent Task Queues"}
-  ,{"assigned_domain":"driodphone.com","assigned_slot":"sms-imessage-ai-assistants","assigned_url":"https://driodphone.com/priority-inheritance-agent-resource-lock-lab-20260813-231314/","backlinks":["https://getsupers.com/","https://app.getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"content_kind":"priority_inheritance_agent_resource_lock_lab","content_kind_label":"Priority Inheritance Agent Resource Lock Lab","direct_generated":true,"github_commit":"f5e740d2a0afb1e595448e57760493a94c1faa7e","github_url":"https://github.com/rohanarun/super-agent-news-priority-inheritance-agent-resource-lock-lab-20260813-231314","live_url":"https://driodphone.com/priority-inheritance-agent-resource-lock-lab-20260813-231314/","receipt_created_at":"2026-08-13T23:13:14.872+00:00","receipt_status":"success","slug":"priority-inheritance-agent-resource-lock-lab-20260813-231314","source_path":"sms-imessage-ai-assistants/priority-inheritance-agent-resource-lock-lab-20260813-231314","target_slot":"sms-imessage-ai-assistants","title":"Priority Inheritance Lab: Unblock Critical Agent Work"}
-  ,{"assigned_domain":"driodphone.com","assigned_slot":"sms-imessage-ai-assistants","assigned_url":"https://driodphone.com/hierarchical-timing-wheel-agent-timeout-lab-20260813-232344/","backlinks":["https://getsupers.com/","https://app.getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"content_kind":"hierarchical_timing_wheel_agent_timeout_lab","content_kind_label":"Hierarchical Timing Wheel Agent Timeout Lab","direct_generated":true,"github_commit":"c47b58c6e006c0d668a510cb1d7c90e39bd58dc4","github_url":"https://github.com/rohanarun/super-agent-news-hierarchical-timing-wheel-agent-timeout-lab-20260813-232344","live_url":"https://driodphone.com/hierarchical-timing-wheel-agent-timeout-lab-20260813-232344/","receipt_created_at":"2026-08-13T23:23:44.848+00:00","receipt_status":"success","slug":"hierarchical-timing-wheel-agent-timeout-lab-20260813-232344","source_path":"sms-imessage-ai-assistants/hierarchical-timing-wheel-agent-timeout-lab-20260813-232344","target_slot":"sms-imessage-ai-assistants","title":"Timing Wheel Lab: Schedule Agent Timeouts at Scale"}
-  ,{"assigned_domain":"driodphone.com","assigned_slot":"sms-imessage-ai-assistants","assigned_url":"https://driodphone.com/lamport-bakery-multi-agent-resource-lock-lab-20260813-233414/","backlinks":["https://getsupers.com/","https://app.getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"content_kind":"lamport_bakery_multi_agent_resource_lock_lab","content_kind_label":"Lamport Bakery Multi Agent Resource Lock Lab","direct_generated":true,"github_commit":"ac5befdd30337685b6273a6804edf8b1b1abc229","github_url":"https://github.com/rohanarun/super-agent-news-lamport-bakery-multi-agent-resource-lock-lab-20260813-233414","live_url":"https://driodphone.com/lamport-bakery-multi-agent-resource-lock-lab-20260813-233414/","receipt_created_at":"2026-08-13T23:34:14.873+00:00","receipt_status":"success","slug":"lamport-bakery-multi-agent-resource-lock-lab-20260813-233414","source_path":"sms-imessage-ai-assistants/lamport-bakery-multi-agent-resource-lock-lab-20260813-233414","target_slot":"sms-imessage-ai-assistants","title":"Bakery Algorithm Lab: Fair Multi-Agent Resource Locks"}
-  ,{"assigned_domain":"driodphone.com","assigned_slot":"sms-imessage-ai-assistants","assigned_url":"https://driodphone.com/bankers-algorithm-multi-agent-resource-safety-lab-20260813-234444/","backlinks":["https://getsupers.com/","https://app.getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"content_kind":"bankers_algorithm_multi_agent_resource_safety_lab","content_kind_label":"Bankers Algorithm Multi Agent Resource Safety Lab","direct_generated":true,"github_commit":"490a415b21bd707683151e3e381b212cc4d21f75","github_url":"https://github.com/rohanarun/super-agent-news-bankers-algorithm-multi-agent-resource-safety-lab-20260813-234444","live_url":"https://driodphone.com/bankers-algorithm-multi-agent-resource-safety-lab-20260813-234444/","receipt_created_at":"2026-08-13T23:44:44.901+00:00","receipt_status":"success","slug":"bankers-algorithm-multi-agent-resource-safety-lab-20260813-234444","source_path":"sms-imessage-ai-assistants/bankers-algorithm-multi-agent-resource-safety-lab-20260813-234444","target_slot":"sms-imessage-ai-assistants","title":"Banker's Algorithm Lab: Keep Agent Resources Deadlock-Safe"}
-  ,{"assigned_domain":"driodphone.com","assigned_slot":"sms-imessage-ai-assistants","assigned_url":"https://driodphone.com/deficit-round-robin-agent-tool-fairness-lab-20260814-000314/","backlinks":["https://getsupers.com/","https://app.getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"content_kind":"deficit_round_robin_agent_tool_fairness_lab","content_kind_label":"Deficit Round Robin Agent Tool Fairness Lab","direct_generated":true,"github_commit":"5302646193229966f57e1416123e3be2ac0b7915","github_url":"https://github.com/rohanarun/super-agent-news-deficit-round-robin-agent-tool-fairness-lab-20260814-000314","live_url":"https://driodphone.com/deficit-round-robin-agent-tool-fairness-lab-20260814-000314/","receipt_created_at":"2026-08-14T00:03:14.988+00:00","receipt_status":"success","slug":"deficit-round-robin-agent-tool-fairness-lab-20260814-000314","source_path":"sms-imessage-ai-assistants/deficit-round-robin-agent-tool-fairness-lab-20260814-000314","target_slot":"sms-imessage-ai-assistants","title":"Deficit Round Robin Lab: Fair Agent Tool Scheduling"}
+  {
+    "assigned_domain": "driodphone.com",
+    "assigned_slot": "sms-imessage-ai-assistants",
+    "assigned_url": "https://driodphone.com/fencing-token-agent-lease-safety-lab-20260813-182244/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "fencing_token_agent_lease_safety_lab",
+    "content_kind_label": "Fencing Token Agent Lease Safety Lab",
+    "direct_generated": true,
+    "github_commit": "14c2a73d0b95e9ceaf993a0095ecc1d517a2788f",
+    "github_url": "https://github.com/rohanarun/super-agent-news-fencing-token-agent-lease-safety-lab-20260813-182244",
+    "live_url": "https://driodphone.com/fencing-token-agent-lease-safety-lab-20260813-182244/",
+    "receipt_created_at": "2026-08-13T18:22:44.303+00:00",
+    "receipt_status": "success",
+    "slug": "fencing-token-agent-lease-safety-lab-20260813-182244",
+    "source_path": "sms-imessage-ai-assistants/fencing-token-agent-lease-safety-lab-20260813-182244",
+    "target_slot": "sms-imessage-ai-assistants",
+    "title": "Fencing Token Lab: Stop Stale AI Agent Writes"
+  },
+  {
+    "assigned_domain": "driodphone.com",
+    "assigned_slot": "sms-imessage-ai-assistants",
+    "assigned_url": "https://driodphone.com/crdt-observed-remove-agent-task-set-lab-20260813-192544/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "crdt_observed_remove_agent_task_set_lab",
+    "content_kind_label": "CRDT Observed Remove Agent Task Set Lab",
+    "direct_generated": true,
+    "github_commit": "0ad3cb5a1d85d2471898106b31fdcdb9c1bdaf0f",
+    "github_url": "https://github.com/rohanarun/super-agent-news-crdt-observed-remove-agent-task-set-lab-20260813-192544",
+    "live_url": "https://driodphone.com/crdt-observed-remove-agent-task-set-lab-20260813-192544/",
+    "receipt_created_at": "2026-08-13T19:25:44.361+00:00",
+    "receipt_status": "success",
+    "slug": "crdt-observed-remove-agent-task-set-lab-20260813-192544",
+    "source_path": "sms-imessage-ai-assistants/crdt-observed-remove-agent-task-set-lab-20260813-192544",
+    "target_slot": "sms-imessage-ai-assistants",
+    "title": "CRDT Task Lab: Merge Concurrent Agent Work"
+  },
+  {
+    "assigned_domain": "driodphone.com",
+    "assigned_slot": "sms-imessage-ai-assistants",
+    "assigned_url": "https://driodphone.com/two-phase-commit-multi-agent-tool-transaction-lab-20260813-201744/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "two_phase_commit_multi_agent_tool_transaction_lab",
+    "content_kind_label": "Two-Phase Commit Multi-Agent Tool Transaction Lab",
+    "direct_generated": true,
+    "github_commit": "e3b3b0432b2ce1144ea62a65dec6ce954fea051a",
+    "github_url": "https://github.com/rohanarun/super-agent-news-two-phase-commit-multi-agent-tool-transaction-lab-20260813-201744",
+    "live_url": "https://driodphone.com/two-phase-commit-multi-agent-tool-transaction-lab-20260813-201744/",
+    "receipt_created_at": "2026-08-13T20:17:44.519+00:00",
+    "receipt_status": "success",
+    "slug": "two-phase-commit-multi-agent-tool-transaction-lab-20260813-201744",
+    "source_path": "sms-imessage-ai-assistants/two-phase-commit-multi-agent-tool-transaction-lab-20260813-201744",
+    "target_slot": "sms-imessage-ai-assistants",
+    "title": "Two-Phase Commit Lab: Coordinate Atomic Agent Tool Actions"
+  },
+  {
+    "assigned_domain": "driodphone.com",
+    "assigned_slot": "sms-imessage-ai-assistants",
+    "assigned_url": "https://driodphone.com/aimd-adaptive-agent-tool-concurrency-control-lab-20260813-213914/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "aimd_adaptive_agent_tool_concurrency_control_lab",
+    "content_kind_label": "AIMD Adaptive Agent Tool Concurrency Control Lab",
+    "direct_generated": true,
+    "github_commit": "04856808f85cbfdbe0cbd4ccdcada089cabe928b",
+    "github_url": "https://github.com/rohanarun/super-agent-news-aimd-adaptive-agent-tool-concurrency-control-lab-20260813-213914",
+    "live_url": "https://driodphone.com/aimd-adaptive-agent-tool-concurrency-control-lab-20260813-213914/",
+    "receipt_created_at": "2026-08-13T21:39:14.675+00:00",
+    "receipt_status": "success",
+    "slug": "aimd-adaptive-agent-tool-concurrency-control-lab-20260813-213914",
+    "source_path": "sms-imessage-ai-assistants/aimd-adaptive-agent-tool-concurrency-control-lab-20260813-213914",
+    "target_slot": "sms-imessage-ai-assistants",
+    "title": "AIMD Lab: Adapt Agent Tool Concurrency"
+  },
+  {
+    "assigned_domain": "driodphone.com",
+    "assigned_slot": "sms-imessage-ai-assistants",
+    "assigned_url": "https://driodphone.com/work-stealing-multi-agent-task-scheduler-lab-20260813-230244/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "work_stealing_multi_agent_task_scheduler_lab",
+    "content_kind_label": "Work Stealing Multi Agent Task Scheduler Lab",
+    "direct_generated": true,
+    "github_commit": "e28bb9d4a125761378d55ce4a983c825d511d34c",
+    "github_url": "https://github.com/rohanarun/super-agent-news-work-stealing-multi-agent-task-scheduler-lab-20260813-230244",
+    "live_url": "https://driodphone.com/work-stealing-multi-agent-task-scheduler-lab-20260813-230244/",
+    "receipt_created_at": "2026-08-13T23:02:44.866+00:00",
+    "receipt_status": "success",
+    "slug": "work-stealing-multi-agent-task-scheduler-lab-20260813-230244",
+    "source_path": "sms-imessage-ai-assistants/work-stealing-multi-agent-task-scheduler-lab-20260813-230244",
+    "target_slot": "sms-imessage-ai-assistants",
+    "title": "Work-Stealing Lab: Balance Multi-Agent Task Queues"
+  },
+  {
+    "assigned_domain": "driodphone.com",
+    "assigned_slot": "sms-imessage-ai-assistants",
+    "assigned_url": "https://driodphone.com/priority-inheritance-agent-resource-lock-lab-20260813-231314/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "priority_inheritance_agent_resource_lock_lab",
+    "content_kind_label": "Priority Inheritance Agent Resource Lock Lab",
+    "direct_generated": true,
+    "github_commit": "f5e740d2a0afb1e595448e57760493a94c1faa7e",
+    "github_url": "https://github.com/rohanarun/super-agent-news-priority-inheritance-agent-resource-lock-lab-20260813-231314",
+    "live_url": "https://driodphone.com/priority-inheritance-agent-resource-lock-lab-20260813-231314/",
+    "receipt_created_at": "2026-08-13T23:13:14.872+00:00",
+    "receipt_status": "success",
+    "slug": "priority-inheritance-agent-resource-lock-lab-20260813-231314",
+    "source_path": "sms-imessage-ai-assistants/priority-inheritance-agent-resource-lock-lab-20260813-231314",
+    "target_slot": "sms-imessage-ai-assistants",
+    "title": "Priority Inheritance Lab: Unblock Critical Agent Work"
+  },
+  {
+    "assigned_domain": "driodphone.com",
+    "assigned_slot": "sms-imessage-ai-assistants",
+    "assigned_url": "https://driodphone.com/hierarchical-timing-wheel-agent-timeout-lab-20260813-232344/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "hierarchical_timing_wheel_agent_timeout_lab",
+    "content_kind_label": "Hierarchical Timing Wheel Agent Timeout Lab",
+    "direct_generated": true,
+    "github_commit": "c47b58c6e006c0d668a510cb1d7c90e39bd58dc4",
+    "github_url": "https://github.com/rohanarun/super-agent-news-hierarchical-timing-wheel-agent-timeout-lab-20260813-232344",
+    "live_url": "https://driodphone.com/hierarchical-timing-wheel-agent-timeout-lab-20260813-232344/",
+    "receipt_created_at": "2026-08-13T23:23:44.848+00:00",
+    "receipt_status": "success",
+    "slug": "hierarchical-timing-wheel-agent-timeout-lab-20260813-232344",
+    "source_path": "sms-imessage-ai-assistants/hierarchical-timing-wheel-agent-timeout-lab-20260813-232344",
+    "target_slot": "sms-imessage-ai-assistants",
+    "title": "Timing Wheel Lab: Schedule Agent Timeouts at Scale"
+  },
+  {
+    "assigned_domain": "driodphone.com",
+    "assigned_slot": "sms-imessage-ai-assistants",
+    "assigned_url": "https://driodphone.com/lamport-bakery-multi-agent-resource-lock-lab-20260813-233414/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "lamport_bakery_multi_agent_resource_lock_lab",
+    "content_kind_label": "Lamport Bakery Multi Agent Resource Lock Lab",
+    "direct_generated": true,
+    "github_commit": "ac5befdd30337685b6273a6804edf8b1b1abc229",
+    "github_url": "https://github.com/rohanarun/super-agent-news-lamport-bakery-multi-agent-resource-lock-lab-20260813-233414",
+    "live_url": "https://driodphone.com/lamport-bakery-multi-agent-resource-lock-lab-20260813-233414/",
+    "receipt_created_at": "2026-08-13T23:34:14.873+00:00",
+    "receipt_status": "success",
+    "slug": "lamport-bakery-multi-agent-resource-lock-lab-20260813-233414",
+    "source_path": "sms-imessage-ai-assistants/lamport-bakery-multi-agent-resource-lock-lab-20260813-233414",
+    "target_slot": "sms-imessage-ai-assistants",
+    "title": "Bakery Algorithm Lab: Fair Multi-Agent Resource Locks"
+  },
+  {
+    "assigned_domain": "driodphone.com",
+    "assigned_slot": "sms-imessage-ai-assistants",
+    "assigned_url": "https://driodphone.com/bankers-algorithm-multi-agent-resource-safety-lab-20260813-234444/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "bankers_algorithm_multi_agent_resource_safety_lab",
+    "content_kind_label": "Bankers Algorithm Multi Agent Resource Safety Lab",
+    "direct_generated": true,
+    "github_commit": "490a415b21bd707683151e3e381b212cc4d21f75",
+    "github_url": "https://github.com/rohanarun/super-agent-news-bankers-algorithm-multi-agent-resource-safety-lab-20260813-234444",
+    "live_url": "https://driodphone.com/bankers-algorithm-multi-agent-resource-safety-lab-20260813-234444/",
+    "receipt_created_at": "2026-08-13T23:44:44.901+00:00",
+    "receipt_status": "success",
+    "slug": "bankers-algorithm-multi-agent-resource-safety-lab-20260813-234444",
+    "source_path": "sms-imessage-ai-assistants/bankers-algorithm-multi-agent-resource-safety-lab-20260813-234444",
+    "target_slot": "sms-imessage-ai-assistants",
+    "title": "Banker's Algorithm Lab: Keep Agent Resources Deadlock-Safe"
+  },
+  {
+    "assigned_domain": "driodphone.com",
+    "assigned_slot": "sms-imessage-ai-assistants",
+    "assigned_url": "https://driodphone.com/deficit-round-robin-agent-tool-fairness-lab-20260814-000314/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "deficit_round_robin_agent_tool_fairness_lab",
+    "content_kind_label": "Deficit Round Robin Agent Tool Fairness Lab",
+    "direct_generated": true,
+    "github_commit": "5302646193229966f57e1416123e3be2ac0b7915",
+    "github_url": "https://github.com/rohanarun/super-agent-news-deficit-round-robin-agent-tool-fairness-lab-20260814-000314",
+    "live_url": "https://driodphone.com/deficit-round-robin-agent-tool-fairness-lab-20260814-000314/",
+    "receipt_created_at": "2026-08-14T00:03:14.988+00:00",
+    "receipt_status": "success",
+    "slug": "deficit-round-robin-agent-tool-fairness-lab-20260814-000314",
+    "source_path": "sms-imessage-ai-assistants/deficit-round-robin-agent-tool-fairness-lab-20260814-000314",
+    "target_slot": "sms-imessage-ai-assistants",
+    "title": "Deficit Round Robin Lab: Fair Agent Tool Scheduling"
+  },
+  {
+    "assigned_domain": "driodphone.com",
+    "assigned_slot": "sms-imessage-ai-assistants",
+    "assigned_url": "https://driodphone.com/page-hinkley-agent-quality-drift-lab-20260814-010615/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "page_hinkley_agent_quality_drift_lab",
+    "content_kind_label": "Page Hinkley Agent Quality Drift Lab",
+    "direct_generated": true,
+    "github_commit": "d1930cc4e51de524c1f5550469d185448f711090",
+    "github_url": "https://github.com/rohanarun/super-agent-news-page-hinkley-agent-quality-drift-lab-20260814-010615",
+    "live_url": "https://driodphone.com/page-hinkley-agent-quality-drift-lab-20260814-010615/",
+    "receipt_created_at": "2026-08-14T01:06:15.097+00:00",
+    "receipt_status": "success",
+    "slug": "page-hinkley-agent-quality-drift-lab-20260814-010615",
+    "source_path": "sms-imessage-ai-assistants/page-hinkley-agent-quality-drift-lab-20260814-010615",
+    "target_slot": "sms-imessage-ai-assistants",
+    "title": "Page-Hinkley Lab: Detect Agent Quality Drift"
+  }
 ]
