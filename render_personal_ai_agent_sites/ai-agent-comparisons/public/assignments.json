@@ -2548,11 +2548,187 @@
     "target_slot": "ai-agent-comparisons",
     "title": "Influence Lab: Which Training Points Shaped This Prediction?"
   },
-  {"assigned_domain":"lists.new","assigned_slot":"ai-agent-comparisons","assigned_url":"https://lists.new/bloom-filter-agent-cache-membership-lab-20260813-114658/","backlinks":["https://getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"content_kind":"bloom_filter_agent_cache_membership_lab","content_kind_label":"Bloom Filter Agent Cache Membership Lab","direct_generated":true,"github_commit":"06dc0940a681f405681cd9a5b091ca063c951996","github_url":"https://github.com/rohanarun/super-agent-news-bloom-filter-agent-cache-membership-lab-20260813-114658","live_url":"https://lists.new/bloom-filter-agent-cache-membership-lab-20260813-114658/","receipt_created_at":"2026-08-13T11:46:58.752+00:00","receipt_status":"success","slug":"bloom-filter-agent-cache-membership-lab-20260813-114658","source_path":"sms_published_sites/bloom-filter-agent-cache-membership-lab-20260813-114658","target_slot":"ai-agent-comparisons","title":"Bloom Filter Lab: Fast Membership Checks for Agent Caches"},
-  {"assigned_domain":"lists.new","assigned_slot":"ai-agent-comparisons","assigned_url":"https://lists.new/dawid-skene-worker-reliability-label-aggregation-lab-20260813-144119/","backlinks":["https://getsupers.com/","https://app.getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"content_kind":"dawid_skene_worker_reliability_label_aggregation_lab","content_kind_label":"Dawid-Skene Worker Reliability Label Aggregation Lab","direct_generated":true,"github_commit":"4a2c12c3736adc5883092748fd3a4640b93a0a18","github_url":"https://github.com/rohanarun/super-agent-news-dawid-skene-worker-reliability-label-aggregation-lab-20260813-144119","live_url":"https://lists.new/dawid-skene-worker-reliability-label-aggregation-lab-20260813-144119/","receipt_created_at":"2026-08-13T14:40:43.943+00:00","receipt_status":"success","slug":"dawid-skene-worker-reliability-label-aggregation-lab-20260813-144119","source_path":"personal-ai-agent-news/dawid-skene-worker-reliability-label-aggregation-lab-20260813-144119","target_slot":"ai-agent-comparisons","title":"Label Truth Lab: Dawid-Skene Worker Reliability"},
-  {"assigned_domain":"lists.new","assigned_slot":"ai-agent-comparisons","assigned_url":"https://lists.new/count-min-sketch-agent-frequency-lab-20260813-172544/","backlinks":["https://getsupers.com/","https://app.getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"content_kind":"count_min_sketch_agent_frequency_lab","content_kind_label":"Count-Min Sketch Agent Frequency Lab","direct_generated":true,"github_commit":"91c166e3d6d4489d4862bb2b9e4406058b4ef6e7","github_url":"https://github.com/rohanarun/super-agent-news-count-min-sketch-agent-frequency-lab-20260813-172544","live_url":"https://lists.new/count-min-sketch-agent-frequency-lab-20260813-172544/","receipt_created_at":"2026-08-13T17:25:44.185+00:00","receipt_status":"success","slug":"count-min-sketch-agent-frequency-lab-20260813-172544","source_path":"ai-agent-comparisons/count-min-sketch-agent-frequency-lab-20260813-172544","target_slot":"ai-agent-comparisons","title":"Count-Min Sketch Lab: Estimate Agent Event Frequencies"}
-  ,{"assigned_domain":"lists.new","assigned_slot":"ai-agent-comparisons","assigned_url":"https://lists.new/merkle-anti-entropy-agent-memory-sync-lab-20260813-190444/","backlinks":["https://getsupers.com/","https://app.getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"content_kind":"merkle_anti_entropy_agent_memory_sync_lab","content_kind_label":"Merkle Anti Entropy Agent Memory Sync Lab","direct_generated":true,"github_commit":"bc8a9a0a69d33b5c4841284ce8a2f0777f8be16c","github_url":"https://github.com/rohanarun/super-agent-news-merkle-anti-entropy-agent-memory-sync-lab-20260813-190444","live_url":"https://lists.new/merkle-anti-entropy-agent-memory-sync-lab-20260813-190444/","receipt_created_at":"2026-08-13T19:04:44.295+00:00","receipt_status":"success","slug":"merkle-anti-entropy-agent-memory-sync-lab-20260813-190444","source_path":"ai-agent-comparisons/merkle-anti-entropy-agent-memory-sync-lab-20260813-190444","target_slot":"ai-agent-comparisons","title":"Merkle Sync Lab: Reconcile Agent Memory Replicas"}
-  ,{"assigned_domain":"lists.new","assigned_slot":"ai-agent-comparisons","assigned_url":"https://lists.new/quorum-read-repair-agent-memory-replication-lab-20260813-202814/","backlinks":["https://getsupers.com/","https://app.getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"content_kind":"quorum_read_repair_agent_memory_replication_lab","content_kind_label":"Quorum Read Repair Agent Memory Replication Lab","direct_generated":true,"github_commit":"299b6c78e81121d7cd819d998fa1b92cdaddd2b9","github_url":"https://github.com/rohanarun/super-agent-news-quorum-read-repair-agent-memory-replication-lab-20260813-202814","live_url":"https://lists.new/quorum-read-repair-agent-memory-replication-lab-20260813-202814/","receipt_created_at":"2026-08-13T20:28:14.522+00:00","receipt_status":"success","slug":"quorum-read-repair-agent-memory-replication-lab-20260813-202814","source_path":"ai-agent-comparisons/quorum-read-repair-agent-memory-replication-lab-20260813-202814","target_slot":"ai-agent-comparisons","title":"Quorum Lab: Repair Replicated AI Agent Memory"}
-  ,{"assigned_domain":"lists.new","assigned_slot":"ai-agent-comparisons","assigned_url":"https://lists.new/hedged-request-agent-tail-latency-race-lab-20260813-211844/","backlinks":["https://getsupers.com/","https://app.getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"content_kind":"hedged_request_agent_tail_latency_race_lab","content_kind_label":"Hedged Request Agent Tail Latency Race Lab","direct_generated":true,"github_commit":"3c66b59fc8ac001d6cdca8873242d075351fdc58","github_url":"https://github.com/rohanarun/super-agent-news-hedged-request-agent-tail-latency-race-lab-20260813-211844","live_url":"https://lists.new/hedged-request-agent-tail-latency-race-lab-20260813-211844/","receipt_created_at":"2026-08-13T21:18:44.581+00:00","receipt_status":"success","slug":"hedged-request-agent-tail-latency-race-lab-20260813-211844","source_path":"ai-agent-comparisons/hedged-request-agent-tail-latency-race-lab-20260813-211844","target_slot":"ai-agent-comparisons","title":"Hedged Request Lab: Race Agent Calls Against Tail Latency"}
-  ,{"assigned_domain":"lists.new","assigned_slot":"ai-agent-comparisons","assigned_url":"https://lists.new/dead-letter-queue-agent-poison-job-redrive-lab-20260813-222344/","backlinks":["https://getsupers.com/","https://app.getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"content_kind":"dead_letter_queue_agent_poison_job_redrive_lab","content_kind_label":"Dead Letter Queue Agent Poison Job Redrive Lab","direct_generated":true,"github_commit":"3125001dd5e9027d1dd72cb922bfe42706a26cab","github_url":"https://github.com/rohanarun/super-agent-news-dead-letter-queue-agent-poison-job-redrive-lab-20260813-222344","live_url":"https://lists.new/dead-letter-queue-agent-poison-job-redrive-lab-20260813-222344/","receipt_created_at":"2026-08-13T22:23:44.825+00:00","receipt_status":"success","slug":"dead-letter-queue-agent-poison-job-redrive-lab-20260813-222344","source_path":"ai-agent-comparisons/dead-letter-queue-agent-poison-job-redrive-lab-20260813-222344","target_slot":"ai-agent-comparisons","title":"Dead-Letter Lab: Quarantine Poison Agent Jobs"}
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/bloom-filter-agent-cache-membership-lab-20260813-114658/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "bloom_filter_agent_cache_membership_lab",
+    "content_kind_label": "Bloom Filter Agent Cache Membership Lab",
+    "direct_generated": true,
+    "github_commit": "06dc0940a681f405681cd9a5b091ca063c951996",
+    "github_url": "https://github.com/rohanarun/super-agent-news-bloom-filter-agent-cache-membership-lab-20260813-114658",
+    "live_url": "https://lists.new/bloom-filter-agent-cache-membership-lab-20260813-114658/",
+    "receipt_created_at": "2026-08-13T11:46:58.752+00:00",
+    "receipt_status": "success",
+    "slug": "bloom-filter-agent-cache-membership-lab-20260813-114658",
+    "source_path": "sms_published_sites/bloom-filter-agent-cache-membership-lab-20260813-114658",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Bloom Filter Lab: Fast Membership Checks for Agent Caches"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/dawid-skene-worker-reliability-label-aggregation-lab-20260813-144119/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "dawid_skene_worker_reliability_label_aggregation_lab",
+    "content_kind_label": "Dawid-Skene Worker Reliability Label Aggregation Lab",
+    "direct_generated": true,
+    "github_commit": "4a2c12c3736adc5883092748fd3a4640b93a0a18",
+    "github_url": "https://github.com/rohanarun/super-agent-news-dawid-skene-worker-reliability-label-aggregation-lab-20260813-144119",
+    "live_url": "https://lists.new/dawid-skene-worker-reliability-label-aggregation-lab-20260813-144119/",
+    "receipt_created_at": "2026-08-13T14:40:43.943+00:00",
+    "receipt_status": "success",
+    "slug": "dawid-skene-worker-reliability-label-aggregation-lab-20260813-144119",
+    "source_path": "personal-ai-agent-news/dawid-skene-worker-reliability-label-aggregation-lab-20260813-144119",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Label Truth Lab: Dawid-Skene Worker Reliability"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/count-min-sketch-agent-frequency-lab-20260813-172544/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "count_min_sketch_agent_frequency_lab",
+    "content_kind_label": "Count-Min Sketch Agent Frequency Lab",
+    "direct_generated": true,
+    "github_commit": "91c166e3d6d4489d4862bb2b9e4406058b4ef6e7",
+    "github_url": "https://github.com/rohanarun/super-agent-news-count-min-sketch-agent-frequency-lab-20260813-172544",
+    "live_url": "https://lists.new/count-min-sketch-agent-frequency-lab-20260813-172544/",
+    "receipt_created_at": "2026-08-13T17:25:44.185+00:00",
+    "receipt_status": "success",
+    "slug": "count-min-sketch-agent-frequency-lab-20260813-172544",
+    "source_path": "ai-agent-comparisons/count-min-sketch-agent-frequency-lab-20260813-172544",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Count-Min Sketch Lab: Estimate Agent Event Frequencies"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/merkle-anti-entropy-agent-memory-sync-lab-20260813-190444/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "merkle_anti_entropy_agent_memory_sync_lab",
+    "content_kind_label": "Merkle Anti Entropy Agent Memory Sync Lab",
+    "direct_generated": true,
+    "github_commit": "bc8a9a0a69d33b5c4841284ce8a2f0777f8be16c",
+    "github_url": "https://github.com/rohanarun/super-agent-news-merkle-anti-entropy-agent-memory-sync-lab-20260813-190444",
+    "live_url": "https://lists.new/merkle-anti-entropy-agent-memory-sync-lab-20260813-190444/",
+    "receipt_created_at": "2026-08-13T19:04:44.295+00:00",
+    "receipt_status": "success",
+    "slug": "merkle-anti-entropy-agent-memory-sync-lab-20260813-190444",
+    "source_path": "ai-agent-comparisons/merkle-anti-entropy-agent-memory-sync-lab-20260813-190444",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Merkle Sync Lab: Reconcile Agent Memory Replicas"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/quorum-read-repair-agent-memory-replication-lab-20260813-202814/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "quorum_read_repair_agent_memory_replication_lab",
+    "content_kind_label": "Quorum Read Repair Agent Memory Replication Lab",
+    "direct_generated": true,
+    "github_commit": "299b6c78e81121d7cd819d998fa1b92cdaddd2b9",
+    "github_url": "https://github.com/rohanarun/super-agent-news-quorum-read-repair-agent-memory-replication-lab-20260813-202814",
+    "live_url": "https://lists.new/quorum-read-repair-agent-memory-replication-lab-20260813-202814/",
+    "receipt_created_at": "2026-08-13T20:28:14.522+00:00",
+    "receipt_status": "success",
+    "slug": "quorum-read-repair-agent-memory-replication-lab-20260813-202814",
+    "source_path": "ai-agent-comparisons/quorum-read-repair-agent-memory-replication-lab-20260813-202814",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Quorum Lab: Repair Replicated AI Agent Memory"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/hedged-request-agent-tail-latency-race-lab-20260813-211844/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "hedged_request_agent_tail_latency_race_lab",
+    "content_kind_label": "Hedged Request Agent Tail Latency Race Lab",
+    "direct_generated": true,
+    "github_commit": "3c66b59fc8ac001d6cdca8873242d075351fdc58",
+    "github_url": "https://github.com/rohanarun/super-agent-news-hedged-request-agent-tail-latency-race-lab-20260813-211844",
+    "live_url": "https://lists.new/hedged-request-agent-tail-latency-race-lab-20260813-211844/",
+    "receipt_created_at": "2026-08-13T21:18:44.581+00:00",
+    "receipt_status": "success",
+    "slug": "hedged-request-agent-tail-latency-race-lab-20260813-211844",
+    "source_path": "ai-agent-comparisons/hedged-request-agent-tail-latency-race-lab-20260813-211844",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Hedged Request Lab: Race Agent Calls Against Tail Latency"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/dead-letter-queue-agent-poison-job-redrive-lab-20260813-222344/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "dead_letter_queue_agent_poison_job_redrive_lab",
+    "content_kind_label": "Dead Letter Queue Agent Poison Job Redrive Lab",
+    "direct_generated": true,
+    "github_commit": "3125001dd5e9027d1dd72cb922bfe42706a26cab",
+    "github_url": "https://github.com/rohanarun/super-agent-news-dead-letter-queue-agent-poison-job-redrive-lab-20260813-222344",
+    "live_url": "https://lists.new/dead-letter-queue-agent-poison-job-redrive-lab-20260813-222344/",
+    "receipt_created_at": "2026-08-13T22:23:44.825+00:00",
+    "receipt_status": "success",
+    "slug": "dead-letter-queue-agent-poison-job-redrive-lab-20260813-222344",
+    "source_path": "ai-agent-comparisons/dead-letter-queue-agent-poison-job-redrive-lab-20260813-222344",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Dead-Letter Lab: Quarantine Poison Agent Jobs"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/rendezvous-hashing-agent-job-remapping-lab-20260814-003445/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "rendezvous_hashing_agent_job_remapping_lab",
+    "content_kind_label": "Rendezvous Hashing Agent Job Remapping Lab",
+    "direct_generated": true,
+    "github_commit": "53cedbf13c19db5883230963fb7d90b8335bc1df",
+    "github_url": "https://github.com/rohanarun/super-agent-news-rendezvous-hashing-agent-job-remapping-lab-20260814-003445",
+    "live_url": "https://lists.new/rendezvous-hashing-agent-job-remapping-lab-20260814-003445/",
+    "receipt_created_at": "2026-08-14T00:34:45.050+00:00",
+    "receipt_status": "success",
+    "slug": "rendezvous-hashing-agent-job-remapping-lab-20260814-003445",
+    "source_path": "ai-agent-comparisons/rendezvous-hashing-agent-job-remapping-lab-20260814-003445",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Rendezvous Hashing Lab: Stable Agent Job Assignment"
+  }
 ]
