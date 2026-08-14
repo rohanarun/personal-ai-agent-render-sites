@@ -1606,5 +1606,28 @@
     "source_path": "computer-use-ai-agents/swim-agent-health-indirect-probe-lab-20260814-002414",
     "target_slot": "computer-use-ai-agents",
     "title": "SWIM Protocol Lab: Detect Unhealthy Agents"
+  },
+  {
+    "assigned_domain": "parsercheat.com",
+    "assigned_slot": "computer-use-ai-agents",
+    "assigned_url": "https://parsercheat.com/maximum-mean-discrepancy-agent-embedding-drift-lab-20260814-012715/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "maximum_mean_discrepancy_agent_embedding_drift_lab",
+    "content_kind_label": "Maximum Mean Discrepancy Agent Embedding Drift Lab",
+    "direct_generated": true,
+    "github_commit": "c277f9e5b4113de2652d8213f57e9e5ad6399fb4",
+    "github_url": "https://github.com/rohanarun/super-agent-news-maximum-mean-discrepancy-agent-embedding-drift-lab-20260814-012715",
+    "live_url": "https://parsercheat.com/maximum-mean-discrepancy-agent-embedding-drift-lab-20260814-012715/",
+    "receipt_created_at": "2026-08-14T01:27:15.130+00:00",
+    "receipt_status": "success",
+    "slug": "maximum-mean-discrepancy-agent-embedding-drift-lab-20260814-012715",
+    "source_path": "computer-use-ai-agents/maximum-mean-discrepancy-agent-embedding-drift-lab-20260814-012715",
+    "target_slot": "computer-use-ai-agents",
+    "title": "Kernel Drift Lab: Test Agent Embedding Shift"
   }
 ]
