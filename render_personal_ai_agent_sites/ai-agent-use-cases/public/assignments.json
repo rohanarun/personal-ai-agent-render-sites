@@ -1361,7 +1361,11 @@
     "assigned_domain": "agentslayer.com",
     "assigned_slot": "ai-agent-use-cases",
     "assigned_url": "https://agentslayer.com/paged-kv-cache-eviction-fragmentation-lab-20260813-113628/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "paged_kv_cache_eviction_fragmentation_lab",
     "content_kind_label": "Paged KV Cache Eviction Fragmentation Lab",
     "direct_generated": true,
@@ -1379,7 +1383,12 @@
     "assigned_domain": "agentslayer.com",
     "assigned_slot": "ai-agent-use-cases",
     "assigned_url": "https://agentslayer.com/byzantine-quorum-multi-agent-verification-lab-20260813-142222/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "byzantine_quorum_multi_agent_verification_lab",
     "content_kind_label": "Byzantine Quorum Multi-Agent Verification Lab",
     "direct_generated": true,
@@ -1397,7 +1406,12 @@
     "assigned_domain": "agentslayer.com",
     "assigned_slot": "ai-agent-use-cases",
     "assigned_url": "https://agentslayer.com/hungarian-algorithm-multi-agent-task-assignment-lab-20260813-150343/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "hungarian_algorithm_multi_agent_task_assignment_lab",
     "content_kind_label": "Hungarian Algorithm Multi-Agent Task Assignment Lab",
     "direct_generated": true,
@@ -1415,7 +1429,12 @@
     "assigned_domain": "agentslayer.com",
     "assigned_slot": "ai-agent-use-cases",
     "assigned_url": "https://agentslayer.com/kalman-agent-tool-signal-fusion-lab-20260813-163944/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "kalman_agent_tool_signal_fusion_lab",
     "content_kind_label": "Kalman Agent Tool Signal Fusion Lab",
     "direct_generated": true,
@@ -1429,9 +1448,142 @@
     "target_slot": "ai-agent-use-cases",
     "title": "Kalman Signal Lab: Fuse Noisy Agent Tool Telemetry"
   },
-  {"assigned_domain":"agentslayer.com","assigned_slot":"ai-agent-use-cases","assigned_url":"https://agentslayer.com/token-bucket-agent-rate-limit-lab-20260813-174614/","backlinks":["https://getsupers.com/","https://app.getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"content_kind":"token_bucket_agent_rate_limit_lab","content_kind_label":"Token Bucket Agent Rate Limit Lab","direct_generated":true,"github_commit":"81a491e57916fce613208eca8138f8851e503c13","github_url":"https://github.com/rohanarun/super-agent-news-token-bucket-agent-rate-limit-lab-20260813-174614","live_url":"https://agentslayer.com/token-bucket-agent-rate-limit-lab-20260813-174614/","receipt_created_at":"2026-08-13T17:46:14.250+00:00","receipt_status":"success","slug":"token-bucket-agent-rate-limit-lab-20260813-174614","source_path":"ai-agent-use-cases/token-bucket-agent-rate-limit-lab-20260813-174614","target_slot":"ai-agent-use-cases","title":"Token Bucket Lab: Shape AI Agent Request Bursts"},
-  {"assigned_domain":"agentslayer.com","assigned_slot":"ai-agent-use-cases","assigned_url":"https://agentslayer.com/saga-compensation-agent-workflow-lab-20260813-183314/","backlinks":["https://getsupers.com/","https://app.getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"content_kind":"saga_compensation_agent_workflow_lab","content_kind_label":"Saga Compensation Agent Workflow Lab","direct_generated":true,"github_commit":"c3f7cd37b87dbf18924bdd82983ea25a95e1afbd","github_url":"https://github.com/rohanarun/super-agent-news-saga-compensation-agent-workflow-lab-20260813-183314","live_url":"https://agentslayer.com/saga-compensation-agent-workflow-lab-20260813-183314/","receipt_created_at":"2026-08-13T18:33:14.320+00:00","receipt_status":"success","slug":"saga-compensation-agent-workflow-lab-20260813-183314","source_path":"ai-agent-use-cases/saga-compensation-agent-workflow-lab-20260813-183314","target_slot":"ai-agent-use-cases","title":"Saga Lab: Compensate Failed AI Agent Workflows"}
-  ,{"assigned_domain":"agentslayer.com","assigned_slot":"ai-agent-use-cases","assigned_url":"https://agentslayer.com/chandy-lamport-agent-consistent-snapshot-lab-20260813-193614/","backlinks":["https://getsupers.com/","https://app.getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"content_kind":"chandy_lamport_agent_consistent_snapshot_lab","content_kind_label":"Chandy Lamport Agent Consistent Snapshot Lab","direct_generated":true,"github_commit":"2dd6d757f3302cd468de60569d40b9035b890949","github_url":"https://github.com/rohanarun/super-agent-news-chandy-lamport-agent-consistent-snapshot-lab-20260813-193614","live_url":"https://agentslayer.com/chandy-lamport-agent-consistent-snapshot-lab-20260813-193614/","receipt_created_at":"2026-08-13T19:36:14.370+00:00","receipt_status":"success","slug":"chandy-lamport-agent-consistent-snapshot-lab-20260813-193614","source_path":"ai-agent-use-cases/chandy-lamport-agent-consistent-snapshot-lab-20260813-193614","target_slot":"ai-agent-use-cases","title":"Snapshot Lab: Capture Consistent Multi-Agent State"}
-  ,{"assigned_domain":"agentslayer.com","assigned_slot":"ai-agent-use-cases","assigned_url":"https://agentslayer.com/event-sourcing-agent-memory-temporal-replay-lab-20260813-210114/","backlinks":["https://getsupers.com/","https://app.getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"content_kind":"event_sourcing_agent_memory_temporal_replay_lab","content_kind_label":"Event Sourcing Agent Memory Temporal Replay Lab","direct_generated":true,"github_commit":"fbe07e4d8fcc62d601b996c8fa28eeafa3fa8c32","github_url":"https://github.com/rohanarun/super-agent-news-event-sourcing-agent-memory-temporal-replay-lab-20260813-210114","live_url":"https://agentslayer.com/event-sourcing-agent-memory-temporal-replay-lab-20260813-210114/","receipt_created_at":"2026-08-13T21:01:14.474+00:00","receipt_status":"success","slug":"event-sourcing-agent-memory-temporal-replay-lab-20260813-210114","source_path":"ai-agent-use-cases/event-sourcing-agent-memory-temporal-replay-lab-20260813-210114","target_slot":"ai-agent-use-cases","title":"Event Replay Lab: Time-Travel Through Agent Memory"}
-  ,{"assigned_domain":"agentslayer.com","assigned_slot":"ai-agent-use-cases","assigned_url":"https://agentslayer.com/priority-load-shedding-agent-tool-overload-lab-20260813-215944/","backlinks":["https://getsupers.com/","https://app.getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],"content_kind":"priority_load_shedding_agent_tool_overload_lab","content_kind_label":"Priority Load Shedding Agent Tool Overload Lab","direct_generated":true,"github_commit":"b556dd324cfd10cba3f4a59ca50fb1b33654a107","github_url":"https://github.com/rohanarun/super-agent-news-priority-load-shedding-agent-tool-overload-lab-20260813-215944","live_url":"https://agentslayer.com/priority-load-shedding-agent-tool-overload-lab-20260813-215944/","receipt_created_at":"2026-08-13T21:59:44.747+00:00","receipt_status":"success","slug":"priority-load-shedding-agent-tool-overload-lab-20260813-215944","source_path":"ai-agent-use-cases/priority-load-shedding-agent-tool-overload-lab-20260813-215944","target_slot":"ai-agent-use-cases","title":"Load Shedding Lab: Protect Critical Agent Work"}
+  {
+    "assigned_domain": "agentslayer.com",
+    "assigned_slot": "ai-agent-use-cases",
+    "assigned_url": "https://agentslayer.com/token-bucket-agent-rate-limit-lab-20260813-174614/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "token_bucket_agent_rate_limit_lab",
+    "content_kind_label": "Token Bucket Agent Rate Limit Lab",
+    "direct_generated": true,
+    "github_commit": "81a491e57916fce613208eca8138f8851e503c13",
+    "github_url": "https://github.com/rohanarun/super-agent-news-token-bucket-agent-rate-limit-lab-20260813-174614",
+    "live_url": "https://agentslayer.com/token-bucket-agent-rate-limit-lab-20260813-174614/",
+    "receipt_created_at": "2026-08-13T17:46:14.250+00:00",
+    "receipt_status": "success",
+    "slug": "token-bucket-agent-rate-limit-lab-20260813-174614",
+    "source_path": "ai-agent-use-cases/token-bucket-agent-rate-limit-lab-20260813-174614",
+    "target_slot": "ai-agent-use-cases",
+    "title": "Token Bucket Lab: Shape AI Agent Request Bursts"
+  },
+  {
+    "assigned_domain": "agentslayer.com",
+    "assigned_slot": "ai-agent-use-cases",
+    "assigned_url": "https://agentslayer.com/saga-compensation-agent-workflow-lab-20260813-183314/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "saga_compensation_agent_workflow_lab",
+    "content_kind_label": "Saga Compensation Agent Workflow Lab",
+    "direct_generated": true,
+    "github_commit": "c3f7cd37b87dbf18924bdd82983ea25a95e1afbd",
+    "github_url": "https://github.com/rohanarun/super-agent-news-saga-compensation-agent-workflow-lab-20260813-183314",
+    "live_url": "https://agentslayer.com/saga-compensation-agent-workflow-lab-20260813-183314/",
+    "receipt_created_at": "2026-08-13T18:33:14.320+00:00",
+    "receipt_status": "success",
+    "slug": "saga-compensation-agent-workflow-lab-20260813-183314",
+    "source_path": "ai-agent-use-cases/saga-compensation-agent-workflow-lab-20260813-183314",
+    "target_slot": "ai-agent-use-cases",
+    "title": "Saga Lab: Compensate Failed AI Agent Workflows"
+  },
+  {
+    "assigned_domain": "agentslayer.com",
+    "assigned_slot": "ai-agent-use-cases",
+    "assigned_url": "https://agentslayer.com/chandy-lamport-agent-consistent-snapshot-lab-20260813-193614/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "chandy_lamport_agent_consistent_snapshot_lab",
+    "content_kind_label": "Chandy Lamport Agent Consistent Snapshot Lab",
+    "direct_generated": true,
+    "github_commit": "2dd6d757f3302cd468de60569d40b9035b890949",
+    "github_url": "https://github.com/rohanarun/super-agent-news-chandy-lamport-agent-consistent-snapshot-lab-20260813-193614",
+    "live_url": "https://agentslayer.com/chandy-lamport-agent-consistent-snapshot-lab-20260813-193614/",
+    "receipt_created_at": "2026-08-13T19:36:14.370+00:00",
+    "receipt_status": "success",
+    "slug": "chandy-lamport-agent-consistent-snapshot-lab-20260813-193614",
+    "source_path": "ai-agent-use-cases/chandy-lamport-agent-consistent-snapshot-lab-20260813-193614",
+    "target_slot": "ai-agent-use-cases",
+    "title": "Snapshot Lab: Capture Consistent Multi-Agent State"
+  },
+  {
+    "assigned_domain": "agentslayer.com",
+    "assigned_slot": "ai-agent-use-cases",
+    "assigned_url": "https://agentslayer.com/event-sourcing-agent-memory-temporal-replay-lab-20260813-210114/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "event_sourcing_agent_memory_temporal_replay_lab",
+    "content_kind_label": "Event Sourcing Agent Memory Temporal Replay Lab",
+    "direct_generated": true,
+    "github_commit": "fbe07e4d8fcc62d601b996c8fa28eeafa3fa8c32",
+    "github_url": "https://github.com/rohanarun/super-agent-news-event-sourcing-agent-memory-temporal-replay-lab-20260813-210114",
+    "live_url": "https://agentslayer.com/event-sourcing-agent-memory-temporal-replay-lab-20260813-210114/",
+    "receipt_created_at": "2026-08-13T21:01:14.474+00:00",
+    "receipt_status": "success",
+    "slug": "event-sourcing-agent-memory-temporal-replay-lab-20260813-210114",
+    "source_path": "ai-agent-use-cases/event-sourcing-agent-memory-temporal-replay-lab-20260813-210114",
+    "target_slot": "ai-agent-use-cases",
+    "title": "Event Replay Lab: Time-Travel Through Agent Memory"
+  },
+  {
+    "assigned_domain": "agentslayer.com",
+    "assigned_slot": "ai-agent-use-cases",
+    "assigned_url": "https://agentslayer.com/priority-load-shedding-agent-tool-overload-lab-20260813-215944/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "priority_load_shedding_agent_tool_overload_lab",
+    "content_kind_label": "Priority Load Shedding Agent Tool Overload Lab",
+    "direct_generated": true,
+    "github_commit": "b556dd324cfd10cba3f4a59ca50fb1b33654a107",
+    "github_url": "https://github.com/rohanarun/super-agent-news-priority-load-shedding-agent-tool-overload-lab-20260813-215944",
+    "live_url": "https://agentslayer.com/priority-load-shedding-agent-tool-overload-lab-20260813-215944/",
+    "receipt_created_at": "2026-08-13T21:59:44.747+00:00",
+    "receipt_status": "success",
+    "slug": "priority-load-shedding-agent-tool-overload-lab-20260813-215944",
+    "source_path": "ai-agent-use-cases/priority-load-shedding-agent-tool-overload-lab-20260813-215944",
+    "target_slot": "ai-agent-use-cases",
+    "title": "Load Shedding Lab: Protect Critical Agent Work"
+  },
+  {
+    "assigned_domain": "agentslayer.com",
+    "assigned_slot": "ai-agent-use-cases",
+    "assigned_url": "https://agentslayer.com/bully-leader-election-agent-coordinator-lab-20260814-001344/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "bully_leader_election_agent_coordinator_lab",
+    "content_kind_label": "Bully Leader Election Agent Coordinator Lab",
+    "direct_generated": true,
+    "github_commit": "772990f8f5cf9e362b9030642c658382eb565752",
+    "github_url": "https://github.com/rohanarun/super-agent-news-bully-leader-election-agent-coordinator-lab-20260814-001344",
+    "live_url": "https://agentslayer.com/bully-leader-election-agent-coordinator-lab-20260814-001344/",
+    "receipt_created_at": "2026-08-14T00:13:44.970+00:00",
+    "receipt_status": "success",
+    "slug": "bully-leader-election-agent-coordinator-lab-20260814-001344",
+    "source_path": "ai-agent-use-cases/bully-leader-election-agent-coordinator-lab-20260814-001344",
+    "target_slot": "ai-agent-use-cases",
+    "title": "Bully Election Lab: Choose an Agent Coordinator"
+  }
 ]
