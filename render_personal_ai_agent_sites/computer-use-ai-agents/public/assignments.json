@@ -1634,7 +1634,12 @@
     "assigned_domain": "parsercheat.com",
     "assigned_slot": "computer-use-ai-agents",
     "assigned_url": "https://parsercheat.com/erlang-c-agent-worker-staffing-lab-20260814-025317/",
-    "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
     "content_kind": "erlang_c_agent_worker_staffing_lab",
     "content_kind_label": "Erlang C Agent Worker Staffing Lab",
     "direct_generated": true,
@@ -1647,5 +1652,28 @@
     "source_path": "computer-use-ai-agents/erlang-c-agent-worker-staffing-lab-20260814-025317",
     "target_slot": "computer-use-ai-agents",
     "title": "Erlang C Staffing Lab: Size an AI Agent Worker Pool"
+  },
+  {
+    "assigned_domain": "parsercheat.com",
+    "assigned_slot": "computer-use-ai-agents",
+    "assigned_url": "https://parsercheat.com/tarjan-agent-workflow-cycle-detector-lab-20260814-033617/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "tarjan_agent_workflow_cycle_detector_lab",
+    "content_kind_label": "Tarjan Agent Workflow Cycle Detector Lab",
+    "direct_generated": true,
+    "github_commit": "fecf630fb66c39ca1ba785767536a435cf1bb269",
+    "github_url": "https://github.com/rohanarun/super-agent-news-tarjan-agent-workflow-cycle-detector-lab-20260814-033617",
+    "live_url": "https://parsercheat.com/tarjan-agent-workflow-cycle-detector-lab-20260814-033617/",
+    "receipt_created_at": "2026-08-14T03:36:17.118+00:00",
+    "receipt_status": "success",
+    "slug": "tarjan-agent-workflow-cycle-detector-lab-20260814-033617",
+    "source_path": "computer-use-ai-agents/tarjan-agent-workflow-cycle-detector-lab-20260814-033617",
+    "target_slot": "computer-use-ai-agents",
+    "title": "Workflow Cycle Lab: Find Agent Loops with Tarjan Algorithm"
   }
 ]
