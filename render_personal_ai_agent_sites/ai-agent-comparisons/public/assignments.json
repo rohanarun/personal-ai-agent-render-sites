@@ -2753,5 +2753,28 @@
     "source_path": "ai-agent-comparisons/hungarian-algorithm-multi-agent-task-assignment-lab-20260814-021117",
     "target_slot": "ai-agent-comparisons",
     "title": "Hungarian Assignment Lab: Match Agents to Tasks Globally"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/knapsack-agent-context-budget-lab-20260814-030347/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "knapsack_agent_context_budget_lab",
+    "content_kind_label": "Knapsack Agent Context Budget Lab",
+    "direct_generated": true,
+    "github_commit": "f2b2b371741d98cc66a0714252cb77644adcafea",
+    "github_url": "https://github.com/rohanarun/super-agent-news-knapsack-agent-context-budget-lab-20260814-030347",
+    "live_url": "https://lists.new/knapsack-agent-context-budget-lab-20260814-030347/",
+    "receipt_created_at": "2026-08-14T03:03:47.041+00:00",
+    "receipt_status": "success",
+    "slug": "knapsack-agent-context-budget-lab-20260814-030347",
+    "source_path": "ai-agent-comparisons/knapsack-agent-context-budget-lab-20260814-030347",
+    "target_slot": "ai-agent-comparisons",
+    "title": "Context Knapsack Lab: Pack Agent Memory Under a Token Budget"
   }
 ]
