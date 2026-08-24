@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>Agent Retry Budget Lab</title>
+  <style>
+    :root{--ink:#17202a;--muted:#64727d;--paper:#f4f7f2;--panel:#fff;--line:#dce5df;--green:#0e7666;--mint:#d8f0e8;--amber:#bc7115;--rose:#bd4e55;--shadow:0 18px 50px rgba(23,32,42,.09)}
+    *{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5} main{max-width:1180px;margin:auto;padding:28px 22px 72px} header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding:0 0 22px} .brand{font-size:15px;font-weight:800;letter-spacing:.02em}.eyebrow{color:var(--green);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.12em} .hero{padding:74px 0 52px;max-width:920px}.hero h1{font-size:clamp(3rem,7vw,6.8rem);line-height:.94;letter-spacing:-.06em;margin:14px 0 26px;max-width:1050px}.hero p{max-width:700px;font-size:20px;color:var(--muted);margin:0}.layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);gap:20px;align-items:start}.panel{background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:18px;padding:28px}.panel h2{margin:0 0 6px;font-size:24px;letter-spacing:-.03em}.sub{margin:0 0 24px;color:var(--muted);font-size:14px}.control{border-top:1px solid var(--line);padding:18px 0}.control:first-of-type{border-top:0;padding-top:0}.control-row{display:flex;justify-content:space-between;gap:16px;align-items:center}.control label{font-weight:750}.value{color:var(--green);font-variant-numeric:tabular-nums;font-weight:800}input[type=range]{width:100%;accent-color:var(--green);margin-top:14px}.hint{font-size:12px;color:var(--muted);margin-top:7px}.button{border:0;background:var(--ink);color:#fff;border-radius:10px;padding:13px 18px;font-weight:800;cursor:pointer;font-size:14px;width:100%;margin-top:10px}.button:hover{background:var(--green)}.result{background:#18252a;color:#effaf4;min-height:100%;display:flex;flex-direction:column}.result h2{color:#fff}.score{display:flex;align-items:end;gap:14px;margin:30px 0 20px}.score strong{font-size:64px;line-height:.9;letter-spacing:-.07em}.score span{color:#9fb8ae;font-size:13px;padding-bottom:5px}.status{display:inline-flex;align-self:flex-start;border-radius:999px;padding:7px 11px;font-size:12px;font-weight:850;letter-spacing:.05em;text-transform:uppercase;background:#2e4d42;color:#b9f1d5}.status.warn{background:#5c4324;color:#ffd28f}.status.stop{background:#5a2b35;color:#ffc3c4}.meter{height:12px;background:#304045;border-radius:99px;overflow:hidden;margin:16px 0 25px}.meter i{display:block;height:100%;width:0;background:#70d4aa;border-radius:99px;transition:width .4s}.readout{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:auto}.readout div{border:1px solid #3b4f52;border-radius:12px;padding:13px}.readout b{display:block;font-size:20px}.readout small{color:#9fb8ae}.lesson{margin-top:20px;background:var(--mint);border-radius:18px;padding:28px;display:grid;grid-template-columns:1fr 1fr;gap:24px}.lesson h2{margin:0;font-size:25px;letter-spacing:-.04em}.lesson p{margin:0;color:#315c52}.lesson ul{margin:0;padding-left:18px;color:#315c52}.sources{margin-top:30px;border-top:1px solid var(--line);padding-top:24px}.sources a{color:var(--green);font-weight:700;text-decoration:none;margin-right:20px}.sources a:hover{text-decoration:underline}footer{display:flex;justify-content:space-between;gap:16px;margin-top:40px;color:var(--muted);font-size:12px}
+    @media(max-width:780px){main{padding:20px 16px 54px}header{padding-bottom:16px}.hero{padding:52px 0 34px}.hero h1{font-size:clamp(3rem,15vw,5rem)}.hero p{font-size:17px}.layout{grid-template-columns:1fr}.panel{padding:22px}.lesson{grid-template-columns:1fr;padding:22px}.readout{margin-top:28px}footer{display:block}footer span{display:block;margin-top:7px}}
+  </style>
+</head>
+<body>
+  <main>
+    <header><div class="brand">FIELD NOTES / AGENT SYSTEMS</div><div class="eyebrow">Retry economics</div></header>
+    <section class="hero"><div class="eyebrow">Agent Retry Budget Lab</div><h1>Try again, but know what the next attempt costs.</h1><p>Explore how retry limits, failure probability, and per-attempt cost change an agent's chance of finishing a task before its budget runs out.</p></section>
+    <section class="layout">
+      <div class="panel">
+        <h2>Set the operating envelope</h2><p class="sub">The model assumes independent attempts. Every retry consumes budget even when it does not produce progress.</p>
+        <div class="control"><div class="control-row"><label for="attempts">Maximum attempts</label><span class="value"><output id="attemptsOut">4</output></span></div><input id="attempts" type="range" min="1" max="12" value="4"><div class="hint">A hard stop prevents an agent from retrying forever.</div></div>
+        <div class="control"><div class="control-row"><label for="failure">Failure probability</label><span class="value"><output id="failureOut">35%</output></span></div><input id="failure" type="range" min="0" max="95" value="35"><div class="hint">Chance that any single attempt fails to complete the task.</div></div>
+        <div class="control"><div class="control-row"><label for="cost">Cost per attempt</label><span class="value"><output id="costOut">12</output> units</span></div><input id="cost" type="range" min="1" max="30" value="12"><div class="hint">Tokens, dollars, latency points, or another resource you want to protect.</div></div>
+        <div class="control"><div class="control-row"><label for="budget">Available budget</label><span class="value"><output id="budgetOut">48</output> units</span></div><input id="budget" type="range" min="10" max="160" value="48"><div class="hint">The agent pauses when the next attempt would exceed this limit.</div></div>
+        <button id="run" class="button">Run the retry policy</button>
+      </div>
+      <div class="panel result"><h2>Policy readout</h2><p class="sub" style="color:#9fb8ae">A compact view of completion odds and resource exposure.</p><div id="status" class="status">Ready</div><div class="score"><strong id="success">0%</strong><span>chance of at least one success</span></div><div class="meter"><i id="meter"></i></div><div class="readout"><div><b id="used">0</b><small>maximum units used</small></div><div><b id="expected">0</b><small>expected attempts</small></div><div><b id="remaining">0</b><small>budget after max run</small></div><div><b id="tail">0%</b><small>chance of no success</small></div></div></div>
+    </section>
+    <section class="lesson"><div><h2>The lesson is not “retry more.” It is “bound the retry.”</h2></div><div><p id="lessonText">Run the policy to see where a useful recovery loop becomes an uncontrolled cost loop.</p><ul><li>Retries improve completion odds with diminishing returns.</li><li>A budget makes the stop condition observable.</li><li>Failure probability should be measured, not guessed.</li></ul></div></section>
+    <section class="sources"><div class="eyebrow">Further reading</div><p><a href="https://platform.openai.com/docs/guides/safety-best-practices">OpenAI safety best practices</a><a href="https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/overview">Anthropic tool use overview</a></p></section>
+    <footer><span>Local simulation. No model or content-generation API.</span><span>Built for careful agent design.</span></footer>
+  </main>
+  <script>
+    const ids=['attempts','failure','cost','budget'];
+    const el=id=>document.getElementById(id);
+    function render(){
+      const attempts=+el('attempts').value, failure=+el('failure').value/100, cost=+el('cost').value, budget=+el('budget').value;
+      el('attemptsOut').textContent=attempts;el('failureOut').textContent=Math.round(failure*100)+'%';el('costOut').textContent=cost;el('budgetOut').textContent=budget;
+      const affordable=Math.min(attempts,Math.floor(budget/cost));
+      const noSuccess=Math.pow(failure,affordable), success=1-noSuccess, used=affordable*cost, expected=affordable===0?0:(1-noSuccess)/(1-failure||1), remaining=budget-used;
+      el('success').textContent=Math.round(success*100)+'%';el('meter').style.width=Math.round(success*100)+'%';el('used').textContent=used;el('expected').textContent=expected.toFixed(1);el('remaining').textContent=remaining;el('tail').textContent=Math.round(noSuccess*100)+'%';
+      const status=el('status'); status.className='status';
+      let message='The envelope is generous enough to recover, but still bounded.';
+      if(affordable===0){status.textContent='Pause';status.className='status stop';message='The budget cannot fund even one attempt. Re-check the resource limit before invoking the agent.'}
+      else if(affordable<attempts){status.textContent='Budget-limited';status.className='status warn';message='The requested retry count is larger than the affordable count. The budget is the real stop condition.'}
+      else if(success<.7){status.textContent='Review';status.className='status warn';message='More retries are not enough to make this reliable. Measure the failure mode or redesign the action.'}
+      else {status.textContent='Bounded';message='The policy reaches a useful completion chance without allowing an unbounded retry tail.'}
+      el('lessonText').textContent=message;
+    }
+    ids.forEach(id=>el(id).addEventListener('input',render));el('run').addEventListener('click',render);render();
+  </script>
+</body>
+</html>

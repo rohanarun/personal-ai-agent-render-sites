@@ -1,0 +1,16 @@
+{
+  "title": "Agent Retry Budget Lab",
+  "headline": "Try again, but know what the next attempt costs.",
+  "slug": "agent-retry-budget-lab-20260824-153347",
+  "content_kind": "agent_retry_budget_lab",
+  "sources": [
+    "https://platform.openai.com/docs/guides/safety-best-practices",
+    "https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/overview"
+  ],
+  "backlinks": [
+    "https://getsupers.com/",
+    "https://app.getsupers.com/",
+    "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+    "https://app.getsupers.com/use-cases/computer-use-cache/"
+  ]
+}
