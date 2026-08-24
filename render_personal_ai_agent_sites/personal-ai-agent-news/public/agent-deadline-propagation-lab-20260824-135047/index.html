@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Deadline Propagation Lab</title>
+<style>
+:root{--ink:#17251f;--muted:#617169;--paper:#f2f5ef;--panel:#fffdf8;--line:#d8e1d7;--teal:#0f766e;--coral:#c84b2f}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 90% 0,#fff1d5,transparent 31rem),var(--paper);color:var(--ink);font:16px/1.55 system-ui,-apple-system,Segoe UI,sans-serif}main{max-width:1080px;margin:auto;padding:26px 22px 60px}header{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:20px}.brand{font-weight:850;letter-spacing:.06em}.eyebrow{font-size:.75rem;text-transform:uppercase;letter-spacing:.16em;font-weight:800;color:var(--coral)}.hero{padding:72px 0 42px;max-width:930px}.hero h1{font-size:clamp(2.9rem,7vw,6.6rem);line-height:.97;letter-spacing:-.05em;margin:12px 0 22px;max-width:900px}.hero p{font-size:1.17rem;color:var(--muted);max-width:680px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px;box-shadow:0 20px 48px #18362916}.panel h2{margin:0 0 8px}.panel p{color:var(--muted);margin-top:0}.control{margin:25px 0;display:grid;gap:9px}.control label{display:flex;justify-content:space-between;font-weight:750}output{color:var(--teal)}input{width:100%;accent-color:var(--teal)}button{background:var(--ink);border:0;color:white;border-radius:9px;padding:13px 18px;font:inherit;font-weight:800;cursor:pointer}button:hover{background:var(--coral)}.secondary{background:#e5eee8;color:var(--ink);margin-left:8px}.timeline{display:grid;gap:18px;margin:25px 0}.step{display:grid;grid-template-columns:80px 1fr;gap:14px;align-items:center}.tag{color:var(--muted);font-size:.78rem;font-weight:800}.track{height:16px;background:#e3ebe4;border-radius:20px;overflow:hidden}.fill{height:100%;background:var(--teal);border-radius:inherit;transition:width .4s}.readout{border-left:4px solid var(--coral);background:#fff2df;padding:13px 15px}.source{margin-top:35px;color:var(--muted);font-size:.9rem}.source a{color:var(--teal);margin-right:14px}.foot{border-top:1px solid var(--line);margin-top:36px;padding-top:18px;color:var(--muted);font-size:.86rem}@media(max-width:720px){main{padding:20px 16px 44px}.hero{padding:48px 0 28px}.hero h1{font-size:clamp(2.6rem,13vw,4.6rem)}.grid{grid-template-columns:1fr}.panel{padding:20px}.step{grid-template-columns:68px 1fr}.secondary{margin-left:4px}}
+</style>
+</head>
+<body>
+<main>
+<header><div class="brand">AGENT SYSTEMS / LAB NOTES</div><div class="eyebrow">Deadline propagation</div></header>
+<section class="hero"><div class="eyebrow">A small systems simulator</div><h1>A child task cannot spend the time its parent already lost.</h1><p>Watch a coordinator pass a shrinking deadline to a child worker. The policy determines whether the child receives the full original budget or only the time still available.</p></section>
+<section class="grid">
+<div class="panel"><h2>Spend the parent budget</h2><p>Choose the parent deadline and simulate elapsed coordinator work before dispatching the child.</p>
+<div class="control"><label for="deadline">Parent budget <output id="deadlineValue">10s</output></label><input id="deadline" type="range" min="4" max="20" value="10"></div>
+<div class="control"><label for="elapsed">Coordinator elapsed <output id="elapsedValue">3s</output></label><input id="elapsed" type="range" min="0" max="12" value="3"></div>
+<div class="control"><label for="policy">Child policy <output id="policyValue">propagate remainder</output></label><input id="policy" type="range" min="0" max="1" value="1"></div>
+<button id="run">Run dispatch</button><button class="secondary" id="reset">Reset</button>
+<div class="readout" id="readout">The child receives 7 seconds: the parent's remaining time.</div></div>
+<div class="panel"><h2>See the handoff</h2><p>Teal shows time still available. Coral marks time that has already been spent.</p><div class="timeline"><div class="step"><span class="tag">PARENT</span><div class="track"><div class="fill" id="parentFill"></div></div></div><div class="step"><span class="tag">CHILD</span><div class="track"><div class="fill" id="childFill"></div></div></div></div><p id="formula">Remaining = budget - elapsed.</p></div>
+</section>
+<div class="source"><strong>Further reading:</strong> <a href="https://platform.openai.com/docs/guides/safety-best-practices">OpenAI safety practices</a><a href="https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/overview">Anthropic tool use</a><a href="https://getsupers.com/">SuperPowers</a><a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent websites</a></div>
+<footer class="foot">This lab is a fixed, local simulation. It sends no model requests, calls no tools, and stores no user data.</footer>
+</main>
+<script>
+const $=id=>document.getElementById(id),d=$('deadline'),e=$('elapsed'),p=$('policy');
+function draw(){const budget=+d.value,spent=Math.min(+e.value,budget),left=Math.max(0,budget-spent),prop=+p.value===1;$('deadlineValue').textContent=budget+'s';$('elapsedValue').textContent=spent+'s';$('policyValue').textContent=prop?'propagate remainder':'reuse full budget';$('parentFill').style.width=(spent/budget*100)+'%';$('childFill').style.width=((prop?left:budget)/budget*100)+'%';$('formula').textContent=prop?'Remaining = '+budget+' - '+spent+' = '+left+'s.':'Unsafe child budget = '+budget+'s, even after '+spent+'s were spent.';$('readout').textContent=prop?'The child receives '+left+' seconds: the parent\'s remaining time.':'The child receives the original '+budget+' seconds, so the chain can exceed its deadline.'}
+[d,e,p].forEach(x=>x.addEventListener('input',draw));$('run').addEventListener('click',draw);$('reset').addEventListener('click',()=>{d.value=10;e.value=3;p.value=1;draw()});draw();
+</script>
+</body>
+</html>
