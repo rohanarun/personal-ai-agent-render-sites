@@ -8747,5 +8747,28 @@
     "source_path": "personal-ai-agent-news/react-agent-loop-lab-20260824-042400",
     "target_slot": "personal-ai-agent-news",
     "title": "ReAct Agent Loop Lab"
+  },
+  {
+    "assigned_domain": "kalshhunter.com",
+    "assigned_slot": "personal-ai-agent-news",
+    "assigned_url": "https://kalshhunter.com/rag-chunking-retrieval-lab-20260824-042830/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "rag_chunking_retrieval_lab",
+    "content_kind_label": "RAG Chunking Retrieval Lab",
+    "direct_generated": true,
+    "github_commit": "59671c46d17c74ab2e6748b817787c96b92b19a5",
+    "github_url": "https://github.com/rohanarun/super-agent-news-rag-chunking-retrieval-lab-20260824-042830",
+    "live_url": "https://kalshhunter.com/rag-chunking-retrieval-lab-20260824-042830/",
+    "receipt_created_at": "2026-08-24T04:28:30.814+00:00",
+    "receipt_status": "success",
+    "slug": "rag-chunking-retrieval-lab-20260824-042830",
+    "source_path": "personal-ai-agent-news/rag-chunking-retrieval-lab-20260824-042830",
+    "target_slot": "personal-ai-agent-news",
+    "title": "RAG Chunking Retrieval Lab"
   }
 ]
