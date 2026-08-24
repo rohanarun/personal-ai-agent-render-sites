@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agent Scope Creep Lab</title>
+  <meta name="description" content="An interactive lab for seeing how small agent task additions compound into unsafe scope drift.">
+  <link rel="icon" href="data:,">
+  <style>
+    :root{--ink:#172126;--muted:#5d6b6d;--paper:#f4f1e9;--panel:#fffdf8;--line:#d9d4c8;--mint:#b9e4d0;--blue:#477d89;--coral:#cf6e55;--shadow:0 18px 45px rgba(31,47,47,.1)}
+    *{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font-family:Georgia,serif} .shell{max-width:1180px;margin:auto;padding:24px clamp(18px,4vw,52px) 70px}
+    nav{display:flex;justify-content:space-between;align-items:center;padding:10px 0 42px;font-family:Arial,sans-serif} .mark{font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:12px} nav a{color:var(--ink);font-size:13px;text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:3px}
+    .hero{display:grid;grid-template-columns:1.12fr .88fr;gap:clamp(28px,6vw,86px);align-items:end;padding:32px 0 88px} .kicker{font:700 12px Arial,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:var(--blue)} h1{font-size:clamp(3rem,7vw,6.5rem);line-height:.92;letter-spacing:-.045em;font-weight:500;margin:20px 0 26px;max-width:720px} .lede{font-size:clamp(1.08rem,2vw,1.35rem);line-height:1.5;max-width:590px;color:var(--muted)} .hero-art{min-height:320px;background:var(--ink);position:relative;overflow:hidden;box-shadow:var(--shadow);border-radius:2px} .hero-art:before{content:"";position:absolute;inset:14%;border:1px solid rgba(255,255,255,.35);transform:rotate(8deg)} .hero-art:after{content:"SCOPE";position:absolute;color:var(--mint);font:bold clamp(3rem,7vw,6rem) Arial,sans-serif;letter-spacing:.12em;transform:rotate(-22deg);left:7%;top:32%;opacity:.9}
+    .lab{display:grid;grid-template-columns:390px 1fr;gap:22px;align-items:start;padding:30px 0 100px} .panel,.result{background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow)} .panel{padding:25px} .panel h2,.lesson h2{font-size:1.55rem;font-weight:500;margin:0 0 8px} .panel p{margin:0 0 24px;color:var(--muted);line-height:1.45}
+    label{display:block;font:700 12px Arial,sans-serif;letter-spacing:.05em;text-transform:uppercase;margin:18px 0 8px} input[type=range]{width:100%;accent-color:var(--blue)} .range-line{display:flex;justify-content:space-between;font:14px Arial,sans-serif;color:var(--muted)} button{border:0;background:var(--ink);color:#fff;padding:14px 18px;font:700 13px Arial,sans-serif;letter-spacing:.04em;cursor:pointer;width:100%;margin-top:25px} button:hover{background:var(--blue)}
+    .result{padding:28px;min-height:100%;background:linear-gradient(145deg,#fffdf8,#e9f2ed)} .result-top{display:flex;justify-content:space-between;gap:15px;align-items:start}.eyebrow{font:700 11px Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--blue)} #status{font:700 12px Arial,sans-serif;color:var(--coral);text-transform:uppercase;letter-spacing:.08em} .big-number{font:clamp(4rem,9vw,8rem);line-height:.86;margin:30px 0 15px;font-weight:500;letter-spacing:-.08em}.big-number span{font:1rem Arial,sans-serif;letter-spacing:0;color:var(--muted);vertical-align:top;margin-left:8px}.meter{height:13px;background:#dce3dd;margin:22px 0 14px}.meter b{display:block;height:100%;width:0;background:var(--coral);transition:width .5s ease}.readout{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:28px}.metric{border-top:1px solid var(--line);padding-top:10px}.metric strong{display:block;font:700 19px Arial,sans-serif}.metric small{font:11px Arial,sans-serif;color:var(--muted)}
+    .lesson{display:grid;grid-template-columns:1fr 1fr;gap:55px;padding:70px 0 80px;border-top:1px solid var(--line)} .lesson p{font-size:1.18rem;line-height:1.6;color:var(--muted);margin:0}.lesson ul{padding-left:20px;margin:0}.lesson li{margin:0 0 14px;line-height:1.45;color:var(--muted)} .sources{border-top:1px solid var(--line);padding-top:24px;font:12px Arial,sans-serif;color:var(--muted)} .sources a{color:var(--ink);margin-right:15px}
+    @media(max-width:760px){nav{padding-bottom:28px}.hero{grid-template-columns:1fr;padding-top:15px;padding-bottom:58px}.hero-art{min-height:190px}.lab{grid-template-columns:1fr;padding-bottom:65px}.lesson{grid-template-columns:1fr;gap:24px;padding-top:50px}.readout{grid-template-columns:1fr 1fr 1fr}.shell{padding-left:18px;padding-right:18px}}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <nav><div class="mark">Systems / Field Lab</div><a href="#sources">Read the evidence</a></nav>
+    <main>
+      <section class="hero">
+        <div><div class="kicker">Interactive systems explainer</div><h1>When an agent's job keeps growing.</h1><p class="lede">Scope creep rarely arrives as one dramatic failure. Tune the pace of small requests, boundary checks, and run length to see when a useful agent quietly becomes an uncontrolled one.</p></div>
+        <div class="hero-art" aria-hidden="true"></div>
+      </section>
+      <section class="lab" aria-label="Scope creep simulator">
+        <div class="panel"><h2>Set the conditions</h2><p>Each step adds a little more work to the original mission. A boundary check can pause the run before drift becomes expensive.</p>
+          <label for="initial">Initial scope</label><div class="range-line"><span>Small</span><output id="initialOut">40</output></div><input id="initial" type="range" min="10" max="100" value="40">
+          <label for="growth">Added scope per step</label><div class="range-line"><span>Request size</span><output id="growthOut">10</output></div><input id="growth" type="range" min="0" max="30" value="10">
+          <label for="steps">Agent steps</label><div class="range-line"><span>Run length</span><output id="stepsOut">6</output></div><input id="steps" type="range" min="1" max="12" value="6">
+          <label for="checks">Boundary check every</label><div class="range-line"><span>Steps</span><output id="checksOut">3</output></div><input id="checks" type="range" min="1" max="10" value="3">
+          <button id="run" type="button">Run the scenario</button>
+        </div>
+        <div class="result"><div class="result-top"><div class="eyebrow">Observed trajectory</div><div id="status">Ready</div></div><div class="big-number" id="total">0<span>scope units</span></div><div class="meter" aria-label="Scope pressure"><b id="meterBar"></b></div><div class="range-line"><span>Boundary pressure</span><strong id="pressure">0%</strong></div><div class="readout"><div class="metric"><strong id="added">0</strong><small>added units</small></div><div class="metric"><strong id="checksMade">0</strong><small>checks made</small></div><div class="metric"><strong id="drift">0</strong><small>unreviewed drift</small></div></div></div>
+      </section>
+      <section class="lesson"><div><div class="kicker">What the model shows</div><h2>Boundaries turn vague intent into a control loop.</h2></div><div><p id="lessonText">Run a scenario to see the difference between accumulation and review. The useful question is not whether an agent can do more, but whether every new action still belongs to the job it was given.</p><ul><li>Accumulation is multiplicative in practice: every extra step creates another place for a new request to attach.</li><li>Checks do not erase work. They create explicit moments to confirm purpose, permissions, and stopping conditions.</li><li>When drift stays high, pausing is a systems feature, not a failure of helpfulness.</li></ul></div></section>
+      <section class="sources" id="sources"><strong>Grounding</strong><br><br><a href="https://platform.openai.com/docs/guides/safety-best-practices">OpenAI safety best practices</a><a href="https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/overview">Anthropic tool use overview</a><a href="https://getsupers.com/">SuperPowers</a><a href="https://app.getsupers.com/">SuperPowers app</a><a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent websites</a><a href="https://app.getsupers.com/use-cases/computer-use-cache/">Computer-use cache</a></section>
+    </main>
+  </div>
+  <script>
+    const ids=['initial','growth','steps','checks'];
+    ids.forEach(id=>{const input=document.getElementById(id),out=document.getElementById(id+'Out');input.addEventListener('input',()=>out.value=input.value)});
+    function run(){
+      const initial=+document.getElementById('initial').value,growth=+document.getElementById('growth').value,steps=+document.getElementById('steps').value,checks=+document.getElementById('checks').value;
+      const added=growth*steps,total=initial+added,checksMade=Math.floor(steps/checks),reviewed=checksMade*growth*checks,drift=Math.max(0,added-reviewed),pressure=Math.min(100,Math.round((total/180)*100));
+      document.getElementById('total').firstChild.nodeValue=total;document.getElementById('added').textContent=added;document.getElementById('checksMade').textContent=checksMade;document.getElementById('drift').textContent=drift;document.getElementById('pressure').textContent=pressure+'%';document.getElementById('meterBar').style.width=pressure+'%';
+      const status=document.getElementById('status'),lesson=document.getElementById('lessonText');
+      if(pressure>=70||drift>=45){status.textContent='Pause';lesson.textContent='The run has crossed a practical boundary: the agent is carrying more unreviewed intent than its initial job. Pause, restate the mission, and require approval before another tool call.'}
+      else if(pressure>=40||drift>=20){status.textContent='Review';lesson.textContent='The run is still useful, but the original intent is no longer doing enough work. Review the next action and make its allowed scope explicit before continuing.'}
+      else{status.textContent='Contained';lesson.textContent='The extra work is staying inside a manageable envelope. Keep the same stopping condition visible as the agent continues, because low drift can become high drift one request at a time.'}
+    }
+    document.getElementById('run').addEventListener('click',run);run();
+  </script>
+</body>
+</html>
