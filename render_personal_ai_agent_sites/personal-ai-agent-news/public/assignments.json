@@ -8863,4 +8863,22 @@
     "target_slot": "personal-ai-agent-news",
     "title": "Temperature & Top-p Sampling Lab"
   }
+  ,{
+    "assigned_domain":"kalshhunter.com",
+    "assigned_slot":"personal-ai-agent-news",
+    "assigned_url":"https://kalshhunter.com/logit-bias-token-steering-lab-20260824-045130/",
+    "backlinks":["https://getsupers.com/","https://app.getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"],
+    "content_kind":"logit_bias_token_steering_lab",
+    "content_kind_label":"Logit Bias Token Steering Lab",
+    "direct_generated":true,
+    "github_commit":"297bef62d52c9db7e882c3ee97163d687b01d193",
+    "github_url":"https://github.com/rohanarun/super-agent-news-logit-bias-token-steering-lab-20260824-045130",
+    "live_url":"https://kalshhunter.com/logit-bias-token-steering-lab-20260824-045130/",
+    "receipt_created_at":"2026-08-24T04:51:30.895+00:00",
+    "receipt_status":"success",
+    "slug":"logit-bias-token-steering-lab-20260824-045130",
+    "source_path":"personal-ai-agent-news/logit-bias-token-steering-lab-20260824-045130",
+    "target_slot":"personal-ai-agent-news",
+    "title":"Logit Bias Token Steering Lab"
+  }
 ]
