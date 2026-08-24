@@ -1,0 +1,8 @@
+{
+  "title":"Agent Evidence Decay Lab",
+  "headline":"Proof gets older even when the words stay the same.",
+  "slug":"agent-evidence-decay-lab-20260824-162117",
+  "content_kind":"agent_evidence_decay_lab",
+  "sources":["https://platform.openai.com/docs/guides/safety-best-practices","https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/overview"],
+  "backlinks":["https://getsupers.com/","https://app.getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"]
+}
