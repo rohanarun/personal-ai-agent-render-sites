@@ -1,0 +1,8 @@
+{
+  "title":"Agent Sandbox Boundary Lab",
+  "headline":"A boundary is useful only when crossing it is visible.",
+  "slug":"agent-sandbox-boundary-lab-20260824-160017",
+  "content_kind":"agent_sandbox_boundary_lab",
+  "sources":["https://platform.openai.com/docs/guides/safety-best-practices","https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/overview"],
+  "backlinks":["https://getsupers.com/","https://app.getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"]
+}
