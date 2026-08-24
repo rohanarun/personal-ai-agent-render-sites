@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Fanout Budget Lab</title>
+<style>
+:root{--ink:#17251f;--muted:#60736a;--paper:#f4f6ef;--panel:#fffdf7;--line:#d7e0d5;--accent:#c84b2f;--accent2:#0f766e;--shadow:0 22px 55px rgba(27,51,40,.12)}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 8% 0%,#fff8dc 0,transparent 30rem),var(--paper);color:var(--ink);font:16px/1.55 ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}main{max-width:1120px;margin:auto;padding:28px 22px 64px}header{display:flex;justify-content:space-between;align-items:center;gap:20px;border-bottom:1px solid var(--line);padding:0 0 22px}.brand{font-weight:800;letter-spacing:.04em}.eyebrow{color:var(--accent);font-size:.76rem;text-transform:uppercase;letter-spacing:.16em;font-weight:800}.hero{padding:70px 0 44px;max-width:950px}.hero h1{font-size:clamp(2.8rem,7vw,6.6rem);line-height:.98;letter-spacing:-.045em;margin:12px 0 22px;max-width:900px}.hero p{font-size:1.18rem;max-width:680px;color:var(--muted)}.layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(300px,.95fr);gap:22px;align-items:start}.panel{background:color-mix(in srgb,var(--panel) 94%,transparent);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:26px}.panel h2{margin:0 0 8px;font-size:1.35rem}.panel p{color:var(--muted);margin-top:0}.control{display:grid;gap:10px;margin:24px 0}.control label{display:flex;justify-content:space-between;font-weight:750}.control output{color:var(--accent2)}input[type=range]{width:100%;accent-color:var(--accent)}button{border:0;background:var(--ink);color:#fff;padding:13px 18px;border-radius:9px;font:inherit;font-weight:800;cursor:pointer}button:hover{background:var(--accent)}.secondary{background:#e6eee8;color:var(--ink)}.buttons{display:flex;gap:10px;flex-wrap:wrap}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}.metric{border-top:3px solid var(--accent2);padding-top:10px}.metric strong{display:block;font-size:1.7rem}.metric span{font-size:.8rem;color:var(--muted)}.viz{display:grid;gap:12px;margin:22px 0}.lane{display:grid;grid-template-columns:90px 1fr;gap:10px;align-items:center}.lane b{font-size:.78rem;color:var(--muted)}.bars{display:flex;align-items:end;gap:5px;height:64px}.bar{flex:1;background:#dfe8df;border-radius:5px 5px 2px 2px;min-height:5px;transition:height .35s ease,background .35s ease}.bar.hot{background:var(--accent)}.bar.cool{background:var(--accent2)}.note{background:#fff3df;border-left:4px solid var(--accent);padding:13px 15px;margin-top:20px}.sources{margin-top:34px;color:var(--muted);font-size:.9rem}.sources a{color:var(--accent2);margin-right:14px}.foot{margin-top:38px;border-top:1px solid var(--line);padding-top:20px;color:var(--muted);font-size:.86rem}@media(max-width:760px){main{padding:20px 16px 44px}.hero{padding:48px 0 30px}.hero h1{font-size:clamp(2.6rem,13vw,4.6rem)}.layout{grid-template-columns:1fr}.panel{padding:20px}.lane{grid-template-columns:74px 1fr}.metrics{grid-template-columns:1fr 1fr}.metric:last-child{grid-column:span 2}}
+</style>
+</head>
+<body>
+<main>
+<header><div class="brand">AGENT SYSTEMS / LAB NOTES</div><div class="eyebrow">Fanout budget</div></header>
+<section class="hero"><div class="eyebrow">A small systems simulator</div><h1>Parallel work is useful until the fanout bill outruns the task.</h1><p>Explore how a coordinator balances coverage against orchestration overhead. Increase the number of parallel workers, then inspect the useful tasks, duplicate risk, and total work created.</p></section>
+<section class="layout">
+<div class="panel">
+<h2>Set the fanout</h2><p>Assume one coordinator has 12 independent subtasks. Each worker can cover three, but every extra worker adds a coordination handoff and a small overlap penalty.</p>
+<div class="control"><label for="workers">Parallel workers <output id="workersValue">4</output></label><input id="workers" type="range" min="1" max="10" value="4"></div>
+<div class="control"><label for="overlap">Overlap sensitivity <output id="overlapValue">35%</output></label><input id="overlap" type="range" min="0" max="80" value="35"></div>
+<div class="buttons"><button id="run">Run the fanout</button><button class="secondary" id="reset">Reset</button></div>
+<div class="metrics"><div class="metric"><strong id="useful">12</strong><span>useful task slots</span></div><div class="metric"><strong id="waste">3</strong><span>overlap slots</span></div><div class="metric"><strong id="work">15</strong><span>total work units</span></div></div>
+<div class="note" id="lesson">Four workers cover the queue with modest overlap. More parallelism is not automatically more progress.</div>
+</div>
+<div class="panel"><h2>Read the shape</h2><p>The bars show each worker's useful coverage. Warm bars represent duplicate effort; teal bars are unique coverage.</p><div class="viz" id="viz"></div><p id="formula">Total work = useful coverage + overlap.</p></div>
+</section>
+<div class="sources"><strong>Further reading:</strong> <a href="https://platform.openai.com/docs/guides/safety-best-practices">OpenAI safety practices</a><a href="https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/overview">Anthropic tool use</a><a href="https://getsupers.com/">SuperPowers</a><a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent websites</a></div>
+<footer class="foot">This lab is a fixed, local simulation. It sends no model requests, calls no tools, and stores no user data.</footer>
+</main>
+<script>
+const $=id=>document.getElementById(id), workers=$('workers'), overlap=$('overlap');
+function draw(){const n=+workers.value, rate=+overlap.value/100; $('workersValue').textContent=n; $('overlapValue').textContent=Math.round(rate*100)+'%'; const useful=Math.min(12,n*3), waste=Math.max(0,Math.round((n-1)*3*rate)), total=useful+waste; $('useful').textContent=useful; $('waste').textContent=waste; $('work').textContent=total; $('formula').textContent='Total work = '+useful+' useful + '+waste+' overlap = '+total+' units.'; $('lesson').textContent=n<=4?'This fanout reaches the queue without paying much coordination overhead.':'The queue is already covered; extra workers mostly amplify overlap and handoffs.'; const v=$('viz'); v.innerHTML=''; for(let i=0;i<n;i++){const lane=document.createElement('div');lane.className='lane';const label=document.createElement('b');label.textContent='worker '+(i+1);const bars=document.createElement('div');bars.className='bars';for(let j=0;j<3;j++){const b=document.createElement('i');b.className='bar '+(i*3+j<useful?'cool':'hot');b.style.height=(28+((i+j)%3)*14)+'px';bars.appendChild(b)}lane.append(label,bars);v.appendChild(lane)}}
+workers.addEventListener('input',draw);overlap.addEventListener('input',draw);$('run').addEventListener('click',draw);$('reset').addEventListener('click',()=>{workers.value=4;overlap.value=35;draw()});draw();
+</script>
+</body>
+</html>
