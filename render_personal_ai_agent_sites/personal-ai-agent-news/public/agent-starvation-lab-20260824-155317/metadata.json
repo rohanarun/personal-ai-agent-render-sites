@@ -1,0 +1,8 @@
+{
+  "title":"Agent Starvation Lab",
+  "headline":"Fast work should not make old work invisible.",
+  "slug":"agent-starvation-lab-20260824-155317",
+  "content_kind":"agent_starvation_lab",
+  "sources":["https://platform.openai.com/docs/guides/safety-best-practices","https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/overview"],
+  "backlinks":["https://getsupers.com/","https://app.getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"]
+}
