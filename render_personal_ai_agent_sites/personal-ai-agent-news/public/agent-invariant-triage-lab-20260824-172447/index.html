@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An interactive lesson on triaging conflicting agent invariants before acting.">
+  <title>Agent Invariant Triage Lab</title>
+  <link rel="icon" href="data:,">
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #f4f0e8;
+      --muted: #a9a59b;
+      --line: rgba(244, 240, 232, .14);
+      --panel: rgba(19, 24, 27, .82);
+      --panel-strong: #182024;
+      --acid: #d8f36a;
+      --orange: #ff9b71;
+      --cyan: #81d8d2;
+      --danger: #ff6f61;
+      --shadow: 0 24px 70px rgba(0, 0, 0, .28);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      background: #0d1112;
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+    a { color: inherit; }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    .shell { width: min(1180px, calc(100% - 36px)); margin: 0 auto; }
+    .topbar { display: flex; justify-content: space-between; align-items: center; padding: 24px 0; border-bottom: 1px solid var(--line); }
+    .brand { display: flex; gap: 12px; align-items: center; font-weight: 750; letter-spacing: .02em; }
+    .brand-mark { width: 28px; height: 28px; border: 1px solid var(--acid); display: grid; place-items: center; color: var(--acid); font-size: 13px; }
+    .topbar span { color: var(--muted); font-size: 13px; }
+    .hero { padding: 82px 0 94px; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(280px, .8fr); gap: 56px; align-items: end; }
+    .eyebrow { color: var(--acid); font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    h1 { max-width: 760px; margin: 16px 0 22px; font-size: clamp(3.15rem, 7vw, 6.8rem); line-height: .94; letter-spacing: -.065em; }
+    .hero p { max-width: 620px; margin: 0; color: #c7c3b9; font-size: clamp(1rem, 1.7vw, 1.25rem); }
+    .hero-note { border-left: 2px solid var(--orange); padding: 10px 0 10px 20px; color: #d4d0c5; }
+    .hero-note strong { display: block; color: var(--orange); margin-bottom: 8px; }
+    .lab { padding: 0 0 120px; }
+    .lab-grid { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 18px; align-items: stretch; }
+    .panel { background: var(--panel); border: 1px solid var(--line); box-shadow: var(--shadow); }
+    .controls { padding: 28px; }
+    .panel-head { display: flex; justify-content: space-between; gap: 18px; align-items: baseline; border-bottom: 1px solid var(--line); padding-bottom: 18px; margin-bottom: 22px; }
+    h2, h3 { margin: 0; letter-spacing: -.03em; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.05rem; }
+    .panel-head small { color: var(--muted); }
+    .control { padding: 16px 0; border-bottom: 1px solid var(--line); }
+    .control:last-of-type { border-bottom: 0; }
+    .control-label { display: flex; justify-content: space-between; gap: 12px; font-weight: 700; }
+    .control-label output { color: var(--acid); font-variant-numeric: tabular-nums; }
+    .control p { color: var(--muted); font-size: 13px; margin: 6px 0 12px; }
+    input[type="range"] { width: 100%; accent-color: var(--acid); }
+    .actions { display: flex; gap: 10px; margin-top: 24px; }
+    .button { border: 1px solid var(--acid); background: var(--acid); color: #111713; font-weight: 800; padding: 12px 16px; }
+    .button.secondary { border-color: var(--line); background: transparent; color: var(--ink); }
+    .result { padding: 28px; background: var(--panel-strong); position: relative; overflow: hidden; }
+    .result::after { content: ""; position: absolute; width: 230px; height: 230px; border-radius: 50%; right: -100px; top: -90px; background: rgba(129, 216, 210, .1); filter: blur(1px); }
+    .result-top { display: flex; justify-content: space-between; gap: 18px; align-items: flex-start; }
+    .status { display: inline-flex; align-items: center; gap: 8px; color: var(--acid); font-weight: 850; }
+    .status::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: currentColor; box-shadow: 0 0 18px currentColor; }
+    .risk { text-align: right; color: var(--muted); font-size: 13px; }
+    .risk strong { display: block; color: var(--ink); font-size: 2.8rem; line-height: 1; font-variant-numeric: tabular-nums; }
+    .meter { height: 12px; background: #0d1314; margin: 32px 0 26px; border: 1px solid var(--line); }
+    .meter span { display: block; height: 100%; width: 24%; background: var(--acid); transition: width .35s ease, background .35s ease; }
+    .explanation { color: #d5d2ca; min-height: 76px; }
+    .sequence { display: grid; gap: 10px; margin-top: 22px; }
+    .step { display: grid; grid-template-columns: 28px 1fr; gap: 12px; align-items: center; border-top: 1px solid var(--line); padding-top: 12px; }
+    .step-index { color: var(--orange); font-weight: 850; }
+    .step small { display: block; color: var(--muted); }
+    .lesson { padding: 114px 0 120px; border-top: 1px solid var(--line); }
+    .lesson-grid { display: grid; grid-template-columns: .7fr 1.3fr; gap: 70px; }
+    .lesson h2 { font-size: clamp(2.2rem, 5vw, 4.5rem); line-height: .98; }
+    .lesson-copy { color: #c7c3b9; columns: 2 220px; column-gap: 32px; }
+    .lesson-copy p { margin-top: 0; break-inside: avoid; }
+    .principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 48px; }
+    .principle { padding: 20px; border: 1px solid var(--line); min-height: 150px; background: rgba(255,255,255,.025); }
+    .principle b { color: var(--cyan); display: block; margin-bottom: 12px; }
+    footer { border-top: 1px solid var(--line); padding: 26px 0 44px; color: var(--muted); font-size: 13px; display: flex; justify-content: space-between; gap: 20px; }
+    footer a { color: var(--ink); }
+    @media (max-width: 760px) {
+      .shell { width: min(100% - 28px, 620px); }
+      .topbar { padding: 18px 0; }
+      .topbar span { display: none; }
+      .hero { padding: 62px 0 70px; grid-template-columns: 1fr; gap: 28px; }
+      h1 { font-size: clamp(3rem, 15vw, 5.2rem); }
+      .lab-grid, .lesson-grid { grid-template-columns: 1fr; gap: 14px; }
+      .lab { padding-bottom: 76px; }
+      .lesson { padding: 76px 0; }
+      .lesson-copy { columns: 1; }
+      .principles { grid-template-columns: 1fr; }
+      footer { display: grid; }
+    }
+  </style>
+</head>
+<body>
+  <header class="shell topbar">
+    <div class="brand"><span class="brand-mark">IT</span><span>Invariant Triage</span></div>
+    <span>Agent systems field note / interactive</span>
+  </header>
+  <main>
+    <section class="shell hero">
+      <div>
+        <div class="eyebrow">Agent reasoning under conflict</div>
+        <h1>Pause before the rule breaks.</h1>
+        <p>Agents rarely fail because they have no policy. They fail when several policies look valid at once. Tune the evidence, contradiction, and action cost below to see when a sensible system should continue, verify, or stop.</p>
+      </div>
+      <div class="hero-note"><strong>Core idea</strong>Invariants are promises about what must remain true. Triage is the decision that protects those promises when the world changes.</div>
+    </section>
+    <section class="shell lab" aria-labelledby="lab-title">
+      <div class="lab-grid">
+        <div class="panel controls">
+          <div class="panel-head"><h2 id="lab-title">Set the scene</h2><small>Drag to replay</small></div>
+          <div class="control">
+            <div class="control-label"><label for="invariant">Invariant strength</label><output id="invariant-value">72</output></div>
+            <p>How costly is it to violate the rule?</p><input id="invariant" type="range" min="0" max="100" value="72">
+          </div>
+          <div class="control">
+            <div class="control-label"><label for="evidence">Evidence freshness</label><output id="evidence-value">68</output></div>
+            <p>How recently was the assumption checked?</p><input id="evidence" type="range" min="0" max="100" value="68">
+          </div>
+          <div class="control">
+            <div class="control-label"><label for="contradiction">Contradiction severity</label><output id="contradiction-value">34</output></div>
+            <p>How strongly does new evidence disagree?</p><input id="contradiction" type="range" min="0" max="100" value="34">
+          </div>
+          <div class="control">
+            <div class="control-label"><label for="action-cost">Action cost</label><output id="action-cost-value">42</output></div>
+            <p>What is lost if the next action is wrong?</p><input id="action-cost" type="range" min="0" max="100" value="42">
+          </div>
+          <div class="actions"><button class="button" id="run" type="button">Run triage</button><button class="button secondary" id="reset" type="button">Reset</button></div>
+        </div>
+        <div class="panel result" aria-live="polite">
+          <div class="result-top"><div><div class="eyebrow">Recommended posture</div><div class="status" id="status">Verify first</div></div><div class="risk">triage pressure<strong id="score">41</strong></div></div>
+          <div class="meter" aria-label="Triage pressure"><span id="meter"></span></div>
+          <p class="explanation" id="explanation">The rule matters, but the evidence is not fresh enough to trust a confident action. Spend one step checking the assumption.</p>
+          <div class="sequence" id="sequence"></div>
+        </div>
+      </div>
+    </section>
+    <section class="lesson">
+      <div class="shell lesson-grid">
+        <h2>A policy is only useful when its trigger is legible.</h2>
+        <div class="lesson-copy"><p>Imagine an agent with three instructions: preserve user consent, avoid irreversible changes, and finish the task quickly. In a stable world, they align. Under new evidence, they compete. The agent needs a small protocol for deciding which promise to protect first.</p><p>This lab compresses that protocol into four signals. Strong invariants raise the cost of a violation. Stale evidence raises uncertainty. Contradictions demand inspection. Expensive actions make guessing less acceptable. The score is not a model prediction; it is a teaching instrument for making hidden tradeoffs visible.</p></div>
+      </div>
+      <div class="shell principles"><div class="principle"><b>01 / Protect</b>Preserve the strongest invariant when the action could cause durable harm.</div><div class="principle"><b>02 / Inspect</b>When evidence and rules disagree, gather the smallest new observation that can resolve it.</div><div class="principle"><b>03 / Resume</b>Continue only after the reason to trust the next step is stronger than the cost of being wrong.</div></div>
+    </section>
+  </main>
+  <footer class="shell"><span>Built as a local, deterministic educational simulation.</span><span><a href="https://platform.openai.com/docs/guides/safety-best-practices">Safety practices</a> · <a href="https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/overview">Tool use overview</a></span></footer>
+  <script>
+    (() => {
+      const defaults = { invariant: 72, evidence: 68, contradiction: 34, actionCost: 42 };
+      const ids = ['invariant', 'evidence', 'contradiction', 'action-cost'];
+      const values = {
+        invariant: document.getElementById('invariant-value'),
+        evidence: document.getElementById('evidence-value'),
+        contradiction: document.getElementById('contradiction-value'),
+        actionCost: document.getElementById('action-cost-value')
+      };
+      const statusEl = document.getElementById('status');
+      const scoreEl = document.getElementById('score');
+      const meterEl = document.getElementById('meter');
+      const explanationEl = document.getElementById('explanation');
+      const sequenceEl = document.getElementById('sequence');
+      const read = () => ({ invariant: Number(document.getElementById('invariant').value), evidence: Number(document.getElementById('evidence').value), contradiction: Number(document.getElementById('contradiction').value), actionCost: Number(document.getElementById('action-cost').value) });
+      const setColor = (score) => { meterEl.style.background = score >= 70 ? 'var(--danger)' : score >= 42 ? 'var(--orange)' : 'var(--acid)'; };
+      const render = () => {
+        const input = read();
+        values.invariant.textContent = input.invariant;
+        values.evidence.textContent = input.evidence;
+        values.contradiction.textContent = input.contradiction;
+        values.actionCost.textContent = input.actionCost;
+        const pressure = Math.round(Math.min(100, Math.max(0, input.invariant * .22 + (100 - input.evidence) * .25 + input.contradiction * .3 + input.actionCost * .23)));
+        const needsInspect = input.contradiction >= 55 || input.evidence <= 36;
+        const shouldStop = pressure >= 70 || (input.invariant >= 78 && input.actionCost >= 72 && input.evidence <= 50);
+        const state = shouldStop ? { label: 'Stop and inspect', color: 'var(--danger)', text: 'The cost of a wrong action is larger than the evidence supporting it. Preserve the invariant and do not advance the plan.', steps: ['Freeze the irreversible action', 'Record the contradiction', 'Request a targeted observation'] } : needsInspect ? { label: 'Verify first', color: 'var(--orange)', text: 'The rule matters, but the evidence is not fresh enough to trust a confident action. Spend one step checking the assumption.', steps: ['Name the assumption', 'Gather the smallest useful check', 'Re-score the next action'] } : { label: 'Current', color: 'var(--acid)', text: 'The evidence supports the rule and the action is proportionate. Continue, but keep the invariant visible in the trace.', steps: ['State the invariant', 'Take the bounded action', 'Log the result'] };
+        statusEl.textContent = state.label;
+        statusEl.style.color = state.color;
+        scoreEl.textContent = pressure;
+        meterEl.style.width = pressure + '%';
+        setColor(pressure);
+        explanationEl.textContent = state.text;
+        sequenceEl.innerHTML = state.steps.map((step, index) => '<div class="step"><span class="step-index">0' + (index + 1) + '</span><div>' + step + '<small>' + (index === 0 ? 'Make the commitment explicit.' : index === 1 ? 'Reduce uncertainty before momentum.' : 'Only then choose the next tool.' ) + '</small></div></div>').join('');
+      };
+      ids.forEach((id) => document.getElementById(id).addEventListener('input', render));
+      document.getElementById('run').addEventListener('click', render);
+      document.getElementById('reset').addEventListener('click', () => { document.getElementById('invariant').value = defaults.invariant; document.getElementById('evidence').value = defaults.evidence; document.getElementById('contradiction').value = defaults.contradiction; document.getElementById('action-cost').value = defaults.actionCost; render(); });
+      render();
+    })();
+  </script>
+</body>
+</html>
