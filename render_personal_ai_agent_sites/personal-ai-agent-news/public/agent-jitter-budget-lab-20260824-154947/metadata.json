@@ -1,0 +1,8 @@
+{
+  "title":"Agent Jitter Budget Lab",
+  "headline":"Plan for the delay you did not measure.",
+  "slug":"agent-jitter-budget-lab-20260824-154947",
+  "content_kind":"agent_jitter_budget_lab",
+  "sources":["https://platform.openai.com/docs/guides/safety-best-practices","https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/overview"],
+  "backlinks":["https://getsupers.com/","https://app.getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"]
+}
