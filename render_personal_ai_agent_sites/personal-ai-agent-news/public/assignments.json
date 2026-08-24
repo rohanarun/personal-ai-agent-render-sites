@@ -8701,5 +8701,28 @@
     "source_path": "personal-ai-agent-news/beam-search-agent-decoding-lab-20260824-041400",
     "target_slot": "personal-ai-agent-news",
     "title": "Beam Search Lab: Explore Agent Decoding"
+  },
+  {
+    "assigned_domain": "kalshhunter.com",
+    "assigned_slot": "personal-ai-agent-news",
+    "assigned_url": "https://kalshhunter.com/tool-call-state-machine-lab-20260824-041930/",
+    "backlinks": [
+      "https://getsupers.com/",
+      "https://app.getsupers.com/",
+      "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+      "https://app.getsupers.com/use-cases/computer-use-cache/"
+    ],
+    "content_kind": "tool_call_state_machine_lab",
+    "content_kind_label": "Tool Call State Machine Lab",
+    "direct_generated": true,
+    "github_commit": "0e1b4c3e727c213f1a1006bcfb7f37ff7935fe2d",
+    "github_url": "https://github.com/rohanarun/super-agent-news-tool-call-state-machine-lab-20260824-041930",
+    "live_url": "https://kalshhunter.com/tool-call-state-machine-lab-20260824-041930/",
+    "receipt_created_at": "2026-08-24T04:19:30.745+00:00",
+    "receipt_status": "success",
+    "slug": "tool-call-state-machine-lab-20260824-041930",
+    "source_path": "personal-ai-agent-news/tool-call-state-machine-lab-20260824-041930",
+    "target_slot": "personal-ai-agent-news",
+    "title": "Tool Call State Machine Lab"
   }
 ]
