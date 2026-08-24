@@ -1,0 +1,11 @@
+{
+  "title": "Agent Retry Budget Lab",
+  "headline": "Retries need a budget, not a reflex.",
+  "content_kind": "agent_retry_budget_lab",
+  "slug": "agent-retry-budget-lab-20260824-124846",
+  "target_slot": "personal-ai-agent-news",
+  "target_domain": "kalshhunter.com",
+  "primary_sources": ["https://platform.openai.com/docs/guides/safety-best-practices", "https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/overview"],
+  "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+  "api_free": true
+}
