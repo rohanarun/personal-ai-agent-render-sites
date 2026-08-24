@@ -1,0 +1,19 @@
+{
+  "title": "Tool Result Paging Context Lab",
+  "headline": "Bring back only what the agent needs.",
+  "content_kind": "tool_result_paging_context_lab",
+  "slug": "tool-result-paging-context-lab-20260824-123516",
+  "target_slot": "personal-ai-agent-news",
+  "target_domain": "kalshhunter.com",
+  "primary_sources": [
+    "https://platform.openai.com/docs/guides/function-calling",
+    "https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/overview"
+  ],
+  "backlinks": [
+    "https://getsupers.com/",
+    "https://app.getsupers.com/",
+    "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+    "https://app.getsupers.com/use-cases/computer-use-cache/"
+  ],
+  "api_free": true
+}
