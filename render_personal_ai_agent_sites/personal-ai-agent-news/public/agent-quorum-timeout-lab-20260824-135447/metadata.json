@@ -1,0 +1,11 @@
+{
+  "title": "Agent Quorum Timeout Lab",
+  "headline": "A quorum is a decision rule, not a promise that every voice arrives.",
+  "content_kind": "agent_quorum_timeout_lab",
+  "slug": "agent-quorum-timeout-lab-20260824-135447",
+  "target_slot": "personal-ai-agent-news",
+  "target_domain": "kalshhunter.com",
+  "primary_sources": ["https://platform.openai.com/docs/guides/safety-best-practices", "https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/overview"],
+  "backlinks": ["https://getsupers.com/", "https://app.getsupers.com/", "https://app.getsupers.com/use-cases/ai-agent-build-websites/", "https://app.getsupers.com/use-cases/computer-use-cache/"],
+  "api_free": true
+}

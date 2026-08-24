@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Quorum Timeout Lab</title>
+<style>
+:root{--ink:#182720;--muted:#627169;--paper:#f3f6ef;--panel:#fffdf8;--line:#d7e1d7;--teal:#0f766e;--coral:#c84b2f}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 15% 0,#fff0d6,transparent 30rem),var(--paper);color:var(--ink);font:16px/1.55 system-ui,-apple-system,Segoe UI,sans-serif}main{max-width:1100px;margin:auto;padding:26px 22px 60px}header{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:20px}.brand{font-weight:850;letter-spacing:.06em}.eyebrow{font-size:.75rem;text-transform:uppercase;letter-spacing:.16em;font-weight:800;color:var(--coral)}.hero{padding:70px 0 42px;max-width:950px}.hero h1{font-size:clamp(2.8rem,7vw,6.5rem);line-height:.97;letter-spacing:-.05em;max-width:910px;margin:12px 0 22px}.hero p{font-size:1.17rem;max-width:700px;color:var(--muted)}.grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px;box-shadow:0 20px 48px #18362916}.panel h2{margin:0 0 8px}.panel p{color:var(--muted);margin-top:0}.control{display:grid;gap:9px;margin:24px 0}.control label{display:flex;justify-content:space-between;font-weight:750}output{color:var(--teal)}input{width:100%;accent-color:var(--teal)}button{border:0;border-radius:9px;padding:13px 18px;background:var(--ink);color:#fff;font:inherit;font-weight:800;cursor:pointer}button:hover{background:var(--coral)}.secondary{margin-left:8px;background:#e4eee7;color:var(--ink)}.votes{display:grid;gap:12px;margin:25px 0}.vote{display:grid;grid-template-columns:84px 1fr 48px;gap:10px;align-items:center}.vote b{font-size:.78rem;color:var(--muted)}.bar{height:15px;background:#e4ece5;border-radius:20px;overflow:hidden}.fill{height:100%;background:var(--teal);border-radius:inherit;transition:width .4s}.vote:nth-child(3) .fill{background:var(--coral)}.status{padding:14px 16px;background:#fff2df;border-left:4px solid var(--coral)}.source{margin-top:34px;color:var(--muted);font-size:.9rem}.source a{color:var(--teal);margin-right:14px}.foot{border-top:1px solid var(--line);margin-top:36px;padding-top:18px;color:var(--muted);font-size:.86rem}@media(max-width:720px){main{padding:20px 16px 44px}.hero{padding:48px 0 28px}.hero h1{font-size:clamp(2.6rem,13vw,4.6rem)}.grid{grid-template-columns:1fr}.panel{padding:20px}.vote{grid-template-columns:70px 1fr 38px}.secondary{margin-left:4px}}
+</style>
+</head>
+<body>
+<main>
+<header><div class="brand">AGENT SYSTEMS / LAB NOTES</div><div class="eyebrow">Quorum timeout</div></header>
+<section class="hero"><div class="eyebrow">A small systems simulator</div><h1>A quorum is a decision rule, not a promise that every voice arrives.</h1><p>Set the number of agents, the required quorum, and the time available. Then watch a coordinator decide whether to commit, wait, or fail closed when responses arrive unevenly.</p></section>
+<section class="grid">
+<div class="panel"><h2>Shape the vote</h2><p>Responses arrive at different times. A decision is safe only when enough independent voices arrive before the deadline.</p>
+<div class="control"><label for="agents">Agents <output id="agentsValue">5</output></label><input id="agents" type="range" min="3" max="9" value="5"></div>
+<div class="control"><label for="quorum">Required quorum <output id="quorumValue">3</output></label><input id="quorum" type="range" min="1" max="9" value="3"></div>
+<div class="control"><label for="deadline">Deadline <output id="deadlineValue">6s</output></label><input id="deadline" type="range" min="2" max="10" value="6"></div>
+<button id="run">Run the vote</button><button class="secondary" id="reset">Reset</button>
+<div class="status" id="status">Quorum reached at 4.8s. Commit.</div></div>
+<div class="panel"><h2>Read the arrivals</h2><p>Teal bars arrived before the deadline. Coral bars are late and cannot rescue this decision.</p><div class="votes" id="votes"></div><p id="formula">Decision = arrived before deadline compared with quorum.</p></div>
+</section>
+<div class="source"><strong>Further reading:</strong> <a href="https://platform.openai.com/docs/guides/safety-best-practices">OpenAI safety practices</a><a href="https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/overview">Anthropic tool use</a><a href="https://getsupers.com/">SuperPowers</a><a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">AI agent websites</a></div>
+<footer class="foot">This lab is a fixed, local simulation. It sends no model requests, calls no tools, and stores no user data.</footer>
+</main>
+<script>
+const $=id=>document.getElementById(id),agents=$('agents'),quorum=$('quorum'),deadline=$('deadline');
+function draw(){const n=+agents.value,q=Math.min(+quorum.value,n),d=+deadline.value;agentsValue.textContent=n;quorumValue.textContent=q;deadlineValue.textContent=d+'s';const times=Array.from({length:n},(_,i)=>2.2+i*0.65+(i%2)*0.3),arrived=times.filter(t=>t<=d).length;const pass=arrived>=q;$('status').textContent=pass?'Quorum reached at '+times[q-1].toFixed(1)+'s. Commit.':'Only '+arrived+' of '+q+' voices arrived by '+d+'s. Fail closed.';$('formula').textContent=arrived+' arrived before '+d+'s; quorum requires '+q+'.';votes.innerHTML='';times.forEach((t,i)=>{const row=document.createElement('div');row.className='vote';const label=document.createElement('b');label.textContent='agent '+(i+1);const track=document.createElement('div');track.className='bar';const fill=document.createElement('div');fill.className='fill';fill.style.width=Math.min(100,t/d*100)+'%';if(t>d)fill.style.background='var(--coral)';track.appendChild(fill);const out=document.createElement('span');out.textContent=t.toFixed(1)+'s';row.append(label,track,out);votes.appendChild(row)})}
+[agents,quorum,deadline].forEach(x=>x.addEventListener('input',draw));run.addEventListener('click',draw);reset.addEventListener('click',()=>{agents.value=5;quorum.value=3;deadline.value=6;draw()});draw();
+</script>
+</body>
+</html>
