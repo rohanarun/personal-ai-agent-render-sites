@@ -1,0 +1,8 @@
+{
+  "title":"Agent Refusal Budget Lab",
+  "headline":"A careful agent sometimes spends its best move on no.",
+  "slug":"agent-refusal-budget-lab-20260824-161047",
+  "content_kind":"agent_refusal_budget_lab",
+  "sources":["https://platform.openai.com/docs/guides/safety-best-practices","https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/overview"],
+  "backlinks":["https://getsupers.com/","https://app.getsupers.com/","https://app.getsupers.com/use-cases/ai-agent-build-websites/","https://app.getsupers.com/use-cases/computer-use-cache/"]
+}
