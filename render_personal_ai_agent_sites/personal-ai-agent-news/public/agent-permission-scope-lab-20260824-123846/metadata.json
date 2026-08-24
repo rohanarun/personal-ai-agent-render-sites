@@ -1,0 +1,19 @@
+{
+  "title": "Agent Permission Scope Lab",
+  "headline": "Give the agent only the keys it needs.",
+  "content_kind": "agent_permission_scope_lab",
+  "slug": "agent-permission-scope-lab-20260824-123846",
+  "target_slot": "personal-ai-agent-news",
+  "target_domain": "kalshhunter.com",
+  "primary_sources": [
+    "https://platform.openai.com/docs/guides/function-calling",
+    "https://www.nist.gov/itl/ai-risk-management-framework"
+  ],
+  "backlinks": [
+    "https://getsupers.com/",
+    "https://app.getsupers.com/",
+    "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+    "https://app.getsupers.com/use-cases/computer-use-cache/"
+  ],
+  "api_free": true
+}
