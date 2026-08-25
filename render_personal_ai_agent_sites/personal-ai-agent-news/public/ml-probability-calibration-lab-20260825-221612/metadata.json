@@ -1,0 +1,11 @@
+{
+  "slug": "ml-probability-calibration-lab-20260825-221612",
+  "title": "Probability Calibration Lab",
+  "topic": "machine learning",
+  "description": "An interactive explainer for why confident predictions should earn trust only when their probabilities are calibrated.",
+  "sources": [
+    "https://scikit-learn.org/stable/modules/calibration.html",
+    "https://www.nist.gov/itl/ai-risk-management-framework",
+    "https://model-spec.openai.com/"
+  ]
+}
