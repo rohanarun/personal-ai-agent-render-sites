@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An interactive lab for learning when more evidence is worth the delay in an AI agent's decision loop.">
+  <meta name="site-slug" content="agent-wait-value-lab-20260825-153041">
+  <title>Wait Value Lab | Agent Systems</title>
+  <style>
+    :root { --ink:#18212b; --muted:#607080; --paper:#f7f4ed; --panel:#fffdf8; --line:#d9d4c8; --mint:#b8ded2; --blue:#2e6d85; --coral:#c96750; --shadow:0 18px 48px rgba(24,33,43,.10); }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:var(--paper); font-family:Georgia, 'Times New Roman', serif; }
+    a { color:inherit; }
+    .shell { width:min(1180px, calc(100% - 36px)); margin:auto; }
+    header { padding:26px 0 18px; border-bottom:1px solid var(--line); }
+    nav { display:flex; justify-content:space-between; align-items:center; gap:20px; font-family:Arial, sans-serif; font-size:13px; letter-spacing:.03em; }
+    .mark { font-weight:800; text-transform:uppercase; }
+    .nav-link { color:var(--muted); text-decoration:none; border-bottom:1px solid transparent; }
+    .nav-link:hover { color:var(--ink); border-color:var(--ink); }
+    main { padding:72px 0 100px; }
+    .hero { max-width:980px; }
+    .eyebrow { font:700 12px Arial, sans-serif; letter-spacing:.14em; text-transform:uppercase; color:var(--blue); margin-bottom:22px; }
+    h1 { font-size:clamp(3rem, 7vw, 6.7rem); line-height:.94; letter-spacing:-.045em; margin:0 0 26px; max-width:980px; }
+    .dek { max-width:720px; color:var(--muted); font:20px/1.5 Arial, sans-serif; margin:0; }
+    .hero-actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:30px; }
+    button { border:0; cursor:pointer; font:700 14px Arial, sans-serif; padding:14px 19px; color:white; background:var(--ink); transition:transform .2s, background .2s; }
+    button:hover { transform:translateY(-2px); background:var(--blue); }
+    .ghost { color:var(--ink); background:transparent; border:1px solid var(--ink); }
+    .lab { margin-top:72px; display:grid; grid-template-columns:1.05fr .95fr; gap:22px; align-items:start; }
+    .panel { background:var(--panel); border:1px solid var(--line); box-shadow:var(--shadow); padding:30px; }
+    .panel h2 { font-size:27px; margin:0 0 9px; }
+    .panel p { color:var(--muted); font:15px/1.55 Arial, sans-serif; margin:0 0 24px; }
+    .control { border-top:1px solid var(--line); padding:20px 0 5px; }
+    .control-head { display:flex; justify-content:space-between; gap:14px; font:700 14px Arial, sans-serif; }
+    .value { color:var(--blue); }
+    input[type=range] { width:100%; accent-color:var(--blue); margin:17px 0 8px; }
+    .range-note { display:flex; justify-content:space-between; color:var(--muted); font:12px Arial, sans-serif; }
+    .decision-board { display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; margin-top:20px; }
+    .decision { min-height:140px; padding:18px; border:1px solid var(--line); background:#faf8f1; }
+    .decision strong { display:block; font-size:20px; margin-bottom:10px; }
+    .decision span { color:var(--muted); font:13px/1.4 Arial, sans-serif; }
+    .decision.best { border-color:var(--blue); background:#e9f3ef; box-shadow:inset 0 4px 0 var(--blue); }
+    .meter { height:11px; background:#e9e4da; margin:18px 0 25px; overflow:hidden; }
+    .meter i { display:block; height:100%; width:0; background:var(--coral); transition:width .35s ease; }
+    .score-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+    .score { border-top:1px solid var(--line); padding-top:15px; }
+    .score b { display:block; font-size:34px; }
+    .score small { color:var(--muted); font:12px Arial, sans-serif; }
+    .lesson { margin-top:22px; padding:18px; background:var(--mint); font:700 17px/1.35 Arial, sans-serif; }
+    .story { margin-top:90px; display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:start; }
+    .story h2 { font-size:43px; line-height:1; margin:0; }
+    .story p, footer { font:15px/1.65 Arial, sans-serif; color:var(--muted); }
+    .principles { display:grid; grid-auto-flow:dense; grid-template-columns:repeat(2,1fr); gap:12px; }
+    .principle { padding:20px; border:1px solid var(--line); background:var(--panel); }
+    .principle:nth-child(3) { grid-column:span 2; }
+    .principle h3 { margin:0 0 8px; font-size:20px; }
+    .principle p { margin:0; font-size:13px; line-height:1.45; }
+    footer { border-top:1px solid var(--line); padding:28px 0 44px; display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+    @media (max-width:800px) { .lab,.story { grid-template-columns:1fr; } .decision-board { grid-template-columns:1fr; } h1 { font-size:clamp(3.2rem, 15vw, 5.5rem); } main { padding-top:48px; } }
+  </style>
+</head>
+<body>
+  <header><nav class="shell"><span class="mark">Agent Systems / Field Notes</span><a class="nav-link" href="#principles">Why it matters</a></nav></header>
+  <main class="shell">
+    <section class="hero">
+      <div class="eyebrow">A decision-quality simulator</div>
+      <h1>More evidence is not always better evidence.</h1>
+      <p class="dek">An agent can wait for a clearer signal, but every second also makes its plan less useful. Tune the conditions below and watch the recommended policy change.</p>
+      <div class="hero-actions"><button id="reset" type="button">Reset the scenario</button><button id="jump" class="ghost" type="button">Run the lab</button></div>
+    </section>
+    <section class="lab" id="lab" aria-label="Interactive wait value lab">
+      <div class="panel">
+        <h2>Change the situation</h2>
+        <p>These are deliberately abstract inputs: the skill is noticing the relationship between confidence, delay, and freshness before an agent commits a side effect.</p>
+        <div class="control"><div class="control-head"><label for="evidence">Evidence strength</label><span class="value" id="evidenceValue">58%</span></div><input id="evidence" type="range" min="0" max="100" value="58"><div class="range-note"><span>ambiguous</span><span>corroborated</span></div></div>
+        <div class="control"><div class="control-head"><label for="waitCost">Cost of waiting</label><span class="value" id="waitCostValue">42%</span></div><input id="waitCost" type="range" min="0" max="100" value="42"><div class="range-note"><span>cheap pause</span><span>window closing</span></div></div>
+        <div class="control"><div class="control-head"><label for="freshness">Signal freshness</label><span class="value" id="freshnessValue">74%</span></div><input id="freshness" type="range" min="0" max="100" value="74"><div class="range-note"><span>already stale</span><span>just observed</span></div></div>
+      </div>
+      <div class="panel" aria-live="polite">
+        <h2 id="headline">The answer is still alive.</h2>
+        <p id="summary">Waiting can pay for itself when the signal is fresh and the cost of delay is contained.</p>
+        <div class="meter" aria-label="value of waiting"><i id="meterFill"></i></div>
+        <div class="score-grid"><div class="score"><b id="waitScore">61</b><small>value of one more check</small></div><div class="score"><b id="actScore">56</b><small>confidence to act now</small></div></div>
+        <div class="decision-board"><div class="decision" id="actCard"><strong>Act now</strong><span>Choose the current plan when delay is more dangerous than uncertainty.</span></div><div class="decision" id="waitCard"><strong>Wait</strong><span>Buy another observation when it can materially change the plan.</span></div><div class="decision" id="askCard"><strong>Ask</strong><span>Hand back the ambiguity when neither speed nor waiting is responsible.</span></div></div>
+        <div class="lesson" id="lesson">Recommended posture: wait for one bounded check, then re-evaluate.</div>
+      </div>
+    </section>
+    <section class="story" id="principles"><h2>A good agent treats time as part of the evidence.</h2><div><p>Confidence is not a single number. It is confidence that survives the cost of acting, the cost of asking, and the decay of the context that produced it.</p><div class="principles"><article class="principle"><h3>Bound the wait</h3><p>A request for “more information” needs a stopping condition. Otherwise caution becomes an unowned loop.</p></article><article class="principle"><h3>Re-score the plan</h3><p>When new evidence arrives, compare it with the action, not just with the previous belief.</p></article><article class="principle"><h3>Separate uncertainty from urgency</h3><p>A low-confidence action can still be correct when the alternative is a rapidly expiring opportunity. The right question is whether waiting changes the expected outcome.</p></article></div></div></section>
+  </main>
+  <footer class="shell"><span>Built as a static learning artifact for agent designers.</span><span>Sources: <a href="https://www.nist.gov/itl/ai-risk-management-framework">NIST AI RMF</a> · <a href="https://arxiv.org/abs/2308.03688">ReAct</a> · <a href="https://arxiv.org/abs/2203.11171">Constitutional AI</a></span></footer>
+  <script>
+    const controls = ['evidence', 'waitCost', 'freshness'];
+    const $ = (id) => document.getElementById(id);
+    function update() {
+      const evidence = +$('evidence').value, waitCost = +$('waitCost').value, freshness = +$('freshness').value;
+      $('evidenceValue').textContent = evidence + '%'; $('waitCostValue').textContent = waitCost + '%'; $('freshnessValue').textContent = freshness + '%';
+      const wait = Math.max(0, Math.round((100 - evidence) * .42 + freshness * .34 - waitCost * .53 + 35));
+      const act = Math.max(0, Math.round(evidence * .62 + freshness * .18 - waitCost * .15));
+      const ask = Math.max(0, Math.round((100 - evidence) * .52 + (100 - freshness) * .25));
+      $('waitScore').textContent = wait; $('actScore').textContent = act; $('meterFill').style.width = Math.min(100, wait) + '%';
+      [$('actCard'), $('waitCard'), $('askCard')].forEach((card) => card.classList.remove('best'));
+      const top = Math.max(wait, act, ask);
+      if (top === wait) { $('waitCard').classList.add('best'); $('headline').textContent = 'The answer is still alive.'; $('summary').textContent = 'Waiting can pay for itself when the signal is fresh and the cost of delay is contained.'; $('lesson').textContent = 'Recommended posture: wait for one bounded check, then re-evaluate.'; }
+      else if (top === act) { $('actCard').classList.add('best'); $('headline').textContent = 'The clock is part of the risk.'; $('summary').textContent = 'The current evidence is strong enough that another check would mostly spend the useful window.'; $('lesson').textContent = 'Recommended posture: act now, but carry the uncertainty into the result.'; }
+      else { $('askCard').classList.add('best'); $('headline').textContent = 'The agent should return the ambiguity.'; $('summary').textContent = 'The signal is too weak or too old for a silent commitment, and waiting alone will not resolve it.'; $('lesson').textContent = 'Recommended posture: ask a focused question that can change the decision.'; }
+    }
+    controls.forEach((id) => $(id).addEventListener('input', update));
+    $('reset').addEventListener('click', () => { $('evidence').value=58; $('waitCost').value=42; $('freshness').value=74; update(); });
+    $('jump').addEventListener('click', () => $('lab').scrollIntoView({behavior:'smooth'}));
+    update();
+  </script>
+</body>
+</html>
