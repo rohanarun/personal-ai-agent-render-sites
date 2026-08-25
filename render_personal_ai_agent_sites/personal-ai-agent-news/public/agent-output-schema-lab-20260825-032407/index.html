@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Output Schema Lab | Agent Systems</title>
+  <meta name="description" content="An interactive lab for learning why reliable agent systems validate tool outputs before taking the next action.">
+  <style>
+    :root{--ink:#10242b;--muted:#5c7075;--paper:#f5f7f2;--panel:#ffffff;--line:#d8e2dd;--teal:#0c786f;--teal-dark:#07534e;--coral:#d75e47;--gold:#c79235;--mint:#dcefe9;--shadow:0 18px 50px rgba(18,44,47,.10)}
+    *{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5} a{color:var(--teal-dark)}
+    .shell{max-width:1180px;margin:auto;padding:28px 24px 72px}.nav{display:flex;justify-content:space-between;align-items:center;gap:20px;border-bottom:1px solid var(--line);padding-bottom:20px}.brand{font-weight:800;letter-spacing:.02em}.nav-note{font-size:13px;color:var(--muted)}
+    .hero{padding:78px 0 56px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);gap:56px;align-items:end}.eyebrow{color:var(--teal);font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.hero h1{font-size:clamp(3rem,6.3vw,6.8rem);line-height:.94;letter-spacing:-.055em;margin:16px 0 24px;max-width:780px}.hero p{font-size:18px;max-width:650px;color:var(--muted);margin:0}.hero-art{min-height:260px;background:linear-gradient(145deg,#143f43 0%,#0a746b 55%,#c79235 55%,#e3b85d 100%);border-radius:24px;box-shadow:var(--shadow);padding:22px;display:flex;align-items:flex-end}.signal-card{background:rgba(255,255,255,.92);border-radius:16px;padding:18px;width:100%;font-size:14px}.signal-card strong{display:block;font-size:23px;margin-top:4px}.section{padding:64px 0}.section-grid{display:grid;grid-template-columns:260px minmax(0,1fr);gap:38px}.section h2{font-size:clamp(1.8rem,3.3vw,3.2rem);line-height:1.02;letter-spacing:-.035em;margin:0}.section-intro{color:var(--muted);margin:8px 0 0}.lab{background:var(--panel);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);overflow:hidden}.controls{padding:26px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;background:#fbfcf9;border-bottom:1px solid var(--line)}label{font-size:13px;font-weight:750;color:var(--teal-dark)}input[type=range]{width:100%;accent-color:var(--teal);margin:14px 0 4px}output{display:block;color:var(--muted);font-size:13px}.run{grid-column:1/-1;border:0;border-radius:12px;background:var(--teal-dark);color:#fff;font-weight:800;font-size:15px;padding:14px 18px;cursor:pointer}.run:hover{background:#063d3a}.results{padding:26px;display:grid;grid-template-columns:1fr 1fr;gap:24px}.verdict{border-radius:18px;padding:22px;background:var(--mint);min-height:190px}.verdict[data-state=warn]{background:#fff0d4}.verdict[data-state=stop]{background:#fde2dc}.verdict h3{font-size:24px;line-height:1.08;margin:0 0 8px}.verdict p{margin:0;color:#365158}.metric-list{display:grid;gap:12px}.metric{border-bottom:1px solid var(--line);padding-bottom:10px}.metric-top{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:var(--muted)}.bar{height:10px;background:#e8efea;border-radius:99px;overflow:hidden;margin-top:7px}.bar span{display:block;height:100%;background:var(--teal);border-radius:99px;transition:width .35s ease}.trace{grid-column:1/-1;border-top:1px solid var(--line);padding-top:22px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.trace-step{padding:14px;border:1px solid var(--line);border-radius:14px;background:#fbfcf9}.trace-step b{display:block;font-size:13px;margin-bottom:3px}.trace-step span{font-size:13px;color:var(--muted)}.rule{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.rule article{padding:20px;background:var(--panel);border:1px solid var(--line);border-radius:16px}.rule h3{margin:0 0 7px;font-size:17px}.rule p{margin:0;color:var(--muted);font-size:14px}.sources{border-top:1px solid var(--line);padding-top:24px;display:flex;justify-content:space-between;gap:24px;align-items:flex-start}.sources p{margin:0;color:var(--muted);font-size:14px;max-width:620px}.sources ul{margin:0;padding-left:20px;font-size:14px}.footer{padding-top:36px;color:var(--muted);font-size:13px}
+    @media(max-width:800px){.shell{padding:20px 16px 48px}.hero{padding:56px 0 30px;grid-template-columns:1fr;gap:28px}.hero-art{min-height:190px}.section{padding:44px 0}.section-grid{grid-template-columns:1fr;gap:20px}.controls,.results,.trace,.rule{grid-template-columns:1fr}.results{padding:18px}.sources{display:block}.sources ul{margin-top:18px}.nav-note{display:none}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <nav class="nav"><div class="brand">AGENT SYSTEMS / FIELD LAB</div><div class="nav-note">Validation is an action, not a footnote</div></nav>
+    <header class="hero">
+      <div><div class="eyebrow">Interactive reasoning lab</div><h1>Make the output prove itself.</h1><p>Agents rarely fail because they cannot call a tool. They fail when an ambiguous tool result is treated as permission to keep going. Tune the contract, then watch the next action change.</p></div>
+      <div class="hero-art"><div class="signal-card"><span>Current system posture</span><strong id="posture">Awaiting a run</strong><span id="postureNote">Set the three inputs below.</span></div></div>
+    </header>
+    <section class="section section-grid">
+      <div><h2>Contract pressure</h2><p class="section-intro">Three knobs shape whether the agent can safely interpret its latest tool response.</p></div>
+      <div class="lab">
+        <div class="controls">
+          <div><label for="strictness">Schema strictness</label><input id="strictness" type="range" min="1" max="10" value="7"><output id="strictnessOut">7 / 10</output></div>
+          <div><label for="complexity">Payload complexity</label><input id="complexity" type="range" min="1" max="10" value="5"><output id="complexityOut">5 / 10</output></div>
+          <div><label for="impact">Decision impact</label><input id="impact" type="range" min="1" max="10" value="8"><output id="impactOut">8 / 10</output></div>
+          <button class="run" id="run" type="button">Validate the latest result</button>
+        </div>
+        <div class="results">
+          <div class="verdict" id="verdict" data-state="idle"><h3 id="verdictTitle">No decision yet</h3><p id="verdictCopy">Run the lab to see whether the agent should proceed, ask for clarification, or stop.</p></div>
+          <div class="metric-list">
+            <div class="metric"><div class="metric-top"><span>Evidence coverage</span><b id="coverageValue">--</b></div><div class="bar"><span id="coverageBar" style="width:0%"></span></div></div>
+            <div class="metric"><div class="metric-top"><span>Ambiguity risk</span><b id="riskValue">--</b></div><div class="bar"><span id="riskBar" style="width:0%"></span></div></div>
+            <div class="metric"><div class="metric-top"><span>Next-action confidence</span><b id="confidenceValue">--</b></div><div class="bar"><span id="confidenceBar" style="width:0%"></span></div></div>
+          </div>
+          <div class="trace"><div class="trace-step"><b>1. Parse</b><span id="parseStep">Waiting for payload</span></div><div class="trace-step"><b>2. Compare</b><span id="compareStep">Waiting for contract</span></div><div class="trace-step"><b>3. Choose</b><span id="chooseStep">Waiting for impact estimate</span></div></div>
+        </div>
+      </div>
+    </section>
+    <section class="section section-grid"><div><h2>The useful stop</h2><p class="section-intro">A refusal can be the most capable next move when the cost of a wrong action is high.</p></div><div class="rule"><article><h3>Parse before belief</h3><p>Separate a valid shape from a plausible story. A tool response can look useful while missing the field that authorizes action.</p></article><article><h3>Raise the bar with impact</h3><p>Low-impact exploration can tolerate a clarification loop. A destructive or irreversible action needs stronger evidence.</p></article><article><h3>Make recovery explicit</h3><p>When validation fails, return the missing fields and a bounded retry path instead of hiding uncertainty inside prose.</p></article></div></section>
+    <section class="section sources"><p>This simulation is a teaching model, not a production policy. It demonstrates the contract-first pattern: inspect tool outputs, compare them to an explicit schema, then gate the next action.</p><ul><li><a href="https://platform.openai.com/docs/guides/agents" target="_blank" rel="noreferrer">OpenAI Agents guide</a></li><li><a href="https://platform.openai.com/docs/guides/prompt-engineering" target="_blank" rel="noreferrer">Prompt engineering guide</a></li><li><a href="https://getsupers.com/" target="_blank" rel="noreferrer">SuperPowersAR</a></li></ul></section>
+    <footer class="footer">Built as a compact field lesson for people designing reliable tool-using agents.</footer>
+  </main>
+  <script>
+    const $ = (id) => document.getElementById(id);
+    const inputs = ['strictness','complexity','impact'];
+    function syncLabels(){inputs.forEach((id)=>$(id+'Out').textContent=$(id).value+' / 10')}
+    inputs.forEach((id)=>$(id).addEventListener('input', syncLabels));
+    function setMetric(name,value){$(name+'Value').textContent=value+'%';$(name+'Bar').style.width=value+'%'}
+    $('run').addEventListener('click',()=>{
+      const strictness=+$('strictness').value, complexity=+$('complexity').value, impact=+$('impact').value;
+      const coverage=Math.min(99,Math.round(strictness*7+(10-complexity)*2));
+      const risk=Math.min(99,Math.max(1,Math.round(complexity*6+impact*3-strictness*4+12)));
+      const confidence=Math.min(99,Math.max(1,Math.round(coverage-risk*.65+strictness*2)));
+      let state='go',title='Proceed with a bounded action',copy='The contract covers enough of the response for a reversible next step, while the agent keeps the recovery path visible.';
+      if(risk>=68||confidence<38){state='stop';title='Stop and request clarification';copy='The result is too ambiguous for the cost of the next action. Preserve the payload, name the missing field, and ask for a bounded retry.'}
+      else if(risk>=45||confidence<62){state='warn';title='Hold for one more check';copy='The agent can inspect a narrow follow-up, but it should not commit to the high-impact action yet.'}
+      $('verdict').dataset.state=state;$('verdictTitle').textContent=title;$('verdictCopy').textContent=copy;
+      $('posture').textContent=state==='go'?'Contract is usable':state==='warn'?'Contract needs one check':'Contract blocked';$('postureNote').textContent='Evidence '+coverage+'% · risk '+risk+'%';
+      setMetric('coverage',coverage);setMetric('risk',risk);setMetric('confidence',confidence);
+      $('parseStep').textContent=complexity>7?'Nested fields need normalization':'Required fields found';$('compareStep').textContent=strictness>6?'Shape matches the schema':'Several fields are optional';$('chooseStep').textContent=impact>7?'Gate before commitment':state==='go'?'Reversible action allowed':'Clarification path selected';
+    });
+    syncLabels();
+  </script>
+</body>
+</html>
