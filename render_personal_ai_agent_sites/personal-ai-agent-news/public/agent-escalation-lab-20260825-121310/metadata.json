@@ -1,0 +1,19 @@
+{
+  "title": "Agent Escalation Lab",
+  "slug": "agent-escalation-lab-20260825-121310",
+  "content_kind": "agent_escalation_simulation",
+  "headline": "Ask for help while the decision is still explainable.",
+  "topic": "agent systems",
+  "description": "Interactive explainer for consequence, uncertainty, human availability, and useful agent handoffs.",
+  "sources": [
+    "https://www.nist.gov/itl/ai-risk-management-framework",
+    "https://www.anthropic.com/research/building-effective-agents",
+    "https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization"
+  ],
+  "backlinks": [
+    "https://getsupers.com/",
+    "https://app.getsupers.com/",
+    "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+    "https://app.getsupers.com/use-cases/computer-use-cache/"
+  ]
+}
