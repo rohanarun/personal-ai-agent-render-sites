@@ -1,0 +1,11 @@
+{
+  "slug": "agent-utility-tradeoff-lab-20260825-235740",
+  "title": "Agent Utility Lab",
+  "topic": "Agent planning, expected benefit, action cost, uncertainty, and outcome verification",
+  "format": "interactive explainer",
+  "sources": [
+    "https://www.anthropic.com/engineering/building-effective-agents",
+    "https://model-spec.openai.com/",
+    "https://www.nist.gov/itl/ai-risk-management-framework"
+  ]
+}
