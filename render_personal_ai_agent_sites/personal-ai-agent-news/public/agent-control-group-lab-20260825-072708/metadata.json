@@ -1,0 +1,11 @@
+{
+  "slug": "agent-control-group-lab-20260825-072708",
+  "title": "Control Group Lab",
+  "topic": "Agent experimentation and counterfactual evaluation",
+  "description": "An interactive explainer for designing a trustworthy control path before claiming an agent treatment improved outcomes.",
+  "sources": [
+    {"title":"OpenAI Agents guide","url":"https://platform.openai.com/docs/guides/agents"},
+    {"title":"OpenAI Evals guide","url":"https://platform.openai.com/docs/guides/evals"},
+    {"title":"NIST AI Risk Management Framework","url":"https://airc.nist.gov/airmf-resources/airmf/"}
+  ]
+}
