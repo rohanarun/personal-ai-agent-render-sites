@@ -1,0 +1,8 @@
+{
+  "slug": "agent-counterfactual-checkpoint-lab-20260825-164041",
+  "title": "Counterfactual Checkpoint Lab",
+  "topic": "Agent counterfactual evaluation, safer alternatives, and commitment boundaries",
+  "sources": ["https://www.nist.gov/itl/ai-risk-management-framework", "https://model-spec.openai.com/2025-12-18.html", "https://arxiv.org/abs/2308.03688", "https://www.anthropic.com/research/building-effective-agents"],
+  "interaction": "Adjust expected benefit, downside severity, uncertainty, and alternative value to compare action recommendations.",
+  "site_slug": "agent-counterfactual-checkpoint-lab-20260825-164041"
+}
