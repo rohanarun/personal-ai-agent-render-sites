@@ -1,0 +1,10 @@
+{
+  "slug": "llm-evaluation-slice-lab-20260825-212512",
+  "title": "Evaluation Slice Lab",
+  "topic": "LLM evaluation slices, weighting, and hidden failure modes",
+  "sources": [
+    "https://www.nist.gov/itl/ai-risk-management-framework",
+    "https://model-spec.openai.com/2025-12-18.html",
+    "https://www.anthropic.com/research/building-effective-agents"
+  ]
+}
