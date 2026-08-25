@@ -1,0 +1,8 @@
+{
+  "title": "Scope Boundary Lab",
+  "slug": "agent-scope-boundary-lab-20260825-181211",
+  "topic": "agent systems",
+  "sources": ["https://www.nist.gov/itl/ai-risk-management-framework", "https://model-spec.openai.com/2025-12-18.html", "https://www.anthropic.com/research/building-effective-agents", "https://arxiv.org/abs/2308.03688"],
+  "interaction": "Adjust scope signals to decide whether an agent acts, acts only with review, or clarifies first.",
+  "created_at": "2026-08-25T18:12:11Z"
+}
