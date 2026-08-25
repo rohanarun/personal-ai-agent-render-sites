@@ -1,0 +1,1 @@
+{"slug":"agent-retry-authority-lab-20260825-153511","headline":"After a failed tool call, retrying is a decision.","topic":"agent-systems","sources":["https://www.nist.gov/itl/ai-risk-management-framework","https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/","https://sre.google/sre-book/handling-overload/"]}
