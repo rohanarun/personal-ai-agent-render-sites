@@ -1,0 +1,10 @@
+{
+  "slug": "ml-causal-confounding-lab-20260825-215942",
+  "title": "Causal Confounding Lab",
+  "topic": "ML confounding, correlation, and intervention claims",
+  "sources": [
+    "https://www.nist.gov/itl/ai-risk-management-framework",
+    "https://model-spec.openai.com/2025-12-18.html",
+    "https://www.anthropic.com/research/building-effective-agents"
+  ]
+}
