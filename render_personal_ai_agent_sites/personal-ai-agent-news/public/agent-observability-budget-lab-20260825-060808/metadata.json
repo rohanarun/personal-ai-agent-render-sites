@@ -1,0 +1,10 @@
+{
+  "slug": "agent-observability-budget-lab-20260825-060808",
+  "title": "Observability Budget Lab",
+  "topic": "agent systems",
+  "sources": [
+    "https://platform.openai.com/docs/guides/agents",
+    "https://platform.openai.com/docs/guides/evals",
+    "https://www.nist.gov/itl/ai-risk-management-framework"
+  ]
+}
