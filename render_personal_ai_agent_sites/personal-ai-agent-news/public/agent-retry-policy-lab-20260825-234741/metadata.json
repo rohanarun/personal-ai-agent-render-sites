@@ -1,0 +1,11 @@
+{
+  "slug": "agent-retry-policy-lab-20260825-234741",
+  "title": "Retry Policy Lab",
+  "topic": "Agent retries, failure diagnosis, backoff, and idempotence",
+  "format": "interactive explainer",
+  "sources": [
+    "https://www.anthropic.com/engineering/building-effective-agents",
+    "https://model-spec.openai.com/",
+    "https://www.nist.gov/itl/ai-risk-management-framework"
+  ]
+}
