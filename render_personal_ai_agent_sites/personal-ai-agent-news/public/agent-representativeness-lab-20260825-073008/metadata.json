@@ -1,0 +1,11 @@
+{
+  "slug": "agent-representativeness-lab-20260825-073008",
+  "title": "Representativeness Lab",
+  "topic": "Agent evaluation coverage and distribution shift",
+  "description": "An interactive explainer for deciding whether an agent test set represents the work it will meet in production.",
+  "sources": [
+    {"title":"OpenAI Agents guide","url":"https://platform.openai.com/docs/guides/agents"},
+    {"title":"OpenAI Evals guide","url":"https://platform.openai.com/docs/guides/evals"},
+    {"title":"NIST AI Risk Management Framework","url":"https://airc.nist.gov/airmf-resources/airmf/"}
+  ]
+}
