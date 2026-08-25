@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Policy Intersection Lab | Agent Systems</title>
+  <meta name="description" content="An interactive lesson on why reliable agents act only where goal fit, authority, safety, and effect constraints intersect.">
+  <style>
+    :root{--ink:#eaf0f5;--muted:#9aa8b6;--bg:#101417;--panel:#182025;--line:#2a3943;--cyan:#8fe3d0;--amber:#f1c27b;--red:#f08d80;--blue:#99b9f4}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 0%,#23343a 0,#101417 42%);color:var(--ink);font:16px/1.55 system-ui,-apple-system,sans-serif}main{max-width:1180px;margin:auto;padding:32px 22px 80px}header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding:0 0 24px}.brand{font-weight:700;letter-spacing:.02em}.tag{color:var(--cyan);font-size:.78rem;text-transform:uppercase;letter-spacing:.16em}h1{font-size:clamp(2.6rem,7vw,6.6rem);line-height:.98;letter-spacing:-.055em;max-width:950px;margin:70px 0 24px}h1 span{color:var(--cyan)}.lede{max-width:690px;color:var(--muted);font-size:1.14rem}.hero{padding-bottom:76px}.workspace{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;grid-auto-flow:dense}.panel{background:rgba(24,32,37,.86);border:1px solid var(--line);border-radius:14px;padding:24px}.controls{grid-row:span 2}.panel h2{font-size:1.05rem;margin:0 0 20px}.control{padding:16px 0;border-top:1px solid var(--line)}.control:first-of-type{border-top:0}.row{display:flex;justify-content:space-between;gap:12px}.row label{font-weight:650}.value{color:var(--cyan);font-variant-numeric:tabular-nums}input{width:100%;accent-color:var(--cyan);margin:15px 0 4px}small{color:var(--muted)}.decision{min-height:240px;display:flex;flex-direction:column;justify-content:space-between}.decision strong{font-size:2rem;line-height:1.05}.allowed{color:var(--cyan)}.blocked{color:var(--red)}.meter{height:8px;background:#263239;border-radius:99px;overflow:hidden;margin:18px 0}.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--red),var(--amber),var(--cyan));width:0;transition:width .25s}.explain{color:var(--muted);margin:0}.formula{font:1.25rem/1.4 ui-monospace,SFMono-Regular,monospace;color:var(--amber);background:#111a1e;border-radius:10px;padding:14px}.sources{margin-top:70px;border-top:1px solid var(--line);padding-top:28px}.sources a{color:var(--blue);display:block;margin:8px 0}.foot{display:flex;justify-content:space-between;color:var(--muted);font-size:.86rem;margin-top:60px}@media(max-width:760px){main{padding:22px 16px 56px}header{align-items:flex-start}.tag{max-width:150px;text-align:right}h1{margin-top:52px;font-size:clamp(2.7rem,14vw,4.8rem)}.workspace{grid-template-columns:1fr}.controls{grid-row:auto}.panel{padding:20px}.foot{display:block}.foot span{display:block;margin-top:10px}}
+  </style>
+</head>
+<body>
+<main>
+  <header><div class="brand">Agent Systems / Field Lab</div><div class="tag">Interactive explainer</div></header>
+  <section class="hero"><h1>Action lives in the <span>intersection.</span></h1><p class="lede">A capable agent is not licensed by confidence alone. Move the four constraints below and see how a policy should narrow, pause, or proceed when its goal, authority, safety margin, and real-world effect disagree.</p></section>
+  <section class="workspace">
+    <div class="panel controls"><h2>Policy inputs</h2>
+      <div class="control"><div class="row"><label for="goal">Goal fit</label><b class="value" id="goalValue">82</b></div><input id="goal" type="range" min="0" max="100" value="82"><small>Does the proposed action advance the user’s stated objective?</small></div>
+      <div class="control"><div class="row"><label for="authority">Authority</label><b class="value" id="authorityValue">74</b></div><input id="authority" type="range" min="0" max="100" value="74"><small>Is the agent permitted to take this action in this context?</small></div>
+      <div class="control"><div class="row"><label for="safety">Safety margin</label><b class="value" id="safetyValue">68</b></div><input id="safety" type="range" min="0" max="100" value="68"><small>How much room remains if the model is wrong or the world changes?</small></div>
+      <div class="control"><div class="row"><label for="effect">Effect reversibility</label><b class="value" id="effectValue">80</b></div><input id="effect" type="range" min="0" max="100" value="80"><small>Can the outcome be inspected, undone, or safely contained?</small></div>
+    </div>
+    <div class="panel decision"><div><h2>Policy result</h2><strong id="result" class="allowed">Proceed with guardrails</strong><div class="meter"><i id="bar"></i></div><p class="explain" id="explain"></p></div><div class="formula">permit(action) = min(goal, authority, safety, effect)</div></div>
+    <div class="panel"><h2>Why the minimum?</h2><p class="explain">An intersection is a useful mental model for agent policy: one weak boundary can dominate the outcome. Averaging would let strong goal fit disguise missing authority or an unsafe side effect.</p></div>
+  </section>
+  <section class="sources"><h2>Study the framework</h2><p class="explain">This lab is a teaching model, not a production authorization engine. Read the primary references behind its vocabulary.</p><a href="https://www.nist.gov/itl/ai-risk-management-framework">NIST AI Risk Management Framework</a><a href="https://model-spec.openai.com/2025-12-18.html">OpenAI Model Spec</a><a href="https://arxiv.org/abs/2308.03688">ReAct: Synergizing Reasoning and Acting in Language Models</a><a href="https://www.anthropic.com/research/building-effective-agents">Anthropic: Building effective agents</a></section>
+  <footer class="foot"><span>Policy intersection / v1</span><span>Adjust. Observe. Escalate when a boundary drops.</span></footer>
+</main>
+<script>
+const ids=['goal','authority','safety','effect'];
+const copy=(score)=>score<35?'Pause and escalate':score<60?'Ask for confirmation':'Proceed with guardrails';
+function render(){const vals=ids.map(id=>Number(document.getElementById(id).value));vals.forEach((v,i)=>document.getElementById(ids[i]+'Value').textContent=v);const score=Math.min(...vals);const result=document.getElementById('result');result.textContent=copy(score);result.className=score<35?'blocked':'allowed';document.getElementById('bar').style.width=score+'%';document.getElementById('explain').textContent=`The weakest boundary is ${score}/100. ${score<35?'A missing constraint makes autonomous action too risky.':score<60?'The policy needs a human checkpoint before acting.':'All four constraints clear the proceed threshold, but guardrails still apply.'}`}
+ids.forEach(id=>document.getElementById(id).addEventListener('input',render));render();
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "title": "Policy Intersection Lab",
+  "slug": "agent-policy-intersection-lab-20260825-173041",
+  "topic": "agent systems",
+  "sources": [
+    "https://www.nist.gov/itl/ai-risk-management-framework",
+    "https://model-spec.openai.com/2025-12-18.html",
+    "https://arxiv.org/abs/2308.03688",
+    "https://www.anthropic.com/research/building-effective-agents"
+  ],
+  "interaction": "Adjust four policy boundaries to see the weakest constraint determine the recommended action.",
+  "created_at": "2026-08-25T17:30:41Z"
+}
