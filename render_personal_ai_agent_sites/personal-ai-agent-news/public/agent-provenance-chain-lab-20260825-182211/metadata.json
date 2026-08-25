@@ -1,0 +1,8 @@
+{
+  "title": "Provenance Chain Lab",
+  "slug": "agent-provenance-chain-lab-20260825-182211",
+  "topic": "agent systems",
+  "sources": ["https://www.nist.gov/itl/ai-risk-management-framework", "https://model-spec.openai.com/2025-12-18.html", "https://www.anthropic.com/research/building-effective-agents", "https://arxiv.org/abs/2308.03688"],
+  "interaction": "Adjust provenance signals to decide whether an agent decision is traceable enough to use.",
+  "created_at": "2026-08-25T18:22:11Z"
+}
