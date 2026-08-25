@@ -1,0 +1,11 @@
+{
+  "slug": "agent-canary-rollout-lab-20260825-070208",
+  "title": "Canary Rollout Lab",
+  "topic": "Agent change management and staged deployment",
+  "description": "An interactive explainer for deciding whether an agent change should hold, canary, expand, or roll back.",
+  "sources": [
+    {"title":"OpenAI Agents guide","url":"https://platform.openai.com/docs/guides/agents"},
+    {"title":"OpenAI Evals guide","url":"https://platform.openai.com/docs/guides/evals"},
+    {"title":"NIST AI Risk Management Framework","url":"https://airc.nist.gov/airmf-resources/airmf/"}
+  ]
+}
