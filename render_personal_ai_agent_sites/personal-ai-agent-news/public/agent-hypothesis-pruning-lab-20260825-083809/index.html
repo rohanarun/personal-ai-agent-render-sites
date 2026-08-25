@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hypothesis Pruning Lab | Agent Systems</title>
+  <style>
+    :root { --ink:#17231f; --muted:#5f7069; --paper:#f5f2e9; --panel:#fffdf7; --line:#d7d4c8; --accent:#d95f39; --teal:#236d69; --gold:#dcae4e; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:var(--paper); font-family:Georgia, 'Times New Roman', serif; }
+    a { color:inherit; }
+    .wrap { width:min(1180px, calc(100% - 40px)); margin:auto; }
+    header { display:flex; justify-content:space-between; align-items:center; padding:24px 0; border-bottom:1px solid var(--line); font-family:Arial, sans-serif; }
+    .brand { font-weight:800; letter-spacing:.04em; text-transform:uppercase; font-size:13px; }
+    .nav { display:flex; gap:18px; color:var(--muted); font-size:13px; }
+    .hero { padding:88px 0 72px; display:grid; grid-template-columns:1.2fr .8fr; gap:64px; align-items:end; }
+    h1 { font-size:clamp(3rem, 7vw, 6.8rem); line-height:.93; letter-spacing:-.045em; margin:16px 0 24px; max-width:760px; font-weight:500; }
+    .kicker { color:var(--accent); font:700 12px/1.2 Arial,sans-serif; letter-spacing:.14em; text-transform:uppercase; }
+    .lede { color:var(--muted); font-size:20px; line-height:1.5; max-width:590px; }
+    .hero-note { border-left:4px solid var(--gold); padding:18px 0 18px 22px; font-size:19px; line-height:1.45; }
+    section { padding:72px 0; }
+    .lab { background:var(--teal); color:#f5f2e9; padding:44px; border-radius:4px; display:grid; grid-template-columns:1fr 1fr; gap:42px; }
+    .lab h2 { font-size:40px; line-height:1; font-weight:500; margin:0 0 12px; }
+    .lab p { color:#cfe4df; line-height:1.5; }
+    .controls { display:grid; gap:19px; margin-top:30px; }
+    label { font:700 12px/1.2 Arial,sans-serif; letter-spacing:.06em; text-transform:uppercase; display:flex; justify-content:space-between; gap:12px; }
+    input[type=range] { width:100%; accent-color:#f4c56e; margin-top:9px; }
+    .output { background:#183f3d; padding:30px; border:1px solid #4c8980; min-height:100%; display:flex; flex-direction:column; justify-content:space-between; }
+    .score { font:700 clamp(4rem, 9vw, 7.2rem)/.85 Arial,sans-serif; color:#f4c56e; letter-spacing:-.08em; }
+    .score small { font-size:16px; letter-spacing:0; color:#cfe4df; }
+    .decision { font-size:25px; line-height:1.15; margin:26px 0 8px; }
+    .bar { height:10px; background:#295955; margin-top:16px; overflow:hidden; }
+    .bar span { display:block; height:100%; background:#f4c56e; width:0; transition:width .25s ease; }
+    .principles { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .principle { border-top:2px solid var(--ink); padding:20px 4px 0; }
+    .principle h3 { font-size:26px; font-weight:500; margin:0 0 9px; }
+    .principle p { color:var(--muted); line-height:1.5; margin:0; }
+    .sources { border-top:1px solid var(--line); display:flex; justify-content:space-between; gap:28px; align-items:start; }
+    .sources h2 { font-size:34px; font-weight:500; margin:0; }
+    .source-list { display:grid; gap:12px; font-family:Arial,sans-serif; font-size:14px; }
+    .source-list a { text-decoration-thickness:1px; text-underline-offset:4px; }
+    footer { padding:36px 0 60px; color:var(--muted); font:13px Arial,sans-serif; border-top:1px solid var(--line); }
+    @media (max-width:760px) { .wrap { width:min(100% - 28px, 1180px); } .nav { display:none; } .hero { padding:56px 0 42px; grid-template-columns:1fr; gap:24px; } h1 { font-size:clamp(3.2rem, 15vw, 5.3rem); } .lab { grid-template-columns:1fr; padding:25px; gap:30px; } .principles { grid-template-columns:1fr; gap:38px; } .sources { display:block; } .source-list { margin-top:28px; } section { padding:48px 0; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header><div class="brand">Agent Systems / Field Notes</div><nav class="nav"><a href="#lab">Run the lab</a><a href="#principles">Principles</a><a href="#sources">Sources</a></nav></header>
+    <main>
+      <section class="hero">
+        <div><div class="kicker">Interactive explainer</div><h1>Prune the plan before it acts.</h1><p class="lede">An agent rarely fails because it cannot imagine options. It fails when weak options survive too long. Explore the small control loop that turns competing hypotheses into one testable next move.</p></div>
+        <div class="hero-note">Good reasoning is not endless branching. It is a disciplined reduction of uncertainty, with evidence and risk making the cut.</div>
+      </section>
+      <section id="lab"><div class="lab"><div><h2>Hypothesis Pruning Lab</h2><p>Adjust the conditions around an agent's decision. The model below is a teaching instrument, not a benchmark: it rewards useful evidence and penalizes expensive or risky indecision.</p><div class="controls">
+        <div><label for="branches">Candidate branches <output id="branchesOut">6</output></label><input id="branches" type="range" min="2" max="12" value="6"></div>
+        <div><label for="evidence">Evidence quality <output id="evidenceOut">70%</output></label><input id="evidence" type="range" min="10" max="100" value="70"></div>
+        <div><label for="cost">Verification cost <output id="costOut">35%</output></label><input id="cost" type="range" min="5" max="100" value="35"></div>
+        <div><label for="risk">Action risk <output id="riskOut">25%</output></label><input id="risk" type="range" min="5" max="100" value="25"></div>
+      </div></div><div class="output"><div><div class="score"><span id="score">78</span><small>/100 decision readiness</small></div><div class="bar"><span id="bar"></span></div><div class="decision" id="decision">Prune to two candidates, then run one cheap check.</div><p id="detail">Evidence is strong enough to narrow the search. Spend one bounded verification step before committing.</p></div><p>Rule of thumb: preserve alternatives until the next observation can actually distinguish them.</p></div></div></section>
+      <section id="principles"><div class="principles"><article class="principle"><h3>Generate, then rank</h3><p>Branching creates coverage; ranking creates focus. Keep the candidate set visible so the cut is explainable, not magical.</p></article><article class="principle"><h3>Pay for information</h3><p>A verification step is valuable when its expected information gain exceeds its latency, money, or tool-call cost.</p></article><article class="principle"><h3>Stop with a postcondition</h3><p>Pruning is complete only when the next action has a measurable success condition and a recovery path if it misses.</p></article></div></section>
+      <section class="sources" id="sources"><h2>Read the underlying practice.</h2><div class="source-list"><a href="https://platform.openai.com/docs/guides/agents" target="_blank" rel="noreferrer">OpenAI Agents guide</a><a href="https://platform.openai.com/docs/guides/evals" target="_blank" rel="noreferrer">OpenAI Evals guide</a><a href="https://airc.nist.gov/airmf-resources/airmf/" target="_blank" rel="noreferrer">NIST AI Risk Management Framework resources</a></div></section>
+    </main>
+    <footer>Built as a source-grounded lesson in agent control loops. No model or content-generation API is used.</footer>
+  </div>
+  <script>
+    const ids = ['branches','evidence','cost','risk'];
+    const read = id => Number(document.getElementById(id).value);
+    function update() {
+      const b=read('branches'), e=read('evidence'), c=read('cost'), r=read('risk');
+      const readiness = Math.max(1, Math.min(99, Math.round(e * .62 + (100-c) * .2 + (100-r) * .18 - Math.max(0,b-4)*3)));
+      const surviving = Math.max(2, Math.min(b, Math.round(1 + b * (1 - e/140))));
+      document.getElementById('score').textContent=readiness; document.getElementById('bar').style.width=readiness+'%';
+      document.getElementById('branchesOut').textContent=b; document.getElementById('evidenceOut').textContent=e+'%'; document.getElementById('costOut').textContent=c+'%'; document.getElementById('riskOut').textContent=r+'%';
+      let decision, detail;
+      if (r > 70) { decision='Keep a wider set and require a reversible action.'; detail='High action risk makes premature convergence expensive. Preserve '+surviving+' candidates and seek evidence that can falsify the leader.'; }
+      else if (c > 70) { decision='Prefer the cheapest discriminating check.'; detail='Verification is costly here. Prune only when the next observation changes the ranking enough to justify its price.'; }
+      else if (e < 40) { decision='Do not commit: gather a sharper observation.'; detail='Weak evidence is not a tie-breaker. Keep '+surviving+' live candidates and define the observation that separates them.'; }
+      else { decision='Prune to '+surviving+' candidates, then run one cheap check.'; detail='Evidence is strong enough to narrow the search. Spend one bounded verification step before committing.'; }
+      document.getElementById('decision').textContent=decision; document.getElementById('detail').textContent=detail;
+    }
+    ids.forEach(id => document.getElementById(id).addEventListener('input', update)); update();
+  </script>
+</body>
+</html>
