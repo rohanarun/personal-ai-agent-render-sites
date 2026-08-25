@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An interactive lab for learning how agent confidence should respond to evidence, tool reliability, and ambiguity.">
+  <title>Confidence Calibration Lab</title>
+  <style>
+    :root {
+      --ink: #13243b;
+      --muted: #60718b;
+      --line: #dce5ee;
+      --paper: #f7fafc;
+      --white: #ffffff;
+      --navy: #12375b;
+      --teal: #087e8b;
+      --mint: #dff3ef;
+      --amber: #c77b19;
+      --rose: #b9535b;
+      --shadow: 0 20px 55px rgba(26, 58, 88, .12);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: Georgia, 'Times New Roman', serif; }
+    button, input { font: inherit; }
+    .shell { max-width: 1180px; margin: 0 auto; padding: 22px 22px 70px; }
+    .nav { display: flex; justify-content: space-between; align-items: center; gap: 18px; padding: 9px 0 55px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; color: var(--navy); font: 700 15px/1 Arial, sans-serif; letter-spacing: .02em; }
+    .mark { width: 28px; height: 28px; border: 2px solid var(--teal); border-radius: 50%; position: relative; }
+    .mark:after { content: ''; position: absolute; width: 8px; height: 8px; background: var(--teal); border-radius: 50%; top: 8px; left: 8px; }
+    .nav-note { color: var(--muted); font: 12px/1.4 Arial, sans-serif; }
+    .hero { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(300px, .92fr); align-items: end; gap: 70px; padding-bottom: 70px; }
+    h1 { max-width: 680px; margin: 0; color: var(--navy); font-size: clamp(3rem, 7vw, 6.6rem); line-height: .9; letter-spacing: -.045em; }
+    .hero-copy { margin: 0 0 8px; max-width: 425px; color: var(--muted); font: 17px/1.6 Arial, sans-serif; }
+    .hero-rule { width: 84px; height: 5px; background: var(--teal); margin: 0 0 22px; }
+    .lab { display: grid; grid-template-columns: minmax(0, 1.04fr) minmax(330px, .96fr); gap: 22px; align-items: stretch; }
+    .panel { background: var(--white); border: 1px solid var(--line); box-shadow: var(--shadow); border-radius: 18px; padding: 28px; }
+    .panel h2 { margin: 0 0 8px; color: var(--navy); font-size: 27px; letter-spacing: -.02em; }
+    .panel-intro { margin: 0 0 25px; color: var(--muted); font: 14px/1.55 Arial, sans-serif; }
+    .control { padding: 17px 0; border-top: 1px solid var(--line); }
+    .control-head { display: flex; justify-content: space-between; gap: 16px; margin-bottom: 11px; font: 700 13px/1.3 Arial, sans-serif; }
+    .value { color: var(--teal); font-variant-numeric: tabular-nums; }
+    input[type=range] { width: 100%; accent-color: var(--teal); cursor: pointer; }
+    .scale { display: flex; justify-content: space-between; color: #8290a1; font: 11px Arial, sans-serif; }
+    .button-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+    .button { border: 0; border-radius: 9px; padding: 12px 15px; cursor: pointer; font: 700 12px Arial, sans-serif; }
+    .button.primary { color: var(--white); background: var(--navy); }
+    .button.secondary { color: var(--navy); background: var(--mint); }
+    .button:focus-visible, input:focus-visible { outline: 3px solid #f0bf69; outline-offset: 3px; }
+    .result { display: flex; flex-direction: column; justify-content: space-between; min-height: 100%; background: var(--navy); color: var(--white); }
+    .result h2 { color: var(--white); }
+    .result .panel-intro { color: #c2d2e1; }
+    .meter { height: 14px; margin: 26px 0 10px; overflow: hidden; border-radius: 99px; background: #315778; }
+    .meter-fill { height: 100%; width: 0; background: #63c7c0; border-radius: inherit; transition: width .35s ease; }
+    .meter-label { display: flex; justify-content: space-between; color: #c2d2e1; font: 12px Arial, sans-serif; }
+    .decision { margin-top: 29px; padding: 18px; border: 1px solid rgba(255,255,255,.18); border-radius: 12px; background: rgba(255,255,255,.08); }
+    .decision strong { display: block; color: #8de1d7; font: 700 13px Arial, sans-serif; letter-spacing: .02em; }
+    .decision-title { margin: 7px 0 7px; font-size: 29px; line-height: 1; }
+    .decision-copy { margin: 0; color: #d3e1ec; font: 13px/1.5 Arial, sans-serif; }
+    .breakdown { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; margin-top: 20px; }
+    .stat { padding: 12px 10px; border-radius: 10px; background: rgba(255,255,255,.09); }
+    .stat span { display: block; color: #9bb4c8; font: 10px Arial, sans-serif; }
+    .stat b { display: block; margin-top: 5px; font: 700 18px Arial, sans-serif; }
+    .learn { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 22px; }
+    .learn-card { padding: 24px 26px; border-top: 4px solid var(--teal); background: var(--white); border-radius: 14px; }
+    .learn-card h3 { margin: 0 0 8px; color: var(--navy); font-size: 22px; }
+    .learn-card p { margin: 0; color: var(--muted); font: 13px/1.6 Arial, sans-serif; }
+    footer { display: flex; justify-content: space-between; gap: 30px; margin-top: 70px; padding-top: 22px; border-top: 1px solid var(--line); color: var(--muted); font: 12px/1.5 Arial, sans-serif; }
+    footer a { color: var(--navy); text-decoration-thickness: 1px; }
+    @media (max-width: 800px) { .hero, .lab { grid-template-columns: 1fr; gap: 28px; } .hero { padding-bottom: 42px; } h1 { font-size: clamp(3.3rem, 16vw, 5.4rem); } .learn { grid-template-columns: 1fr; } .nav { padding-bottom: 35px; } }
+    @media (max-width: 460px) { .shell { padding: 16px 15px 45px; } .panel { padding: 21px; } .nav-note { display: none; } .breakdown { gap: 6px; } .stat { padding: 10px 7px; } footer { flex-direction: column; margin-top: 48px; } }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <nav class="nav" aria-label="Primary">
+      <div class="brand"><span class="mark" aria-hidden="true"></span>AGENT SYSTEMS / FIELD LAB</div>
+      <div class="nav-note">A small instrument for better decisions</div>
+    </nav>
+    <section class="hero">
+      <div><div class="hero-rule"></div><h1>Confidence should earn its certainty.</h1></div>
+      <p class="hero-copy">An agent can sound sure while its evidence is thin. Tune the conditions below and watch a calibrated policy choose between answering, verifying, and abstaining.</p>
+    </section>
+    <section class="lab" aria-label="Confidence calibration simulator">
+      <div class="panel">
+        <h2>Change the evidence</h2>
+        <p class="panel-intro">Treat these as signals collected before an agent commits to an answer. The model below is a teaching device, not a production score.</p>
+        <div class="control"><div class="control-head"><label for="evidence">Evidence coverage</label><span class="value" id="evidenceValue">70%</span></div><input id="evidence" type="range" min="0" max="100" value="70"><div class="scale"><span>little support</span><span>well supported</span></div></div>
+        <div class="control"><div class="control-head"><label for="tool">Tool reliability</label><span class="value" id="toolValue">80%</span></div><input id="tool" type="range" min="0" max="100" value="80"><div class="scale"><span>unproven</span><span>trusted path</span></div></div>
+        <div class="control"><div class="control-head"><label for="ambiguity">Question ambiguity</label><span class="value" id="ambiguityValue">25%</span></div><input id="ambiguity" type="range" min="0" max="100" value="25"><div class="scale"><span>clear intent</span><span>many readings</span></div></div>
+        <div class="button-row"><button class="button primary" id="run" type="button">Recalculate policy</button><button class="button secondary" id="reset" type="button">Restore balanced case</button></div>
+      </div>
+      <div class="panel result">
+        <div><h2>Policy output</h2><p class="panel-intro">The useful question is not “how confident does the agent feel?” It is “what action is justified by the current evidence?”</p><div class="meter" aria-hidden="true"><div class="meter-fill" id="meterFill"></div></div><div class="meter-label"><span>calibrated confidence</span><b id="score">76%</b></div><div class="decision"><strong>RECOMMENDED NEXT MOVE</strong><div class="decision-title" id="decisionTitle">Answer with sources</div><p class="decision-copy" id="decisionCopy">The evidence is strong enough for a direct answer, but keep the supporting trail visible.</p></div></div>
+        <div class="breakdown"><div class="stat"><span>support</span><b id="supportStat">70%</b></div><div class="stat"><span>tool trust</span><b id="toolStat">80%</b></div><div class="stat"><span>uncertainty</span><b id="uncertaintyStat">25%</b></div></div>
+      </div>
+    </section>
+    <section class="learn" aria-label="Learning notes">
+      <article class="learn-card"><h3>Confidence is not a vibe</h3><p>A fluent answer is an output style. Calibration is a relationship between a forecast and what later evidence shows. Separate the two before you grant an agent permission to act.</p></article>
+      <article class="learn-card"><h3>Abstention is a capability</h3><p>When ambiguity rises or a tool path becomes unreliable, “verify first” preserves optionality. A graceful pause can be more useful than a polished guess.</p></article>
+    </section>
+    <footer><span>Built as a static, local-first teaching instrument.</span><span>Read the <a href="https://platform.openai.com/docs/guides/agents">Agents guide</a>, <a href="https://platform.openai.com/docs/guides/evals">Evals guide</a>, and <a href="https://www.nist.gov/itl/ai-risk-management-framework">NIST AI RMF</a>.</span></footer>
+  </main>
+  <script>
+    (() => {
+      const ids = ['evidence', 'tool', 'ambiguity'];
+      const nodes = Object.fromEntries(ids.map((id) => [id, document.getElementById(id)]));
+      const values = Object.fromEntries(ids.map((id) => [id, document.getElementById(id + 'Value')]));
+      const fill = document.getElementById('meterFill');
+      const score = document.getElementById('score');
+      const title = document.getElementById('decisionTitle');
+      const copy = document.getElementById('decisionCopy');
+      const stats = { evidence: document.getElementById('supportStat'), tool: document.getElementById('toolStat'), ambiguity: document.getElementById('uncertaintyStat') };
+      const calculate = () => {
+        const evidence = Number(nodes.evidence.value);
+        const tool = Number(nodes.tool.value);
+        const ambiguity = Number(nodes.ambiguity.value);
+        const confidence = Math.max(0, Math.min(100, Math.round(evidence * 0.56 + tool * 0.34 - ambiguity * 0.42)));
+        ids.forEach((id) => { values[id].textContent = nodes[id].value + '%'; stats[id].textContent = nodes[id].value + '%'; });
+        score.textContent = confidence + '%';
+        fill.style.width = confidence + '%';
+        if (confidence >= 72 && ambiguity < 45) { title.textContent = 'Answer with sources'; copy.textContent = 'The evidence is strong enough for a direct answer, but keep the supporting trail visible.'; }
+        else if (confidence >= 42) { title.textContent = 'Verify before answering'; copy.textContent = 'There is a useful signal, but one more check should resolve the remaining uncertainty.'; }
+        else { title.textContent = 'Ask or abstain'; copy.textContent = 'The current signal does not justify a confident answer. Clarify the request or stop safely.'; }
+      };
+      ids.forEach((id) => nodes[id].addEventListener('input', calculate));
+      document.getElementById('run').addEventListener('click', calculate);
+      document.getElementById('reset').addEventListener('click', () => { nodes.evidence.value = 70; nodes.tool.value = 80; nodes.ambiguity.value = 25; calculate(); });
+      calculate();
+    })();
+  </script>
+</body>
+</html>
