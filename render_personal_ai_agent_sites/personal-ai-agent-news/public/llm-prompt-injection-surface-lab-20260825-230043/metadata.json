@@ -1,0 +1,11 @@
+{
+  "slug": "llm-prompt-injection-surface-lab-20260825-230043",
+  "title": "Prompt Injection Surface Lab",
+  "topic": "large language models",
+  "description": "An interactive explainer for how untrusted instructions can widen an LLM agent's attack surface.",
+  "sources": [
+    "https://model-spec.openai.com/",
+    "https://www.nist.gov/itl/ai-risk-management-framework",
+    "https://www.anthropic.com/research/building-effective-agents"
+  ]
+}
