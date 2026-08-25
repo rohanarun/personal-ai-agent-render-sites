@@ -1,0 +1,19 @@
+{
+  "title": "Agent Rate Limit Lab",
+  "slug": "agent-rate-limit-lab-20260825-114909",
+  "content_kind": "agent_rate_limit_simulation",
+  "headline": "When the service slows down, the plan should slow down too.",
+  "topic": "agent systems",
+  "description": "Interactive explainer for adaptive pacing, retry pressure, capacity signals, and agent fallbacks.",
+  "sources": [
+    "https://www.nist.gov/itl/ai-risk-management-framework",
+    "https://www.anthropic.com/research/building-effective-agents",
+    "https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization"
+  ],
+  "backlinks": [
+    "https://getsupers.com/",
+    "https://app.getsupers.com/",
+    "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+    "https://app.getsupers.com/use-cases/computer-use-cache/"
+  ]
+}
