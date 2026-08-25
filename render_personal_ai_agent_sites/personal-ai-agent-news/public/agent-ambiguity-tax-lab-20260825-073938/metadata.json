@@ -1,0 +1,10 @@
+{
+  "title": "Ambiguity Tax Lab",
+  "slug": "agent-ambiguity-tax-lab-20260825-073938",
+  "topic": "agent systems",
+  "sources": [
+    "https://platform.openai.com/docs/guides/agents",
+    "https://platform.openai.com/docs/guides/evals",
+    "https://airc.nist.gov/airmf-resources/airmf/"
+  ]
+}
