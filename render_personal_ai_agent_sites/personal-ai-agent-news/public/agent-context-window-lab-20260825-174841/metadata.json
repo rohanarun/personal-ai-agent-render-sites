@@ -1,0 +1,8 @@
+{
+  "title": "Context Window Lab",
+  "slug": "agent-context-window-lab-20260825-174841",
+  "topic": "agent systems",
+  "sources": ["https://www.nist.gov/itl/ai-risk-management-framework", "https://model-spec.openai.com/2025-12-18.html", "https://www.anthropic.com/research/building-effective-agents", "https://arxiv.org/abs/2308.03688"],
+  "interaction": "Adjust context signals to decide whether an agent should retain, summarize, or exclude information.",
+  "created_at": "2026-08-25T17:48:41Z"
+}
