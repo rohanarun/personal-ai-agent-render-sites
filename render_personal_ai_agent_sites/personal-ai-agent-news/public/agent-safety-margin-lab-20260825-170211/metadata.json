@@ -1,0 +1,8 @@
+{
+  "slug": "agent-safety-margin-lab-20260825-170211",
+  "title": "Safety Margin Lab",
+  "topic": "Agent risk estimates, uncertainty buffers, action impact, and safe thresholds",
+  "sources": ["https://www.nist.gov/itl/ai-risk-management-framework", "https://model-spec.openai.com/2025-12-18.html", "https://arxiv.org/abs/2308.03688", "https://www.anthropic.com/research/building-effective-agents"],
+  "interaction": "Adjust estimated risk, uncertainty, required margin, and action impact to see a safety recommendation update.",
+  "site_slug": "agent-safety-margin-lab-20260825-170211"
+}
