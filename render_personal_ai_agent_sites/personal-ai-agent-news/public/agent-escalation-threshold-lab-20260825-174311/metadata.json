@@ -1,0 +1,8 @@
+{
+  "title": "Escalation Threshold Lab",
+  "slug": "agent-escalation-threshold-lab-20260825-174311",
+  "topic": "agent systems",
+  "sources": ["https://www.nist.gov/itl/ai-risk-management-framework", "https://model-spec.openai.com/2025-12-18.html", "https://www.anthropic.com/research/building-effective-agents", "https://arxiv.org/abs/2308.03688"],
+  "interaction": "Adjust escalation signals to change whether an agent continues, requests review, or stops.",
+  "created_at": "2026-08-25T17:43:11Z"
+}
