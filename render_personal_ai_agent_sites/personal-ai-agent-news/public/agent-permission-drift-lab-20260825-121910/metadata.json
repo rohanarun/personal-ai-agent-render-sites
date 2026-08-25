@@ -1,0 +1,19 @@
+{
+  "title": "Agent Permission Drift Lab",
+  "slug": "agent-permission-drift-lab-20260825-121910",
+  "content_kind": "agent_permission_drift_simulation",
+  "headline": "An old approval does not automatically cover a new action.",
+  "topic": "agent systems",
+  "description": "Interactive explainer for approval scope, action sensitivity, freshness, and agent authority boundaries.",
+  "sources": [
+    "https://www.nist.gov/itl/ai-risk-management-framework",
+    "https://www.anthropic.com/research/building-effective-agents",
+    "https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization"
+  ],
+  "backlinks": [
+    "https://getsupers.com/",
+    "https://app.getsupers.com/",
+    "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+    "https://app.getsupers.com/use-cases/computer-use-cache/"
+  ]
+}
