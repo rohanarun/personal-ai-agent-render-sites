@@ -1,0 +1,11 @@
+{
+  "slug": "agent-action-blast-radius-lab-20260825-065238",
+  "title": "Action Blast Radius Lab",
+  "topic": "Agent action planning and reversible execution",
+  "description": "An interactive explainer for shrinking, staging, and previewing agent actions before they affect external systems.",
+  "sources": [
+    {"title":"OpenAI Agents guide","url":"https://platform.openai.com/docs/guides/agents"},
+    {"title":"OpenAI Evals guide","url":"https://platform.openai.com/docs/guides/evals"},
+    {"title":"NIST AI Risk Management Framework","url":"https://airc.nist.gov/airmf-resources/airmf/"}
+  ]
+}
