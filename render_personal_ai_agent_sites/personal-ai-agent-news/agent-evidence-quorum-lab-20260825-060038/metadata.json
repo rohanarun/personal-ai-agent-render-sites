@@ -1,0 +1,10 @@
+{
+  "slug": "agent-evidence-quorum-lab-20260825-060038",
+  "title": "Evidence Quorum Lab",
+  "topic": "agent systems",
+  "sources": [
+    "https://www.nist.gov/itl/ai-risk-management-framework",
+    "https://platform.openai.com/docs/guides/agents",
+    "https://www.anthropic.com/research/building-effective-agents"
+  ]
+}
