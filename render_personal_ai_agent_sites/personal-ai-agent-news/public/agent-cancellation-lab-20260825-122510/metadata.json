@@ -1,0 +1,19 @@
+{
+  "title": "Agent Cancellation Lab",
+  "slug": "agent-cancellation-lab-20260825-122510",
+  "content_kind": "agent_cancellation_simulation",
+  "headline": "When the instruction is cancelled, the work must hear it too.",
+  "topic": "agent systems",
+  "description": "Interactive explainer for stop propagation, queued work, side-effect risk, and acknowledgement.",
+  "sources": [
+    "https://www.nist.gov/itl/ai-risk-management-framework",
+    "https://www.anthropic.com/research/building-effective-agents",
+    "https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization"
+  ],
+  "backlinks": [
+    "https://getsupers.com/",
+    "https://app.getsupers.com/",
+    "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+    "https://app.getsupers.com/use-cases/computer-use-cache/"
+  ]
+}
