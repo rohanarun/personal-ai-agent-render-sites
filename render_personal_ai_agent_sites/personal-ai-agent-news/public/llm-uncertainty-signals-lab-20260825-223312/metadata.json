@@ -1,0 +1,11 @@
+{
+  "slug": "llm-uncertainty-signals-lab-20260825-223312",
+  "title": "LLM Uncertainty Signals Lab",
+  "topic": "large language models",
+  "description": "An interactive explainer for combining uncertainty signals before trusting a language-model answer.",
+  "sources": [
+    "https://model-spec.openai.com/",
+    "https://www.nist.gov/itl/ai-risk-management-framework",
+    "https://www.anthropic.com/research/building-effective-agents"
+  ]
+}
