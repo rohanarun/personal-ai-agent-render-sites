@@ -1,0 +1,11 @@
+{
+  "slug": "ml-model-card-lab-20260825-224842",
+  "title": "Model Card Lab",
+  "topic": "machine learning",
+  "description": "An interactive explainer for documenting a model's intended use, limits, and evaluation evidence.",
+  "sources": [
+    "https://www.nist.gov/itl/ai-risk-management-framework",
+    "https://scikit-learn.org/stable/modules/model_evaluation.html",
+    "https://model-spec.openai.com/"
+  ]
+}
