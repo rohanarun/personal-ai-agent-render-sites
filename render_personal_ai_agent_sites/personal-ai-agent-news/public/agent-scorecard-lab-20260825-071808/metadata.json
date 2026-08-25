@@ -1,0 +1,11 @@
+{
+  "slug": "agent-scorecard-lab-20260825-071808",
+  "title": "Agent Scorecard Lab",
+  "topic": "Agent evaluation across competing metrics",
+  "description": "An interactive explainer for reading task success, groundedness, latency, and safety as a scorecard instead of a single number.",
+  "sources": [
+    {"title":"OpenAI Agents guide","url":"https://platform.openai.com/docs/guides/agents"},
+    {"title":"OpenAI Evals guide","url":"https://platform.openai.com/docs/guides/evals"},
+    {"title":"NIST AI Risk Management Framework","url":"https://airc.nist.gov/airmf-resources/airmf/"}
+  ]
+}
