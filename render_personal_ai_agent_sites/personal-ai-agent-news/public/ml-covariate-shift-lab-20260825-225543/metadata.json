@@ -1,0 +1,11 @@
+{
+  "slug": "ml-covariate-shift-lab-20260825-225543",
+  "title": "Covariate Shift Lab",
+  "topic": "machine learning",
+  "description": "An interactive explainer for detecting when live feature distributions differ from training data.",
+  "sources": [
+    "https://scikit-learn.org/stable/modules/outlier_detection.html",
+    "https://www.nist.gov/itl/ai-risk-management-framework",
+    "https://model-spec.openai.com/"
+  ]
+}
