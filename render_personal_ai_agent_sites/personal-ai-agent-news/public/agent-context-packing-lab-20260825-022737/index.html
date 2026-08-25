@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agent Context Packing Lab</title>
+  <meta name="description" content="Explore how an agent chooses what to keep when memory and tool results compete for a limited context window.">
+  <style>
+    :root{--ink:#17221f;--muted:#65736e;--paper:#f4f2eb;--panel:#fffdf7;--line:#d8ddd4;--green:#1e6b52;--mint:#d9eee1;--orange:#c76832;--orange-soft:#f6dfcf;--blue:#2d6179;--blue-soft:#dbeaf0;--shadow:0 16px 40px rgba(23,34,31,.09)}
+    *{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5} main{max-width:1180px;margin:0 auto;padding:28px 22px 64px}
+    nav{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding:4px 0 22px;margin-bottom:64px} .brand{font-weight:800;letter-spacing:.02em}.status{font-size:.8rem;color:var(--muted)}
+    .hero{max-width:920px;margin-bottom:56px}.kicker{color:var(--green);font-size:.82rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.hero h1{font-size:clamp(3rem,7vw,6.3rem);line-height:.96;letter-spacing:-.06em;margin:16px 0 24px;max-width:900px}.hero p{font-size:1.2rem;color:var(--muted);max-width:720px;margin:0}
+    .lab{display:grid;grid-template-columns:minmax(280px,370px) 1fr;gap:20px;align-items:start}.panel{background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:8px;padding:24px}.panel h2{font-size:1.12rem;margin:0 0 18px}.control{padding:17px 0;border-top:1px solid var(--line)}.control:first-of-type{border-top:0;padding-top:0}.control-head{display:flex;justify-content:space-between;gap:15px;font-weight:750}.value{color:var(--green);font-variant-numeric:tabular-nums}.hint{font-size:.83rem;color:var(--muted);margin:5px 0 10px}input[type=range]{width:100%;accent-color:var(--green)}button{width:100%;border:0;border-radius:5px;background:var(--green);color:white;padding:13px 16px;font:inherit;font-weight:800;cursor:pointer}button:hover{background:#174f3d}
+    .result{display:grid;grid-template-columns:1fr 1fr;gap:16px}.score{display:flex;justify-content:space-between;align-items:end;margin-bottom:6px}.score strong{font-size:2.6rem;line-height:1}.score span{font-size:.8rem;color:var(--muted)}.meter{height:10px;background:#e6e9e1;border-radius:99px;overflow:hidden}.meter i{display:block;height:100%;width:0;background:var(--green);transition:width .35s ease}.meter.orange i{background:var(--orange)}.card{border:1px solid var(--line);border-radius:6px;padding:18px;background:#fff}.card h3{font-size:1rem;margin:0 0 12px}.card p{font-size:.92rem;color:var(--muted);margin:12px 0 0}.tokens{display:grid;gap:8px}.token{display:flex;align-items:center;justify-content:space-between;gap:10px;border-left:4px solid var(--blue);background:var(--blue-soft);padding:9px 11px;font-size:.83rem}.token.critical{border-color:var(--orange);background:var(--orange-soft)}.token small{color:var(--muted);white-space:nowrap}.callout{margin-top:16px;background:var(--mint);border-radius:6px;padding:16px;font-weight:650}.details{margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:20px}.details h2{margin-bottom:10px}.details p{color:var(--muted);font-size:.95rem}.source{margin-top:42px;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:.82rem}.source a{color:var(--green);font-weight:700}.source a+a{margin-left:14px}
+    @media(max-width:760px){main{padding:20px 16px 44px}nav{margin-bottom:44px}.hero h1{font-size:clamp(3rem,16vw,4.6rem)}.hero p{font-size:1.05rem}.lab,.result,.details{grid-template-columns:1fr}.panel{padding:19px}}
+  </style>
+</head>
+<body>
+<main>
+  <nav><div class="brand">Agent Context Packing Lab</div><div class="status">Local simulation · no model calls</div></nav>
+  <header class="hero"><div class="kicker">Memory under pressure</div><h1>Keep the evidence. Drop the noise.</h1><p>An agent has one context window and several competing inputs. Tune the scene, then compare a naive “keep everything” policy with a selective policy that protects the details needed to act safely.</p></header>
+  <section class="lab" aria-label="Interactive context packing simulation">
+    <div class="panel">
+      <h2>Set the operating conditions</h2>
+      <div class="control"><div class="control-head"><label for="budget">Context budget</label><span class="value" id="budgetValue">1,000 tokens</span></div><div class="hint">Available after the system prompt and response reserve.</div><input id="budget" type="range" min="500" max="1800" step="50" value="1000"></div>
+      <div class="control"><div class="control-head"><label for="memory">Memory relevance</label><span class="value" id="memoryValue">65%</span></div><div class="hint">How much of recalled history directly supports the current task.</div><input id="memory" type="range" min="10" max="100" step="5" value="65"></div>
+      <div class="control"><div class="control-head"><label for="tool">Tool result size</label><span class="value" id="toolValue">650 tokens</span></div><div class="hint">Raw search, API, or browser output before it is summarized.</div><input id="tool" type="range" min="200" max="1400" step="50" value="650"></div>
+      <button id="run" type="button">Pack the context</button>
+    </div>
+    <div class="panel">
+      <div class="result">
+        <div class="card"><div class="score"><h3>Naive policy</h3><strong id="naiveScore">--</strong><span>critical evidence retained</span></div><div class="meter orange"><i id="naiveMeter"></i></div><p id="naiveNote">Keeps inputs in arrival order until the window is full.</p></div>
+        <div class="card"><div class="score"><h3>Selective policy</h3><strong id="smartScore">--</strong><span>critical evidence retained</span></div><div class="meter"><i id="smartMeter"></i></div><p id="smartNote">Ranks by task relevance, risk, and recency before packing.</p></div>
+      </div>
+      <div class="callout" id="verdict">Run the simulation to see which policy protects the action.</div>
+      <div class="tokens" id="tokens" aria-live="polite"></div>
+    </div>
+  </section>
+  <section class="details"><div class="panel"><h2>What the simulation teaches</h2><p id="summary">Context management is a policy decision, not a storage detail. A useful agent preserves constraints, permissions, uncertainty, and the evidence that justifies its next action.</p></div><div class="panel"><h2>Replayable design question</h2><p id="question">When the tool output grows, should the agent compress it, ask for a narrower result, or pause and request human review? The best answer depends on what would be unsafe to lose.</p></div></section>
+  <footer class="source">Grounding: <a href="https://platform.openai.com/docs/guides/agents" target="_blank" rel="noreferrer">OpenAI Agents guide</a><a href="https://platform.openai.com/docs/guides/prompt-engineering" target="_blank" rel="noreferrer">Prompt engineering guide</a><a href="https://getsupers.com/" target="_blank" rel="noreferrer">Super</a></footer>
+</main>
+<script>
+  const $ = id => document.getElementById(id);
+  const inputs = {budget:$('budget'),memory:$('memory'),tool:$('tool')};
+  function renderLabels(){ $('budgetValue').textContent = Number(inputs.budget.value).toLocaleString()+' tokens'; $('memoryValue').textContent=inputs.memory.value+'%'; $('toolValue').textContent=Number(inputs.tool.value).toLocaleString()+' tokens'; }
+  Object.values(inputs).forEach(input=>input.addEventListener('input',renderLabels));
+  function simulate(){
+    const budget=+inputs.budget.value, memory=+inputs.memory.value, tool=+inputs.tool.value;
+    const fixed=180, task=220, critical=260, memoryKeep=Math.round(220+memory*2.2), total=budget+fixed+task;
+    const naiveKept=Math.max(0,Math.min(100,Math.round((budget-Math.max(0,tool-260)-Math.max(0,memoryKeep-180))/critical*100)));
+    const pressure=Math.max(0,tool+memoryKeep+fixed+task-total);
+    const smartKept=Math.max(0,Math.min(100,Math.round(100-(pressure/Math.max(1,critical))*32+(memory-50)*.22)));
+    $('naiveScore').textContent=naiveKept+'%'; $('smartScore').textContent=smartKept+'%'; $('naiveMeter').style.width=naiveKept+'%'; $('smartMeter').style.width=smartKept+'%';
+    $('naiveNote').textContent=naiveKept<60?'Arrival order crowded out constraints or permissions.':'The window held, but it spent capacity on low-signal history.';
+    $('smartNote').textContent=smartKept>80?'Critical evidence stayed inside the budget through ranking and compression.':'The selective policy is under pressure too; narrow the tool result or ask for review.';
+    $('verdict').textContent=smartKept-naiveKept>18?'Selective packing wins: relevance and risk ranking protected the action-critical details.':smartKept>naiveKept?'Selective packing has an edge, but the budget is still tight.':'Both policies are constrained: reduce raw tool output before adding more memory.';
+    const rows=[['Permission boundary',260,true],['Latest tool result',tool,false],['Relevant memory',memoryKeep,memory<45],['Old conversation turns',Math.max(100,520-memory*3),false]];
+    $('tokens').innerHTML=rows.map(([name,size,criticalRow])=>'<div class="token '+(criticalRow?'critical':'')+'"><span>'+name+'</span><small>'+size+' tokens'+(criticalRow?' · protect':'')+'</small></div>').join('');
+    $('summary').textContent='At '+budget.toLocaleString()+' available tokens, the raw scene asks for '+(fixed+task+tool+memoryKeep).toLocaleString()+'. '+(pressure>0?pressure.toLocaleString()+' tokens must be compressed, dropped, or recovered through a narrower tool query.':'The scene fits, so ranking still matters for future turns.');
+    $('question').textContent=tool>900?'The tool result is now the largest object. A robust agent should request a smaller, structured result before it lets the context window decide what disappears.':memory<45?'Low-relevance memory is a signal to retrieve less, not a reason to stuff more history into the prompt.':'Preserve the permission boundary and the latest evidence first; everything else is negotiable.';
+  }
+  $('run').addEventListener('click',simulate); renderLabels(); simulate();
+</script>
+</body>
+</html>
