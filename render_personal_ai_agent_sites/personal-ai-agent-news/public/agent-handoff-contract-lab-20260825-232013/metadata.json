@@ -1,0 +1,11 @@
+{
+  "slug": "agent-handoff-contract-lab-20260825-232013",
+  "title": "Handoff Contract Lab",
+  "topic": "Agent handoffs, state fidelity, ambiguity, latency, and verification",
+  "format": "interactive explainer",
+  "sources": [
+    "https://www.anthropic.com/engineering/multi-agent-research-system",
+    "https://model-spec.openai.com/",
+    "https://www.nist.gov/itl/ai-risk-management-framework"
+  ]
+}
