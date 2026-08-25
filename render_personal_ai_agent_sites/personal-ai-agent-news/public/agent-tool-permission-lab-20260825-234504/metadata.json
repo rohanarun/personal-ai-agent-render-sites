@@ -1,0 +1,11 @@
+{
+  "slug": "agent-tool-permission-lab-20260825-234504",
+  "title": "Tool Permission Lab",
+  "topic": "Agent tool scope, approvals, least privilege, and auditability",
+  "format": "interactive explainer",
+  "sources": [
+    "https://genai.owasp.org/llmrisk/llm062025-excessive-agency/",
+    "https://model-spec.openai.com/",
+    "https://www.nist.gov/itl/ai-risk-management-framework"
+  ]
+}
