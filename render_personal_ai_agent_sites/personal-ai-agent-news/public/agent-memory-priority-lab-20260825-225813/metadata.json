@@ -1,0 +1,11 @@
+{
+  "slug": "agent-memory-priority-lab-20260825-225813",
+  "title": "Agent Memory Priority Lab",
+  "topic": "agent systems",
+  "description": "An interactive explainer for deciding which memories should shape an agent's next action.",
+  "sources": [
+    "https://www.anthropic.com/research/building-effective-agents",
+    "https://www.nist.gov/itl/ai-risk-management-framework",
+    "https://model-spec.openai.com/"
+  ]
+}
