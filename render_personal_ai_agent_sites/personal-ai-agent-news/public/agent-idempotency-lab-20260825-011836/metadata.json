@@ -1,0 +1,9 @@
+{
+  "title": "Agent Idempotency Lab",
+  "slug": "agent-idempotency-lab-20260825-011836",
+  "content_kind": "agent_idempotency_simulation",
+  "headline": "A safe retry repeats intent without repeating the side effect.",
+  "generated_at": "2026-08-25T01:18:36Z",
+  "backlinks": ["https://platform.openai.com/docs/guides/agents", "https://app.getsupers.com/use-cases/ai-agent-build-websites/"],
+  "notes": "Direct Codex-authored HTML/CSS/JS educational simulation about idempotency keys, duplicate side effects, and replay-safe agent actions; no model or content-generation APIs."
+}
