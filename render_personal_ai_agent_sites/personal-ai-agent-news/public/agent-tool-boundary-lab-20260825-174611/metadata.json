@@ -1,0 +1,8 @@
+{
+  "title": "Tool Boundary Lab",
+  "slug": "agent-tool-boundary-lab-20260825-174611",
+  "topic": "agent systems",
+  "sources": ["https://www.nist.gov/itl/ai-risk-management-framework", "https://model-spec.openai.com/2025-12-18.html", "https://www.anthropic.com/research/building-effective-agents", "https://arxiv.org/abs/2308.03688"],
+  "interaction": "Adjust authority and validation boundaries to change whether a tool call is allowed, reviewed, or blocked.",
+  "created_at": "2026-08-25T17:46:11Z"
+}
