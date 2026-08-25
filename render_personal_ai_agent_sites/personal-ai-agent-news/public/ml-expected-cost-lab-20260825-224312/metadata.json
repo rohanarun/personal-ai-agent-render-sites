@@ -1,0 +1,11 @@
+{
+  "slug": "ml-expected-cost-lab-20260825-224312",
+  "title": "Expected Cost Lab",
+  "topic": "machine learning",
+  "description": "An interactive explainer for weighing false-positive and false-negative costs in a model policy.",
+  "sources": [
+    "https://scikit-learn.org/stable/modules/classification_threshold.html",
+    "https://www.nist.gov/itl/ai-risk-management-framework",
+    "https://model-spec.openai.com/"
+  ]
+}
