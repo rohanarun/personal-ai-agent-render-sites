@@ -1,0 +1,8 @@
+{
+  "title": "State Transition Lab",
+  "slug": "agent-state-transition-lab-20260825-175111",
+  "topic": "agent systems",
+  "sources": ["https://www.nist.gov/itl/ai-risk-management-framework", "https://model-spec.openai.com/2025-12-18.html", "https://www.anthropic.com/research/building-effective-agents", "https://arxiv.org/abs/2308.03688"],
+  "interaction": "Adjust transition signals to decide whether an agent advances, waits for observation, or escalates.",
+  "created_at": "2026-08-25T17:51:11Z"
+}
