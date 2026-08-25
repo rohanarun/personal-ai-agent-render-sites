@@ -1,0 +1,10 @@
+{
+  "slug": "agent-observation-lag-lab-20260825-213142",
+  "title": "Observation Lag Lab",
+  "topic": "Agent observation freshness, action timing, and stale state",
+  "sources": [
+    "https://www.nist.gov/itl/ai-risk-management-framework",
+    "https://model-spec.openai.com/2025-12-18.html",
+    "https://www.anthropic.com/research/building-effective-agents"
+  ]
+}
