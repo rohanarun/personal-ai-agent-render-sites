@@ -1,0 +1,8 @@
+{
+  "title": "Priority Order Lab",
+  "slug": "agent-priority-order-lab-20260825-180941",
+  "topic": "agent systems",
+  "sources": ["https://www.nist.gov/itl/ai-risk-management-framework", "https://model-spec.openai.com/2025-12-18.html", "https://www.anthropic.com/research/building-effective-agents", "https://arxiv.org/abs/2308.03688"],
+  "interaction": "Adjust priority signals to see when an agent follows a goal, asks for review, or declines.",
+  "created_at": "2026-08-25T18:09:41Z"
+}
