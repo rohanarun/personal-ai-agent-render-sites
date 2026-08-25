@@ -1,0 +1,11 @@
+{
+  "slug": "agent-patience-policy-lab-20260825-071438",
+  "title": "Patience Policy Lab",
+  "topic": "Agent latency, partial value, and asynchronous handoff",
+  "description": "An interactive explainer for choosing between waiting, partial progress, asynchronous handoff, and stopping when agent work takes time.",
+  "sources": [
+    {"title":"OpenAI Agents guide","url":"https://platform.openai.com/docs/guides/agents"},
+    {"title":"OpenAI Evals guide","url":"https://platform.openai.com/docs/guides/evals"},
+    {"title":"NIST AI Risk Management Framework","url":"https://airc.nist.gov/airmf-resources/airmf/"}
+  ]
+}
