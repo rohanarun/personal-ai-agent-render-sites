@@ -1,0 +1,10 @@
+{
+  "slug": "agent-decision-ownership-lab-20260825-064008",
+  "title": "Decision Ownership Lab",
+  "topic": "agent systems",
+  "sources": [
+    "https://platform.openai.com/docs/guides/agents",
+    "https://platform.openai.com/docs/guides/evals",
+    "https://www.nist.gov/itl/ai-risk-management-framework"
+  ]
+}
