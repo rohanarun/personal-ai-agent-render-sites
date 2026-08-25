@@ -1,0 +1,10 @@
+{
+  "slug": "agent-intent-drift-lab-20260825-062238",
+  "title": "Intent Drift Lab",
+  "topic": "agent systems",
+  "sources": [
+    "https://platform.openai.com/docs/guides/agents",
+    "https://platform.openai.com/docs/guides/evals",
+    "https://www.nist.gov/itl/ai-risk-management-framework"
+  ]
+}
