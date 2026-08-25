@@ -1,0 +1,11 @@
+{
+  "slug": "agent-intervention-lab-20260825-072408",
+  "title": "Intervention Lab",
+  "topic": "Agent experimentation and causal reasoning",
+  "description": "An interactive explainer for separating observation from intervention when an agent evaluates a policy change.",
+  "sources": [
+    {"title":"OpenAI Agents guide","url":"https://platform.openai.com/docs/guides/agents"},
+    {"title":"OpenAI Evals guide","url":"https://platform.openai.com/docs/guides/evals"},
+    {"title":"NIST AI Risk Management Framework","url":"https://airc.nist.gov/airmf-resources/airmf/"}
+  ]
+}
