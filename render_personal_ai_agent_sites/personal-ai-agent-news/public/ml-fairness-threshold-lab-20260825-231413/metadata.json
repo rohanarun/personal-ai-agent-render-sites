@@ -1,0 +1,11 @@
+{
+  "slug": "ml-fairness-threshold-lab-20260825-231413",
+  "title": "Threshold Fairness Lab",
+  "topic": "ML classification thresholds, subgroup error tradeoffs, and fairness metrics",
+  "format": "interactive explainer",
+  "sources": [
+    "https://fairlearn.org/main/user_guide/assessment/common_fairness_metrics.html",
+    "https://www.nist.gov/itl/ai-risk-management-framework",
+    "https://developers.google.com/machine-learning/crash-course/classification/thresholding"
+  ]
+}
