@@ -1,0 +1,11 @@
+{
+  "slug": "llm-embedding-neighborhood-lab-20260825-222242",
+  "title": "Embedding Neighborhood Lab",
+  "topic": "large language models",
+  "description": "An interactive explainer for how semantic similarity, diversity, and noise shape an embedding neighborhood.",
+  "sources": [
+    "https://platform.openai.com/docs/guides/embeddings",
+    "https://www.nist.gov/itl/ai-risk-management-framework",
+    "https://model-spec.openai.com/"
+  ]
+}
