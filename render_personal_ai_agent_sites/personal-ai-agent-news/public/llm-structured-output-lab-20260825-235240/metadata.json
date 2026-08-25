@@ -1,0 +1,11 @@
+{
+  "slug": "llm-structured-output-lab-20260825-235240",
+  "title": "Structured Output Lab",
+  "topic": "LLM schemas, ambiguity, parsing, semantic checks, and bounded repair",
+  "format": "interactive explainer",
+  "sources": [
+    "https://json-schema.org/learn/getting-started-step-by-step",
+    "https://model-spec.openai.com/",
+    "https://www.nist.gov/itl/ai-risk-management-framework"
+  ]
+}
