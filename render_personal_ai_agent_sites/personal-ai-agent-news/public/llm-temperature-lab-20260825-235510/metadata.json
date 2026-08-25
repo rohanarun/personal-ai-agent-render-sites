@@ -1,0 +1,11 @@
+{
+  "slug": "llm-temperature-lab-20260825-235510",
+  "title": "Sampling Temperature Lab",
+  "topic": "LLM temperature, sampling variance, task risk, and evaluation",
+  "format": "interactive explainer",
+  "sources": [
+    "https://huggingface.co/docs/transformers/main/en/main_classes/text_generation",
+    "https://model-spec.openai.com/",
+    "https://www.nist.gov/itl/ai-risk-management-framework"
+  ]
+}
