@@ -1,0 +1,10 @@
+{
+  "slug": "ml-data-leakage-lab-20260825-214442",
+  "title": "Data Leakage Lab",
+  "topic": "ML train-test leakage, proxy features, and honest evaluation",
+  "sources": [
+    "https://www.nist.gov/itl/ai-risk-management-framework",
+    "https://model-spec.openai.com/2025-12-18.html",
+    "https://www.anthropic.com/research/building-effective-agents"
+  ]
+}
