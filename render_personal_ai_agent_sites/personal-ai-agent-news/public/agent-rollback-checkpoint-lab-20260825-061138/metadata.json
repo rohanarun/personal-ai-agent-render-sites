@@ -1,0 +1,10 @@
+{
+  "slug": "agent-rollback-checkpoint-lab-20260825-061138",
+  "title": "Rollback Checkpoint Lab",
+  "topic": "agent systems",
+  "sources": [
+    "https://platform.openai.com/docs/guides/agents",
+    "https://platform.openai.com/docs/guides/evals",
+    "https://www.nist.gov/itl/ai-risk-management-framework"
+  ]
+}
