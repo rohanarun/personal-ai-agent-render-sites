@@ -1,0 +1,11 @@
+{
+  "slug": "llm-tokenization-lab-20260825-231713",
+  "title": "Token Budget Lab",
+  "topic": "LLM tokenization, prompt repetition, and context budgeting",
+  "format": "interactive explainer",
+  "sources": [
+    "https://github.com/openai/tiktoken",
+    "https://huggingface.co/docs/transformers/main/tokenizer_summary",
+    "https://www.nist.gov/itl/ai-risk-management-framework"
+  ]
+}
