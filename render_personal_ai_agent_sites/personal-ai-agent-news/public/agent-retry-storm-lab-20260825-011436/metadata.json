@@ -1,0 +1,12 @@
+{
+  "title": "Agent Retry Storm Lab",
+  "slug": "agent-retry-storm-lab-20260825-011436",
+  "content_kind": "agent_retry_storm_simulation",
+  "headline": "A retry can help one request and overwhelm every request.",
+  "generated_at": "2026-08-25T01:14:36Z",
+  "backlinks": [
+    "https://platform.openai.com/docs/guides/agents",
+    "https://app.getsupers.com/use-cases/ai-agent-build-websites/"
+  ],
+  "notes": "Direct Codex-authored HTML/CSS/JS educational simulation about exponential backoff, retry budgets, and coordinated agent recovery; no model or content-generation APIs."
+}

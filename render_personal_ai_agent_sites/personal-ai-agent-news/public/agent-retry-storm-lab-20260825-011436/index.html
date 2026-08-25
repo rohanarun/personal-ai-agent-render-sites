@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agent Retry Storm Lab</title>
+  <style>
+    :root{--ink:#102a43;--muted:#627d98;--paper:#f7fbff;--line:#d9e7f2;--blue:#087ea4;--teal:#0b8f87;--orange:#e27d3f;--red:#c94c4c;--white:#fff;}
+    *{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#f7fbff 0%,#eef8f6 100%);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}main{max-width:1120px;margin:auto;padding:28px 22px 56px}.top{display:flex;justify-content:space-between;gap:20px;align-items:center;border-bottom:1px solid var(--line);padding-bottom:20px}.brand{font-weight:800;letter-spacing:.03em}.tag{color:var(--teal);font-weight:700;font-size:.85rem}.hero{padding:62px 0 42px;max-width:900px}.hero h1{font-size:clamp(2.5rem,6vw,5.5rem);line-height:1.02;letter-spacing:-.05em;margin:0 0 22px;max-width:900px}.hero p{font-size:1.2rem;max-width:700px;color:var(--muted);margin:0}.layout{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;align-items:start}.panel{background:rgba(255,255,255,.9);border:1px solid var(--line);border-radius:14px;padding:24px;box-shadow:0 14px 35px rgba(16,42,67,.06)}.panel h2{margin:0 0 8px;font-size:1.25rem}.lede{margin:0 0 22px;color:var(--muted)}.control{border-top:1px solid var(--line);padding:17px 0}.control:first-of-type{border-top:0;padding-top:0}.row{display:flex;justify-content:space-between;gap:16px;align-items:center}.row label{font-weight:700}.value{color:var(--blue);font-weight:800;min-width:55px;text-align:right}input[type=range]{width:100%;accent-color:var(--teal);margin-top:10px}.run{margin-top:10px;background:var(--ink);color:#fff;border:0;border-radius:8px;padding:12px 16px;font-weight:800;cursor:pointer}.run:hover{background:#1e4a6d}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0}.metric{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px}.metric small{display:block;color:var(--muted);font-size:.75rem}.metric strong{display:block;font-size:1.45rem;margin-top:3px}.meter{height:12px;background:#e7eff5;border-radius:10px;overflow:hidden;margin:9px 0 18px}.fill{height:100%;width:0;background:var(--teal);transition:width .35s ease}.result{min-height:118px;background:#eff9f7;border-left:4px solid var(--teal);padding:16px}.result strong{display:block;font-size:1.1rem;margin-bottom:5px}.warning{background:#fff4ec;border-left-color:var(--orange)}.danger{background:#fff0f0;border-left-color:var(--red)}.foot{margin-top:28px;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line);padding-top:20px}.foot a{color:var(--blue)}.foot a+a{margin-left:16px}@media(max-width:760px){main{padding:18px 15px 40px}.top{align-items:flex-start;flex-direction:column;gap:5px}.hero{padding:45px 0 30px}.hero h1{font-size:clamp(2.5rem,13vw,4.2rem)}.layout{grid-template-columns:1fr}.metrics{grid-template-columns:1fr 1fr}.metric:last-child{grid-column:1/-1}}
+  </style>
+</head>
+<body>
+<main>
+  <header class="top"><div class="brand">AGENT SYSTEMS / FIELD LAB</div><div class="tag">Retry policy, made visible</div></header>
+  <section class="hero"><h1>A retry can help one request and overwhelm every request.</h1><p>Use the lab to see how agent count, failure rate, and backoff shape the pressure on a shared tool. The goal is not “retry more.” It is recovery that stays inside a budget.</p></section>
+  <section class="layout">
+    <div class="panel">
+      <h2>Set the incident</h2><p class="lede">Change one input, then run the same minute of traffic through three policies.</p>
+      <div class="control"><div class="row"><label for="agents">Concurrent agents</label><span class="value" id="agentsValue">24</span></div><input id="agents" type="range" min="4" max="80" value="24"></div>
+      <div class="control"><div class="row"><label for="failure">Tool failure rate</label><span class="value" id="failureValue">35%</span></div><input id="failure" type="range" min="5" max="85" value="35"></div>
+      <div class="control"><div class="row"><label for="budget">Retry budget per agent</label><span class="value" id="budgetValue">2</span></div><input id="budget" type="range" min="0" max="5" value="2"></div>
+      <button class="run" id="run" type="button">Run the minute</button>
+    </div>
+    <div class="panel">
+      <h2>Pressure on the shared tool</h2><p class="lede">A policy is healthy when it recovers useful work without turning errors into more load.</p>
+      <div class="metrics"><div class="metric"><small>Initial calls</small><strong id="initial">24</strong></div><div class="metric"><small>Retry calls</small><strong id="retries">17</strong></div><div class="metric"><small>Total attempts</small><strong id="total">41</strong></div></div>
+      <div class="row"><span>Load against safe capacity</span><strong id="loadText">82%</strong></div><div class="meter"><div class="fill" id="fill"></div></div>
+      <div class="result" id="result"><strong id="verdict">Run the simulation</strong><span id="explain">Compare the retry pressure with a bounded recovery budget before choosing a policy.</span></div>
+    </div>
+  </section>
+  <section class="panel" style="margin-top:22px"><h2>Read the three policies</h2><p class="lede">The same incident produces different outcomes depending on what happens after the first error.</p><div class="metrics"><div class="metric"><small>Immediate retry</small><strong id="immediate">68</strong><span>Fast feedback, highest storm risk.</span></div><div class="metric"><small>Exponential backoff</small><strong id="backoff">42</strong><span>Spreads pressure across time.</span></div><div class="metric"><small>Budget plus jitter</small><strong id="jitter">31</strong><span>Stops synchronized retry waves.</span></div></div></section>
+  <footer class="foot">Built as a local, source-grounded explainer. Explore <a href="https://platform.openai.com/docs/guides/agents">agent design guidance</a><a href="https://app.getsupers.com/use-cases/ai-agent-build-websites/">interactive agent examples</a>.</footer>
+</main>
+<script>
+  const $=id=>document.getElementById(id), agents=$("agents"), failure=$("failure"), budget=$("budget");
+  function render(){
+    const a=+agents.value,f=+failure.value,b=+budget.value;
+    $("agentsValue").textContent=a;$("failureValue").textContent=f+"%";$("budgetValue").textContent=b;
+    const initial=a, retries=Math.round(a*(f/100)*Math.max(0,b)), immediate=initial+retries+Math.round(retries*.75), backoff=initial+Math.round(retries*.55), jitter=initial+Math.round(retries*.28);
+    const load=Math.round((immediate/Math.max(1,a*2))*100);
+    $("initial").textContent=initial;$("retries").textContent=retries;$("total").textContent=initial+retries;$("immediate").textContent=immediate;$("backoff").textContent=backoff;$("jitter").textContent=jitter;$("loadText").textContent=load+"%";$("fill").style.width=Math.min(100,load)+"%";
+    const box=$("result");box.className="result";
+    if(b===0||load>100){$("verdict").textContent="Stop and contain";$("explain").textContent="The retry budget cannot absorb this incident. Fail closed, preserve the error, and protect the shared tool from a synchronized storm.";box.classList.add("danger");}
+    else if(f>=60&&b>=3){$("verdict").textContent="Test recovery first";$("explain").textContent="A generous budget amplifies a high failure rate. Add backoff and jitter, then confirm the tool is recovering before spending more attempts.";box.classList.add("warning");}
+    else{$("verdict").textContent="Proceed within budget";$("explain").textContent="The bounded policy leaves room for recovery. Backoff and jitter make the useful retries less synchronized than immediate retry.";}
+  }
+  [agents,failure,budget].forEach(x=>x.addEventListener("input",render));$("run").addEventListener("click",render);render();
+</script>
+</body>
+</html>
