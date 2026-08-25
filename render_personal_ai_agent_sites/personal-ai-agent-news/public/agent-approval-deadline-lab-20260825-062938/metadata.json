@@ -1,0 +1,10 @@
+{
+  "slug": "agent-approval-deadline-lab-20260825-062938",
+  "title": "Approval Deadline Lab",
+  "topic": "agent systems",
+  "sources": [
+    "https://platform.openai.com/docs/guides/agents",
+    "https://platform.openai.com/docs/guides/evals",
+    "https://www.nist.gov/itl/ai-risk-management-framework"
+  ]
+}
