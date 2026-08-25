@@ -1,0 +1,8 @@
+{
+  "title": "Confidence Decomposition Lab",
+  "slug": "agent-confidence-decomposition-lab-20260825-180211",
+  "topic": "agent systems",
+  "sources": ["https://www.nist.gov/itl/ai-risk-management-framework", "https://model-spec.openai.com/2025-12-18.html", "https://www.anthropic.com/research/building-effective-agents", "https://arxiv.org/abs/2308.03688"],
+  "interaction": "Adjust confidence layers to separate evidence confidence from action confidence.",
+  "created_at": "2026-08-25T18:02:11Z"
+}
