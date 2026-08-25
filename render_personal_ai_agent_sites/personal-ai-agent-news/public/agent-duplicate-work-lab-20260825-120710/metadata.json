@@ -1,0 +1,19 @@
+{
+  "title": "Agent Duplicate Work Lab",
+  "slug": "agent-duplicate-work-lab-20260825-120710",
+  "content_kind": "agent_duplicate_work_simulation",
+  "headline": "Two paths can be busy and still be doing the same work.",
+  "topic": "agent systems",
+  "description": "Interactive explainer for detecting overlap, reusing results, and coordinating agent work.",
+  "sources": [
+    "https://www.nist.gov/itl/ai-risk-management-framework",
+    "https://www.anthropic.com/research/building-effective-agents",
+    "https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization"
+  ],
+  "backlinks": [
+    "https://getsupers.com/",
+    "https://app.getsupers.com/",
+    "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+    "https://app.getsupers.com/use-cases/computer-use-cache/"
+  ]
+}
