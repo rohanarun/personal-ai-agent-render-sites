@@ -1,0 +1,11 @@
+{
+  "slug": "llm-retrieval-quality-lab-20260825-230813",
+  "title": "Retrieval Quality Lab",
+  "topic": "LLM retrieval, chunking, coverage, and reranking",
+  "format": "interactive explainer",
+  "sources": [
+    "https://developers.google.com/machine-learning/crash-course/embeddings/",
+    "https://www.nist.gov/itl/ai-risk-management-framework",
+    "https://model-spec.openai.com/"
+  ]
+}
