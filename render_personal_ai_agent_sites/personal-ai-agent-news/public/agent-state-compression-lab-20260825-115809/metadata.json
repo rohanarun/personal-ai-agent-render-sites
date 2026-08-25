@@ -1,0 +1,19 @@
+{
+  "title": "Agent State Compression Lab",
+  "slug": "agent-state-compression-lab-20260825-115809",
+  "content_kind": "agent_state_compression_simulation",
+  "headline": "Shorter context is useful only when the important parts survive.",
+  "topic": "agent systems",
+  "description": "Interactive explainer for compressing agent context while retaining evidence, constraints, and uncertainty.",
+  "sources": [
+    "https://www.nist.gov/itl/ai-risk-management-framework",
+    "https://www.anthropic.com/research/building-effective-agents",
+    "https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization"
+  ],
+  "backlinks": [
+    "https://getsupers.com/",
+    "https://app.getsupers.com/",
+    "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+    "https://app.getsupers.com/use-cases/computer-use-cache/"
+  ]
+}
