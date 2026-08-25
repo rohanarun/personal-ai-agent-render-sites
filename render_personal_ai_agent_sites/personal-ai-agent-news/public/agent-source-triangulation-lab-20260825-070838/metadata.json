@@ -1,0 +1,11 @@
+{
+  "slug": "agent-source-triangulation-lab-20260825-070838",
+  "title": "Source Triangulation Lab",
+  "topic": "Agent evidence synthesis and disagreement",
+  "description": "An interactive explainer for combining independent support, freshness, and disagreement before an agent answers.",
+  "sources": [
+    {"title":"OpenAI Agents guide","url":"https://platform.openai.com/docs/guides/agents"},
+    {"title":"OpenAI Evals guide","url":"https://platform.openai.com/docs/guides/evals"},
+    {"title":"NIST AI Risk Management Framework","url":"https://airc.nist.gov/airmf-resources/airmf/"}
+  ]
+}
