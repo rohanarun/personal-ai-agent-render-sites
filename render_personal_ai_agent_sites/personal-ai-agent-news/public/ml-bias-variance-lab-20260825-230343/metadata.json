@@ -1,0 +1,11 @@
+{
+  "slug": "ml-bias-variance-lab-20260825-230343",
+  "title": "Bias Variance Lab",
+  "topic": "machine learning",
+  "description": "An interactive explainer for balancing underfitting, overfitting, and evaluation noise.",
+  "sources": [
+    "https://scikit-learn.org/stable/auto_examples/model_selection/plot_underfitting_overfitting.html",
+    "https://www.nist.gov/itl/ai-risk-management-framework",
+    "https://model-spec.openai.com/"
+  ]
+}
