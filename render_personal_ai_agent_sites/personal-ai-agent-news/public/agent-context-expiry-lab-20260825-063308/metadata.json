@@ -1,0 +1,10 @@
+{
+  "slug": "agent-context-expiry-lab-20260825-063308",
+  "title": "Context Expiry Lab",
+  "topic": "agent systems",
+  "sources": [
+    "https://platform.openai.com/docs/guides/agents",
+    "https://platform.openai.com/docs/guides/evals",
+    "https://www.nist.gov/itl/ai-risk-management-framework"
+  ]
+}
