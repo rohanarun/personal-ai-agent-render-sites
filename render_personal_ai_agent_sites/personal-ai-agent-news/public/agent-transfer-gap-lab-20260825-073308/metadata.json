@@ -1,0 +1,11 @@
+{
+  "slug": "agent-transfer-gap-lab-20260825-073308",
+  "title": "Transfer Gap Lab",
+  "topic": "Agent generalization across environments",
+  "description": "An interactive explainer for deciding whether an agent evaluation transfers from a familiar environment to a new one.",
+  "sources": [
+    {"title":"OpenAI Agents guide","url":"https://platform.openai.com/docs/guides/agents"},
+    {"title":"OpenAI Evals guide","url":"https://platform.openai.com/docs/guides/evals"},
+    {"title":"NIST AI Risk Management Framework","url":"https://airc.nist.gov/airmf-resources/airmf/"}
+  ]
+}
