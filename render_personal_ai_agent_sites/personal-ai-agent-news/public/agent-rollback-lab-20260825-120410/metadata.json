@@ -1,0 +1,19 @@
+{
+  "title": "Agent Rollback Lab",
+  "slug": "agent-rollback-lab-20260825-120410",
+  "content_kind": "agent_rollback_simulation",
+  "headline": "A checkpoint is a promise that the next mistake can be undone.",
+  "topic": "agent systems",
+  "description": "Interactive explainer for checkpoints, blast radius, rollback speed, and recoverable agent actions.",
+  "sources": [
+    "https://www.nist.gov/itl/ai-risk-management-framework",
+    "https://www.anthropic.com/research/building-effective-agents",
+    "https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization"
+  ],
+  "backlinks": [
+    "https://getsupers.com/",
+    "https://app.getsupers.com/",
+    "https://app.getsupers.com/use-cases/ai-agent-build-websites/",
+    "https://app.getsupers.com/use-cases/computer-use-cache/"
+  ]
+}
