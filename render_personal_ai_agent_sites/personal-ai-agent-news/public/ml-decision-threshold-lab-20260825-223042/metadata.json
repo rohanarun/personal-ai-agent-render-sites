@@ -1,0 +1,11 @@
+{
+  "slug": "ml-decision-threshold-lab-20260825-223042",
+  "title": "Decision Threshold Lab",
+  "topic": "machine learning",
+  "description": "An interactive explainer for choosing a model decision threshold from prevalence and error costs.",
+  "sources": [
+    "https://scikit-learn.org/stable/modules/classification_threshold.html",
+    "https://www.nist.gov/itl/ai-risk-management-framework",
+    "https://model-spec.openai.com/"
+  ]
+}
