@@ -1,0 +1,11 @@
+{
+  "slug": "agent-belief-decay-lab-20260825-222812",
+  "title": "Agent Belief Decay Lab",
+  "topic": "agent systems",
+  "description": "An interactive explainer for how stale evidence should lose influence in an agent's working belief.",
+  "sources": [
+    "https://www.anthropic.com/research/building-effective-agents",
+    "https://www.nist.gov/itl/ai-risk-management-framework",
+    "https://model-spec.openai.com/"
+  ]
+}
