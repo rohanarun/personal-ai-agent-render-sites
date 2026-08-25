@@ -1,0 +1,11 @@
+{
+  "slug": "agent-epistemic-humility-lab-20260825-064838",
+  "title": "Epistemic Humility Lab",
+  "topic": "Agent decision-making under uncertainty",
+  "description": "An interactive explainer for choosing between answering, clarifying, reviewing, and abstaining when an agent is uncertain.",
+  "sources": [
+    {"title":"OpenAI Agents guide","url":"https://platform.openai.com/docs/guides/agents"},
+    {"title":"OpenAI Evals guide","url":"https://platform.openai.com/docs/guides/evals"},
+    {"title":"NIST AI Risk Management Framework","url":"https://airc.nist.gov/airmf-resources/airmf/"}
+  ]
+}
