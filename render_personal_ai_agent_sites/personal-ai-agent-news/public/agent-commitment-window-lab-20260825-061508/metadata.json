@@ -1,0 +1,10 @@
+{
+  "slug": "agent-commitment-window-lab-20260825-061508",
+  "title": "Commitment Window Lab",
+  "topic": "agent systems",
+  "sources": [
+    "https://platform.openai.com/docs/guides/agents",
+    "https://platform.openai.com/docs/guides/evals",
+    "https://www.nist.gov/itl/ai-risk-management-framework"
+  ]
+}
