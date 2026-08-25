@@ -1,0 +1,10 @@
+{
+  "slug": "agent-action-lease-lab-20260825-061908",
+  "title": "Action Lease Lab",
+  "topic": "agent systems",
+  "sources": [
+    "https://platform.openai.com/docs/guides/agents",
+    "https://platform.openai.com/docs/guides/evals",
+    "https://www.nist.gov/itl/ai-risk-management-framework"
+  ]
+}
