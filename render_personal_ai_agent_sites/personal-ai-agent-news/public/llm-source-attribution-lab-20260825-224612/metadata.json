@@ -1,0 +1,11 @@
+{
+  "slug": "llm-source-attribution-lab-20260825-224612",
+  "title": "LLM Source Attribution Lab",
+  "topic": "large language models",
+  "description": "An interactive explainer for matching claims to the right evidence and attribution scope.",
+  "sources": [
+    "https://model-spec.openai.com/",
+    "https://www.nist.gov/itl/ai-risk-management-framework",
+    "https://platform.openai.com/docs/guides/embeddings"
+  ]
+}
