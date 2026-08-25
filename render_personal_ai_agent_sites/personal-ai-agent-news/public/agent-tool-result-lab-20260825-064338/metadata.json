@@ -1,0 +1,10 @@
+{
+  "slug": "agent-tool-result-lab-20260825-064338",
+  "title": "Tool Result Lab",
+  "topic": "agent systems",
+  "sources": [
+    "https://platform.openai.com/docs/guides/agents",
+    "https://platform.openai.com/docs/guides/evals",
+    "https://www.nist.gov/itl/ai-risk-management-framework"
+  ]
+}
