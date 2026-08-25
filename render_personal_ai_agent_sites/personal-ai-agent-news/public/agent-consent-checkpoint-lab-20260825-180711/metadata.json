@@ -1,0 +1,8 @@
+{
+  "title": "Consent Checkpoint Lab",
+  "slug": "agent-consent-checkpoint-lab-20260825-180711",
+  "topic": "agent systems",
+  "sources": ["https://www.nist.gov/itl/ai-risk-management-framework", "https://model-spec.openai.com/2025-12-18.html", "https://www.anthropic.com/research/building-effective-agents", "https://arxiv.org/abs/2308.03688"],
+  "interaction": "Adjust consent signals to decide when an agent should proceed, prepare for approval, or ask and wait.",
+  "created_at": "2026-08-25T18:07:11Z"
+}
