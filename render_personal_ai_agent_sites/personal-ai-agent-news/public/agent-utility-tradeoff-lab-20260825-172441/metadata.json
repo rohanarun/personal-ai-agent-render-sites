@@ -1,0 +1,8 @@
+{
+  "slug": "agent-utility-tradeoff-lab-20260825-172441",
+  "title": "Utility Tradeoff Lab",
+  "topic": "Agent utility, downside, reversibility, and least-risk action choice",
+  "sources": ["https://www.nist.gov/itl/ai-risk-management-framework", "https://model-spec.openai.com/2025-12-18.html", "https://arxiv.org/abs/2308.03688", "https://www.anthropic.com/research/building-effective-agents"],
+  "interaction": "Adjust expected benefit, downside, reversibility, and action scale to see utility guidance update.",
+  "site_slug": "agent-utility-tradeoff-lab-20260825-172441"
+}
