@@ -1,0 +1,11 @@
+{
+  "slug": "agent-metric-coupling-lab-20260825-072108",
+  "title": "Metric Coupling Lab",
+  "topic": "Agent evaluation and metric tradeoffs",
+  "description": "An interactive explainer for how optimizing one agent metric can move another in the wrong direction.",
+  "sources": [
+    {"title":"OpenAI Agents guide","url":"https://platform.openai.com/docs/guides/agents"},
+    {"title":"OpenAI Evals guide","url":"https://platform.openai.com/docs/guides/evals"},
+    {"title":"NIST AI Risk Management Framework","url":"https://airc.nist.gov/airmf-resources/airmf/"}
+  ]
+}
