@@ -1,0 +1,8 @@
+{
+  "slug": "agent-feedback-loop-lab-20260825-165315",
+  "title": "Feedback Loop Lab",
+  "topic": "Agent feedback strength, observation delay, correction size, and stability",
+  "sources": ["https://www.nist.gov/itl/ai-risk-management-framework", "https://model-spec.openai.com/2025-12-18.html", "https://arxiv.org/abs/2308.03688", "https://www.anthropic.com/research/building-effective-agents"],
+  "interaction": "Adjust feedback strength, observation delay, correction size, and control mode to see loop stability update.",
+  "site_slug": "agent-feedback-loop-lab-20260825-165315"
+}
