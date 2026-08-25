@@ -1,0 +1,10 @@
+{
+  "slug": "llm-context-budget-lab-20260825-212042",
+  "title": "Context Budget Lab",
+  "topic": "LLM context windows, retrieval noise, and usable context",
+  "sources": [
+    "https://www.nist.gov/itl/ai-risk-management-framework",
+    "https://model-spec.openai.com/2025-12-18.html",
+    "https://www.anthropic.com/research/building-effective-agents"
+  ]
+}
