@@ -1,0 +1,10 @@
+{
+  "slug": "agent-observation-resolution-lab-20260825-084209",
+  "title": "Observation Resolution Lab",
+  "topic": "Agent systems",
+  "sources": [
+    {"title": "OpenAI Agents guide", "url": "https://platform.openai.com/docs/guides/agents"},
+    {"title": "OpenAI Evals guide", "url": "https://platform.openai.com/docs/guides/evals"},
+    {"title": "NIST AI RMF resources", "url": "https://airc.nist.gov/airmf-resources/airmf/"}
+  ]
+}
