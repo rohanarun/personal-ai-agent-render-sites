@@ -1,0 +1,11 @@
+{
+  "slug": "ml-model-monitoring-lab-20260825-221912",
+  "title": "Model Monitoring Lab",
+  "topic": "machine learning",
+  "description": "An interactive explainer for detecting when a model's live inputs have drifted away from its training world.",
+  "sources": [
+    "https://www.nist.gov/itl/ai-risk-management-framework",
+    "https://scikit-learn.org/stable/modules/outlier_detection.html",
+    "https://model-spec.openai.com/"
+  ]
+}
