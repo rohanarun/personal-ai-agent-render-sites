@@ -1,0 +1,8 @@
+{
+  "slug": "agent-plan-branching-lab-20260825-164341",
+  "title": "Plan Branching Lab",
+  "topic": "Agent planning search spaces, branching factor, depth, and pruning budgets",
+  "sources": ["https://www.nist.gov/itl/ai-risk-management-framework", "https://model-spec.openai.com/2025-12-18.html", "https://arxiv.org/abs/2308.03688", "https://www.anthropic.com/research/building-effective-agents"],
+  "interaction": "Adjust options per step, planning depth, pruning strength, and task stakes to see search load update.",
+  "site_slug": "agent-plan-branching-lab-20260825-164341"
+}
