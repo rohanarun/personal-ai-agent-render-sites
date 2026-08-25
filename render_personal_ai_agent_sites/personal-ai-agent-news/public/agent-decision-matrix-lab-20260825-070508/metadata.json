@@ -1,0 +1,11 @@
+{
+  "slug": "agent-decision-matrix-lab-20260825-070508",
+  "title": "Decision Matrix Lab",
+  "topic": "Agent decision routing under uncertainty and reversibility",
+  "description": "An interactive explainer for routing agent decisions across action, investigation, clarification, and abstention.",
+  "sources": [
+    {"title":"OpenAI Agents guide","url":"https://platform.openai.com/docs/guides/agents"},
+    {"title":"OpenAI Evals guide","url":"https://platform.openai.com/docs/guides/evals"},
+    {"title":"NIST AI Risk Management Framework","url":"https://airc.nist.gov/airmf-resources/airmf/"}
+  ]
+}
