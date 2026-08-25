@@ -1,0 +1,10 @@
+{
+  "slug": "agent-retry-evidence-lab-20260825-094009",
+  "title": "Retry Evidence Lab",
+  "topic": "agent systems",
+  "sources": [
+    "https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/",
+    "https://sre.google/sre-book/handling-overload/",
+    "https://www.rfc-editor.org/rfc/rfc6585"
+  ]
+}
