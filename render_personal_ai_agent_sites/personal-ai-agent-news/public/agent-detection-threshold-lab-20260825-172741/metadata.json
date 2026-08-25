@@ -1,0 +1,8 @@
+{
+  "slug": "agent-detection-threshold-lab-20260825-172741",
+  "title": "Detection Threshold Lab",
+  "topic": "Agent detection thresholds, false positives, false negatives, and impact-aware routing",
+  "sources": ["https://www.nist.gov/itl/ai-risk-management-framework", "https://model-spec.openai.com/2025-12-18.html", "https://arxiv.org/abs/2308.03688", "https://www.anthropic.com/research/building-effective-agents"],
+  "interaction": "Adjust threshold, hazard prevalence, miss cost, and response mode to see detection policy guidance update.",
+  "site_slug": "agent-detection-threshold-lab-20260825-172741"
+}
