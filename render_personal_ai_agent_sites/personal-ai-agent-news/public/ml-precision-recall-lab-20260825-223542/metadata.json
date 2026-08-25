@@ -1,0 +1,11 @@
+{
+  "slug": "ml-precision-recall-lab-20260825-223542",
+  "title": "Precision Recall Lab",
+  "topic": "machine learning",
+  "description": "An interactive explainer for balancing precision, recall, and review cost in classification.",
+  "sources": [
+    "https://scikit-learn.org/stable/auto_examples/model_selection/plot_precision_recall.html",
+    "https://www.nist.gov/itl/ai-risk-management-framework",
+    "https://model-spec.openai.com/"
+  ]
+}
