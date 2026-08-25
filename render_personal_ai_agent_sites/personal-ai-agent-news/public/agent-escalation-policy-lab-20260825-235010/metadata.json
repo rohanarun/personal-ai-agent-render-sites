@@ -1,0 +1,11 @@
+{
+  "slug": "agent-escalation-policy-lab-20260825-235010",
+  "title": "Escalation Policy Lab",
+  "topic": "Agent uncertainty, human checkpoints, consequence, and evidence",
+  "format": "interactive explainer",
+  "sources": [
+    "https://www.anthropic.com/engineering/building-effective-agents",
+    "https://model-spec.openai.com/",
+    "https://www.nist.gov/itl/ai-risk-management-framework"
+  ]
+}
