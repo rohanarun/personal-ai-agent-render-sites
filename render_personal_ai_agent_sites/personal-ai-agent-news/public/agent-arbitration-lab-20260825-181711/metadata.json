@@ -1,0 +1,8 @@
+{
+  "title": "Arbitration Lab",
+  "slug": "agent-arbitration-lab-20260825-181711",
+  "topic": "agent systems",
+  "sources": ["https://www.nist.gov/itl/ai-risk-management-framework", "https://model-spec.openai.com/2025-12-18.html", "https://www.anthropic.com/research/building-effective-agents", "https://arxiv.org/abs/2308.03688"],
+  "interaction": "Adjust arbitration signals to decide whether an agent resolves a conflict or surfaces it for review.",
+  "created_at": "2026-08-25T18:17:11Z"
+}
