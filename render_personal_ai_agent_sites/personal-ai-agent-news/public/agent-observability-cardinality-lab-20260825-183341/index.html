@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Observability Cardinality Lab</title>
+  <meta name="description" content="An interactive lesson on choosing useful agent telemetry without exploding the number of unique series.">
+  <style>
+    :root{--ink:#192329;--muted:#607078;--paper:#f7f3eb;--panel:#fffdf8;--line:#d8d0c2;--teal:#087f75;--coral:#c9573f;--gold:#d89b32;--shadow:0 18px 60px rgba(31,45,41,.10)}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}a{color:inherit}.shell{width:min(1180px,calc(100% - 40px));margin:auto}.topbar{display:flex;justify-content:space-between;align-items:center;padding:24px 0;border-bottom:1px solid var(--line)}.brand{font-weight:800;letter-spacing:-.04em;font-size:1.1rem}.status{font-size:.8rem;color:var(--teal);font-weight:750}.hero{padding:76px 0 58px;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:end}.eyebrow{text-transform:uppercase;letter-spacing:.13em;font-size:.72rem;color:var(--coral);font-weight:800}.hero h1{font-size:clamp(3rem,7vw,6.8rem);line-height:.93;letter-spacing:-.08em;margin:18px 0 26px;max-width:760px}.hero p{font-size:1.15rem;color:var(--muted);max-width:650px}.signal{background:#1f3535;color:#eff5e9;padding:30px;border-radius:28px;box-shadow:var(--shadow);position:relative;overflow:hidden}.signal:after{content:"";position:absolute;width:180px;height:180px;border:1px solid rgba(255,255,255,.18);border-radius:50%;right:-45px;top:-50px}.signal strong{display:block;font-size:3.8rem;letter-spacing:-.08em;color:#e7b95f}.signal span{color:#b4c6be}.lab{display:grid;grid-template-columns:1fr 1fr;gap:22px;padding:34px 0 100px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:0 8px 28px rgba(31,45,41,.05)}.panel h2{margin:0 0 8px;font-size:1.45rem;letter-spacing:-.04em}.panel p{color:var(--muted);margin-top:0}.controls{display:grid;gap:18px;margin-top:24px}.control{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center}.control label{font-weight:700}.control output{font-variant-numeric:tabular-nums;color:var(--teal);font-weight:800}.control input{grid-column:1/-1;width:100%;accent-color:var(--teal)}.readout{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:22px}.metric{background:#f0ebe1;border-radius:16px;padding:16px}.metric small{display:block;color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em}.metric b{display:block;font-size:1.55rem;letter-spacing:-.05em;margin-top:4px}.verdict{margin-top:22px;border-left:4px solid var(--teal);padding:14px 16px;background:#e7f1ec;border-radius:0 14px 14px 0}.verdict.warn{border-color:var(--coral);background:#f8e9e2}.verdict strong{display:block;margin-bottom:4px}.chart{height:220px;display:flex;align-items:end;gap:8px;padding:20px 8px 0;border-bottom:1px solid var(--line);margin-top:24px}.bar{flex:1;background:linear-gradient(#48a79c,#087f75);border-radius:8px 8px 0 0;min-height:8px;transition:height .25s ease}.bar.hot{background:linear-gradient(#ed957c,#c9573f)}.chart-key{display:flex;justify-content:space-between;color:var(--muted);font-size:.78rem;margin-top:9px}.lesson{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:22px}.lesson ul{padding-left:20px;color:var(--muted)}.sources{border-top:1px solid var(--line);padding:26px 0 50px;color:var(--muted);font-size:.88rem}.sources h2{color:var(--ink);font-size:1rem}.sources a{display:inline-block;margin:4px 16px 4px 0;color:var(--teal)}.footer{border-top:1px solid var(--line);padding:22px 0 40px;color:var(--muted);font-size:.82rem}@media(max-width:820px){.hero,.lab,.lesson{grid-template-columns:1fr}.hero{padding-top:48px;gap:28px}.hero h1{font-size:clamp(3rem,15vw,5rem)}.shell{width:min(100% - 28px,620px)}.panel{padding:22px}.lab{padding-bottom:68px}}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar"><div class="brand">Field Notes / Agent Systems</div><div class="status">Interactive explainer</div></header>
+    <main>
+      <section class="hero">
+        <div><div class="eyebrow">Telemetry design</div><h1>More signals can mean less clarity.</h1><p>Explore how label choices change the number of unique time series an agent team must store, query, and explain. The goal is not maximum detail. It is decision-useful detail.</p></div>
+        <aside class="signal"><span>Unique series in this scenario</span><strong id="heroSeries">1,024</strong><span>Every new identity label multiplies the surface.</span></aside>
+      </section>
+      <section class="lab">
+        <article class="panel">
+          <h2>Shape the telemetry</h2><p>Adjust four dimensions. Values represent distinct values per label, not requests per second.</p>
+          <div class="controls">
+            <div class="control"><label for="agents">Agent identities</label><output id="agentsOut">4</output><input id="agents" type="range" min="1" max="12" value="4"></div>
+            <div class="control"><label for="tools">Tool names</label><output id="toolsOut">8</output><input id="tools" type="range" min="1" max="20" value="8"></div>
+            <div class="control"><label for="sessions">Session slices</label><output id="sessionsOut">4</output><input id="sessions" type="range" min="1" max="20" value="4"></div>
+            <div class="control"><label for="errors">Error fingerprints</label><output id="errorsOut">8</output><input id="errors" type="range" min="1" max="20" value="8"></div>
+          </div>
+          <div class="verdict" id="verdict"><strong>Useful granularity</strong><span>Keep the labels that help someone choose the next action.</span></div>
+        </article>
+        <article class="panel">
+          <h2>Series pressure</h2><p>The product of label values is a rough cardinality budget. It is not a vendor quota.</p>
+          <div class="readout"><div class="metric"><small>Unique series</small><b id="series">1,024</b></div><div class="metric"><small>Query paths</small><b id="paths">4</b></div><div class="metric"><small>Explainability</small><b id="explain">High</b></div><div class="metric"><small>Budget used</small><b id="budget">10%</b></div></div>
+          <div class="chart" id="chart" aria-label="Label contribution bars"></div><div class="chart-key"><span>Each label's share of the multiplication</span><span>lower is calmer</span></div>
+        </article>
+        <article class="panel lesson"><div><h2>The design move</h2><p>Put stable, decision-relevant dimensions in metric labels. Keep request IDs, raw prompts, and unbounded user text in traces or logs with access controls.</p><ul><li>Metrics answer “is this class of work healthy?”</li><li>Traces answer “what happened in this one run?”</li><li>Logs preserve details that should not multiply every metric.</li></ul></div><div><h2>Try a contrast</h2><p>Set every slider high, then lower only error fingerprints. Notice how one apparently useful label can dominate the product. Good observability is a partition of attention, not a scrapbook.</p><div class="verdict warn"><strong>Escalate when it is noisy</strong><span>When a label cannot change an operational decision, move it out of the metric identity.</span></div></div></article>
+      </section>
+      <section class="sources"><h2>Grounding</h2><a href="https://opentelemetry.io/docs/concepts/observability-primer/" target="_blank" rel="noreferrer">OpenTelemetry observability primer</a><a href="https://prometheus.io/docs/practices/naming/" target="_blank" rel="noreferrer">Prometheus naming guidance</a><a href="https://sre.google/sre-book/monitoring-distributed-systems/" target="_blank" rel="noreferrer">Google SRE monitoring</a></section>
+    </main>
+    <footer class="footer">A small interactive lesson for reasoning about agent telemetry. No network calls are needed to run it.</footer>
+  </div>
+  <script>
+    const ids=['agents','tools','sessions','errors'];
+    const labels=['agents','tools','sessions','errors'];
+    const fmt=new Intl.NumberFormat('en-US');
+    function render(){
+      const values=ids.map(id=>Number(document.getElementById(id).value));
+      values.forEach((v,i)=>document.getElementById(ids[i]+'Out').textContent=v);
+      const series=values.reduce((a,b)=>a*b,1); const budget=Math.min(100,Math.round(series/10000*100));
+      document.getElementById('series').textContent=fmt.format(series); document.getElementById('heroSeries').textContent=fmt.format(series); document.getElementById('budget').textContent=budget+'%'; document.getElementById('paths').textContent=values[1];
+      const explain=series<2500?'High':series<10000?'Medium':'Low'; document.getElementById('explain').textContent=explain;
+      const verdict=document.getElementById('verdict'); verdict.className='verdict'+(series>=10000?' warn':''); verdict.innerHTML=series>=10000?'<strong>Move detail to traces</strong><span>At this size, a metric label is multiplying faster than it is helping a decision.</span>':'<strong>Useful granularity</strong><span>Keep the labels that help someone choose the next action.</span>';
+      const chart=document.getElementById('chart'); chart.innerHTML=''; const max=Math.max(...values); values.forEach((v,i)=>{const bar=document.createElement('div');bar.className='bar'+(v===max&&series>=10000?' hot':'');bar.style.height=Math.max(8,v/max*100)+'%';bar.title=labels[i]+': '+v;chart.appendChild(bar)});
+    }
+    ids.forEach(id=>document.getElementById(id).addEventListener('input',render)); render();
+  </script>
+</body>
+</html>
