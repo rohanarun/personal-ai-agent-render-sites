@@ -1,0 +1,10 @@
+{
+  "title": "Plan Staleness Lab",
+  "slug": "agent-plan-staleness-lab-20260825-083539",
+  "topic": "agent systems",
+  "sources": [
+    "https://platform.openai.com/docs/guides/agents",
+    "https://platform.openai.com/docs/guides/evals",
+    "https://airc.nist.gov/airmf-resources/airmf/"
+  ]
+}
