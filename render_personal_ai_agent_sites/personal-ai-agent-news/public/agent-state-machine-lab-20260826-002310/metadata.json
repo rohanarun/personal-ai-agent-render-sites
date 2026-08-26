@@ -1,0 +1,11 @@
+{
+  "slug": "agent-state-machine-lab-20260826-002310",
+  "title": "Agent State Machine Lab",
+  "topic": "Agent workflow states, transitions, recovery paths, and inspectability",
+  "format": "interactive explainer",
+  "sources": [
+    "https://www.anthropic.com/engineering/building-effective-agents",
+    "https://model-spec.openai.com/",
+    "https://www.nist.gov/itl/ai-risk-management-framework"
+  ]
+}
