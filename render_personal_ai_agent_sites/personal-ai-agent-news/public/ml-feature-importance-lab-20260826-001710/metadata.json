@@ -1,0 +1,11 @@
+{
+  "slug": "ml-feature-importance-lab-20260826-001710",
+  "title": "Feature Importance Lab",
+  "topic": "ML feature importance, predictive signal, correlation, stability, and causal limits",
+  "format": "interactive explainer",
+  "sources": [
+    "https://scikit-learn.org/stable/modules/permutation_importance.html",
+    "https://scikit-learn.org/stable/auto_examples/inspection/plot_permutation_importance.html",
+    "https://www.nist.gov/itl/ai-risk-management-framework"
+  ]
+}
