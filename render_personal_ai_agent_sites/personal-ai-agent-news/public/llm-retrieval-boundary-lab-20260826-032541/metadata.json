@@ -1,0 +1,1 @@
+{"title":"Retrieval Boundary Lab","topic":"Retrieval chunking, overlap, evidence coverage, and context boundaries","sources":["https://arxiv.org/abs/2005.11401","https://platform.openai.com/docs/guides/retrieval","https://www.nist.gov/itl/ai-risk-management-framework"],"interactive":"Adjust chunk size, overlap, and query focus to inspect evidence coverage."}
