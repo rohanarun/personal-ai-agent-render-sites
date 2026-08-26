@@ -1,0 +1,11 @@
+{
+  "slug": "ml-resampling-variance-lab-20260826-002010",
+  "title": "Resampling Variance Lab",
+  "topic": "ML resampling, cross-validation, score variability, and dataset size",
+  "format": "interactive explainer",
+  "sources": [
+    "https://scikit-learn.org/stable/modules/cross_validation.html",
+    "https://developers.google.com/machine-learning/crash-course/overfitting/dividing-datasets",
+    "https://www.nist.gov/itl/ai-risk-management-framework"
+  ]
+}
