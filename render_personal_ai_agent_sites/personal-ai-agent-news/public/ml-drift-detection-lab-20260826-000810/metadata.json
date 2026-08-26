@@ -1,0 +1,11 @@
+{
+  "slug": "ml-drift-detection-lab-20260826-000810",
+  "title": "Drift Detection Lab",
+  "topic": "ML distribution shift, monitoring sensitivity, alerts, and review capacity",
+  "format": "interactive explainer",
+  "sources": [
+    "https://scikit-learn.org/stable/modules/outlier_detection.html",
+    "https://developers.google.com/machine-learning/crash-course/production-ml-systems/monitoring",
+    "https://www.nist.gov/itl/ai-risk-management-framework"
+  ]
+}
