@@ -1,0 +1,11 @@
+{
+  "slug": "llm-prompt-order-lab-20260826-000010",
+  "title": "Prompt Order Lab",
+  "topic": "LLM prompt ordering, instruction clarity, context noise, and evaluation",
+  "format": "interactive explainer",
+  "sources": [
+    "https://ai.google.dev/gemini-api/docs/prompting-strategies",
+    "https://model-spec.openai.com/",
+    "https://www.nist.gov/itl/ai-risk-management-framework"
+  ]
+}
