@@ -1,0 +1,11 @@
+{
+  "slug": "agent-confidence-gate-lab-20260826-001410",
+  "title": "Agent Confidence Gate Lab",
+  "topic": "Agent belief, action consequence, verification, and permission boundaries",
+  "format": "interactive explainer",
+  "sources": [
+    "https://www.anthropic.com/engineering/building-effective-agents",
+    "https://model-spec.openai.com/",
+    "https://www.nist.gov/itl/ai-risk-management-framework"
+  ]
+}
