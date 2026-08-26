@@ -1,0 +1,1 @@
+{"title":"Distribution Shift Lab","slug":"ml-distribution-shift-lab-20260826-041111","topic":"machine learning","description":"Interactive explorer showing how input shift and model sensitivity create monitoring risk.","sources":["https://scikit-learn.org/stable/modules/calibration.html","https://www.nist.gov/itl/ai-risk-management-framework"]}
