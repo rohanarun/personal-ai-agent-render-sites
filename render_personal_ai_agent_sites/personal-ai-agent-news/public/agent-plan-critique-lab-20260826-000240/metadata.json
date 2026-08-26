@@ -1,0 +1,11 @@
+{
+  "slug": "agent-plan-critique-lab-20260826-000240",
+  "title": "Plan Critique Lab",
+  "topic": "Agent plan review, constraint coverage, complexity, and failure prevention",
+  "format": "interactive explainer",
+  "sources": [
+    "https://www.anthropic.com/engineering/building-effective-agents",
+    "https://model-spec.openai.com/",
+    "https://www.nist.gov/itl/ai-risk-management-framework"
+  ]
+}
