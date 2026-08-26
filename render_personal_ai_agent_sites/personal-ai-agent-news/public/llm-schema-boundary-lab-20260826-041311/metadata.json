@@ -1,0 +1,1 @@
+{"title":"Schema Boundary Lab","slug":"llm-schema-boundary-lab-20260826-041311","topic":"LLM systems","description":"Interactive explorer for required fields, strict validation, and safe tool argument surfaces.","sources":["https://platform.openai.com/docs/guides/function-calling","https://json-schema.org/learn/getting-started-step-by-step"]}
