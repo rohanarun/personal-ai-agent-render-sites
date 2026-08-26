@@ -1,0 +1,11 @@
+{
+  "slug": "llm-few-shot-lab-20260826-001110",
+  "title": "Few-Shot Example Lab",
+  "topic": "LLM few-shot prompting, example coverage, consistency, and generalization",
+  "format": "interactive explainer",
+  "sources": [
+    "https://ai.google.dev/gemini-api/docs/prompting-strategies",
+    "https://model-spec.openai.com/",
+    "https://www.nist.gov/itl/ai-risk-management-framework"
+  ]
+}
