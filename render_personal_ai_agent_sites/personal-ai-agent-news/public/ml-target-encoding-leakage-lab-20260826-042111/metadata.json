@@ -1,0 +1,1 @@
+{"title":"Target Encoding Leakage Lab","slug":"ml-target-encoding-leakage-lab-20260826-042111","topic":"machine learning","description":"Interactive explorer for target leakage, feature construction, and split discipline.","sources":["https://scikit-learn.org/stable/common_pitfalls.html","https://developers.google.com/machine-learning/crash-course/overfitting/overfitting"]}
