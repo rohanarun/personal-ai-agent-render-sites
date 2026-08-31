@@ -2,6 +2,32 @@
   {
     "assigned_domain": "lists.new",
     "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/reelfarm-25-30-percent-churn-what-buyers-should-ask-20260830/",
+    "content_kind": "blog",
+    "content_kind_label": "Research and news analysis",
+    "direct_generated": false,
+    "live_url": "https://lists.new/reelfarm-25-30-percent-churn-what-buyers-should-ask-20260830/",
+    "slug": "reelfarm-25-30-percent-churn-what-buyers-should-ask-20260830",
+    "source_path": "render_personal_ai_agent_sites/ai-agent-comparisons/public/reelfarm-25-30-percent-churn-what-buyers-should-ask-20260830",
+    "target_slot": "ai-agent-comparisons",
+    "title": "ReelFarm’s Founder Disclosed 25–30% Churn. Here’s What Buyers Should Ask"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
+    "assigned_url": "https://lists.new/ai-ugc-fake-testimonials-trust-and-compliance-20260830/",
+    "content_kind": "blog",
+    "content_kind_label": "Research and news analysis",
+    "direct_generated": false,
+    "live_url": "https://lists.new/ai-ugc-fake-testimonials-trust-and-compliance-20260830/",
+    "slug": "ai-ugc-fake-testimonials-trust-and-compliance-20260830",
+    "source_path": "render_personal_ai_agent_sites/ai-agent-comparisons/public/ai-ugc-fake-testimonials-trust-and-compliance-20260830",
+    "target_slot": "ai-agent-comparisons",
+    "title": "AI UGC Isn’t User-Generated: When Synthetic Ads Become Deceptive"
+  },
+  {
+    "assigned_domain": "lists.new",
+    "assigned_slot": "ai-agent-comparisons",
     "assigned_url": "https://lists.new/neural-collapse-simplex-feature-geometry-lab-20260812-200959/",
     "content_kind": "neural_collapse_simplex_feature_geometry_lab",
     "content_kind_label": "Neural Collapse Lab",
