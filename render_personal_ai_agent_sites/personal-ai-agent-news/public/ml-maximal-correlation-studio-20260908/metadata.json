@@ -1,0 +1,1 @@
+{"title":"Maximal Correlation Studio","concept":"Hirschfeld-Gebelein-Renyi maximal correlation from normalized-joint SVD versus Pearson correlation in a noisy squared signal; user recoding","sources":["https://arxiv.org/pdf/1304.6133"],"library":"ml-matrix 6.15.0","api_generation":false}
