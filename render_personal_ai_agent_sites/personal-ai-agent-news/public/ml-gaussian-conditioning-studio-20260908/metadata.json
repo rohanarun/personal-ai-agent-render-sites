@@ -1,0 +1,1 @@
+{"title":"Gaussian Conditioning Studio","slug":"ml-gaussian-conditioning-studio-20260908","concept":"Conditional covariance geometry after a noisy linear Gaussian observation","runtime":"ml-matrix 6.15.0","sources":["https://statproofbook.github.io/P/mvn-cond.html","https://arxiv.org/abs/1710.09285","https://github.com/mljs/matrix"],"content_generation_apis":false}
