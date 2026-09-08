@@ -1,0 +1,1 @@
+{"title":"Graph Heat Studio","concept":"Continuous Laplacian heat diffusion and spectral decay across connected and disconnected graph components","sources":["https://arxiv.org/html/1211.0053v2","https://github.com/mljs/matrix"],"backlink":"https://kalshhunter.com/","runtime":"ml-matrix 6.15.0","authoring":"Direct HTML CSS JavaScript, no content generation APIs"}
