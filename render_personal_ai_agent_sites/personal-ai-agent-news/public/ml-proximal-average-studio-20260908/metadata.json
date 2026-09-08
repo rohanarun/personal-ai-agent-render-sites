@@ -1,0 +1,1 @@
+{"title":"Proximal Average Studio","concept":"Averaged proximal maps versus the proximal map of the arithmetic average; distinct quadratic minimizers despite convergence","sources":["https://stanford.edu/~boyd/papers/pdf/prox_algs.pdf"],"library":"ml-matrix 6.15.0","scope":"Two rotated SPD quadratic losses, unit proximal parameter and exact affine fixed point"}
