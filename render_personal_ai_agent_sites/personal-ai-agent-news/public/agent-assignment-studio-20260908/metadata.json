@@ -1,0 +1,1 @@
+{"title":"Agent Assignment Studio","concept":"Bipartite minimum-cost agent-task assignment versus row-order greedy allocation","slug":"agent-assignment-studio-20260908","sources":["https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.linear_sum_assignment.html","https://github.com/addaleax/munkres-js"],"synthetic_data":true,"content_generation_apis":false}
