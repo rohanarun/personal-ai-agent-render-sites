@@ -1,0 +1,1 @@
+{"title":"Echo Cepstrum Studio","concept":"Real cepstrum of a delayed echo, alternating delay harmonics and finite-DFT cepstral aliasing","sources":["https://www.dsprelated.com/freebooks/filters/Poles_Zeros_Cepstrum.html"],"scope":"128-point noiseless impulse-plus-echo response, amplitude below one, natural log magnitude and inverse FFT"}
