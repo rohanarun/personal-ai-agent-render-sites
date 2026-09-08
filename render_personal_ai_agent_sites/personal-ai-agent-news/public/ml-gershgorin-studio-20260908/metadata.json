@@ -1,0 +1,1 @@
+{"title":"Gershgorin Studio","slug":"ml-gershgorin-studio-20260908","concept":"Gershgorin row bounds versus positive-definite certification and diagonal damping","runtime":"ml-matrix 6.15.0 symmetric eigendecomposition","sources":["https://nhigham.com/2022/11/22/what-is-gershgorins-theorem/","https://github.com/mljs/matrix"],"content_generation_apis":false}
