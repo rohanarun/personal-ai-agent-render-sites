@@ -1,0 +1,1 @@
+{"title":"Whitening Studio","slug":"ml-whitening-studio-20260908","concept":"PCA versus ZCA whitening, regularization and singular covariance","runtime":"ml-matrix 6.15.0","sources":["https://arxiv.org/abs/1512.00809","https://search.r-project.org/CRAN/refmans/whitening/html/whiteningMatrix.html","https://github.com/mljs/matrix"],"content_generation_apis":false}
