@@ -1,0 +1,1 @@
+{"title":"Moreau Box Studio","concept":"Moreau decomposition of an L1 proximal point and dual box projection; nonorthogonality and primal-dual equality","sources":["https://stanford.edu/~boyd/papers/pdf/prox_algs.pdf"],"library":"quadprog 2.0.0","scope":"Two-dimensional Euclidean box projection by quadratic programming, lambda 0.25 through 2.5, input coordinates -3 through 3"}
