@@ -1,0 +1,1 @@
+{"title":"Neumann Sum Studio","concept":"Matrix geometric inverse series, exact residual and sufficient norm-bound limitations","sources":["https://www.cs.cornell.edu/courses/cs6210/2025fa/lec/2025-08-27.html"],"method":"ml-matrix powers and inverse; infinity norm tail error","limitations":"Two-dimensional triangular family with |r|<1; floating-point error floor"}
