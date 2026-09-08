@@ -1,0 +1,1 @@
+{"title":"Power Iteration Studio","slug":"ml-power-iteration-studio-20260908","concept":"Eigenvalue-gap convergence, missing dominant component, and residual versus dominance","sources":["https://tobydriscoll.net/fnc-julia/krylov/power.html","https://github.com/mljs/matrix"],"runtime":"ml-matrix 6.15.0 matrix products and norms","content_generation_apis":false}
