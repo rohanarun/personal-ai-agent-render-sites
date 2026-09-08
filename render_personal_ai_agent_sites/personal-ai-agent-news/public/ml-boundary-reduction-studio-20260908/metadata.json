@@ -1,0 +1,1 @@
+{"title":"Boundary Reduction Studio","concept":"Kron star-to-mesh graph reduction preserving boundary currents and minimized energy","sources":["https://motion.me.ucsb.edu/pdf/2011d-db.pdf"],"runtime":"ml-matrix 6.15.0","model_api":false,"scope":"Three fixed boundary nodes, one zero-forcing interior node, nonnegative weights; all-zero interior handled as unconstrained"}
