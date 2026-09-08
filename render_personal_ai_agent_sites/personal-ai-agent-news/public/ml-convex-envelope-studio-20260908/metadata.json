@@ -1,0 +1,1 @@
+{"title":"Convex Envelope Studio","slug":"ml-convex-envelope-studio-20260908","concept":"Convex hull support regions, geometric novelty detection, and outlier sensitivity","sources":["https://d3js.org/d3-polygon","https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.ConvexHull.html"],"content_generation_apis":false,"synthetic_data":true}
