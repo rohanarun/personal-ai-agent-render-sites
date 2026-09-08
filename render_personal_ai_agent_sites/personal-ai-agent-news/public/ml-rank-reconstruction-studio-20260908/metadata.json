@@ -1,0 +1,1 @@
+{"title":"Rank Reconstruction Studio","slug":"ml-rank-reconstruction-studio-20260908","concept":"Truncated SVD matrix reconstruction, singular energy, and display-clipping limits","sources":["https://numpy.org/doc/stable/reference/generated/numpy.linalg.svd.html","https://github.com/mljs/matrix"],"content_generation_apis":false,"synthetic_data":true}
