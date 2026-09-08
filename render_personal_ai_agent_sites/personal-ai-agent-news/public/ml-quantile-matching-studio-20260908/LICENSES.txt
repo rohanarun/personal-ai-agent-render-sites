@@ -1,0 +1,1 @@
+This site uses native browser APIs and ECMAScript Array.sort. No third-party runtime code is bundled. Educational source attribution is provided in the page and metadata.json.
