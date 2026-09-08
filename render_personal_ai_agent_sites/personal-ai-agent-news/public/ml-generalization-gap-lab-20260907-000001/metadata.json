@@ -1,0 +1,1 @@
+{"title":"Generalization Gap Lab","slug":"ml-generalization-gap-lab-20260907-000001","topic":"machine learning","description":"Interactive explorer for model complexity, data volume, and train-test generalization gaps.","sources":["https://scikit-learn.org/stable/modules/cross_validation.html","https://developers.google.com/machine-learning/crash-course/overfitting/overfitting"]}
