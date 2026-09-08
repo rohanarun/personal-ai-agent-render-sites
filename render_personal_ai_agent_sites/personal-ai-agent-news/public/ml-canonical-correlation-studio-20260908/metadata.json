@@ -1,0 +1,1 @@
+{"title":"Canonical Correlation Studio","slug":"ml-canonical-correlation-studio-20260908","concept":"CCA paired-view alignment and rotation-invariant canonical correlations","sources":["https://web.stanford.edu/class/stats305c/slides/CCA.pdf","https://github.com/mljs/matrix"],"runtime":"ml-matrix 6.15.0 EVD whitening and SVD","content_generation_apis":false}
