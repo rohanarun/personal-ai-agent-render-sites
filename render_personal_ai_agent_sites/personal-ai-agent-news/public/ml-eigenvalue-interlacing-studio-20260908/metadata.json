@@ -1,0 +1,1 @@
+{"title":"Eigenvalue Interlacing Studio","slug":"ml-eigenvalue-interlacing-studio-20260908","concept":"Principal feature deletion and Cauchy eigenvalue interlacing","sources":["https://nhigham.com/2021/03/09/eigenvalue-inequalities-for-hermitian-matrices/","https://github.com/mljs/matrix"],"runtime":"ml-matrix 6.15.0 symmetric EVD","content_generation_apis":false}
