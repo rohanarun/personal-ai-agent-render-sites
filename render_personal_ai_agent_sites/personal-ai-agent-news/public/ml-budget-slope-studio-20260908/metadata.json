@@ -1,0 +1,1 @@
+{"title":"Budget Slope Studio","concept":"Lagrange multiplier as optimal-value sensitivity, supporting lower bound and active-set transitions","sources":["https://web.stanford.edu/~boyd/cvxbook/bv_cvxslides_original.pdf"],"library":"quadprog 2.0.0","scope":"Two-variable nonnegative constrained least-squares fit with a sum budget; centered slope step 1e-5"}
