@@ -1,0 +1,1 @@
+{"title":"Projection Firmness Studio","concept":"Firm nonexpansiveness of convex projection, nonexpansive reflection and relaxed-operator distance bounds","sources":["https://stanford.edu/~boyd/papers/pdf/prox_algs.pdf"],"library":"quadprog 2.0.0","scope":"Euclidean triangle projection, two-point comparisons and relaxation eta 0 to 3; no iteration-convergence claim"}
