@@ -1,0 +1,1 @@
+{"title":"Circular Match Studio","concept":"Circular cross-correlation shift recovery, periodic ambiguity and its equivalence to minimum alignment squared error","sources":["https://www.dsprelated.com/freebooks/mdft/Cross_Correlation.html"],"scope":"Editable sixteen-sample sign reference with cyclic shift and fixed uniform noise; FFT correlation checked by direct sum"}
