@@ -1,0 +1,1 @@
+{"title":"Interpolation Studio","slug":"ml-interpolation-studio-20260908","concept":"Runge interpolation and Chebyshev sample placement","runtime":"ml-matrix 6.15.0 QR decomposition","sources":["https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.BarycentricInterpolator.html","https://github.com/mljs/matrix"],"content_generation_apis":false}
