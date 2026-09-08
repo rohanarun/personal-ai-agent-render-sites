@@ -1,0 +1,1 @@
+{"title":"Alternating Projections Studio","slug":"ml-alternating-projections-studio-20260908","concept":"Alternating orthogonal line projections and angle-dependent convergence","runtime":"ml-matrix 6.15.0","sources":["https://web.stanford.edu/class/ee392o/alt_proj_slides.pdf","https://arxiv.org/abs/1809.05858","https://github.com/mljs/matrix"],"content_generation_apis":false}
