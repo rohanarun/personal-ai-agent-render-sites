@@ -1,0 +1,1 @@
+{"title":"Convolution Wrap Studio","concept":"FFT circular convolution wraparound versus sufficiently zero-padded linear convolution","sources":["https://numpy.org/doc/stable/reference/generated/numpy.convolve.html","https://github.com/indutny/fft.js"],"scope":"Length-four input, length-three kernels, FFT sizes four and eight"}
