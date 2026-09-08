@@ -1,0 +1,1 @@
+{"title":"Jacobi Damping Studio","slug":"ml-jacobi-damping-studio-20260908","concept":"Weighted Jacobi convergence versus positive definiteness, spectral radius and residual","sources":["https://www.netlib.org/templates/templates.html","https://github.com/mljs/matrix"],"runtime":"ml-matrix 6.15.0 EVD QR matrix products","content_generation_apis":false}
