@@ -1,0 +1,9 @@
+const cases={
+homepage:{title:'Company positioning, not customer preference',text:'The homepage supports: "The brand describes its product as designed for everyday reuse." It does not establish customers\' motivations or independently verify an environmental benefit.'},
+board:{title:'Visual interpretation, not behavioral evidence',text:'Green imagery can communicate a proposed direction. It cannot substantiate why customers buy or demonstrate sustainability. Label it as inspiration, with attribution and usage rights to review.'},
+interview:{title:'One reported perspective, not the market',text:'One interview can support a clearly attributed statement about that interviewee. It does not establish a general customer preference. Preserve context, permission and the unanswered research question.'}
+};
+let selected='homepage';
+function update(){selected=document.querySelector('input:checked').value;const c=cases[selected];document.getElementById('answer').replaceChildren();const h=document.createElement('strong'),p=document.createElement('p');h.textContent=c.title;p.textContent=c.text;document.getElementById('answer').append(h,p);}
+document.querySelectorAll('input').forEach(e=>e.addEventListener('change',update));
+document.getElementById('export').onclick=()=>{const c=cases[selected],text='ILLUSTRATIVE BRAND RESEARCH REVIEW\nNot verified client research.\nSource examined: '+selected+'\n'+c.title+'\n'+c.text+'\n\nResearch question: [complete]\nSource URL and observed date: [complete]\nExact observation: [complete]\nInterpretation, labeled as hypothesis: [complete]\nPermissions / attribution: [review]\nReviewer and unresolved questions: [complete]\n';const u=URL.createObjectURL(new Blob([text],{type:'text/plain'})),a=document.createElement('a');a.href=u;a.download='brand-research-review.txt';a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);};update();
