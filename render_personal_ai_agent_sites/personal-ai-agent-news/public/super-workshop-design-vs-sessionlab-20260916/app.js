@@ -1,0 +1,10 @@
+(() => {
+ const blocks=[
+ [10,'Set the outcome','Identify the update you want to improve.','Confirm the output and give a fictional example. Permit an invented project rather than asking for confidential details.'],
+ [15,'Draft an update','Write progress, a blocker and a clear request.','Allow five minutes for instructions and questions, then ten for individual drafting.'],
+ [25,'Compare in pairs','Exchange drafts, then take a short pause.','Use five minutes to form pairs and explain feedback, fifteen to compare, and five for a pause. Ask whether the request is actionable.'],
+ [25,'Revise and test','Revise your update and read it to a partner.','Reserve five minutes for the revision prompt, ten for editing and ten for pair readbacks. Drop an optional example if transitions run long.'],
+ [15,'Commit and close','Choose where you will use the revised update.','Spend ten minutes on individual commitments and five on closing feedback. Avoid promising follow-up you cannot deliver.']];
+ function update(){const mode=document.querySelector('#view').value;let elapsed=0;window.runSheet=blocks.map(([minutes,title,participant,facilitator])=>{const row={start:elapsed,end:elapsed+minutes,title,note:mode==='participant'?participant:facilitator};elapsed+=minutes;return row});document.querySelector('#agenda').replaceChildren(...window.runSheet.map(r=>{const a=document.createElement('article'),h=document.createElement('h3'),t=document.createElement('div'),p=document.createElement('p');t.className='time';t.textContent=`${r.start}-${r.end} min`;h.textContent=r.title;p.textContent=r.note;a.append(t,h,p);return a}));window.runSheetText=`Illustrative 90-minute workshop: ${mode}\n\n`+window.runSheet.map(r=>`${r.start}-${r.end} min | ${r.title}\n${r.note}`).join('\n\n');}
+ document.querySelector('#view').addEventListener('change',update);document.querySelector('#export').addEventListener('click',()=>{const u=URL.createObjectURL(new Blob([window.runSheetText],{type:'text/plain'})),a=document.createElement('a');a.href=u;a.download='workshop-run-sheet.txt';a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)});update();
+})();
